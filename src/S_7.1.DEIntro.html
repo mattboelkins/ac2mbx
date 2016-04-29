@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:50-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>An Introduction to Differential Equations</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="C_7.html">Previous</a><a class="up-button button toolbar-item" href="C_7.html">Up</a><a class="next-button button toolbar-item" href="S_7.2.Qualitative.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="C_7.html">Previous</a><a class="up-button button toolbar-item" href="C_7.html">Up</a><a class="next-button button toolbar-item" href="S_7.2.Qualitative.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link active"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html" class="active">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_7.1.DEIntro"><header><h1 class="heading" alt="Section 7.1 An Introduction to Differential Equations" title="Section 7.1 An Introduction to Differential Equations">
+<span class="type">Section</span><span class="codenumber">7.1</span><span class="title">An Introduction to Differential Equations</span><a href="S_7.1.DEIntro.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-37"><h5 class="heading"></h5>
+<p id="p-1704">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2439">What is a differential equation and what
+  kinds of information can it tell us?</li>
+<li id="li-2440">How do differential equations arise in the world around us?</li>
+<li id="li-2441">What do we mean by a solution to a differential equation?</li>
+</ul>
+<p id="p-1705">
+} 
+</p></article><section class="subsection" id="subsection-126"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.1.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-1706">
+In previous chapters, we have seen that a function's derivative tells
+us the rate at which the function is changing. More recently,
+the Fundamental Theorem of Calculus helped us to determine
+the total change of a function over an interval
+when we know the function's rate
+of change. For instance, an object's velocity tells us the rate of
+change of that object's position. By integrating the velocity over a
+time interval, we may determine by how much the position changes over
+that time interval. In particular, if we know where the object is at the beginning
+of that interval, then we have enough information to accurately
+predict where it will be at the end of the interval.
+</p>
+<p id="p-1707">
+In this chapter, we will introduce the concept of <!--Style me with CSS--><em>differential equations</em> and explore
+this idea in more depth. Simply said, a differential equation is an equation that provides a
+description of a function's derivative, which means that it tells us
+the function's rate of change. Using this information, we would like
+to learn as much as possible about the function itself. For instance,
+we would ideally like to have an algebraic description of the
+function. As we'll see, this may be too much to ask in some
+situations, but we will still be able to make accurate approximations.
+</p>
+<article class="paragraphs" id="PA_7.1"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1708">
+The position of a moving object is given by the
+function \(s(t)\), where \(s\) is measured in feet and \(t\) in seconds. We
+determine that the velocity is \(v(t) = 4t + 1\) feet per second.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2442">How much does the position change over the time interval
+  \([0,4]\)?</li>
+<li id="li-2443">Does this give you enough information to determine \(s(4)\), the
+  position at time \(t=4\)?  If so, what is \(s(4)\)?  If not, what
+  additional information would you need to know to determine \(s(4)\)?</li>
+<li id="li-2444">Suppose you are told that the object's initial position \(s(0) =
+  7\).  Determine \(s(2)\), the object's position 2 seconds later.</li>
+<li id="li-2445">If you are told instead that the object's initial position is
+  \(s(0) = 3\), what is \(s(2)\)?</li>
+<li id="li-2446">If we only know the velocity \(v(t)=4t+1\), is it possible that the
+  object's position at all times is \(s(t) = 2t^2 + t - 4\)?  Explain how
+  you know.</li>
+<li id="li-2447">Are there other possibilities for \(s(t)\)?  If so, what are they?</li>
+<li id="li-2448">If, in addition to knowing the velocity function is \(v(t) = 4t+1\), we know the initial position \(s(0)\), how many possibilities
+  are there for \(s(t)\)?</li>
+</ol></article></section><section class="subsection" id="subsection-127"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.1.2</span><span class="title">What is a differential equation?</span>
+</h1></header><p id="p-1709">
+\knownindex{\lt main&gt;differential equation\lt /main&gt;}
+</p>
+<p id="p-1710">
+A differential equation is an equation that describes the derivative,
+or derivatives, of a function that is unknown to us.
+For instance, the equation
+</p>
+<span class="displaymath" id="me-675">\[
+
+\frac{dy}{dx} = x\sin x
+
+\]</span><p id="p-1711">
+is a differential equation since it describes the derivative of a
+function \(y(x)\) that is unknown to us.
+</p>
+<p id="p-1712">
+As many important examples of differential equations involve quantities
+that change in time, the independent variable in our discussion will
+frequently be time
+\(t\).
+For instance, in the preview activity, we considered the
+differential equation
+</p>
+<span class="displaymath" id="me-676">\[
+
+\frac{ds}{dt} = 4t + 1.
+
+\]</span><p id="p-1713">
+Knowing the velocity and the starting position of the object, we were
+able to find the position at any later time.
+</p>
+<p id="p-1714">
+Because differential equations describe the derivative of a function,
+they give us information about how that function changes. Our goal
+will be to take this information and use it to predict the value of
+the function in the future; in this way, differential equations
+provide us with something like a crystal ball.
+</p>
+<p id="p-1715">
+Differential equations arise frequently in our every day world. For
+instance, you may hear a bank advertising:
+</p>
+<!--Style me with CSS--><em>Your money will grow at a 3% annual interest rate with us.
+</em><p id="p-1716">
+This innocuous statement is really a differential equation. Let's
+translate: \(A(t)\) will be amount of money you have in your account at
+time \(t\). On one hand, the rate at which your money grows is the
+derivative \(dA/dt\). On the other hand, we are told that this rate is
+\(0.03 A\). This leads to the differential equation
+</p>
+<span class="displaymath" id="me-677">\[
+
+\frac{dA}{dt} = 0.03 A.
+
+\]</span><p id="p-1717">
+This differential equation has a slightly different feel than the
+previous equation \(\frac{ds}{dt} = 4t+1\). In the
+earlier example, the rate of change depends only on the independent
+variable \(t\), and we may find \(s(t)\) by integrating the velocity \(4t+1\).
+In the banking example, however, the rate of change depends
+on the dependent variable \(A\), so we'll need some new techniques in order to
+find \(A(t)\).
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_7.1.1" id="A_7.1.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">7.1.1</span>
+</h5></a></div>
+<div id="hk-A_7.1.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1718">
+Express the following statements as
+differential equations. In each case, you will need to introduce notation
+to describe the important quantities in the statement so be sure to
+clearly state what your notation means.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2449">The population of a town grows continuously at an annual rate of
+          1.25%.</li>
+<li id="li-2450">A radioactive sample loses
+          5.6% of its mass every day.</li>
+<li id="li-2451">You have a bank account that continuously earns 4% interest every
+          year.  At the same time, you withdraw money continually from
+          the account at the rate of $1000 per year.</li>
+<li id="li-2452">A cup of hot chocolate is sitting in a 70\(^\circ\) room.
+          The temperature of the hot chocolate cools continuously by 10% of
+          the difference between the hot chocolate's temperature and
+          the room temperature every minute.</li>
+<li id="li-2453">A can of cold soda is sitting in a 70\(^\circ\) room.
+          The temperature of the soda warms continuously at the rate of 10% of
+          the difference between the soda's temperature and
+          the room's temperature every minute.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-215" id="hint-215"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-215" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2454">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-216" id="hint-216"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-216" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2455">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-106" id="solution-106"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-106" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2456">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-128"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.1.3</span><span class="title">Differential equations in the world around us</span>
+</h1></header><p id="p-1719">
+As we have noted, differential equations give a natural way to
+describe phenomena we see in the real world. For instance, physical
+principles are frequently expressed as a description of how a quantity
+changes. A good example is Newton's Second Law, an important physcial
+principle that says:
+</p>
+<!--Style me with CSS--><em>The product of an object's
+    mass and acceleration equals the force applied to it.
+</em><p id="p-1720">
+For instance, when gravity acts on an object near the earth's surface,
+it exerts a force equal to \(mg\), the mass of the object times the
+gravitational constant \(g\). We therefore have
+</p>
+<span class="displaymath" id="md-74">\begin{align*}
+ma \amp  = \amp  mg, \ \mbox{or}\\
+\quad \frac{dv}{dt} \amp  = \amp  g,
+\end{align*}</span><p id="p-1721">
+where \(v\) is the velocity of the object, and \(g = 9.8\) meters per
+second squared. Notice that this physical principle does not tell us
+what the object's
+velocity is, but rather how the object's velocity changes.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_7.1.2" id="A_7.1.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">7.1.2</span>
+</h5></a></div>
+<div id="hk-A_7.1.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1722">
+Shown below are two graphs depicting
+the velocity of falling objects. On the left is the velocity of a
+skydiver, while on the right is the velocity of a meteorite entering
+the Earth's atmosphere.
+</p>
+<figure class="figure-like" id="table-30">
+<img width="100%" src="images/7_1_activity_0.png"> 
+\amp  
+<img width="100%" src="images/7_1_activity_1.png"> 
+
+Skydiver's velocity \amp 
+Meteorite's velocity </figure><ol style="list-style-type: decimal;">
+<li id="li-2457">Begin with the skydiver's velocity and use the given graph to measure the rate
+          of change \(dv/dt\) when the velocity is \(v=0.5, 1.0, 1.5,
+          2.0\), and \(2.5\).  Plot your values on the graph below.  You
+          will want to think carefully about this:  you are plotting
+          the derivative \(dv/dt\) as a function of <!--Style me with CSS--><em>velocity</em>.
+
+          <img width="100%" src="images/7_1_dataplot.png">
+</li>
+<li id="li-2458">Now do the same thing with the meteorite's velocity:
+          use the given graph to measure the rate of change \(dv/dt\) when the velocity is
+          \(v=3.5,4.0,4.5\), and \(5.0\).  Plot your values on the graph
+          above.</li>
+<li id="li-2459">You should find that all your points lie on a line.
+          Write the equation of this line being careful to use proper
+          notation for the quantities on the horizontal and vertical
+          axes.</li>
+<li id="li-2460">The relationship you just found is a differential
+          equation.  Write a complete sentence that explains its
+          meaning.</li>
+<li id="li-2461">By looking at the differential equation, determine the
+          values of the velocity for which the velocity 
+          increases.</li>
+<li id="li-2462">By looking at the differential equation, determine the
+          values of the velocity for which the velocity 
+          decreases.</li>
+<li id="li-2463">By looking at the differential equation, determine the
+          values of the velocity for which the velocity 
+          remains constant.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-217" id="hint-217"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-217" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2464">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-218" id="hint-218"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-218" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2465">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-107" id="solution-107"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-107" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2466">Solutions for each of the prompts above.</li></ol></span></span><p id="p-1723">
+The point of this activity is to demonstrate how differential
+equations model processes in the real world. In this example, two
+factors are influencing the velocities: gravity and wind resistance.
+The differential equation describes how these factors influence the
+rate of change of the objects' velocities.
+</p></section><section class="subsection" id="subsection-129"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.1.4</span><span class="title">Solving a differential equation</span>
+</h1></header><p id="p-1724">
+\knownindex{\lt main&gt;differential equation\lt /main&gt;\lt sub&gt;solution\lt /sub&gt;}
+</p>
+<p id="p-1725">
+We have said that a differential equation is an equation that
+describes the derivative,
+or derivatives, of a function that is unknown to us. By a <!--Style me with CSS--><em>solution</em> to a differential equation, we mean simply a function that
+satisies this description.
+</p>
+<p id="p-1726">
+For instance, the first differential equation we looked at is
+</p>
+<span class="displaymath" id="me-678">\[
+
+\frac{ds}{dt} = 4t+1,
+
+\]</span><p id="p-1727">
+which describes an unknown function \(s(t)\). We may check that \(s(t) =
+2t^2+t\) is a solution because it satisfies this description. Notice
+that \(s(t) = 2t^2+t+4\) is also a solution.
+</p>
+<p id="p-1728">
+If we have a candidate for a solution, it is straightforward to
+check whether it is a solution or not. Before we demonstrate,
+however, let's consider the same issue in a simpler context.
+Suppose we are given the equation
+\(2x^2 - 2x = 2x+6\) and asked whether \(x=3\) is a solution. To answer
+this question, we could rewrite the variable \(x\) in the equation with
+the symbol \(\Box\):
+</p>
+<span class="displaymath" id="me-679">\[
+
+2\Box^2 - 2\Box = 2\Box + 6.
+
+\]</span><p id="p-1729">
+To determine whether \(x=3\) is a solution, we can investigate the value of each side of the equation separately when the value \(3\) is placed in \(\Box\) and see if indeed the two resulting values are equal. Doing so, we observe that
+</p>
+<span class="displaymath" id="me-680">\[
+2\Box^2 - 2\Box = 2\cdot3^2 - 2\cdot3 = 12,
+\]</span><p id="p-1730">
+and
+</p>
+<span class="displaymath" id="me-681">\[
+2\Box + 6 = 2\cdot3 + 6 = 12.
+\]</span><p id="p-1731">
+Therefore, \(x=3\) is indeed a solution.
+</p>
+<p id="p-1732">
+We will do the same thing with differential equations. Consider
+the differential equation
+</p>
+<span class="displaymath" id="md-75">\begin{align*}
+\frac{dv}{dt} \amp  = \amp  1.5 - 0.5v, \ \mbox{or}\\
+\quad \frac{d\Box}{dt} \amp  = \amp  1.5 - 0.5\Box.
+\end{align*}</span><p id="p-1733">
+Let's ask whether \(v(t) = 3 - 2e^{-0.5t}\) is a solution<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-45" id="fn-45"><sup> 1 </sup></a></span><span id="hk-fn-45" style="display: none;" class="tex2jax_ignore"><span class="footnote">At this time,
+don't worry about why we chose this function;  we will learn
+techniques for finding solutions to differential equations soon enough.  </span></span>.
+Using this formula for \(v\), observe first that
+</p>
+<span class="displaymath" id="me-682">\[
+\frac{dv}{dt} =  \frac{d\Box}{dt}  = \frac{d}{dt}[3 - 2e^{-0.5t}] = -2e^{-0.5t} \cdot (-0.5) = e^{-0.5t}
+\]</span><p id="p-1734">
+and
+</p>
+<span class="displaymath" id="me-683">\[
+1.5 - 0.5v = 1.5 - 0.5\Box= 1.5 - 0.5(3 - 2e^{-0.5t}) = 1.5 - 1.5 + e^{-0.5t} = e^{-0.5t}.
+\]</span><p id="p-1735">
+Since \(\frac{dv}{dt}\) and \(1.5 - 0.5v\) agree for all values of \(t\) when \(v = 3-2e^{-0.5t}\), we have indeed
+found a solution to the differential equation.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_7.1.3" id="A_7.1.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">7.1.3</span>
+</h5></a></div>
+<div id="hk-A_7.1.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1736">
+Consider the differential equation
+</p>
+<span class="displaymath" id="me-684">\[
+
+\frac{dv}{dt} = 1.5 - 0.5v.
+
+\]</span><p id="p-1737">
+Which of the following functions are solutions of this differential equation?
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2467">\(v(t) = 1.5t - 0.25t^2\).</li>
+<li id="li-2468">\(v(t) = 3 + 2e^{-0.5t}\).</li>
+<li id="li-2469">\(v(t) = 3\).</li>
+<li id="li-2470">\(v(t) = 3 + Ce^{-0.5t}\) where \(C\) is any constant.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-219" id="hint-219"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-219" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2471">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-220" id="hint-220"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-220" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2472">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-108" id="solution-108"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-108" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2473">Solutions for each of the prompts above.</li></ol></span></span><p id="p-1738">
+This activity shows us something interesting. Notice that the
+differential equation has infinitely many solutions, which are
+parametrized by the constant \(C\) in \(v(t) = 3+Ce^{-0.5t}\). In <a knowl="./knowl/F_7.1.family.html" knowl-id="xref-F_7.1.family" alt="Figure 7.1.4 " title="Figure 7.1.4 ">Figure 7.1.4</a>, we see the graphs of these solutions for a few values of \(C\),
+as labeled.
+</p>
+<figure class="figure-like" id="F_7.1.family"><img width="100%" src="images/7_1_family.png"><figcaption><span class="heading">Figure</span><span class="codenumber">7.1.4</span>The family of solutions to the differential equation \(\frac{dv}{dt} = 1.5 - 0.5v\).</figcaption></figure><p id="p-1739">
+Notice that the value of \(C\) is connected to the initial value of the
+velocity \(v(0)\), since \(v(0) = 3+C\). In other words, while the
+differential equation describes how the velocity changes as a function of the velocity itself, this is not enough information to determine the velocity
+uniquely: we also need to know the initial velocity. For this
+reason, differential equations will typically have infinitely many
+solutions, one corresponding to each initial value. We have seen this phenomenon before, such as when given the velocity of a moving object
+\(v(t)\), we were not able to uniquely determine the object's position
+unless we also know its initial position.
+</p>
+<p id="p-1740">
+If we are given a differential equation and an initial value for the
+unknown function, we say that we have an <!--Style me with CSS--><em>initial value problem.</em>
+For instance,
+</p>
+<span class="displaymath" id="me-685">\[
+
+  \frac{dv}{dt} = 1.5-0.5v, \ v(0) = 0.5
+
+\]</span><p id="p-1741">
+is an initial value problem. In this situation, we know the value of
+\(v\) at one time and we know how \(v\) is changing. Consequently, there should
+be exactly one function \(v\) that satisfies the initial value problem.
+</p>
+<p id="p-1742">
+This demonstrates the following important general property of initial value problems.
+</p>
+<p id="p-1743">
+
+{
+Initial value problems that are “well behaved” have exactly one
+solution, which exists in some interval around the initial point.
+} 
+
+</p>
+<p id="p-1744">
+We won't worry about what “well behaved” means — it is a technical
+condition that will be satisfied by all the differential equations we
+consider.
+</p>
+<p id="p-1745">
+To close this section, we note that differential equations may be
+classified based on certain characteristics they may possess. Indeed,
+you may see many different types of differential equations in a
+later course in differential equations. For now, we would like to
+introduce a few terms that are used to describe differential
+equations.
+</p>
+<p id="p-1746">
+A <!--Style me with CSS--><em>first-order</em> differential equation\knownindex{\lt main&gt;differential equation\lt /main&gt;\lt sub&gt;first order\lt /sub&gt;} is one in which only the
+first derivative of the function occurs. For this reason,
+</p>
+<span class="displaymath" id="me-686">\[
+
+\frac{dv}{dt} = 1.5-0.5v
+
+\]</span><p id="p-1747">
+is a first-order equation while
+</p>
+<span class="displaymath" id="me-687">\[
+
+\frac{d^2 y}{dt^2} = -10y
+
+\]</span><p id="p-1748">
+is a second-order equation.
+</p>
+<p id="p-1749">
+A differential equation is <!--Style me with CSS--><em>autonomous</em>\knownindex{\lt main&gt;autonomous\lt /main&gt;} \knownindex{\lt main&gt;differential equation\lt /main&gt;\lt sub&gt;autonomous\lt /sub&gt;} if the independent
+variable does not appear in the description of the derivative.
+For instance,
+</p>
+<span class="displaymath" id="me-688">\[
+
+\frac{dv}{dt} = 1.5-0.5v
+
+\]</span><p id="p-1750">
+is autonomous because the description of the derivative \(dv/dt\) does
+not depend on time.
+The equation
+</p>
+<span class="displaymath" id="me-689">\[
+
+\frac{dy}{dt} = 1.5t - 0.5y,
+
+\]</span><p id="p-1751">
+however, is not autonomous.
+</p>
+<p id="p-1752">
+\item A differential equation is simply an equation that describes the
+derivative(s) of an unknown function.
+\item Physical principles, as well as some everyday situations, often
+describe how a quantity changes, which
+lead to differential equations.
+\item A solution to a differential equation is a function whose
+derivatives satisfy the equation's description. Differential
+equations typically have infinitely many solutions,
+parametrized by the initial values.
+</p>
+<p id="p-1753">
+\hrulefill
+</p>
+<p id="p-1754">
+\begin{exercises}
+\item Suppose that \(T(t)\) represents the temperature of a cup of
+coffee set out in a room, where \(T\) is expressed in degrees
+Fahrenheit and \(t\) in minutes. A physical principle known as Newton's Law of Cooling\knownindex{\lt main&gt;Newton's Law of Cooling\lt /main&gt;} tells us that
+</p>
+<span class="displaymath" id="me-690">\[
+
+    \frac{dT}{dt}= -\frac1{15}T+5.
+    
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-2474">Supposes that \(T(0)=105\).  What does the differential
+    equation give us for the value of \(\ds \frac{dT}{dt}\vert_{T=0}\)?  Explain in a
+    complete sentence the meaning of these two facts.</li>
+<li id="li-2475">Is \(T\) increasing or decreasing at \(t=0\)?</li>
+<li id="li-2476">What is the approximate temperature at \(t=1\)?</li>
+<li id="li-2477">On the graph below, make a plot of \(dT/dt\) as a function of \(T\).
+        <img width="100%" src="images/7_1_exercise_1.png">
+</li>
+<li id="li-2478">For which values of \(T\) does \(T\) increase?  For
+        which values of \(T\) does \(T\) decrease?</li>
+<li id="li-2479">What do you think is the temperature of the room?
+        Explain your thinking.</li>
+<li id="li-2480">Verify that \(T(t) = 75 + 30e^{-t/15}\) is the
+        solution to the differential equation with initial value \(T(0)
+        = 105\).  What happens to this solution after a long time?</li>
+</ol>
+<p id="p-1755">
+\item Suppose that the population of a particular species is
+described by the function \(P(t)\), where \(P\) is expressed in
+millions. Suppose further that the population's rate of change is
+governed by the differential equation
+</p>
+<span class="displaymath" id="me-691">\[
+\frac{dP}{dt} = f(P)
+    
+\]</span><p id="p-1756">
+where \(f(P)\) is the function graphed below.
+</p>
+<img width="100%" src="images/7_1_threshold.png"><ol style="list-style-type: decimal;">
+<li id="li-2481">For which values of the population \(P\) does the population
+      increase?</li>
+<li id="li-2482">For which values of the population \(P\) does the population
+      decrease?</li>
+<li id="li-2483">If \(P(0) = 3\), how will the population change in time?</li>
+<li id="li-2484">If the initial population satisfies \(0\lt P(0)\lt 1\), what will
+      happen to the population after a very long time?</li>
+<li id="li-2485">If the initial population satisfies \(1\lt P(0)\lt 3\), what will
+      happen to the population after a very long time?</li>
+<li id="li-2486">If the initial population satisfies \(3\lt P(0)\), what will
+      happen to the population after a very long time?</li>
+<li id="li-2487">This model for a population's growth is sometimes called
+      “growth with a threshold.”  Explain why this is an appropriate
+      name.</li>
+</ol>
+<p id="p-1757">
+\item In this problem, we test further what it means for a function to be a solution to a given differential equation.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2488">Consider the differential equation
+      
+<span class="displaymath" id="me-692">\[
+
+      \frac{dy}{dt} = y - t.
+      
+\]</span>
+ 
+      Determine whether the following functions are solutions to the given differential equation.
+
+      <ul style="list-style-type: disc;">
+<li id="li-2489">\(y(t) = t + 1 + 2e^t\)</li>
+<li id="li-2490">\(y(t) = t + 1\)</li>
+<li id="li-2491">\(y(t) = t + 2\)</li>
+</ul>
+</li>
+<li id="li-2492">When you weigh bananas in a scale at the grocery store, the
+      height \(h\) of the bananas is described by the differential
+      equation
+      
+<span class="displaymath" id="me-693">\[
+
+      \frac{d^2h}{dt^2} = -kh
+      
+\]</span>
+ 
+      where \(k\) is the <!--Style me with CSS--><em>spring constant</em>, a constant that depends
+      on the properties of the spring in the scale.  After you put the
+      bananas in the scale, you (cleverly) observe that the height of the bananas
+      is given by \(h(t) = 4\sin(3t)\).  What is the value of the spring
+      constant?</li>
+</ol>
+<p id="p-1758">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1759">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

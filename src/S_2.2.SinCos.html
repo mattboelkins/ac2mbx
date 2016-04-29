@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:39-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The sine and cosine functions</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_2.1.ElemRules.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.3.ProdQuot.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_2.1.ElemRules.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.3.ProdQuot.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link active"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html" class="active">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_2.2.SinCos"><header><h1 class="heading" alt="Section 2.2 The sine and cosine functions" title="Section 2.2 The sine and cosine functions">
+<span class="type">Section</span><span class="codenumber">2.2</span><span class="title">The sine and cosine functions</span><a href="S_2.2.SinCos.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-10"><h5 class="heading"></h5>
+<p id="p-358">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-674">What is a graphical justification for why \(\frac{d}{dx}[a^x] = a^x \ln(a)\)?</li>
+<li id="li-675">What do the graphs of \(y = \sin(x)\) and \(y = \cos(x)\) suggest as formulas for their respective derivatives?</li>
+<li id="li-676">Once we know the derivatives of \(\sin(x)\) and \(\cos(x)\), how do previous derivative rules work when these functions are involved?</li>
+</ul>
+<p id="p-359">
+} 
+</p></article><section class="subsection" id="subsection-29"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.2.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-360">
+Throughout <a href="C_2.html" alt="Chapter 2 Computing Derivatives" title="Chapter 2 Computing Derivatives">Chapter 2</a>, we will be working to develop shortcut derivative rules that will help us to bypass the limit definition of the derivative in order to quickly determine the formula for \(f'(x)\) when we are given a formula for \(f(x)\). In <a href="S_2.1.ElemRules.html" alt="Section 2.1 Elementary derivative rules" title="Section 2.1 Elementary derivative rules">Section 2.1</a>, we learned the rule for power functions, that if \(f(x) = x^n\), then \(f'(x) = nx^{n-1}\), and justified this in part due to results from different \(n\)-values when applying the limit definition of the derivative. We also stated the rule for exponential functions, that if \(a\) is a positive real number annd \(f(x) = a^x\), then \(f'(x) = a^x \ln(a)\). Later in this present section, we are going to work to conjecture formulas for the sine and cosine functions, primarily through a graphical argument. To help set the stage for doing so, the following preview activity asks you to think about exponential functions and why it is reasonable to think that the derivative of an exponential function is a constant times the exponential function itself.
+</p>
+<article class="paragraphs" id="PA_2.2"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-361">
+Consider the function \(g(x) = 2^x\), which is graphed in <a knowl="./knowl/F_2.2.PA1.html" knowl-id="xref-F_2.2.PA1" alt="Figure 2.2.1 " title="Figure 2.2.1 ">Figure 2.2.1</a>.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-677">At each of \(x = -2, -1, 0, 1, 2\), use a straightedge to sketch an accurate tangent line to \(y = g(x)\).</li>
+<li id="li-678">Use the provided grid to estimate the slope of the tangent line you drew at each point in (a).</li>
+<li id="li-679">Use the limit definition of the derivative to estimate \(g'(0)\) by using small values of \(h\), and compare the result to your visual estimate for the slope of the tangent line to \(y = g(x)\) at \(x = 0\) in (b).</li>
+<li id="li-680">Based on your work in (a), (b), and (c), sketch an accurate graph of \(y = g'(x)\) on the axes adjacent to the graph of \(y = g(x)\).</li>
+<li id="li-681">Write at least one sentence that explains why it is reasonable to think that \(g'(x) = cg(x)\), where \(c\) is a constant.  In addition, calculate \(\ln(2)\), and then discuss how this value, combined with your work above, reasonably suggests that \(g'(x) = 2^x \ln(2)\).</li>
+</ol>
+<figure class="figure-like" id="F_2.2.PA1"><img width="100%" src="images/2_2_PA1a.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.2.1</span>At left, the graph of \(y = g(x) = 2^x\). At right, axes for plotting \(y = g'(x)\).</figcaption></figure></article></section><section class="subsection" id="subsection-30"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.2.2</span><span class="title">The sine and cosine functions</span>
+</h1></header><p id="p-362">
+The sine and cosine functions are among the most important functions in all of mathematics. Sometimes called the <!--Style me with CSS--><em>circular</em> functions due to their genesis in the unit circle
+, these periodic functions play a key role in modeling repeating phenomena such as the location of a point on a bicycle tire, the behavior of an oscillating mass attached to a spring, tidal elevations, and more. Like polynomial and exponential functions, the sine and cosine functions are considered basic functions, ones that are often used in the building of more complicated functions. As such, we would like to know formulas for \(\frac{d}{dx} [\sin(x)]\) and \(\frac{d}{dx} [\cos(x)]\), and the next two activities lead us to that end.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.2.1" id="A_2.2.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.2.2</span>
+</h5></a></div>
+<div id="hk-A_2.2.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-363">
+Consider the function \(f(x) = \sin(x)\), which is graphed in <a knowl="./knowl/F_2.2.A1.html" knowl-id="xref-F_2.2.A1" alt="Figure 2.2.3 " title="Figure 2.2.3 ">Figure 2.2.3</a> below. Note carefully that the grid in the diagram does not have boxes that are \(1 \times 1\), but rather approximately \(1.57 \times 1\), as the horizontal scale of the grid is \(\pi/2\) units per box.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-682">At each of \(x = -2\pi, -\frac{3\pi}{2}, -\pi, -\frac{\pi}{2}, 0, \frac{\pi}{2}, \pi, \frac{3\pi}{2}, 2\pi,\) use a straightedge to sketch an accurate tangent line to \(y = f(x)\).</li>
+<li id="li-683">Use the provided grid to estimate the slope of the tangent line you drew at each point.  Pay careful attention to the scale of the grid.</li>
+<li id="li-684">Use the limit definition of the derivative to estimate \(f'(0)\) by using small values of \(h\), and compare the result to your visual estimate for the slope of the tangent line to \(y = f(x)\) at \(x = 0\) in (b).  Using periodicity, what does this result suggest about \(f'(2\pi)\)?  about \(f'(-2\pi)\)?</li>
+<li id="li-685">Based on your work in (a), (b), and (c), sketch an accurate graph of \(y = f'(x)\) on the axes adjacent to the graph of \(y = f(x)\).</li>
+<li id="li-686">What familiar function do you think is the derivative of \(f(x) = \sin(x)\)?</li>
+</ol>
+<figure class="figure-like" id="F_2.2.A1"><img width="100%" src="images/2_2_sine.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.2.3</span>At left, the graph of \(y = f(x) = \sin(x)\).</figcaption></figure></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-51" id="hint-51"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-51" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-687">It's very important to use a straightedge for accuracy.</li>
+<li id="li-688">First determine the slopes that appear to be zero.  Then estimate \(f'(0)\) carefully using the grid.  Use symmetry and periodicity to help you estimate other nonzero slopes on the graph.</li>
+<li id="li-689">\(f'(0) \approx \frac{\sin(h)}{h}\) for small values of \(h\).</li>
+<li id="li-690">Recall that heights on \(f'\) come from slopes on \(f\).</li>
+<li id="li-691">It might be reasonable to expect that the derivative of a trigonometric function is another trigonometric function.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-52" id="hint-52"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-52" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-692">It's very important to use a straightedge for accuracy.</li>
+<li id="li-693">\(f'(0) \approx 1\), as for each grid box we move horizontally, we go up about 1.5 grid boxes.</li>
+<li id="li-694">\(f'(0) \approx \frac{\sin(h)}{h}\) for small values of \(h\).  Try using \(h = 0.001\) and \(h = -.001\).</li>
+<li id="li-695">Recall that heights on \(f'\) come from slopes on \(f\).  From your earlier work, you should know several places \(f'(x) = 0\), plus that \(f'(0) \approx 1\).  Plot these values on the grid for \(y = f'(x)\).</li>
+<li id="li-696">It might be reasonable to expect that the derivative of a trigonometric function is another trigonometric function, or possibly some multiple of such a function.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-25" id="solution-25"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-25" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-697">See the figure below.</li>
+<li id="li-698">Reading left to right from \(-2\pi, \ldots, 2\pi\) with stepsize \(\pi/2\), the respective slopes of tangent lines appear to be \(1,0,-1,0,1,0,-1,0,1\).</li>
+<li id="li-699">From the limit definition,
+	
+<span class="displaymath" id="md-13">\begin{align*}
+f'(0) \amp  = \amp  \lim_{h \to 0} \frac{f(0 + h) - f(0)}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{\sin(0 + h) - \sin(0)}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{\sin(h)}{h}
+\end{align*}</span>
+ 
+	Because we cannot simplify the fraction \(\frac{\sin(h)}{h}\) any further algebraically, we estimate the value of the limit using small values of \(h\).  Doing so, it appears that \(\lim_{h \to 0} \frac{\sin(h)}{h}  = 1\), and thus \(f'(0) = 1\).  This matches the estimate generated visually by sketching the tangent line at \((0,f(0))\).  Finally, by the periodicity of the sine function, we expect the value of the derivative at 0 to match the derivative value at \(-2\pi\) and \(2\pi\).</li>
+<li id="li-700">See the figure below.</li>
+<li id="li-701">It appears that \(\frac{d}{dx}[\sin(x)] = \cos(x)\).</li>
+</ol>
+<img width="100%" src="images/2_2_sineSoln.png"></span></span><div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.2.2" id="A_2.2.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.2.4</span>
+</h5></a></div>
+<div id="hk-A_2.2.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-364">
+Consider the function \(g(x) = \cos(x)\), which is graphed in <a knowl="./knowl/F_2.2.A2.html" knowl-id="xref-F_2.2.A2" alt="Figure 2.2.5 " title="Figure 2.2.5 ">Figure 2.2.5</a> below. Note carefully that the grid in the diagram does not have boxes that are \(1 \times 1\), but rather approximately \(1.57 \times 1\), as the horizontal scale of the grid is \(\pi/2\) units per box.
+</p>
+<figure class="figure-like" id="F_2.2.A2"><img width="100%" src="images/2_2_cosine.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.2.5</span>At left, the graph of \(y = g(x) = \cos(x)\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-702">At each of \(x = -2\pi, -\frac{3\pi}{2}, -\pi, -\frac{\pi}{2}, 0, \frac{\pi}{2}, \pi, \frac{3\pi}{2}, 2\pi,\) use a straightedge to sketch an accurate tangent line to \(y = g(x)\).</li>
+<li id="li-703">Use the provided grid to estimate the slope of the tangent line you drew at each point.  Again, note the scale of the axes and grid.</li>
+<li id="li-704">Use the limit definition of the derivative to estimate \(g'(\frac{\pi}{2})\) by using small values of \(h\), and compare the result to your visual estimate for the slope of the tangent line to \(y = g(x)\) at \(x = \frac{\pi}{2}\) in (b).  Using periodicity, what does this result suggest about \(g'(-\frac{3\pi}{2})\)?  can symmetry on the graph help you estimate other slopes easily?</li>
+<li id="li-705">Based on your work in (a), (b), and (c), sketch an accurate graph of \(y = g'(x)\) on the axes adjacent to the graph of \(y = g(x)\).</li>
+<li id="li-706">What familiar function do you think is the derivative of \(g(x) = \cos(x)\)?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-53" id="hint-53"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-53" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-707">It's very important to use a straightedge for accuracy.</li>
+<li id="li-708">First determine the slopes that appear to be zero.  Then estimate \(g'(\frac{\pi}{2})\) carefully using the grid.  Use symmetry and periodicity to help you estimate other nonzero slopes on the graph.</li>
+<li id="li-709">\(g'(\frac{\pi}{2}) \approx \frac{\cos(\frac{\pi}{2}+h)}{h}\) for small values of \(h\).</li>
+<li id="li-710">Recall that heights on \(g'\) come from slopes on \(g\).</li>
+<li id="li-711">It might be reasonable to expect that the derivative of a trigonometric function is another trigonometric function.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-54" id="hint-54"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-54" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-712">It's very important to use a straightedge for accuracy.</li>
+<li id="li-713">\(g'(\frac{\pi}{2}) \approx -1\), as for each grid box we move horizontally, we go down about 1.5 grid boxes.</li>
+<li id="li-714">\(g'(\frac{\pi}{2}) \approx \frac{\cos(\frac{\pi}{2}+h)}{h}\) for small values of \(h\).  Try using \(h = 0.001\) and \(h = -.001\).</li>
+<li id="li-715">Recall that heights on \(g'\) come from slopes on \(g\).  From your earlier work, you should know several places \(g'(x) = 0\), plus that \(g'(0) \approx 1\).  Plot these values on the grid for \(y = g'(x)\).</li>
+<li id="li-716">It might be reasonable to expect that the derivative of a trigonometric function is another trigonometric function, or possibly some multiple of such a function.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-26" id="solution-26"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-26" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-717">See the figure below.</li>
+<li id="li-718">Reading left to right from \(-2\pi, \ldots, 2\pi\) with stepsize \(\pi/2\), the respective slopes of tangent lines appear to be \(0,-1,0,1,0,-1,0,1,0\).</li>
+<li id="li-719">From the limit definition,
+	
+<span class="displaymath" id="md-14">\begin{align*}
+g'(\frac{\pi}{2}) \amp  = \amp  \lim_{h \to 0} \frac{g(\frac{\pi}{2} + h) - g(\frac{\pi}{2})}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{\cos(\frac{\pi}{2} + h) - \cos(\frac{\pi}{2})}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{\cos(\frac{\pi}{2}h)}{h}
+\end{align*}</span>
+ 
+	Because we cannot simplify the fraction \(\frac{\cos(\frac{\pi}{2}+h)}{h}\) any further algebraically, we estimate the value of the limit using small values of \(h\).  Doing so, it appears that \(\lim_{h \to 0} \frac{\cos(\frac{\pi}{2}+h)}{h}  = -1\), and thus \(g'(\frac{\pi}{2}) = -1\).  This matches the estimate generated visually by sketching the tangent line at \((\frac{\pi}{2},g(\frac{\pi}{2}))\).  Finally, by the periodicity of the sine function, we expect the value of the derivative at \(\frac{\pi}{2}\) to match the derivative value at \(-\frac{3\pi}{2}\).</li>
+<li id="li-720">See the figure below.</li>
+<li id="li-721">It appears that \(\frac{d}{dx}[\cos(x)] = -\sin(x)\).</li>
+</ol>
+<img width="100%" src="images/2_2_cosineSoln.png"></span></span><p id="p-365">
+The results of the two preceding activities suggest that the sine and cosine functions not only have the beautiful interrelationships that are learned in a course in trigonometry – connections such as the identities \(\sin^2(x) + \cos^2(x) = 1\) and \(\cos(x - \frac{\pi}{2}) = \sin(x)\) – but that they are even further linked through calculus, as the derivative of each involves the other. The following rules summarize the results of the activities<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-13" id="fn-13"><sup> 1 </sup></a></span><span id="hk-fn-13" style="display: none;" class="tex2jax_ignore"><span class="footnote">These two rules may be formally proved using the limit definition of the derivative and the expansion identities for \(\sin(x+h)\) and \(\cos(x+h)\).</span></span>.
+</p>
+<p id="p-366">
+
+{
+Sine and Cosine Functions: \knownindex{\lt main&gt;derivative\lt /main&gt;\lt sub&gt;sine\lt /sub&gt;} \knownindex{\lt main&gt;derivative\lt /main&gt;\lt sub&gt;cosine\lt /sub&gt;} For all real numbers \(x\),
+</p>
+<span class="displaymath" id="me-83">\[
+\frac{d}{dx} [\sin(x)] = \cos(x) \ \ \mbox{and}  \ \ \frac{d}{dx} [\cos(x)] = -\sin(x)
+\]</span><p id="p-367">
+} 
+
+</p>
+<p id="p-368">
+We have now added two additional functions to our library of basic functions whose derivatives we know: power functions, exponential functions, and the sine and cosine functions. The constant multiple and sum rules still hold, of course, and all of the inherent meaning of the derivative persists, regardless of the functions that are used to constitute a given choice of \(f(x)\). The following activity puts our new knowledge of the derivatives of \(\sin(x)\) and \(\cos(x)\) to work.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.2.3" id="A_2.2.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.2.6</span>
+</h5></a></div>
+<div id="hk-A_2.2.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-369">
+Answer each of the following questions. Where a derivative is requested, be sure to label the derivative function with its name using proper notation.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-722">Determine the derivative of \(h(t) = 3\cos(t) - 4\sin(t)\).</li>
+<li id="li-723">Find the exact slope of the tangent line to \(y = f(x) = 2x + \frac{\sin(x)}{2}\) at the point where \(x = \frac{\pi}{6}\).</li>
+<li id="li-724">Find the equation of the tangent line to \(y = g(x) = x^2 + 2\cos(x)\) at the point where \(x = \frac{\pi}{2}\).</li>
+<li id="li-725">Determine the derivative of \(p(z) = z^4 + 4^z + 4\cos(z) - \sin(\frac{\pi}{2})\).</li>
+<li id="li-726">The function \(P(t) = 24 + 8\sin(t)\) represents a population of a particular kind of animal that lives on a small island, where \(P\) is measured in hundreds and \(t\) is measured in decades since January 1, 2010.  What is the instantaneous rate of change of \(P\) on January 1, 2030?  What are the units of this quantity?  Write a sentence in everyday language that explains how the population is behaving at this point in time.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-55" id="hint-55"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-55" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-727">Recall the constant multiple and sum rules.</li>
+<li id="li-728">\(f'(\frac{\pi}{6})\) tells us the slope of the tangent line at \((\frac{\pi}{6},\frac{\pi}{6})\).</li>
+<li id="li-729">Find both \((\frac{\pi}{2}, g(\frac{\pi}{2}))\) and \(g'(\frac{\pi}{2})\).</li>
+<li id="li-730">\(\sin(\frac{\pi}{2})\) is a constant.</li>
+<li id="li-731">\(P'(a)\) tells us the instantaneous rate of change of \(P\) with respect to time at the instant \(t = a\), and its units are “units of \(P\) per unit of time.”</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-56" id="hint-56"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-56" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-732">Recall the constant multiple and sum rules.</li>
+<li id="li-733">\(f'(a)\) tells us the slope of the tangent line at \((a,f(a))\).</li>
+<li id="li-734">Find both a point on the tangent line and the slope of the tangent line.</li>
+<li id="li-735">\(\sin(\frac{\pi}{2})\) is a constant.</li>
+<li id="li-736">\(P'(a)\) tells us the instantaneous rate of change of \(P\) with respect to time at the instant \(t = a\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-27" id="solution-27"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-27" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-737">By the sum and constant multiple rules, \(\frac{dh}{dt} = 3(-\sin(t)) - 4(\cos(t)) = -3\sin(t) - 4\cos(t)\).</li>
+<li id="li-738">The exact slope of the tangent line to \(y = f(x) = 2x + \frac{\sin(x)}{2}\) at \(x = \frac{\pi}{6}\) is given by \(f'(\frac{\pi}{6})\).  So, we first compute \(f'(x)\).  Using the sum and constant multiple rules, \(f'(x) = 2 + \frac{1}{2}\cos(x)\), and thus \(f'(\frac{\pi}{6}) = 2 + \frac{1}{2} \cos(\frac{\pi}{6}) = 2 + \frac{\sqrt{3}}{4}.\)</li>
+<li id="li-739">The tangent line passes through the point \((\frac{\pi}{2}, g(\frac{\pi}{2}))\) with slope \(g'(\frac{\pi}{2})\).  We observe first that \(g(\frac{\pi}{2}) = (\frac{\pi}{2})^2 + 2\cos(\frac{\pi}{2}) = \frac{\pi^2}{4}\).  Next, we compute the derivative function, \(g'(x)\), and find that
+	
+<span class="displaymath" id="me-84">\[
+g'(x) = 2x - 2\sin(x).
+\]</span>
+ 
+	Thus, \(g(\frac{\pi}{2}) = 2 \cdot \frac{\pi}{2} - 2 \sin(\frac{\pi}{2}) = \pi - 1\).
+	
+	Hence the equation of the tangent line (in point-slope form) is given by 
+	
+<span class="displaymath" id="me-85">\[
+y - \frac{\pi^2}{4} = (\pi-1)(x-\frac{\pi}{2}).
+\]</span>
+</li>
+<li id="li-740">Noting that \(\sin(\frac{\pi}{2})\) is a constant, we have \(p'(z) = 4z^3 + 4^z \ln(4) - 4\sin(z)\).</li>
+<li id="li-741">The value of \(P'(2)\) will tell us the instantaneous rate of change of \(P\) at the instant two decades have elapsed.  Observe that \(P'(t) = 8\cos(t)\), and thus \(P'(2) = 8\cos(2) \approx -3.329\) hundred animals per decade.  This tells us that the instantaneous rate of change of \(P\) on January 1, 2030 is about \(-3329\) animals per decade, which tells us that the animal population is shrinking considerably at this point in time.  We might say that for whatever the population is on January 1, 2030, we expect that population to drop by about 3300 animals over the next ten years, provided the current population trend continues.</li>
+</ol></span></span><p id="p-370">
+\begin{authornote}
+This is an author note.
+\end{authornote}
+</p>
+<p id="p-371">
+\item If we consider the graph of an exponential function \(f(x) = a^x\) (where \(a &gt; 1\)), the graph of \(f'(x)\) behaves similarly, appearing exponential and as a possibly scaled version of the original function \(a^x\). For \(f(x) = 2^x\), careful analysis of the graph and its slopes suggests that \(\frac{d}{dx}[2^x] = 2^x \ln(2)\), which is a special case of the rule we stated in <a href="S_2.1.ElemRules.html" alt="Section 2.1 Elementary derivative rules" title="Section 2.1 Elementary derivative rules">Section 2.1</a>.
+\item By carefully analyzing the graphs of \(y = \sin(x)\) and \(y = \cos(x)\), plus using the limit definition of the derivative at select points, we found that \(\frac{d}{dx} [\sin(x)] = \cos(x)\) and \(\frac{d}{dx} [\cos(x)] = -\sin(x)\).
+\item We note that all previously encountered derivative rules still hold, but now may also be applied to functions involving the sine and cosine, plus all of the established meaning of the derivative applies to these trigonometric functions as well.
+</p>
+<p id="p-372">
+\hrulefill
+</p>
+<p id="p-373">
+\begin{exercises}
+\item Suppose that \(V(t) = 24 \cdot 1.07^t + 6 \sin(t)\) represents the value of a person's investment portfolio in thousands of dollars in year \(t\), where \(t = 0\) corresponds to January 1, 2010.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-742">At what instantaneous rate is the portfolio's value changing on January 1, 2012?  Include units on your answer.</li>
+<li id="li-743">Determine the value of \(V''(2)\).  What are the units on this quantity and what does it tell you about how the portfolio's value is changing?</li>
+<li id="li-744">On the interval \(0 \le t \le 20\), graph the function \(V(t) = 24 \cdot 1.07^t + 6 \sin(t)\) and describe its behavior in the context of the problem.  Then, compare the graphs of the functions \(A(t) = 24 \cdot 1.07^t\) and \(V(t) = 24 \cdot 1.07^t + 6 \sin(t)\), as well as the graphs of their derivatives \(A'(t)\) and \(V'(t)\).  What is the impact of the term \(6 \sin(t)\) on the behavior of the function \(V(t)\)?</li>
+</ol>
+<p id="p-374">
+\item Let \(f(x) = 3\cos(x) - 2\sin(x) + 6\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-745">Determine the exact slope of the tangent line to \(y = f(x)\) at the point where \(a = \frac{\pi}{4}\).</li>
+<li id="li-746">Determine the tangent line approximation to \(y = f(x)\) at the point where \(a = \pi\).</li>
+<li id="li-747">At the point where \(a = \frac{\pi}{2}\), is \(f\) increasing, decreasing, or neither?</li>
+<li id="li-748">At the point where \(a = \frac{3\pi}{2}\), does the tangent line to \(y = f(x)\) lie above the curve, below the curve, or neither?  How can  you answer this question without even graphing the function or the tangent line?</li>
+</ol>
+<p id="p-375">
+\item In this exercise, we explore how the limit definition of the derivative more formally shows that \(\frac{d}{dx}[\sin(x)] = \cos(x)\). Letting \(f(x) = \sin(x)\), note that the limit definition of the derivative tells us that
+</p>
+<span class="displaymath" id="me-86">\[
+f'(x) = \lim_{h \to 0} \frac{\sin(x+h) - \sin(x)}{h}.
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-749">Recall the trigonometric identity for the sine of a sum of angles \(\alpha\) and \(\beta\): <br>\(\sin(\alpha + \beta) = \sin(\alpha)\cos(\beta) + \cos(\alpha)\sin(\beta)\).  Use this identity and some algebra to show that
+	
+<span class="displaymath" id="me-87">\[
+f'(x) = \lim_{h \to 0} \frac{\sin(x)(\cos(h)-1) + \cos(x)\sin(h)}{h}.
+\]</span>
+</li>
+<li id="li-750">Next, note that as \(h\) changes, \(x\) remains constant. Explain why it therefore makes sense to say that
+	
+<span class="displaymath" id="me-88">\[
+f'(x) = \sin(x) \cdot \lim_{h \to 0} \frac{\cos(h) -1 }{h} + \cos(x) \cdot \lim_{h \to 0} \frac{\sin(h)}{h}.
+\]</span>
+</li>
+<li id="li-751">Finally, use small values of \(h\) to estimate the values of the two limits in (c):
+	
+<span class="displaymath" id="me-89">\[
+\lim_{h \to 0} \frac{\cos(h) - 1}{h} \ \ \mbox{and}  \ \ \lim_{h \to 0} \frac{\sin(h)}{h}.
+\]</span>
+</li>
+<li id="li-752">What do your results in (c) thus tell you about \(f'(x)\)?</li>
+<li id="li-753">By emulating the steps taken above, use the limit definition of the derivative to argue convincingly that \(\frac{d}{dx}[\cos(x)] = -\sin(x).\)</li>
+</ol>
+<p id="p-376">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-377">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

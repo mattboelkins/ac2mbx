@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:38-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Limits, Continuity, and Differentiability</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_1.6.SecondD.html">Previous</a><a class="up-button button toolbar-item" href="C_1.html">Up</a><a class="next-button button toolbar-item" href="S_1.8.TanLineApprox.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_1.6.SecondD.html">Previous</a><a class="up-button button toolbar-item" href="C_1.html">Up</a><a class="next-button button toolbar-item" href="S_1.8.TanLineApprox.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link active"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html" class="active">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_1.7.LimContDiff"><header><h1 class="heading" alt="Section 1.7 Limits, Continuity, and Differentiability" title="Section 1.7 Limits, Continuity, and Differentiability">
+<span class="type">Section</span><span class="codenumber">1.7</span><span class="title">Limits, Continuity, and Differentiability</span><a href="S_1.7.LimContDiff.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-7"><h5 class="heading"></h5>
+<p id="p-227">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-414">What does it mean graphically to say that \(f\) has limit \(L\) as \(x \to a\)?  How is this connected to having a left-hand limit at \(x = a\) and having a right-hand limit at \(x = a\)?</li>
+<li id="li-415">What does it mean to say that a function \(f\) is continuous at \(x = a\)?  What role do limits play in determining whether or not a function is continuous at a point?</li>
+<li id="li-416">What does it mean graphically to say that a function \(f\) is differentiable at \(x = a\)?  How is this connected to the function being locally linear?</li>
+<li id="li-417">How are the characteristics of a function having a limit, being continuous, and being differentiable at a given point related to one another?</li>
+</ul>
+<p id="p-228">
+} 
+</p></article><section class="subsection" id="subsection-18"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.7.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-229">
+In <a href="S_1.2.Limits.html" alt="Section 1.2 The notion of limit" title="Section 1.2 The notion of limit">Section 1.2</a>, we learned about how the concept of limits can be used to study the trend of a function near a fixed input value. As we study such trends, we are fundamentally interested in knowing how well-behaved the function is at the given point, say \(x = a\). In this present section, we aim to expand our perspective and develop language and understanding to quantify how the function acts and how its value changes near a particular point. Beyond thinking about whether or not the function has a limit \(L\) at \(x = a\), we will also consider the value of the function \(f(a)\) and how this value is related to \(\lim_{x \to a} f(x)\), as well as whether or not the function has a derivative \(f'(a)\) at the point of interest. Throughout, we will build on and formalize ideas that we have encountered in several settings.
+</p>
+<p id="p-230">
+We begin to consider these issues through the following preview activity that asks you to consider the graph of a function with a variety of interesting behaviors.
+</p>
+<article class="paragraphs" id="PA_1.7"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-231">
+A function \(f\) defined on \(-4 \lt  x \lt  4\) is given by the graph in <a knowl="./knowl/F_1.7.PA1.html" knowl-id="xref-F_1.7.PA1" alt="Figure 1.7.1 " title="Figure 1.7.1 ">Figure 1.7.1</a>. Use the graph to answer each of the following questions. Note: to the right of \(x = 2\), the graph of \(f\) is exhibiting infinite oscillatory behavior similar to the function \(\sin(\frac{\pi}{x})\) that we encountered in the key example early in <a href="S_1.2.Limits.html" alt="Section 1.2 The notion of limit" title="Section 1.2 The notion of limit">Section 1.2</a>.
+</p>
+<figure class="figure-like" id="F_1.7.PA1"><img width="100%" src="images/1_7_PA1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.7.1</span>The graph of \(y = f(x)\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-418">For each of the values \(a = -3, -2, -1, 0, 1, 2, 3\), determine whether or not \(\ds \lim_{x \to a} f(x)\) exists.  If the function has a limit \(L\) at a given point, state the value of the limit using the notation \(\ds \lim_{x \to a} f(x) = L\).  If the function does not have a limit at a given point, write a sentence to explain why.</li>
+<li id="li-419">For each of the values of \(a\) from part (a) where \(f\) has a limit, determine the value of \(f(a)\) at each such point.  In addition, for each such \(a\) value, does \(f(a)\) have the same value as \(\ds \lim_{x \to a} f(x)\)?</li>
+<li id="li-420">For each of the values \(a = -3, -2, -1, 0, 1, 2, 3\), determine whether or not \(f'(a)\) exists.  In particular, based on the given graph, ask yourself if it is reasonable to say that \(f\) has a tangent line at \((a,f(a))\) for each of the given \(a\)-values.  If so, visually estimate the slope of the tangent line to find the value of \(f'(a)\).</li>
+</ol></article></section><section class="subsection" id="subsection-19"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.7.2</span><span class="title">Having a limit at a point</span>
+</h1></header><p id="p-232">
+In <a href="S_1.2.Limits.html" alt="Section 1.2 The notion of limit" title="Section 1.2 The notion of limit">Section 1.2</a>, we first encountered limits and learned that we say that \(f\) has limit \(L\) as \(x\) approaches \(a\) and write \(\ds \lim_{x \to a} f(x) = L\) provided that we can make the value of \(f(x)\) as close to \(L\) as we like by taking \(x\) sufficiently close (but not equal to) \(a\). Here, we expand further on this definition and focus in more depth on what it means for a function not to have a limit at a given value.
+</p>
+<p id="p-233">
+Essentially there are two behaviors that a function can exhibit at a point where it fails to have a limit. In <a knowl="./knowl/F_1.7.NoLimit.html" knowl-id="xref-F_1.7.NoLimit" alt="Figure 1.7.2 " title="Figure 1.7.2 ">Figure 1.7.2</a>, at left we see a function \(f\) whose graph shows a jump at \(a = 1\). In particular, if we let \(x\) approach 1 from the left side, the value of \(f\) approaches 2, while if we let \(x\) go to \(1\) from the right, the value of \(f\) tends to 3. Because the value of \(f\) does not approach a single number as \(x\) gets arbitrarily close to 1 from both sides, we know that \(f\) does not have a limit at \(a = 1\).
+</p>
+<p id="p-234">
+Since \(f\) does approach a single value on each side of \(a = 1\), we can introduce the notion of <!--Style me with CSS--><em>left</em> and <!--Style me with CSS--><em>right</em> (or <!--Style me with CSS--><em>one-sided</em>) limits. \knownindex{\lt main&gt;left limit\lt /main&gt;} \knownindex{\lt main&gt;right limit\lt /main&gt;} \knownindex{\lt main&gt;limit\lt /main&gt;\lt sub&gt;one-sided\lt /sub&gt;} We say that <!--Style me with CSS--><em>\(f\) has limit \(L_1\) as \(x\) approaches \(a \) from the left</em> and write
+</p>
+<span class="displaymath" id="me-48">\[
+\lim_{x \to a^-} f(x) = L_1
+\]</span><p id="p-235">
+provided that we can make the value of \(f(x)\) as close to \(L_1\) as we like by taking \(x\) sufficiently close to \(a\) while always having \(x \lt  a\). In this case, we call \(L_1\) the left-hand limit of \(f\) as \(x\) approaches \(a\). Similarly, we say <!--Style me with CSS--><em>\(L_2\) is the right-hand limit of \(f\) as \(x\) approaches \(a\)</em> and write
+</p>
+<span class="displaymath" id="me-49">\[
+\lim_{x \to a^+} f(x) = L_2
+\]</span><p id="p-236">
+provided that we can make the value of \(f(x)\) as close to \(L_2\) as we like by taking \(x\) sufficiently close to \(a\) while always having \(x &gt; a\). In the graph of the function \(f\) in <a knowl="./knowl/F_1.7.NoLimit.html" knowl-id="xref-F_1.7.NoLimit" alt="Figure 1.7.2 " title="Figure 1.7.2 ">Figure 1.7.2</a>, we see that
+</p>
+<span class="displaymath" id="me-50">\[
+\lim_{x \to 1^-} f(x) = 2 \ \ \mbox{and}  \ \lim_{x \to 1^+} f(x) = 3
+\]</span><p id="p-237">
+and precisely because the left and right limits are not equal, the overall limit of \(f\) as \(x \to 1\) fails to exist.
+</p>
+<figure class="figure-like" id="F_1.7.NoLimit"><img width="100%" src="images/1_7_NoLimit.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.7.2</span>Functions \(f\) and \(g\) that each fail to have a limit at \(a = 1\).</figcaption></figure><p id="p-238">
+For the function \(g\) pictured at right in <a knowl="./knowl/F_1.7.NoLimit.html" knowl-id="xref-F_1.7.NoLimit" alt="Figure 1.7.2 " title="Figure 1.7.2 ">Figure 1.7.2</a>, the function fails to have a limit at \(a = 1\) for a different reason. While the function does not have a jump in its graph at \(a = 1\), it is still not the case that \(g\) approaches a single value as \(x\) approaches 1. In particular, due to the infinitely oscillating behavior of \(g\) to the right of \(a = 1\), we say that the right-hand limit of \(g\) as \(x \to 1^+\) does not exist, and thus
+\(\ds \lim_{x \to 1} g(x) \ \mbox{does not exist} .\)
+</p>
+<p id="p-239">
+To summarize, anytime either a left- or right-hand limit fails to exist or the left- and right-hand limits are not equal to each other, the overall limit will not exist. Said differently,
+</p>
+<p id="p-240">
+
+{
+A function \(f\) has limit \(L\) as \(x \to a\) if and only if
+</p>
+<span class="displaymath" id="me-51">\[
+\lim_{x \to a^-} f(x) = L = \lim_{x \to a^+} f(x).
+\]</span><p id="p-241">
+That is, a function has a limit at \(x = a\) if and only if both the left- and right-hand limits at \(x = a\) exist and share the same value.
+} 
+
+</p>
+<p id="p-242">
+In Preview <a href="S_1.7.LimContDiff.html#PA_1.7" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, the function \(f\) given in <a knowl="./knowl/F_1.7.PA1.html" knowl-id="xref-F_1.7.PA1" alt="Figure 1.7.1 " title="Figure 1.7.1 ">Figure 1.7.1</a> only fails to have a limit at two values: at \(a = -2\) (where the left- and right-hand limits are 2 and \(-1\), respectively) and at \(x = 2\), where \(\lim_{x \to 2^+} f(x)\) does not exist). Note well that even at values like \(a = -1\) and \(a = 0\) where there are holes in the graph, the limit still exists.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.7.1" id="A_1.7.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.7.3</span>
+</h5></a></div>
+<div id="hk-A_1.7.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-243">
+Consider a function that is piecewise-defined according to the formula
+</p>
+<span class="displaymath" id="me-52">\[
+f(x) = \begin{cases}3(x+2)+2 \amp  \text{for -3 \lt  x \lt  -2}  \\
+  \frac{2}{3}(x+2)+1 \amp  \text{for -2 \le x \lt  -1}  \\
+  \frac{2}{3}(x+2)+1 \amp  \text{for -1 \lt  x \lt  1}  \\
+  2 \amp  \text{for x = 1}  \\
+  4-x \amp  \text{for x &gt; 1} 
+\end{cases} 
+\]</span><p id="p-244">
+Use the given formula to answer the following questions.
+</p>
+<figure class="figure-like" id="F_1.7.Act1"><img width="100%" src="images/1_7_Act1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.7.4</span>Axes for plotting the function \(y = f(x)\) in <a knowl="./knowl/A_1.7.1.html" knowl-id="xref-A_1.7.1" alt="Exercise 1.7.3 " title="Exercise 1.7.3 ">Activity 1.7.3</a>.</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-421">For each of the values \(a = -2, -1, 0, 1, 2\), compute \(f(a)\).</li>
+<li id="li-422">For each of the values \(a = -2, -1, 0, 1, 2\), determine \(\ds \lim_{x \to a^-} f(x)\) and \(\ds \lim_{x \to a^+} f(x)\).</li>
+<li id="li-423">For each of the values \(a = -2, -1, 0, 1, 2\), determine \(\ds \lim_{x \to a} f(x)\).  If the limit fails to exist, explain why by discussing the left- and right-hand limits at the relevant \(a\)-value.</li>
+<li id="li-424">For which values of \(a\) is the following statement true?
+	
+<span class="displaymath" id="me-53">\[
+\lim_{x \to a} f(x) \ne f(a)
+\]</span>
+</li>
+<li id="li-425">On the axes provided in <a knowl="./knowl/F_1.7.Act1.html" knowl-id="xref-F_1.7.Act1" alt="Figure 1.7.4 " title="Figure 1.7.4 ">Figure 1.7.4</a>, sketch an accurate, labeled graph of \(y = f(x)\).  Be sure to carefully use open circles (\(\circ\)) and filled circles (\(\bullet\)) to represent key points on the graph, as dictated by the piecewise formula.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-35" id="hint-35"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-35" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-426">Find the interval in which \(a\) lies and evaluate the function there.</li>
+<li id="li-427">Remember that for \(\ds \lim_{x \to a^-} f(x)\), we only consider values of \(x\) such that \(x \lt  a\).  Find the right formula to use in the piecewise definition for \(f\) to fit the values you are considering.</li>
+<li id="li-428">Use your work in (c) and compare left- and right-hand limits.</li>
+<li id="li-429">Use your work in (a) and (c).</li>
+<li id="li-430">Note that \(f\) is piecewise linear.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-36" id="hint-36"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-36" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-431">Find the interval in which \(a\) lies and evaluate the function there.  For example, \(f(-2) = \frac{2}{3}(-2+2) + 1\), based on the formula for \(f\).</li>
+<li id="li-432">Remember that for \(\ds \lim_{x \to a^-} f(x)\), we only consider values of \(x\) such that \(x \lt  a\).  Find the right formula to use in the piecewise definition for \(f\) to fit the values you are considering.  For example, as \(x \to -2^-\), we use the formula \(3(x+2)+2\) and see that \(3(x+2)+2 \to 3(-2+2)+2 = 2\) as \(x \to -2^+\).</li>
+<li id="li-433">Use your work in (c) and compare left- and right-hand limits.  Remember that the overall limit exists if and only if both left and right limits exists and are equal in value.</li>
+<li id="li-434">Use your work in (a) and (c).</li>
+<li id="li-435">Note that \(f\) is piecewise linear.  For instance, \(y = 3(x+2) + 2\) is a line through \((-2,2)\) with slope 3 and is valid on the interval \(-3 \lt  x \lt  -2\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-18" id="solution-18"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-18" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-436">\(f(-2) = \frac{2}{3}(-2+2) + 1 = 1\); \(f(-1)\) is not defined; \(f(0) = \frac{2}{3}(0+2)+1 = \frac{7}{3}\); \(f(1) = 2\) (by the rule); \(f(2) = 4-2 = 2\).</li>
+<li id="li-437">
+<span class="displaymath" id="me-54">\[
+\lim_{x \to -2^-} f(x) = 2 \ \mbox{and}  \lim_{x \to -2^+} f(x) = 1
+\]</span><span class="displaymath" id="me-55">\[
+\lim_{x \to -1^-} f(x) = \frac{5}{3} \ \mbox{and}  \lim_{x \to -1^+} f(x) = \frac{5}{3}
+\]</span><span class="displaymath" id="me-56">\[
+\lim_{x \to 0^-} f(x) = \frac{7}{3} \ \mbox{and}  \lim_{x \to 0^+} f(x) = \frac{7}{3}
+\]</span><span class="displaymath" id="me-57">\[
+\lim_{x \to 1^-} f(x) = 3 \ \mbox{and}  \lim_{x \to 1^+} f(x) = 3
+\]</span><span class="displaymath" id="me-58">\[
+\lim_{x \to 2^-} f(x) = 2 \ \mbox{and}  \lim_{x \to 2^+} f(x) = 2
+\]</span>
+</li>
+<li id="li-438">\(\ds \lim_{x \to -2} f(x)\) does not exists because the left-hand limit is \(2\) while the right-hand limit is \(1\).  All of the other requested limits exist, as left- and right-hand limits exist and are equal in each case.  The respective values of the limits as \(x \to a\) for \(a = -1, 0, 1, 2\) are \(\frac{5}{3}, \frac{7}{3}, 3, 2\).</li>
+<li id="li-439">For \(a = -2\), \(a = -1\), and \(a = 1\), \(\ds \lim_{x \to a} f(x) \ne f(a)\).  At \(a = -2\), the limit fails to exist, but \(f(-2) = 1\).  At \(a = -1\), the limit is \(\frac{5}{3}\), but \(f(-1)\) is not defined.  At \(a = 1\), the limit is 3, but \(f(1) = 2\).</li>
+<li id="li-440"><img width="100%" src="images/1_7_Act1Soln.png"></li>
+</ol></span></span></section><section class="subsection" id="subsection-20"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.7.3</span><span class="title">Being continuous at a point</span>
+</h1></header><p id="p-245">
+\knownindex{\lt main&gt;continuous\lt /main&gt;}
+</p>
+<p id="p-246">
+Intuitively, a function is continuous if we can draw it without ever lifting our pencil from the page. Alternatively, we might say that the graph of a continuous function has no jumps or holes in it. We first consider three specific situations in <a knowl="./knowl/F_1.7.Cont.html" knowl-id="xref-F_1.7.Cont" alt="Figure 1.7.5 " title="Figure 1.7.5 ">Figure 1.7.5</a> where all three functions have a limit at \(a = 1\), and then work to make the idea of continuity more precise.
+</p>
+<figure class="figure-like" id="F_1.7.Cont"><img width="100%" src="images/1_7_Cont.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.7.5</span>Functions \(f\), \(g\), and \(h\) that demonstrate subtly different behaviors at \(a = 1\).</figcaption></figure><p id="p-247">
+Note that \(f(1)\) is not defined, which leads to the resulting hole in the graph of \(f\) at \(a = 1\). We will naturally say that \(f\) is <!--Style me with CSS--><em>not continuous at \(a = 1\)</em>. For the next function \(g\) in in <a knowl="./knowl/F_1.7.Cont.html" knowl-id="xref-F_1.7.Cont" alt="Figure 1.7.5 " title="Figure 1.7.5 ">Figure 1.7.5</a>, we observe that while \(\lim_{x \to 1} g(x) = 3\), the value of \(g(1) = 2\), and thus the limit does not equal the function value. Here, too, we will say that \(g\) is <!--Style me with CSS--><em>not continuous</em>, even though the function is defined at \(a = 1\). Finally, the function \(h\) appears to be the most well-behaved of all three, since at \(a = 1\) its limit and its function value agree. That is,
+</p>
+<span class="displaymath" id="me-59">\[
+\lim_{x \to 1} h(x) = 3 = h(1).
+\]</span><p id="p-248">
+With no hole or jump in the graph of \(h\) at \(a = 1\), we desire to say that \(h\) is <!--Style me with CSS--><em>continuous</em> there.
+</p>
+<p id="p-249">
+More formally, we make the following definition.
+</p>
+<article class="definition-like" id="definition-7"><h5 class="heading">
+<span class="type">Definition</span><span class="codenumber">1.7.6</span>
+</h5>
+<p id="p-250">
+A function \(f\) is continuous at \(x = a\) \knownindex{\lt main&gt;continuous at \(x = a\)\lt /main&gt;} provided that
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-441">\(f\) has a limit as \(x \to a\),</li>
+<li id="li-442">\(f\) is defined at \(x = a\), and</li>
+<li id="li-443">\(\ds \lim_{x \to a} f(x) = f(a).\)</li>
+</ol></article><p id="p-251">
+Conditions (a) and (b) are technically contained implicitly in (c), but we state them explicitly to emphasize their individual importance. In words, (c) essentially says that a function is continuous at \(x = a\) provided that its limit as \(x \to a\) exists and equals its function value at \(x = a\). If a function is continuous at every point in an interval \([a,b]\), we say the function is “continuous on \([a,b]\).” If a function is continuous at every point in its domain, we simply say the function is “continuous.” Thus, continuous functions are particularly nice: to evaluate the limit of a continuous function at a point, all we need to do is evaluate the function.
+</p>
+<p id="p-252">
+For example, consider \(p(x) = x^2 - 2x + 3\). It can be proved that every polynomial is a continuous function at every real number, and thus if we would like to know \(\lim_{x \to 2} p(x)\), we simply compute
+</p>
+<span class="displaymath" id="me-60">\[
+\lim_{x \to 2} (x^2 - 2x + 3) = 2^2 - 2 \cdot 2 + 3 = 3.
+\]</span><p id="p-253">
+This route of substituting an input value to evaluate a limit works anytime we know function being considered is continuous. Besides polynomial functions, all exponential functions and the sine and cosine functions are continuous at every point, as are many other familiar functions and combinations thereof.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.7.2" id="A_1.7.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.7.7</span>
+</h5></a></div>
+<div id="hk-A_1.7.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-254">
+This activity builds on your work in Preview <a href="S_1.7.LimContDiff.html#PA_1.7" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, using the same function \(f\) as given by the graph that is repeated in <a knowl="./knowl/F_1.7.A2.html" knowl-id="xref-F_1.7.A2" alt="Figure 1.7.8 " title="Figure 1.7.8 ">Figure 1.7.8</a>
+</p>
+<figure class="figure-like" id="F_1.7.A2"><img width="100%" src="images/1_7_PA1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.7.8</span>The graph of \(y = f(x)\) for <a knowl="./knowl/A_1.7.2.html" knowl-id="xref-A_1.7.2" alt="Exercise 1.7.7 " title="Exercise 1.7.7 ">Activity 1.7.7</a>.</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-444">At which values of \(a\) does \(\lim_{x \to a} f(x)\) not exist?</li>
+<li id="li-445">At which values of \(a\) is \(f(a)\) not defined?</li>
+<li id="li-446">At which values of \(a\) does \(f\) have a limit, but \(\lim_{x \to a} f(x) \ne f(a)\)?</li>
+<li id="li-447">State all values of \(a\) for which \(f\) is not continuous at \(x = a\).</li>
+<li id="li-448">Which condition is stronger, and hence implies the other:   \(f\)  has a limit at \(x = a\) or  \(f\) is continuous at \(x = a\)?  Explain, and hence complete the following sentence:  “If \(f\)  at \(x = a\), then \(f\)  at \(x = a\),” where you complete the blanks with <!--Style me with CSS--><em>has a limit</em> and <!--Style me with CSS--><em>is continuous</em>, using each phrase once.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-37" id="hint-37"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-37" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-449">Consider the left- and right-hand limits at each value.</li>
+<li id="li-450">Carefully examine places on the graph where there's an open circle.</li>
+<li id="li-451">Are there locations on the graph where the function has a limit but there's a hole in the graph?</li>
+<li id="li-452">Remember that at least one of three conditions must fail: if the function lacks a limit, if the function is undefined, or if the limit exists but does not equal the function value, then \(f\) is not continuous at the point.</li>
+<li id="li-453">Note that the definition of being continuous requires the limit to exist.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-38" id="hint-38"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-38" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-454">Consider the left- and right-hand limits at each value, and recall that they must both exist and be equal in order for the overall limit to exist.</li>
+<li id="li-455">Carefully examine places on the graph where there's an open circle; at such locations, look vertically to see if the function has an assigned value at that point.</li>
+<li id="li-456">Are there locations on the graph where the function has a limit but there's a hole in the graph?</li>
+<li id="li-457">Remember that at least one of three conditions must fail: if the function lacks a limit, if the function is undefined, or if the limit exists but does not equal the function value, then \(f\) is not continuous at the point.</li>
+<li id="li-458">Note that the definition of being continuous requires the limit to exist.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-19" id="solution-19"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-19" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-459">\(\lim_{x \to a} f(x)\) does not exist at \(a = -2\) since \(\lim_{x \to -2^-} f(x) = 2 \ne -1 = \lim_{x \to -2^+}\) and \(\lim_{x \to a} f(x)\) does not exist at \(a = +2\) since \(\lim_{x \to 2^+} f(x)\) does not exist due to the infinitely oscillatory behavior of \(f\).</li>
+<li id="li-460">The only point at which \(f\) is not defined is at \(a = 3\).</li>
+<li id="li-461">At \(x = -1\), note that \(\lim_{x \to -1} f(x)\) exists (and appears to have value approximately \(-3.25\)), but \(f(-1) = 1\), and thus \(\lim_{x \to -1} f(x) \ne f(-1)\).  At \(x = 3\), \(\lim_{x \to 3} f(x) = -2.5\), but \(f(3)\) is not defined, so the limit exists but does not equal the function value.</li>
+<li id="li-462">Based on our work in (a), (b), and (c), \(f\) is not continuous at \(a=-2\) and \(a = 2\) because \(f\) does not have a limit at those points; \(f\) is not continuous at \(a = 3\) since \(f\) is not defined there; and \(f\) is not continuous at \(a = -1\) because at that point its limit does not equal its function value.</li>
+<li id="li-463">“If \(f\) is continuous at \(x = a\), then \(f\) has a limit at \(x = a\),” since one of the defining properties of “being continuous” at \(x = a\) is that the function has a limit at that input value.  This shows that being continuous is a stronger condition than having a limit.</li>
+</ol></span></span></section><section class="subsection" id="subsection-21"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.7.4</span><span class="title">Being differentiable at a point</span>
+</h1></header><p id="p-255">
+\knownindex{\lt main&gt;differentiable\lt /main&gt;}
+</p>
+<p id="p-256">
+We recall that a function \(f\) is said to be differentiable at \(x = a\) whenever \(f'(a)\) exists. Moreover, for \(f'(a)\) to exist, we know that the function \(y = f(x)\) must have a tangent line at the point \((a,f(a))\), since \(f'(a)\) is precisely the slope of this line. In order to even ask if \(f\) has a tangent line at \((a,f(a))\), it is necessary that \(f\) be continuous at \(x = a\): if \(f\) fails to have a limit at \(x = a\), if \(f(a)\) is not defined, or if \(f(a)\) does not equal the value of \(\lim_{x \to a} f(x)\), then it doesn't even make sense to talk about a tangent line to the curve at this point.
+</p>
+<p id="p-257">
+Indeed, it can be proved formally that if a function \(f\) is differentiable at \(x = a\), then it must be continuous at \(x = a\). So, if \(f\) is not continuous at \(x = a\), then it is automatically the case that \(f\) is not differentiable there. For example, in <a knowl="./knowl/F_1.7.Cont.html" knowl-id="xref-F_1.7.Cont" alt="Figure 1.7.5 " title="Figure 1.7.5 ">Figure 1.7.5</a> from our early discussion of continuity, both \(f\) and \(g\) fail to be differentiable at \(x = 1\) because neither function is continuous at \(x = 1\). But can a function fail to be differentiable at a point where the function is continuous?
+</p>
+<p id="p-258">
+In <a knowl="./knowl/F_1.7.NotDiff.html" knowl-id="xref-F_1.7.NotDiff" alt="Figure 1.7.9 " title="Figure 1.7.9 ">Figure 1.7.9</a>, we revisit the situation where a function has a sharp corner at a point, something we encountered several times in <a href="S_1.4.DerivativeFxn.html" alt="Section 1.4 The derivative function" title="Section 1.4 The derivative function">Section 1.4</a>. For the pictured function \(f\), we observe that \(f\) is clearly continuous at \(a = 1\), since \(\lim_{x \to 1} f(x) = 1 = f(1).\)
+</p>
+<figure class="figure-like" id="F_1.7.NotDiff"><img width="100%" src="images/1_7_NotDiff.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.7.9</span>A function \(f\) that is continuous at \(a = 1\) but not differentiable at \(a = 1\); at right, we zoom in on the point \((1,1)\) in a magnified version of the box in the left-hand plot.</figcaption></figure><p id="p-259">
+But the function \(f\) in <a knowl="./knowl/F_1.7.NotDiff.html" knowl-id="xref-F_1.7.NotDiff" alt="Figure 1.7.9 " title="Figure 1.7.9 ">Figure 1.7.9</a> is not differentiable at \(a = 1\) because \(f'(1)\) fails to exist. One way to see this is to observe that \(f'(x) = -1\) for every value of \(x\) that is less than 1, while \(f'(x) = +1\) for every value of \(x\) that is greater than 1. That makes it seem that either \(+1\) or \(-1\) would be equally good candidates for the value of the derivative at \(x = 1\). Alternately, we could use the limit definition of the derivative to attempt to compute \(f'(1)\), and discover that the derivative does not exist. A similar problem will be investigated in <a knowl="./knowl/A_1.7.3.html" knowl-id="xref-A_1.7.3" alt="Exercise 1.7.10 " title="Exercise 1.7.10 ">Activity 1.7.10</a>. Finally, we can also see visually that the function \(f\) in <a knowl="./knowl/F_1.7.NotDiff.html" knowl-id="xref-F_1.7.NotDiff" alt="Figure 1.7.9 " title="Figure 1.7.9 ">Figure 1.7.9</a> does not have a tangent line. When we zoom in on \((1,1)\) on the graph of \(f\), no matter how closely we examine the function, it will always look like a “V”, and never like a single line, which tells us there is no possibility for a tangent line there.
+</p>
+<p id="p-260">
+To make a more general observation, if a function does have a tangent line at a given point, when we zoom in on the point of tangency, the function and the tangent line should appear essentially indistinguishable<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-7" id="fn-7"><sup> 1 </sup></a></span><span id="hk-fn-7" style="display: none;" class="tex2jax_ignore"><span class="footnote">See, for instance, \href{http://gvsu.edu/s/6J}{<tt class="code-inline">http://gvsu.edu/s/6J</tt>} for an applet (due to David Austin, GVSU) where zooming in shows the increasing similarity between the tangent line and the curve.</span></span>. Conversely, if we have a function such that when we zoom in on a point the function looks like a single straight line, then the function should have a tangent line there, and thus be differentiable. Hence, a function that is differentiable at \(x = a\) will, up close, look more and more like its tangent line at \((a,f(a))\), and thus we say that a function is differentiable at \(x = a\) is <!--Style me with CSS--><em>locally linear</em>. \knownindex{\lt main&gt;locally linear\lt /main&gt;}
+</p>
+<p id="p-261">
+To summarize the preceding discussion of differentiability and continuity, we make several important observations.
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-464">If \(f\) is differentiable at \(x = a\), then \(f\) is continuous at \(x = a\).  Equivalently, if\(f\) fails to be continuous at \(x = a\), then \(f\) will not be differentiable at \(x = a\).</li>
+<li id="li-465">A function can be continuous at a point, but not be differentiable there.  In particular, a function \(f\) is not differentiable at \(x = a\) if the graph has a sharp corner (or <!--Style me with CSS--><em>cusp</em>) \knownindex{\lt main&gt;cusp\lt /main&gt;} at the point \((a,f(a))\).</li>
+<li id="li-466">If \(f\) is differentiable at \(x = a\), then \(f\) is locally linear at \(x = a\).  That is, when a function is differentiable, it looks linear when viewed up close because it resembles its tangent line there.</li>
+</ul>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.7.3" id="A_1.7.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.7.10</span>
+</h5></a></div>
+<div id="hk-A_1.7.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-262">
+In this activity, we explore two different functions and classify the points at which each is not differentiable. Let \(g\) be the function given by the rule \(g(x) = |x|\), and let \(f\) be the function that we have previously explored in Preview <a href="S_1.7.LimContDiff.html#PA_1.7" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, whose graph is given again in <a knowl="./knowl/F_1.7.Act3.html" knowl-id="xref-F_1.7.Act3" alt="Figure 1.7.11 " title="Figure 1.7.11 ">Figure 1.7.11</a>.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-467">Reasoning visually, explain why \(g\) is differentiable at every point \(x\) such that \(x \ne 0\).</li>
+<li id="li-468">Use the limit definition of the derivative to show that \(g'(0) = \lim_{h \to 0} \frac{|h|}{h}.\)</li>
+<li id="li-469">Explain why \(g'(0)\) fails to exist by using small positive and negative values of \(h\).
+<figure class="figure-like" id="F_1.7.Act3"><img width="100%" src="images/1_7_PA1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.7.11</span>The graph of \(y = f(x)\) for <a knowl="./knowl/A_1.7.3.html" knowl-id="xref-A_1.7.3" alt="Exercise 1.7.10 " title="Exercise 1.7.10 ">Activity 1.7.10</a>.</figcaption></figure>
+</li>
+<li id="li-470">State all values of \(a\) for which \(f\) is not differentiable at \(x = a\).  For each, provide a reason for your conclusion.</li>
+<li id="li-471">True or false: if a function \(p\) is differentiable at \(x = b\), then \(\lim_{x \to b} p(x)\) must exist.  Why?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-39" id="hint-39"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-39" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-472">What type of function is \(g\) for all \(x \lt  0\)?  For all \(x &gt; 0\)?</li>
+<li id="li-473">Recall that \(g'(0) = \lim_{h \to 0} \frac{g(0 + h) - g(0)}{h}.\)</li>
+<li id="li-474">What is the value of \(|h|\) when \(h \lt  0\)?</li>
+<li id="li-475">You might start by identifying points where \(f\) is not continuous.</li>
+<li id="li-476">What does being differentiable at a point tell you about continuity there?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-40" id="hint-40"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-40" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-477">Think about how \(g\) is a piecewise linear function.</li>
+<li id="li-478">Recall that \(g'(0) = \lim_{h \to 0} \frac{g(0 + h) - g(0)}{h}.\)</li>
+<li id="li-479">What is the value of \(|h|\) when \(h \lt  0\)?  What does this tell you about \(\frac{|h|}{h}\) when \(h \lt  0\)?</li>
+<li id="li-480">Start by identifying points where \(f\) is not continuous.  Then strive to identify any corner points.</li>
+<li id="li-481">What does being differentiable at a point tell you about continuity at that point?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-20" id="solution-20"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-20" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-482">We know that \(g(x) = |x|\) is given by the formula \(g(x) = -x\) when \(x \lt  0\) and by \(g(x) = x\) when \(x \ge 0\).  Each of these pieces of \(g\) is a straight line, so at every point other than the point where they meet, the function \(g\) has a well-defined slope, and thus is differentiable.</li>
+<li id="li-483">Observe that
+	
+<span class="displaymath" id="md-12">\begin{align*}
+g'(0) \amp  = \amp  \lim_{h \to 0} \frac{g(0+h)-g(0)}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{|0+h|-|0|}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{|h|}{h}
+\end{align*}</span>
+</li>
+<li id="li-484">Following up on our work in (b), note that whenever \(h &gt; 0\), \(|h| = h\), and thus
+	
+<span class="displaymath" id="me-61">\[
+\lim_{h \to 0^+} \frac{|h|}{h} = \lim_{h \to 0^+} \frac{h}{h} = 1,
+\]</span>
+ 
+	while whenever \(h \lt  0\), \(|h| = -h\), and thus
+	
+<span class="displaymath" id="me-62">\[
+\lim_{h \to 0^-} \frac{|h|}{h} = \lim_{h \to 0^-} \frac{-h}{h} = -1
+\]</span>
+ 
+	Since the right- and left-hand limits are not equal, it follows that 
+	
+<span class="displaymath" id="me-63">\[
+g'(0) =  \lim_{h \to 0} \frac{|h|}{h}
+\]</span>
+ 
+	does not exist.</li>
+<li id="li-485">\(f\) is not differentiable at \(a = -2, -1, 2, 3\) because at each of these points \(f\) is not continuous.  In addition, \(f\) is not differentiable at \(a = -3\) and \(a = 1\) because the graph of \(f\) has a corner point (or cusp) at each of these values.</li>
+<li id="li-486">True: if a function \(p\) is differentiable at \(x = b\), then \(\lim_{x \to b} p(x)\) must exist.  This is true because we know that if \(p\) is differentiable at a point, then \(p\) is continuous there, and anytime a function is continuous at a point, it must have a limit there.</li>
+</ol></span></span><p id="p-263">
+\begin{authornote}
+This is an author note.
+\end{authornote}
+</p>
+<p id="p-264">
+\item A function \(f\) has limit \(L\) as \(x \to a\) if and only if \(f\) has a left-hand limit at \(x = a\), has a right-hand limit at \(x = a\), and the left- and right-hand limits are equal. Visually, this means that there can be a hole in the graph at \(x = a\), but the function must approach the same single value from either side of \(x = a\).
+\item A function \(f\) is continuous at \(x = a\) whenever \(f(a)\) is defined, \(f\) has a limit as \(x \to a\), and the value of the limit and the value of the function agree. This guarantees that there is not a hole or jump in the graph of \(f\) at \(x = a\).
+\item A function \(f\) is differentiable at \(x = a\) whenever \(f'(a)\) exists, which means that \(f\) has a tangent line at \((a,f(a))\) and thus \(f\) is locally linear at the value \(x = a\). Informally, this means that the function looks like a line when viewed up close at \((a,f(a))\) and that there is not a corner point or cusp at \((a,f(a))\).
+\item Of the three conditions discussed in this section (having a limit at \(x = a\), being continuous at \(x = a\), and being differentiable at \(x = a\)), the strongest condition is being differentiable, and the next strongest is being continuous. In particular, if \(f\) is differentiable at \(x = a\), then \(f\) is also continuous at \(x = a\), and if \(f\) is continuous at \(x = a\), then \(f\) has a limit at \(x = a\).
+</p>
+<p id="p-265">
+\hrulefill
+</p>
+<p id="p-266">
+\begin{exercises}
+</p>
+<p id="p-267">
+\item Consider the graph of the function \(y = p(x)\) that is provided in <a knowl="./knowl/F_1.7.Ez2.html" knowl-id="xref-F_1.7.Ez2" alt="Figure 1.7.12 " title="Figure 1.7.12 ">Figure 1.7.12</a>. Assume that each portion of the graph of \(p\) is a straight line, as pictured.
+</p>
+<figure class="figure-like" id="F_1.7.Ez2"><img width="100%" src="images/1_7_Ez2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.7.12</span>At left, the piecewise linear function \(y = p(x)\).  At right, axes for plotting \(y = p'(x)\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-487">State all values of \(a\) for which \(\lim_{x \to a} p(x)\) does not exist.</li>
+<li id="li-488">State all values of \(a\) for which \(p\) is not continuous at \(a\).</li>
+<li id="li-489">State all values of \(a\) for which \(p\) is not differentiable at \(x = a\).</li>
+<li id="li-490">On the axes provided in <a knowl="./knowl/F_1.7.Ez2.html" knowl-id="xref-F_1.7.Ez2" alt="Figure 1.7.12 " title="Figure 1.7.12 ">Figure 1.7.12</a>, sketch an accurate graph of \(y = p'(x)\).</li>
+</ol>
+<p id="p-268">
+\item For each of the following prompts, give an example of a function that satisfies the stated criteria. A formula or a graph, with reasoning, is sufficient for each. If no such example is possible, explain why.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-491">A function \(f\) that is continuous at \(a = 2\) but not differentiable at \(a = 2\).</li>
+<li id="li-492">A function \(g\) that is differentiable at \(a = 3\) but does not have a limit at \(a=3\).</li>
+<li id="li-493">A function \(h\) that has a limit at \(a = -2\), is defined at \(a = -2\), but is not continuous at \(a = -2\).</li>
+<li id="li-494">A function \(p\) that satisfies all of the following:
+	  <ul style="list-style-type: disc;">
+<li id="li-495">\(p(-1) = 3\) and \(\lim_{x \to -1} p(x) = 2\)</li>
+<li id="li-496">\(p(0) = 1\) and \(p'(0) = 0\)</li>
+<li id="li-497">\(\lim_{x \to 1} p(x) = p(1)\) and \(p'(1)\) does not exist</li>
+</ul>
+</li>
+</ol>
+<p id="p-269">
+\item Let \(h(x)\) be a function whose derivative \(y= h'(x)\) is given by the graph on the right in <a knowl="./knowl/F_1.7.Ez3.html" knowl-id="xref-F_1.7.Ez3" alt="Figure 1.7.13 " title="Figure 1.7.13 ">Figure 1.7.13</a>.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-498">Based on the graph of \(y = h'(x)\), what can you say about the behavior of the function \(y = h(x)\)?</li>
+<li id="li-499">At which values of \(x\) is \(y = h'(x)\) not defined?  What behavior does this lead you to expect to see in the graph of \(y=h(x)\)?</li>
+<li id="li-500">Is it possible for \(y = h(x)\) to have points where \(h\) is not continuous?  Explain your answer.</li>
+<li id="li-501">On the axes provided at left, sketch at least two distinct graphs that are possible functions \(y = h(x)\) that each have a derivative \(y = h'(x)\) that matches the provided graph at right.  Explain why there are multiple possibilities for \(y = h(x)\).</li>
+</ol>
+<figure class="figure-like" id="F_1.7.Ez3"><img width="100%" src="images/1_7_Ez3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.7.13</span>Axes for plotting \(y = h(x)\) and, at right, the graph of \(y = h'(x)\).</figcaption></figure><p id="p-270">
+\item Consider the function \(g(x) = \sqrt{|x|}\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-502">Use a graph to explain visually why \(g\) is not differentiable at \(x = 0\).</li>
+<li id="li-503">Use the limit definition of the derivative to show that
+		
+<span class="displaymath" id="me-64">\[
+g'(0) = \lim_{h \to 0} \frac{\sqrt{|h|}}{h}.
+\]</span>
+</li>
+<li id="li-504">Investigate the value of \(g'(0)\) by estimating the limit in (b) using small positive and negative values of \(h\).  For instance, you might compute \(\frac{\sqrt{|-0.01|}}{0.01}\).  Be sure to use several different values of \(h\) (both positive and negative), including ones closer to 0 than 0.01.  What do your results tell you about \(g'(0)\)?</li>
+<li id="li-505">Use your graph in (a) to sketch an approximate graph of \(y = g'(x)\).</li>
+</ol>
+<p id="p-271">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-272">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

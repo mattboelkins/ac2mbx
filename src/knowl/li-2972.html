@@ -1,0 +1,63 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:43-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">2</span>
+</h5>The linearization of \(\ln(1+x)\) does not provide a very good approximation to \(\ln(2)\) since 1 is not that close to 0. To obtain a better approximation, we alter our approach; instead of using a straight line to approximate \(\ln(2)\), we use a quadratic function to account for the concavity of \(\ln(1+x)\) for \(x\) close to 0. With the linearization, both the function's value and slope agree with the linearization's value and slope at \(x=0\). We will now make a quadratic approximation \(P_2(x)\) to \(f(x) = \ln(1+x)\) centered at \(x=0\) with the property that \(P_2(0) = f(0)\), \(P'_2(0) = f'(0)\), \text{and}  \(P''_2(0) = f''(0)\). 
+    <ul xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: disc;">
+<li id="li-2973">Let \(P_2(x) =  x - \frac{x^2}{2}\). Show that \(P_2(0) = f(0)\), \(P'_2(0) = f'(0)\), \text{and}  \(P''_2(0) = f''(0)\). Use \(P_2(x)\) to approximate \(\ln(2)\) by using the fact that \(P_2(1) \approx f(1)\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-171" id="solution-171"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-171" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2249">
+The derivatives of \(P_2\) and \(f\) are
+</p>
+<span class="displaymath" id="md-111">\begin{align*}
+P_2(x) \amp = x - \frac{x^2}{2} \amp  f(x) \amp = \ln(1+x)\\
+P'_2(x) \amp = 1-x \amp  f'(x) \amp = \frac{1}{1+x}\\
+P''_2(x) \amp = -1 \amp  f''(x) \amp = -\frac{1}{(1+x)^2},
+\end{align*}</span><p id="p-2250">
+and so the derivatives of \(P_2\) and \(f\) evaluated at 0 are
+</p>
+<span class="displaymath" id="md-112">\begin{align*}
+P_2(0) \amp = 0 \amp  f(0) \amp = \ln(1) = 0\\
+P'_2(0) \amp = 1 \amp  f'(0) \amp = \frac{1}{1+0} = 1\\
+P''_2(0) \amp = -1 \amp = -\frac{1}{(1+0)^2} = -1.
+\end{align*}</span><p id="p-2251">
+Then
+</p>
+<span class="displaymath" id="me-915">\[
+\ln(2) = \ln(1+1) \approx P_2(1) = 1 - \frac{1}{2} = \frac{1}{2}.
+\]</span></span></span>
+</li>
+<li id="li-2974">We can continue approximating \(\ln(2)\) with polynomials of larger degree whose derivatives agree with those of \(f\) at 0. This makes the polynomials fit the graph of \(f\) better for more values of \(x\) around 0. For example, let \(P_3(x) = x - \frac{x^2}{2}+\frac{x^3}{3}\). Show that \(P_3(0) = f(0)\), \(P'_3(0) = f'(0)\), \(P''_3(0) = f''(0)\), and \(P'''_3(0) = f'''(0)\). Taking a similar approach to preceding questions, use \(P_3(x)\) to approximate \(\ln(2)\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-172" id="solution-172"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-172" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2252">
+The derivatives of \(P_3\) and \(f\) are
+</p>
+<span class="displaymath" id="md-113">\begin{align*}
+P_3(x) \amp = x-\frac{x^2}{2}+\frac{x^3}{3} \amp  f(x) \amp = \ln(1+x)\\
+P'_3(x) \amp = 1 - x + x^2  \amp  f'(x) \amp = \frac{1}{1+x}\\
+P''_3(x) \amp = -1+2x  \amp  f''(x) \amp = -\frac{1}{(1+x)^2}\\
+P'''_3(x) \amp = 2  \amp  f'''(x) \amp = \frac{2}{(1+x)^3},
+\end{align*}</span><p id="p-2253">
+and so the derivatives of \(P_3\) and \(f\) evaluated at 0 are
+</p>
+<span class="displaymath" id="md-114">\begin{align*}
+P_3(0) \amp = 0 \amp  f(0) \amp = \ln(1+0) = 0\\
+P'_3(0) \amp = 1 \amp  f'(0) \amp = \frac{1}{1+0} = 1\\
+P''_3(0) \amp = -1 \amp  f''(0) \amp = -\frac{1}{(1+0)^2} = -1\\
+P'''_3(0) \amp = 2 \amp  f'''(0) \amp = \frac{2}{(1+0)^3} = 2.
+\end{align*}</span><p id="p-2254">
+Then
+</p>
+<span class="displaymath" id="me-916">\[
+\ln(2) = \ln(1+1) \approx P_3(0) = 1 - \frac{1}{2} + \frac{1}{3} = \frac{5}{6} \approx 0.83.
+\]</span></span></span>
+</li>
+<li id="li-2975">If we used a degree 4 or degree 5 polynomial to approximate \(\ln(1+x)\), what approximations of \(\ln(2)\) do you think would result?  Use the preceding questions to conjecture a pattern that holds, and state the degree 4 and degree 5 approximation.</li>
+</ul></article><span class="incontext"><a href="S_8.4.Alternating.html#li-2972">in-context</a></span>

@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:37-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>How do we measure velocity?</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="C_1.html">Previous</a><a class="up-button button toolbar-item" href="C_1.html">Up</a><a class="next-button button toolbar-item" href="S_1.2.Limits.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="C_1.html">Previous</a><a class="up-button button toolbar-item" href="C_1.html">Up</a><a class="next-button button toolbar-item" href="S_1.2.Limits.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link active"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html" class="active">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_1.1.Velocity"><header><h1 class="heading" alt="Section 1.1 How do we measure velocity?" title="Section 1.1 How do we measure velocity?">
+<span class="type">Section</span><span class="codenumber">1.1</span><span class="title">How do we measure velocity?</span><a href="S_1.1.Velocity.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-1"><h5 class="heading"></h5>
+<p id="p-1">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1">How is the average velocity of a moving object connected to the values of its position function?</li>
+<li id="li-2">How do we interpret the average velocity of an object geometrically with regard to the graph of its position function?</li>
+<li id="li-3">How is the notion of instantaneous velocity connected to average velocity?</li>
+</ul>
+<p id="p-2">
+} 
+</p></article><section class="subsection" id="subsection-1"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.1.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-3">
+Calculus can be viewed broadly as the study of change. A natural and important question to ask about any changing quantity is “how fast is the quantity changing?” It turns out that in order to make the answer to this question precise, substantial mathematics is required.
+</p>
+<p id="p-4">
+We begin with a familiar problem: a ball being tossed straight up in the air from an initial height. From this elementary scenario, we will ask questions about how the ball is moving. These questions will lead us to begin investigating ideas that will be central throughout our study of differential calculus and that have wide-ranging consequences. In a great deal of our thinking about calculus, we will be well-served by remembering this first example and asking ourselves how the various (sometimes abstract) ideas we are considering are related to the simple act of tossing a ball straight up in the air.
+</p>
+<article class="paragraphs" id="PA_1.1"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-5">
+Suppose that the height \(s\) of a ball (in feet) at time \(t\) (in seconds) is given by the formula \(s(t) = 64 - 16(t-1)^2\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-4">Construct an accurate graph of \(y = s(t)\) on the time interval \(0 \le t \le 3\).  Label at least six distinct points on the graph, including the three points that correspond to when the ball was released, when the ball reaches its highest point, and when the ball lands.</li>
+<li id="li-5">In everyday language, describe the behavior of the ball on the time interval \(0 \lt  t \lt  1\) and on time interval \(1 \lt  t \lt  3\).  What occurs at the instant \(t = 1\)?</li>
+<li id="li-6">Consider the expression 
+	
+<span class="displaymath" id="me-1">\[
+AV_{[0.5,1]} = \frac{s(1) - s(0.5)}{1-0.5}.
+\]</span>
+ 
+	Compute the value of \(AV_{[0.5,1]}\).  What does this value measure geometrically?  What does this value measure physically?  In particular, what are the units on \(AV_{[0.5,1]}\)?</li>
+</ol></article></section><section class="subsection" id="subsection-2"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.1.2</span><span class="title">Position and average velocity</span>
+</h1></header><p id="p-6">
+Any moving object has a <!--Style me with CSS--><em>position</em>\knownindex{\lt main&gt;position\lt /main&gt;} that can be considered a function of <!--Style me with CSS--><em>time</em>. When this motion is along a straight line, the position is given by a single variable, and we usually let this position be denoted by \(s(t)\), which reflects the fact that position is a function of time. For example, we might view \(s(t)\) as telling the mile marker of a car traveling on a straight highway at time \(t\) in hours; similarly, the function \(s\) described in Preview <a href="S_1.1.Velocity.html#PA_1.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> is a position function, where position is measured vertically relative to the ground.
+</p>
+<p id="p-7">
+Not only does such a moving object have a position associated with its motion, but on any time interval, the object has an <!--Style me with CSS--><em>average velocity</em>\knownindex{\lt main&gt;average velocity\lt /main&gt;}. Think, for example, about driving from one location to another: the vehicle travels some number of miles over a certain time interval (measured in hours), from which we can compute the vehicle's average velocity. In this situation, average velocity is the number of miles traveled divided by the time elapsed, which of course is given in <!--Style me with CSS--><em>miles per hour</em>. Similarly, the calculation of \(AV_{[0.5,1]}\) in Preview <a href="S_1.1.Velocity.html#PA_1.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> found the average velocity of the ball on the time interval \([0.5,1]\), measured in feet per second.
+</p>
+<p id="p-8">
+In general, we make the following definition: for an object moving in a straight line whose position at time \(t\) is given by the function \(s(t)\), the <!--Style me with CSS--><em>average velocity\knownindex{\lt main&gt;average velocity\lt /main&gt;} of the object on the interval from \(t = a\) to \(t = b\)</em>, denoted \(AV_{[a,b]}\), is given by the formula
+</p>
+<span class="displaymath" id="me-2">\[
+AV_{[a,b]} = \frac{s(b)-s(a)}{b-a}.
+\]</span><p id="p-9">
+Note well: the units on \(AV_{[a,b]}\) are
+“units of \(s\) per unit of \(t\),” such as “miles per hour” or “feet per second.”
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.1.1" id="A_1.1.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.1.1</span>
+</h5></a></div>
+<div id="hk-A_1.1.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-10">
+The following questions concern the position function given by \(s(t) = 64 - 16(t-1)^2\), which is the same function considered in Preview <a href="S_1.1.Velocity.html#PA_1.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-7">Compute the average velocity of the ball on each of the following time intervals: \([0.4,0.8]\), \([0.7,0.8]\), \([0.79, 0.8]\), \([0.799,0.8]\), \([0.8,1.2]\), \([0.8,0.9]\), \([0.8,0.81]\), \([0.8,0.801]\).  Include units for each value.</li>
+<li id="li-8">On the provided graph in <a knowl="./knowl/F_1.1.Act1.html" knowl-id="xref-F_1.1.Act1" alt="Figure 1.1.2 " title="Figure 1.1.2 ">Figure 1.1.2</a>, sketch the line that passes through the points \(A=(0.4, s(0.4))\) and \(B=(0.8, s(0.8))\).  What is the meaning of the slope of this line?  In light of this meaning, what is a geometric way to interpret each of the values computed in the preceding question?</li>
+<li id="li-9">Use a graphing utility to plot the graph of \(s(t) = 64 - 16(t-1)^2\) on an interval containing the value \(t = 0.8\).  Then, zoom in repeatedly on the point \((0.8, s(0.8))\).  What do you observe about how the graph appears as you view it more and more closely?</li>
+<li id="li-10">What do you conjecture is the velocity of the ball at the instant \(t = 0.8\)?  Why?</li>
+</ol>
+<figure class="figure-like" id="F_1.1.Act1"><img width="100%" src="images/1_1_Act1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.1.2</span>A partial plot of \(s(t) = 64 - 16(t-1)^2\).</figcaption></figure></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-1" id="hint-1"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-1" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-11">On \([0.4,0.8]\), the average velocity is \(AV_{[0.4,0.8]} = \frac{s(0.8)-s(0.4)}{0.8-0.4}\) ft/sec.</li>
+<li id="li-12">Remember that the slope of a line can be found by taking “rise over run.”  In this context, the slope is found by computing “change in \(s\) over change in \(t\).”</li>
+<li id="li-13">While the curve \(s(t)\) is a parabola, how does it look up close on a very small interval?</li>
+<li id="li-14">“Instantaneous” velocity can be approximated by average velocity on a very small interval.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-2" id="hint-2"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-2" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-15">On \([0.4,0.8]\), the average velocity is \(AV_{[0.4,0.8]} = \frac{s(0.8)-s(0.4)}{0.8-0.4}\) ft/sec.  Each of the other average velocities is computed similarly.</li>
+<li id="li-16">Remember that the slope of a line can be found by taking “rise over run.”  In this context, the slope is found by computing “change in \(s\) over change in \(t\).”  Note that each average velocity \(\frac{s(b)-s(a)}{b-a}\) can be viewed as the slope of a line between \((a,s(a))\) and \((b,s(b))\).</li>
+<li id="li-17">While the curve \(s(t)\) is a parabola, how does it look up close on a very small interval?  What type of familiar function seems to emerge?</li>
+<li id="li-18">“Instantaneous” velocity can be approximated by average velocity on a very small interval.  Are the numbers you computed in (a) getting close to a particular value as we look at smaller and smaller intervals surrounding \(t = 0.8\)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-1" id="solution-1"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-1" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-19">On \([0.4,0.8]\), the average velocity is \(AV_{[0.4,0.8]} = \frac{s(0.8)-s(0.4)}{0.8-0.4} = \frac{63.36-58.24}{0.4} = 12.8\) ft/sec.  On \([0.7,0.8]\), the average velocity is 8 ft/sec.  The other average velocities are, respectively (in the order of the intervals listed in the activity), 6.56, 6.416, 0, 4.8, 6.24, 6.384, all measured in feet per second.</li>
+<li id="li-20">The slope of the line between \(A(0.4, s(0.4))\) and \(B(0.8, s(0.8))\) is \(\frac{s(0.8)-s(0.4)}{0.8-0.4} = 12.8\).  This is precisely the average velocity of the ball between \(t = 0.4\) and \(t = 0.8\), and indeed each of the average velocities computed in (a) can be viewed as the slope of the line joining the points \((a,s(a))\) and \((b,s(b))\).
+	<img width="100%" src="images/1_1_Act1Soln.png">
+</li>
+<li id="li-21">As we zoom in on the curve \(s(t) = 64 - 16(t-1)^2\) at the point \((0.5, 60)\), the graph begins to look like a straight line.  Indeed, it appears to look like a straight line with slope about 6.4.</li>
+<li id="li-22">Observe that the average velocity of the ball on the intervals \([0.799,0.8]\) and \([0.8,0.801]\) is 6.416 and 6.384 feet/sec respectively.  Hence it appears that the ball's velocity at the instant \(t = 0.8\) should be about 6.4 feet per second.</li>
+</ol></span></span></section><section class="subsection" id="Ez_1.1.1"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.1.3</span><span class="title">Instantaneous Velocity</span><a href="S_1.1.Velocity.html#Ez_1.1.1" class="permalink">¶ permalink</a>
+</h1></header><p id="p-11">
+Whether driving a car, riding a bike, or throwing a ball, we have an intuitive sense that any moving object has a velocity at any given moment – a number that measures how fast the object is moving <!--Style me with CSS--><em>right now</em>. For instance, a car's speedometer tells the driver what appears to be the car's velocity at any given instant. In fact, the posted velocity on a speedometer is really an average velocity that is computed over a very small time interval (by computing how many revolutions the tires have undergone to compute distance traveled), since velocity fundamentally comes from considering a change in position divided by a change in time. But if we let the time interval over which average velocity is computed become shorter and shorter, then we can progress from average velocity to <!--Style me with CSS--><em>instantaneous</em> velocity.
+</p>
+<p id="p-12">
+Informally, we define the <!--Style me with CSS--><em>instantaneous velocity</em>\knownindex{\lt main&gt;instantaneous velocity\lt /main&gt;} of a moving object at time \(t = a\) to be the value that the average velocity approaches as we take smaller and smaller intervals of time containing \(t = a\) to compute the average velocity. We will develop a more formal definition of this momentarily, one that will end up being the foundation of much of our work in first semester calculus. For now, it is fine to think of instantaneous velocity this way: take average velocities on smaller and smaller time intervals, and if those average velocities approach a single number, then that number will be the instantaneous velocity at that point.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.1.2" id="A_1.1.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.1.3</span>
+</h5></a></div>
+<div id="hk-A_1.1.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-13">
+Each of the following questions concern \(s(t) = 64 - 16(t-1)^2\), the position function from Preview <a href="S_1.1.Velocity.html#PA_1.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-23">Compute the average velocity of the ball on the time interval \([1.5,2]\).  What is different between this value and the average velocity on the interval \([0,0.5]\)?</li>
+<li id="li-24">Use appropriate computing technology to estimate the instantaneous velocity of the ball at \(t = 1.5\).  Likewise, estimate the instantaneous velocity of the ball at \(t = 2\).  Which value is greater?</li>
+<li id="li-25">How is the sign of the instantaneous velocity of the ball related to its behavior at a given point in time?  That is, what does positive instantaneous velocity tell you the ball is doing?  Negative instantaneous velocity?</li>
+<li id="li-26">Without doing any computations, what do you expect to be the instantaneous velocity of the ball at \(t = 1\)?  Why?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-3" id="hint-3"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-3" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-27">Remember to use the formula for average velocity from above:  \(AV_{[a,b]} = \frac{s(b)-s(a)}{b-a}\).  Think carefully about whether certain quantities are positive or negative.</li>
+<li id="li-28">To estimate the instantaneous velocity at \(t = 1.5\), consider average velocities on the intervals \([1.499,1.5]\) and \([1.5,1.501]\).</li>
+<li id="li-29">Think about whether the ball is rising or falling.</li>
+<li id="li-30">What is the average velocity of the ball on small intervals that contain \(t = 0\)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-4" id="hint-4"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-4" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-31">\(AV_{[1.5,2]} = \frac{s(2)-s(1.5)}{2-1.5}\).  Your result should be negative since \(s(2) \lt  s(1.5)\).</li>
+<li id="li-32">To estimate the instantaneous velocity at \(t = 1.5\), consider average velocities on the intervals \([1.499,1.5]\) and \([1.5,1.501]\).</li>
+<li id="li-33">You should find in (a) that the instantaneous velocity at \(t = 1.5\) is negative, while earlier we found that the instantaneous velocity at \(t = 0.5\) is positive.  How are these signs connected to whether the ball is rising or falling?</li>
+<li id="li-34">Think about the line through the points \((0.999,s(0.999))\) and \((1,s(1))\) will look like given the “special” role of \((1,s(1))\) on the graph of \(s(t)\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-2" id="solution-2"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-2" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-35">\(AV_{[1.5,2]} = \frac{s(2)-s(1.5)}{2-1.5} = -24\) ft/sec.  We note that this average velocity is negative, and in fact is the opposite of the average velocity of 24 ft/sec on the interval \([0,0.5]\).</li>
+<li id="li-36">Since \(AV_{[1.499,1.5]} = -15.984\) and \(AV_{[1.5, 1.501]} = -16.016\), it appears that the instantaneous velocity of the ball at \(t = 1.5\) is approximately \(-16\) ft/sec.  Similar computations show that at \(t = 2\), it appears the instantaneous velocity is about \(-32\) ft/sec.  Note that \(-16&gt;-32\), so the instantaneous velocity at \(t = 1.5\) is greater because it is “less negative.” Asking which number is “greater” is different from asking which number is “more negative.”</li>
+<li id="li-37">When the ball is rising, its instantaneous velocity is positive, while when the ball is falling, its instantaneous velocity is negative.</li>
+<li id="li-38">Note that \((1,s(1))\) is the vertex of the parabola given by \(s(t)\).  At this point, the ball is neither rising nor falling.  On intervals of the form \([a,1]\), where \(a \lt  1\), the average velocity of the ball is positive; on intervals of form \([1,b]\), where \(b &gt; 1\), the average velocity is positive.  Hence we expect the instantaneous velocity of the ball at the moment \(t = 1\) to be zero.</li>
+</ol></span></span><p id="p-14">
+At this point we have started to see a close connection between average velocity and instantaneous velocity, as well as how each is connected not only to the physical behavior of the moving object but also to the geometric behavior of the graph of the position function. In order to make the link between average and instantaneous velocity more formal, we will introduce the notion of <!--Style me with CSS--><em>limit</em> in <a href="S_1.2.Limits.html" alt="Section 1.2 The notion of limit" title="Section 1.2 The notion of limit">Section 1.2</a>. As a preview of that concept, we look at a way to consider the limiting value of average velocity through the introduction of a parameter. Note that if we desire to know the instantaneous velocity at \(t = a\) of a moving object with position function \(s\), we are interested in computing average velocities on the interval \([a,b]\) for smaller and smaller intervals. One way to visualize this is to think of the value \(b\) as being \(b = a + h\), where \(h\) is a small number that is allowed to vary. Thus, we observe that the average velocity of the object on the interval \([a,a+h]\) is
+</p>
+<span class="displaymath" id="me-3">\[
+AV_{[a,a+h]} = \frac{s(a+h)-s(a)}{h},
+\]</span><p id="p-15">
+with the denominator being simply \(h\) because \((a+h) - a = h\). Initially, it is fine to think of \(h\) being a small positive real number; but it is important to note that we allow \(h\) to be a small negative number, too, as this enables us to investigate the average velocity of the moving object on intervals prior to \(t = a\), as well as following \(t = a\). When \(h \lt  0\), \(AV_{[a,a+h]}\) measures the average velocity on the interval \([a+h,a]\).
+</p>
+<p id="p-16">
+To attempt to find the instantaneous velocity at \(t = a\), we investigate what happens as the value of \(h\) approaches zero. We consider this further in the following example.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-example-1" id="example-1"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">1.1.4</span>
+</h5></article></a></div>
+<div id="hk-example-1" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-17">
+For a falling ball whose position function is given by \(s(t) = 16 - 16t^2\) (where \(s\) is measured in feet and \(t\) in seconds), find an expression for the average velocity of the ball on a time interval of the form \([0.5, 0.5+h]\) where \(-0.5 \lt  h \lt  0.5\) and \(h \ne 0\). Use this expression to compute the average velocity on \([0.5,0.75]\) and \([0.4,0.5]\), as well as to make a conjecture about the instantaneous velocity at \(t = 0.5\).
+</p></article></div>
+<p id="p-18">
+Solution.    
+We make the assumptions that \(-0.5 \lt  h \lt  0.5\) and \(h \ne 0\) because \(h\) cannot be zero (otherwise there is no interval on which to compute average velocity) and because the function only makes sense on the time interval \(0 \le t \le 1\), as this is the duration of time during which the ball is falling. Observe that we want to compute and simplify
+</p>
+<span class="displaymath" id="me-4">\[
+AV_{[0.5, 0.5+h]} = \frac{s(0.5+h) - s(0.5)}{(0.5+h) - 0.5}.
+\]</span><p id="p-19">
+The most unusual part of this computation is finding \(s(0.5+h)\). To do so, we follow the rule that defines the function \(s\). In particular, since \(s(t) = 16-16t^2\), we see that
+</p>
+<span class="displaymath" id="md-1">\begin{align*}
+s(0.5+h) \amp  = \amp  16 - 16(0.5 + h)^2\\
+\amp  = \amp  16 - 16(0.25 + h + h^2)\\
+\amp  = \amp  16 - 4 - 16h - 16h^2\\
+\amp  = \amp  12 - 16h - 16h^2.
+\end{align*}</span><p id="p-20">
+Now, returning to our computation of the average velocity, we find that
+</p>
+<span class="displaymath" id="md-2">\begin{align*}
+AV_{[0.5, 0.5+h]} \amp  = \amp  \frac{s(0.5+h) - s(0.5)}{(0.5+h) - 0.5}\\
+\amp  = \amp  \frac{(12 - 16h - 16h^2) - (16 - 16(0.5)^2)}{0.5 + h - 0.5}\\
+\amp  = \amp  \frac{12 - 16h - 16h^2 - 12}{h}\\
+\amp  = \amp  \frac{-16h - 16h^2}{h}.
+\end{align*}</span><p id="p-21">
+At this point, we note two things: first, the expression for average velocity clearly depends on \(h\), which it must, since as \(h\) changes the average velocity will change. Further, we note that since \(h\) can never equal zero, we may further simplify the most recent expression. Removing the common factor of \(h\) from the numerator and denominator, it follows that
+</p>
+<span class="displaymath" id="me-5">\[
+ AV_{[0.5, 0.5+h]} = -16 - 16h.
+\]</span><p id="p-22">
+Now, for any small positive or negative value of \(h\), we can compute the average velocity. For instance, to obtain the average velocity on \([0.5,0.75]\), we let \(h = 0.25\), and the average velocity is \(-16 - 16(0.25) = -20\) ft/sec. To get the average velocity on \([0.4, 0.5]\), we let \(h = -0.1\), which tells us the average velocity is \(-16 - 16(-0.1) = -14.4\) ft/sec. Moreover, we can even explore what happens to \(AV_{[0.5, 0.5+h]}\) as \(h\) gets closer and closer to zero. As \(h\) approaches zero, \(-16h\) will also approach zero, and thus it appears that the instantaneous velocity of the ball at \(t = 0.5\) should be \(-16\) ft/sec.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.1.3" id="A_1.1.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.1.5</span>
+</h5></a></div>
+<div id="hk-A_1.1.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-23">
+For the function given by \(s(t) = 64 - 16(t-1)^2\) from Preview <a href="S_1.1.Velocity.html#PA_1.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, find the most simplified expression you can for the average velocity of the ball on the interval \([2, 2+h]\). Use your result to compute the average velocity on \([1.5,2]\) and to estimate the instantaneous velocity at \(t = 2\). Finally, compare your earlier work in <a knowl="./knowl/A_1.1.1.html" knowl-id="xref-A_1.1.1" alt="Exercise 1.1.1 " title="Exercise 1.1.1 ">Activity 1.1.1</a>.
+</p></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-5" id="hint-5"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-5" style="display: none;" class="tex2jax_ignore"><span class="solution">Note that \(s(2+h) = 64 - 16(2+h-1)^2 = 64 - 16(1+h)^2 = 64 - (16 + 32h + 16h^2) = 48 - 32h - 16h^2\).</span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-6" id="hint-6"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-6" style="display: none;" class="tex2jax_ignore"><span class="solution">Note that \(s(2+h) = 64 - 16(2+h-1)^2 = 64 - 16(1+h)^2 = 64 - (16 + 32h + 16h^2) = 48 - 32h - 16h^2\), and then recall that \(AV_{[2, 2+h]} = \frac{s(2+h) - s(2)}{h}\).  Finally, you can use a negative value for \(h\) to help you find the desired average velocity.</span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-3" id="solution-3"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-3" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-24">
+Observe first that \(s(2+h) = 64 - 16(2+h-1)^2 = 64 - 16(1+h)^2 = 64 - (16 + 32h + 16h^2) = 48 - 32h - 16h^2\). Next, recall that \(AV_{[2, 2+h]} = \frac{s(2+h) - s(2)}{h}\), so
+</p>
+<span class="displaymath" id="me-6">\[
+AV_{[2, 2+h]} = \frac{s(2+h) - s(2)}{h} = \frac{(48 - 32h - 16h^2)-48}{h} = \frac{-32h - 16h^2}{h}.
+\]</span><p id="p-25">
+Now, since we assume \(h \ne 0\), we can simplify further to find that \(AV_{[2, 2+h]} = -32 - 16h\). Setting \(h = -0.5\), it follows \(AV_{[1.5,2]} = -32 + 16(0.5) = -24\) ft/sec, and letting \(h\) approach zero, we see that \(-32 - 16h\) will approach \(-32\), so the instantaneous velocity at \(t = 2\) appears to be \(-32\) feet/sec. Both results match our earlier work in <a knowl="./knowl/A_1.1.1.html" knowl-id="xref-A_1.1.1" alt="Exercise 1.1.1 " title="Exercise 1.1.1 ">Activity 1.1.1</a>.
+</p></span></span><p id="p-26">
+\item The average velocity on \([a,b]\) can be viewed geometrically as the slope of the line between the points \((a,s(a))\) and \((b,s(b))\) on the graph of \(y = s(t)\), as shown in <a knowl="./knowl/F_1.1.Summary.html" knowl-id="xref-F_1.1.Summary" alt="Figure 1.1.6 " title="Figure 1.1.6 ">Figure 1.1.6</a>.
+</p>
+<figure class="figure-like" id="F_1.1.Summary"><img width="100%" src="images/1_1_Summary.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.1.6</span>The graph of position function \(s\) together with the line through \((a,s(a))\) and \((b,s(b))\) whose slope is \(m = \frac{s(b)-s(a)}{b-a}\).  The line's slope is the average rate of change of \(s\) on the interval \([a,b]\).</figcaption></figure><p id="p-27">
+\item Given a moving object whose position at time \(t\) is given by a function \(s\), the average velocity of the object on the time interval \([a,b]\) is given by \(AV_{[a,b]} = \frac{s(b) - s(a)}{b-a}\). Viewing the interval \([a,b]\) as having the form \([a,a+h]\), we equivalently compute average velocity by the formula \(AV_{[a,a+h]} = \frac{s(a+h) - s(a)}{h}\).
+\item The instantaneous velocity of a moving object at a fixed time is estimated by considering average velocities on shorter and shorter time intervals that contain the instant of interest.
+</p>
+<p id="p-28">
+\hrulefill
+</p>
+<p id="p-29">
+\begin{exercises}
+</p>
+<p id="p-30">
+\item A bungee jumper dives from a tower at time \(t=0\). Her height \(h\) (measured in feet) at time \(t\) (in seconds) is given by the graph in <a knowl="./knowl/F_1.1.Ez1.html" knowl-id="xref-F_1.1.Ez1" alt="Figure 1.1.7 " title="Figure 1.1.7 ">Figure 1.1.7</a>.
+</p>
+<figure class="figure-like" id="F_1.1.Ez1"><img width="100%" src="images/1_1_Ez1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.1.7</span>A bungee jumper's height function.</figcaption></figure><p id="p-31">
+In this problem, you may base your answers on estimates from the graph or use the fact that the jumper's height function is given by \(s(t) = 100\cos(0.75t) \cdot e^{-0.2t}+100\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-39">What is the change in vertical position of the bungee jumper between \(t=0\) and \(t=15\)?</li>
+<li id="li-40">Estimate the jumper's average velocity on each of the following time intervals:  \([0,15]\), \([0,2]\), \([1,6]\), and \([8,10]\).  Include units on your answers.</li>
+<li id="li-41">On what time interval(s) do you think the bungee jumper achieves her greatest average velocity?  Why?</li>
+<li id="li-42">Estimate the jumper's instantaneous velocity at \(t=5\).  Show your work and explain your reasoning, and include units on your answer.</li>
+<li id="li-43">Among the average and instantaneous velocities you computed in earlier questions, which are positive and which are negative?  What does negative velocity indicate?</li>
+</ol>
+<p id="p-32">
+\item A diver leaps from a 3 meter springboard. His feet leave the board at time \(t=0\), he reaches his maximum height of 4.5 m at \(t = 1.1\) seconds, and enters the water at \(t = 2.45\). Once in the water, the diver coasts to the bottom of the pool (depth 3.5 m), touches bottom at \(t=7\), rests for one second, and then pushes off the bottom. From there he coasts to the surface, and takes his first breath at \(t=13\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-44">Let \(s(t)\) denote the function that gives the height of the diver's feet (in meters) above the water at time \(t\).  (Note that the “height” of the bottom of the pool is \(-3.5\) meters.)  Sketch a carefully labeled graph of \(s(t)\) on the provided axes in <a knowl="./knowl/F_1.1.Ez2.html" knowl-id="xref-F_1.1.Ez2" alt="Figure 1.1.8 " title="Figure 1.1.8 ">Figure 1.1.8</a>.  Include scale and units on the vertical axis.  Be as detailed as possible.
+
+<figure class="figure-like" id="F_1.1.Ez2"><img width="100%" src="images/1_1_Ez2a.png"> <img width="100%" src="images/1_1_Ez2b.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.1.8</span>Axes for plotting \(s(t)\) in part (a) and \(v(t)\) in part (c) of the diver problem.</figcaption></figure>
+</li>
+<li id="li-45">Based on your graph in (a), what is the average velocity of the diver between \(t = 2.45\) and \(t=7\)?  Is his average velocity the same on every time interval within \([2.45,7]\)?</li>
+<li id="li-46">Let the function \(v(t)\) represent the <!--Style me with CSS--><em>instantaneous vertical velocity</em> of the diver at time \(t\) (i.e. the speed at which the height function \(s(t)\) is changing; note that velocity in the upward direction is positive, while the velocity of a falling object is negative).  Based on your understanding of the diver's behavior, as well as your graph of the position function, sketch a carefully labeled graph of \(v(t)\) on the axes provided  in <a knowl="./knowl/F_1.1.Ez2.html" knowl-id="xref-F_1.1.Ez2" alt="Figure 1.1.8 " title="Figure 1.1.8 ">Figure 1.1.8</a>.  Include scale and units on the vertical axis.  Write several sentences that explain how you constructed your graph, discussing when you expect \(v(t)\) to be zero, positive, negative, relatively large, and relatively small.</li>
+<li id="li-47">Is there a connection between the two graphs that you can describe?  What can you say about the velocity graph when the height function is increasing?  decreasing?  Make as many observations as you can.</li>
+</ol>
+<p id="p-33">
+\item According to the U.S. census, the population of the city of Grand Rapids, MI, was 181,843 in 1980; 189,126 in 1990; and 197,800 in 2000.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-48">Between 1980 and 2000, by how many people did the population of Grand Rapids grow?</li>
+<li id="li-49">In an average year between 1980 and 2000, by how many people did the population of Grand Rapids grow?</li>
+<li id="li-50">Just like we can find the average velocity of a moving body by computing change in position over change in time, we can compute the average rate of change of any function \(f\).  In particular, the <!--Style me with CSS--><em>average rate of change</em> of a function \(f\) over an interval \([a,b]\) is the quotient
+
+<span class="displaymath" id="me-7">\[
+\frac{f(b)-f(a)}{b-a}.
+\]</span>
+   
+What does the quantity \(\frac{f(b)-f(a)}{b-a}\) measure on the graph of \(y = f(x)\) over the interval \([a,b]\)?</li>
+<li id="li-51">Let \(P(t)\) represent the population of Grand Rapids at time \(t\), where \(t\) is measured in years from January 1, 1980.  What is the average rate of change of \(P\) on the interval \(t = 0\) to \(t = 20\)?  What are the units on this quantity?</li>
+<li id="li-52">If we assume the population of Grand Rapids is growing at a rate of approximately 4% per decade,  we can model the population function with the formula 
+<span class="displaymath" id="me-8">\[
+P(t) = 181843 (1.04)^{t/10}.
+\]</span>
+   Use this formula to compute the average rate of change of the population on the intervals \([5,10]\), \([5,9]\), \([5,8]\), \([5,7]\), and \([5,6]\).</li>
+<li id="li-53">How fast do you think the population of Grand Rapids was changing on January 1, 1985?  Said differently, at what rate do you think people were being added to the population of Grand Rapids as of January 1, 1985?  How many additional people should the city have expected in the following year?  Why?</li>
+</ol>
+<p id="p-34">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-35">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

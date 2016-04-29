@@ -1,0 +1,63 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:39-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">2</span>
+</h5>The linearization of \(e^x\) does not provide a good approximation to \(e\) since 1 is not very close to 0. To obtain a better approximation, we alter our approach a bit. Instead of using a straight line to approximate \(e\), we put an appropriate bend in our estimating function to make it better fit the graph of \(e^x\) for \(x\) close to 0. With the linearization, we had both \(f(x)\) and \(f'(x)\) share the same value as the linearization at \(x=0\). We will now use a quadratic approximation \(P_2(x)\) to \(f(x) = e^x\) centered at \(x=0\) which has the property that \(P_2(0) = f(0)\), \(P'_2(0) = f'(0)\), \text{and}  \(P''_2(0) = f''(0)\).
+
+     <ul xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: disc;">
+<li id="li-2854">Let \(P_2(x) = 1+x+\frac{x^2}{2}\). Show that \(P_2(0) = f(0)\), \(P'_2(0) = f'(0)\), and \(P''_2(0) = f''(0)\). Then, use \(P_2(x)\) to approximate \(e\) by observing that \(P_2(1) \approx f(1)\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-145" id="solution-145"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-145" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2118">
+The derivatives of \(P_2\) and \(f\) are
+</p>
+<span class="displaymath" id="md-95">\begin{align*}
+P_2(x) \amp = 1+x+\frac{x^2}{2} \amp  f(x) \amp = e^x\\
+P'_2(x) \amp = 1 + x \amp  f'(x) \amp = e^x\\
+P''_2(x) \amp = 1 \amp  f''(x) \amp = e^x,
+\end{align*}</span><p id="p-2119">
+and so the derivatives of \(P_2\) and \(f\) evaluated at 0 are
+</p>
+<span class="displaymath" id="md-96">\begin{align*}
+P_2(0) \amp = 1 \amp  f(0) \amp = e^0 = 1\\
+P'_2(0) \amp = 1 \amp  f'(0) \amp = e^0 = 1\\
+P''_2(0) \amp = 1 \amp  f''(0) \amp = e^0 = 1.
+\end{align*}</span><p id="p-2120">
+Then
+</p>
+<span class="displaymath" id="me-846">\[
+e = e^1 \approx P_2(1) = 1 + 1 + \frac{1}{2} = 2.5.
+\]</span></span></span>
+</li>
+<li id="li-2855">We can continue approximating \(e\) with polynomials of larger degree whose higher derivatives agree with those of \(f\) at 0. This turns out to make the polynomials fit the graph of \(f\) better for more values of \(x\) around 0. For example, let \(P_3(x) = 1+x+\frac{x^2}{2}+\frac{x^3}{6}\). Show that \(P_3(0) = f(0)\), \(P'_3(0) = f'(0)\), \(P''_3(0) = f''(0)\), and \(P'''_3(0) = f'''(0)\). Use \(P_3(x)\) to approximate \(e\) in a way similar to how you did so with \(P_2(x)\) above.
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-146" id="solution-146"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-146" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2121">
+The derivatives of \(P_3\) and \(f\) are
+</p>
+<span class="displaymath" id="md-97">\begin{align*}
+P_3(x) \amp = 1+x+\frac{x^2}{2}+\frac{x^3}{6} \amp  f(x) \amp = e^x\\
+P'_3(x) \amp = 1 + x +\frac{x^2}{2}  \amp  f'(x) \amp = e^x\\
+P''_3(x) \amp = 1+x  \amp  f''(x) \amp = e^x\\
+P'''_3(x) \amp = 1  \amp  f'''(x) \amp = e^x,
+\end{align*}</span><p id="p-2122">
+and so the derivatives of \(P_2\) and \(f\) evaluated at 0 are
+</p>
+<span class="displaymath" id="md-98">\begin{align*}
+P_3(0) \amp = 1 \amp  f(0) \amp = e^0 = 1\\
+P'_3(0) \amp = 1 \amp  f'(0) \amp = e^0 = 1\\
+P''_3(0) \amp = 1 \amp  f''(0) \amp = e^0 = 1\\
+P'''_3(0) \amp = 1 \amp  f'''(0) \amp = e^0 = 1.
+\end{align*}</span><p id="p-2123">
+Then
+</p>
+<span class="displaymath" id="me-847">\[
+e = e^1 \approx P_3(1) = 1 + 1 + \frac{1}{2} + \frac{1}{6} = \frac{8}{3} \approx 2.67.
+\]</span></span></span>
+</li>
+</ul></article><span class="incontext"><a href="S_8.3.Series.html#li-2853">in-context</a></span>

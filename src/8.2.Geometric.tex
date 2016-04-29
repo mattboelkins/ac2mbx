@@ -1,0 +1,120 @@
+\section{Geometric Series} \label{S:8.2.Geometric}
+
+\vspace*{-14 pt}
+\framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{\begin{goals}
+\item What is a geometric series?
+\item What is a partial sum of a geometric series? What is a simplified form of the $n$th partial sum of a geometric series?
+\item Under what conditions does a geometric series converge? What is the sum of a convergent geometric series?
+\end{goals}} \hspace*{3 pt}}
+
+\subsection*{Introduction}
+
+Many important sequences are generated through the process of addition.  In Preview Activity~\ref{PA:8.2}, we see a particular example of a special type of sequence that is connected to a sum.
+
+\input{previews/8.2.PA1}
+
+\subsection*{Geometric Sums}
+
+In Preview Activity \ref{PA:8.2} we encountered the sum
+\[(5 \times 0.08)\left(1+0.08+0.08^2+0.08^3+ \cdots + 0.08^{n-1}\right).\]
+In order to evaluate the long-term level of Warfarin in the patient's system, we will want to fully understand the sum in this expression. This sum has the form
+\begin{equation} \label{eq:8.2_part_sum_geometric_1}
+a+ar+ar^2+ \cdots + ar^{n-1}
+\end{equation}
+where $a=5 \times 0.08$ and $r=0.08$. Such a sum is called a \emph{geometric sum}\index{geometric sum} with ratio $r$. We will analyze this sum in more detail in the next activity.
+
+\input{activities/8.2.Act1}
+
+We can summarize the result of Activity \ref{8.2.Act1} in the following way.
+
+\vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+A geometric sum $S_n$ is a sum of the form
+\begin{equation} \label{eq:8.2_geometric_sum}
+S_n = a + ar + ar^2 + \cdots + ar^{n-1},
+\end{equation}
+where $a$ and $r$ are real numbers such that $r \ne 1$. The geometric sum $S_n$ can be written more simply as
+\begin{equation} \label{eq:8.2_part_sum_geometric}
+S_n = a+ar+ar^2+ \cdots + ar^{n-1} = \frac{a(1-r^n)}{1-r}.
+\end{equation}
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+We now apply equation (\ref{eq:8.2_part_sum_geometric}) to the example involving warfarin from Preview Activity~\ref{PA:8.2}. Recall that
+\[Q(n)=(5 \times 0.08)\left(1+0.08+0.08^2+0.08^3+ \cdots + 0.08^{n-1}\right) \text{ mg},\]
+so $Q(n)$ is a geometric sum with $a=5 \times 0.08 = 0.4$ and $r = 0.08$. Thus,
+\[Q(n) = 0.4\left(\frac{1-0.08^n}{1-0.08}\right) = \frac{1}{2.3} \left(1-0.08^n\right).\]
+Notice that as $n$ goes to infinity, the value of $0.08^n$ goes to 0. So,
+\[\lim_{n \to \infty} Q(n) = \lim_{n \to \infty}  \frac{1}{2.3} \left(1-0.08^n\right) = \frac{1}{2.3} \approx 0.435.\]
+Therefore, the long-term level of Warfarin in the blood under these conditions is $\frac{1}{2.3}$, which is approximately 0.435 mg.
+
+To determine the long-term effect of Warfarin, we considered a geometric sum of $n$ terms, and then considered what happened as $n$ was allowed to grow without bound.  In this sense, we were actually interested in an infinite geometric sum (the result of letting $n$ go to infinity in the finite sum).  We call such an infinite geometric sum a \emph{geometric series}. \index{geometric series} \index{series!geometric}
+
+\begin{definition}  A geometric series is an infinite sum of the form
+\begin{equation} \label{eq:8.2_geometric_series}
+a + ar + ar^2 + \cdots = \sum_{n=0}^{\infty} ar^n.
+\end{equation}
+\end{definition}
+The value of $r$ in the geometric series (\ref{eq:8.2_geometric_series}) is called the \emph{common ratio} \index{geometric series!common ratio} of the series because the ratio of the ($n+1$)st term $ar^n$ to the $n$th term $ar^{n-1}$ is always $r$.
+
+Geometric series are very common in mathematics and arise naturally in many different situations. As a familiar example, suppose we want to write the number with repeating decimal expansion
+\[N=0.1212\overline{12}\]
+as a rational number.
+Observe that
+\begin{align*}
+N &=  0.12 + 0.0012 + 0.000012 + \cdots \\
+    &= \left(\frac{12}{100}\right) + \left(\frac{12}{100}\right)\left(\frac{1}{100}\right) + \left(\frac{12}{100}\right)\left(\frac{1}{100}\right)^2 + \cdots,
+\end{align*}
+which is an infinite geometric series with $a=\frac{12}{100}$ and $r = \frac{1}{100}$.   In the same way that we were able to find a shortcut formula for the value of a (finite) geometric sum, we would like to develop a formula for the value of a (infinite) geometric series.  We explore this idea in the following activity.
+
+\input{activities/8.2.Act2}
+
+From our work in Activity \ref{8.2.Act2}, we can now find the value of the geometric series $N = \left(\frac{12}{100}\right) + \left(\frac{12}{100}\right)\left(\frac{1}{100}\right) + \left(\frac{12}{100}\right)\left(\frac{1}{100}\right)^2 + \cdots.$  In particular, using $a = \frac{12}{100}$ and $r = \frac{1}{100}$, we see that
+\[N = \frac{12}{100} \left(\frac{1}{1-\frac{1}{100}}\right) = \frac{12}{100} \left(\frac{100}{99}\right) = \frac{4}{33}.\]
+
+It is important to notice that a geometric sum is simply the sum of a finite number of terms of a geometric series. In other words, the geometric sum $S_n$ for the geometric series
+\[\sum_{k=0}^{\infty} ar^k\]
+is
+\[S_n = a+ar+ar^2 + \cdots + ar^{n-1} = \sum_{k=0}^{n-1} ar^k.\]
+We also call this sum $S_n$ the $n$th \emph{partial sum}\index{partial sum} of the geometric series. We summarize our recent work with geometric series as follows.
+
+\vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+\begin{itemize}
+\item A geometric series is an infinite sum of the form
+\begin{equation} \label{eq:8.2_geometric_series_2}
+a + ar + ar^2 + \cdots = \sum_{n=0}^{\infty} ar^n,
+\end{equation}
+where $a$ and $r$ are real numbers such that $r \ne 0$.
+\item The $n$th partial sum $S_n$ of the geometric series is
+\[S_n = a+ar+ar^2+ \cdots + ar^{n-1}.\]
+\item If $|r| < 1$, then using the fact that $S_n = a\frac{1-r^n}{1-r}$, it follows that the sum $S$ of the geometric series (\ref{eq:8.2_geometric_series_2}) is
+\[S = \lim_{n \to \infty} S_n = \lim_{n \to \infty} a\frac{1-r^n}{1-r} = \frac{a}{1-r}\]
+\end{itemize}
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+\input{activities/8.2.Act3}
+
+%\nin \framebox{\hspace*{3 pt}
+%\parbox{6.25 in}{
+\begin{summary}
+\item A geometric series is an infinite sum of the form
+\[\sum_{k=0}^{\infty} ar^k\]
+where $a$ and $r$ are real numbers and $r \neq 0$.
+\item For the geometric series $\ds \sum_{k=0}^{\infty} ar^k$, its $n$th partial sum is
+\[S_n = \sum_{k=0}^{n-1} ar^k.\]
+An alternate formula for the $n$th partial sum is
+\[S_n = a \frac{1-r^n}{1-r}.\]
+Whenever $|r| < 1$, the infinite geometric series $\sum_{k=0}^{\infty} ar^k$ has the finite sum $\frac{a}{1-r}$.
+\end{summary}
+%} \hspace*{3 pt}}
+
+\nin \hrulefill
+
+\input{exercises/8.2.Geometric(Ex)}
+
+\clearpage

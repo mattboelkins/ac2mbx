@@ -1,0 +1,66 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:04-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">2.3.4.1</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-810">Using the product rule, followed by the sum and constant multiple rule, observe that
+	
+<span class="displaymath" id="md-18">\begin{align*}
+f'(r) \amp  = \amp  (5r^3 + \sin(r))\frac{d}{dr}[4^r - 2\cos(r)] +  (4^r - 2\cos(r))\frac{d}{dr}[5r^3 + \sin(r)]\\
+\amp  = \amp   (5r^3 + \sin(r))[4^r \ln(4) + 2\sin(r)] +  (4^r - 2\cos(r))[15r^2 + \cos(r)]
+\end{align*}</span>
+</li>
+<li id="li-811">We use the quotient rule on \(p\), followed by the product rule to differentiate the denominator, finding that
+	
+<span class="displaymath" id="md-19">\begin{align*}
+p'(t) \amp  = \amp  \frac{t^6 \cdot 6^t \frac{d}{dt}[\cos(t)] - \cos(t) \frac{d}{dt}[t^6 \cdot 6^t]}{(t^6 \cdot 6^t)^2}\\
+\amp  = \amp  \frac{t^6 \cdot 6^t [-\sin(t)] - \cos(t) [t^6 \cdot 6^t \ln(6) + 6^t \cdot 6t^5]}{(t^6 \cdot 6^t)^2}
+\end{align*}</span>
+</li>
+<li id="li-812">Using the sum and constant multiple rules, it follows first that
+	
+<span class="displaymath" id="me-118">\[
+g'(z) = 3 \frac{d}{dz}[z^7 e^z] - 2\frac{d}{dz}[z^2 \sin(z)] + \frac{d}{dz}\left[ \frac{z}{z^2 + 1} \right].
+\]</span>
+   
+	Applying the product rule in the first two terms and the quotient rule in the third, we find that
+	
+<span class="displaymath" id="me-119">\[
+g'(z) = 3 [z^7 e^z +  7z^6e^z] - 2[z^2 \cos(z) + 2z\sin(z)] + \frac{(z^2+1) 1 - z(2z)}{(z^2 + 1)^2}.
+\]</span>
+</li>
+<li id="li-813">The particle's instantaneous velocity at the moment \(t = 1\) is given by \(s'(1)\).  We use the quotient rule to find \(s'(t)\), and simplify by removing a common factor of \(e^t\) to get
+	
+<span class="displaymath" id="me-120">\[
+s'(t) = \frac{e^t(-3\sin(t) - \cos(t))-(3\cos(t) - \sin(t))e^t}{(e^t)^2} = \frac{-2\sin(t)-4\cos(t)}{e^t}.
+\]</span>
+ 
+	Thus, \(s'(1) = \frac{-2\sin(1)-4\cos(1)}{e^1} \approx -1.414\), which is the particle's instantaneous velocity in feet per second at the moment \(t = 1\).</li>
+<li id="li-814">Since \(p(x) = f(x) \cdot g(x)\), the product rule tells us
+	
+<span class="displaymath" id="me-121">\[
+p'(x) = f(x)g'(x) + g(x)f'(x),
+\]</span>
+ 
+	and since \(\displaystyle q(x) = \frac{f(x)}{g(x)}\), by the quotient rule we know
+	
+<span class="displaymath" id="me-122">\[
+q'(x) = \frac{g(x)f'(x)-f(x)g'(x)}{g(x)^2}.
+\]</span>
+ 
+	Using the given information (\(f(3) = -2\), \(f'(3) = 7\), \(g(3) = 4\), and  \(g'(3) = -1\)) we now see that
+	
+<span class="displaymath" id="me-123">\[
+p'(3) = f(3)g'(3) + g(3)f'(3) = (-2)(-1) + (4)(7) = 30
+\]</span>
+ 
+	and
+	
+<span class="displaymath" id="me-124">\[
+q'(x) = \frac{g(3)f'(3)-f(3)g'(3)}{g(3)^2} = \frac{(4)(7) - (-2)(-1)}{4^2} = \frac{13}{8}.
+\]</span>
+</li>
+</ol></span><span class="incontext"><a href="S_2.3.ProdQuot.html#solution-30">in-context</a></span>

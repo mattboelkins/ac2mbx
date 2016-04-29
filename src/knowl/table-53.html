@@ -1,0 +1,56 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:45-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<figure class="figure-like">
+ \vphantom{{M}} Integral Test  \amp  
+Let \(f\) be a positive, decreasing function on an interval \([c,\infty]\) and let \(a_k = f(k)\) for each positive integer \(k \geq c\).
+	<ul xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: disc;">
+<li id="li-3021">If \(\int_c^{\infty} f(t) \ dt\) converges, then \(\sum a_k\) converges.</li>
+<li id="li-3022">If \( \int_c^{\infty} f(t) \ dt\) diverges, then \(\sum a_k\) diverges.</li>
+</ul>  
+\amp Use this test when \(f(x)\) is easy to integrate. 
+ \vphantom{{M}} Direct Comparision Test (see Ex 4 in <a href="S_8.3.Series.html" alt="Section 8.3 Series of Real Numbers" title="Section 8.3 Series of Real Numbers">Section 8.3</a>)  \amp Let \(0 \leq a_k \leq b_k\) for each positive integer \(k\).
+	<ul xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: disc;">
+<li id="li-3023">If \(\sum b_k\) converges, then \(\sum a_k\) converges.</li>
+<li id="li-3024">If \(\sum a_k\) diverges, then \(\sum b_k\) diverges.</li>
+</ul>  
+\amp Use this test when you have a series with known behavior that you can compare to – this test can be difficult to apply. 
+ \vphantom{{M}} Limit Comparison Test  \amp Let \(a_n\) and \(b_n\) be sequences of positive terms. If
+
+<span class="displaymath" id="me-957">\[
+\displaystyle \lim_{k \to \infty} \frac{a_k}{b_k} = L
+\]</span>
+ 
+for some positive finite number \(L\), then the two series \(\sum a_k\) and \(\sum b_k\) either both converge or both diverge. \amp Easier to apply in general than the comparison test, but you must have a series with known behavior to compare. Useful to apply to series of rational functions. 
+ \vphantom{{M}} Ratio Test \amp  Let \(a_k \neq 0\) for each \(k\) and suppose
+
+<span class="displaymath" id="me-958">\[
+\displaystyle \lim_{k \to \infty} \frac{|a_{k+1}|}{|a_k|} = r.
+\]</span>
+ 
+	<ul xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: disc;">
+<li id="li-3025">If \(r \lt  1\), then the series \(\sum a_k\) converges absolutely.</li>
+<li id="li-3026">If \(r &gt; 1\), then the series \(\sum a_k\) diverges.</li>
+<li id="li-3027">If \(r=1\), then test is inconclusive.</li>
+</ul>  
+\amp This test is useful when a series involves factorials and powers. 
+ \vphantom{{M}} Root Test (see Exercise 2 in <a href="S_8.3.Series.html" alt="Section 8.3 Series of Real Numbers" title="Section 8.3 Series of Real Numbers">Section 8.3</a>) \amp  Let \(a_k \geq 0\) for each \(k\) and suppose
+
+<span class="displaymath" id="me-959">\[
+\displaystyle \lim_{k \to \infty} \sqrt[k]{a_k} = r.
+\]</span>
+ 
+	<ul xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: disc;">
+<li id="li-3028">If \(r \lt  1\), then the series \(\sum a_k\) converges.</li>
+<li id="li-3029">If \(r &gt; 1\), then the series \(\sum a_k\) diverges.</li>
+<li id="li-3030">If \(r=1\), then test is inconclusive.</li>
+</ul>  
+\amp In general, the Ratio Test can usually be used in place of the Root Test. However, the Root Test can be quick to use when \(a_k\) involves \(k\)th powers. 
+ \vphantom{{M}} Alternating Series Test \amp If \(a_n\) is a positive, decreasing sequence so that \(\displaystyle \lim_{n \to \infty} a_n = 0\), then the alternating series \(\sum (-1)^{k+1} a_k\) converges. \amp This test applies only to alternating series – we assume that the terms \(a_n\) are all positive and that the sequence \(\{a_n\}\) is decreasing. 
+ \vphantom{{M}} Alternating Series Estimation Theorem \amp Let \(S_n = \displaystyle \sum_{k=1}^n (-1)^{k+1} a_k\) be the \(n\)th partial sum of the alternating series \(\displaystyle \sum_{k=1}^{\infty} (-1)^{k+1} a_k\). Assume \(a_n &gt; 0\) for each positive integer \(n\), the sequence \(a_n\) decreases to 0 and \(\displaystyle \lim_{n \to \infty} S_n = S\). Then it follows that
+\(|S - S_n| \lt  a_{n+1}.\)
+\amp This bound can be used to determine the accuracy of the partial sum \(S_n\) as an approximation of the sum of a convergent alternating series. </figure><span class="incontext"><a href="S_8.4.Alternating.html#table-53">in-context</a></span>

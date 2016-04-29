@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:41-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Using derivatives to describe families of functions</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_3.1.Tests.html">Previous</a><a class="up-button button toolbar-item" href="C_3.html">Up</a><a class="next-button button toolbar-item" href="S_3.3.Optimization.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_3.1.Tests.html">Previous</a><a class="up-button button toolbar-item" href="C_3.html">Up</a><a class="next-button button toolbar-item" href="S_3.3.Optimization.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link active"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html" class="active">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_3.2.Families"><header><h1 class="heading" alt="Section 3.2 Using derivatives to describe families of functions" title="Section 3.2 Using derivatives to describe families of functions">
+<span class="type">Section</span><span class="codenumber">3.2</span><span class="title">Using derivatives to describe families of functions</span><a href="S_3.2.Families.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-18"><h5 class="heading"></h5>
+<p id="p-728">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1268">Given a family of functions that depends on one or more parameters, how does the shape of the graph of a typical function in the family depend on the value of the parameters?</li>
+<li id="li-1269">How can we construct first and second derivative sign charts of functions that depend on one or more parameters while allowing those parameters to remain arbitrary constants?</li>
+</ul>
+<p id="p-729">
+} 
+</p></article><section class="subsection" id="subsection-54"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">3.2.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-730">
+Mathematicians are often interested in making general observations, say by describing patterns that hold in a large number of cases. For example, think about the Pythagorean Theorem: it doesn't tell us something about a single right triangle, but rather a fact about <!--Style me with CSS--><em>every</em> right triangle, thus providing key information about every member of the right triangle family. In the next part of our studies, we would like to use calculus to help us make general observations about families of functions that depend on one or more parameters. People who use applied mathematics, such as engineers and economists, often encounter the same types of functions in various settings where only small changes to certain constants occur. These constants are called <!--Style me with CSS--><em>parameters</em>.
+</p>
+<figure class="figure-like" id="F_3.2.SineFam"><img width="100%" src="images/3_2_SineFam.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.2.1</span>The graph of \(f(t) = a \sin(b(t-c)) + d\) based on parameters \(a\), \(b\), \(c\), and \(d\).</figcaption></figure><p id="p-731">
+We are already familiar with certain families of functions. For example, \(f(t) = a \sin(b(t-c)) + d\) is a stretched and shifted version of the sine function with amplitude \(a\), period \(\frac{2\pi}{b}\), phase shift \(c\), and vertical shift \(d\). We understand from experience with trigonometric functions that \(a\) affects the size of the oscillation, \(b\) the rapidity of oscillation, and \(c\) where the oscillation starts, as shown in <a knowl="./knowl/F_3.2.SineFam.html" knowl-id="xref-F_3.2.SineFam" alt="Figure 3.2.1 " title="Figure 3.2.1 ">Figure 3.2.1</a>, while \(d\) affects the vertical positioning of the graph.
+</p>
+<p id="p-732">
+In addition, there are several basic situations that we already understand completely. For instance, every function of the form \(y = mx + b\) is a line with slope \(m\) and \(y\)-intercept \((0,b)\). Note that this form allows us to consider every possible line through two parameters. Further, we understand that the value of \(m\) affects the line's steepness and whether the line rises or falls from left to right, while the value of \(b\) situates the line vertically on the coordinate axes.
+</p>
+<p id="p-733">
+For other less familiar families of functions, we would like to use calculus to understand and classify where key behavior occurs: where members of the family are increasing or decreasing, concave up or concave down, where relative extremes occur, and more, all in terms of the parameters involved. To get started, we revisit a common collection of functions to see how calculus confirms things we already know.
+</p>
+<article class="paragraphs" id="PA_3.2"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-734">
+Let \(a\), \(h\), and \(k\) be arbitrary real numbers with \(a \ne 0\), and let \(f\) be the function given by the rule \(f(x) = a(x-h)^2 + k\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1270">What familiar type of function is \(f\)?  What information do you know about \(f\) just by looking at its form? (Think about the roles of \(a\), \(h\), and \(k\).)</li>
+<li id="li-1271">Next we use some calculus to develop familiar ideas from a different perspective.  To start, treat \(a\), \(h\), and \(k\) as constants and compute \(f'(x)\).</li>
+<li id="li-1272">Find all critical values of \(f\). (These will depend on at least one of \(a\), \(h\), and \(k\).)</li>
+<li id="li-1273">Assume that \(a \lt  0\).  Construct a first derivative sign chart for \(f\).</li>
+<li id="li-1274">Based on the information you've found above, classify the critical values of \(f\) as maxima or minima.</li>
+</ol></article></section><section class="subsection" id="subsection-55"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">3.2.2</span><span class="title">Describing families of functions in terms of parameters</span>
+</h1></header><p id="p-735">
+Given a family of functions that depends on one or more parameters, our goal is to describe the key characteristics of the overall behavior of each member of the familiy in terms of those parameters. By finding the first and second derivatives and constructing first and second derivative sign charts (each of which may depend on one or more of the parameters), we can often make broad conclusions about how each member of the family will appear. The fundamental steps for this analysis are essentially identical to the work we did in <a href="S_3.1.Tests.html" alt="Section 3.1 Using derivatives to identify extreme values" title="Section 3.1 Using derivatives to identify extreme values">Section 3.1</a>, as we demonstrate through the following example.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_3.2.1" id="Ex_3.2.1"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">3.2.2</span>
+</h5></article></a></div>
+<div id="hk-Ex_3.2.1" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-736">
+Consider the two-parameter family of functions given by \(g(x) = axe^{-bx},\) where \(a\) and \(b\) are positive real numbers. Fully describe the behavior of a typical member of the family in terms of \(a\) and \(b\), including the location of all critical numbers, where \(g\) is increasing, decreasing, concave up, and concave down, and the long term behavior of \(g\).
+</p></article></div>
+<p id="p-737">
+Solution.    
+We begin by computing \(g'(x)\). By the product rule,
+</p>
+<span class="displaymath" id="me-315">\[
+g'(x) = ax \frac{d}{dx}\left[e^{-bx}\right] + e^{-bx} \frac{d}{dx}[ax],
+\]</span><p id="p-738">
+and thus by applying the chain rule and constant multiple rule, we find that
+</p>
+<span class="displaymath" id="me-316">\[
+g'(x) = axe^{-bx}(-b) + e^{-bx}(a).
+\]</span><p id="p-739">
+To find the critical numbers of \(g\), we solve the equation \(g'(x) = 0\). Here, it is especially helpful to factor \(g'(x)\). We thus observe that setting the derivative equal to zero implies
+</p>
+<span class="displaymath" id="me-317">\[
+0 = ae^{-bx}(-bx + 1).
+\]</span><p id="p-740">
+Since we are given that \(a \ne 0\) and we know that \(e^{-bx} \ne 0\) for all values of \(x\), the only way the preceding equation can hold is when \(-bx + 1 = 0.\) Solving for \(x\), we find that \(x = \frac{1}{b}\), and this is therefore the only critical number of \(g\).
+</p>
+<p id="p-741">
+Now, recall that we have shown \(g'(x) = ae^{-bx}(1 - bx)\) and that the only critical number of \(g\) is \(x = \frac{1}{b}\). This enables us to construct the first derivative sign chart for \(g\) that is shown in <a knowl="./knowl/F_3.2.signchartg.html" knowl-id="xref-F_3.2.signchartg" alt="Figure 3.2.3 " title="Figure 3.2.3 ">Figure 3.2.3</a>.
+</p>
+<figure class="figure-like" id="F_3.2.signchartg"><img width="100%" src="images/3_2_signchartg.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.2.3</span>The first derivative sign chart for \(g(x) = axe^{-bx}\).</figcaption></figure><p id="p-742">
+Note particularly that in \(g'(x) = ae^{-bx}(1-bx)\), the term \(ae^{-bx}\) is always positive, so the sign depends on the linear term \((1-bx)\), which is zero when \(x = \frac{1}{b}\). Note that this line has negative slope (\(-b\)), so \((1-bx)\) is positive for \(x \lt  \frac{1}{b}\) and negative for \(x &gt; \frac{1}{b}\). Hence we can not only conclude that \(g\) is always increasing for \(x \lt  \frac{1}{b}\) and decreasing for \(x &gt; \frac{1}{b}\), but also that \(g\) has a global maximum at \((\frac{1}{b}, g(\frac{1}{b}))\) and no local minimum.
+</p>
+<p id="p-743">
+We turn next to analyzing the concavity of \(g\). With \(g'(x) = -abxe^{-bx} + ae^{-bx}\), we differentiate to find that
+</p>
+<span class="displaymath" id="me-318">\[
+g''(x) = -abxe^{-bx}(-b) + e^{-bx}(-ab) + ae^{-bx}(-b).
+\]</span><p id="p-744">
+Combining like terms and factoring, we now have
+</p>
+<span class="displaymath" id="me-319">\[
+g''(x) = ab^2xe^{-bx} - 2abe^{-bx} = abe^{-bx}(bx - 2).
+\]</span><figure class="figure-like" id="F_3.2.signchartg2"><img width="100%" src="images/3_2_signchartg2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.2.4</span>The second derivative sign chart for \(g(x) = axe^{-bx}\).</figcaption></figure><p id="p-745">
+Similar to our work with the first derivative, we observe that \(abe^{-bx}\) is always positive, and thus the sign of \(g''\) depends on the sign of \((bx-2)\), which is zero when \(x = \frac{2}{b}\). Since \((bx-2)\) represents a line with positive slope \((b)\), the value of \((bx-2)\) is negative for \(x \lt  \frac{2}{b}\) and positive for \(x &gt; \frac{2}{b}\), and thus the sign chart for \(g''\) is given by the one shown in <a knowl="./knowl/F_3.2.signchartg2.html" knowl-id="xref-F_3.2.signchartg2" alt="Figure 3.2.4 " title="Figure 3.2.4 ">Figure 3.2.4</a>. Thus, \(g\) is concave down for all \(x \lt  \frac{2}{b}\) and concave up for all \(x &gt; \frac{2}{b}\).
+</p>
+<p id="p-746">
+Finally, we analyze the long term behavior of \(g\) by considering two limits. First, we note that
+</p>
+<span class="displaymath" id="me-320">\[
+\lim_{x \to \infty} g(x) = \lim_{x \to \infty} axe^{-bx} = \lim_{x \to \infty} \frac{ax}{e^{bx}}.
+\]</span><p id="p-747">
+Since this limit has indeterminate form \(\frac{\infty}{\infty}\), we can apply L'Hopital's Rule and thus find that \(\lim_{x \to \infty} g(x) = 0\). In the other direction,
+</p>
+<span class="displaymath" id="me-321">\[
+\lim_{x \to -\infty} g(x) = \lim_{x \to -\infty} axe^{-bx} = -\infty,
+\]</span><p id="p-748">
+since \(ax \to -\infty\) and \(e^{-bx} \to \infty\) as \(x \to -\infty\). Hence, as we move left on its graph, \(g\) decreases without bound, while as we move to the right, \(g(x) \to 0\).
+</p>
+<p id="p-749">
+All of the above information now allows us to produce the graph of a typical member of this family of functions without using a graphing utility (and without choosing particular values for \(a\) and \(b\)), as shown in <a knowl="./knowl/F_3.2.SurgeFam.html" knowl-id="xref-F_3.2.SurgeFam" alt="Figure 3.2.5 " title="Figure 3.2.5 ">Figure 3.2.5</a>.
+</p>
+<figure class="figure-like" id="F_3.2.SurgeFam"><img width="100%" src="images/3_2_SurgeFam.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.2.5</span>The graph of \(g(x) = axe^{-bx}\).</figcaption></figure><p id="p-750">
+We note that the value of \(b\) controls the horizontal location of the global maximum and the inflection point, as neither depends on \(a\). The value of \(a\) affects the vertical stretch of the graph. For example, the global maximum occurs at the point \((\frac{1}{b}, g(\frac{1}{b})) = (\frac{1}{b}, \frac{a}{b}e^{-1})\), so the larger the value of \(a\), the greater the value of the global maximum.
+</p>\hspace{5.0in}<p id="p-751">
+The kind of work we've completed in <a knowl="./knowl/Ex_3.2.1.html" knowl-id="xref-Ex_3.2.1" alt="Example 3.2.2 " title="Example 3.2.2 ">Example 3.2.2</a> can often be replicated for other families of functions that depend on parameters. Normally we are most interested in determining all critical numbers, a first derivative sign chart, a second derivative sign chart, and some analysis of the limit of the function as \(x \to \infty\). Throughout, we strive to work with the parameters as arbitrary constants. If stuck, it is always possible to experiment with some particular values of the parameters present to reduce the algebraic complexity of our work. The following sequence of activities offers several key examples where we see that the values of different parameters substantially affect the behavior of individual functions within a given family.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_3.2.1" id="A_3.2.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">3.2.6</span>
+</h5></a></div>
+<div id="hk-A_3.2.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-752">
+Consider the family of functions defined by \(p(x) = x^3 - ax\), where \(a \ne 0\) is an arbitrary constant.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1275">Find \(p'(x)\) and determine the critical values of \(p\).  How many critical values does \(p\) have?</li>
+<li id="li-1276">Construct a first derivative sign chart for \(p\).  What can you say about the overall behavior of \(p\) if the constant \(a\) is positive?  Why?  What if the constant \(a\) is negative? In each case, describe the relative extremes of \(p\).</li>
+<li id="li-1277">Find \(p''(x)\) and construct a second derivative sign chart for \(p\).  What does this tell you about the concavity of \(p\)?  What role does \(a\) play in determining the concavity of \(p\)?</li>
+<li id="li-1278">Without using a graphing utility, sketch and label typical graphs of \(p(x)\) for the cases where \(a &gt; 0\) and \(a \lt  0\).  Label all inflection points and local extrema.</li>
+<li id="li-1279">Finally, use a graphing utility to test your observations above by entering and plotting the function \(p(x) = x^3 - ax\) for at least four different values of \(a\).  Write several sentences to describe your overall conclusions about how the behavior of \(p\) depends on \(a\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-99" id="hint-99"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-99" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1280">When solving \(p'(x) = 0\), think about two possible cases: when \(a &gt; 0\) and when \(a \lt  0\).</li>
+<li id="li-1281">Remember that any quadratic function can be zero at most two times.  How does the graph of \(y = 3x^2 - a\) look?</li>
+<li id="li-1282">Don't forget that \(\frac{d}{dx}[a] = 0\).</li>
+<li id="li-1283">Think about how a typical cubic polynomial's graph behaves.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-100" id="hint-100"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-100" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1284">Note that \(p'(x) = 3x^2 - a\).  When solving \(p'(x) = 0\), think about two possible cases: when \(a &gt; 0\) and when \(a \lt  0\).</li>
+<li id="li-1285">Remember that any quadratic function can be zero at most two times.  How does the graph of \(y = 3x^2 - a\) look?</li>
+<li id="li-1286">Don't forget that \(\frac{d}{dx}[a] = 0\).</li>
+<li id="li-1287">Think about how a typical cubic polynomial's graph behaves and use your work in (a) - (c).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-49" id="solution-49"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-49" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1288">We first note that \(p'(x) = 3x^2 - a\), so to find critical values we set \(p'(x) = 0\) and solve for \(x\).  This leads to the equation \(3x^2 - a = 0\), which implies 
+  
+<span class="displaymath" id="me-322">\[
+x^2 = \frac{a}{3}.
+\]</span>
+ 
+  If \(a &gt; 0\), then the solutions to this equation are \(x = \pm \sqrt{\frac{a}{3}}\); if \(a \lt  0\), then the equation has no solution.  Hence, \(p\) has two critical numbers (\(x = \pm \sqrt{\frac{a}{3}}\)) whenever \(a &gt; 0\) and no critical numbers when \(a \lt  0\).</li>
+<li id="li-1289">For the case when \(a \lt  0\), we observe that \(p'(x) = 3x^2 - a\) is positive for every value of \(x\), and thus \(p\) is always increasing and has no relative extreme values.  (There are no critical numbers to place on the first derivative sign chart, and \(p'\) is always positive.)
+  
+  For the case when \(a &gt; 0\), we observe that \(p'(x) = 3x^2 - a\) is a concave up parabola with zeros at \(x = -\sqrt{\frac{a}{3}}\) and \(x = +\sqrt{\frac{a}{3}}\).  It follows that for \(x \lt  -\sqrt{\frac{a}{3}}\), \(p'(x) &gt; 0\) (so \(p\) is increasing); for \(-\sqrt{\frac{a}{3}} \lt  x \lt  \sqrt{\frac{a}{3}}\), \(p'(x) &gt; 0\) (so \(p\) is decreasing); and for \(x &gt; \sqrt{\frac{a}{3}}\), \(p'(x) &gt; 0\) (so \(p\) is again increasing).  In this situation, we see that \(p\) has a relative maximum at \(x = -\sqrt{\frac{a}{3}}\) and a relative minimum at \(x = +\sqrt{\frac{a}{3}}\).</li>
+<li id="li-1290">Since \(p'(x) = 3x^2 - a\) and \(a\) is constant, it follows that \(p''(x) = 6x\).  Note that \(p''(x) = 0\) when \(x = 0\) and that \(p''(x) \lt  0\) for \(x \lt  0\) and \(p''(x) &gt; 0\) for \(x &gt; 0\).  Hence \(p\) is CCD for \(x \lt  0\) and \(p\) is CCU for \(x &gt; 0\), making \(x = 0\) an inflection point.</li>
+<li id="li-1291">Below, we show the two possible situations. At left, for the case when \(a \lt  0\) and \(p\) is always increasing with an inflection point at \(x = 0\), and at right for when \(a &gt; 0\) and \(p\) has a relative maximum at \(x = -\sqrt{\frac{a}{3}}\) and a relative minimum at \(x = +\sqrt{\frac{a}{3}}\), again with an inflection point at \(x = 0\).  Note, too, that \(p\) has its \(x\)-intercepts at \(x = \pm \sqrt{a}\).
+  <img width="100%" src="images/3_2_Act1Soln.png">
+</li>
+</ol></span></span><div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_3.2.2" id="A_3.2.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">3.2.7</span>
+</h5></a></div>
+<div id="hk-A_3.2.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-753">
+Consider the two-parameter family of functions of the form \(h(x) = a(1-e^{-bx}),\) where \(a\) and \(b\) are positive real numbers.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1292">Find the first derivative and the critical values of \(h\).  Use these to construct a first derivative sign chart and determine for which values of \(x\) the function \(h\) is increasing and decreasing.</li>
+<li id="li-1293">Find the second derivative and build a second derivative sign chart.  For which values of \(x\) is a function in this family concave up?  concave down?</li>
+<li id="li-1294">What is the value of \(\ds \lim_{x \to \infty} a(1-e^{-bx})\)? \(\ds \lim_{x \to -\infty} a(1-e^{-bx})\)?</li>
+<li id="li-1295">How does changing the value of \(b\) affect the shape of the curve?</li>
+<li id="li-1296">Without using a graphing utility, sketch the graph of a typical member of this family. Write several sentences to describe the overall behavior of a typical function \(h\) and how this behavior depends on \(a\) and \(b\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-101" id="hint-101"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-101" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1297">Expand to write \(h(x) = a - ae^{-bx}\) before differentiating.</li>
+<li id="li-1298">Remember that \(e^{-bx}\) is never zero and always positive, regardless of the value of \(x\).</li>
+<li id="li-1299">Recall that \(e^{-x} \to 0\) as \(x \to \infty\) and \(e^{-x} \to \infty\) as \(x \to -\infty\).</li>
+<li id="li-1300">Consider how \(b\) affects the value of \(h'(x)\).</li>
+<li id="li-1301">Use your work in (a)-(d).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-102" id="hint-102"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-102" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1302">Expand to write \(h(x) = a - ae^{-bx}\) before differentiating, and remember to treat \(a\) and \(b\) as constants.</li>
+<li id="li-1303">Remember that \(e^{-bx}\) is never zero and always positive, regardless of the value of \(x\), and that \(a\) and \(b\) are positive constants.</li>
+<li id="li-1304">Recall that \(e^{-x} \to 0\) as \(x \to \infty\) and \(e^{-x} \to \infty\) as \(x \to -\infty\).</li>
+<li id="li-1305">Consider how \(b\) affects the value of \(h'(x)\).</li>
+<li id="li-1306">Use your work in (a)-(d).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-50" id="solution-50"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-50" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1307">Since \(h(x) = a - ae^{-bx}\), we have by the constant multiple and chain rules that
+  
+<span class="displaymath" id="me-323">\[
+h'(x) = -ae^{-bx}(-b) = abe^{-bx}.
+\]</span>
+ 
+  Since \(a\) and \(b\) are positive constants and \(e^{-bx} &gt; 0\) for all \(x\), we see that \(h'(x)\) is never zero (nor undefined), and indeed \(h'(x) &gt; 0\) for all \(x\).  Hence \(h\) is an always increasing function.</li>
+<li id="li-1308">Because \(h'(x) = abe^{-bx},\) we have that \(h''(x) = abe^{-bx}(-b) = -ab^2e^{-bx}\).  As with \(h'\), we recognize that \(a\), \(b^2\), and \(e^{-bx}\) are always positive, and thus \(h''(x) = -ab^2e^{-bx} \lt  0\) for all values of \(x\), making \(h\) always concave down.</li>
+<li id="li-1309">As \(x \to \infty\), \(e^{-bx} \to 0\).  Thus,
+  
+<span class="displaymath" id="me-324">\[
+\lim_{x \to \infty} a(1-e^{-bx}) = \lim_{x \to \infty} a - ae^{-bx} = a - 0 = a.
+\]</span>
+ 
+  This shows that \(h\) has a horizontal asymptote at \(y = a\) as we move rightward on its graph.
+  
+  As \(x \to -\infty\), \(e^{-bx} \to \infty\).  Thus, 
+  
+<span class="displaymath" id="me-325">\[
+\lim_{x \to \infty} a(1-e^{-bx}) = \lim_{x \to \infty} a - ae^{-bx} = -\infty.
+\]</span>
+</li>
+<li id="li-1310">Noting that \(h'(x) = abe^{-bx}\), we see that if we consider different values of \(b\), the slope of the graph changes.  If \(b\) is large and \(x\) is close to zero, \(h'(x) \approx ab\) (since \(e^0 = 1\)), so \(h'(x)\) is relatively large near \(x = 0\).  At the same time, for large \(b\), \(e^{-bx}\) approaches zero quickly as \(x\) increases, so the curve's slope will quickly approach zero as \(x\) increases.  If \(b\) is small, the graph is less steep near \(x = 0\) and its slope goes to zero less quickly as \(x\) increases.</li>
+<li id="li-1311">Observing that \(h(0) = 0\) and \(\lim_{x \to \infty} h(x) = a\), along with the facts that \(h\) is always increasing and always concave down, we see that a typical member of this family looks like the following graph.
+    <img width="100%" src="images/3_2_Act2Soln.png">
+</li>
+</ol></span></span><div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_3.2.3" id="A_3.2.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">3.2.8</span>
+</h5></a></div>
+<div id="hk-A_3.2.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-754">
+Let \(\ds L(t) = \frac{A}{1+ce^{-kt}}\), where \(A\), \(c\), and \(k\) are all positive real numbers.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1312">Observe that we can equivalently write \(L(t) = A(1+ce^{-kt})^{-1}\).  Find \(L'(t)\) and explain why \(L\) has no critical values.  Is \(L\) always increasing or always decreasing?  Why?</li>
+<li id="li-1313">Given the fact that
+		
+<span class="displaymath" id="me-326">\[
+L''(t) = Ack^2e^{-kt} \frac{ce^{-kt}-1}{(1+ce^{-kt})^3},
+\]</span>
+ 
+		find all values of \(t\) such that \(L''(t) = 0\) and hence construct a second derivative sign chart.  For which values of \(t\) is a function in this family concave up?  concave down?</li>
+<li id="li-1314">What is the value of \(\ds \lim_{t \to \infty} \frac{A}{1+ce^{-kt}}\)? \(\ds \lim_{t \to -\infty} \frac{A}{1+ce^{-kt}}\)?</li>
+<li id="li-1315">Find the value of \(L(x)\) at the inflection point found in (b).</li>
+<li id="li-1316">Without using a graphing utility, sketch the graph of a typical member of this family. Write several sentences to describe the overall behavior of a typical function \(h\) and how this behavior depends on \(a\) and \(b\).</li>
+<li id="li-1317">Explain why it is reasonable to think that the function \(L(t)\) models the growth of a population over time in a setting where the largest possible population the surrounding environment can support is \(A\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-103" id="hint-103"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-103" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1318">Use the chain rule, treating \(A\), \(c\), and \(k\) as constants.</li>
+<li id="li-1319">Note that the only way \(L''(t) = 0\) is if \(ce^{-kt}-1 = 0\).</li>
+<li id="li-1320">Remember that \(e^{-t} \to 0\) as \(t \to \infty\) and \(e^{-t} \to \infty\) as \(t \to -\infty\).</li>
+<li id="li-1321">Don't forget that \(e^{\ln(x)} = x\) for all \(x &gt; 0\).</li>
+<li id="li-1322">Think about horizontal asymptotes, where \(L\) is increasing and decreasing, and concavity.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-104" id="hint-104"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-104" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1323">Use the chain rule, treating \(A\), \(c\), and \(k\) as constants.  Remember that \(e^{-kt} &gt; 0\) for all values of \(t\).</li>
+<li id="li-1324">Note that the only way \(L''(t) = 0\) is if \(ce^{-kt}-1 = 0\).  Observe that since \(ce^{-kt} \to 0\) as \(t \to \infty\), the quantity \(ce^{-kt} - 1\) will be positive to the left of where it is zero and negative to the right of where it is zero.</li>
+<li id="li-1325">Remember that \(e^{-t} \to 0\) as \(t \to \infty\) and \(e^{-t} \to \infty\) as \(t \to -\infty\).</li>
+<li id="li-1326">Don't forget that \(e^{\ln(x)} = x\) for all \(x &gt; 0\).</li>
+<li id="li-1327">Think about horizontal asymptotes, where \(L\) is increasing and decreasing, and concavity.  In addition, find \(L(0)\) and plot both this point and the inflection point.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-51" id="solution-51"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-51" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1328">By the chain rule and treating \(A\), \(c\), and \(k\) as constants, we find that
+		
+<span class="displaymath" id="me-327">\[
+L'(t) = A(-1)(1+ce^{-kt})^{-2} ce^{-kt}(-k) = Acke^{-kt}(1+ce^{-kt})^{-2}.
+\]</span>
+   
+		Since \(A\), \(c\), and \(k\) are all positive and \(e^{-kt} &gt; 0\) for all values of \(t\), it is apparent that \(L'(t)\) is never zero, and indeed is positive for every value of \(t\).  Thus, \(L\) is an always increasing function.</li>
+<li id="li-1329">Given that
+		
+<span class="displaymath" id="me-328">\[
+L''(t) = Ack^2e^{-kt} \frac{ce^{-kt}-1}{(1+ce^{-kt})^3},
+\]</span>
+  the only way \(L''(t) = 0\) is if \(ce^{-kt}-1 = 0\).  Solving \(ce^{-kt}-1 = 0\) for \(t\), we first write \(e^{-kt} = \frac{1}{c}\).  Taking the natural logarithm of both sides, \(-kt = \ln(\frac{1}{c})\), so that
+		
+<span class="displaymath" id="me-329">\[
+t = -\frac{1}{k} \ln \left(\frac{1}{c}\right)
+\]</span>
+ 
+		is the only value of \(t\) for which \(L''(t) = 0\).  Now, observe that since \(ce^{-kt} \to 0\) as \(t \to \infty\), the quantity \(ce^{-kt} - 1\) will be positive to the left of where it is zero and negative to the right of where it is zero.  Since this is the only term in \(L''(t)\) that can change sign, it follows that \(L''(t) &gt; 0\) for \(t \lt  -\frac{1}{k} \ln \left(\frac{1}{c}\right)\) and \(L''(t) &gt; 0\) for \(t &gt; -\frac{1}{k} \ln \left(\frac{1}{c}\right)\), making \(L\) concave up to the left of the noted inflection point and concave down thereafter.</li>
+<li id="li-1330">Recalling that \(e^{-kt} \to 0\) as \(t \to \infty\), we observe that
+		 
+<span class="displaymath" id="me-330">\[
+\lim_{t \to \infty} \frac{A}{1+ce^{-kt}} = \frac{A}{1+0} = A,
+\]</span>
+ 
+		 so \(L\) has a horizontal asymptote of \(y = A\) as \(t \to \infty\).  On the other hand, since \(e^{-kt} \to \infty\) as \(t \to -\infty\), this causes the denominator of \(L\) to grow without bound (while the numerator remains constant), and therefore
+		 		 
+<span class="displaymath" id="me-331">\[
+\lim_{t \to \infty} \frac{A}{1+ce^{-kt}} = 0,
+\]</span>
+ 
+				 which means \(L\) has a horizontal asymptote of \(y = 0\) as \(t \to -\infty\).</li>
+<li id="li-1331">From (b), we know that \(t = -\frac{1}{k} \ln \left(\frac{1}{c}\right)\) is the location of the inflection point of \(L\).  Evaluating the function at this point, we find that
+		
+<span class="displaymath" id="me-332">\[
+L\left( -\frac{1}{k} \ln \left(\frac{1}{c}\right) \right) = \frac{A}{1+ce^{-k [-\frac{1}{k} \ln \left(\frac{1}{c}\right)]}} = \frac{A}{1+ce^{\ln \left(\frac{1}{c}\right)}} = \frac{A}{1+c \cdot \frac{1}{c}} = \frac{A}{2}.
+\]</span>
+ 
+		Thus, the inflection point on the graph of \(L\) is located at  \(( -\frac{1}{k} \ln \left(\frac{1}{c}\right), \frac{A}{2})\).</li>
+<li id="li-1332">We have shown that \(L\) is an always increasing function that has horizontal asymptotes at \(y =0\) and \(y = A\), as well as an inflection point at \(( -\frac{1}{k} \ln \left(\frac{1}{c}\right), \frac{A}{2})\), which we note lies vertically halfway between the asymptotes.  In addition, we see that \(L(0) = \frac{A}{1+c}\).  The combination of all of this information shows us that a typical graph in this family of functions is given by the following figure.
+  <img width="100%" src="images/3_2_Act3Soln.png">
+</li>
+</ol></span></span><p id="p-755">
+\item Given a family of functions that depends on one or more parameters, by investigating how critical numbers and locations where the second derivative is zero depend on the values of these parameters, we can often accurately describe the shape of the function in terms of the parameters.
+\item In particular, just as we can created first and second derivative sign charts for a single function, we often can do so for entire families of functions where critical numbers and possible inflection points depend on arbitrary constants. These sign charts then reveal where members of the family are increasing or decreasing, concave up or concave down, and help us to identify relative extremes and inflection points.
+</p>
+<p id="p-756">
+\hrulefill
+</p>
+<p id="p-757">
+\begin{exercises}
+\item Consider the one-parameter family of functions given by \(p(x) = x^3-ax^2\), where \(a&gt;0\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1333">Sketch a plot of a typical member of the family, using the fact that each is a cubic polynomial with a repeated zero at \(x = 0\) and another zero at \(x = a\).</li>
+<li id="li-1334">Find all critical numbers of \(p\).</li>
+<li id="li-1335">Compute \(p''\) and find all values for which \(p''(x) = 0\).  Hence construct a second derivative sign chart for \(p\).</li>
+<li id="li-1336">Describe how the location of the critical numbers and the inflection point of \(p\) change as \(a\) changes.  That is, if the value of \(a\) is increased, what happens to the critical numbers and inflection point?</li>
+</ol>
+<p id="p-758">
+\item Let \(q(x) = \ds \frac{e^{-x}}{x-c}\) be a one-parameter family of functions where \(c &gt; 0\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1337">Explain why \(q\) has a vertical asymptote at \(x = c\).</li>
+<li id="li-1338">Determine \(\ds \lim_{x \to \infty} q(x)\) and \(\ds \lim_{x \to -\infty} q(x)\).</li>
+<li id="li-1339">Compute \(q'(x)\) and find all critical numbers of \(q\).</li>
+<li id="li-1340">Construct a first derivative sign chart for \(q\) and determine whether each critical number leads to a local minimum, local maximum, or neither for the function \(q\).</li>
+<li id="li-1341">Sketch a typical member of this family of functions with important behaviors clearly labeled.</li>
+</ol>
+<p id="p-759">
+\item Let \(E(x) = e^{-\frac{(x-m)^2}{2s^2}}\), where \(m\) is any real number and \(s\) is a positive real number.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1342">Compute \(E'(x)\) and hence find all critical numbers of \(E\).</li>
+<li id="li-1343">Construct a first derivative sign chart for \(E\) and classify each critical value of the function as a local minimum, local maximum, or neither.</li>
+<li id="li-1344">It can be shown that \(E''(x)\) is given by the formula
+	
+<span class="displaymath" id="me-333">\[
+E''(x) = e^{-\frac{(x-m)^2}{2s^2}} \left(\frac{(x-m)^2 - s^2}{s^4} \right).
+\]</span>
+ 
+	Find all values of \(x\) for which \(E''(x) = 0\).</li>
+<li id="li-1345">Determine \(\ds \lim_{x \to \infty} E(x)\) and \(\ds \lim_{x \to -\infty} E(x)\).</li>
+<li id="li-1346">Construct a labeled graph of a typical function \(E\) that clearly shows how important points on the graph of \(y = E(x)\) depend on \(m\) and \(s\).</li>
+</ol>
+<p id="p-760">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-761">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

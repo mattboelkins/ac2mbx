@@ -1,0 +1,23 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:52-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">3</span>
+</h5>We use the Ratio Test with \(a_k = \frac{k^2|x+1|^k}{4^k}\):
+    
+<span class="displaymath" id="md-144">\begin{align*}
+\lim_{k \to \infty} \frac{ \frac{(k+1)^2|x+1|^{k+1}}{4^{k+1}} }{ \frac{k^2|x+1|^k}{4^k} } \amp = \lim_{k \to \infty} \frac{4^k(k+1)^2|x+1|^{k+1}}{4^{k+1}k^2|x+1|^k}\\
+\amp = \frac{1}{4}|x+1| \lim_{k \to \infty} \left(\frac{k+1}{k}\right)^2\\
+\amp = \frac{1}{4}|x+1|.
+\end{align*}</span>
+ 
+    So the power series \(\ds \sum_{k=1}^{\infty} \frac{k^2(x+1)^k}{4^k}\) converges absolutely when \(\frac{1}{4}|x+1| \lt  1\) or when \(-5 \lt  x \lt  3\) and diverges outside this interval. To completely determine the interval of convergence, we need to check what happens at the endpoints of this interval.
+    <ul xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: disc;">
+<li id="li-3190">When \(x=-5\) our power series is \(\ds \sum_{k=1}^{\infty} (-1)^k k^2\). Since \(k^2 \to \infty\) as \(k \to \infty\), this series diverges by the Divergence Test.</li>
+<li id="li-3191">When \(x=3\) our power series is \(\ds \sum_{k=1}^{\infty} k^2\), which again diverges by the Divergence Test.</li>
+</ul>  
+    Therefore, the interval of convergence of the power series \(\ds \sum_{k=1}^{\infty} \frac{k^2(x+1)^k}{4^k}\) is \((-5,3)\).</article><span class="incontext"><a href="S_8.6.PowerSeries.html#li-3189">in-context</a></span>

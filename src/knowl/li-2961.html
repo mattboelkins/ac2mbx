@@ -1,0 +1,60 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:43-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">2</span>
+</h5>The example in the previous part of this exercise illustrates a more general result. Explain why the Direct Comparison Test, stated here, works.
+    
+ 
+\text{
+The Direct Comparison Test.  If
+
+<span class="displaymath" id="me-905">\[
+0 \leq b_k \leq a_k
+\]</span>
+ 
+for every \(k\), then we must have
+
+<span class="displaymath" id="me-906">\[
+0 \leq \sum b_k \leq \sum a_k
+\]</span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: lower-alpha;">
+<li id="li-2962">If \(\sum a_k\) converges, then \(\sum b_k\) converges.</li>
+<li id="li-2963">If \(\sum b_k\) diverges, then \(\sum a_k\) diverges.</li>
+</ol>  
+} 
+
+ Important Note: This comparison test applies only to series with nonnegative terms.
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-167" id="solution-167"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-167" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2231">
+If we have two series \(\sum a_k\) and \(\sum b_k\) of positive terms with \(a_k \geq b_k\) for every \(k\), then
+</p>
+<span class="displaymath" id="me-907">\[
+\sum a_k \geq \sum b_k &gt; 0.
+\]</span><p id="p-2232">
+Now if \(\sum b_k\) diverges, then \(\sum b_k\) is infinite. Anything larger must also be infinite and so \(\sum a_k\) must also diverge. On the other hand, if \(\sum a_k\) is convergent (that is, finite), then anything smaller and positive must also be finite and so \(\sum b_k\) must also converge.
+</p></span></span><ul xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: disc;">
+<li id="li-2964">Use the Direct Comparison Test to determine the convergence or divergence of the series \( \sum \frac{1}{k-1}\). Hint: Compare to the harmonic series.
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-168" id="solution-168"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-168" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2233">
+For any \(k\) we have \(k &gt; k-1\), so if \(k &gt; 1\) then it follows that \(0 \lt  \frac{1}{k} \lt  \frac{1}{k-1}\). Since the harmonic series \( \sum \frac{1}{k}\) diverges, the Direct Comparison Test shows that the larger series \( \sum \frac{1}{k-1}\) must also diverge.
+</p></span></span>
+</li>
+<li id="li-2965">Use the Direct Comparison Test to determine the convergence or divergence of the series \( \sum \frac{k}{k^3+1}\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-169" id="solution-169"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-169" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2234">
+In this case we know that \(k^3 \lt  k^3+1\) and so if \(k &gt; 0\) then \(\frac{1}{k^3} &gt; \frac{1}{k^3+1}\). It follows that \(\frac{k}{k^3} &gt; \frac{k}{k^3+1}\) and so the series \( \sum \frac{k}{k^3+1}\) is bounded below by 0 and above by the series \( \sum \frac{k}{k^3}\). Now
+</p>
+<span class="displaymath" id="me-908">\[
+\frac{k}{k^3} = \frac{1}{k^2}
+\]</span><p id="p-2235">
+and so the series \( \sum \frac{k}{k^3}\) is a \(p\)-series with \(p=2\) and converges. The Direct Comparison Test shows that the smaller series \( \sum \frac{k}{k^3+1}\) must also converge.
+</p></span></span>
+</li>
+</ul></article><span class="incontext"><a href="S_8.3.Series.html#li-2961">in-context</a></span>

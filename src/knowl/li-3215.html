@@ -1,0 +1,41 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:53-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">2</span>
+</h5>Show that \(f^{(n)}(0) = n!a_n\) for each positive integer \(n\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-204" id="solution-204"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-204" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2545">
+Then
+</p>
+<span class="displaymath" id="md-149">\begin{align*}
+f'(x) \amp = \sum_{k=1}^{\infty} ka_kx^{k-1}\\
+f''(x) \amp = \sum_{k=2}^{\infty} k(k-1)a_kx^{k-2}\\
+f^{(3)}(x) \amp = \sum_{k=3}^{\infty} k(k-1)(k-2)a_kx^{k-3}\\
+\vdots \amp  \ \qquad \vdots\\
+f^{(n)}(x) \amp = \sum_{k=n}^{\infty} k(k-1)(k-2) \cdots (k-n+1) a_kx^{k-n}\\
+\vdots \amp  \ \qquad \vdots
+\end{align*}</span><p id="p-2546">
+So
+</p>
+<span class="displaymath" id="md-150">\begin{align*}
+f(0) \amp = a_0\\
+f'(0) \amp = a_1\\
+f''(0) \amp = 2!a_2\\
+f^{(3)}(0) \amp = 3!a_3\\
+\vdots \amp  \ \qquad \vdots\\
+f^{(k)}(0) \amp = k!a_k\\
+\vdots \amp  \ \qquad \vdots
+\end{align*}</span><p id="p-2547">
+and
+</p>
+<span class="displaymath" id="me-1116">\[
+a_k = \frac{f^{(k)}(0)}{k!}
+\]</span><p id="p-2548">
+for each \(k \geq 0\). But these are just the coefficients of the Taylor series expansion of \(f\), which leads us to the following observation.
+</p></span></span></article><span class="incontext"><a href="S_8.6.PowerSeries.html#li-3215">in-context</a></span>

@@ -1,0 +1,26 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:08-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">4</span>
+</h5>Since the given limit is indeterminate of form \(\frac{0}{0}\), by L'Hopital's Rule we have
+
+<span class="displaymath" id="me-270">\[
+\lim_{x \to 0} \frac{\sin(x) - x}{\cos(2x)-1} =  \lim_{x \to 0} \frac{\cos(x) - 1}{-2\sin(2x)}.
+\]</span>
+ 
+Now, as \(x \to 0\), \(\cos(x) \to 1\) and \(\sin(2x) \to 0\), which makes the latest limit also indeterminate in form \(\frac{0}{0}\).  Applying L'Hopital's Rule a second time, we now have
+
+<span class="displaymath" id="me-271">\[
+\lim_{x \to 0} \frac{\sin(x) - x}{\cos(2x)-1} =  \lim_{x \to 0} \frac{-\sin(x)}{-4\cos(2x)}.
+\]</span>
+ 
+In the newest limit, we note that \(\sin(x) \to 0\) but \(\cos(2x) \to 1\) as \(x \to 0\), so the numerator is tending to 0 while the denominator is approaching \(-4\).  Thus, the value of the limit is determined to be
+
+<span class="displaymath" id="me-272">\[
+\lim_{x \to 0} \frac{\sin(x) - x}{\cos(2x)-1} =  0.
+\]</span></article><span class="incontext"><a href="S_2.8.LHR.html#li-1151">in-context</a></span>

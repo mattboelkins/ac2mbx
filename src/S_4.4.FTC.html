@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:44-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The Fundamental Theorem of Calculus</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_4.3.DefiniteIntegral.html">Previous</a><a class="up-button button toolbar-item" href="C_4.html">Up</a><a class="next-button button toolbar-item" href="C_5.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_4.3.DefiniteIntegral.html">Previous</a><a class="up-button button toolbar-item" href="C_4.html">Up</a><a class="next-button button toolbar-item" href="C_5.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link active"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html" class="active">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_4.4.FTC"><header><h1 class="heading" alt="Section 4.4 The Fundamental Theorem of Calculus" title="Section 4.4 The Fundamental Theorem of Calculus">
+<span class="type">Section</span><span class="codenumber">4.4</span><span class="title">The Fundamental Theorem of Calculus</span><a href="S_4.4.FTC.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-25"><h5 class="heading"></h5>
+<p id="p-1059">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1807">How can we find the exact value of a definite integral without taking the limit of a Riemann sum?</li>
+<li id="li-1808">What is the statement of the Fundamental Theorem of Calculus, and how do antiderivatives of functions play a key role in applying the theorem?</li>
+<li id="li-1809">What is the meaning of the definite integral of a rate of change in contexts other than when the rate of change represents velocity?</li>
+</ul>
+<p id="p-1060">
+} 
+</p></article><section class="subsection" id="subsection-75"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">4.4.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-1061">
+Much of our work in <a href="C_4.html" alt="Chapter 4 The Definite Integral" title="Chapter 4 The Definite Integral">Chapter 4</a> has been motivated by the velocity-distance problem: if we know the instantaneous velocity function, \(v(t)\), for a moving object on a given time interval \([a,b]\), can we determine its exact distance traveled on \([a,b]\)? In the vast majority of our discussion in <a href="S_4.1.VelocityDistance.html" alt="Section 4.1 Determining distance traveled from velocity" title="Section 4.1 Determining distance traveled from velocity">Sections 4.1</a>- <a href="S_4.3.DefiniteIntegral.html" alt="Section 4.3 The Definite Integral" title="Section 4.3 The Definite Integral">4.3</a>, we have focused on the fact that this distance traveled is connected to the area bounded by \(y = v(t)\) and the \(t\)-axis on \([a,b]\). In particular, for any nonnegative velocity function \(y = v(t)\) on \([a,b]\), we know that the exact area bounded by the velocity curve and the \(t\)-axis on the interval tells us the total distance traveled, which is also the value of the definite integral \(\int_a^b v(t) \, dt\). In the situation where velocity is sometimes negative, the total area bounded by the velocity function still tells us distance traveled, while the net signed area that the function bounds tells us the object's change in position.
+</p>
+<figure class="figure-like" id="F_4.4.Intro"><img width="100%" src="images/4_2_Intro.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.4.1</span>A velocity function that is sometimes negative.</figcaption></figure><p id="p-1062">
+Recall, for instance, the introduction to <a href="S_4.2.Riemann.html" alt="Section 4.2 Riemann Sums" title="Section 4.2 Riemann Sums">Section 4.2</a>, where we observed that for the velocity function in <a knowl="./knowl/F_4.4.Intro.html" knowl-id="xref-F_4.4.Intro" alt="Figure 4.4.1 " title="Figure 4.4.1 ">Figure 4.4.1</a>, the total distance \(D\) traveled by the moving object on \([a,b]\) is
+</p>
+<span class="displaymath" id="me-460">\[
+D = A_1 + A_2 + A_3,
+\]</span><p id="p-1063">
+while the total change in the object's position on \([a,b]\) is
+</p>
+<span class="displaymath" id="me-461">\[
+s(b) - s(a) = A_1 - A_2 + A_3.
+\]</span><p id="p-1064">
+While the areas \(A_1\), \(A_2\), and \(A_3\), which are each given by definite integrals, may be computed through limits of Riemann sums (and in select special circumstances through familiar geometric formulas), in the present section we turn our attention to an alternate approach, similar to the one we encountered in <a knowl="./knowl/A_4.1.2.html" knowl-id="xref-A_4.1.2" alt="Exercise 4.1.7 " title="Exercise 4.1.7 ">Activity 4.1.7</a>. To explore these ideas further, we consider the following preview activity.
+</p>
+<article class="paragraphs" id="PA_4.4"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1065">
+A student with a third floor dormitory window 32 feet off the ground tosses a water balloon straight up in the air with an initial velocity of 16 feet per second. It turns out that the instantaneous velocity of the water balloon is given by the velocity function \(v(t) = -32t + 16\), where \(v\) is measured in feet per second and \(t\) is measured in seconds.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1810">Let \(s(t)\) represent the height of the water balloon above the ground at time \(t\), and note that \(s\) is an antiderivative of \(v\).  That is, \(v\) is the derivative of \(s\): \(s'(t) = v(t)\).  Find a formula for \(s(t)\) that satisfies the initial condition that the balloon is tossed from 32 feet above ground.  In other words, make your formula for \(s\) satisfy \(s(0) = 32\).</li>
+<li id="li-1811">At what time does the water balloon reach its maximum height?  At what time does the water balloon land?</li>
+<li id="li-1812">Compute the three differences \(s(\frac{1}{2}) - s(0)\), \(s(2) - s(\frac{1}{2})\), and \(s(2) - s(0)\).  What do these differences represent?</li>
+<li id="li-1813">What is the total vertical distance traveled by the water balloon from the time it is tossed until the time it lands?</li>
+<li id="li-1814">Sketch a graph of the velocity function \(y = v(t)\) on the time interval \([0,2]\).  What is the total net signed area bounded by \(y = v(t)\) and the \(t\)-axis on \([0,2]\)?  Answer this question in two ways:  first by using your work above, and then by using a familiar geometric formula to compute areas of certain relevant regions.</li>
+</ol></article></section><section class="subsection" id="subsection-76"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">4.4.2</span><span class="title">The Fundamental Theorem of Calculus</span>
+</h1></header><p id="p-1066">
+\knownindex{\lt main&gt;fundamental theorem of calculus\lt /main&gt;}
+</p>
+<p id="p-1067">
+Consider the setting where we know the position function \(s(t)\) of an object moving along an axis, as well as its corresponding velocity function \(v(t)\), and for the moment let us assume that \(v(t)\) is positive on \([a,b]\). Then, as shown in <a knowl="./knowl/F_4.4.FTCVel.html" knowl-id="xref-F_4.4.FTCVel" alt="Figure 4.4.2 " title="Figure 4.4.2 ">Figure 4.4.2</a>,
+</p>
+<figure class="figure-like" id="F_4.4.FTCVel"><img width="100%" src="images/4_4_FTCVel.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.4.2</span>Finding distance traveled when we know an object's velocity function \(v\).</figcaption></figure><p id="p-1068">
+we know two different perspectives on the distance, \(D\), the object travels: one is that \(D = s(b) - s(a)\), which is the object's change in position. The other is that the distance traveled is the area under the velocity curve, which is given by the definite integral, so \(D = \int_a^b v(t) \, dt\).
+</p>
+<p id="p-1069">
+Of course, since both of these expressions tell us the distance traveled, it follows that they are equal, so
+</p>
+<span class="displaymath" id="E_FTCVel">\begin{equation}
+ s(b) - s(a) = \int_a^b v(t) \, dt.
+\label{E_FTCVel}\tag{4.4.1}\end{equation}</span><p id="p-1070">
+Furthermore, we know that Equation <a knowl="./knowl/E_FTCVel.html" knowl-id="xref-E_FTCVel" alt="Equation 4.4.1 " title="Equation 4.4.1 ">(4.4.1)</a> holds even when velocity is sometimes negative, since \(s(b) - s(a)\) is the object's change in position over \([a,b]\), which is simultaneously measured by the total net signed area on \([a,b]\) given by \(\int_a^b v(t) \, dt\).
+</p>
+<p id="p-1071">
+Perhaps the most powerful part of Equation <a knowl="./knowl/E_FTCVel.html" knowl-id="xref-E_FTCVel" alt="Equation 4.4.1 " title="Equation 4.4.1 ">(4.4.1)</a> lies in the fact that we can compute the integral's value if we can find a formula for \(s\). Remember, \(s\) and \(v\) are related by the fact that \(v\) is the derivative of \(s\), or equivalently that \(s\) is an antiderivative of \(v\). For example, if we have an object whose velocity is \(v(t) = 3t^2 + 40\) feet per second (which is always nonnegative), and wish to know the distance traveled on the interval \([1,5]\), we have that
+</p>
+<span class="displaymath" id="me-462">\[
+
+D  =  \int_1^5 v(t) \,dt  =  \int_1^5 (3t^2 + 40) \, dt  =   s(5) - s(1),
+
+\]</span><p id="p-1072">
+where \(s\) is an antiderivative of \(v\). We know that the derivative of \(t^3\) is \(3t^2\) and that the derivative of \(40t\) is \(40\), so it follows that if \(s(t) = t^3 + 40t\), then \(s\) is a function whose derivative is \(v(t) = s'(t) = 3t^2 + 40\), and thus we have found an antiderivative of \(v\). Therefore,
+</p>
+<span class="displaymath" id="md-45">\begin{align*}
+D \amp  = \amp  \int_1^5 3t^2 + 40 \, dt  = s(5) - s(1)\\
+\amp  = \amp  (5^3 + 40 \cdot 5) - (1^3 + 40\cdot 1) = 284 \ \mbox{feet} .
+\end{align*}</span><p id="p-1073">
+Note the key lesson of this example: to find the distance traveled, we needed to compute the area under a curve, which is given by the definite integral. But to evaluate the integral, we found an antiderivative, \(s\), of the velocity function, and then computed the total change in \(s\) on the interval. In particular, observe that we have found the exact area of the region shown in <a knowl="./knowl/F_4.4.FTCVel2.html" knowl-id="xref-F_4.4.FTCVel2" alt="Figure 4.4.3 " title="Figure 4.4.3 ">Figure 4.4.3</a>, and done so without a familiar formula (such as those for the area of a triangle or circle) and without directly computing the limit of a Riemann sum.
+</p>
+<figure class="figure-like" id="F_4.4.FTCVel2"><img width="100%" src="images/4_4_FTCVel2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.4.3</span>The exact area of the region enclosed by \(v(t) = 3t^2 + 40\) on \([1,5]\).</figcaption></figure><p id="p-1074">
+As we proceed to thinking about contexts other than just velocity and position, it is advantageous to have a shorthand symbol for a function's antiderivative. In the general setting of a continuous function \(f\), we will often denote an antiderivative of \(f\) by \(F\), so that the relationship between \(F\) and \(f\) is that \(F'(x) = f(x)\) for all relevant \(x\). Using the notation \(V\) in place of \(s\) (so that \(V\) is an antiderivative of \(v\)) in Equation <a knowl="./knowl/E_FTCVel.html" knowl-id="xref-E_FTCVel" alt="Equation 4.4.1 " title="Equation 4.4.1 ">(4.4.1)</a>, we find it is equivalent to write that
+</p>
+<span class="displaymath" id="E_FTCV">\begin{equation}
+ V(b) - V(a) = \int_a^b v(t) \, dt.
+\label{E_FTCV}\tag{4.4.2}\end{equation}</span><p id="p-1075">
+Now, in the general setting of wanting to evaluate the definite integral \(\int_a^b f(x) \, dx\) for an arbitrary continuous function \(f\), we could certainly think of \(f\) as representing the velocity of some moving object, and \(x\) as the variable that represents time. And again, Equations <a knowl="./knowl/E_FTCVel.html" knowl-id="xref-E_FTCVel" alt="Equation 4.4.1 " title="Equation 4.4.1 ">(4.4.1)</a> and <a knowl="./knowl/E_FTCV.html" knowl-id="xref-E_FTCV" alt="Equation 4.4.2 " title="Equation 4.4.2 ">(4.4.2)</a> hold for any continuous velocity function, even when \(v\) is sometimes negative. This leads us to see that Equation <a knowl="./knowl/E_FTCV.html" knowl-id="xref-E_FTCV" alt="Equation 4.4.2 " title="Equation 4.4.2 ">(4.4.2)</a> tells us something even more important than the change in position of a moving object: it offers a shortcut route to evaluating any definite integral, provided that we can find an antiderivative of the integrand. The Fundamental Theorem of Calculus (FTC) \knownindex{\lt main&gt;FTC\lt /main&gt;} summarizes these observations.
+</p>
+<p id="p-1076">
+
+{
+The Fundamental Theorem of Calculus: If \(f\) is a continuous function on \([a,b]\), and \(F\) is any antiderivative of \(f\), then \(\int_a^b f(x) \, dx = F(b) - F(a).\)
+} 
+
+</p>
+<p id="p-1077">
+A common alternate notation for \(F(b) - F(a)\) is
+</p>
+<span class="displaymath" id="me-463">\[
+F(b) - F(a) = \left.  F(x) \right|_a^b,
+\]</span><p id="p-1078">
+where we read the righthand side as “the function \(F\) evaluated from \(a\) to \(b\).” In this notation, the FTC says that
+</p>
+<span class="displaymath" id="me-464">\[
+\int_a^b f(x) \, dx = \left. F(x) \right|_a^b.
+\]</span><p id="p-1079">
+The FTC opens the door to evaluating exactly a wide range of integrals. In particular, if we are interested in a definite integral for which we can find an antiderivative \(F\) for the integrand \(f\), then we can evaluate the integral exactly. For instance since \(\frac{d}{dx}[\frac{1}{3}x^3] = x^2\), the FTC tells us that
+</p>
+<span class="displaymath" id="md-46">\begin{align*}
+\int_0^1 x^2 \, dx \amp  = \amp  \left. \frac{1}{3} \, x^3 \right|_0^1\\
+\amp  = \amp  \frac{1}{3} \, (1)^3 - \frac{1}{3} \, (0)^3\\
+\amp  = \amp  \frac{1}{3}.
+\end{align*}</span><p id="p-1080">
+But finding an antiderivative can be far from simple; in fact, often finding a formula for an antiderivative is very hard or even impossible. While we can differentiate just about any function, even some relatively simple ones don't have an elementary antiderivative. A significant portion of integral calculus (which is the main focus of second semester college calculus) is devoted to understanding the problem of finding antiderivatives.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_4.4.1" id="A_4.4.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">4.4.4</span>
+</h5></a></div>
+<div id="hk-A_4.4.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1081">
+Use the Fundamental Theorem of Calculus to evaluate each of the following integrals exactly. For each, sketch a graph of the integrand on the relevant interval and write one sentence that explains the meaning of the value of the integral in terms of the (net signed) area bounded by the curve.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1815">\(\ds \int_{-1}^4 (2-2x) \, dx\)</li>
+<li id="li-1816">\(\ds \int_{0}^{\frac{\pi}{2}} \sin(x) \, dx\)</li>
+<li id="li-1817">\(\ds \int_0^1 e^x \, dx\)</li>
+<li id="li-1818">\(\ds \int_{-1}^{1} x^5 \, dx\)</li>
+<li id="li-1819">\(\ds \int_0^2 (3x^3 - 2x^2 - e^x) \, dx\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-145" id="hint-145"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-145" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1820">Find a function whose derivative is \(2 - 2x\).</li>
+<li id="li-1821">Which familiar function has derivative \(\sin(x)\)?</li>
+<li id="li-1822">What is special about \(e^x\) when it comes to differentiation?</li>
+<li id="li-1823">Consider the derivative of \(x^6\).</li>
+<li id="li-1824">Find an antiderivative for each of the three individual terms in the integrand.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-146" id="hint-146"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-146" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1825">Find a function whose derivative is \(2 - 2x\).</li>
+<li id="li-1826">Recall that \(\frac{d}{dx}[\cos(x)] = -\sin(x)\).</li>
+<li id="li-1827">What is special about \(e^x\) when it comes to differentiation?</li>
+<li id="li-1828">Think about the derivative of \(x^6\) and how you might choose an appropriate constant by which to multiply this function.</li>
+<li id="li-1829">Find an antiderivative for each of the three individual terms in the integrand.  Note, for instance, that \(\frac{d}{dx} [\frac{3}{4} x^4 ] = 3x^3.\)</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-72" id="solution-72"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-72" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1830">Because \(\frac{d}{dx}[2x - x^2] = 2-2x\), by the Fundamental Theorem of Calculus,
+	
+<span class="displaymath" id="me-465">\[
+ \int_{-1}^4 (2-2x) \, dx = \left. 2x - x^2 \right|_{-1}^4,
+\]</span>
+ 
+	and therefore 
+	
+<span class="displaymath" id="me-466">\[
+ \int_{-1}^4 (2-2x) \, dx = (2 \cdot 4 - 4^2) - (2(-1) - (-1)^2) = -8 + 3 = -5.
+\]</span>
+</li>
+<li id="li-1831">Since \(\frac{d}{dx} [\cos(x)] = -\sin(x)\), an antiderivative of \(f(x) = \sin(x)\) is \(F(x) = -\cos(x)\).  Therefore, by the FTC,  
+	
+<span class="displaymath" id="me-467">\[
+\ds \int_{0}^{\frac{\pi}{2}} \sin(x) \, dx = \left. -\cos(x) \right|_{-\frac{\pi}{2}}^{\frac{\pi}{2}},
+\]</span>
+ 
+	so
+	
+<span class="displaymath" id="me-468">\[
+\ds \int_{0}^{\frac{\pi}{2}} \sin(x) \, dx = -\cos(\frac{\pi}{2}) - (-\cos(0)) = -0 + 1 = 1.
+\]</span>
+</li>
+<li id="li-1832">Since \(e^x\) is its own derivative, it is also its own antiderivative.  Hence,
+	
+<span class="displaymath" id="me-469">\[
+\int_0^1 e^x \, dx = \left. e^x \right|_0^1 = e^1 - e^0 = e-1.
+\]</span>
+</li>
+<li id="li-1833">Note that since \(\frac{d}{dx} [x^6] = 6x^5\), it follows that \(\frac{d}{dx} [\frac{1}{6}x^6] = x^5\), and thus 
+	
+<span class="displaymath" id="me-470">\[
+\ds \int_{-1}^{1} x^5 \, dx = \left. \frac{1}{6}x^6 \right|_{-1}^1 = \frac{1}{6} (1)^6 - \frac{1}{6}(-1)^6 = 0.
+\]</span>
+</li>
+<li id="li-1834">Using the sum and constant multiple rules for differentiation, we can see that similar results hold for antidifferentiation, and thus that \(F(x) = \frac{3}{4} x^4 - \frac{2}{3} x^3 - e^x\) is an antiderivative of \(f(x) = 3x^3 - 2x^2 - e^x\).  Now, by the FTC,
+	
+<span class="displaymath" id="md-47">\begin{align*}
+\int_0^2 (3x^3 - 2x^2 - e^x) \, dx \amp  = \amp  \left. \frac{3}{4} x^4 - \frac{2}{3} x^3 - e^x \right|_0^2\\
+\amp  = \amp    \frac{3}{4} (2)^4 - \frac{2}{3} (2)^3 - e^2 - (\frac{3}{4} (0)^4 - \frac{2}{3} (0)^3 - e^0)\\
+\amp  = \amp  12 - \frac{16}{3} - e^2 - (0 - 0 - 1)\\
+\amp  = \amp  \frac{17}{3} - e^2.
+\end{align*}</span>
+</li>
+</ol></span></span></section><section class="subsection" id="subsection-77"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">4.4.3</span><span class="title">Basic antiderivatives</span>
+</h1></header><p id="p-1082">
+The general problem of finding an antiderivative is difficult. In part, this is due to the fact that we are trying to undo the process of differentiating, and the undoing is much more difficult than the doing. For example, while it is evident that an antiderivative of \(f(x) = \sin(x)\) is \(F(x) = -\cos(x)\) and that an antiderivative of \(g(x) = x^2\) is \(G(x) = \frac{1}{3} x^3\), combinations of \(f\) and \(g\) can be far more complicated. Consider such functions as
+</p>
+<span class="displaymath" id="me-471">\[
+5\sin(x) - 4x^2, \ x^2 \sin(x), \ \frac{\sin(x)}{x^2}, \ \mbox{and}  \ \sin(x^2).
+\]</span><p id="p-1083">
+What is involved in trying to find an antiderivative for each? From our experience with derivative rules, we know that while derivatives of sums and constant multiples of basic functions are simple to execute, derivatives involving products, quotients, and composites of familiar functions are much more complicated. Thus, it stands to reason that antidifferentiating products, quotients, and composites of basic functions may be even more challenging. We defer our study of all but the most elementary antiderivatives to later in the text.
+</p>
+<p id="p-1084">
+We do note that each time we have a function for which we know its derivative, we have a <!--Style me with CSS--><em>function-derivative pair</em>, which also leads us to knowing the antiderivative of a function. For instance, since we know that
+</p>
+<span class="displaymath" id="me-472">\[
+\frac{d}{dx}[-\cos(x)] = \sin(x),
+\]</span><p id="p-1085">
+it follows that \(F(x) = -\cos(x)\) is an antiderivative of \(f(x) = \sin(x)\). It is equivalent to say that \(f(x) = \sin(x)\) is the derivative of \(F(x) = -\cos(x)\), and thus \(F\) and \(f\) together form the function-derivative pair. Clearly, every basic derivative rule leads us to such a pair, and thus to a known antiderivative. In <a knowl="./knowl/A_4.4.2.html" knowl-id="xref-A_4.4.2" alt="Exercise 4.4.5 " title="Exercise 4.4.5 ">Activity 4.4.5</a>, we will construct a list of most of the basic antiderivatives we know at this time. Furthermore, those rules will enable us to antidifferentiate sums and constant multiples of basic functions. For example, if \(f(x) = 5\sin(x) - 4x^2\), note that since \(-\cos(x)\) is an antiderivative of \(\sin(x)\) and \(\frac{1}{3}x^3\) is an antiderivative of \(x^2\), it follows that
+</p>
+<span class="displaymath" id="me-473">\[
+F(x) = -5\cos(x) - \frac{4}{3}x^3
+\]</span><p id="p-1086">
+is an antiderivative of \(f\), by the sum and constant multiple rules for differentiation.
+</p>
+<p id="p-1087">
+Finally, before proceeding to build a list of common functions whose antiderivatives we know, we revisit the fact that each function has more than one antiderivative. Because the derivative of any constant is zero, any time we seek an arbitrary antiderivative, we may add a constant of our choice. For instance, if we want to determine an antiderivative of \(g(x) = x^2\), we know that \(G(x) = \frac{1}{3}x^3\) is one such function. But we could alternately have chosen \(G(x) = \frac{1}{3}x^3 + 7\), since in this case as well, \(G'(x) = x^2\). In some contexts later on in calculus, it is important to discuss the most general antiderivative of a function. If \(g(x) = x^2\), we say that the <!--Style me with CSS--><em>general antiderivative</em> \knownindex{\lt main&gt;antiderivative\lt /main&gt;\lt sub&gt;general\lt /sub&gt;} of \(g\) is
+</p>
+<span class="displaymath" id="me-474">\[
+G(x) = \frac{1}{3}x^3 + C,
+\]</span><p id="p-1088">
+where \(C\) represents an arbitrary real number constant. Regardless of the formula for \(g\), including \(+C\) in the formula for its antiderivative \(G\) results in the most general possible antiderivative.
+</p>
+<p id="p-1089">
+Our primary current interest in antiderivatives is for use in evaluating definite integrals by the Fundamental Theorem of Calculus. In that situation, the arbitrary constant \(C\) is irrelevant, and thus we usually omit it. To see why, consider the definite integral
+</p>
+<span class="displaymath" id="me-475">\[
+\int_0^1 x^2 \, dx.
+\]</span><p id="p-1090">
+For the integrand \(g(x) = x^2\), suppose we find and use the general antiderivative \(G(x) = \frac{1}{3} x^3 + C.\) Then, by the FTC,
+</p>
+<span class="displaymath" id="md-48">\begin{align*}
+\int_0^1 x^2 \, dx \amp  = \amp  \left. \frac{1}{3} x^3 + C \right|_0^1\\
+\amp  = \amp  \left(\frac{1}{3} (1)^3 + C  \right) - \left(\frac{1}{3} (0)^3 + C  \right)\\
+\amp  = \amp  \frac{1}{3} + C - 0 - C\\
+\amp  = \amp  \frac{1}{3}.
+\end{align*}</span><p id="p-1091">
+Specifically, we observe that the \(C\)-values appear as opposites in the evaluation of the integral and thus do not affect the definite integral's value. In the same way, the potential inclusion of \(+C\) with the antiderivative has no bearing on any definite integral, and thus we generally choose to omit this possible constant whenever we evaluate an integral using the Fundamental Theorem of Calculus.
+</p>
+<p id="p-1092">
+In the following activity, we work to build a list of basic functions whose antiderivatives we already know.
+</p>
+<p id="p-1093">
+\vfill 
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_4.4.2" id="A_4.4.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">4.4.5</span>
+</h5></a></div>
+<div id="hk-A_4.4.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1094">
+Use your knowledge of derivatives of basic functions to complete the above table of antiderivatives. For each entry, your task is to find a function \(F\) whose derivative is the given function \(f\). When finished, use the FTC and the results in the table to evaluate the three given definite integrals.
+</p>
+<figure class="figure-like" id="T_4.4.Act2"><figure class="figure-like" id="table-21"> 
+\T given function, \(f(x)\) \hspace{1.25in} \amp   antiderivative, \(F(x)\)  \hspace{1.15in}  \B 
+\T \(k\), (\(k\) is constant) \amp   \B 
+\T \(x^n\), \(n \ne -1\) \amp    \B  
+\T \(\frac{1}{x}\), \(x &gt; 0\) \amp   \B 
+\T \(\sin(x)\) \amp   \B 
+\T \(\cos(x)\) \amp   \B 
+\T \(\sec(x) \tan(x)\) \amp   \B 
+\T \(\csc(x) \cot(x)\) \amp   \B 
+\T \(\sec^2 (x)\) \amp   \B 
+\T \(\csc^2 (x)\) \amp   \B 
+\T \(e^x\)  \amp   \B 
+\T \(a^x\) \((a &gt; 1)\)  \amp   \B 
+\T \(\frac{1}{1+x^2}\) \amp   \B 
+\T \(\frac{1}{\sqrt{1-x^2}}\) \amp   \B </figure><figcaption><span class="heading">Figure</span><span class="codenumber">4.4.6</span>Familiar basic functions and their antiderivatives.</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1835">\(\displaystyle \int_0^1 \left(x^3 - x - e^x + 2\right) \,dx\)</li>
+<li id="li-1836">\(\displaystyle \int_0^{\pi/3} (2\sin (t) - 4\cos(t) + \sec^2(t) - \pi) \, dt\)</li>
+<li id="li-1837">\(\displaystyle \int_0^1 (\sqrt{x}-x^2) \, dx\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-147" id="hint-147"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-147" style="display: none;" class="tex2jax_ignore"><span class="solution">For the table, you might start by constructing a list of all the basic functions whose derivative you know.  For the three definite integrals, be sure to recall the sum and constant multiple rules, which work not only for differentiating, but also for antidifferentiating.</span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-148" id="hint-148"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-148" style="display: none;" class="tex2jax_ignore"><span class="solution">For the table, you might start by constructing a list of all the basic functions whose derivative you know.  For example, we know that \(\frac{d}{dx} [\csc(x)] = -\csc(x) \cot(x).\)  For the three definite integrals, be sure to recall the sum and constant multiple rules, which work not only for differentiating, but also for antidifferentiating.  Then use the FTC.</span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-73" id="solution-73"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-73" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-1095">
+\vfill 
+</p>
+<figure class="figure-like" id="table-22"> 
+\T given function, \(f(x)\) \hspace{1.25in} \amp   antiderivative, \(F(x)\)  \hspace{1.15in}  \B 
+\T \(k\), (\(k \ne 0\)) \amp  \(kx\) \B 
+\T \(x^n\), \(n \ne -1\) \amp  \(\frac{1}{n+1}x^{n+1}\) \B  
+\T \(\frac{1}{x}\), \(x &gt; 0\) \amp  \(\ln(x)\) \B 
+\T \(\sin(x)\) \amp  \(-\cos(x)\) \B 
+\T \(\cos(x)\) \amp  \(\sin(x)\) \B 
+\T \(\sec(x) \tan(x)\) \amp  \(\sec(x)\) \B 
+\T \(\csc(x) \cot(x)\) \amp  \(-\csc(x)\) \B 
+\T \(\sec^2 (x)\) \amp  \(\tan(x)\) \B 
+\T \(\csc^2 (x)\) \amp  \(\cot(x)\) \B 
+\T \(e^x\)  \amp  \(e^x\) \B 
+\T \(a^x\) \((a &gt; 1)\)  \amp  \(\frac{1}{\ln(a)} a^x\) \B 
+\T \(\frac{1}{1+x^2}\) \amp  \(\arctan(x)\) \B 
+\T \(\frac{1}{\sqrt{1-x^2}}\) \amp  \(\arcsin(x)\) \B </figure><ol style="list-style-type: decimal;">
+<li id="li-1838">By standard antiderivative rules and the FTC, 
+         
+<span class="displaymath" id="md-49">\begin{align*}
+\int_0^1 \left(x^3 - x - e^x + 2\right) \,dx \amp  = \amp  \left. \frac{1}{4} x^4 - \frac{1}{2}x^2 - e^x + 2x \right|_0^1\\
+\amp  = \amp   \left(\frac{1}{4} (1)^4 - \frac{1}{2}(1)^2 - e^1 + 2(1) \right) -   \left(\frac{1}{4} (0)^4 - \frac{1}{2}(0)^2 - e^0 + 2(0) \right)\\
+\amp  = \amp   \frac{1}{4} - \frac{1}{2} - e + 2 -  \left(0 - 0 - 1 + 0 \right)\\
+\amp  = \amp  -\frac{1}{4} - e + 3\\
+\amp  = \amp  \frac{11}{4} - 3.
+\end{align*}</span>
+</li>
+<li id="li-1839">Calculating the needed antiderivative and applying the FTC,
+	
+<span class="displaymath" id="md-50">\begin{align*}
+\int_0^{\pi/3} (2\sin (t) - 4\cos(t) + \sec^2(t) - \pi) \, dt \amp  = \amp  \left. \left(-2\cos(t) - 4\sin(t) + \tan(t) - \pi t \right) \right|_0^{\pi/3}\\
+\amp  = \amp  \left(-2\cos(\pi/3) - 4\sin(\pi/3) + \tan(\pi/3) - \pi (\pi/3) \right) -\\
+\amp  \ \amp   \left(-2\cos(0)) - 4\sin(0) + \tan(0) - \pi (0) \right)\\
+\amp  = \amp  -2 \cdot \frac{1}{2} - 4 \cdot \frac{\sqrt{3}}{2} + \sqrt{3} - \frac{\pi^2}{3} - (-2 - 0 + 0 - 0)\\
+\amp  = \amp  1 - \sqrt{3} - \frac{\pi^2}{3}.
+\end{align*}</span>
+</li>
+<li id="li-1840">Noting that \(\frac{d}{dx}[\frac{2}{3} x^{3/2}] = x^{1/2}\), we find that
+	
+<span class="displaymath" id="md-51">\begin{align*}
+\int_0^1 (\sqrt{x} - x^2) \, dx \amp  = \amp  \left. \frac{2}{3}x^{3/2} - \frac{1}{3}x^3 \right|_0^1\\
+\amp  = \amp  \frac{2}{3} - \frac{1}{3} - (0 - 0 )\\
+\amp  = \amp  \frac{1}{3}.
+\end{align*}</span>
+</li>
+</ol></span></span></section><section class="subsection" id="subsection-78"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">4.4.4</span><span class="title">The total change theorem</span>
+</h1></header><p id="p-1096">
+\knownindex{\lt main&gt;total change theorem\lt /main&gt;}
+</p>
+<p id="p-1097">
+As we use the Fundamental Theorem of Calculus to evaluate definite integrals, it is essential that we remember and understand the meaning of the numbers we find. We briefly summarize three key interpretations to date.
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1841">For a moving object with instantaneous velocity \(v(t)\), the object's change in position on the time interval \([a,b]\) is given by \(\int_a^b v(t) \, dt\), and whenever \(v(t) \ge 0\) on \([a,b]\), \(\int_a^b v(t) \, dt\) tells us the total distance traveled by the object on \([a,b]\).</li>
+<li id="li-1842">For any continuous function \(f\), its definite integral \(\int_a^b f(x) \, dx\) represents the total net signed area bounded by \(y = f(x)\) and the \(x\)-axis on \([a,b]\), where regions that lie below the \(x\)-axis have a minus sign associated with their area.</li>
+<li id="li-1843">The value of a definite integral is linked to the average value of a function: for a continuous function \(f\) on \([a,b]\), its average value \(f_{\mbox{\tiny{AVG}} [a,b]}\) is given by
+
+<span class="displaymath" id="me-476">\[
+f_{\mbox{\tiny{AVG}} [a,b]} = \frac{1}{b-a} \int_a^b f(x) \, dx.
+\]</span>
+</li>
+</ul>
+<p id="p-1098">
+The Fundamental Theorem of Calculus now enables us to evaluate exactly (without taking a limit of Riemann sums) any definite integral for which we are able to find an antiderivative of the integrand.
+</p>
+<p id="p-1099">
+A slight change in notational perspective allows us to gain even more insight into the meaning of the definite integral. To begin, recall Equation <a knowl="./knowl/E_FTCV.html" knowl-id="xref-E_FTCV" alt="Equation 4.4.2 " title="Equation 4.4.2 ">(4.4.2)</a>, where we wrote the Fundamental Theorem of Calculus for a velocity function \(v\) with antiderivative \(V\) as
+</p>
+<span class="displaymath" id="me-477">\[
+V(b) - V(a) = \int_a^b v(t) \, dt.
+\]</span><p id="p-1100">
+If we instead replace \(V\) with \(s\) (which represents position) and replace \(v\) with \(s'\) (since velocity is the derivative of position), Equation <a knowl="./knowl/E_FTCV.html" knowl-id="xref-E_FTCV" alt="Equation 4.4.2 " title="Equation 4.4.2 ">(4.4.2)</a> equivalently reads
+</p>
+<span class="displaymath" id="E_FTCs">\begin{equation}
+ s(b) - s(a) = \int_a^b s'(t) \, dt.
+\label{E_FTCs}\tag{4.4.3}\end{equation}</span><p id="p-1101">
+In words, this version of the FTC tells us that the total change in the object's position function on a particular interval is given by the definite integral of the position function's derivative over that interval.
+</p>
+<p id="p-1102">
+Of course, this result is not limited to only the setting of position and velocity. Writing the result in terms of a more general function \(f\), we have the Total Change Theorem.
+</p>
+<p id="p-1103">
+
+{
+The Total Change Theorem: \knownindex{\lt main&gt;total change theorem\lt /main&gt;} If \(f\) is a continuously differentiable function on \([a,b]\) with derivative \(f'\), then
+\(
+f(b) - f(a) = \int_a^b f'(x) \, dx.
+\)
+That is, the definite integral of the derivative of a function on \([a,b]\) is the total change of the function itself on \([a,b]\).
+} 
+
+</p>
+<p id="p-1104">
+The Total Change Theorem tells us more about the relationship between the graph of a function and that of its derivative. Recall <a knowl="./knowl/F_1.4.ffprime.html" knowl-id="xref-F_1.4.ffprime" alt="Figure 1.4.1 " title="Figure 1.4.1 ">Figure 1.4.1</a>, which provided one of the first times we saw that heights on the graph of the derivative function come from slopes on the graph of the function itself. That observation occurred in the context where we knew \(f\) and were seeking \(f'\); if now instead we think about knowing \(f'\) and seeking information about \(f\), we can instead say the following:
+</p>
+<!--Style me with CSS--><em>differences in heights on \(f\) correspond to net signed areas bounded by \(f'\).</em><figure class="figure-like" id="F_4.4.TCT"><img width="100%" src="images/4_4_TCT.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.4.7</span>The graphs of \(f'(x) = 4 - 2x\) (at left) and an antiderivative \(f(x) = 4x - x^2\) at right.  Differences in heights on \(f\) correspond to net signed areas bounded by \(f'\).</figcaption></figure><p id="p-1105">
+To see why this is so, say we consider the difference \(f(1) - f(0)\). Note that this value is 3, in part because \(f(1) = 3\) and \(f(0) = 0\), but also because the net signed area bounded by \(y = f'(x)\) on \([0,1]\) is 3. That is, \(f(1) - f(0) = \int_0^1 f'(x) \, dx\). A similar pattern holds throughout, including the fact that since the total net signed area bounded by \(f'\) on \([0,4]\) is \(0\), \(\int_0^4 f'(x) \, dx = 0\), so it must be that \(f(4) - f(0) = 0\), so \(f(4) = f(0)\).
+</p>
+<p id="p-1106">
+Beyond this general observation about area, the Total Change Theorem enables us to consider interesting and important problems where we know the rate of change, and answer key questions about the function whose rate of change we know.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_4.4.1" id="Ex_4.4.1"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">4.4.8</span>
+</h5></article></a></div>
+<div id="hk-Ex_4.4.1" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-1107">
+Suppose that pollutants are leaking out of an underground storage tank at a rate of \(r(t)\) gallons/day, where \(t\) is measured in days. It is conjectured that \(r(t)\) is given by the formula \(r(t) = 0.0069t^3 -0.125t^2+11.079\) over a certain 12-day period. The graph of \(y=r(t)\) is given in <a knowl="./knowl/F_4.4.TCTEx.html" knowl-id="xref-F_4.4.TCTEx" alt="Figure 4.4.9 " title="Figure 4.4.9 ">Figure 4.4.9</a>. What is the meaning of \(\int_4^{10} r(t) \, dt\) and what is its value? What is the average rate at which pollutants are leaving the tank on the time interval \(4 \le t \le 10\)?
+</p>
+<figure class="figure-like" id="F_4.4.TCTEx"><img width="100%" src="images/4_4_TCTEx.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.4.9</span>The rate \(r(t)\) of pollution leaking from a tank, measured in gallons per day.</figcaption></figure></article></div>
+<p id="p-1108">
+We know that since \(r(t) \ge 0\), the value of \(\int_4^{10} r(t) \, dt\) is the area under the curve on the interval \([4,10]\). If we think about this area from the perspective of a Riemann sum, the rectangles will have heights measured in gallons per day and widths measured in days, thus the area of each rectangle will have units of
+</p>
+<span class="displaymath" id="me-478">\[
+\frac{\mbox{gallons} }{\mbox{day} } \cdot \mbox{days}  = \mbox{gallons} .
+\]</span><p id="p-1109">
+Thus, the definite integral tells us the total number of gallons of pollutant that leak from the tank from day 4 to day 10. The Total Change Theorem tells us the same thing: if we let \(R(t)\) denote the function that measures the total number of gallons of pollutant that have leaked from the tank up to day \(t\), then \(R'(t) = r(t)\), and
+</p>
+<span class="displaymath" id="me-479">\[
+\int_4^{10} r(t) \, dt = R(10) - R(4),
+\]</span><p id="p-1110">
+which is the total change in the function that measures total gallons leaked over time, thus the number of gallons that have leaked from day 4 to day 10.
+</p>
+<p id="p-1111">
+To compute the exact value, we use the Fundamental Theorem of Calculus. Antidifferentiating \(r(t) = 0.0069t^3 -0.125t^2+11.079\), we find that
+</p>
+<span class="displaymath" id="md-52">\begin{align*}
+\int_4^{10} (0.0069t^3 -0.125t^2+11.079) \, dt \amp  = \amp  \left. \left( 0.0069 \cdot \frac{1}{4} \, t^4 - 0.125 \cdot \frac{1}{3} t^3 + 11.079t \right) \right|_4^{10}\\
+\amp  \approx \amp  44.282.
+\end{align*}</span><p id="p-1112">
+Thus, approximately 44.282 gallons of pollutant leaked over the six day time period.
+</p>
+<p id="p-1113">
+To find the average rate at which pollutant leaked from the tank over \(4 \le t \le 10\), we want to compute the average value of \(r\) on \([4,10]\). Thus,
+</p>
+<span class="displaymath" id="me-480">\[
+r_{\mbox{\tiny{AVG}} [4,10]} = \frac{1}{10-4} \int_4^{10} r(t) \, dt \approx \frac{44.282}{6} = 7.380,
+\]</span><p id="p-1114">
+which has its units measured in gallons per day.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_4.4.3" id="A_4.4.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">4.4.10</span>
+</h5></a></div>
+<div id="hk-A_4.4.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1115">
+During a 30-minute workout, a person riding an exercise machine burns calories at a rate of \(c\) calories per minute, where the function \(y = c(t)\) is given in <a knowl="./knowl/F_4.4.Act3.html" knowl-id="xref-F_4.4.Act3" alt="Figure 4.4.11 " title="Figure 4.4.11 ">Figure 4.4.11</a>. On the interval \(0 \le t \le 10\), the formula for \(c\) is \(c(t) = -0.05t^2 + t + 10\), while on \(20 \le t \le 30\), its formula is \(c(t) = -0.05t^2 + 2t - 5\).
+</p>
+<figure class="figure-like" id="F_4.4.Act3"><img width="100%" src="images/4_4_Act3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.4.11</span>The rate \(c(t)\) at which a person exercising burns calories, measured in calories per minute.</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1844">What is the exact total number of calories the person burns during the first 10 minutes of her workout?</li>
+<li id="li-1845">Let \(C(t)\) be an antiderivative of \(c(t)\).  What is the meaning of \(C(30) - C(0)\) in the context of the person exercising?  Include units on your answer.</li>
+<li id="li-1846">Determine the exact average rate at which the person burned calories during the 30-minute workout.</li>
+<li id="li-1847">At what time(s), if any, is the instantaneous rate at which the person is burning calories equal to the average rate at which she burns calories, on the time interval \(0 \le t \le 30\)?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-149" id="hint-149"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-149" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1848">What are the units on the area of a rectangle found in a Riemann sum for the function \(y= c(t)\)?</li>
+<li id="li-1849">Use the FTC.</li>
+<li id="li-1850">Recall the formula for \(c_{\mbox{\tiny{AVG}} [0,30]}\).</li>
+<li id="li-1851">Think carefully about which function tells you the instantaneous rate at which calories are burned.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-150" id="hint-150"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-150" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1852">What are the units on the area of a rectangle found in a Riemann sum for the function \(y= c(t)\)?  What will be the units on area bounded by the curve?</li>
+<li id="li-1853">Use a definite integral and the FTC, as well as your work in (a).</li>
+<li id="li-1854">Recall the formula for \(c_{\mbox{\tiny{AVG}} [0,30]}\).  Think about the relevant integral in terms of three subintervals: \([0,10]\), \([10,20]\), and \([20,30]\).</li>
+<li id="li-1855">Think carefully about which function tells you the instantaneous rate at which calories are burned, and consider your result in (c).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-74" id="solution-74"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-74" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1856">Since the units on a rectangle in a Riemann sum are cal/min for the height and min for the width, the units on the area of such a rectangle are calories, and hence the units on area under the curve \(y = c(t)\) are given in total calories.  Hence, the total calories burned during the first 10 minutes of the workout is given by the definite integral \(\int_0^{10} c(t) \, dt\).  We use the FTC and evaluate the integral, finding that
+	
+<span class="displaymath" id="md-53">\begin{align*}
+\int_0^{10} (-0.05t^2 + t + 10) \, dt \amp  = \amp  \left. \left( -\frac{0.05}{3} t^3 + \frac{1}{2} t^2 + 10t \right) \right|_0^{10}\\
+\amp  = \amp   \left( -\frac{0.05}{3} (10)^3 + \frac{1}{2} (10)^2 + 10(10) \right) - (-0 + 0 + 0)\\
+\amp  = \amp  \frac{400}{3} \ \mbox{calories} .
+\end{align*}</span>
+ 
+	Thus, the person burned approximately 133.33 calories in the first 10 minutes of the workout.</li>
+<li id="li-1857">We observe first that by the Total Change Theorem, \(C(30) - C(0) = \int_0^{30} C'(t) \, dt = \int_0^{30} c(t) \, dt\), and therefore, as discussed in (a), the meaning of this value is the total calories burned on \([0,30]\).</li>
+<li id="li-1858">The exact average rate at which the person burned calories on \(0 \le t \le 30\) is given by 
+	
+<span class="displaymath" id="me-481">\[
+c_{\mbox{\tiny{AVG}} [0,30]} = \frac{1}{30-0} \int_0^{30} c(t) \, dt.
+\]</span>
+ 
+	To calculate \(\int_0^{30} c(t) \, dt,\) we recognize that \(c(t)\) is defined in piecewise fashion, and use the additive property of the definite integral, which tells us that 
+	
+<span class="displaymath" id="me-482">\[
+\int_0^{30} c(t) \, dt = \int_0^{10} c(t) \, dt +  \int_{10}^{20} c(t) \, dt +  \int_{20}^{30} c(t) \, dt.
+\]</span>
+ 
+	We know from our work in (a) that \(\int_0^{10} c(t) \, dt = \frac{400}{3}\).  Since \(c(t) = 15\) is constant on \(10 \le t \le 20\), it follows that \( \int_{10}^{20} c(t) \, dt  = 15 \cdot 10 = 150\).  And finally, it is straightforward to show using \(c(t) = -0.05t^2 + 2t - 5\) on \(20 \le t \le 30\) that \(\int_{20}^{30} c(t) \, dt = \frac{400}{3}\).  Hence,
+	
+<span class="displaymath" id="md-54">\begin{align*}
+\int_0^{30} c(t) \, dt \amp  = \amp  \int_0^{10} c(t) \, dt +  \int_{10}^{20} c(t) \, dt +  \int_{20}^{30} c(t) \, dt\\
+\amp  = \amp  \frac{400}{3} + 150 + \frac{400}{3}\\
+\amp  = \amp  \frac{1250}{3} \approx 416.67 \ \mbox{calories} .
+\end{align*}</span>
+ 
+	Now, it follows that the exact average rate at which calories were burned on \([0,30]\) is
+	
+<span class="displaymath" id="me-483">\[
+c_{\mbox{\tiny{AVG}} [0,30]} = \frac{1}{30-0} \int_0^{30} c(t) \, dt = \frac{1}{30} \cdot \frac{1250}{3} = \frac{1250}{90} \approx 13.89 \ \mbox{cal/min} .
+\]</span>
+</li>
+<li id="li-1859">It makes sense intuitively that there must be at least one time at which the instantaneous rate at which calories are burned equals the average rate at which calories are burned, as it would be impossible for a continuous instantaneous rate of change to always be above its average value.  Since we know from (c) that \(c_{\mbox{\tiny{AVG}} [0,30]} = \frac{125}{9}\), and \(c(t)\) tells us the instantaneous rate at which calories are burned, it follows that we want to solve the equation
+	
+<span class="displaymath" id="me-484">\[
+c(t) = \frac{125}{9}.
+\]</span>
+ 
+From the graph, it appears that there are two such values of \(t\) for which this equation is true, one in the first ten minutes, and one in the last ten.  For instance, solving
+
+<span class="displaymath" id="me-485">\[
+-0.05t^2 + t + 10 = \frac{125}{9},
+\]</span>
+ 
+it follows that \(t = 10 \pm 10\sqrt{2}/3 \approx 14.714, 5.286\), only the second of which lies in \(0 \le t \le 10\).  So one time at which the instantaneous rate at which calories are burned equals the average rate on \([0,30]\) is \(t = 10 - 10\sqrt{2}/3 \approx 5.286.\)  Similar reasoning shows that the other time is \(t = 20 + 10\sqrt{2}/3 \approx 24.714\).</li>
+</ol></span></span><p id="p-1116">
+\item We can find the exact value of a definite integral without taking the limit of a Riemann sum or using a familiar area formula by finding the antiderivative of the integrand, and hence applying the Fundamental Theorem of Calculus.
+\item The Fundamental Theorem of Calculus says that if \(f\) is a continuous function on \([a,b]\) and \(F\) is an antiderivative of \(f\), then
+</p>
+<span class="displaymath" id="me-486">\[
+\int_a^b f(x) \, dx = F(b) - F(a).
+\]</span><p id="p-1117">
+Hence, if we can find an antiderivative for the integrand \(f\), evaluating the definite integral comes from simply computing the change in \(F\) on \([a,b]\).
+\item A slightly different perspective on the FTC allows us to restate it as the Total Change Theorem, which says that
+</p>
+<span class="displaymath" id="me-487">\[
+\int_a^b f'(x) \, dx = f(b) - f(a),
+\]</span><p id="p-1118">
+for any continuously differentiable function \(f\). This means that the definite integral of the instantaneous rate of change of a function \(f\) on an interval \([a,b]\) is equal to the total change in the function \(f\) on \([a,b]\).
+</p>
+<p id="p-1119">
+\hrulefill
+</p>
+<p id="p-1120">
+\begin{exercises}
+\item The instantaneous velocity (in meters per minute) of a moving object is given by the function \(v\) as pictured in <a knowl="./knowl/F_4.4.Ez2.html" knowl-id="xref-F_4.4.Ez2" alt="Figure 4.4.12 " title="Figure 4.4.12 ">Figure 4.4.12</a>. Assume that on the interval \(0 \le t \le 4\), \(v(t)\) is given by \(v(t) = -\frac{1}{4}t^3 + \frac{3}{2}t^2 + 1\), and that on every other interval \(v\) is piecewise linear, as shown.
+</p>
+<figure class="figure-like" id="F_4.4.Ez2"><img width="100%" src="images/4_4_Ez2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.4.12</span>The velocity function of a moving body.</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1860">Determine the exact distance traveled by the object on the time interval \(0 \le t \le 4\).</li>
+<li id="li-1861">What is the object's average velocity on \([12,24]\)?</li>
+<li id="li-1862">At what time is the object's acceleration greatest?</li>
+<li id="li-1863">Suppose that the velocity of the object is increased by a constant value \(c\) for all values of \(t\).  What value of \(c\) will make the object's total distance traveled on \([12,24]\) be 210 meters?</li>
+</ol>
+<p id="p-1121">
+\item A function \(f\) is given piecewise by the formula
+</p>
+<span class="displaymath" id="me-488">\[
+f(x) = \left\{ 
+  	\begin{array}{lr}
+	-x^2 + 2x + 1, \amp  \ \mbox{if}  \ 0 \le x \lt  2 \\
+	-x + 3, \amp  \ \mbox{if}  \ 2 \le x \lt  3 \\
+	x^2 - 8x + 15, \amp  \ \mbox{if}  \ 3 \le x \le 5
+\end{array} 
+	\right.
+  
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-1864">Determine the exact value of the net signed area enclosed by \(f\) and the \(x\)-axis on the interval \([2,5]\).</li>
+<li id="li-1865">Compute the exact average value of \(f\) on \([0,5]\).</li>
+<li id="li-1866">Find a formula for a function \(g\) on \(5 \le x \le 7\) so that if we extend the above definition of \(f\) so that \(f(x) = g(x)\) if \(5 \le x \le 7\), it follows that \(\int_0^7 f(x) \, dx = 0.\)</li>
+</ol>
+<p id="p-1122">
+\item When an aircraft attempts to climb as rapidly as
+possible, its climb rate (in feet per minute) decreases as altitude
+increases, because the air is less dense at higher altitudes.
+Given below is a table showing performance data for a certain
+single engine aircraft, giving its climb rate at various altitudes, where \(c(h)\) denotes the climb rate of the airplane at an altitude \(h\).
+</p>
+<p id="p-1123">
+\begingroup
+\footnotesize
+</p>
+<figure class="figure-like" id="table-23">
+    \(h\) (feet)\amp 0\amp 1000\amp 2000\amp 3000\amp 4000\amp 5000\amp 6000\amp 7000\amp 8000\amp 9000\amp 10,000
+    \(c\) (ft/min)\amp 925\amp 875\amp 830\amp 780\amp 730\amp 685\amp 635\amp 585\amp 535\amp 490\amp 440</figure><p id="p-1124">
+\endgroup
+</p>
+<p id="p-1125">
+Let a new function called \(m(h)\) measure
+the number of minutes required for a plane at altitude \(h\) to climb the
+next foot of altitude.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1867">Determine a similar table of values for \(m(h)\) and explain how it is related to the table above.  Be sure to explain the units.</li>
+<li id="li-1868">Give a careful interpretation of a function whose derivative
+is \(m(h)\).  Describe what the input is and what the output is.  Also,
+explain in plain English what the function tells us.</li>
+<li id="li-1869">Determine a definite integral whose value tells us exactly the number of minutes required for the airplane to ascend to
+10,000 feet of altitude.  Clearly explain why the value of this integral has the required meaning.</li>
+<li id="li-1870">Use the Riemann sum \(M_5\) to estimate the value of the integral you found in (c).  Include units on your result.</li>
+</ol>
+<p id="p-1126">
+\item In <a href="C_1.html" alt="Chapter 1 Understanding the Derivative" title="Chapter 1 Understanding the Derivative">Chapter 1</a>, we showed that for an object moving along a straight line with position function \(s(t)\), the object's “average velocity on the interval \([a,b]\)” is given by
+</p>
+<span class="displaymath" id="me-489">\[
+\displaystyle AV_{[a,b]} =  \frac{s(b)-s(a)}{b-a}.
+\]</span><p id="p-1127">
+More recently in <a href="C_4.html" alt="Chapter 4 The Definite Integral" title="Chapter 4 The Definite Integral">Chapter 4</a>, we found that for an object moving along a straight line with velocity function \(v(t)\), the object's “average value of its velocity function on \([a,b]\)” is
+</p>
+<span class="displaymath" id="me-490">\[
+\displaystyle v_{\mbox{\tiny{AVG}} [a,b]}  = \frac{1}{b-a} \int_a^b v(t) \, dt.
+\]</span><p id="p-1128">
+Are the “average velocity on the interval \([a,b]\)” and the “average value of the velocity function on \([a,b]\)” the same thing? Why or why not? Explain.
+</p>
+<p id="p-1129">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1130">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

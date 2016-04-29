@@ -1,0 +1,89 @@
+\section{Derivatives of other trigonometric functions} \label{S:2.4.OtherTrig}
+
+\vspace*{-14 pt}
+\framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{\begin{goals}
+\item What are the derivatives of the tangent, cotangent, secant, and cosecant functions?
+\item How do the derivatives of $\tan(x)$, $\cot(x)$, $\sec(x)$, and $\csc(x)$ combine with other derivative rules we have developed to expand the library of functions we can quickly differentiate?
+\end{goals}} \hspace*{3 pt}}
+
+\subsection*{Introduction}
+
+One of the powerful themes in trigonometry \index{trigonometry} is that the entire subject emanates from a very simple idea: locating a point on the unit circle.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics{figures/2_4_UnitCircle.eps}
+\caption{The unit circle and the definition of the sine and cosine functions.} \label{F:2.4.UnitCircle}
+\end{center}
+\end{figure}
+
+Because each angle $\theta$ corresponds to one and only one point $(x,y)$ on the unit circle, the $x$- and $y$-coordinates of this point are each functions of $\theta$.  Indeed, this is the very definition of $\cos(\theta)$ and $\sin(\theta)$: $\cos(\theta)$ is the $x$-coordinate of the point on the unit circle corresponding to the angle $\theta$, and $\sin(\theta)$ is the $y$-coordinate.  From this simple definition, all of trigonometry is founded.  For instance, the fundamental trigonometric identity\index{trigonometry!fundamental trigonometric identity},
+$$\sin^2(\theta) + \cos^2(\theta) = 1,$$
+is a restatement of the Pythagorean Theorem, applied to the right triangle shown in Figure~\ref{F:2.4.UnitCircle}.
+
+We recall as well that there are four other trigonometric functions, each defined in terms of the sine and/or cosine functions.  These six trigonometric functions together offer us a wide range of flexibility in problems involving right triangles.  The tangent function \index{tangent} is defined by $\tan(\theta) = \frac{\sin(\theta)}{\cos(\theta)}$, while the cotangent function is its reciprocal:  $\cot(\theta) = \frac{\cos(\theta)}{\sin(\theta)}$.  The secant function is the reciprocal of the cosine function, $\sec(\theta) = \frac{1}{\cos(\theta)}$, and the cosecant function is the reciprocal of the sine function, $\csc(\theta) = \frac{1}{\sin(\theta)}$.  
+
+Because we know the derivatives of the sine and cosine function, and the other four trigonometric functions are defined in terms of these familiar functions, we can now develop shortcut differentiation rules for the tangent, cotangent, secant, and cosecant functions.  In this section's preview activity, we work through the steps to find the derivative of $y = \tan(x)$.
+
+\input{previews/2.4.PA1}
+
+\subsection*{Derivatives of the cotangent, secant, and cosecant functions} \index{cotangent} \index{secant} \index{cosecant}
+
+In Preview Activity~\ref{PA:2.4}, we found that the derivative of the tangent function can be expressed in several ways, but most simply in terms of the secant function.  Next, we develop the derivative of the cotangent function.
+
+Let $g(x) = \cot(x)$.  To find $g'(x)$, we observe that $g(x) = \frac{\cos(x)}{\sin(x)}$ and apply the quotient rule.  Hence
+\begin{eqnarray*}
+	g'(x) & = & \frac{\sin(x)(-\sin(x)) - \cos(x) \cos(x)}{\sin^2(x)} \\
+	        & = & -\frac{\sin^2(x) + \cos^2(x)}{\sin^2(x)}
+\end{eqnarray*}
+By the Fundamental Trigonometric Identity, we see that $g'(x) = -\frac{1}{\sin^2(x)}$; recalling that $\csc(x) = \frac{1}{\sin(x)}$, it follows that we can most simply express $g'$ by the rule
+$$g'(x) = -\csc^2(x).$$
+Note that neither $g$ nor $g'$ is defined when $\sin(x) = 0$, which occurs at every integer multiple of $\pi$.  Hence we have the following rule.
+
+\vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+{\bf Cotangent Function:} \index{derivative!cotangent} For all real numbers $x$ such that $x \ne k\pi$, where $k = 0, \pm 1, \pm 2, \ldots$,  $$\frac{d}{dx} [\cot(x)] = -\csc^2(x).$$
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+Observe that the shortcut rule for the cotangent function is very similar to the rule we discovered in Preview Activity~\ref{PA:2.4} for the tangent function.
+
+\vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+{\bf Tangent Function:} \index{derivative!tangent}  For all real numbers $x$ such that $x \ne \frac{(2k+1)\pi}{2}$, where $k = \pm 1, \pm 2, \ldots$,  $$\frac{d}{dx} [\tan(x)] = \sec^2(x).$$
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+In the next two activities, we develop the rules for differentiating the secant and cosecant functions.
+
+\input{activities/2.4.Act1}
+
+\newpage
+
+\input{activities/2.4.Act2}
+
+The quotient rule has thus enabled us to determine the derivatives of the tangent, cotangent, secant, and cosecant functions, expanding our overall library of basic functions we can differentiate.  Moreover, we observe that just as the derivative of any polynomial function is a polynomial, and the derivative of any exponential function is another exponential function, so it is that the derivative of any basic trigonometric function is another function that consists of basic trigonometric functions.  This makes sense because all trigonometric functions are periodic, and hence their derivatives will be periodic, too.
+
+As has been and will continue to be the case throughout our work in Chapter~\ref{C:2}, the derivative retains all of its fundamental meaning as an instantaneous rate of change and as the slope of the tangent line to the function under consideration.  Our present work primarily expands the list of functions for which we can quickly determine a formula for the derivative.  Moreover, with the addition of $\tan(x)$, $\cot(x)$, $\sec(x)$, and $\csc(x)$ to our library of basic functions, there are many more functions we can differentiate through the sum, constant multiple, product, and quotient rules.  
+
+\input{activities/2.4.Act3}
+
+%\nin \framebox{\hspace*{3 pt}
+%\parbox{6.25 in}{
+\begin{summary}
+\item The derivatives of the other four trigonometric functions are
+$$\frac{d}{dx}[\tan(x)] = \sec^2(x), \ \ \frac{d}{dx}[\cot(x)] = -\csc^2(x),$$ 
+$$\frac{d}{dx}[\sec(x)] = \sec(x)\tan(x), \ \mbox{and} \ \frac{d}{dx}[\csc(x)] = -\csc(x)\cot(x).$$
+Each derivative exists and is defined on the same domain as the original function.  For example, both the tangent function and its derivative are defined for all real numbers $x$ such that $x \ne \frac{k\pi}{2}$, where $k = \pm 1, \pm 2, \ldots$.
+\item The above four rules for the derivatives of the tangent, cotangent, secant, and cosecant can be used along with the rules for power functions, exponential functions, and the sine and cosine, as well as the sum, constant multiple, product, and quotient rules, to quickly differentiate a wide range of different functions.
+\end{summary}
+%} \hspace*{3 pt}}
+
+\nin \hrulefill
+
+\input{exercises/2.4.OtherTrig(Ex)} 
+
+\clearpage

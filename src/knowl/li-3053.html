@@ -1,0 +1,20 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:46-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">10</span>
+</h5>For this example we will use the Integral Test with the substitution \(w = \ln(x)\), \(dw = \frac{1}{x} \ dx\):
+
+<span class="displaymath" id="md-121">\begin{align*}
+\displaystyle \int_2^{\infty} \frac{1}{x \ln(x)} \ dx \amp = \lim_{b \to \infty} \int_2^b \frac{1}{x \ln(x)} \ dx\\
+\amp = \displaystyle \lim_{b \to \infty} \int_{\ln(2)}^{\ln(b)} \frac{1}{w} \ dw\\
+\amp = \displaystyle \lim_{b \to \infty} \ln(w) \bigm|_{\ln(2)}^{\ln(b)}\\
+\amp = \displaystyle \lim_{b \to \infty} \left[ \ln(\ln(b)) - \ln(\ln(2)) \right]\\
+\amp = \infty.
+\end{align*}</span>
+ 
+Since \(\ds \int_2^{\infty} \frac{1}{x \ln(x)} \ dx\) diverges, we conclude \(\ds \sum_{k=2}^{\infty} \ \frac{1}{k \ln(k)}\) diverges.</article><span class="incontext"><a href="S_8.4.Alternating.html#li-3053">in-context</a></span>

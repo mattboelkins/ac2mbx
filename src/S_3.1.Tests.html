@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:41-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Using derivatives to identify extreme values</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="C_3.html">Previous</a><a class="up-button button toolbar-item" href="C_3.html">Up</a><a class="next-button button toolbar-item" href="S_3.2.Families.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="C_3.html">Previous</a><a class="up-button button toolbar-item" href="C_3.html">Up</a><a class="next-button button toolbar-item" href="S_3.2.Families.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link active"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html" class="active">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_3.1.Tests"><header><h1 class="heading" alt="Section 3.1 Using derivatives to identify extreme values" title="Section 3.1 Using derivatives to identify extreme values">
+<span class="type">Section</span><span class="codenumber">3.1</span><span class="title">Using derivatives to identify extreme values</span><a href="S_3.1.Tests.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-17"><h5 class="heading"></h5>
+<p id="p-679">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1192">What are the critical numbers of a function \(f\) and how are they connected to identifying the most extreme values the function achieves?</li>
+<li id="li-1193">How does the first derivative of a function reveal important information about the behavior of the function, including the function's extreme values?</li>
+<li id="li-1194">How can the second derivative of a function be used to help identify extreme values of the function?</li>
+</ul>
+<p id="p-680">
+} 
+</p></article><section class="subsection" id="subsection-51"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">3.1.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-681">
+In many different settings, we are interested in knowing where a function achieves its least and greatest values. These can be important in applications – say to identify a point at which maximum profit or minimum cost occurs – or in theory to understand how to characterize the behavior of a function or a family of related functions. Consider the simple and familiar example of a parabolic function such as \(s(t) = -16t^2 + 32t + 48\) (shown at left in <a knowl="./knowl/F_3.1.Intro.html" knowl-id="xref-F_3.1.Intro" alt="Figure 3.1.1 " title="Figure 3.1.1 ">Figure 3.1.1</a>) that represents the height of an object tossed vertically: its maximum value occurs at the vertex of the parabola and represents the highest value that the object reaches. Moreover, this maximum value identifies an especially important point on the graph, the point at which the curve changes from increasing to decreasing.
+</p>
+<figure class="figure-like" id="F_3.1.Intro"><img width="100%" src="images/3_1_Intro.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.1.1</span>At left, \(s(t) = -16t^2 + 24t + 32\) whose vertex is \((\frac{3}{4}, 41)\); at right, a function \(g\) that demonstrates several high and low points.</figcaption></figure><p id="p-682">
+More generally, for any function we consider, we can investigate where its lowest and highest points occur in comparison to points nearby or to all possible points on the graph. Given a function \(f\), we say that \(f(c)\) is a <!--Style me with CSS--><em>global</em> or <!--Style me with CSS--><em>absolute maximum</em> \knownindex{\lt main&gt;maximum\lt /main&gt;\lt sub&gt;global\lt /sub&gt;} \knownindex{\lt main&gt;maximum\lt /main&gt;\lt sub&gt;absolute\lt /sub&gt;} provided that \(f(c) \ge f(x)\) for all \(x\) in the domain of \(f\), and similarly call \(f(c)\) a <!--Style me with CSS--><em>global</em> \knownindex{\lt main&gt;minimum\lt /main&gt;\lt sub&gt;global\lt /sub&gt;} or <!--Style me with CSS--><em>absolute minimum</em> \knownindex{\lt main&gt;minimum\lt /main&gt;\lt sub&gt;absolute\lt /sub&gt;} whenever \(f(c) \le f(x)\) for all \(x\) in the domain of \(f\). For instance, for the function \(g\) given at right in <a knowl="./knowl/F_3.1.Intro.html" knowl-id="xref-F_3.1.Intro" alt="Figure 3.1.1 " title="Figure 3.1.1 ">Figure 3.1.1</a>, \(g\) has a global maximum of \(g(c)\), but \(g\) does not appear to have a global minimum, as the graph of \(g\) seems to decrease without bound. We note that the point \((c,g(c))\) marks a fundamental change in the behavior of \(g\), where \(g\) changes from increasing to decreasing; similar things happen at both \((a,g(a))\) and \((b,g(b))\), although these points are not global mins or maxes.
+</p>
+<p id="p-683">
+For any function \(f\), we say that \(f(c)\) is a <!--Style me with CSS--><em>local maximum</em> \knownindex{\lt main&gt;maximum\lt /main&gt;\lt sub&gt;local\lt /sub&gt;} or <!--Style me with CSS--><em>relative maximum</em> \knownindex{\lt main&gt;maximum\lt /main&gt;\lt sub&gt;relative\lt /sub&gt;} provided that \(f(c) \ge f(x)\) for all \(x\) near \(c\), while \(f(c)\) is called a <!--Style me with CSS--><em>local</em> \knownindex{\lt main&gt;minimum\lt /main&gt;\lt sub&gt;local\lt /sub&gt;} or <!--Style me with CSS--><em>relative minimum</em> \knownindex{\lt main&gt;minimum\lt /main&gt;\lt sub&gt;relative\lt /sub&gt;} whenever \(f(c) \le f(x)\) for all \(x\) near \(c\). Any maximum or minimum may be called an <!--Style me with CSS--><em>extreme value</em> \knownindex{\lt main&gt;extreme value\lt /main&gt;} of \(f\). For example, in <a knowl="./knowl/F_3.1.Intro.html" knowl-id="xref-F_3.1.Intro" alt="Figure 3.1.1 " title="Figure 3.1.1 ">Figure 3.1.1</a>, \(g\) has a relative minimum of \(g(b)\) at the point \((b,g(b))\) and a relative maximum of \(g(a)\) at \((a,g(a))\). We have already identified the global maximum of \(g\) as \(g(c)\); this global maximum can also be considered a relative maximum.
+</p>
+<p id="p-684">
+We would like to use fundamental calculus ideas to help us identify and classify key function behavior, including the location of relative extremes. Of course, if we are given a graph of a function, it is often straightforward to locate these important behaviors visually. We investigate this situation in the following preview activity.
+</p>
+<article class="paragraphs" id="PA_3.1"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-685">
+Consider the function \(h\) given by the graph in <a knowl="./knowl/F_3.1.PA1.html" knowl-id="xref-F_3.1.PA1" alt="Figure 3.1.2 " title="Figure 3.1.2 ">Figure 3.1.2</a>. Use the graph to answer each of the following questions.
+</p>
+<figure class="figure-like" id="F_3.1.PA1"><img width="100%" src="images/3_1_PA1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.1.2</span>The graph of a function \(h\) on the interval \([-3,3]\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1195">Identify all of the values of \(c\) for which \(h(c)\) is a local maximum of \(h\).</li>
+<li id="li-1196">Identify all of the values of \(c\) for which \(h(c)\) is a local minimum of \(h\).</li>
+<li id="li-1197">Does \(h\) have a global maximum?  If so, what is the value of this global maximum?</li>
+<li id="li-1198">Does \(h\) have a global minimum?  If so, what is its value?</li>
+<li id="li-1199">Identify all values of \(c\) for which \(h'(c) = 0\).</li>
+<li id="li-1200">Identify all values of \(c\) for which \(h'(c)\) does not exist.</li>
+<li id="li-1201">True or false: every relative maximum and minimum of \(h\) occurs at a point where \(h'(c)\) is either zero or does not exist.</li>
+<li id="li-1202">True or false: at every point where \(h'(c)\) is zero or does not exist, \(h\) has a relative maximum or minimum.</li>
+</ol></article></section><section class="subsection" id="subsection-52"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">3.1.2</span><span class="title">Critical numbers and the first derivative test</span>
+</h1></header><p id="p-686">
+If a function has a relative extreme value at a point \((c,f(c))\), the function must change its behavior at \(c\) regarding whether it is increasing or decreasing before or after the point.
+</p>
+<figure class="figure-like" id="F_3.1.extremes"><img width="100%" src="images/3_1_extremes.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.1.3</span>From left to right, a function with a relative maximum where its derivative is zero; a function with a relative maximum where its derivative is undefined; a function with neither a maximum nor a minimum at a point where its derivative is zero; a function with a relative minimum where its derivative is zero; and a function with a relative minimum where its derivative is undefined.</figcaption></figure><p id="p-687">
+For example, if a continuous function has a relative maximum at \(c\), such as those pictured in the two leftmost functions in <a knowl="./knowl/F_3.1.extremes.html" knowl-id="xref-F_3.1.extremes" alt="Figure 3.1.3 " title="Figure 3.1.3 ">Figure 3.1.3</a>, then it is both necessary and sufficient that the function change from being increasing just before \(c\) to decreasing just after \(c\). In the same way, a continuous function has a relative minimum at \(c\) if and only if the function changes from decreasing to increasing at \(c\). See, for instance, the two functions pictured at right in <a knowl="./knowl/F_3.1.extremes.html" knowl-id="xref-F_3.1.extremes" alt="Figure 3.1.3 " title="Figure 3.1.3 ">Figure 3.1.3</a>. There are only two possible ways for these changes in behavior to occur: either \(f'(c) = 0\) or \(f'(c)\) is undefined.
+</p>
+<p id="p-688">
+Because these values of \(c\) are so important, we call them <!--Style me with CSS--><em>critical numbers</em>. More specifically, we say that a function \(f\) has a <!--Style me with CSS--><em>critical number</em> \knownindex{\lt main&gt;critical number\lt /main&gt;} at \(x = c\) provided that \(c\) is in the domain of \(f\), and \(f'(c) = 0\) or \(f'(c)\) is undefined. Critical numbers provide us with the only possible locations where the function \(f\) may have relative extremes. Note that not every critical number produces a maximum or minimum; in the middle graph of <a knowl="./knowl/F_3.1.extremes.html" knowl-id="xref-F_3.1.extremes" alt="Figure 3.1.3 " title="Figure 3.1.3 ">Figure 3.1.3</a>, the function pictured there has a horizontal tangent line at the noted point, but the function is increasing before and increasing after, so the critical number does not yield a location where the function is greater than every value nearby, nor less than every value nearby.
+</p>
+<p id="p-689">
+We also sometimes use the terminology that, when \(c\) is a critical number, that \((c,f(c))\) is a <!--Style me with CSS--><em>critical point</em> \knownindex{\lt main&gt;critical point\lt /main&gt;} of the function, or that \(f(c)\) is a <!--Style me with CSS--><em>critical value</em> \knownindex{\lt main&gt;critical value\lt /main&gt;}.
+</p>
+<p id="p-690">
+The <!--Style me with CSS--><em>first derivative test</em> \knownindex{\lt main&gt;first derivative test\lt /main&gt;} summarizes how sign changes in the first derivative indicate the presence of a local maximum or minimum for a given function.
+</p>
+<p id="p-691">
+
+{
+First Derivative Test:\knownindex{\lt main&gt;first derivative test\lt /main&gt;} If \(p\) is a critical number of a continuous function \(f\) that is differentiable near \(p\) (except possibly at \(x = p\)), then \(f\) has a relative maximum at \(p\) if and only if \(f'\) changes sign from positive to negative at \(p\), and \(f\) has a relative minimum at \(p\) if and only if \(f'\) changes sign from negative to positive at \(p\).
+} 
+
+</p>
+<p id="p-692">
+We consider an example to show one way the first derivative test can be used to identify the relative extreme values of a function.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_f_from_f_" id="Ex_f_from_f_"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">3.1.4</span>
+</h5></article></a></div>
+<div id="hk-Ex_f_from_f_" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-693">
+Let \(f\) be a function whose derivative is given by the formula \(f'(x) = e^{-2x}(3-x)(x+1)^2\). Determine all critical numbers of \(f\) and decide whether a relative maximum, relative minimum, or neither occurs at each.
+</p></article></div>
+<p id="p-694">
+Solution.    
+Since we already have \(f'(x)\) written in factored form, it is straightforward to find the critical numbers of \(f\). Since \(f'(x)\) is defined for all values of \(x\), we need only determine where \(f'(x) = 0\). From the equation
+</p>
+<span class="displaymath" id="me-308">\[
+e^{-2x}(3-x)(x+1)^2 = 0
+\]</span><p id="p-695">
+and the zero product property, it follows that \(x = 3\) and \(x = -1\) are critical numbers of \(f\). (Note particularly that there is no value of \(x\) that makes \(e^{-2x} = 0\).)
+</p>
+<p id="p-696">
+Next, to apply the first derivative test, we'd like to know the sign of \(f'(x)\) at inputs near the critical numbers. Because the critical numbers are the only locations at which \(f'\) can change sign, it follows that the sign of the derivative is the same on each of the intervals created by the critical numbers: for instance, the sign of \(f'\) must be the same for every \(x \lt  -1\). We create a first derivative sign chart to summarize the sign of \(f'\) on the relevant intervals along with the corresponding behavior of \(f\).
+</p>
+<figure class="figure-like" id="F_3.1.signchart"><img width="100%" src="images/3_1_signchart.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.1.5</span>The first derivative sign chart for a function \(f\) whose derivative is given by the formula \(f'(x) = e^{-2x}(3-x)(x+1)^2\).</figcaption></figure><p id="p-697">
+The first derivative sign chart in <a knowl="./knowl/F_3.1.signchart.html" knowl-id="xref-F_3.1.signchart" alt="Figure 3.1.5 " title="Figure 3.1.5 ">Figure 3.1.5</a> comes from thinking about the sign of each of the terms in the factored form of \(f'(x)\) at one selected point in the interval under consideration. For instance, for \(x \lt  -1\), we could consider \(x = -2\) and determine the sign of \(e^{-2x}\), \((3-x)\), and \((x+1)^2\) at the value \(x = -2\). We note that both \(e^{-2x}\) and \((x+1)^2\) are positive regardless of the value of \(x\), while \((3-x)\) is also positive at \(x = -2\). Hence, each of the three terms in \(f'\) is positive, which we indicate by writing “\(+++\).” Taking the product of three positive terms obviously results in a value that is positive, which we denote by the “\(+\)” in the interval to the left of \(x = -1\) indicating the overall sign of \(f'\). And, since \(f'\) is positive on that interval, we further know that \(f\) is increasing, which we summarize by writing “INC” to represent the corresponding behavior of \(f\). In a similar way, we find that \(f'\) is positive and \(f\) is increasing on \(-1 \lt  x \lt  3\), and \(f'\) is negative and \(f\) is decreasing for \(x &gt; 3\).
+</p>
+<p id="p-698">
+Now, by the first derivative test, to find relative extremes of \(f\) we look for critical numbers at which \(f'\) changes sign. In this example, \(f'\) only changes sign at \(x = 3\), where \(f'\) changes from positive to negative, and thus \(f\) has a relative maximum at \(x = 3\). While \(f\) has a critical number at \(x = -1\), since \(f\) is increasing both before and after \(x = -1\), \(f\) has neither a minimum nor a maximum at \(x = -1\).
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_3.1.1" id="A_3.1.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">3.1.6</span>
+</h5></a></div>
+<div id="hk-A_3.1.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-699">
+Suppose that \(g(x)\) is a function continuous for every value of \(x \ne 2\) whose first derivative is \(\ds g'(x) = \frac{(x+4)(x-1)^2}{x-2}\). Further, assume that it is known that \(g\) has a vertical asymptote at \(x = 2\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1203">Determine all critical numbers of \(g\).</li>
+<li id="li-1204">By developing a carefully labeled first derivative sign chart, decide whether \(g\) has  as a local maximum, local minimum, or neither at each critical number.</li>
+<li id="li-1205">Does \(g\) have a global maximum? global minimum? Justify your claims.</li>
+<li id="li-1206">What is the value of \(\ds \lim_{x \to \infty} g'(x)\)?  What does the value of this limit tell you about the long-term behavior of \(g\)?</li>
+<li id="li-1207">Sketch a possible graph of \(y = g(x)\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-93" id="hint-93"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-93" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1208">For which \(x\) is \(g'(x) = 0\)?</li>
+<li id="li-1209">Note that \((x-1)^2\) is positive for all \(x \ne 1\).</li>
+<li id="li-1210">Use your first derivative sign chart from (b).</li>
+<li id="li-1211">Try expanding the numerator before evaluating the limit.</li>
+<li id="li-1212">Think carefully about the information from the sign chart found in (b).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-94" id="hint-94"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-94" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1213">For which \(x\) is \(g'(x) = 0\)?  Remember that a fraction's value is zero if and only if its numerator is zero.</li>
+<li id="li-1214">Note that \((x-1)^2\) is positive for all \(x \ne 1\).  How do the signs of \((x+4)\) and \((x-2)\) then determine the overall sign of \(g'(x)\)?</li>
+<li id="li-1215">Use your first derivative sign chart from (b) and remember to the first derivative test.</li>
+<li id="li-1216">Try expanding the numerator before evaluating the limit and think about what you know about the limit of a rational function as \(x \to \infty\).</li>
+<li id="li-1217">Focus on where \(g\) is increasing and decreasing, along with where it must have a horizontal tangent line.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-46" id="solution-46"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-46" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1218">Since \(\ds g'(x) = \frac{(x+4)(x-1)^2}{x-2}\), we see that \(g'(x) = 0\) implies that \(x = -4\) or \(x = 1\).  While \(x = 2\) makes \(g'\) undefined, we are told that \(g\) has a vertical asymptote at \(x = 2\), so \(x = 2\) is not in the domain of \(g\), and hence is technically not a critical value of \(g\).  Nonetheless, we place \(x = 2\) on our first derivative sign chart since the vertical asymptote is a location at which \(g'\) may change sign.</li>
+<li id="li-1219">The first derivative sign chart shows that \(g'(x) &gt; 0\) for \(x \lt  -4\), \(g'(x) \lt  0\) for \(-4 \lt  x \lt  1\), \(g'(x) \lt  0\) for \(1 \lt  x \lt  2\), and \(g'(x) &gt; 0\) for \(x &gt; 2\).  By the first derivative test, \(g\) has a local maximum at \(x = -4\) and neither a max nor min at \(x = 1\).  As these are the only two critical values, these are the only two locations for possible extremes.  (Note: although \(g\) changes from decreasing to increasing at \(x = 2\), this is due to a vertical asymptote, and \(g\) does not have a minimum there.)</li>
+<li id="li-1220">Because \(g\) is decreasing as \(x \to 2^-\) (where \(g\) has a vertical asymptote), \(g\) does not have a global minimum.  For \(x &gt; 2\), \(g\) is always increasing, which suggests that \(g\) does not have a global maximum (though we do not know for sure that \(g\) increases without bound).</li>
+<li id="li-1221">We observe that
+  
+<span class="displaymath" id="md-34">\begin{align*}
+\lim_{x \to \infty} g'(x) \amp  = \amp  \lim_{x \to \infty} \frac{(x+4)(x-1)^2}{x-2}\\
+\amp  = \amp  \lim_{x \to \infty} \frac{x^3 + 2x^2 - 7x + 4}{x-2} \cdot \frac{\frac{1}{x}}{\frac{1}{x}}\\
+\amp  = \amp  \lim_{x \to \infty} \frac{x^2 + 2x - 7 + \frac{4}{x}}{1 - \frac{2}{x}}\\
+\amp  = \amp  \infty
+\end{align*}</span>
+ 
+Since \(g'(x) \to \infty\) as \(x \to \infty\), this tells us that \(g\) increases without bound as \(x \to \infty\).</li>
+<li id="li-1222">From all of our work above, we know that \(g\) has a local maximum at \(x = -4\), a horizontal tangent line with neither a max nor min at \(x = 1\), and a vertical asymptote at \(x = 2\), plus \(g\) and \(g'\) both increase without bound as \(x \to \infty\).  Thus, a possible graph of \(g\) is the following.
+  <img width="100%" src="images/3_1_Act1Soln.png">
+</li>
+</ol></span></span></section><section class="subsection" id="subsection-53"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">3.1.3</span><span class="title">The second derivative test</span>
+</h1></header><p id="p-700">
+Recall that the second derivative of a function tells us several important things about the behavior of the function itself. For instance, if \(f''\) is positive on an interval, then we know that \(f'\) is increasing on that interval and, consequently, that \(f\) is concave up, which also tells us that throughout the interval the tangent line to \(y = f(x)\) lies below the curve at every point. In this situation where we know that \(f'(p) = 0\), it turns out that the sign of the second derivative determines whether \(f\) has a local minimum or local maximum at the critical number \(p\).
+</p>
+<figure class="figure-like" id="F_3.1.2Dtest"><img width="100%" src="images/3_1_2Dtest.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.1.7</span>Four possible graphs of a function \(f\) with a horizontal tangent line at a critical point.</figcaption></figure><p id="p-701">
+In <a knowl="./knowl/F_3.1.2Dtest.html" knowl-id="xref-F_3.1.2Dtest" alt="Figure 3.1.7 " title="Figure 3.1.7 ">Figure 3.1.7</a>, we see the four possibilities for a function \(f\) that has a critical number \(p\) at which \(f'(p) = 0\), provided \(f''(p)\) is not zero on an interval including \(p\) (except possibly at \(p\)). On either side of the critical number, \(f''\) can be either positive or negative, and hence \(f\) can be either concave up or concave down. In the first two graphs, \(f\) does not change concavity at \(p\), and in those situations, \(f\) has either a local minimum or local maximum. In particular, if \(f'(p) = 0\) and \(f''(p) \lt  0\), then we know \(f\) is concave down at \(p\) with a horizontal tangent line, and this guarantees \(f\) has a local maximum there. This fact, along with the corresponding statement for when \(f''(p)\) is positive, is stated in the <!--Style me with CSS--><em>second derivative test</em>.
+</p>
+<p id="p-702">
+
+{
+Second Derivative Test:\knownindex{\lt main&gt;second derivative test\lt /main&gt;} If \(p\) is a critical number of a continuous function \(f\) such that \(f'(p) = 0\) and \(f''(p) \ne 0\), then \(f\) has a relative maximum at \(p\) if and only if \(f''(p) \lt  0\), and \(f\) has a relative minimum at \(p\) if and only if \(f''(p) &gt; 0\).
+} 
+
+</p>
+<p id="p-703">
+In the event that \(f''(p) = 0\), the second derivative test is inconclusive. That is, the test doesn't provide us any information. This is because if \(f''(p) = 0\), it is possible that \(f\) has a local minimum, local maximum, or neither.<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-20" id="fn-20"><sup> 1 </sup></a></span><span id="hk-fn-20" style="display: none;" class="tex2jax_ignore"><span class="footnote">Consider the functions \(f(x) = x^4\), \(g(x) = -x^4\), and \(h(x) = x^3\) at the critical point \(p = 0\).</span></span>
+</p>
+<p id="p-704">
+Just as a first derivative sign chart reveals all of the increasing and decreasing behavior of a function, we can construct a second derivative sign chart that demonstrates all of the important information involving concavity.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_3.2" id="Ex_3.2"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">3.1.8</span>
+</h5></article></a></div>
+<div id="hk-Ex_3.2" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-705">
+Let \(f(x)\) be a function whose first derivative is \(f'(x) = 3x^4 - 9x^2\). Construct both first and second derivative sign charts for \(f\), fully discuss where \(f\) is increasing and decreasing and concave up and concave down, identify all relative extreme values, and sketch a possible graph of \(f\).
+</p></article></div>
+<p id="p-706">
+Solution.    
+Since we know \(f'(x) = 3x^4 - 9x^2\), we can find the critical numbers of \(f\) by solving \(3x^4 - 9x^2 = 0\). Factoring, we observe that
+</p>
+<span class="displaymath" id="me-309">\[
+0 = 3x^2(x^2 - 3) = 3x^2(x+\sqrt{3})(x-\sqrt{3}),
+\]</span><p id="p-707">
+so that \(x = 0, \pm\sqrt{3}\) are the three critical numbers of \(f\). It then follows that the first derivative sign chart for \(f\) is given in <a knowl="./knowl/F_3.1.signchart2.html" knowl-id="xref-F_3.1.signchart2" alt="Figure 3.1.9 " title="Figure 3.1.9 ">Figure 3.1.9</a>.
+</p>
+<figure class="figure-like" id="F_3.1.signchart2"><img width="100%" src="images/3_1_signchart2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.1.9</span>The first derivative sign chart for \(f\) when \(f'(x) = 3x^4 - 9x^2 = 3x^2(x^2-3)\).</figcaption></figure><p id="p-708">
+Thus, \(f\) is increasing on the intervals \((-\infty, -\sqrt{3})\) and \((\sqrt{3}, \infty)\), while \(f\) is decreasing on \((-\sqrt{3},0)\) and \((0, \sqrt{3})\). Note particularly that by the first derivative test, this information tells us that \(f\) has a local maximum at \(x = -\sqrt{3}\) and a local minimum at \(x = \sqrt{3}\). While \(f\) also has a critical number at \(x = 0\), neither a maximum nor minimum occurs there since \(f'\) does not change sign at \(x = 0\).
+</p>
+<p id="p-709">
+Next, we move on to investigate concavity. Differentiating \(f'(x) = 3x^4 - 9x^2\), we see that \(f''(x) = 12x^3 - 18x\). Since we are interested in knowing the intervals on which \(f''\) is positive and negative, we first find where \(f''(x) = 0\). Observe that
+</p>
+<span class="displaymath" id="me-310">\[
+0 = 12x^3 - 18x = 12x\left(x^2 - \frac{3}{2}\right) = 12x\left(x+\sqrt{\frac{3}{2}}\right)\left(x-\sqrt{\frac{3}{2}}\right),
+\]</span><p id="p-710">
+which implies that \(x = 0, \pm\sqrt{\frac{3}{2}}\). Building a sign chart for \(f''\) in the exact same way we do for \(f'\), we see the result shown in <a knowl="./knowl/F_3.1.signchart3.html" knowl-id="xref-F_3.1.signchart3" alt="Figure 3.1.10 " title="Figure 3.1.10 ">Figure 3.1.10</a>.
+</p>
+<figure class="figure-like" id="F_3.1.signchart3"><img width="100%" src="images/3_1_signchart3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.1.10</span>The second derivative sign chart for \(f\) when \(f''(x) = 12x^3-18x = 12x^2\left(x^2-\sqrt{\frac{3}{2}}\right)\).</figcaption></figure><p id="p-711">
+Therefore, \(f\) is concave down on the intervals \((-\infty, -\sqrt{\frac{3}{2}})\) and \((0, \sqrt{\frac{3}{2}})\), and concave up on \((0, \sqrt{\frac{3}{2}})\) and \((\sqrt{\frac{3}{2}}, \infty)\).
+</p>
+<p id="p-712">
+Putting all of the above information together, we now see a complete and accurate possible graph of \(f\) in <a knowl="./knowl/F_3.1.Ex2.html" knowl-id="xref-F_3.1.Ex2" alt="Figure 3.1.11 " title="Figure 3.1.11 ">Figure 3.1.11</a>.
+</p>
+<figure class="figure-like" id="F_3.1.Ex2"><img width="100%" src="images/3_1_Ex2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.1.11</span>A possible graph of the function \(f\) in <a knowl="./knowl/Ex_3.2.html" knowl-id="xref-Ex_3.2" alt="Example 3.1.8 " title="Example 3.1.8 ">Example 3.1.8</a>.</figcaption></figure><p id="p-713">
+The point \(A = (-\sqrt{3}, f(-\sqrt{3})\) is a local maximum, as \(f\) is increasing prior to \(A\) and decreasing after; similarly, the point \(E = (\sqrt{3}, f(\sqrt{3})\) is a local minimum. Note, too, that \(f\) is concave down at \(A\) and concave up at \(B\), which is consistent both with our second derivative sign chart and the second derivative test. At points \(B\) and \(D\), concavity changes, as we saw in the results of the second derivative sign chart in <a knowl="./knowl/F_3.1.signchart3.html" knowl-id="xref-F_3.1.signchart3" alt="Figure 3.1.10 " title="Figure 3.1.10 ">Figure 3.1.10</a>. Finally, at point \(C\), \(f\) has a critical point with a horizontal tangent line, but neither a maximum nor a minimum occurs there since \(f\) is decreasing both before and after \(C\). It is also the case that concavity changes at \(C\).
+</p>
+<p id="p-714">
+While we completely understand where \(f\) is increasing and decreasing, where \(f\) is concave up and concave down, and where \(f\) has relative extremes, we do not know any specific information about the \(y\)-coordinates of points on the curve. For instance, while we know that \(f\) has a local maximum at \(x = -\sqrt{3}\), we don't know the value of that maximum because we do not know \(f(-\sqrt{3})\). Any vertical translation of our sketch of \(f\) in <a knowl="./knowl/F_3.1.Ex2.html" knowl-id="xref-F_3.1.Ex2" alt="Figure 3.1.11 " title="Figure 3.1.11 ">Figure 3.1.11</a> would satisfy the given criteria for \(f\).
+</p>\hspace{5.0in}<p id="p-715">
+Points \(B\), \(C\), and \(D\) in <a knowl="./knowl/F_3.1.Ex2.html" knowl-id="xref-F_3.1.Ex2" alt="Figure 3.1.11 " title="Figure 3.1.11 ">Figure 3.1.11</a> are locations at which the concavity of \(f\) changes. We give a special name to any such point: if \(p\) is a value in the domain of a continuous function \(f\) at which \(f\) changes concavity, then we say that \((p,f(p))\) is an <!--Style me with CSS--><em>inflection point</em> \knownindex{\lt main&gt;inflection point\lt /main&gt;} of \(f\). Just as we look for locations where \(f\) changes from increasing to decreasing at points where \(f'(p) = 0\) or \(f'(p)\) is undefined, so too we find where \(f''(p) = 0\) or \(f''(p)\) is undefined to see if there are points of inflection at these locations.
+</p>
+<p id="p-716">
+It is important at this point in our study to remind ourselves of the big picture that derivatives help to paint: the sign of the first derivative \(f'\) tells us <!--Style me with CSS--><em>whether</em> the function \(f\) is increasing or decreasing, while the sign of the second derivative \(f''\) tells us <!--Style me with CSS--><em>how</em> the function \(f\) is increasing or decreasing.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_3.1.2" id="A_3.1.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">3.1.12</span>
+</h5></a></div>
+<div id="hk-A_3.1.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-717">
+Suppose that \(g\) is a function whose second derivative, \(g''\), is given by the following graph.
+</p>
+<figure class="figure-like" id="F_3.1.Act2"><img width="100%" src="images/3_1_Act2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.1.13</span>The graph of \(y = g''(x)\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1223">Find all points of inflection of \(g\).</li>
+<li id="li-1224">Fully describe the concavity of \(g\) by making an appropriate sign chart.</li>
+<li id="li-1225">Suppose you are given that \(g'(-1.67857351) = 0\).  Is there is a local maximum, local minimum, or neither (for the function \(g\)) at this critical point of \(g\), or is it impossible to say?  Why?</li>
+<li id="li-1226">Assuming that \(g''(x)\) is a polynomial (and that all important behavior of \(g''\) is seen in the graph above, what degree polynomial do you think \(g(x)\) is?  Why?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-95" id="hint-95"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-95" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1227">What must be true of \(g''(x)\) at a point of inflection?</li>
+<li id="li-1228">Use the given graph to decide where \(g''\) is positive and negative.</li>
+<li id="li-1229">What does the second derivative test say?</li>
+<li id="li-1230">Can you guess a formula for \(g''(x)\) based on its graph?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-96" id="hint-96"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-96" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1231">At what points on the given graph does \(g''(x)\) change sign?</li>
+<li id="li-1232">From the given graph, where is \(g''(x) &gt; 0\)?  \(g''(x) \lt  0\)?</li>
+<li id="li-1233">What does the second derivative test say?  What is \(g''(-1.67857351)\)?</li>
+<li id="li-1234">Can you guess a formula for \(g''(x)\) based on its graph?  Note that \(g''\) appears to have a repeated root at \(x = 2\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-47" id="solution-47"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-47" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1235">Based on the given graph of \(g''\), the only point at which \(g''\) changes sign is \(x = -1\), and hence this is an inflection point of \(g\).</li>
+<li id="li-1236">Note that \(g''(x) &gt; 0\) for \(x \lt  -1\), \(g''(x) \lt  0\) for \(-1 \lt  x \lt  2\), and \(g''(x) \lt  0\) for \(x &gt; 2\).  This tells us that \(g\) is concave up for \(x \lt  -1\), concave down for \(-1 \lt  x \lt  2\), and concave down for \(x &gt; 2\).</li>
+<li id="li-1237">Given that \(g'(-1.67857351) = 0\), we know that \(g\) has a horizontal tangent line at this critical value.  In addition, from the given graph of \(g''\), we see that \(g''( -1.67857351) &gt; 0\) and observe that \(g\) is concave up at \(x\)-values near \(-1.67857351\).  By the second derivative test, \(g\) has a local minimum at \(x = -1.67857351\).</li>
+<li id="li-1238">From the given graph, since \(g''\) has a simple zero at \(x = -1\) and a repeated zero at \(x = 2\), it appears that \(g''\) is a degree 3 polynomial.  If so, then \(g'\) is a degree 4 polynomial, and \(g\) is a degree 5 polynomial.</li>
+</ol></span></span><p id="p-718">
+As we will see in more detail in the following section, derivatives also help us to understand families of functions that differ only by changing one or more parameters. For instance, we might be interested in understanding the behavior of all functions of the form \(f(x) = a(x-h)^2 + k\) where \(a\), \(h\), and \(k\) are numbers that may vary. In the following activity, we investigate a particular example where the value of a single parameter has considerable impact on how the graph appears.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_3.1.3" id="A_3.1.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">3.1.14</span>
+</h5></a></div>
+<div id="hk-A_3.1.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-719">
+Consider the family of functions given by \(h(x) = x^2 + \cos(kx)\), where \(k\) is an arbitrary positive real number.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1239">Use a graphing utility to sketch the graph of \(h\) for several different \(k\)-values, including \(k = 1,3,5,10\).  Plot \(h(x) = x^2 + \cos(3x)\) on the axes provided below.  
+<figure class="figure-like" id="F_3.1.Act3"><img width="100%" src="images/3_1_Act3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.1.15</span>Axes for plotting \(y = h(x)\).</figcaption></figure>
+ 
+	  What is the smallest value of \(k\) at which you think you can see (just by looking at the graph) at least one inflection point on the graph of \(h\)?</li>
+<li id="li-1240">Explain why the graph of \(h\) has no inflection points if \(k \le \sqrt{2}\), but infinitely many inflection points if \(k &gt; \sqrt{2}\).</li>
+<li id="li-1241">Explain why, no matter the value of \(k\), \(h\) can only have finitely many critical numbers.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-97" id="hint-97"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-97" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1242">Be sure to try some values between 1.5 and 2.</li>
+<li id="li-1243">Treat \(k\) as an arbitrary constant in computing \(h'(x)\) and \(h''(x)\).</li>
+<li id="li-1244">What is the largest value of \(k\sin(kx)\)?  How many times can \(y = k\sin(kx)\) intersect the line \(y = 2x\)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-98" id="hint-98"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-98" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1245">Be sure to try some values between 1.5 and 2.  Remember that an inflection point is a point where concavity changes.</li>
+<li id="li-1246">Treat \(k\) as an arbitrary constant in computing \(h'(x)\) and \(h''(x)\).  In particular, note that \(h'(x) = 2x - k\sin(kx)\).</li>
+<li id="li-1247">Explain why \(-k \le k\sin(kx) \le k\).  How many times can \(y = k\sin(kx)\) intersect the line \(y = 2x\)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-48" id="solution-48"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-48" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1248">In the graph below,
+<img width="100%" src="images/3_1_Act3Soln.png">\(h(x) = x^2 + \cos(3x)\) is given in dark blue, while \(h(x) = x^2 + \cos(1.6x)\) is shown in light blue.  Close inspection of the light blue graph reveals some subtle changes in concavity around \(x \approx \pm 0.5\).  For values smaller than \(1.6\), it is very hard to visually detect any inflection points in \(h(x)\).</li>
+<li id="li-1249">Treating \(k\) as an arbitrary constant, we first observe that \(h'(x) = 2x - k\sin(kx)\). Again treating \(k\) as a constant and differentiating, we find
+		
+<span class="displaymath" id="me-311">\[
+h''(x) = 2 - k^2\cos(kx).
+\]</span>
+ 
+		We seek the values of \(x\) for which \(h''(x) = 0\) at which \(h''\) changes sign.  Setting \(h''(x) = 0\) and rearranging the resulting equation, we now seek \(x\) such that 
+		
+<span class="displaymath" id="me-312">\[
+k^2 \cos(kx) = 2,
+\]</span>
+ 
+		or
+		
+<span class="displaymath" id="me-313">\[
+\cos(kx) = \frac{2}{k^2}.
+\]</span>
+ 
+		Now, remember that \(k\) is an arbitrary positive constant and recall that \(-1 \le \cos(\theta) \le 1\) for all input values \(\theta\).  If \(\frac{2}{k^2} &gt; 1\), then the equation \(\cos(kx) = \frac{2}{k^2}\) has no solution.  Hence, whenever \(k^2 \lt  2\), or \(k \lt  \sqrt{2} \approx 1.414\), it follows that the equation \(\cos(kx) = \frac{2}{k^2}\) has no solutions \(x\), which means that \(h''(x)\) is never zero (indeed, for these \(k\)-values, \(h''(x)\) is always positive so that \(h\) is always concave up).
+		
+On the other hand, if \(k \ge \sqrt{2}\), then \(\frac{2}{k^2} \le 1\), which guarantees that \(\cos(kx) = \frac{2}{k^2}\) has infinitely many solutions, due to the periodicity of the cosine function.  At each such point, \(h''(x) = 2 - k^2 \cos(kx)\) changes sign, and therefore \(h\) has infinitely many inflection points whenever \(k \ge \sqrt{2}\).</li>
+<li id="li-1250">To see why \(h\) can only have a finite number of critical values regardless of the value of \(k\), consider the equation
+		
+<span class="displaymath" id="me-314">\[
+0 = h'(x) = 2x - k\sin(kx),
+\]</span>
+ 
+		which implies that \(2x = k\sin(kx)\).  Since \(-1 \le \sin(kx) \le 1\), we know that \(-k \le k\sin(kx) \le k\).  Once \(|x|\) is sufficiently large, we are guaranteed that \(|2x| &gt; k\), which means that for large \(x\), \(2x\) and \(k\sin(kx)\) cannot intersect.   Moreover, for relatively small values of \(x\), the functions \(2x\) and \(k\sin(kx)\) can only intersect finitely many times since \(k\sin(kx)\) oscillates a finite number of times.  This is why \(h\) can only have a finite number of critical values, regardless of the value of \(k\).</li>
+</ol></span></span><p id="p-720">
+\item The critical values of a continuous function \(f\) are the values of \(p\) for which \(f'(p) = 0\) or \(f'(p)\) does not exist. These values are important because they identify horizontal tangent lines or corner points on the graph, which are the only possible locations at which a local maximum or local minimum can occur.
+\item Given a differentiable function \(f\), whenever \(f'\) is positive, \(f\) is increasing; whenever \(f'\) is negative, \(f\) is decreasing. The first derivative test tells us that at any point where \(f\) changes from increasing to decreasing, \(f\) has a local maximum, while conversely at any point where \(f\) changes from decreasing to increasing \(f\) has a local minimum.
+\item Given a twice differentiable function \(f\), if we have a horizontal tangent line at \(x = p\) and \(f''(p)\) is nonzero, then the fact that \(f''\) tells us the concavity of \(f\) will determine whether \(f\) has a maximum or minimum at \(x = p\). In particular, if \(f'(p) = 0\) and \(f''(p) \lt  0\), then \(f\) is concave down at \(p\) and \(f\) has a local maximum there, while if \(f'(p) = 0\) and \(f''(p) &gt; 0\), then \(f\) has a local minimum at \(p\). If \(f'(p) = 0\) and \(f''(p) = 0\), then the second derivative does not tell us whether \(f\) has a local extreme at \(p\) or not.
+</p>
+<p id="p-721">
+\hrulefill
+</p>
+<p id="p-722">
+\begin{exercises}
+\item This problem concerns a function about which the following information is known:
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1251">\(f\) is a differentiable function defined at every real number \(x\)</li>
+<li id="li-1252">\(f(0) = -1/2\)</li>
+<li id="li-1253">\(y = f'(x)\) has its graph given at center in <a knowl="./knowl/F_3.1.Ez1.html" knowl-id="xref-F_3.1.Ez1" alt="Figure 3.1.16 " title="Figure 3.1.16 ">Figure 3.1.16</a>
+</li>
+</ul>
+<figure class="figure-like" id="F_3.1.Ez1"><img width="100%" src="images/3_1_Ez1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.1.16</span>At center, a graph of \(y = f'(x)\); at left, axes for plotting \(y = f(x)\); at right, axes for plotting \(y = f''(x)\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1254">Construct a first derivative sign chart for \(f\).  Clearly identify all critical numbers of \(f\), where \(f\) is increasing and decreasing, and where \(f\) has local extrema.</li>
+<li id="li-1255">On the right-hand axes, sketch an approximate graph of \(y = f''(x)\).</li>
+<li id="li-1256">Construct a second derivative sign chart for \(f\).  Clearly identify where \(f\) is concave up and concave down, as well as all inflection points.</li>
+<li id="li-1257">On the left-hand axes, sketch a possible graph of \(y = f(x)\).</li>
+</ol>
+<p id="p-723">
+\item Suppose that \(g\) is a differentiable function and \(g'(2) = 0\). In addition, suppose that on \(1 \lt  x\lt  2\) and \(2 \lt  x \lt  3\) it is known that \(g'(x)\) is positive.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1258">Does \(g\) have a local maximum, local minimum, or neither at \(x = 2\)?  Why?</li>
+<li id="li-1259">Suppose that \(g''(x)\) exists for every \(x\) such that \(1 \lt  x \lt  3\).  Reasoning graphically, describe the behavior of \(g''(x)\) for \(x\)-values near \(2\).</li>
+<li id="li-1260">Besides being a critical number of \(g\), what is special about the value \(x = 2\) in terms of the behavior of the graph of \(g\)?</li>
+</ol>
+<p id="p-724">
+\item Suppose that \(h\) is a differentiable function whose first derivative is given by the graph in <a knowl="./knowl/F_3.1.Ez3.html" knowl-id="xref-F_3.1.Ez3" alt="Figure 3.1.17 " title="Figure 3.1.17 ">Figure 3.1.17</a>.
+</p>
+<figure class="figure-like" id="F_3.1.Ez3"><img width="100%" src="images/3_1_Ez3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.1.17</span>The graph of \(y = h'(x)\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1261">How many real number solutions can the equation \(h(x) = 0\) have?  Why?</li>
+<li id="li-1262">If \(h(x) = 0\) has two distinct real solutions, what can you say about the signs of the two solutions?  Why?</li>
+<li id="li-1263">Assume that \(\lim_{x \to \infty} h'(x) = 3\), as appears to be indicated in <a knowl="./knowl/F_3.1.Ez3.html" knowl-id="xref-F_3.1.Ez3" alt="Figure 3.1.17 " title="Figure 3.1.17 ">Figure 3.1.17</a>.  How will the graph of \(y = h(x)\) appear as \(x \to \infty\)?  Why?</li>
+<li id="li-1264">Describe the concavity of \(y = h(x)\) as fully as you can from the provided information.</li>
+</ol>
+<p id="p-725">
+\item Let \(p\) be a function whose second derivative is \(p''(x) = (x+1)(x-2)e^{-x}\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1265">Construct a second derivative sign chart for \(p\) and determine all inflection points of \(p\).</li>
+<li id="li-1266">Suppose you also know that \(x = \frac{\sqrt{5}-1}{2}\) is a critical number of \(p\).  Does \(p\) have a local minimum, local maximum, or neither at \(x = \frac{\sqrt{5}-1}{2}\)?  Why?</li>
+<li id="li-1267">If the point \((2, \frac{12}{e^2})\) lies on the graph of \(y = p(x)\) and \(p'(2) = -\frac{5}{e^2}\), find the equation of the tangent line to \(y = p(x)\) at the point where \(x = 2\).  Does the tangent line lie above the curve, below the curve, or neither at this value?  Why?</li>
+</ol>
+<p id="p-726">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-727">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

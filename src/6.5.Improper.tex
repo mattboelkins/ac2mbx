@@ -1,0 +1,140 @@
+\section{Improper Integrals} \label{S:6.5.Improper}
+
+\vspace*{-14 pt}
+\framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{\begin{goals}
+  \item What are improper integrals and why are they important?
+  \item What does it mean to say that an improper integral converges or diverges?
+  \item What are some typical improper integrals that we can classify as convergent or divergent? 
+\end{goals}} \hspace*{3 pt}}
+
+\subsection*{Introduction}
+
+Another important application of the definite integral %that we are going to study in Section~\ref{S:6.6.Prob} 
+regards how the likelihood of certain events can be measured.  For example, consider a company that manufactures incandescent light bulbs, and suppose that based on a large volume of test results, they have determined that the fraction of light bulbs that fail between times $t = a$ and $t = b$ of use (where $t$ is measured in months) is given by 
+$$\int_a^b 0.3 e^{-0.3t} \, dt.$$
+For example, the fraction of light bulbs that fail during their third month of use is given by
+\begin{eqnarray*} 
+\int_2^3 0.3e^{-0.3t} \, dt & = & -e^{-0.3t} \bigg \vert_2^3 \\
+				& = & -e^{-0.9} + e^{-0.6} \\
+				& \approx & 0.1422.
+\end{eqnarray*}
+Thus about 14.22\% of all lightbulbs fail between $t = 2$ and $t = 3$.  %In our upcoming study of the concept of \emph{probability} in Section~\ref{S:6.6.Prob}, we'll also see how such an integral represents the likelihood that a randomly chosen light bulb fails between $t = 2$ and $t = 3$.  
+Clearly we could adjust the limits of integration to measure the fraction of light bulbs that fail during any time period of interest.
+
+
+
+\input{previews/6.5.PA1}
+
+\subsection*{Improper Integrals Involving Unbounded Intervals} \index{improper integral}
+
+In light of our example with light bulbs that fail, as well as with the problem involving customer wait time in Preview Activity~\ref{PA:6.5}, we see that it is natural to consider questions where we desire to integrate over an interval whose upper limit grows without bound.  For example, if we are interested in the fraction of light bulbs that fail within the first $b$ months of use, we know that the expression
+$$\int_0^b 0.3e^{-0.3t} \, dt$$
+measures this value.  To think about the fraction of light bulbs that fail \emph{eventually}, we understand that we wish to find
+$$\lim_{b \to \infty} \int_0^b 0.3e^{-0.3t} \, dt,$$
+for which we will also use the notation 
+\begin{equation} \label{E:ImpInt1}
+\int_0^\infty 0.3e^{-0.3t} \, dt.
+\end{equation}
+Note particularly that we are studying the area of an unbounded region, as pictured in Figure~\ref{F:6.5.InfReg}.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics{figures/6_5_InfReg.eps}
+\caption{At left, the area bounded by $p(t) = 0.3e^{-0.3t}$ on the finite interval $[0,b]$; at right, the result of letting $b \to \infty$.  By ``$\cdots$'' in the righthand figure, we mean that the region extends to the right without bound.} \label{F:6.5.InfReg}
+\end{center}
+\end{figure}
+
+Anytime we are interested in an integral for which the interval of integration is unbounded (that is, one for which at least one of the limits of integration involves $\infty$), we say that the integral is \emph{improper}\index{improper integral!unbounded region of integration}.  For instance, the integrals
+$$\int_1^{\infty} \frac{1}{x^2} \, dx, \ \ \int_{-\infty}^0 \frac{1}{1+x^2} \, dx, \ \ \mbox{and} \int_{-\infty}^{\infty} e^{-x^2} \, dx$$
+are all improper due to having limits of integration that involve $\infty$.  We investigate the value of any such integral be replacing the improper integral with a limit of proper integrals; for an improper integral such as $\int_0^\infty f(x) \, dx$, we write
+$$\int_0^\infty f(x) \, dx = \lim_{b \to \infty} \int_0^b f(x) \,dx.$$
+We can then attempt to evaluate $\int_0^b f(x) \,dx$ using the First FTC, after which we can evaluate the limit.  An immediate and important question arises: is it even possible for the area of such an unbounded region to be finite?  The following activity explores this issue and others in more detail.
+
+\input{activities/6.5.Act1}
+
+\subsection*{Convergence and Divergence} 
+
+Our work so far has suggested that when we consider a nonnegative function $f$ on an interval $[1,\infty]$, such as $f(x) = \frac{1}{x}$ or $f(x) = \frac{1}{x^{3/2}}$, there are at least two possibilities for the value of $\lim_{b \to \infty} \int_1^b f(x) \, dx$:  the limit is finite or infinite.  With these possibilities in mind, we introduce the following terminology.
+
+\vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+\vspace*{0.07in}
+If $f(x)$ is nonnegative for $x \ge a$, then we say that the improper integral $\int_a^{\infty} f(x) \, dx$
+\emph{converges}\index{improper integral!converges} provided that 
+$$\lim_{b \to \infty} \int_a^{b} f(x) \, dx$$
+exists and is finite.  Otherwise, we say that $\int_a^{\infty} f(x) \, dx$ \emph{diverges}\index{improper integral!diverges}.
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+We normally restrict our interest to improper integrals for which the integrand is nonnegative.  Further, we note that our primary interest is in functions $f$ for which $\lim_{x \to \infty} f(x) = 0$, for if the function $f$ does not approach $0$ as $x \to \infty$, then it is impossible for $\int_a^{\infty} f(x) \, dx$ to converge.
+
+\input{activities/6.5.Act2}
+
+\subsection*{Improper Integrals Involving Unbounded Integrands}
+
+It is also possible for an integral to be improper due to the integrand being unbounded on the interval of integration.  For example, if we consider 
+$$\int_0^1 \frac{1}{\sqrt{x}} \, dx,$$
+we see that because $f(x) = \frac{1}{\sqrt{x}}$ has a vertical asymptote at $x = 0$, $f$ is not continuous on $[0,1]$, and the integral is attempting to represent the area of the unbounded region shown at right in Figure~\ref{F:6.5.InfIntegrand}.
+
+\begin{figure}[h]
+\begin{center}
+\scalebox{0.9}{\includegraphics{figures/6_5_InfIntegrand.eps}}
+\caption{At left, the area bounded by $f(x) = \frac{1}{\sqrt{x}}$ on the finite interval $[a,1]$; at right, the result of letting $a \to 0^+$, where we see that the shaded region will extend vertically without bound.} \label{F:6.5.InfIntegrand}
+\end{center}
+\end{figure}
+
+Just as we did with improper integrals involving infinite limits, we address the problem of the integrand being unbounded\index{improper integral!unbounded integrand} by replacing such an improper integral with a limit of proper integrals.  For example, to evaluate $\int_0^1 \frac{1}{\sqrt{x}} \, dx$, we replace $0$ with $a$ and let $a$ approach 0 from the right.  Thus,
+$$\int_0^1 \frac{1}{\sqrt{x}} \, dx = \lim_{a \to 0^+} \int_a^1 \frac{1}{\sqrt{x}} \, dx,$$
+and then we evaluate the proper integral $\int_a^1 \frac{1}{\sqrt{x}} \, dx$, followed by taking the limit.  In the same way as with improper integrals involving unbounded regions, we will say that the improper integral converges provided that this limit exists, and diverges otherwise.  In the present example, we observe that
+\begin{eqnarray*}
+\int_0^1 \frac{1}{\sqrt{x}} \, dx & = & \lim_{a \to 0^+} \int_a^1 \frac{1}{\sqrt{x}} \, dx \\
+					& = & \lim_{a \to 0^+} 2\sqrt{x} \big\vert_a^1 \\
+					& = & \lim_{a \to 0^+} 2\sqrt{1} - 2\sqrt{a} \\
+					& = & 2,
+\end{eqnarray*}
+and therefore the improper integral $\int_0^1 \frac{1}{\sqrt{x}} \, dx$ converges (to the value 2).
+
+We have to be particularly careful with unbounded integrands, for they may arise in ways that may not initially be obvious.  Consider, for instance, the integral
+$$\int_1^3 \frac{1}{(x-2)^2} \, dx.$$
+At first glance we might think that we can simply apply the Fundamental Theorem of Calculus by antidifferentiating $\frac{1}{(x-2)^2}$ to get $-\frac{1}{x-2}$ and then evaluate from $1$ to $3$.  Were we to do so, we would be erroneously applying the FTC because $f(x) = \frac{1}{(x-2)^2}$ fails to be continuous throughout the interval, as seen in Figure~\ref{F:6.5.InfIntegrand2}.
+
+\begin{figure}[h]
+\begin{center}
+\scalebox{0.9}{\includegraphics{figures/6_5_InfIntegrand2.eps}}
+\caption{The function $f(x) = \frac{1}{(x-2)^2}$ on an interval including $x = 2$.} \label{F:6.5.InfIntegrand2}
+\end{center}
+\end{figure}
+
+Such an incorrect application of the FTC leads to an impossible result ($-2$), which would itself suggest that something we did must be wrong.  Indeed, we must address the vertical asymptote in $f(x) = \frac{1}{(x-2)^2}$ at $x = 2$ by writing
+$$\int_1^3 \frac{1}{(x-2)^2} \, dx = \lim_{a \to 2^-} \int_1^a \frac{1}{(x-2)^2} \, dx + \lim_{b \to 2^+} \int_b^3 \frac{1}{(x-2)^2} \, dx$$
+and then evaluate two separate limits of proper integrals.  For instance, doing so for the integral with $a$ approaching $2$ from the left, we find 
+\begin{eqnarray*}
+\int_1^2 \frac{1}{(x-2)^2} \, dx & = & \lim_{a \to 2^-} \int_1^a \frac{1}{(x-2)^2} \, dx \\
+						& = & \lim_{a \to 2^-} -\frac{1}{(x-2)} \bigg\vert_1^a \\
+						& = & \lim_{a \to 2^-} -\frac{1}{(a-2)} + \frac{1}{1-2} \\
+						& = & \infty,
+\end{eqnarray*}
+since $\frac{1}{a-2} \to -\infty$ as $a$ approaches 2 from the left.  Thus, the improper integral $\int_1^2 \frac{1}{(x-2)^2} \, dx$ diverges; similar work shows that $\int_2^3 \frac{1}{(x-2)^2} \, dx$ also diverges.  From either of these two results, we can conclude that  that the original integral, $\int_1^3 \frac{1}{(x-2)^2} \, dx$ diverges, too.  
+
+\input{activities/6.5.Act3}
+
+
+%\nin \framebox{\hspace*{3 pt}
+%\parbox{6.25 in}{
+\begin{summary}
+  \item An integral $\int_a^b f(x) \, dx$ can be improper if at least one of $a$ or $b$ is $\pm \infty$, making the interval unbounded, or if $f$ has a vertical asymptote at $x = c$ for some value of $c$ that satisfies $a \le c \le b$.  One reason that improper integrals are important is that certain probabilities can be represented by integrals that involve infinite limits.
+  \item When we encounter an improper integral, we work to understand it by replacing the improper integral with a limit of proper integrals.  For instance, we write $$\int_a^\infty f(x) \, dx = \lim_{b \to \infty} \int_a^b f(x) \, dx,$$
+  and then work to determine whether the limit exists and is finite.  For any improper integral, if the resulting limit of proper integrals exists and is finite, we say the improper integral converges.  Otherwise, the improper integral diverges.
+  \item An important class of improper integrals is given by
+  $$\int_1^{\infty} \frac{1}{x^p} \, dx$$
+  where $p$ is a positive real number.  We can show that this improper integral converges whenever $p > 1$, and diverges whenever $0 < p \le 1$.  A related class of improper integrals is $\ds \int_0^1 \frac{1}{x^p} \, dx$, which converges for $0 < p < 1$, and diverges for $p \ge 1$.
+\end{summary}
+%} \hspace*{3 pt}}
+
+\nin \hrulefill
+
+\input{exercises/6.5.Improper(Ex)} 
+
+\clearpage

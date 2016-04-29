@@ -1,0 +1,54 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:07-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">2.7.2.1</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-1096">Because the graph of the curve fails the vertical line test, \(y\) cannot be a function of \(x\).  This also confirms our intuition that there is not an algebraic means by which we can rearrange the equation \(x = y^5 - 5y^3 + 4y\) to write \(y\) in terms of \(x\).</li>
+<li id="li-1097">We differentiate implicitly, taking the derivative of each side with respect to \(x\),
+	
+<span class="displaymath" id="me-230">\[
+\frac{d}{dx}[x ]= \frac{d}{dx}[y^5 - 5y^3 + 4y],
+\]</span>
+ 
+	and evaluate the elementary derivative on the left and use the sum rule on the right to find that
+	
+<span class="displaymath" id="me-231">\[
+1 = \frac{d}{dx}[y^5] - \frac{d}{dx}[5y^3] + \frac{d}{dx}[4y].
+\]</span>
+ 
+	By the chain and constant multiple rules, viewing \(y\) as a function of \(x\), we now have
+	
+<span class="displaymath" id="me-232">\[
+1 = 5y^4\frac{dy}{dx} - 15y^2\frac{dy}{dx} + 4\frac{dy}{dx}.
+\]</span>
+ 
+	Factoring,
+	
+<span class="displaymath" id="me-233">\[
+1 = \frac{dy}{dx}(5y^4 - 15y^2 + 4),
+\]</span>
+ 
+	and therefore
+	
+<span class="displaymath" id="me-234">\[
+\frac{dy}{dx} = \frac{1}{5y^4 - 15y^2 + 4}.
+\]</span>
+</li>
+<li id="li-1098">To find an equation of the line tangent to the graph of \(x = y^5 - 5y^3 + 4y\) at the point \((0, 1)\), we only need the slope of the tangent line.  Hence we compute 
+	
+<span class="displaymath" id="me-235">\[
+\left. \frac{dy}{dx} \right|_{(0,1)} = \frac{1}{5 \cdot 1^4 - 15 \cdot 1^2 + 4} = -\frac{1}{6}.
+\]</span>
+ 
+	Therefore, the equation of the tangent line is
+	
+<span class="displaymath" id="me-236">\[
+y - 1 = -\frac{1}{6}(x-0)
+\]</span>
+ 
+	or \(y = -\frac{1}{6}x + 1\).</li>
+<li id="li-1099">Since a line is vertical whenever its slope is undefined, we seek all points \((x,y)\) that make \(\frac{dy}{dx}\) undefined.  This will occur precisely when the denominator, \(5y^4 - 15y^2 + 4\), is zero.  Using a graphing utility or computer algebra system to solve the equation \(5y^4 - 15y^2 + 4 = 0\), we find that this happens at the four approximate \(y\)-values \(y \approx \pm 0.543912, \pm 1.64443\).  For each such value, we use the original equation \(x = y^5 - 5y^3 + 4y\) to find the \(x\)-value of the point.  Doing so, we have established that there are four points at which the tangent line is vertical, and they are approximately \((1.418697,0.543912)\), \((-1.418697,-0.543912)\), \((-3.63143, 1.64443)\), and \((3.63143, -1.64443)\).</li>
+</ol></span><span class="incontext"><a href="S_2.7.Implicit.html#solution-40">in-context</a></span>

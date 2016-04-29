@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:50-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Improper Integrals</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_6.4.Physics.html">Previous</a><a class="up-button button toolbar-item" href="C_6.html">Up</a><a class="next-button button toolbar-item" href="C_7.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_6.4.Physics.html">Previous</a><a class="up-button button toolbar-item" href="C_6.html">Up</a><a class="next-button button toolbar-item" href="C_7.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link active"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html" class="active">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_6.5.Improper"><header><h1 class="heading" alt="Section 6.5 Improper Integrals" title="Section 6.5 Improper Integrals">
+<span class="type">Section</span><span class="codenumber">6.5</span><span class="title">Improper Integrals</span><a href="S_6.5.Improper.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-36"><h5 class="heading"></h5>
+<p id="p-1662">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2388">What are improper integrals and why are they important?</li>
+<li id="li-2389">What does it mean to say that an improper integral converges or diverges?</li>
+<li id="li-2390">What are some typical improper integrals that we can classify as convergent or divergent?</li>
+</ul>
+<p id="p-1663">
+} 
+</p></article><section class="subsection" id="subsection-122"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.5.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-1664">
+Another important application of the definite integral
+regards how the likelihood of certain events can be measured. For example, consider a company that manufactures incandescent light bulbs, and suppose that based on a large volume of test results, they have determined that the fraction of light bulbs that fail between times \(t = a\) and \(t = b\) of use (where \(t\) is measured in months) is given by
+</p>
+<span class="displaymath" id="me-656">\[
+\int_a^b 0.3 e^{-0.3t} \, dt.
+\]</span><p id="p-1665">
+For example, the fraction of light bulbs that fail during their third month of use is given by
+</p>
+<span class="displaymath" id="md-71">\begin{align*}
+\int_2^3 0.3e^{-0.3t} \, dt \amp  = \amp  -e^{-0.3t} \bigg \vert_2^3\\
+\amp  = \amp  -e^{-0.9} + e^{-0.6}\\
+\amp  \approx \amp  0.1422.
+\end{align*}</span><p id="p-1666">
+Thus about 14.22% of all lightbulbs fail between \(t = 2\) and \(t = 3\).
+Clearly we could adjust the limits of integration to measure the fraction of light bulbs that fail during any time period of interest.
+</p>
+<article class="paragraphs" id="PA_6.5"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1667">
+A company with a large customer base has a call center that receives thousands of calls a day. After studying the data that represents how long callers wait for assistance, they find that the function \(p(t) = 0.25e^{-0.25t}\) models the time customers wait in the following way: the fraction of customers who wait between \(t = a\) and \(t = b\) minutes is given by
+</p>
+<span class="displaymath" id="me-657">\[
+\int_a^b p(t) \, dt.
+\]</span><p id="p-1668">
+Use this information to answer the following questions.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2391">Determine the fraction of callers who wait between 5 and 10 minutes.</li>
+<li id="li-2392">Determine the fraction of callers who wait between 10 and 20 minutes.</li>
+<li id="li-2393">Next, let's study how the fraction who wait up to a certain number of minutes:
+	<ul style="list-style-type: disc;">
+<li id="li-2394">What is the fraction of callers who wait between 0 and 5 minutes?</li>
+<li id="li-2395">What is the fraction of callers who wait between 0 and 10 minutes?</li>
+<li id="li-2396">Between 0 and 15 minutes?  Between 0 and 20?</li>
+</ul>
+</li>
+<li id="li-2397">Let \(F(b)\) represent the fraction of callers who wait between \(0\) and \(b\) minutes.  Find a formula for \(F(b)\) that involves a definite integral, and then use the First FTC to find a formula for \(F(b)\) that does not involve a definite integral.</li>
+<li id="li-2398">What is the value of \(\ds \lim_{b \to \infty} F(b)\)?  Why?</li>
+</ol></article></section><section class="subsection" id="subsection-123"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.5.2</span><span class="title">Improper Integrals Involving Unbounded Intervals</span>
+</h1></header><p id="p-1669">
+\knownindex{\lt main&gt;improper integral\lt /main&gt;}
+</p>
+<p id="p-1670">
+In light of our example with light bulbs that fail, as well as with the problem involving customer wait time in Preview <a href="S_6.5.Improper.html#PA_6.5" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, we see that it is natural to consider questions where we desire to integrate over an interval whose upper limit grows without bound. For example, if we are interested in the fraction of light bulbs that fail within the first \(b\) months of use, we know that the expression
+</p>
+<span class="displaymath" id="me-658">\[
+\int_0^b 0.3e^{-0.3t} \, dt
+\]</span><p id="p-1671">
+measures this value. To think about the fraction of light bulbs that fail <!--Style me with CSS--><em>eventually</em>, we understand that we wish to find
+</p>
+<span class="displaymath" id="me-659">\[
+\lim_{b \to \infty} \int_0^b 0.3e^{-0.3t} \, dt,
+\]</span><p id="p-1672">
+for which we will also use the notation
+</p>
+<span class="displaymath" id="E_ImpInt1">\begin{equation}
+ \int_0^\infty 0.3e^{-0.3t} \, dt.
+\label{E_ImpInt1}\tag{6.5.1}\end{equation}</span><p id="p-1673">
+Note particularly that we are studying the area of an unbounded region, as pictured in <a knowl="./knowl/F_6.5.InfReg.html" knowl-id="xref-F_6.5.InfReg" alt="Figure 6.5.1 " title="Figure 6.5.1 ">Figure 6.5.1</a>.
+</p>
+<figure class="figure-like" id="F_6.5.InfReg"><img width="100%" src="images/6_5_InfReg.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.5.1</span>At left, the area bounded by \(p(t) = 0.3e^{-0.3t}\) on the finite interval \([0,b]\); at right, the result of letting \(b \to \infty\).  By “\(\cdots\)” in the righthand figure, we mean that the region extends to the right without bound.</figcaption></figure><p id="p-1674">
+Anytime we are interested in an integral for which the interval of integration is unbounded (that is, one for which at least one of the limits of integration involves \(\infty\)), we say that the integral is <!--Style me with CSS--><em>improper</em>\knownindex{\lt main&gt;improper integral\lt /main&gt;\lt sub&gt;unbounded region of integration\lt /sub&gt;}. For instance, the integrals
+</p>
+<span class="displaymath" id="me-660">\[
+\int_1^{\infty} \frac{1}{x^2} \, dx, \ \ \int_{-\infty}^0 \frac{1}{1+x^2} \, dx, \ \ \mbox{and}  \int_{-\infty}^{\infty} e^{-x^2} \, dx
+\]</span><p id="p-1675">
+are all improper due to having limits of integration that involve \(\infty\). We investigate the value of any such integral be replacing the improper integral with a limit of proper integrals; for an improper integral such as \(\int_0^\infty f(x) \, dx\), we write
+</p>
+<span class="displaymath" id="me-661">\[
+\int_0^\infty f(x) \, dx = \lim_{b \to \infty} \int_0^b f(x) \,dx.
+\]</span><p id="p-1676">
+We can then attempt to evaluate \(\int_0^b f(x) \,dx\) using the First FTC, after which we can evaluate the limit. An immediate and important question arises: is it even possible for the area of such an unbounded region to be finite? The following activity explores this issue and others in more detail.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.5.1" id="A_6.5.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.5.2</span>
+</h5></a></div>
+<div id="hk-A_6.5.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1677">
+In this activity we explore the improper integrals \( \int_1^{\infty} \frac{1}{x} \, dx\) and \( \int_1^{\infty} \frac{1}{x^{3/2}} \, dx\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2399">First we investigate \( \int_1^{\infty} \frac{1}{x} \, dx\).
+	<ol style="list-style-type: lower-alpha;">
+<li id="li-2400">Use the First FTC to determine the exact values of \( \int_1^{10} \frac{1}{x} \, dx\), \( \int_1^{1000} \frac{1}{x} \, dx\), and \( \int_1^{100000} \frac{1}{x} \, dx\).  Then, use your calculator to compute a decimal approximation of each result.</li>
+<li id="li-2401">Use the First FTC to evaluate the definite integral \( \int_1^{b} \frac{1}{x} \, dx\) (which results in an expression that depends on \(b\)).</li>
+<li id="li-2402">Now, use your work from (ii.) to evaluate the limit given by
+	
+<span class="displaymath" id="me-662">\[
+\lim_{b \to \infty}  \int_1^{b} \frac{1}{x} \, dx.
+\]</span>
+</li>
+</ol>
+</li>
+<li id="li-2403">Next, we investigate \( \int_1^{\infty} \frac{1}{x^{3/2}} \, dx\).
+	<ol style="list-style-type: lower-alpha;">
+<li id="li-2404">Use the First FTC to determine the exact values of \( \int_1^{10} \frac{1}{x^{3/2}} \, dx\), \( \int_1^{1000} \frac{1}{x^{3/2}} \, dx\), and \( \int_1^{100000} \frac{1}{x^{3/2}} \, dx\).  Then, use your calculator to compute a decimal approximation of each result.</li>
+<li id="li-2405">Use the First FTC to evaluate the definite integral \( \int_1^{b} \frac{1}{x^{3/2}} \, dx\) (which results in an expression that depends on \(b\)).</li>
+<li id="li-2406">Now, use your work from (ii.) to evaluate the limit given by
+	
+<span class="displaymath" id="me-663">\[
+\lim_{b \to \infty}  \int_1^{b} \frac{1}{x^{3/2}} \, dx.
+\]</span>
+</li>
+</ol>
+</li>
+<li id="li-2407">Plot the functions \(y = \frac{1}{x}\) and \(y = \frac{1}{x^{3/2}}\) on the same coordinate axes for the values \(x = 0 \ldots 10\).  How would you compare their behavior as \(x\) increases without bound?  What is similar?  What is different?</li>
+<li id="li-2408">How would you characterize the value of \( \int_1^{\infty} \frac{1}{x} \, dx\)? of \( \int_1^{\infty} \frac{1}{x^{3/2}} \, dx\)?  What does this tell us about the respective areas bounded by these two curves for \(x \ge 1\)?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-209" id="hint-209"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-209" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2409">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-210" id="hint-210"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-210" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2410">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-103" id="solution-103"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-103" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2411">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-124"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.5.3</span><span class="title">Convergence and Divergence</span>
+</h1></header><p id="p-1678">
+Our work so far has suggested that when we consider a nonnegative function \(f\) on an interval \([1,\infty]\), such as \(f(x) = \frac{1}{x}\) or \(f(x) = \frac{1}{x^{3/2}}\), there are at least two possibilities for the value of \(\lim_{b \to \infty} \int_1^b f(x) \, dx\): the limit is finite or infinite. With these possibilities in mind, we introduce the following terminology.
+</p>
+<p id="p-1679">
+
+{
+If \(f(x)\) is nonnegative for \(x \ge a\), then we say that the improper integral \(\int_a^{\infty} f(x) \, dx\)
+<!--Style me with CSS--><em>converges</em>\knownindex{\lt main&gt;improper integral\lt /main&gt;\lt sub&gt;converges\lt /sub&gt;} provided that
+</p>
+<span class="displaymath" id="me-664">\[
+\lim_{b \to \infty} \int_a^{b} f(x) \, dx
+\]</span><p id="p-1680">
+exists and is finite. Otherwise, we say that \(\int_a^{\infty} f(x) \, dx\) <!--Style me with CSS--><em>diverges</em>\knownindex{\lt main&gt;improper integral\lt /main&gt;\lt sub&gt;diverges\lt /sub&gt;}.
+} 
+
+</p>
+<p id="p-1681">
+We normally restrict our interest to improper integrals for which the integrand is nonnegative. Further, we note that our primary interest is in functions \(f\) for which \(\lim_{x \to \infty} f(x) = 0\), for if the function \(f\) does not approach \(0\) as \(x \to \infty\), then it is impossible for \(\int_a^{\infty} f(x) \, dx\) to converge.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.5.2" id="A_6.5.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.5.3</span>
+</h5></a></div>
+<div id="hk-A_6.5.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1682">
+Determine whether each of the following improper integrals converges or diverges. For each integral that converges, find its exact value.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2412">\(\ds \int_1^{\infty} \frac{1}{x^2} \, dx\)</li>
+<li id="li-2413">\(\ds \int_0^{\infty} e^{-x/4} \, dx\)</li>
+<li id="li-2414">\(\ds \int_2^{\infty} \frac{9}{(x+5)^{2/3}} \, dx\)</li>
+<li id="li-2415">\(\ds \int_4^{\infty} \frac{3}{(x+2)^{5/4}} \, dx\)</li>
+<li id="li-2416">\(\ds \int_0^{\infty} x e^{-x/4} \, dx\)</li>
+<li id="li-2417">\(\ds \int_1^{\infty} \frac{1}{x^p} \, dx\), where \(p\) is a positive real number</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-211" id="hint-211"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-211" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2418">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-212" id="hint-212"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-212" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2419">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-104" id="solution-104"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-104" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2420">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-125"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.5.4</span><span class="title">Improper Integrals Involving Unbounded Integrands</span>
+</h1></header><p id="p-1683">
+It is also possible for an integral to be improper due to the integrand being unbounded on the interval of integration. For example, if we consider
+</p>
+<span class="displaymath" id="me-665">\[
+\int_0^1 \frac{1}{\sqrt{x}} \, dx,
+\]</span><p id="p-1684">
+we see that because \(f(x) = \frac{1}{\sqrt{x}}\) has a vertical asymptote at \(x = 0\), \(f\) is not continuous on \([0,1]\), and the integral is attempting to represent the area of the unbounded region shown at right in <a knowl="./knowl/F_6.5.InfIntegrand.html" knowl-id="xref-F_6.5.InfIntegrand" alt="Figure 6.5.4 " title="Figure 6.5.4 ">Figure 6.5.4</a>.
+</p>
+<figure class="figure-like" id="F_6.5.InfIntegrand"><img width="100%" src="images/6_5_InfIntegrand.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.5.4</span>At left, the area bounded by \(f(x) = \frac{1}{\sqrt{x}}\) on the finite interval \([a,1]\); at right, the result of letting \(a \to 0^+\), where we see that the shaded region will extend vertically without bound.</figcaption></figure><p id="p-1685">
+Just as we did with improper integrals involving infinite limits, we address the problem of the integrand being unbounded\knownindex{\lt main&gt;improper integral\lt /main&gt;\lt sub&gt;unbounded integrand\lt /sub&gt;} by replacing such an improper integral with a limit of proper integrals. For example, to evaluate \(\int_0^1 \frac{1}{\sqrt{x}} \, dx\), we replace \(0\) with \(a\) and let \(a\) approach 0 from the right. Thus,
+</p>
+<span class="displaymath" id="me-666">\[
+\int_0^1 \frac{1}{\sqrt{x}} \, dx = \lim_{a \to 0^+} \int_a^1 \frac{1}{\sqrt{x}} \, dx,
+\]</span><p id="p-1686">
+and then we evaluate the proper integral \(\int_a^1 \frac{1}{\sqrt{x}} \, dx\), followed by taking the limit. In the same way as with improper integrals involving unbounded regions, we will say that the improper integral converges provided that this limit exists, and diverges otherwise. In the present example, we observe that
+</p>
+<span class="displaymath" id="md-72">\begin{align*}
+\int_0^1 \frac{1}{\sqrt{x}} \, dx \amp  = \amp  \lim_{a \to 0^+} \int_a^1 \frac{1}{\sqrt{x}} \, dx\\
+\amp  = \amp  \lim_{a \to 0^+} 2\sqrt{x} \big\vert_a^1\\
+\amp  = \amp  \lim_{a \to 0^+} 2\sqrt{1} - 2\sqrt{a}\\
+\amp  = \amp  2,
+\end{align*}</span><p id="p-1687">
+and therefore the improper integral \(\int_0^1 \frac{1}{\sqrt{x}} \, dx\) converges (to the value 2).
+</p>
+<p id="p-1688">
+We have to be particularly careful with unbounded integrands, for they may arise in ways that may not initially be obvious. Consider, for instance, the integral
+</p>
+<span class="displaymath" id="me-667">\[
+\int_1^3 \frac{1}{(x-2)^2} \, dx.
+\]</span><p id="p-1689">
+At first glance we might think that we can simply apply the Fundamental Theorem of Calculus by antidifferentiating \(\frac{1}{(x-2)^2}\) to get \(-\frac{1}{x-2}\) and then evaluate from \(1\) to \(3\). Were we to do so, we would be erroneously applying the FTC because \(f(x) = \frac{1}{(x-2)^2}\) fails to be continuous throughout the interval, as seen in <a knowl="./knowl/F_6.5.InfIntegrand2.html" knowl-id="xref-F_6.5.InfIntegrand2" alt="Figure 6.5.5 " title="Figure 6.5.5 ">Figure 6.5.5</a>.
+</p>
+<figure class="figure-like" id="F_6.5.InfIntegrand2"><img width="100%" src="images/6_5_InfIntegrand2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.5.5</span>The function \(f(x) = \frac{1}{(x-2)^2}\) on an interval including \(x = 2\).</figcaption></figure><p id="p-1690">
+Such an incorrect application of the FTC leads to an impossible result (\(-2\)), which would itself suggest that something we did must be wrong. Indeed, we must address the vertical asymptote in \(f(x) = \frac{1}{(x-2)^2}\) at \(x = 2\) by writing
+</p>
+<span class="displaymath" id="me-668">\[
+\int_1^3 \frac{1}{(x-2)^2} \, dx = \lim_{a \to 2^-} \int_1^a \frac{1}{(x-2)^2} \, dx + \lim_{b \to 2^+} \int_b^3 \frac{1}{(x-2)^2} \, dx
+\]</span><p id="p-1691">
+and then evaluate two separate limits of proper integrals. For instance, doing so for the integral with \(a\) approaching \(2\) from the left, we find
+</p>
+<span class="displaymath" id="md-73">\begin{align*}
+\int_1^2 \frac{1}{(x-2)^2} \, dx \amp  = \amp  \lim_{a \to 2^-} \int_1^a \frac{1}{(x-2)^2} \, dx\\
+\amp  = \amp  \lim_{a \to 2^-} -\frac{1}{(x-2)} \bigg\vert_1^a\\
+\amp  = \amp  \lim_{a \to 2^-} -\frac{1}{(a-2)} + \frac{1}{1-2}\\
+\amp  = \amp  \infty,
+\end{align*}</span><p id="p-1692">
+since \(\frac{1}{a-2} \to -\infty\) as \(a\) approaches 2 from the left. Thus, the improper integral \(\int_1^2 \frac{1}{(x-2)^2} \, dx\) diverges; similar work shows that \(\int_2^3 \frac{1}{(x-2)^2} \, dx\) also diverges. From either of these two results, we can conclude that that the original integral, \(\int_1^3 \frac{1}{(x-2)^2} \, dx\) diverges, too.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.5.3" id="A_6.5.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.5.6</span>
+</h5></a></div>
+<div id="hk-A_6.5.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1693">
+For each of the following definite integrals, decide whether the integral is improper or not. If the integral is proper, evaluate it using the First FTC. If the integral is improper, determine whether or not the integral converges or diverges; if the integral converges, find its exact value.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2421">\(\int_0^1 \frac{1}{x^{1/3}} \, dx\)</li>
+<li id="li-2422">\(\int_0^2 e^{-x} \, dx\)</li>
+<li id="li-2423">\(\int_1^4 \frac{1}{\sqrt{4-x}} \, dx\)</li>
+<li id="li-2424">\(\int_{-2}^2 \frac{1}{x^2} \, dx\)</li>
+<li id="li-2425">\(\int_0^{\pi/2} \tan(x) \, dx\)</li>
+<li id="li-2426">\(\int_0^1 \frac{1}{\sqrt{1-x^2}} \, dx\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-213" id="hint-213"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-213" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2427">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-214" id="hint-214"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-214" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2428">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-105" id="solution-105"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-105" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2429">Solutions for each of the prompts above.</li></ol></span></span><p id="p-1694">
+\item An integral \(\int_a^b f(x) \, dx\) can be improper if at least one of \(a\) or \(b\) is \(\pm \infty\), making the interval unbounded, or if \(f\) has a vertical asymptote at \(x = c\) for some value of \(c\) that satisfies \(a \le c \le b\). One reason that improper integrals are important is that certain probabilities can be represented by integrals that involve infinite limits.
+\item When we encounter an improper integral, we work to understand it by replacing the improper integral with a limit of proper integrals. For instance, we write
+</p>
+<span class="displaymath" id="me-669">\[
+\int_a^\infty f(x) \, dx = \lim_{b \to \infty} \int_a^b f(x) \, dx,
+\]</span><p id="p-1695">
+and then work to determine whether the limit exists and is finite. For any improper integral, if the resulting limit of proper integrals exists and is finite, we say the improper integral converges. Otherwise, the improper integral diverges.
+\item An important class of improper integrals is given by
+</p>
+<span class="displaymath" id="me-670">\[
+\int_1^{\infty} \frac{1}{x^p} \, dx
+\]</span><p id="p-1696">
+where \(p\) is a positive real number. We can show that this improper integral converges whenever \(p &gt; 1\), and diverges whenever \(0 \lt  p \le 1\). A related class of improper integrals is \(\ds \int_0^1 \frac{1}{x^p} \, dx\), which converges for \(0 \lt  p \lt  1\), and diverges for \(p \ge 1\).
+</p>
+<p id="p-1697">
+\hrulefill
+</p>
+<p id="p-1698">
+\begin{exercises}
+\item Determine, with justification, whether each of the following improper integrals converges or diverges.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2430">\(\ds \int_e^{\infty} \frac{\ln(x)}{x} \, dx\)</li>
+<li id="li-2431">\(\ds \int_e^{\infty} \frac{1}{x\ln(x)} \, dx\)</li>
+<li id="li-2432">\(\ds \int_e^{\infty} \frac{1}{x(\ln(x))^2} \, dx\)</li>
+<li id="li-2433">\(\ds \int_e^{\infty} \frac{1}{x(\ln(x))^p} \, dx\), where \(p\) is a positive real number</li>
+<li id="li-2434">\(\ds \int_0^1 \frac{\ln(x)}{x} \, dx\)</li>
+<li id="li-2435">\(\ds \int_0^1 \ln(x) \, dx\)</li>
+</ol>
+<p id="p-1699">
+\item Sometimes we may encounter an improper integral for which we cannot easily evaluate the limit of the corresponding proper integrals. For instance, consider \(\int_1^{\infty} \frac{1}{1+x^3} \, dx\). While it is hard (or perhaps impossible) to find an antiderivative for \(\frac{1}{1+x^3}\), we can still determine whether or not the improper integral converges or diverges by comparison to a simpler one. Observe that for all \(x &gt; 0\), \(1 + x^3 &gt; x^3\), and therefore
+</p>
+<span class="displaymath" id="me-671">\[
+\frac{1}{1+x^3} \lt  \frac{1}{x^3}.
+\]</span><p id="p-1700">
+It therefore follows that
+</p>
+<span class="displaymath" id="me-672">\[
+\int_1^b \frac{1}{1+x^3} \, dx \lt  \int_1^b \frac{1}{x^3} \, dx
+\]</span><p id="p-1701">
+for every \(b &gt; 1\). If we let \(b \to \infty\) so as to consider the two improper integrals \(\int_1^\infty \frac{1}{1+x^3} \, dx\) and \(\int_1^\infty \frac{1}{x^3} \, dx\), we know that the larger of the two improper integrals converges. And thus, since the smaller one lies below a convergent integral, it follows that the smaller one must converge, too. In particular, \(\int_1^\infty \frac{1}{1+x^3} \, dx\) must converge, even though we never explicitly evaluated the corresponding limit of proper integrals. We use this idea and similar ones in the exercises that follow.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2436">Explain why \(x^2 + x + 1 &gt; x^2\) for all \(x \ge 1\), and hence show that \(\int_1^{\infty} \frac{1}{x^2 + x + 1} \, dx\) converges by comparison to \(\int_1^{\infty} \frac{1}{x^2} \, dx\).</li>
+<li id="li-2437">Observe that for each \(x &gt; 1\), \(\ln(x) \lt  x\).  Explain why
+	
+<span class="displaymath" id="me-673">\[
+\int_2^b \frac{1}{x} \, dx \lt  \int_2^b \frac{1}{\ln(x)} \,dx
+\]</span>
+ 
+	for each \(b &gt; 2\).	Why must it be true that \(\int_2^b \frac{1}{\ln(x)} \, dx\) diverges?</li>
+<li id="li-2438">Explain why \(\sqrt{\frac{x^4+1}{x^4}} &gt; 1\) for all \(x &gt; 1\).  Then, determine whether or not the improper integral
+	
+<span class="displaymath" id="me-674">\[
+\int_1^{\infty} \frac{1}{x} \cdot \sqrt{\frac{x^4+1}{x^4}} \, dx
+\]</span>
+ 
+	converges or diverges.</li>
+</ol>
+<p id="p-1702">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1703">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

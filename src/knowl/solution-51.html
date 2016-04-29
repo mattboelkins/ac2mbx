@@ -1,0 +1,51 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:10-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">3.2.2.3</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-1328">By the chain rule and treating \(A\), \(c\), and \(k\) as constants, we find that
+		
+<span class="displaymath" id="me-327">\[
+L'(t) = A(-1)(1+ce^{-kt})^{-2} ce^{-kt}(-k) = Acke^{-kt}(1+ce^{-kt})^{-2}.
+\]</span>
+   
+		Since \(A\), \(c\), and \(k\) are all positive and \(e^{-kt} &gt; 0\) for all values of \(t\), it is apparent that \(L'(t)\) is never zero, and indeed is positive for every value of \(t\).  Thus, \(L\) is an always increasing function.</li>
+<li id="li-1329">Given that
+		
+<span class="displaymath" id="me-328">\[
+L''(t) = Ack^2e^{-kt} \frac{ce^{-kt}-1}{(1+ce^{-kt})^3},
+\]</span>
+  the only way \(L''(t) = 0\) is if \(ce^{-kt}-1 = 0\).  Solving \(ce^{-kt}-1 = 0\) for \(t\), we first write \(e^{-kt} = \frac{1}{c}\).  Taking the natural logarithm of both sides, \(-kt = \ln(\frac{1}{c})\), so that
+		
+<span class="displaymath" id="me-329">\[
+t = -\frac{1}{k} \ln \left(\frac{1}{c}\right)
+\]</span>
+ 
+		is the only value of \(t\) for which \(L''(t) = 0\).  Now, observe that since \(ce^{-kt} \to 0\) as \(t \to \infty\), the quantity \(ce^{-kt} - 1\) will be positive to the left of where it is zero and negative to the right of where it is zero.  Since this is the only term in \(L''(t)\) that can change sign, it follows that \(L''(t) &gt; 0\) for \(t \lt  -\frac{1}{k} \ln \left(\frac{1}{c}\right)\) and \(L''(t) &gt; 0\) for \(t &gt; -\frac{1}{k} \ln \left(\frac{1}{c}\right)\), making \(L\) concave up to the left of the noted inflection point and concave down thereafter.</li>
+<li id="li-1330">Recalling that \(e^{-kt} \to 0\) as \(t \to \infty\), we observe that
+		 
+<span class="displaymath" id="me-330">\[
+\lim_{t \to \infty} \frac{A}{1+ce^{-kt}} = \frac{A}{1+0} = A,
+\]</span>
+ 
+		 so \(L\) has a horizontal asymptote of \(y = A\) as \(t \to \infty\).  On the other hand, since \(e^{-kt} \to \infty\) as \(t \to -\infty\), this causes the denominator of \(L\) to grow without bound (while the numerator remains constant), and therefore
+		 		 
+<span class="displaymath" id="me-331">\[
+\lim_{t \to \infty} \frac{A}{1+ce^{-kt}} = 0,
+\]</span>
+ 
+				 which means \(L\) has a horizontal asymptote of \(y = 0\) as \(t \to -\infty\).</li>
+<li id="li-1331">From (b), we know that \(t = -\frac{1}{k} \ln \left(\frac{1}{c}\right)\) is the location of the inflection point of \(L\).  Evaluating the function at this point, we find that
+		
+<span class="displaymath" id="me-332">\[
+L\left( -\frac{1}{k} \ln \left(\frac{1}{c}\right) \right) = \frac{A}{1+ce^{-k [-\frac{1}{k} \ln \left(\frac{1}{c}\right)]}} = \frac{A}{1+ce^{\ln \left(\frac{1}{c}\right)}} = \frac{A}{1+c \cdot \frac{1}{c}} = \frac{A}{2}.
+\]</span>
+ 
+		Thus, the inflection point on the graph of \(L\) is located at  \(( -\frac{1}{k} \ln \left(\frac{1}{c}\right), \frac{A}{2})\).</li>
+<li id="li-1332">We have shown that \(L\) is an always increasing function that has horizontal asymptotes at \(y =0\) and \(y = A\), as well as an inflection point at \(( -\frac{1}{k} \ln \left(\frac{1}{c}\right), \frac{A}{2})\), which we note lies vertically halfway between the asymptotes.  In addition, we see that \(L(0) = \frac{A}{1+c}\).  The combination of all of this information shows us that a typical graph in this family of functions is given by the following figure.
+  <img width="100%" src="images/3_2_Act3Soln.png">
+</li>
+</ol></span><span class="incontext"><a href="S_3.2.Families.html#solution-51">in-context</a></span>

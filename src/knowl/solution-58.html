@@ -1,0 +1,31 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:12-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">3.4.2.4</span></span><p id="p-824">
+Once we choose the angle \(\theta\), the two right triangles in the trapezoid are determined, and each has a horizontal leg of length \(\cos(\theta)\) and a vertical leg of length \(\sin(\theta)\). Thus, the sum of the areas of the two triangles is \(\sin(\theta) \cos(\theta)\), and the area of the rectangle between them is \(2\sin(theta)\). Hence, the area of the trapezoidal cross-section is \(A(\theta) = \sin(\theta) \cos(\theta) + 2 \sin(\theta)\). Because the length of the trough is constant, the trough's volume will be maximized by maximizing cross-sectional area. Note, too, that the domain for \(\theta\) is \(0 \le \theta \le \frac{\pi}{2}\).
+</p>
+<p id="p-825">
+Differentiating, we find that
+</p>
+<span class="displaymath" id="me-350">\[
+A'(\theta) = \sin(\theta) (-\sin(\theta)) + \cos(\theta) \cos(\theta) + 2 \cos(\theta) = -\sin^2(\theta) + \cos^2(\theta) + 2 \cos(\theta).
+\]</span><p id="p-826">
+Using the identity \(\sin^2(\theta) = 1 - \cos^2(\theta)\), it follows that
+</p>
+<span class="displaymath" id="me-351">\[
+A'(\theta) = \cos^2(\theta) - 1 + \cos^2(\theta) + 2 \cos(\theta) = 2\cos^2(\theta) + 2 \cos(\theta) - 1.
+\]</span><p id="p-827">
+This most recent equation is quadratic in \(\cos(\theta)\), so letting \(u = \cos(\theta)\), we can start to solve the equation \(A'(\theta) = 0\) by solving \(2u^2 + 2u - 1 = 0\). Doing so, we find that
+</p>
+<span class="displaymath" id="me-352">\[
+u = \frac{-1 \pm \sqrt{3}}{2} \approx 0.3660254, -1.3660254,
+\]</span><p id="p-828">
+so only \(u = \frac{-1 + \sqrt{3}}{2}\) will be a potential value of the cosine function from an angle that lies in the interval \([0,\frac{\pi}{2}]\). Now, recalling that \(\cos(\theta) = u\), to find the critical value \(\theta\), we solve \(\cos(\theta) = \frac{-1 + \sqrt{3}}{2}\), which implies \(\theta = \arccos(\frac{-1 + \sqrt{3}}{2}) \approx 1.19606\) radians, or \(\theta \approx 68.5292^\circ\).
+</p>
+<p id="p-829">
+Finally, to confirm that \(A\) has an absolute maximum at \(\theta = \arccos(\frac{-1 + \sqrt{3}}{2}) \approx 1.19606\), we consider this value as well as the endpoints of \([0, \frac{\pi}{2}]\), and evaluate \(A\) to find that \(A(0) = 0\), \(A(\frac{\pi}{2}) = 2\), and \(A(1.19606) \approx 2.2018\), which is the absolute maximum possible cross-sectional area.
+</p></span><span class="incontext"><a href="S_3.4.AppliedOpt.html#solution-58">in-context</a></span>

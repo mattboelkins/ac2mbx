@@ -1,0 +1,35 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:10-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">3.2.2.2</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-1307">Since \(h(x) = a - ae^{-bx}\), we have by the constant multiple and chain rules that
+  
+<span class="displaymath" id="me-323">\[
+h'(x) = -ae^{-bx}(-b) = abe^{-bx}.
+\]</span>
+ 
+  Since \(a\) and \(b\) are positive constants and \(e^{-bx} &gt; 0\) for all \(x\), we see that \(h'(x)\) is never zero (nor undefined), and indeed \(h'(x) &gt; 0\) for all \(x\).  Hence \(h\) is an always increasing function.</li>
+<li id="li-1308">Because \(h'(x) = abe^{-bx},\) we have that \(h''(x) = abe^{-bx}(-b) = -ab^2e^{-bx}\).  As with \(h'\), we recognize that \(a\), \(b^2\), and \(e^{-bx}\) are always positive, and thus \(h''(x) = -ab^2e^{-bx} \lt  0\) for all values of \(x\), making \(h\) always concave down.</li>
+<li id="li-1309">As \(x \to \infty\), \(e^{-bx} \to 0\).  Thus,
+  
+<span class="displaymath" id="me-324">\[
+\lim_{x \to \infty} a(1-e^{-bx}) = \lim_{x \to \infty} a - ae^{-bx} = a - 0 = a.
+\]</span>
+ 
+  This shows that \(h\) has a horizontal asymptote at \(y = a\) as we move rightward on its graph.
+  
+  As \(x \to -\infty\), \(e^{-bx} \to \infty\).  Thus, 
+  
+<span class="displaymath" id="me-325">\[
+\lim_{x \to \infty} a(1-e^{-bx}) = \lim_{x \to \infty} a - ae^{-bx} = -\infty.
+\]</span>
+</li>
+<li id="li-1310">Noting that \(h'(x) = abe^{-bx}\), we see that if we consider different values of \(b\), the slope of the graph changes.  If \(b\) is large and \(x\) is close to zero, \(h'(x) \approx ab\) (since \(e^0 = 1\)), so \(h'(x)\) is relatively large near \(x = 0\).  At the same time, for large \(b\), \(e^{-bx}\) approaches zero quickly as \(x\) increases, so the curve's slope will quickly approach zero as \(x\) increases.  If \(b\) is small, the graph is less steep near \(x = 0\) and its slope goes to zero less quickly as \(x\) increases.</li>
+<li id="li-1311">Observing that \(h(0) = 0\) and \(\lim_{x \to \infty} h(x) = a\), along with the facts that \(h\) is always increasing and always concave down, we see that a typical member of this family looks like the following graph.
+    <img width="100%" src="images/3_2_Act2Soln.png">
+</li>
+</ol></span><span class="incontext"><a href="S_3.2.Families.html#solution-50">in-context</a></span>

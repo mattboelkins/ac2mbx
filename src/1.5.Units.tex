@@ -1,0 +1,98 @@
+\section{Interpreting, estimating, and using the derivative} \label{S:1.5.Units}
+
+\vspace*{-14 pt}
+\framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{\begin{goals}
+\item In contexts other than the position of a moving object, what does the derivative of a function measure?
+\item What are the units on the derivative function $f'$, and how are they related to the units of the original function $f$?
+\item What is a central difference, and how can one be used to estimate the value of the derivative at a point from given function data?
+\item Given the value of the derivative of a function at a point, what can we infer about how the value of the function changes nearby?
+\end{goals}} \hspace*{3 pt}}
+
+\subsection*{Introduction}
+
+An interesting and powerful feature of mathematics is that it can often be thought of both in abstract terms and in applied ones.  For instance, calculus can be developed almost entirely as an abstract collection of ideas that focus on properties of arbitrary functions.  At the same time, calculus can also be very directly connected to our experience of physical reality by considering functions that represent meaningful processes.  We have already seen that for a position function $y = s(t)$, say for a ball being tossed straight up in the air, the ball's velocity at time $t$ is given by $v(t) = s'(t)$, the derivative of the position function.  Further, recall that if $s(t)$ is measured in feet at time $t$, the units on $v(t) = s'(t)$ are feet per second.
+
+In what follows in this section, we investigate several different functions, each with specific physical meaning, and think about how the units on the independent variable, dependent variable, and the derivative function add to our understanding.  To start, we consider the familiar problem of a position function of a moving object.
+
+\input{previews/1.5.PA1}
+
+\subsection*{Units of the derivative function}
+
+As we now know, the derivative of the function $f$ at a fixed value $x$ is given by
+$$f'(x) = \ds \lim_{h \to 0} \frac{f(x+h)-f(x)}{h},$$  and this value has several different interpretations.  If we set $x = a$, one meaning of $f'(a)$ is  the slope of the tangent line at the point $(a,f(a))$.
+
+In alternate notation, we also sometimes equivalently write $\frac{df}{dx}$ or $\frac{dy}{dx}$ instead of $f'(x)$, and these notations helps us to further see the units (and thus the meaning) of the derivative as it is viewed as \emph{the instantaneous rate of change of $f$ with respect to $x$}\index{instantaneous rate of change}.  Note that the units on the slope of the secant line, $\frac{f(x+h)-f(x)}{h}$, are ``units of $f$ per unit of $x$.''  Thus, when we take the limit to get $f'(x)$, we get these same units on the derivative $f'(x)$:  units of $f$ per unit of $x$.  Regardless of the function $f$ under consideration (and regardless of the variables being used), it is helpful to remember that the units on the derivative function are ``units of output per unit of input,'' in terms of the input and output of the original function.
+
+For example, say that we have a function $y = P(t)$, where $P$ measures the population of a city (in thousands) at the start of year $t$ (where $t = 0$ corresponds to 2010 AD), and we are told that $P'(2) = 21.37$.  What is the meaning of this value?  Well, since $P$ is measured in thousands and $t$ is measured in years, we can say that the instantaneous rate of change of the city's population with respect to time at the start of 2012 is 21.37 thousand people per year.  We therefore expect that in the coming year, about 21,370 people will be added to the city's population.
+
+\subsection*{Toward more accurate derivative estimates}
+
+It is also helpful to recall, as we first experienced in Section~\ref{S:1.3.DerivativePt}, that when we want to estimate the value of $f'(x)$ at a given $x$, we can use the \emph{difference quotient} \index{difference quotient} $\frac{f(x+h)-f(x)}{h}$ with a relatively small value of $h$.  In doing so, we should use both positive and negative values of $h$ in order to make sure we account for the behavior of the function on both sides of the point of interest.  To that end, we consider the following brief example to demonstrate the notion of a \emph{central difference} and its role in estimating derivatives.
+
+\bex \label{Ex:1.5.1}
+Suppose that $y = f(x)$ is a function for which three values are known:  $f(1) = 2.5$, $f(2) = 3.25$, and $f(3) = 3.625$.  Estimate $f'(2)$.
+\eex
+We know that $f'(2) = \lim_{h \to 0} \frac{f(2+h) - f(2)}{h}$.  But since we don't have a graph for $y = f(x)$ nor a formula for the function, we can neither sketch a tangent line nor evaluate the limit exactly.  We can't even use smaller and smaller values of $h$ to estimate the limit.  Instead, we have just two choices:  using $h = -1$ or $h = 1$, depending on which point we pair with $(2,3.25)$.
+
+So, one estimate is
+$$f'(2) \approx \frac{f(1)-f(2)}{1-2} = \frac{2.5-3.25}{-1} = 0.75.$$
+The other is
+$$f'(2) \approx \frac{f(3)-f(2)}{3-2} = \frac{3.625-3.25}{1} = 0.375.$$
+Since the first approximation looks only backward from the point $(2,3.25)$ and the second approximation looks only forward from $(2,3.25)$, it makes sense to average these two values in order to account for behavior on both sides of the point of interest.  Doing so, we find that
+$$f'(2) \approx \frac{0.75 + 0.375}{2} = 0.5625.$$
+\afterex
+
+The intuitive approach to average the two estimates found in Example~\ref{Ex:1.5.1} is in fact the best possible estimate to $f'(2)$ when we have just two function values for $f$ on opposite sides of the point of interest. 
+\begin{figure}[h]
+\begin{center}
+\includegraphics{figures/1_5_Ex1.eps}
+\caption{At left, the graph of $y = f(x)$ along with the secant line through $(1,2.5)$ and $(2,3.25)$, the secant line through $(2, 3.25)$ and $(3,3.625)$, as well as the tangent line.  At right, the same graph along with the secant line through $(1,2.5)$ and $(3,3.625)$, plus the tangent line.} \label{F:1.5.Ex1}
+\end{center}
+\end{figure}
+To see why, we think about the diagram in Figure~\ref{F:1.5.Ex1}, which shows
+a possible function $y = f(x)$ that satisfies the data given in Example~\ref{Ex:1.5.1}.  On the left, we see the two secant lines with slopes that come from computing the \emph{backward difference} \index{backward difference} $\frac{f(1)-f(2)}{1-2} = 0.75$ and from the \emph{forward difference} \index{forward difference} $\frac{f(3)-f(2)}{3-2} = 0.375.$  Note how the first such line's slope over-estimates the slope of the tangent line at $(2,f(2))$, while the second line's slope underestimates $f'(2)$.  On the right, however, we see the secant line whose slope is given by the \emph{central difference} \index{central difference} $$\frac{f(3)-f(1)}{3-1} = \frac{3.625-2.5}{2} = \frac{1.125}{2} = 0.5625.$$
+Note that this central difference has the exact same value as the average of the forward difference and backward difference (and it is straightforward to explain why this always holds), and moreover that the central difference yields a very good approximation to the derivative's value, in part because the secant line that uses both a point before and after the point of tangency yields a line that is closer to being parallel to the tangent line.  
+
+In general, the central difference approximation to the value of the first derivative is given by 
+$$f'(a) \approx \frac{f(a+h) - f(a-h)}{2h},$$
+and this quantity measures the slope of the secant line to $y = f(x)$ through the points $(a-h, f(a-h))$ and $(a+h, f(a+h))$. Anytime we have symmetric data surrounding a point at which we desire to estimate the derivative, the central difference is an ideal choice for so doing.
+
+The following activities will further explore the meaning of the derivative in several different contexts while also viewing the derivative from graphical, numerical, and algebraic perspectives.
+
+\input{activities/1.5.Act1}
+
+\newpage
+
+\input{activities/1.5.Act2}
+
+\input{activities/1.5.Act3}
+
+In Section~\ref{S:1.4.DerivativeFxn}, we learned how use to the graph of a given function $f$ to plot the graph of its derivative, $f'$.  It is important to remember that when we do so, not only does the scale on the vertical axis often have to change to accurately represent $f'$, but the units on that axis also differ.  For example, suppose that $P(t) = 400-330e^{-0.03t}$ tells us the temperature in degrees Fahrenheit of a potato in an oven at time $t$ in minutes.  In Figure~\ref{F:1.5.PPprime}, we sketch the graph of $P$ on the left and the graph of $P'$ on the right.  
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics{figures/1_5_PPprimeplot.eps}
+\caption{Plot of $P(t) = 400-330e^{-0.03t}$ at left, and its derivative $P'(t)$ at right.}\label{F:1.5.PPprime}
+\end{center}
+\end{figure}
+
+Note how not only are the vertical scales different in size, but different in units, as the units of $P$ are $^{\circ}$F, while those of $P'$ are $^{\circ}$F/min.  In all cases where we work with functions that have an applied context, it is helpful and instructive to think carefully about units involved and how they further inform the meaning of our computations.
+
+%\nin \framebox{\hspace*{3 pt}
+%\parbox{6.25 in}{
+\begin{summary}
+\item Regardless of the context of a given function $y=f(x)$, the derivative always measures the instantaneous rate of change of the output variable with respect to the input variable.
+\item The units on the derivative function $y = f'(x)$ are units of $f$ per unit of $x$.  Again, this measures how fast the output of the function $f$ changes when the input of the function changes.
+\item The central difference approximation to the value of the first derivative is given by 
+$$f'(a) \approx \frac{f(a+h) - f(a-h)}{2h},$$
+and this quantity measures the slope of the secant line to $y = f(x)$ through the points $(a-h, f(a-h))$ and $(a+h, f(a+h))$.  The central difference generates a good approximation of the derivative's value any time we have symmetric data surrounding a point of interest.
+\item Knowing the derivative and function values at a single point enables us to estimate other function values nearby.  If, for example, we know that $f'(7) = 2$, then we know that at $x = 7$, the function $f$ is increasing at an instantaneous rate of 2 units of output for every one unit of input.  Thus, we expect $f(8)$ to be approximately 2 units greater than $f(7)$.  The value is approximate because we don't know that the rate of change stays the same as $x$ changes.
+\end{summary}
+%} \hspace*{3 pt}}
+
+\nin \hrulefill
+
+\input{exercises/1.5.Units(Ex)} 
+
+\clearpage

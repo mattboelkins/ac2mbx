@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:49-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Physics Applications:  Work, Force, and Pressure</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_6.3.Mass.html">Previous</a><a class="up-button button toolbar-item" href="C_6.html">Up</a><a class="next-button button toolbar-item" href="S_6.5.Improper.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_6.3.Mass.html">Previous</a><a class="up-button button toolbar-item" href="C_6.html">Up</a><a class="next-button button toolbar-item" href="S_6.5.Improper.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link active"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html" class="active">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_6.4.Physics"><header><h1 class="heading" alt="Section 6.4 Physics Applications:  Work, Force, and Pressure" title="Section 6.4 Physics Applications:  Work, Force, and Pressure">
+<span class="type">Section</span><span class="codenumber">6.4</span><span class="title">Physics Applications:  Work, Force, and Pressure</span><a href="S_6.4.Physics.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-35"><h5 class="heading"></h5>
+<p id="p-1610">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2352">How do we measure the work accomplished by a varying force that moves an object a certain distance?</li>
+<li id="li-2353">What is the total force exerted by water against a dam?</li>
+<li id="li-2354">How are both of the above concepts and their corresponding use of definite integrals similar to problems we have encountered in the past involving formulas such as “distance equals rate times time” and “mass equals density times volume”?</li>
+</ul>
+<p id="p-1611">
+} 
+</p></article><section class="subsection" id="subsection-118"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.4.1</span><span class="title">Introduction</span>
+</h1></header><figure class="figure-like" id="F_6.4.Intro"><img width="100%" src="images/6_4_Intro.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.4.1</span>Three settings where we compute the accumulation of a varying quantity:  the area under \(y = f(x)\), the distance traveled by an object with velocity \(y = v(t)\), and the mass of a bar with density function \(y=\rho(x)\).</figcaption></figure><p id="p-1612">
+In our work to date with the definite integral, we have seen several different circumstances where the integral enables us to measure the accumulation of a quantity that varies, provided the quantity is approximately constant over small intervals. For instance, based on the fact that the area of a rectangle is \(A = l \cdot w\), if we wish to find the area bounded by a nonnegative curve \(y = f(x)\) and the \(x\)-axis on an interval \([a,b]\), a representative slice of width \(\triangle x\) has area \(A_{\mbox{{slice}} } = f(x) \triangle x\), and thus as we let the width of the representative slice tend to zero, we find that the exact area of the region is
+</p>
+<span class="displaymath" id="me-639">\[
+A = \int_a^b f(x) \, dx.
+\]</span><p id="p-1613">
+In a similar way, if we know that the velocity of a moving object is given by the function \(y = v(t)\), and we wish to know the distance the object travels on an interval \([a,b]\) where \(v(t)\) is nonnegative, we can use a definite integral to generalize the fact that \(d = r \cdot t\) when the rate, \(r\), is constant. More specifically, on a short time interval \(\triangle t\), \(v(t)\) is roughly constant, and hence for a small slice of time, \(d_{\mbox{{slice}} } = v(t) \triangle t\), and so as the width of the time interval \(\triangle t\) tends to zero, the exact distance traveled is given by the definite integral
+</p>
+<span class="displaymath" id="me-640">\[
+d = \int_a^b v(t) \, dt.
+\]</span><p id="p-1614">
+Finally, when we recently learned about the mass of an object of non-constant density, we saw that since \(M = D \cdot V\) (mass equals density times volume, provided that density is constant), if we can consider a small slice of an object on which the density is approximately constant, a definite integral may be used to determine the exact mass of the object. For instance, if we have a thin rod whose cross sections have constant density, but whose density is distributed along the \(x\) axis according to the function \(y = \rho(x)\), it follows that for a small slice of the rod that is \(\triangle x\) thick, \(M_{\mbox{{slice}} } = \rho(x) \triangle x\). In the limit as \(\triangle x \to 0\), we then find that the total mass is given by
+</p>
+<span class="displaymath" id="me-641">\[
+M = \int_a^b \rho(x) \, dx.
+\]</span><p id="p-1615">
+Note that all three of these situations are similar in that we have a basic rule (\(A = l \cdot w\), \(d = r \cdot t\), \(M = D \cdot V\)) where one of the two quantities being multiplied is no longer constant; in each, we consider a small interval for the other variable in the formula, calculate the approximate value of the desired quantity (area, distance, or mass) over the small interval, and then use a definite integral to sum the results as the length of the small intervals is allowed to approach zero. It should be apparent that this approach will work effectively for other situations where we have a quantity of interest that varies.
+</p>
+<p id="p-1616">
+We next turn to the notion of <!--Style me with CSS--><em>work</em>\knownindex{\lt main&gt;work\lt /main&gt;}: from physics, a basic principal is that work is the product of force and distance. For example, if a person exerts a force of 20 pounds to lift a 20-pound weight 4 feet off the ground, the total work accomplished is
+</p>
+<span class="displaymath" id="me-642">\[
+W = F \cdot d = 20 \cdot 4 = 80 \ \mbox{foot-pounds} .
+\]</span><p id="p-1617">
+If force and distance are measured in English units (pounds and feet), then the units on work are <!--Style me with CSS--><em>foot-pounds</em>\knownindex{\lt main&gt;foot-pound\lt /main&gt;}. If instead we work in metric units, where forces are measured in Newtons and distances in meters, the units on work are <!--Style me with CSS--><em>Newton-meters</em>\knownindex{\lt main&gt;Newton-meter\lt /main&gt;}.
+</p>
+<p id="p-1618">
+Of course, the formula \(W = F \cdot d\) only applies when the force is constant while it is exerted over the distance \(d\). In Preview <a href="S_6.4.Physics.html#PA_6.4" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, we explore one way that we can use a definite integral to compute the total work accomplished when the force exerted varies.
+</p>
+<article class="paragraphs" id="PA_6.4"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1619">
+A bucket is being lifted from the bottom of a 50-foot deep well; its weight (including the water), \(B\), in pounds at a height \(h\) feet above the water is given by the function \(B(h)\). When the bucket leaves the water, the bucket and water together weigh \(B(0) = 20\) pounds, and when the bucket reaches the top of the well, \(B(50) = 12\) pounds. Assume that the bucket loses water at a constant rate (as a function of height, \(h\)) throughout its journey from the bottom to the top of the well.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2355">Find a formula for \(B(h)\).</li>
+<li id="li-2356">Compute the value of the product \(B(5) \triangle h\), where \(\triangle h = 2\) feet. Include units on your answer.  Explain why this product represents the approximate work it took to move the bucket of water from \(h = 5\) to \(h = 7\).</li>
+<li id="li-2357">Is the value in (b) an over- or under-estimate of the actual amount of work it took to move the bucket from \(h = 5\) to \(h = 7\)?  Why?</li>
+<li id="li-2358">Compute the value of the product \(B(22) \triangle h\), where \(\triangle h = 0.25\) feet.  Include units on your answer.  What is the meaning of the value you found?</li>
+<li id="li-2359">More generally, what does the quantity \(W_{\mbox{{slice}} } = B(h) \triangle h\) measure for a given value of \(h\) and a small positive value of \(\triangle h\)?</li>
+<li id="li-2360">Evaluate the definite integral \(\int_0^{50} B(h) \, dh\).  What is the meaning of the value you find?  Why?</li>
+</ol></article></section><section class="subsection" id="subsection-119"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.4.2</span><span class="title">Work</span>
+</h1></header><p id="p-1620">
+\knownindex{\lt main&gt;work\lt /main&gt;}
+</p>
+<p id="p-1621">
+Because work is calculated by the rule \(W = F \cdot d\), whenever the force \(F\) is constant, it follows that we can use a definite integral to compute the work accomplished by a varying force. For example, suppose that in a setting similar to the problem posed in Preview <a href="S_6.4.Physics.html#PA_6.4" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, we have a bucket being lifted in a 50-foot well whose weight at height \(h\) is given by \(B(h) = 12 + 8e^{-0.1h}\).
+</p>
+<p id="p-1622">
+In contrast to the problem in the preview activity, this bucket is not leaking at a constant rate; but because the weight of the bucket and water is not constant, we have to use a definite integral to determine the total work that results from lifting the bucket. Observe that at a height \(h\) above the water, the approximate work to move the bucket a small distance \(\triangle h\) is
+</p>
+<span class="displaymath" id="me-643">\[
+W_{\mbox{{slice}} } = B(h) \triangle h = (12 + 8e^{-0.1h}) \triangle h.
+\]</span><p id="p-1623">
+Hence, if we let \(\triangle h\) tend to 0 and take the sum of all of the slices of work accomplished on these small intervals, it follows that the total work is given by
+</p>
+<span class="displaymath" id="me-644">\[
+W = \int_0^{50} B(h) \, dh = \int_0^{50} (12 + 8e^{-0.1h}) \, dh.
+\]</span><p id="p-1624">
+While is a straightforward exercise to evaluate this integral exactly using the First Fundamental Theorem of Calculus, in applied settings such as this one we will typically use computing technology to find accurate approximations of integrals that are of interest to us. Here, it turns out that \(W = \int_0^{50} (12 + 8e^{-0.1h}) \, dh \approx 679.461\) foot-pounds.
+</p>
+<p id="p-1625">
+Our work in Preview <a href="S_6.1.Area.html#PA_6.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> and in the most recent example above employs the following important general principle.
+</p>
+<p id="p-1626">
+
+{
+For an object being moved in the positive direction along an axis, \(x\), by a force \(F(x)\), the total work to move the object from \(a\) to \(b\) is given by
+</p>
+<span class="displaymath" id="me-645">\[
+W = \int_a^b F(x) \, dx.
+\]</span><p id="p-1627">
+} 
+
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.4.1" id="A_6.4.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.4.2</span>
+</h5></a></div>
+<div id="hk-A_6.4.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1628">
+Consider the following situations in which a varying force accomplishes work.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2361">Suppose that a heavy rope hangs over the side of a cliff.  The rope is 200 feet long and weighs 0.3 pounds per foot; initially the rope is fully extended.  How much work is required to haul in the entire length of the rope?  (Hint: set up a function \(F(h)\) whose value is the weight of the rope remaining over the cliff after \(h\) feet have been hauled in.)</li>
+<li id="li-2362">A leaky bucket is being hauled up from a 100 foot deep well.  When lifted from the water, the bucket and water together weigh 40 pounds.  As the bucket is being hauled upward at a constant rate, the bucket leaks water at a constant rate so that it is losing weight at a rate of 0.1 pounds per foot.  What function \(B(h)\) tells the weight of the bucket after the bucket has been lifted \(h\) feet?  What is the total amount of work accomplished in lifting the bucket to the top of the well?</li>
+<li id="li-2363">Now suppose that the bucket in (b) does not leak at a constant rate, but rather that its weight at a height \(h\) feet above the water is given by \(B(h) = 25 + 15e^{-0.05h}\).  What is the total work required to lift the bucket 100 feet?  What is the average force exerted on the bucket on the interval \(h = 0\) to \(h = 100\)?</li>
+<li id="li-2364">From physics, <!--Style me with CSS--><em>Hooke's Law</em> \knownindex{\lt main&gt;Hooke's Law\lt /main&gt;} for springs states that the amount of force required to hold a spring that is compressed (or extended) to a particular length is proportionate to the distance the spring is compressed (or extended) from its natural length.  That is, the force to compress (or extend) a spring \(x\) units from its natural length is \(F(x) = kx\) for some constant \(k\) (which is called the <!--Style me with CSS--><em>spring constant</em>.) For springs, we choose to measure the force in pounds and the distance the spring is compressed in feet.
+	
+	Suppose that a force of 5 pounds extends a particular spring 4 inches (1/3 foot) beyond its natural length.
+	<ol style="list-style-type: lower-alpha;">
+<li id="li-2365">Use the given fact that \(F(1/3) = 5\) to find the spring constant \(k\).</li>
+<li id="li-2366">Find the work done to extend the spring from its natural length to 1 foot beyond its natural length.</li>
+<li id="li-2367">Find the work required to extend the spring from 1 foot beyond its natural length to 1.5 feet beyond its natural length.</li>
+</ol>
+</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-203" id="hint-203"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-203" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2368">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-204" id="hint-204"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-204" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2369">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-100" id="solution-100"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-100" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2370">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-120"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.4.3</span><span class="title">Work: Pumping Liquid from a Tank</span>
+</h1></header><p id="p-1629">
+In certain geographic locations where the water table is high, residential homes with basements have a peculiar feature: in the basement, one finds a large hole in the floor, and in the hole, there is water. For example, in <a knowl="./knowl/F_6.4.SumpCrock.html" knowl-id="xref-F_6.4.SumpCrock" alt="Figure 6.4.3 " title="Figure 6.4.3 ">Figure 6.4.3</a>
+</p>
+<figure class="figure-like" id="F_6.4.SumpCrock"><img width="100%" src="images/6_4_SumpCrock.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.4.3</span>A sump crock.</figcaption></figure><p id="p-1630">
+where we see a <!--Style me with CSS--><em>sump crock</em><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-43" id="fn-43"><sup> 1 </sup></a></span><span id="hk-fn-43" style="display: none;" class="tex2jax_ignore"><span class="footnote">Image credit to \href{http://www.warreninspect.com/basement-moisture}{<tt class="code-inline">http://www.warreninspect.com/basement-moisture</tt>}.</span></span>. Essentially, a sump crock provides an outlet for water that may build up beneath the basement floor; of course, as that water rises, it is imperative that the water not flood the basement. Hence, in the crock we see the presence of a floating pump that sits on the surface of the water: this pump is activated by elevation, so when the water level reaches a particular height, the pump turns on and pumps a certain portion of the water out of the crock, hence relieving the water buildup beneath the foundation. One of the questions we'd like to answer is: how much work does a sump pump accomplish?
+</p>
+<p id="p-1631">
+To that end, let's suppose that we have a sump crock that has the shape of a frustum of a cone, as pictured in <a knowl="./knowl/F_6.4.Crock.html" knowl-id="xref-F_6.4.Crock" alt="Figure 6.4.4 " title="Figure 6.4.4 ">Figure 6.4.4</a>. Assume that the crock has a diameter of 3 feet at its surface, a diameter of 1.5 feet at its base, and a depth of 4 feet. In addition, suppose that the sump pump is set up so that it pumps the water vertically up a pipe to a drain that is located at ground level just outside a basement window. To accomplish this, the pump must send the water to a location 9 feet above the surface of the sump crock.
+</p>
+<figure class="figure-like" id="F_6.4.Crock"><img width="100%" src="images/6_4_Crock.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.4.4</span>A sump crock with approximately cylindrical cross-sections that is 4 feet deep, 1.5 feet in diameter at its base, and 3 feet in diameter at its top.</figcaption></figure><p id="p-1632">
+It turns out to be advantageous to think of the depth below the surface of the crock as being the independent variable, so, in problems such as this one we typically let the positive \(x\)-axis point down, and the positive \(x\)-axis to the right, as pictured in the figure. As we think about the work that the pump does, we first realize that the pump sits on the surface of the water, so it makes sense to think about the pump moving the water one “slice” at a time, where it takes a thin slice from the surface, pumps it out of the tank, and then proceeds to pump the next slice below.
+</p>
+<p id="p-1633">
+For the sump crock described in this example, each slice of water is cylindrical in shape. We see that the radius of each approximately cylindrical slice varies according to the linear function \(y = f(x)\) that passes through the points \((0,1.5)\) and \((4,0.75)\), where \(x\) is the depth of the particular slice in the tank; it is a straightforward exercise to find that \(f(x) = 1.5 - 0.375x\). Now we are prepared to think about the overall problem in several steps: (a) determining the volume of a typical slice; (b) finding the weight<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-44" id="fn-44"><sup> 2 </sup></a></span><span id="hk-fn-44" style="display: none;" class="tex2jax_ignore"><span class="footnote">We assume that the weight density of water  is 62.4 pounds per cubic foot.</span></span> of a typical slice (and thus the force that must be exerted on it); (c) deciding the distance that a typical slice moves; and (d) computing the work to move a representative slice. Once we know the work it takes to move one slice, we use a definite integral over an appropriate interval to find the total work.
+</p>
+<p id="p-1634">
+Consider a representative cylindrical slice that sits on the surface of the water at a depth of \(x\) feet below the top of the crock. It follows that the approximate volume of that slice is given by
+</p>
+<span class="displaymath" id="me-646">\[
+V_{\mbox{{slice}} } = \pi f(x)^2 \triangle x = \pi (1.5 - 0.375x)^2 \triangle x.
+\]</span><p id="p-1635">
+Since water weighs 62.4 lb/ft\(^3\), it follows that the approximate weight of a representative slice, which is also the approximate force the pump must exert to move the slice, is
+</p>
+<span class="displaymath" id="me-647">\[
+F_{\mbox{{slice}} } = 62.4 \cdot V_{\mbox{{slice}} } = 62.4 \pi (1.5 - 0.375x)^2 \triangle x.
+\]</span><p id="p-1636">
+Because the slice is located at a depth of \(x\) feet below the top of the crock, the slice being moved by the pump must move \(x\) feet to get to the level of the basement floor, and then, as stated in the problem description, be moved another 9 feet to reach the drain at ground level outside a basement window. Hence, the total distance a representative slice travels is
+</p>
+<span class="displaymath" id="me-648">\[
+d_{\mbox{{slice}} } = x + 9.
+\]</span><p id="p-1637">
+Finally, we note that the work to move a representative slice is given by
+</p>
+<span class="displaymath" id="me-649">\[
+W_{\mbox{{slice}} } = F_{\mbox{{slice}} } \cdot d_{\mbox{{slice}} } = 62.4 \pi (1.5 - 0.375x)^2 \triangle x \cdot (x+9),
+\]</span><p id="p-1638">
+since the force to move a particular slice is constant.
+</p>
+<p id="p-1639">
+We sum the work required to move slices throughout the tank (from \(x = 0\) to \(x = 4\)), let \(\triangle x \to 0\), and hence
+</p>
+<span class="displaymath" id="me-650">\[
+W = \int_0^4 62.4 \pi (1.5 - 0.375x)^2 (x+9) \, dx,
+\]</span><p id="p-1640">
+which, when evaluated using appropriate technology, shows that the total work is \(W = 1872\pi\) foot-pounds.
+</p>
+<p id="p-1641">
+The preceding example demonstrates the standard approach to finding the work required to empty a tank filled with liquid. The main task in each such problem is to determine the volume of a representative slice, followed by the force exerted on the slice, as well as the distance such a slice moves. In the case where the units are metric, there is one key difference: in the metric setting, rather than weight, we normally first find the mass of a slice. For instance, if distance is measured in meters, the mass density of water is 1000 kg/m\(^3\). In that setting, we can find the mass of a typical slice (in kg). To determine the force required to move it, we use \(F = ma\), where \(m\) is the object's mass and \(a\) is the gravitational constant \(9.81\) N/kg\(^3\). That is, in metric units, the weight density of water is 9810 N/m\(^3\).
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.4.2" id="A_6.4.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.4.5</span>
+</h5></a></div>
+<div id="hk-A_6.4.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1642">
+In each of the following problems, determine the total work required to accomplish the described task. In parts (b) and (c), a key step is to find a formula for a function that describes the curve that forms the side boundary of the tank.
+</p>
+<figure class="figure-like" id="F_6.4.Act2Trough"><img width="100%" src="images/6_4_Act2Trough.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.4.6</span>A trough with triangular ends, as described in <a knowl="./knowl/A_6.4.2.html" knowl-id="xref-A_6.4.2" alt="Exercise 6.4.5 " title="Exercise 6.4.5 ">Activity 6.4.5</a>, part (c).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-2371">Consider a vertical cylindrical tank of radius 2 meters and depth 6 meters.  Suppose the tank is filled with 4 meters of water of mass density 1000 kg/m\(^3\), and the top 1 meter of water is pumped over the top of the tank.</li>
+<li id="li-2372">Consider a hemispherical tank with a radius of 10 feet.  Suppose that the tank is full to a depth of 7 feet with water of weight density 62.4 pounds/ft\(^3\), and the top 5 feet of water are pumped out of the tank to a tanker truck whose height is 5 feet above the top of the tank.</li>
+<li id="li-2373">Consider a trough with triangular ends, as pictured in <a knowl="./knowl/F_6.4.Act2Trough.html" knowl-id="xref-F_6.4.Act2Trough" alt="Figure 6.4.6 " title="Figure 6.4.6 ">Figure 6.4.6</a>, where the tank is 10 feet long, the top is 5 feet wide, and the tank is 4 feet deep.  Say that the trough is full to within 1 foot of the top with water of weight density 62.4 pounds/ft\(^3\), and a pump is used to empty the tank until the water remaining in the tank is 1 foot deep.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-205" id="hint-205"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-205" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2374">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-206" id="hint-206"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-206" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2375">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-101" id="solution-101"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-101" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2376">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-121"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.4.4</span><span class="title">Force due to Hydrostatic Pressure</span>
+</h1></header><p id="p-1643">
+When a dam is built, it is imperative to for engineers to understand how much force water will exert against the face of the dam. The first thing we realize is the force exerted by the fluid is related to the natural concept of pressure. The pressure a force exerts on a region is measured in units of force per unit of area: for example, the air pressure in a tire is often measured in pounds per square inch (PSI). Hence, we see that the general relationship is given by
+</p>
+<span class="displaymath" id="me-651">\[
+P = \frac{F}{A}, \ \mbox{or}  \ F = P \cdot A,
+\]</span><p id="p-1644">
+where \(P\) represents pressure, \(F\) represents force, and \(A\) the area of the region being considered. Of course, in the equation \(F = PA\), we assume that the pressure is constant over the entire region \(A\).
+</p>
+<p id="p-1645">
+Most people know from experience that the deeper one dives underwater while swimming, the greater the pressure that is exerted by the water. This is due to the fact that the deeper one dives, the more water there is right on top of the swimmer: it is the force that “column” of water exerts that determines the pressure the swimmer experiences. To get water pressure measured in its standard units (pounds per square foot), we say that the total water pressure is found by computing the total weight of the column of water that lies above a region of area 1 square foot at a fixed depth. Such a rectangular column with a \(1 \times 1\) base and a depth of \(d\) feet has volume \(V = 1 \cdot 1 \cdot d\) ft\(^3\), and thus the corresponding weight of the water overhead is \(62.4d\). Since this is also the amount of force being exerted on a 1 square foot region at a depth \(d\) feet underwater, we see that \(P = 62.4 d\) (lbs/ft\(^2\)) is the pressure exerted by water at depth \(d\).
+</p>
+<p id="p-1646">
+The understanding that \(P = 62.4d\) will tell us the pressure exerted by water at a depth of \(d\), along with the fact that \(F = PA\), will now enable us to compute the total force that water exerts on a dam, as we see in the following example.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-example-21" id="example-21"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">6.4.7</span>
+</h5></article></a></div>
+<div id="hk-example-21" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-1647">
+Consider a trapezoid-shaped dam that is 60 feet wide at its base and 90 feet wide at its top, and assume the dam is 25 feet tall with water that rises to within 5 feet of the top of its face. Water weighs 62.5 pounds per cubic foot. How much force does the water exert against the dam?
+</p></article></div>
+<p id="p-1648">
+Solution.    
+First, we sketch a picture of the dam, as shown in <a knowl="./knowl/F_6.4.DamEx.html" knowl-id="xref-F_6.4.DamEx" alt="Figure 6.4.8 " title="Figure 6.4.8 ">Figure 6.4.8</a>. Note that, as in problems involving the work to pump out a tank, we let the positive \(x\)-axis point down.
+</p>
+<figure class="figure-like" id="F_6.4.DamEx"><img width="100%" src="images/6_4_DamEx.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.4.8</span>A trapezoidal dam that is 25 feet tall, 60 feet wide at its base, 90 feet wide at its top, with the water line 5 feet down from the top of its face.</figcaption></figure><p id="p-1649">
+It is essential to use the fact that pressure is constant at a fixed depth. Hence, we consider a slice of water at constant depth on the face, such as the one shown in the figure. First, the approximate area of this slice is the area of the pictured rectangle. Since the width of that rectangle depends on the variable \(x\) (which represents the how far the slice lies from the top of the dam), we find a formula for the function \(y = f(x)\) that determines one side of the face of the dam. Since \(f\) is linear, it is straightforward to find that \(y = f(x) = 45 - \frac{3}{5}x\). Hence, the approximate area of a representative slice is
+</p>
+<span class="displaymath" id="me-652">\[
+A_{\mbox{{slice}} } = 2 f(x) \triangle x = 2 (45 - \frac{3}{5}x) \triangle x.
+\]</span><p id="p-1650">
+At any point on this slice, the depth is approximately constant, and thus the pressure can be considered constant. In particular, we note that since \(x\) measures the distance to the top of the dam, and because the water rises to within 5 feet of the top of the dam, the depth of any point on the representative slice is approximately \((x-5)\). Now, since pressure is given by \(P = 62.4d\), we have that at any point on the representative slice
+</p>
+<span class="displaymath" id="me-653">\[
+P_{\mbox{{slice}} } = 62.4(x-5).
+\]</span><p id="p-1651">
+Knowing both the pressure and area, we can find the force the water exerts on the slice. Using \(F = PA\), it follows that
+</p>
+<span class="displaymath" id="me-654">\[
+F_{\mbox{{slice}} } = P_{\mbox{{slice}} } \cdot A_{\mbox{{slice}} } = 62.4(x-5) \cdot 2 (45 - \frac{3}{5}x) \triangle x.
+\]</span><p id="p-1652">
+Finally, we use a definite integral to sum the forces over the appropriate range of \(x\)-values. Since the water rises to within 5 feet of the top of the dam, we start at \(x = 5\) and slice all the way to the bottom of the dam, where \(x = 30\). Hence,
+</p>
+<span class="displaymath" id="me-655">\[
+F = \int_{x=5}^{x=30} 62.4(x-5) \cdot 2 (45 - \frac{3}{5}x) \, dx.
+\]</span><p id="p-1653">
+Using technology to evaluate the integral, we find \(F \approx 1.248 \times 10^6\) pounds.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.4.3" id="A_6.4.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.4.9</span>
+</h5></a></div>
+<div id="hk-A_6.4.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1654">
+In each of the following problems, determine the total force exerted by water against the surface that is described.
+</p>
+<figure class="figure-like" id="F_6.4.Act3Trough"><img width="100%" src="images/6_4_Act2Trough.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.4.10</span>A trough with triangular ends, as described in <a knowl="./knowl/A_6.4.3.html" knowl-id="xref-A_6.4.3" alt="Exercise 6.4.9 " title="Exercise 6.4.9 ">Activity 6.4.9</a>, part (c).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-2377">Consider a rectangular dam that is 100 feet wide and 50 feet tall, and suppose that water presses against the dam all the way to the top.</li>
+<li id="li-2378">Consider a semicircular dam with a radius of 30 feet.  Suppose that the water rises to within 10 feet of the top of the dam.</li>
+<li id="li-2379">Consider a trough with triangular ends, as pictured in <a knowl="./knowl/F_6.4.Act3Trough.html" knowl-id="xref-F_6.4.Act3Trough" alt="Figure 6.4.10 " title="Figure 6.4.10 ">Figure 6.4.10</a>, where the tank is 10 feet long, the top is 5 feet wide, and the tank is 4 feet deep.  Say that the trough is full to within 1 foot of the top with water of weight density 62.4 pounds/ft\(^3\).  How much force does the water exert against one of the triangular ends?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-207" id="hint-207"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-207" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2380">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-208" id="hint-208"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-208" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2381">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-102" id="solution-102"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-102" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2382">Solutions for each of the prompts above.</li></ol></span></span><p id="p-1655">
+While there are many different formulas that we use in solving problems involving work, force, and pressure, it is important to understand that the fundamental ideas behind these problems are similar to several others that we've encountered in applications of the definite integral. In particular, the basic idea is to take a difficult problem and somehow slice it into more manageable pieces that we understand, and then use a definite integral to add up these simpler pieces.
+</p>
+<p id="p-1656">
+\item To measure the work accomplished by a varying force that moves an object, we subdivide the problem into pieces on which we can use the formula \(W = F \cdot d\), and then use a definite integral to sum the work accomplished on each piece.
+\item To find the total force exerted by water against a dam, we use the formula \(F = P \cdot A\) to measure the force exerted on a slice that lies at a fixed depth, and then use a definite integral to sum the forces across the appropriate range of depths.
+\item Because work is computed as the product of force and distance (provided force is constant), and the force water exerts on a dam can be computed as the product of pressure and area (provided pressure is constant), problems involving these concepts are similar to earlier problems we did using definite integrals to find distance (via “distance equals rate times time”) and mass (“mass equals density times volume”).
+</p>
+<p id="p-1657">
+\hrulefill
+</p>
+<p id="p-1658">
+\begin{exercises}
+\item Consider the curve \(f(x) = 3 \cos(\frac{x^3}{4})\) and the portion of its graph that lies in the first quadrant between the \(y\)-axis and the first positive value of \(x\) for which \(f(x) = 0\). Let \(R\) denote the region bounded by this portion of \(f\), the \(x\)-axis, and the \(y\)-axis. Assume that \(x\) and \(y\) are each measured in feet.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2383">Picture the coordinate axes rotated 90 degrees clockwise so that the positive \(x\)-axis points straight down, and the positive \(y\)-axis points to the right.  Suppose that \(R\) is rotated about the \(x\) axis to form a solid of revolution, and we consider this solid as a storage tank.  Suppose that the resulting tank is filled to a depth of 1.5 feet with water weighing 62.4 pounds per cubic foot.  Find the amount of work required to lower the water in the tank until it is 0.5 feet deep, by pumping the water to the top of the tank.</li>
+<li id="li-2384">Again picture the coordinate axes rotated 90 degrees clockwise so that the positive \(x\)-axis points straight down, and the positive \(y\)-axis points to the right.  Suppose that \(R\), together with its reflection across the \(x\)-axis, forms one end of a storage tank that is 10 feet long.  Suppose that the resulting tank is filled completely with water weighing 62.4 pounds per cubic foot.  Find a formula for a function that tells the amount of work required to lower the water by \(h\) feet.</li>
+<li id="li-2385">Suppose that the tank described in (b) is completely filled with water.  Find the total force due to hydrostatic pressure exerted by the water on one end of the tank.</li>
+</ol>
+<p id="p-1659">
+\item A cylindrical tank, buried on its side, has radius 3 feet and length 10 feet. It is filled completely with water whose weight density is 62.4 lbs/ft\(^3\), and the top of the tank is two feet underground.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2386">Set up, but do not evaluate, an integral expression that represents the amount of work required to empty the top half of the water in the tank to a truck whose tank lies 4.5 feet above ground.</li>
+<li id="li-2387">With the tank now only half-full, set up, but do not evaluate an integral expression that represents the total force due to hydrostatic pressure against one end of the tank.</li>
+</ol>
+<p id="p-1660">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1661">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

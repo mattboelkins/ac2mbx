@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:48-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Using Definite Integrals to Find Area and Length</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="C_6.html">Previous</a><a class="up-button button toolbar-item" href="C_6.html">Up</a><a class="next-button button toolbar-item" href="S_6.1.Volume.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="C_6.html">Previous</a><a class="up-button button toolbar-item" href="C_6.html">Up</a><a class="next-button button toolbar-item" href="S_6.1.Volume.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link active"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html" class="active">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_6.1.Area"><header><h1 class="heading" alt="Section 6.1 Using Definite Integrals to Find Area and Length" title="Section 6.1 Using Definite Integrals to Find Area and Length">
+<span class="type">Section</span><span class="codenumber">6.1</span><span class="title">Using Definite Integrals to Find Area and Length</span><a href="S_6.1.Area.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-32"><h5 class="heading"></h5>
+<p id="p-1450">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2214">How can we use definite integrals to measure the area between two curves?</li>
+<li id="li-2215">How do we decide whether to integrate with respect to \(x\) or with respect to \(y\) when we try to find the area of a region?</li>
+<li id="li-2216">How can a definite integral be used to measure the length of a curve?</li>
+</ul>
+<p id="p-1451">
+} 
+</p></article><section class="subsection" id="subsection-106"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.1.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-1452">
+Early on in our work with the definite integral, we learned that if we have a nonnegative velocity function, \(v\), for an object moving along an axis, the area under the velocity function between \(a\) and \(b\) tells us the distance the object traveled on that time interval. Moreover, based on the definition of the definite integral, that area is given precisely by \(\int_a^b v(t) \, dt\). Indeed, for any nonnegative function \(f\) on an interval \([a,b]\), we know that \(\int_a^b f(x) \, dx\) measures the area bounded by the curve and the \(x\)-axis between \(x = a\) and \(x = b\).
+</p>
+<p id="p-1453">
+Through our upcoming work in the present section and chapter, we will explore how definite integrals can be used to represent a variety of different physically important properties. In Preview <a href="S_6.1.Area.html#PA_6.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, we begin this investigation by seeing how a single definite integral may be used to represent the area between two curves.
+</p>
+<article class="paragraphs" id="PA_6.1"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1454">
+Consider the functions given by \(f(x) = 5-(x-1)^2\) and \(g(x) = 4-x\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2217">Use algebra to find the points where the graphs of \(f\) and \(g\) intersect.</li>
+<li id="li-2218">Sketch an accurate graph of \(f\) and \(g\) on the axes provided, labeling the curves by name and the intersection points with ordered pairs.</li>
+<li id="li-2219">Find and evaluate exactly an integral expression that represents the area between \(y = f(x)\) and the \(x\)-axis on the interval between the intersection points of \(f\) and \(g\).</li>
+<li id="li-2220">Find and evaluate exactly an integral expression that represents the area between \(y = g(x)\) and the \(x\)-axis on the interval between the intersection points of \(f\) and \(g\).</li>
+<li id="li-2221">What is the exact area between \(f\) and \(g\) between their intersection points?  Why?</li>
+</ol>
+<figure class="figure-like" id="F_6.1.Intro"><img width="100%" src="images/6_1_PA1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.1.1</span>Axes for plotting \(f\) and \(g\) in Preview <a href="S_6.1.Area.html#PA_6.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a></figcaption></figure></article></section><section class="subsection" id="subsection-107"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.1.2</span><span class="title">The Area Between Two Curves</span>
+</h1></header><p id="p-1455">
+\knownindex{\lt main&gt;area\lt /main&gt;}
+</p>
+<p id="p-1456">
+Through Preview <a href="S_6.1.Area.html#PA_6.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, we encounter a natural way to think about the area between two curves: the area between the curves is the area beneath the upper curve minus the area below the lower curve. For the functions \(f(x) = (x-1)^2 + 1\) and \(g(x) = x+2\), shown in <a knowl="./knowl/F_6.1.PA1revisited.html" knowl-id="xref-F_6.1.PA1revisited" alt="Figure 6.1.2 " title="Figure 6.1.2 ">Figure 6.1.2</a>,
+</p>
+<figure class="figure-like" id="F_6.1.PA1revisited"><img width="100%" src="images/6_1_PA1revisited.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.1.2</span>The areas bounded by the functions \(f(x) = (x-1)^2 + 1\) and \(g(x) = x+2\) on the interval \([0,3]\).</figcaption></figure><p id="p-1457">
+we see that the upper curve is \(g(x) = x+2\), and that the graphs intersect at \((0,2)\) and \((3,5)\). Note that we can find these intersection points by solving the system of equations given by \(y = (x-1)^2 + 1\) and \(y = x+2\) through substitution: substituting \(x+2\) for \(y\) in the first equation yields \(x+2 = (x-1)^2 + 1\), so \(x+2 = x^2 - 2x + 1 + 1\), and thus
+</p>
+<span class="displaymath" id="me-593">\[
+x^2 - 3x = x(x-3) = 0,
+\]</span><p id="p-1458">
+from which it follows that \(x = 0\) or \(x = 3\). Using \(y = x+2\), we find the corresponding \(y\)-values of the intersection points.
+</p>
+<p id="p-1459">
+On the interval \([0,3]\), the area beneath \(g\) is
+</p>
+<span class="displaymath" id="me-594">\[
+\int_0^3 (x+2) \, dx = \frac{21}{2},
+\]</span><p id="p-1460">
+while the area under \(f\) on the same interval is
+</p>
+<span class="displaymath" id="me-595">\[
+\int_0^3 [(x-1)^2 + 1] \, dx = 6.
+\]</span><p id="p-1461">
+Thus, the area between the curves is
+</p>
+<span class="displaymath" id="E_DiffOfInt">\begin{equation}
+ A = \int_0^3 (x+2) \, dx -  \int_0^3 [(x-1)^2 + 1] \, dx = \frac{21}{2} - 6 = \frac{9}{2}.
+\label{E_DiffOfInt}\tag{6.1.1}\end{equation}</span><p id="p-1462">
+A slightly different perspective is also helpful here: if we take the region between two curves and slice it up into thin vertical rectangles (in the same spirit as we originally sliced the region between a single curve and the \(x\)-axis in <a href="S_4.2.Riemann.html" alt="Section 4.2 Riemann Sums" title="Section 4.2 Riemann Sums">Section 4.2</a>), then we see that the height of a typical rectangle is given by the difference between the two functions. For example, for the rectangle shown at left in <a knowl="./knowl/F_6.1.PA1revisited2.html" knowl-id="xref-F_6.1.PA1revisited2" alt="Figure 6.1.3 " title="Figure 6.1.3 ">Figure 6.1.3</a>,
+</p>
+<figure class="figure-like" id="F_6.1.PA1revisited2"><img width="100%" src="images/6_1_PA1revisited2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.1.3</span>The area bounded by the functions \(f(x) = (x-1)^2 + 1\) and \(g(x) = x+2\) on the interval \([0,3]\).</figcaption></figure><p id="p-1463">
+we see that the rectangle's height is \(g(x) - f(x)\), while its width can be viewed as \(\triangle x\), and thus the area of the rectangle is
+</p>
+<span class="displaymath" id="me-596">\[
+A_{\mbox{{rect}} } = (g(x) - f(x)) \triangle x.
+\]</span><p id="p-1464">
+The area between the two curves on \([0,3]\) is thus approximated by the Riemann sum
+</p>
+<span class="displaymath" id="me-597">\[
+A \approx \sum_{i=1}^{n} (g(x_i) - f(x_i)) \triangle x,
+\]</span><p id="p-1465">
+and then as we let \(n \to \infty\), it follows that the area is given by the single definite integral
+</p>
+<span class="displaymath" id="E_IntOfDiff">\begin{equation}
+ A = \int_0^3 (g(x) - f(x)) \, dx.
+\label{E_IntOfDiff}\tag{6.1.2}\end{equation}</span><p id="p-1466">
+In many applications of the definite integral, we will find it helpful to think of a “representative slice” and how the definite integral may be used to add these slices to find the exact value of a desired quantity. Here, the integral essentially sums the areas of thin rectangles.
+</p>
+<p id="p-1467">
+Finally, whether we think of the area between two curves as the difference between the area bounded by the individual curves (as in <a knowl="./knowl/E_DiffOfInt.html" knowl-id="xref-E_DiffOfInt" alt="Equation 6.1.1 " title="Equation 6.1.1 ">(6.1.1)</a>) or as the limit of a Riemann sum that adds the areas of thin rectangles between the curves (as in <a knowl="./knowl/E_IntOfDiff.html" knowl-id="xref-E_IntOfDiff" alt="Equation 6.1.2 " title="Equation 6.1.2 ">(6.1.2)</a>), these two results are the same, since the difference of two integrals is the integral of the difference:
+</p>
+<span class="displaymath" id="me-598">\[
+\int_0^3 g(x) \, dx -  \int_0^3 f(x) \, dx = \int_0^3 (g(x) - f(x)) \, dx.
+\]</span><p id="p-1468">
+Moreover, our work so far in this section exemplifies the following general principle.
+</p>
+<p id="p-1469">
+
+{
+If two curves \(y = g(x)\) and \(y = f(x)\) intersect at \((a,g(a))\) and \((b,g(b))\), and for all \(x\) such that \(a \le x \le b\), \(g(x) \ge f(x)\), then the area between the curves is
+\(A = \int_a^b (g(x) - f(x)) \, dx.\)
+} 
+
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.1.1" id="A_6.1.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.1.4</span>
+</h5></a></div>
+<div id="hk-A_6.1.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1470">
+In each of the following problems, our goal is to determine the area of the region described. For each region, (i) determine the intersection points of the curves, (ii) sketch the region whose area is being found, (iii) draw and label a representative slice, and (iv) state the area of the representative slice. Then, state a definite integral whose value is the exact area of the region, and evaluate the integral to find the numeric value of the region's area.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2222">The finite region bounded by \(y = \sqrt{x}\) and \(y = \frac{1}{4}x\).</li>
+<li id="li-2223">The finite region bounded by \(y = 12-2x^2\) and \(y = x^2 - 8\).</li>
+<li id="li-2224">The area bounded by the \(y\)-axis, \(f(x) = \cos(x)\), and \(g(x) = \sin(x)\), where we consider the region formed by the first positive value of \(x\) for which \(f\) and \(g\) intersect.</li>
+<li id="li-2225">The finite regions between the curves \(y = x^3-x\) and \(y = x^2\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-185" id="hint-185"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-185" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2226">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-186" id="hint-186"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-186" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2227">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-91" id="solution-91"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-91" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2228">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-108"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.1.3</span><span class="title">Finding Area with Horizontal Slices</span>
+</h1></header><p id="p-1471">
+At times, the shape of a geometric region may dictate that we need to use horizontal rectangular slices, rather than vertical ones. For instance, consider the region bounded by the parabola \(x = y^2 - 1\) and the line \(y = x-1\), pictured in <a knowl="./knowl/F_6.1.IntWRTy.html" knowl-id="xref-F_6.1.IntWRTy" alt="Figure 6.1.5 " title="Figure 6.1.5 ">Figure 6.1.5</a>. First, we observe that by solving the second equation for \(x\) and writing \(x = y + 1\), we can eliminate a variable through substitution and find that \(y+1 = y^2 - 1\), and hence the curves intersect where \(y^2 - y - 2 = 0\). Thus, we find \(y = -1\) or \(y = 2\), so the intersection points of the two curves are \((0,-1)\) and \((3,2)\).
+</p>
+<p id="p-1472">
+We see that if we attempt to use vertical rectangles to slice up the area, at certain values of \(x\) (specifically from \(x = -1\) to \(x = 0\), as seen in the center graph of <a knowl="./knowl/F_6.1.IntWRTy.html" knowl-id="xref-F_6.1.IntWRTy" alt="Figure 6.1.5 " title="Figure 6.1.5 ">Figure 6.1.5</a>), the curves that govern the top and bottom of the rectangle are one and the same. This suggests, as shown in the rightmost graph in the figure, that we try using horizontal rectangles as a way to think about the area of the region.
+</p>
+<figure class="figure-like" id="F_6.1.IntWRTy"><img width="100%" src="images/6_1_IntWRTy.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.1.5</span>The area bounded by the functions \(x = y^2-1\) and \(y = x-1\) (at left), with the region sliced vertically (center) and horizontally (at right).</figcaption></figure><p id="p-1473">
+For such a horizontal rectangle, note that its width depends on \(y\), the height at which the rectangle is constructed. In particular, at a height \(y\) between \(y = -1\) and \(y = 2\), the right end of a representative rectangle is determined by the line, \(x = y+1\), while the left end of the rectangle is determined by the parabola, \(x = y^2-1\), and the thickness of the rectangle is \(\triangle y\).
+</p>
+<p id="p-1474">
+Therefore, the area of the rectangle is
+</p>
+<span class="displaymath" id="me-599">\[
+A_{\mbox{{rect}} } = [(y+1) - (y^2-1)] \triangle y,
+\]</span><p id="p-1475">
+from which it follows that the area between the two curves on the \(y\)-interval \([-1,2]\) is approximated by the Riemann sum
+</p>
+<span class="displaymath" id="me-600">\[
+A \approx \sum_{i=1}^{n} [(y_i+1)-(y_i^2-1)] \triangle y.
+\]</span><p id="p-1476">
+Taking the limit of the Riemann sum, it follows that the area of the region is
+</p>
+<span class="displaymath" id="E_IntWRTy">\begin{equation}
+ A = \int_{y=-1}^{y=2} [(y+1) - (y^2-1)] \, dy.
+\label{E_IntWRTy}\tag{6.1.3}\end{equation}</span><p id="p-1477">
+We emphasize that we are integrating with respect to \(y\); this is dictated by the fact that we chose to use horizontal rectangles whose widths depend on \(y\) and whose thickness is denoted \(\triangle y\). It is a straightforward exercise to evaluate the integral in Equation <a knowl="./knowl/E_IntWRTy.html" knowl-id="xref-E_IntWRTy" alt="Equation 6.1.3 " title="Equation 6.1.3 ">(6.1.3)</a> and find that \(A = \frac{9}{2}\).
+</p>
+<p id="p-1478">
+Just as with the use of vertical rectangles of thickness \(\triangle x\), we have a general principle for finding the area between two curves, which we state as follows.
+</p>
+<p id="p-1479">
+
+{
+If two curves \(x = g(y)\) and \(x = f(y)\) intersect at \((g(c),c)\) and \((g(d),d)\), and for all \(y\) such that \(c \le y \le d\), \(g(y) \ge f(y)\), then the area between the curves is
+</p>
+<span class="displaymath" id="me-601">\[
+A = \int_{y=c}^{y=d} (g(y) - f(y)) \, dy.
+\]</span><p id="p-1480">
+} 
+
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.1.2" id="A_6.1.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.1.6</span>
+</h5></a></div>
+<div id="hk-A_6.1.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1481">
+In each of the following problems, our goal is to determine the area of the region described. For each region, (i) determine the intersection points of the curves, (ii) sketch the region whose area is being found, (iii) draw and label a representative slice, and (iv) state the area of the representative slice. Then, state a definite integral whose value is the exact area of the region, and evaluate the integral to find the numeric value of the region's area. Note well: At the step where you draw a representative slice, you need to make a choice about whether to slice vertically or horizontally.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2229">The finite region bounded by \(x=y^2\) and \(x=6-2y^2\).</li>
+<li id="li-2230">The finite region bounded by \(x=1-y^2\) and \(x = 2-2y^2\).</li>
+<li id="li-2231">The area bounded by the \(x\)-axis, \(y=x^2\), and \(y=2-x\).</li>
+<li id="li-2232">The finite regions between the curves \(x=y^2-2y\) and \(y=x\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-187" id="hint-187"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-187" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2233">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-188" id="hint-188"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-188" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2234">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-92" id="solution-92"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-92" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2235">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-109"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.1.4</span><span class="title">Finding the length of a curve</span>
+</h1></header><p id="p-1482">
+\knownindex{\lt main&gt;arc length\lt /main&gt;}
+</p>
+<p id="p-1483">
+In addition to being able to use definite integrals to find the areas of certain geometric regions, we can also use the definite integral to find the length of a portion of a curve. We use the same fundamental principle: we take a curve whose length we cannot easily find, and slice it up into small pieces whose lengths we can easily approximate. In particular, we take a given curve and subdivide it into small approximating line segments, as shown at left in <a knowl="./knowl/F_6.1.ArcLength.html" knowl-id="xref-F_6.1.ArcLength" alt="Figure 6.1.7 " title="Figure 6.1.7 ">Figure 6.1.7</a>.
+</p>
+<figure class="figure-like" id="F_6.1.ArcLength"><img width="100%" src="images/6_1_ArcLength.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.1.7</span>At left, a continuous function \(y = f(x)\) whose length we seek on the interval \(a = x_0\) to \(b = x_3\).  At right, a close up view of a portion of the curve.</figcaption></figure><p id="p-1484">
+To see how we find such a definite integral that measures arc length on the curve \(y = f(x)\) from \(x = a\) to \(x = b\), we think about the portion of length, \(L_{\mbox{{slice}} }\), that lies along the curve on a small interval of length \(\triangle x\), and estimate the value of \(L{\mbox{{slice}} }\) using a well-chosen triangle. In particular, if we consider the right triangle with legs parallel to the coordinate axes and hypotenuse connecting two points on the curve, as seen at right in <a knowl="./knowl/F_6.1.ArcLength.html" knowl-id="xref-F_6.1.ArcLength" alt="Figure 6.1.7 " title="Figure 6.1.7 ">Figure 6.1.7</a>, we see that the length, \(h\), of the hypotenuse approximates the length, \(L_{\mbox{{slice}} }\), of the curve between the two selected points. Thus,
+</p>
+<span class="displaymath" id="me-602">\[
+L_{\mbox{{slice}} } \approx h = \sqrt{ (\triangle x)^2 + (\triangle y)^2 }.
+\]</span><p id="p-1485">
+By algebraically rearranging the expression for the length of the hypotenuse, we see how a definite integral can be used to compute the length of a curve. In particular, observe that by removing a factor of \((\triangle x)^2\), we find that
+</p>
+<span class="displaymath" id="md-70">\begin{align*}
+L_{\mbox{{slice}} } \amp  \approx \amp  \sqrt{ (\triangle x)^2 + (\triangle y)^2 }\\
+\amp  = \amp  \sqrt{ (\triangle x)^2\left(1 + \frac{(\triangle y)^2}{(\triangle x)^2} \right)}\\
+\amp  = \amp  \sqrt{1 + \frac{(\triangle y)^2}{(\triangle x)^2} } \cdot \triangle x.
+\end{align*}</span><p id="p-1486">
+Furthermore, as \(n \to \infty\) and \(\triangle x \to 0\), it follows that \(\frac{\triangle y}{\triangle x} \to \frac{dy}{dx} = f'(x)\). Thus, we can say that
+</p>
+<span class="displaymath" id="me-603">\[
+L_{\mbox{{slice}} } \approx \sqrt{1 + f'(x)^2} \triangle x.
+\]</span><p id="p-1487">
+Taking a Riemann sum of all of these slices and letting \(n \to \infty\), we arrive at the following fact.
+</p>
+<p id="p-1488">
+
+{
+Given a differentiable function \(f\) on an interval \([a,b]\), the total arc length\knownindex{\lt main&gt;arc length\lt /main&gt;}, \(L\), along the curve \(y = f(x)\) from \(x = a\) to \(x = b\) is given by
+</p>
+<span class="displaymath" id="me-604">\[
+L = \int_a^b \sqrt{1+f'(x)^2} \, dx.
+\]</span><p id="p-1489">
+} 
+
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.1.3" id="A_6.1.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.1.8</span>
+</h5></a></div>
+<div id="hk-A_6.1.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1490">
+Each of the following questions somehow involves the arc length along a curve.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2236">Use the definition and appropriate computational technology to determine the arc length along \(y = x^2\) from \(x = -1\) to \(x = 1\).</li>
+<li id="li-2237">Find the arc length of \(y = \sqrt{4-x^2}\) on the interval \(-2 \le x \le 2\).  Find this value in two different ways: (a) by using a definite integral, and (b) by using a familiar property of the curve.</li>
+<li id="li-2238">Determine the arc length of \(y = xe^{3x}\) on the interval \([0,1]\).</li>
+<li id="li-2239">Will the integrals that arise calculating arc length typically be ones that we can evaluate exactly using the First FTC, or ones that we need to approximate?  Why?</li>
+<li id="li-2240">A moving particle is traveling along the curve given by \(y = f(x) = 0.1x^2 + 1\), and does so at a constant rate of 7 cm/sec, where both \(x\) and \(y\) are measured in cm (that is, the curve \(y = f(x)\) is the path along which the object actually travels; the curve is not a “position function”).  Find the position of the particle when \(t = 4\) sec, assuming that when \(t = 0\), the particle's location is \((0,f(0))\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-189" id="hint-189"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-189" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2241">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-190" id="hint-190"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-190" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2242">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-93" id="solution-93"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-93" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2243">Solutions for each of the prompts above.</li></ol></span></span><p id="p-1491">
+\item To find the area between two curves, we think about slicing the region into thin rectangles. If, for instance, the area of a typical rectangle on the interval \(x = a\) to \(x = b\) is given by \(A_{\mbox{{rect}} } = (g(x) - f(x)) \triangle x,\) then the exact area of the region is given by the definite integral
+</p>
+<span class="displaymath" id="me-605">\[
+A = \int_a^b (g(x)-f(x))\, dx.
+\]</span><p id="p-1492">
+\item The shape of the region usually dictates whether we should use vertical rectangles of thickness \(\triangle x\) or horizontal rectangles of thickness \(\triangle y\). We desire to have the height of the rectangle governed by the difference between two curves: if those curves are best thought of as functions of \(y\), we use horizontal rectangles, whereas if those curves are best viewed as functions of \(x\), we use vertical rectangles.
+\item The arc length, \(L\), along the curve \(y = f(x)\) from \(x = a\) to \(x = b\) is given by
+</p>
+<span class="displaymath" id="me-606">\[
+L = \int_a^b \sqrt{1 + f'(x)^2} \, dx.
+\]</span>
+<p id="p-1493">
+\hrulefill
+</p>
+<p id="p-1494">
+\begin{exercises}
+\item Find the exact area of each described region.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2244">The finite region between the curves \(x = y(y-2)\) and \(x=-(y-1)(y-3)\).</li>
+<li id="li-2245">The region between the sine and cosine functions on the interval \([\frac{\pi}{4}, \frac{3\pi}{4}]\).</li>
+<li id="li-2246">The finite region between \(x = y^2 - y - 2\) and \(y = 2x-1\).</li>
+<li id="li-2247">The finite region between \(y = mx\) and \(y = x^2-1\), where \(m\) is a positive constant.</li>
+</ol>
+<p id="p-1495">
+\item Let \(f(x) = 1-x^2\) and \(g(x) = ax^2 - a\), where \(a\) is an unknown real number. For what value(s) of \(a\) is the area between the curves \(f\) and \(g\) equal to 2?
+</p>
+<p id="p-1496">
+\item Let \(f(x) = 2-x^2\). Recall that the average value of any continuous function \(f\) on an interval \([a,b]\) is given by \(\frac{1}{b-a} \int_a^b f(x) \, dx\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2248">Find the average value of \(f(x) = 2-x^2\) on the interval \([0,\sqrt{2}]\).  Call this value \(r\).</li>
+<li id="li-2249">Sketch a graph of \(y = f(x)\) and \(y = r\).  Find their intersection point(s).</li>
+<li id="li-2250">Show that on the interval \([0,\sqrt{2}]\), the amount of area that lies below \(y = f(x)\) and above \(y = r\) is equal to the amount of area that lies below \(y = r\) and above \(y = f(x)\).</li>
+<li id="li-2251">Will the result of (c) be true for any continuous function and its average value on any interval?  Why?</li>
+</ol>
+<p id="p-1497">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1498">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

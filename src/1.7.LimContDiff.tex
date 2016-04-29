@@ -1,0 +1,140 @@
+\section{Limits, Continuity, and Differentiability} \label{S:1.7.LimContDiff}
+
+\vspace*{-14 pt}
+\framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{\begin{goals}
+\item What does it mean graphically to say that $f$ has limit $L$ as $x \to a$?  How is this connected to having a left-hand limit at $x = a$ and having a right-hand limit at $x = a$?
+\item What does it mean to say that a function $f$ is continuous at $x = a$?  What role do limits play in determining whether or not a function is continuous at a point?
+\item What does it mean graphically to say that a function $f$ is differentiable at $x = a$?  How is this connected to the function being locally linear? 
+\item How are the characteristics of a function having a limit, being continuous, and being differentiable at a given point related to one another?
+\end{goals}} \hspace*{3 pt}}
+
+\subsection*{Introduction}
+In Section~\ref{S:1.2.Limits}, we learned about how the concept of limits can be used to study the trend of a function near a fixed input value.  As we study such trends, we are fundamentally interested in knowing how well-behaved the function is at the given point, say $x = a$.  In this present section, we aim to expand our perspective and develop language and understanding to quantify how the function acts and how its value changes near a particular point.  Beyond thinking about whether or not the function has a limit $L$ at $x = a$, we will also consider the value of the function $f(a)$ and how this value is related to $\lim_{x \to a} f(x)$, as well as whether or not the function has a derivative $f'(a)$ at the point of interest.  Throughout,  we will build on and formalize ideas that we have encountered in several settings.
+
+We begin to consider these issues through the following preview activity that asks you to consider the graph of a function with a variety of interesting behaviors.
+
+\input{previews/1.7.PA1}
+
+\subsection*{Having a limit at a point}
+
+In Section~\ref{S:1.2.Limits}, we first encountered limits and learned that we say that $f$ has limit $L$ as $x$ approaches $a$ and write $\ds \lim_{x \to a} f(x) = L$ provided that we can make the value of $f(x)$ as close to $L$ as we like by taking $x$ sufficiently close (but not equal to) $a$.  Here, we expand further on this definition and focus in more depth on what it means for a function not to have a limit at a given value.  
+
+Essentially there are two behaviors that a function can exhibit at a point where it fails to have a limit.  In Figure~\ref{F:1.7.NoLimit}, at left we see a function $f$ whose graph shows a jump at $a = 1$.  In particular, if we let $x$ approach 1 from the left side, the value of $f$ approaches 2, while if we let $x$ go to $1$ from the right, the value of $f$ tends to 3.  Because the value of $f$ does not approach a single number as $x$ gets arbitrarily close to 1 from both sides, we know that $f$ does not have a limit at $a = 1$.  
+
+Since $f$ does approach a single value on each side of $a = 1$, we can introduce the notion of \emph{left} and \emph{right}  (or \emph{one-sided}) limits. \index{left limit} \index{right limit} \index{limit!one-sided}  We say that \emph{$f$ has limit $L_1$ as $x$ approaches $a $ from the left} and write
+$$\lim_{x \to a^-} f(x) = L_1$$
+ provided that we can make the value of $f(x)$ as close to $L_1$ as we like by taking $x$ sufficiently close to $a$ while always having $x < a$.  In this case, we call $L_1$ the left-hand limit of $f$ as $x$ approaches $a$.  Similarly, we say \emph{$L_2$ is the right-hand limit of $f$ as $x$ approaches $a$} and write
+$$\lim_{x \to a^+} f(x) = L_2$$
+provided that we can make the value of $f(x)$ as close to $L_2$ as we like by taking $x$ sufficiently close to $a$ while always having $x > a$.  In the graph of the function $f$ in Figure~\ref{F:1.7.NoLimit}, we see that 
+$$\lim_{x \to 1^-} f(x) = 2 \ \ \mbox{and} \ \lim_{x \to 1^+} f(x) = 3$$
+and precisely because the left and right limits are not equal, the overall limit of $f$ as $x \to 1$ fails to exist.
+
+\begin{figure}[h]
+\begin{center}
+\scalebox{0.9}{\includegraphics{figures/1_7_NoLimit.eps}}
+\caption{Functions $f$ and $g$ that each fail to have a limit at $a = 1$.} \label{F:1.7.NoLimit}
+\end{center}
+\end{figure}
+
+For the function $g$ pictured at right in Figure~\ref{F:1.7.NoLimit}, the function fails to have a limit at $a = 1$ for a different reason.  While the function does not have a jump in its graph at $a = 1$, it is still not the case that $g$ approaches a single value as $x$ approaches 1.  In particular, due to the infinitely oscillating behavior of $g$ to the right of $a = 1$, we say that the right-hand limit of $g$ as $x \to 1^+$ does not exist, and thus 
+$\ds \lim_{x \to 1} g(x) \ \mbox{does not exist}.$
+
+To summarize, anytime either a left- or right-hand limit fails to exist or the left- and right-hand limits are not equal to each other, the overall limit will not exist.  Said differently, 
+
+\vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+A function $f$ has limit $L$ as $x \to a$ if and only if
+$$\lim_{x \to a^-} f(x) = L = \lim_{x \to a^+} f(x).$$
+That is, a function has a limit at $x = a$ if and only if both the left- and right-hand limits at $x = a$ exist and share the same value.
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+In Preview Activity~\ref{PA:1.7}, the function $f$ given in Figure~\ref{F:1.7.PA1} only fails to have a limit at two values:  at $a = -2$ (where the left- and right-hand limits are 2 and $-1$, respectively) and at $x = 2$, where $\lim_{x \to 2^+} f(x)$ does not exist).  Note well that even at values like $a = -1$ and $a = 0$ where there are holes in the graph, the limit still exists. 
+
+\input{activities/1.7.Act1}
+
+\subsection*{Being continuous at a point} \index{continuous}
+
+Intuitively, a function is continuous if we can draw it without ever lifting our pencil from the page.  Alternatively, we might say that the graph of a continuous function has no jumps or holes in it.  We first consider three specific situations in Figure~\ref{F:1.7.Cont} where all three functions have a limit at $a = 1$, and then work to make the idea of continuity more precise.
+
+\begin{figure}[h]
+\begin{center}
+\scalebox{0.9}{\includegraphics{figures/1_7_Cont.eps}}
+\caption{Functions $f$, $g$, and $h$ that demonstrate subtly different behaviors at $a = 1$.} \label{F:1.7.Cont}
+\end{center}
+\end{figure}
+
+Note that  $f(1)$ is not defined, which leads to the resulting hole in the graph of $f$ at $a = 1$.  We will naturally say that $f$ is \emph{not continuous at $a = 1$}.  For the next function $g$ in in Figure~\ref{F:1.7.Cont}, we observe that while $\lim_{x \to 1} g(x) = 3$, the value of $g(1) = 2$, and thus the limit does not equal the function value.  Here, too, we will say that $g$ is \emph{not continuous}, even though the function is defined at $a = 1$.  Finally, the function $h$ appears to be the most well-behaved of all three, since at $a = 1$ its limit and its function value agree.  That is,
+$$\lim_{x \to 1} h(x) = 3 = h(1).$$
+With no hole or jump in the graph of $h$ at $a = 1$, we desire to say that $h$ is \emph{continuous} there.
+
+More formally, we make the following definition.
+\begin{definition} 
+A function $f$ is \emph{continuous at $x = a$} \index{continuous at $x = a$} provided that
+\ba
+	\item $f$ has a limit as $x \to a$,
+	\item $f$ is defined at $x = a$, and
+	\item $\ds \lim_{x \to a} f(x) = f(a).$
+\ea
+\end{definition}
+Conditions (a) and (b) are technically contained implicitly in (c), but we state them explicitly to emphasize their individual importance.  In words, (c) essentially says that a function is continuous at $x = a$ provided that its limit as $x \to a$ exists and equals its function value at $x = a$.  If a function is continuous at every point in an interval $[a,b]$, we say the function is ``continuous on $[a,b]$.''  If a function is continuous at every point in its domain, we simply say the function is ``continuous.'' Thus, continuous functions are particularly nice:  to evaluate the limit of a continuous function at a point, all we need to do is evaluate the function.
+
+For example, consider $p(x) = x^2 - 2x + 3$.  It can be proved that every polynomial is a continuous function at every real number, and thus if we would like to know $\lim_{x \to 2} p(x)$, we simply compute
+$$\lim_{x \to 2} (x^2 - 2x + 3) = 2^2 - 2 \cdot 2 + 3 = 3.$$
+This route of substituting an input value to evaluate a limit works anytime we know function being considered is continuous.  Besides polynomial functions, all exponential functions and the sine and cosine functions are continuous at every point, as are many other familiar functions and combinations thereof.  
+
+\input{activities/1.7.Act2}
+
+\subsection*{Being differentiable at a point} \index{differentiable}
+
+We recall that a function $f$ is said to be differentiable at $x = a$ whenever $f'(a)$ exists.  Moreover, for $f'(a)$ to exist, we know that the function $y = f(x)$ must have a tangent line at the point $(a,f(a))$, since $f'(a)$ is precisely the slope of this line.  In order to even ask if $f$ has a tangent line at $(a,f(a))$, it is necessary that $f$ be continuous at $x = a$: if $f$ fails to have a limit at $x = a$, if $f(a)$ is not defined, or if $f(a)$ does not equal the value of $\lim_{x \to a} f(x)$, then it doesn't even make sense to talk about a tangent line to the curve at this point.
+
+Indeed, it can be proved formally that if a function $f$ is differentiable at $x = a$, then it must be continuous at $x = a$.  So, if $f$ is not continuous at $x = a$, then it is automatically the case that $f$ is not differentiable there.  For example, in Figure~\ref{F:1.7.Cont} from our early discussion of continuity, both $f$ and $g$ fail to be differentiable at $x = 1$ because neither function is continuous at $x = 1$.  But can a function fail to be differentiable at a point where the function is continuous?
+
+In Figure~\ref{F:1.7.NotDiff}, we revisit the situation where a function has a sharp corner at a point, something we encountered several times in Section~\ref{S:1.4.DerivativeFxn}.  For the pictured function $f$, we observe that $f$ is clearly continuous at $a = 1$, since $\lim_{x \to 1} f(x) = 1 = f(1).$
+
+\begin{figure}[ht]
+\begin{center}
+\includegraphics{figures/1_7_NotDiff.eps}
+\caption{A function $f$ that is continuous at $a = 1$ but not differentiable at $a = 1$; at right, we zoom in on the point $(1,1)$ in a magnified version of the box in the left-hand plot.} \label{F:1.7.NotDiff}
+\end{center}
+\end{figure}
+
+But the function $f$ in Figure~\ref{F:1.7.NotDiff} is not differentiable at $a = 1$ because $f'(1)$ fails to exist.  One way to see this is to observe that $f'(x) = -1$ for every value of $x$ that is less than 1, while $f'(x) = +1$ for every value of $x$ that is greater than 1.  That makes it seem that either $+1$ or $-1$ would be equally good candidates for the value of the derivative at $x = 1$.   Alternately, we could use the limit definition of the derivative to attempt to compute $f'(1)$, and discover that the derivative does not exist.  A similar problem will be investigated in Activity~\ref{A:1.7.3}.  Finally, we can also see visually that the function $f$ in Figure~\ref{F:1.7.NotDiff} does not have a tangent line.  When we zoom in on $(1,1)$ on the graph of $f$, no matter how closely we examine the function, it will always look like a ``V'', and never like a single line, which tells us there is no possibility for a tangent line there.  
+
+To make a more general observation, if a function does have a tangent line at a given point, when we zoom in on the point of tangency, the function and the tangent line should appear essentially indistinguishable\footnote{See, for instance, \href{http://gvsu.edu/s/6J}{\texttt{http://gvsu.edu/s/6J}} for an applet (due to David Austin, GVSU) where zooming in shows the increasing similarity between the tangent line and the curve.  }.  Conversely, if we have a function such that when we zoom in on a point the function looks like a single straight line, then the function should have a tangent line there, and thus be differentiable.  Hence, a function that is differentiable at $x = a$ will, up close, look more and more like its tangent line at $(a,f(a))$, and thus we say that a function is differentiable at $x = a$ is \emph{locally linear}. \index{locally linear}
+
+
+To summarize the preceding discussion of differentiability and continuity, we make several important observations.
+\begin{itemize}
+	\item If $f$ is differentiable at $x = a$, then $f$ is continuous at $x = a$.  Equivalently, if$f$ fails to be continuous at $x = a$, then $f$ will not be differentiable at $x = a$.  
+	\item A function can be continuous at a point, but not be differentiable there.  In particular, a function $f$ is not differentiable at $x = a$ if the graph has a sharp corner (or \emph{cusp}) \index{cusp} at the point $(a,f(a))$.  
+	\item If $f$ is differentiable at $x = a$, then $f$ is locally linear at $x = a$.  That is, when a function is differentiable, it looks linear when viewed up close because it resembles its tangent line there.
+\end{itemize}
+
+\newpage
+
+\input{activities/1.7.Act3}
+
+
+\begin{authornote}
+This is an author note.
+\end{authornote}
+
+%\nin \framebox{\hspace*{3 pt}
+%\parbox{6.25 in}{
+\begin{summary}
+\item A function $f$ has limit $L$ as $x \to a$ if and only if $f$ has a left-hand limit at $x = a$, has a right-hand limit at $x = a$, and the left- and right-hand limits are equal.  Visually, this means that there can be a hole in the graph at $x = a$, but the function must approach the same single value from either side of $x = a$.
+\item A function $f$ is continuous at $x = a$ whenever $f(a)$ is defined, $f$ has a limit as $x \to a$, and the value of the limit and the value of the function agree.  This guarantees that there is not a hole or jump in the graph of $f$ at $x = a$.
+\item A function $f$ is differentiable at $x = a$ whenever $f'(a)$ exists, which means that $f$ has a tangent line at $(a,f(a))$ and thus $f$ is locally linear at the value $x = a$.  Informally, this means that the function looks like a line when viewed up close at $(a,f(a))$ and that there is not a corner point or cusp at $(a,f(a))$. 
+\item Of the three conditions discussed in this section (having a limit at $x = a$, being continuous at $x = a$, and being differentiable at $x = a$), the strongest condition is being differentiable, and the next strongest is being continuous.  In particular, if $f$ is differentiable at $x = a$, then $f$ is also continuous at $x = a$, and if $f$ is continuous at $x = a$, then $f$ has a limit at $x = a$.
+\end{summary}
+%} \hspace*{3 pt}}
+
+\nin \hrulefill
+
+\input{exercises/1.7.LimContDiff(Ex)} 
+
+\clearpage

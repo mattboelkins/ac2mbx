@@ -1,0 +1,21 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:49-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">3</span>
+</h5>Using the Ratio Test with the \(k\)th term \(|x|^{k}\) we get
+
+<span class="displaymath" id="me-1040">\[
+\lim_{k \to \infty} \frac{ |x|^{k+1} }{ |x|^{k} } = \lim_{k \to \infty} |x| = |x|,
+\]</span>
+ 
+So the series \(\ds \sum_{k=0}^{\infty} x^k\) converges absolutely when \(|x| \lt  1\) or for \(-1 \lt  x \lt  1\) and diverges when \(|x| &gt; 1\). Since the Ratio Test doesn't tell us what happens when \(x=1\), we need to check the endpoints separately.
+<ul xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: disc;">
+<li id="li-3136">When \(x=1\) we have the series \(\sum_{k=0}^{\infty} 1\) which diverges since \(\lim_{k \to \infty} 1 \neq 0\).</li>
+<li id="li-3137">When \(x=-1\) we have the series \(\sum_{k=0}^{\infty} (-1)^k\) which diverges since \(\lim_{k \to \infty} (-1)^k\) does not exist.</li>
+</ul>  
+Therefore, the interval of convergence of the Taylor series for \(f(x) = \frac{1}{1-x}\) centered at \(x=0\) is \((-1,1)\).</article><span class="incontext"><a href="S_8.5.Taylor.html#li-3135">in-context</a></span>

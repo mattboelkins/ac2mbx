@@ -1,0 +1,280 @@
+\section{Series of Real Numbers} \label{S:8.3.Series}
+
+\vspace*{-14 pt}
+\framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{\begin{goals}
+\item What is an infinite series?
+\item What is the $n$th partial sum of an infinite series?
+\item How do we add up an infinite number of numbers? In other words, what does it mean for an infinite series of real numbers to converge?
+\item What does is mean for an infinite series of real numbers to diverge?
+\end{goals}} \hspace*{3 pt}}
+
+\subsection*{Introduction}
+
+In Section~\ref{S:8.2.Geometric}, we encountered several situations where we naturally considered an infinite sum of numbers called a geometric series.  For example, by writing
+$$N = 0.1212121212 \cdots = \frac{12}{100} + \frac{12}{100} \cdot \frac{1}{100} + \frac{12}{100} \cdot \frac{1}{100^2} + \cdots$$
+as a geometric series, we found a way to write the repeating decimal expansion of $N$ as a single fraction: $N = \frac{4}{33}$.  There are many other situations in mathematics where infinite sums of numbers arise, but often these are not geometric.  In this section, we begin exploring these other types of infinite sums.  Preview Activity~\ref{PA:8.3} provides a context in which we see how one such sum is related to the famous number $e$.
+
+\input{previews/8.3.PA1}
+
+Preview Activity \ref{PA:8.3} shows that an approximation to $e$ using a linear polynomial is 2, an approximation to $e$ using a quadratic polynomial is $2.5$, and an approximation using a cubic polynomial is 2.6667. As we will see later, if we continue this process we can obtain approximations from quartic (degree 4), quintic (degree 5), and higher degree polynomials giving us the following approximations to $e$:
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{lll} \hline
+linear  &$1 + 1$              & $2$ \\ \hline
+quadratic &$1 +1 + \frac{1}{2}$     & $2.5$ \\ \hline
+cubic &$1 + 1 + \frac{1}{2} + \frac{1}{6}$      &$2.\overline{6}$ \\ \hline
+quartic  &$1 + 1 +  \frac{1}{2} + \frac{1}{6} + \frac{1}{24}$   & $2.708\overline{3}$ \\ \hline
+quintic  &$1 + 1 + \frac{1}{2} + \frac{1}{6} + \frac{1}{24} + \frac{1}{120}$    & $2.71\overline{6}$ \\ \hline
+\end{tabular}
+\end{center}
+We see an interesting pattern here. The number $e$ is being approximated by the sum
+\begin{equation} \label{eq:8.3_e_n}
+1+1+\frac{1}{2} + \frac{1}{6} + \frac{1}{24} + \frac{1}{120} + \cdots + \frac{1}{n!}
+\end{equation}
+for increasing values of $n$.
+And just as we did with Riemann sums, we can use the summation notation as a shorthand\footnote{Note that $0!$ appears in Equation~(\ref{eq:8.3_e}).  By definition, $0! = 1$.} for writing the sum in Equation~(\ref{eq:8.3_e_n}) so that
+\begin{equation} \label{eq:8.3_e}
+e \approx 1+1+\frac{1}{2} + \frac{1}{6} + \frac{1}{24} + \frac{1}{120} + \cdots + \frac{1}{n!} = \sum_{k=0}^n \frac{1}{k!}.
+\end{equation}
+We can calculate this sum using as large an $n$ as we want, and the larger $n$ is the more accurate the approximation (\ref{eq:8.3_e}) is. Ultimately, this argument shows that we can write the number $e$ as the infinite sum
+\begin{equation} \label{eq:8.3_e_infinite}
+e = \sum_{k=0}^{\infty} \frac{1}{k!}.
+\end{equation}
+This sum is an example of a \emph{series}\index{series} (or an \emph{infinite series}\index{infinite series}). Note that the series~(\ref{eq:8.3_e_infinite}) is the sum of the terms of the (infinite) sequence $\left\{\frac{1}{n!}\right\}$.  In general, we use the following notation and terminology.
+
+\begin{definition} An \emph{infinite series} of real numbers is the sum of the entries in an infinite sequence of real numbers. In other words, an infinite series is sum of the form
+ \[a_1+a_2+ \cdots + a_n + \cdots = \sum_{k=1}^{\infty} a_k,\]
+where $a_1$, $a_2$, $\ldots$, are real numbers. 
+\end{definition}
+
+We will normally use summation notation to identify a series. If the series adds the entries of a sequence $\{a_n\}_{n \geq 1}$, then we will write the series as
+\[\sum_{k \geq 1} a_k\]
+or
+\[\sum_{k=1}^{\infty} a_k.\]
+Note well: each of these notations is simply shorthand for the infinite sum $a_1 + a_2 + \cdots + a_n + \cdots$.
+
+Is it even possible to sum an infinite list of numbers?  This question is one whose answer shouldn't come as a surprise. After all, we have used the definite integral to add up continuous (infinite) collections of numbers, so summing the entries of a sequence might be even easier.  Moreover, we have already examined the special case of geometric series in the previous section. The next activity provides some more insight into how we make sense of the process of summing an infinite list of numbers.
+
+\input{activities/8.3.Act1}
+
+The example in Activity \ref{8.3.Act1} illustrates how we define the sum of an infinite series. We can add up the first $n$ terms of the series to obtain a new sequence of numbers (called the \emph{sequence of partial sums}\index{partial sum}\index{sequence of partial sums}). Provided that sequence converges, the corresponding infinite series is said to converge, and we say that we can find the sum of the series.
+
+\begin{definition} The \emph{$n$th partial sum} of the series $\sum_{k=1}^{\infty} a_k$
+is the finite sum
+$S_n = \sum_{k=1}^{n} a_k.$
+\end{definition}
+In other words, the $n$th partial sum $S_n$ of a series is the sum of the first $n$ terms in the series, or
+\[S_n = a_1 + a_2 + \cdots + a_n.\]
+We then investigate the behavior of a given series by examining the sequence
+\[S_1, S_2, \ldots, S_n, \ldots\]
+of its partial sums.  If the sequence of partial sums converges to some finite number, then we say that the corresponding series \emph{converges}\index{series!converges}. Otherwise, we say the series \emph{diverges}\index{series!diverges}. From our work in Activity~\ref{8.3.Act1}, the series
+\[\sum_{k=1}^{\infty} \frac{1}{k^2}\]
+appears to converge to some number near 1.54977.  We formalize the concept of convergence and divergence of an infinite series in the following definition.
+
+\begin{definition} The infinite series
+\[\sum_{k=1}^{\infty} a_k\]
+\emph{converges} (or is \emph{convergent}) if the sequence $\{S_n\}$ of partial sums converges, where
+\[S_n = \sum_{k=1}^n a_k.\]
+If $\lim_{n \to \infty} S_n = S$, then we call $S$ the sum of the series $\sum_{k=1}^{\infty} a_k$.  That is,
+\[\sum_{k=1}^{\infty} a_k = \lim_{n \to \infty} S_n = S.\]
+If the sequence of partial sums does not converge, then the series
+\[\sum_{k=1}^{\infty} a_k\]
+\emph{diverges} (or is \emph{divergent}).
+\end{definition}
+
+The early terms in a series do not contribute to whether or not the series converges or diverges. Rather, the convergence or divergence of a series
+\[\sum_{k=1}^{\infty} a_k\]
+is determined by what happens to the terms $a_k$ for very large values of $k$. To see why, suppose that  $m$ is some constant larger than 1.  Then
+\[\sum_{k=1}^{\infty} a_k = (a_1+a_2+ \cdots + a_m) + \sum_{k=m+1}^{\infty} a_k.\]
+Since $a_1+a_2+ \cdots + a_m$ is a finite number, the series $\sum_{k=1}^{\infty} a_k$ will converge if and only if the series $\sum_{k=m+1}^{\infty} a_k$ converges. Because the starting index of the series doesn't affect whether the series converges or diverges, we will often just write
+\[\sum a_k\]
+when we are interested in questions of convergence/divergence and not necessarily the exact sum of a series.
+
+In Section~\ref{S:8.2.Geometric} we encountered the special family of infinite geometric series whose convergence or divergence we completely determined. Recall that a geometric series is a special series of the form $\sum_{k=0}^{\infty} ar^k$ where $a$ and $r$ are real numbers (and $r \ne 1$). We found that the $n$th partial sum $S_n$ of a geometric series is given by the convenient formula 
+$$S_n = \frac{1-r^{n}}{1-r},$$ 
+and thus a geometric series converges if $|r| < 1$.  Geometric series diverge for all other values of $r$. While we have completely determined the convergence or divergence of geometric series, it is generally a difficult question to determine if a given nongeometric series converges or diverges. There are several tests we can use that we will consider in the following sections.
+
+\subsection*{The Divergence Test}
+The first question we ask about any infinite series is usually ``Does the series converge or diverge?''  There is a straightforward way to check that certain series diverge; we explore this test in the next activity.
+
+\input{activities/8.3.Act2}
+
+The result of Activity \ref{8.3.Act2} is the following important conditional statement: 
+\begin{quote}
+If the series $\ds \sum_{k = 1}^{\infty} a_k$ converges, then the sequence $\{a_k\}$ of $k$th terms converges to 0.
+\end{quote}
+It is logically equivalent to say that if the sequence $\{a_k\}$ of $n$ terms does not converge to 0, then the series $ \sum_{k = 1}^{\infty} a_k$ cannot converge. This statement is called the Divergence Test\index{Divergence Test}.
+
+\vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+\textbf{The Divergence Test. } If $\lim_{k \to \infty} a_k \neq 0$, then the series $\ds \sum a_k$
+diverges.
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+\input{activities/8.3.Act3}
+
+
+{\bf Note well:} be very careful with the Divergence Test. This test only tells us what happens to a series if the terms of the corresponding sequence do not converge to 0. If the sequence of the terms  of the series does converge to 0, the Divergence Test does not apply:  indeed, as we will soon see, a series whose terms go to zero may either converge or diverge.
+
+\subsection*{The Integral Test}\index{integral test}
+
+The Divergence Test settles the questions of divergence or convergence of series $\sum a_k$ in which $\lim_{k \to \infty} a_k \neq 0$.  Determining the convergence or divergence of series $\sum a_k$ in which $\lim_{k \to \infty} a_k = 0$ turns out to be more complicated. Often, we have to investigate the sequence of partial sums or apply some other technique.
+
+As an example, consider the \emph{harmonic}\index{harmonic series} series\footnote{This series is called harmonic because each term in the series after the first is the harmonic mean of the term  before it and the term after it. The harmonic mean of two numbers $a$ and $b$ is $\frac{2ab}{a+b}$. See ``What's Harmonic about the Harmonic Series", by David E. Kullman (in the \emph{College Mathematics Journal}, Vol. 32, No. 3 (May, 2001), 201-203) for an interesting discussion of the harmonic mean.}
+\[\sum_{k=1}^{\infty} \frac{1}{k}.\]
+
+Table \ref{T:8.3_harmonic} shows some partial sums of this series.
+\begin{table}[ht]
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{c|c p{0.75in} c|c c c|c}
+$\ds \sum_{k=1}^{1} \frac{1}{k}$   & $1$                &  &$\ds \sum_{k=1}^{6} \frac{1}{k}$   & $2.450000000$ \\
+$\ds \sum_{k=1}^{2} \frac{1}{k}$   & $1.5$              &  &$\ds \sum_{k=1}^{7} \frac{1}{k}$   & $2.592857143$ \\
+$\ds \sum_{k=1}^{3} \frac{1}{k}$   & $1.833333333$      &  &$\ds \sum_{k=1}^{8} \frac{1}{k}$   & $2.717857143$ \\
+$\ds \sum_{k=1}^{4} \frac{1}{k}$   & $2.083333333$      &  &$\ds \sum_{k=1}^{9} \frac{1}{k}$   & $2.828968254$ \\
+$\ds \sum_{k=1}^{5} \frac{1}{k}$   & $2.283333333$      &  &$\ds \sum_{k=1}^{10} \frac{1}{k}$  & $2.928968254$ \\
+\end{tabular}
+\label{T:8.3_harmonic}
+\caption{Sums of some of the first terms of the sequence $\sum_{k=1}^{\infty} \frac{1}{k}$.}
+\end{center}
+\end{table}
+This information doesn't seem to be enough to tell us if the series $ \sum_{k=1}^{\infty} \frac{1}{k}$ converges or diverges. The partial sums could eventually level off to some fixed number or continue to grow without bound. Even if we look at larger partial sums, such as $ \sum_{n=1}^{1000} \frac{1}{k} \approx 7.485470861$, the result doesn't particularly sway us one way or another. The Integral Test is one way to determine whether or not the harmonic series converges, and we explore this further in the next activity.
+
+\input{activities/8.3.Act4}
+
+The ideas from Activity \ref{8.3.Act4} hold more generally.  Suppose that $f$  is a continuous decreasing function and that $a_k = f(k)$ for each value of $k$.  Consider the corresponding series $ \sum_{k=1}^{\infty} a_k$. The partial sum
+\[S_n = \sum_{k=1}^{n} a_k\]
+can always be viewed as a left hand Riemann sum of $f(x)$ using rectangles with heights given by the values $a_k$ and bases of length 1. A representative picture is shown at left in Figure \ref{F:8.3.Integral_Test}. Since $f$ is a decreasing function, we have that
+\[S_n > \int_1^n f(x) \ dx.\]
+Taking limits as $n$ goes to infinity shows that
+\[\sum_{k=1}^{\infty} a_k > \int_{1}^{\infty} f(x) \ dx.\]
+Therefore, if the improper integral $ \int_{1}^{\infty} f(x) \ dx$ diverges, so does the series $ \sum_{k=1}^{\infty} a_k$.
+\begin{figure}[h]
+\begin{center}
+\resizebox{!}{1.5in}{\includegraphics{figures/8_3_Integral_test1.eps}} \hspace{0.25in} \resizebox{!}{1.5in}{\includegraphics{figures/8_3_Integral_test2.eps}}
+\caption{Comparing an improper integral to a series}
+\label{F:8.3.Integral_Test}
+\end{center}
+\end{figure}
+
+What's more, if we look at the right hand Riemann sums of $f$ on $[1,n]$ as shown at right in Figure \ref{F:8.3.Integral_Test}, we see that
+\[\int_{1}^{\infty} f(x) \ dx >  \sum_{k=2}^{\infty} a_k.\]
+So if $ \int_{1}^{\infty} f(x) \ dx$ converges, then so does $ \sum_{k=2}^{\infty} a_k$, which also means that the series $ \sum_{k=1}^{\infty} a_k$ converges. Our preceding discussion has demonstrated the truth of the Integral Test\index{integral test}.
+
+\vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+\textbf{The Integral Test. } Let $f$ be a real valued function and assume $f$ is decreasing and positive for all $x$ larger than some number $c$.  Let $a_k = f(k)$ for each positive integer $k$. 
+\begin{enumerate}
+\item If the improper integral $ \int_{c}^{\infty} f(x) \, dx$ converges, then the series $ \sum_{k=1}^{\infty} a_k$ converges.
+\item If the improper integral $ \int_{c}^{\infty} f(x) \, dx$ diverges, then the series $ \sum_{k=1}^{\infty} a_k$ diverges.
+\end{enumerate}
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+Note that the Integral Test compares a given infinite series to a natural, corresponding improper integral and basically says that the infinite series and corresponding improper integral both have the same convergence status.  In the next activity, we apply the Integral Test to determine the convergence or divergence of a class of important series.
+
+\newpage
+
+\input{activities/8.3.Act5}
+
+\subsection*{The Limit Comparison Test}\index{limit comparison test}
+
+The Integral Test allows us to determine the convergence of an entire family of series: the $p$-series. However, we have seen that it is, in general, difficult to integrate functions, so the Integral Test is not one that we can use all of the time. In fact, even for a relatively simple series like $ \sum \frac{k^2+1}{k^4+2k+2}$, the Integral Test is not an option. In this section we will develop a test that we can use to apply to series of rational functions like this by comparing their behavior to the behavior of $p$-series.
+
+\input{activities/8.3.Act6}
+
+Activity \ref{8.3.Act6} illustrates how we can compare one series with positive terms to another whose behavior (that is, whether the series converges or diverges) we know. More generally, suppose we have two series $\sum a_k$ and $\sum b_k$ with positive terms and we know the behavior of the series $\sum a_k$. Recall that the convergence or divergence of a series depends only on what happens to the terms of the series for large values of $k$, so if we know that $a_k$ and $b_k$ are essentially proportional to each other for large $k$, then the two series $\sum a_k$ and $\sum b_k$
+should behave the same way. In other words, if there is a positive finite constant $c$ such that
+\[\lim_{k \to \infty} \frac{b_k}{a_k} = c,\]
+then $b_k \approx ca_k$ for large values of $k$. So
+\[\sum b_k \approx \sum ca_k = c  \sum a_k.\]
+Since multiplying by a nonzero constant does not affect the convergence or divergence of a series, it follows that the series $\sum a_k$ and $\sum b_k$ either both converge or both diverge. The formal statement of this fact is called the Limit Comparison Test.
+
+
+\vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+\textbf{The Limit Comparison Test.} Let $\sum a_k$ and $\sum b_k$ be series with positive terms. If
+\[\lim_{k \to \infty} \frac{b_k}{a_k} = c\]
+for some positive (finite) constant $c$, then $ \sum a_k$ and $ \sum b_k$
+either both converge or both diverge.
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+In essence, the Limit Comparison Test shows that if we have a series $\sum \frac{p(k)}{q(k)}$ of rational functions where $p(k)$ is a polynomial of degree $m$ and $q(k)$ a polynomial of degree $l$, then the series $\sum \frac{p(k)}{q(k)}$ will behave like the series $\sum \frac{k^m}{k^l}$. So this test allows us to quickly and easily determine the convergence or divergence of series whose summands are rational functions.
+
+\input{activities/8.3.Act7}
+
+
+\subsection*{The Ratio Test} \index{ratio test}
+The Limit Comparison Test works well if we can find a series with known behavior to compare. But such series are not always easy to find. In this section we will examine a test that allows us to examine the behavior of a series by comparing it to a geometric series, without knowing in advance which geometric series we need.
+
+\input{activities/8.3.Act8}
+
+We can generalize the argument in Activity \ref{8.3.Act8} in the following way. Consider the series $ \sum a_k.$
+If
+\[\frac{a_{k+1}}{a_k} \approx r\]
+for large values of $k$, then $a_{k+1} \approx ra_k$ for large $k$ and the series $\sum a_k$ is approximately the geometric series $\sum ar^k$ for large $k$. Since the geometric series with ratio $r$ converges only for $-1 <  r < 1$, we see that the series $ \sum a_k$
+will converge if
+\[\lim_{k \to \infty} \frac{a_{k+1}}{a_k} = r\]
+for a value of $r$ such that $|r| < 1$. This result is known as the Ratio Test.
+
+\vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+\textbf{The Ratio Test. } Let $ \sum a_k$
+ be an infinite series. Suppose
+\[\lim_{k \to \infty} \frac{|a_{k+1}|}{|a_k|} = r.\]
+\begin{enumerate}
+\item If $0 \leq r < 1$, then the series $\sum a_k$ converges.
+\item If $1 < r$, then the series $\sum a_k$ diverges.
+\item If $r = 1$, then the test is inconclusive.
+\end{enumerate}
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+{\bf Note well:}  The Ratio Test takes a given series and looks at the limit of the ratio of consecutive terms; in so doing, the test is essentially asking, ``is this series approximately geometric?''  If the series can be thought of as essentially geometric, the test use the limiting common ratio to determine if the given series converges.
+
+We have now encountered several tests for determining convergence or divergence of series. The Divergence Test can be used to show that a series diverges, but never to prove that a series converges. We used the Integral Test to determine the convergence status of an entire class of series, the $p$-series. The Limit Comparison Test works well for series that involve rational functions and which can therefore by compared to $p$-series.  Finally, the Ratio Test allows us to compare our series to a geometric series; it is particularly useful for series that involve $n$th powers and factorials.  Two other tests, the Direct Comparison Test and the Root Test, are discussed in the exercises. Now it is time for some practice.
+
+\input{activities/8.3.Act9}
+
+%If you choose to include a worked example, please use this style:
+
+%\bex \label{Ex:8.1.1}
+%Suppose that $\ldots$
+%\eex
+%Here is the provided solution to the example.
+%\afterex
+
+
+
+
+
+
+%\nin \framebox{\hspace*{3 pt}
+%\parbox{6.25 in}{
+\begin{summary}
+\item An infinite series is a sum of the elements in an infinite sequence. In other words, an infinite series is a sum of the form
+\[a_1 + a_2 + \cdots + a_n + \cdots = \sum_{k=1}^{\infty} a_k\]
+where $a_k$ is a real number for each positive integer $k$.
+\item The $n$th partial sum $S_n$ of the series $\sum_{k=1}^{\infty} a_k$ is the sum of the first $n$ terms of the series. That is,
+\[S_n = a_1+a_2+ \cdots + a_n = \sum_{k=1}^{\infty} a_k.\]
+\item The sequence $\{S_n\}$ of partial sums of a series $\sum_{k=1}^{\infty} a_k$ tells us about the convergence or divergence of the series.  In particular
+	\begin{itemize}
+	\item[-] The series $\sum_{k=1}^{\infty} a_k$ converges if the sequence $\{S_n\}$ of partial sums converges. In this case we say that the series is the limit of the sequence of partial sums and write
+	\[\sum_{k=1}^{\infty} a_k =\lim_{n \to \infty} S_n.\]
+	\item[-] The series $\sum_{k=1}^{\infty} a_k$ diverges if the sequence $\{S_n\}$ of partial sums diverges.
+	\end{itemize}
+\end{summary}
+%} \hspace*{3 pt}}
+
+\nin \hrulefill
+
+\input{exercises/8.3.Series(Ex)}
+
+\clearpage

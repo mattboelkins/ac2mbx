@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:51-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Euler's method</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_7.2.Qualitative.html">Previous</a><a class="up-button button toolbar-item" href="C_7.html">Up</a><a class="next-button button toolbar-item" href="S_7.4.Separable.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_7.2.Qualitative.html">Previous</a><a class="up-button button toolbar-item" href="C_7.html">Up</a><a class="next-button button toolbar-item" href="S_7.4.Separable.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link active"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html" class="active">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_7.3.Euler"><header><h1 class="heading" alt="Section 7.3 Euler's method" title="Section 7.3 Euler's method">
+<span class="type">Section</span><span class="codenumber">7.3</span><span class="title">Euler's method</span><a href="S_7.3.Euler.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-39"><h5 class="heading"></h5>
+<p id="p-1790">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2540">What is Euler's method and how can we use it to approximate the
+  solution to an initial value problem?</li>
+<li id="li-2541">How accurate is Euler's method?</li>
+</ul>
+<p id="p-1791">
+} 
+</p></article><section class="subsection" id="subsection-133"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.3.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-1792">
+In <a href="S_7.2.Qualitative.html" alt="Section 7.2 Qualitative behavior of solutions to DEs" title="Section 7.2 Qualitative behavior of solutions to DEs">Section 7.2</a>, we saw how a slope field can be used to sketch
+solutions to a differential equation. In particular, the slope field
+is a plot of a large collection of tangent lines to a large number of solutions of the
+differential equation, and we sketch a single solution by simply following
+these tangent lines. With a little more thought, we may use this same
+idea to numerically approximate the solutions of a differential equation.
+</p>
+<article class="paragraphs" id="PA_7.3"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1793">
+Consider the initial value problem
+</p>
+<span class="displaymath" id="me-703">\[
+
+\frac{dy}{dt} = \frac12 (y + 1), \ y(0) = 0.
+
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-2542">Use the differential equation to find the slope of the tangent
+  line to the solution \(y(t)\) at \(t=0\).  Then use the given initial value to
+  find the equation of the tangent line at \(t=0\).</li>
+<li id="li-2543">Sketch the tangent line on the axes below on the interval \(0\leq
+  t\leq 2\) and use it to approximate \(y(2)\),
+  the value of the solution at \(t=2\).   
+
+  <img width="100%" src="images/7_3_PA.png">
+</li>
+<li id="li-2544">Assuming that your approximation for \(y(2)\) is the actual value
+  of \(y(2)\), use the differential equation to find the slope of the
+  tangent line to \(y(t)\) at \(t=2\).  Then, write the equation of the
+  tangent line at \(t=2\).</li>
+<li id="li-2545">Add a sketch of this tangent line to your plot on the axes above on the interval \(2\leq
+  t\leq 4\); use this new tangent line to approximate \(y(4)\),
+  the value of the solution at \(t=4\).</li>
+<li id="li-2546">Repeat the same step to find an approximation for \(y(6)\).</li>
+</ol></article></section><section class="subsection" id="subsection-134"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.3.2</span><span class="title">Euler's Method</span>
+</h1></header><p id="p-1794">
+\knownindex{\lt main&gt;Euler's Method\lt /main&gt;}
+</p>
+<p id="p-1795">
+Preview <a href="S_7.3.Euler.html#PA_7.3" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> demonstrates the essence of an algorithm, which is known as
+Euler's Method, that generates a numerical approximation to the solution
+of an initial value problem.<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-47" id="fn-47"><sup> 1 </sup></a></span><span id="hk-fn-47" style="display: none;" class="tex2jax_ignore"><span class="footnote">“Euler” is pronounced
+  “Oy-ler.”  Among other things, Euler is the mathematician credited with the famous number \(e\); if you incorrectly pronounce his name “You-ler,” you fail to appreciate his genius and legacy.</span></span> In this algorithm, we
+will approximate the solution by taking horizontal steps of a fixed
+size that we denote by \(\Delta t\).
+</p>
+<p id="p-1796">
+Before explaining the algorithm in detail, let's remember how we
+compute the slope of a line: the slope is the ratio of the vertical
+change to the horizontal change, as shown in the following figure.
+</p>
+<img width="100%" src="images/7_3_slope.png"><p id="p-1797">
+In other words, \(m = \frac{\Delta y}{\Delta t}\). Said differently, the
+vertical change is the product of the slope and the horizontal change:
+</p>
+<span class="displaymath" id="me-704">\[
+\Delta y = m\Delta t.
+\]</span><p id="p-1798">
+Suppose that we would like to solve the initial value problem
+</p>
+<span class="displaymath" id="me-705">\[
+
+  \frac{dy}{dt} = t - y, \ y(0) = 1.
+
+\]</span><p id="p-1799">
+While there is an algorithm by which we can find an algebraic formula for the solution to this initial value problem, and we can check that this solution is \(y(t) = t -1 + 2e^{-t}\), we are instead interested in generating an approximate solution by creating a sequence
+of points \((t_i, y_i)\), where \(y_i\approx y(t_i)\). For this first example, we choose \(\Delta t = 0.2\).
+</p>{3.6in}
+Since we know that \(y(0) = 1\), we will take the initial point to be
+\((t_0,y_0) = (0,1)\) and move horizontally by \(\Delta t = 0.2\) to the
+point \((t_1,y_1)\).  Therefore, \(t_1=t_0+\Delta t = 0.2\). 
+The differential equation tells us that the slope of the 
+tangent line at this point is
+
+<span class="displaymath" id="me-706">\[
+
+m=\frac{dy}{dt}\bigg\vert_{(0,1)} = 0-1 = -1.
+
+\]</span>
+ 
+Therefore, if we move along the tangent line by taking a horizontal
+step of size \(\Delta t=0.2\), we must also move vertically by
+
+<span class="displaymath" id="me-707">\[
+\Delta y = m\Delta t = -1\cdot 0.2 = -0.2.
+\]</span>
+   We then have the
+approximation \(y(0.1) \approx y_1= y_0 + \Delta y = 1 - 0.2 = 0.8.\)  At this point, we have executed one step of Euler's method.{2in}
+<img width="100%" src="images/7_3_euler_points_1.png">{3.6in}
+Now we repeat this process:  at \((t_1,y_1) = (0.2,0.8)\), the
+differential equation tells us that the slope is 
+
+<span class="displaymath" id="me-708">\[
+
+m=\frac{dy}{dt}\bigg\vert_{(0.2,0.8)} = 0.2-0.8 = -0.6.
+
+\]</span>
+ 
+If we move horizontally by \(\Delta t\) to \(t_2=t_1+\Delta = 0.4\), we must move
+vertically by
+
+<span class="displaymath" id="me-709">\[
+
+\Delta y = -0.6\cdot0.2 = -0.12.
+
+\]</span>
+ 
+We consequently arrive at \(y_2=y_1+\Delta y = 0.8-0.12 = 0.68\), which
+gives \(y(0.2)\approx 0.68\).  Now we have completed the second step of Euler's method.{2in}
+<img width="100%" src="images/7_3_euler_points_2.png"><p id="p-1800">
+If we continue in this way, we may generate the points \((t_i, y_i)\)
+shown at left in <a knowl="./knowl/F_7.3.EulerPts.html" knowl-id="xref-F_7.3.EulerPts" alt="Figure 7.3.1 " title="Figure 7.3.1 ">Figure 7.3.1</a>. In situations where we are able to find a formula for the actual solution \(y(t)\), we can graph \(y(t)\) to compare it to the points generated by Euler's method, as shown at right in <a knowl="./knowl/F_7.3.EulerPts.html" knowl-id="xref-F_7.3.EulerPts" alt="Figure 7.3.1 " title="Figure 7.3.1 ">Figure 7.3.1</a>.
+</p>
+<figure class="figure-like" id="F_7.3.EulerPts"><img width="100%" src="images/7_3_euler_points_6.png"><img width="100%" src="images/7_3_euler.png"><figcaption><span class="heading">Figure</span><span class="codenumber">7.3.1</span>At left, the points and piecewise linear approximate solution generated by Euler's method; at right, the approximate solution compared to the exact solution (shown in blue).</figcaption></figure><p id="p-1801">
+Because we need to generate a large number of points \((t_i,y_i)\), it is convenient to organize the implementation of Euler's method in a
+table as shown. We begin with the given initial data.
+</p>
+<figure class="figure-like" id="table-31">
+  \(t_i\)\amp \(y_i\)\amp \(dy/dt\)\amp \(\Delta y\)
+  0.0000\amp 1.0000\amp \hphantom{-1.0000} \amp  \hphantom{-0.2000}</figure><p id="p-1802">
+From here, we compute the slope of the tangent line \(m=dy/dt\) using
+the formula for \(dy/dt\) from the differential
+equation, and then we find \(\Delta y\), the change in \(y\), using the rule \(\Delta y = m\Delta t\).
+</p>
+<figure class="figure-like" id="table-32">
+  \(t_i\)\amp \(y_i\)\amp \(dy/dt\)\amp \(\Delta y\)
+  0.0000\amp 1.0000\amp -1.0000\amp -0.2000</figure><p id="p-1803">
+Next, we increase \(t_i\) by \(\Delta t\) and \(y_i\) by \(\Delta y\) to get
+</p>
+<figure class="figure-like" id="table-33">
+  \(t_i\)\amp \(y_i\)\amp \(dy/dt\)\amp \(\Delta y\)
+  0.0000\amp 1.0000\amp -1.0000\amp -0.2000
+  0.2000\amp 0.8000\amp  \amp  </figure><p id="p-1804">
+and then we simply continue the process for however many steps we decide, eventually generating a table like the one that follows.
+</p>
+<figure class="figure-like" id="table-34">
+  \(t_i\)\amp \(y_i\)\amp \(dy/dt\)\amp \(\Delta y\)
+  0.0000\amp 1.0000\amp -1.0000\amp -0.2000
+  0.2000\amp 0.8000\amp -0.6000\amp -0.1200
+  0.4000\amp 0.6800\amp -0.2800\amp -0.0560
+  0.6000\amp 0.6240\amp -0.0240\amp -0.0048
+  0.8000\amp 0.6192\amp 0.1808\amp 0.0362
+  1.0000\amp 0.6554\amp 0.3446\amp 0.0689
+  1.2000\amp 0.7243\amp 0.4757\amp 0.0951</figure><div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_7.3.1" id="A_7.3.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">7.3.2</span>
+</h5></a></div>
+<div id="hk-A_7.3.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1805">
+Consider the initial value problem
+</p>
+<span class="displaymath" id="me-710">\[
+
+  \frac{dy}{dt} = 2t-1, \ y(0) = 0
+  
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-2547">Use Euler's method with \(\Delta t = 0.2\) to approximate the solution
+at \(t_i = 0.2, 0.4, 0.6, 0.8\), and \(1.0\).   Record your work in the following table, and sketch the points \((t_i,
+y_i)\) on the following axes provided.
+
+  <figure class="figure-like" id="table-35">
+  \vphantom{{M}}\(t_i\)\amp \(y_i\)\amp \(dy/dt\)\amp \(\Delta y\)
+  \vphantom{{M}}0.0000\amp 0.0000\amp \hphantom{1.0000}\amp \hphantom{0.2000} 
+  \vphantom{{M}}0.2000\amp \hphantomMMMMMM 
+  \amp  \hphantomMMMMMM \amp  \hphantomMMMMMM 
+  \vphantom{{M}}0.4000\amp  \amp  \amp  
+  \vphantom{{M}}0.6000\amp  \amp  \amp  
+  \vphantom{{M}}0.8000\amp  \amp  \amp  
+  \vphantom{{M}}1.0000\amp  \amp  \amp  </figure><img width="100%" src="images/7_3_euler_empty.png">
+</li>
+<li id="li-2548">Find the exact solution to the original initial value problem
+  and use this function to find the error in your approximation at each one of the points
+  \(t_i\).</li>
+<li id="li-2549">Explain why the value \(y_5\) generated by Euler's method for this initial value problem
+  produces the same value as a left Riemann sum for the definite integral \(\int_0^1
+  (2t-1)~dt\).</li>
+<li id="li-2550">How would your computations differ if the initial value was \(y(0) =
+  1\)?  What does this mean about different solutions to this
+  differential equation?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-225" id="hint-225"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-225" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2551">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-226" id="hint-226"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-226" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2552">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-111" id="solution-111"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-111" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2553">Solutions for each of the prompts above.</li></ol></span></span><div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_7.3.2" id="A_7.3.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">7.3.3</span>
+</h5></a></div>
+<div id="hk-A_7.3.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1806">
+Consider the differential equation
+\(
+  \frac{dy}{dt} = 6y-y^2
+\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2554">Sketch the slope field for this differential equation on the axes provided at left below.
+
+<img width="100%" src="images/7_3_slopefield.png">  \hspace{0.2in}  <img width="100%" src="images/7_3_euler_empty_2.png">
+</li>
+<li id="li-2555">Identify any equilibrium solutions and determine whether they
+  are stable or unstable.</li>
+<li id="li-2556">What is the long-term behavior of the solution that satisfies the initial
+  value \(y(0) = 1\)?</li>
+<li id="li-2557">Using the initial value \(y(0) = 1\), use Euler's method with
+  \(\Delta t = 0.2\) to approximate the solution at \(t_i = 0.2, 0.4,
+  0.6, 0.8\), and \(1.0\).  Sketch the points \((t_i, y_i)\) on the axes provided at right in (a).  (Note the different horizontal scale on the two sets of axes.)
+
+  <figure class="figure-like" id="table-36">
+  \(t_i\)\amp \(y_i\)\amp \(dy/dt\)\amp \(\Delta y\)
+  \vphantom{{M}}0.0\amp 1.0000\amp \hphantom{1.0000}\amp \hphantom{0.2000} 
+  \vphantom{{M}}0.2\amp \hphantomMMMMMM 
+  \amp  \hphantomMMMMMM \amp  \hphantomMMMMMM 
+  \vphantom{{M}}0.4\amp  \amp  \amp  
+  \vphantom{{M}}0.6\amp  \amp  \amp  
+  \vphantom{{M}}0.8\amp  \amp  \amp  
+  \vphantom{{M}}1.0\amp  \amp  \amp  </figure>
+</li>
+<li id="li-2558">What happens if we apply Euler's method to approximate the
+  solution with \(y(0) = 6\)?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-227" id="hint-227"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-227" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2559">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-228" id="hint-228"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-228" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2560">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-112" id="solution-112"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-112" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2561">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-135"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.3.3</span><span class="title">The error in Euler's method</span>
+</h1></header><p id="p-1807">
+\knownindex{\lt main&gt;Euler's Method\lt /main&gt;\lt sub&gt;error\lt /sub&gt;}
+</p>
+<p id="p-1808">
+Since we are approximating the solutions to an initial value problem
+using tangent lines, we should expect that the error in the
+approximation will be less when the step size is smaller.
+To explore this observation quantitatively, let's consider the initial value problem
+</p>
+<span class="displaymath" id="me-711">\[
+
+  \frac{dy}{dt} = y, \ y(0) = 1
+
+\]</span><p id="p-1809">
+whose solution we can easily find.
+</p>
+<p id="p-1810">
+Consider the question posed by this initial value problem: “what function do we know that is the same as its own
+derivative and has value 1 when \(t=0\)?” It is not hard to see that the
+solution is \(y(t) = e^t\). We now apply Euler's method
+to approximate \(y(1) = e\) using several values of \(\Delta t\). These
+approximations will be denoted by \(E_{\Delta t}\), and these estimates provide us a way to see how accurate Euler's Method is.
+</p>
+<p id="p-1811">
+To begin, we apply Euler's method with a step size of \(\Delta t =
+0.2\). In that case, we find that \(y(1) \approx E_{0.2} = 2.4883\). The
+error is therefore \(y(1) - E_{0.2} = e - 2.4883 \approx 0.2300\).
+</p>
+<p id="p-1812">
+Repeatedly halving \(\Delta t\) gives the following
+results, expressed in both tabular and graphical form.
+</p>{2.0in}
+<figure class="figure-like" id="table-37">
+  \(\Delta t\) \amp  \(E_{\Delta t}\) \amp  Error 
+  0.200\amp 2.4883\amp 0.2300
+  0.100\amp 2.5937\amp 0.1245
+  0.050\amp 2.6533\amp 0.0650
+  0.025\amp 2.6851\amp 0.0332</figure>{2.0in}
+<img width="100%" src="images/7_3_error.png"><p id="p-1813">
+Notice, both numerically and graphically, that the error is roughly halved when \(\Delta t\) is halved.
+This example illustrates the following general principle.
+</p>
+<p id="p-1814">
+
+{
+If Euler's method is to approximate the solution to an initial
+value problem at a point \(\overline{t}\), then the error is
+proportional to \(\Delta t\). That is,
+</p>
+<span class="displaymath" id="me-712">\[
+
+    y(\overline{t}) - E_{\Delta t} \approx K\Delta t
+    
+\]</span><p id="p-1815">
+for some constant of proportionality \(K\).
+</p>
+<p id="p-1816">
+} 
+
+</p>
+<p id="p-1817">
+\item Euler's method is an algorithm for approximating the solution to
+an initial value problem by following the tangent lines while we
+take horizontal steps across the \(t\)-axis.
+\item If we wish to approximate \(y(\overline{t})\) for some fixed
+\(\overline{t}\) by taking horizontal steps of size \(\Delta t\), then the
+error in our approximation is proportional to \(\Delta t\).
+</p>
+<p id="p-1818">
+\hrulefill
+</p>
+<p id="p-1819">
+\begin{exercises}
+\item Newton's Law of Cooling says that the rate at which an
+object, such as a cup of coffee, cools is proportional to the
+difference in the object's temperature and room temperature. If
+\(T(t)\) is the object's temperature and \(T_r\) is room temperature,
+this law is expressed at
+</p>
+<span class="displaymath" id="me-713">\[
+
+    \frac{dT}{dt} = -k(T-T_r),
+    
+\]</span><p id="p-1820">
+where \(k\) is a constant of proportionality. In this problem,
+temperature is
+measured in degrees Fahrenheit and time in minutes.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2562">Two calculus students, Alice and Bob, enter a 70\(^\circ\)
+    classroom at the same time.  Each has a cup of coffee that is
+    100\(^\circ\).  The differential equation for Alice has a constant
+    of proportionality \(k=0.5\), while the constant of proportionality
+    for Bob is \(k=0.1\).
+
+    What is the initial rate of change for Alice's coffee? 
+    What is the initial rate of change for Bob's coffee?</li>
+<li id="li-2563">What feature of Alice's and Bob's cups of coffee could explain
+    this difference?</li>
+<li id="li-2564">As the heating unit turns on and off in the room, the
+    temperature in the room is 
+<span class="displaymath" id="me-714">\[
+T_r=70+10\sin t.
+\]</span>
+   Implement Euler's
+    method with a step size of \(\Delta t = 0.1\) to approximate the
+    temperature of Alice's coffee over the time interval \(0\leq t\leq
+    50\).  This will most easily be performed using a spreadsheet such
+    as <!--Style me with CSS--><em>Excel</em>.  Graph the temperature of her coffee and room
+    temperature over this interval.</li>
+<li id="li-2565">In the same way, implement Euler's method to approximate the
+    temperature of Bob's
+    coffee over the same time interval.  Graph the temperature of his
+    coffee and room temperature over the interval.</li>
+<li id="li-2566">Explain the similarities and differences that you see in the
+    behavior of Alice's and Bob's cups of coffee.</li>
+</ol>
+<p id="p-1821">
+\item We have seen that the error in approximating the solution to
+an initial value problem is proportional to \(\Delta t\). That is,
+if \(E_{\Delta t}\) is the Euler's method approximation to the
+solution to an initial value problem at \(\overline{t}\), then
+</p>
+<span class="displaymath" id="me-715">\[
+y(\overline{t})-E_{\Delta t} \approx K\Delta t
+    
+\]</span><p id="p-1822">
+for some constant of proportionality \(K\).
+</p>
+<p id="p-1823">
+In this problem, we will see how to use this fact to improve our
+estimates, using an idea called <!--Style me with CSS--><em>accelerated convergence</em>.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2567">We will create a new approximation by assuming the error is
+    <!--Style me with CSS--><em>exactly</em> proportional to \(\Delta t\), according to the formula
+    
+<span class="displaymath" id="me-716">\[
+y(\overline{t})-E_{\Delta t} =K\Delta t.
+    
+\]</span>
+ 
+    
+    Using our earlier results from the initial value problem \(dy/dt = y\) and
+    \(y(0)=1\) with \(\Delta t = 0.2\) and \(\Delta t = 0.1\), we have
+    
+<span class="displaymath" id="md-76">\begin{align*}
+y(1) - 2.4883 \amp  = \amp  0.2K\\
+y(1) - 2.5937 \amp  = \amp  0.1K.
+\end{align*}</span>
+ 
+
+    This is a system of two linear equations in the unknowns \(y(1)\)
+    and \(K\).  Solve this system to find a new approximation for
+    \(y(1)\).  (You may remember that the exact value is \(y(1) = e =
+    2.71828\ldots.\))</li>
+<li id="li-2568">Use the other data, \(E_{0.05} = 2.6533\) and \(E_{0.025} = 2.6851\)
+    to do similar work as in (a) to obtain another approximation.  Which gives the better
+    approximation?  Why do you think this is?</li>
+<li id="li-2569">Let's now study the initial value problem
+    
+<span class="displaymath" id="me-717">\[
+
+      \frac{dy}{dt} = t-y, \ y(0) = 0.
+    
+\]</span>
+ 
+    Approximate \(y(0.3)\) by applying Euler's method to find
+    approximations \(E_{0.1}\) and \(E_{0.05}\).  Now use the idea of
+    accelerated convergence to obtain a better approximation.  (For the sake of comparison, you want to  note that the actual value is \(y(0.3) =
+    0.0408\).)</li>
+</ol>
+<p id="p-1824">
+\item In this problem, we'll modify Euler's method to obtain better
+approximations to solutions of initial value problems. This
+method is called the <!--Style me with CSS--><em>Improved Euler's method.</em>
+</p>
+<p id="p-1825">
+In Euler's method, we walk across an interval of width \(\Delta t\)
+using the slope obtained from the differential equation at the
+left endpoint of the interval. Of course, the slope of the
+solution will most likely change over this interval. We can
+improve our approximation by trying to incorporate the change in
+the slope over the interval.
+</p>
+<p id="p-1826">
+Let's again consider the initial value problem \(dy/dt = y\) and
+\(y(0) = 1\), which we will approximate using steps of width \(\Delta
+    t = 0.2\). Our first interval is therefore \(0\leq t \leq 0.2\). At
+\(t=0\), the differential equation tells us that the slope is 1, and
+the approximation we obtain from Euler's method is that
+\(y(0.2)\approx y_1= 1+ 1(0.2)= 1.2\).
+</p>
+<p id="p-1827">
+This gives us some idea for how the slope has changed over the
+interval \(0\leq t\leq 0.2\). We know the slope at \(t=0\) is 1,
+while the slope at \(t=0.2\) is 1.2, trusting in the Euler's method
+approximation. We will therefore refine our estimate of the
+initial slope to be the average of these two slopes; that is, we
+will estimate the slope to be \((1+1.2)/2 = 1.1\). This gives the
+new approximation \(y(1) = y_1 = 1 + 1.1(0.2) = 1.22\).
+</p>
+<p id="p-1828">
+The first few steps look like this:
+</p>
+<figure class="figure-like" id="table-38">
+        \(t_i\) \amp  \(y_i\) \amp  Slope at \((t_{i+1},y_{i+1})\) \amp  Average slope 
+        0.0\amp 1.0000\amp 1.2000\amp 1.1000
+        0.2\amp 1.2200\amp 1.4640\amp 1.3420
+        0.4\amp 1.4884\amp 1.7861\amp 1.6372
+        \vdots \amp   \vdots \amp   \vdots \amp   \vdots </figure><ol style="list-style-type: decimal;">
+<li id="li-2570">Continue with this method to obtain an approximation for \(y(1) =
+    e\).</li>
+<li id="li-2571">Repeat this method with \(\Delta t = 0.1\) to obtain a better
+    approximation for \(y(1)\).</li>
+<li id="li-2572">We saw that the error in Euler's method is proportional to
+    \(\Delta t\).  Using your results from parts (a) and (b), what power
+    of \(\Delta t\) appears to be proportional to the error in the
+    Improved Euler's Method?</li>
+</ol>
+<p id="p-1829">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1830">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

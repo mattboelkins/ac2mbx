@@ -1,0 +1,70 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:43-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">1</span>
+</h5>Consider the series
+
+<span class="displaymath" id="me-901">\[
+\sum \frac{1}{k^2} \hspace{0.5in} \text{ and }  \hspace{0.5in} \sum \frac{1}{k^2+k}.
+\]</span>
+ 
+We know that the series \( \sum \frac{1}{k^2}\) is a \(p\)-series with \(p = 2 &gt; 1\) and so \( \sum \frac{1}{k^2}\) converges. In this part of the exercise we will see how to use information about \( \sum \frac{1}{k^2}\) to determine information about \( \sum \frac{1}{k^2+k}\). Let \(a_k = \frac{1}{k^2}\) and \(b_k = \frac{1}{k^2+k}\).
+        <ul xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: disc;">
+<li id="li-2956">Let \(S_n\) be the \(n\)th partial sum of \( \sum \frac{1}{k^2}\) and \(T_n\) the \(n\)th partial sum of \( \sum \frac{1}{k^2+k}\). Which is larger, \(S_1\) or \(T_1\)? Why?
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-162" id="solution-162"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-162" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2225">
+Since \(S_1 = 1\) and \(T_1 = \frac{1}{2}\), we see that \(S_1 &gt; T_1\).
+</p></span></span>
+</li>
+<li id="li-2957">Recall that
+
+<span class="displaymath" id="me-902">\[
+S_2 = S_1 + a_2 \hspace{0.5in} \text{ and }  \hspace{0.5in} T_2 = T_1 + b_2.
+\]</span>
+ 
+Which is larger, \(a_2\) or \(b_2\)? Based on that answer, which is larger, \(S_2\) or \(T_2\)?
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-163" id="solution-163"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-163" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2226">
+Since \(a_2 = \frac{1}{4}\) and \(b_2 = \frac{1}{6}\), it is the case that \(a_2 &gt; b_2\). We already know that \(S_1 &gt; T_1\), so adding a larger number to \(S_1\) than we add to \(T_1\) makes \(S_2 &gt; T_2\).
+</p></span></span>
+</li>
+<li id="li-2958">Recall that
+
+<span class="displaymath" id="me-903">\[
+S_3 = S_2 + a_3 \hspace{0.5in} \text{ and }  \hspace{0.5in} T_3 = T_2 + b_3.
+\]</span>
+ 
+Which is larger, \(a_3\) or \(b_3\)? Based on that answer, which is larger, \(S_3\) or \(T_3\)?
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-164" id="solution-164"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-164" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2227">
+Since \(a_3 = \frac{1}{9}\) and \(b_3 = \frac{1}{12}\), it is the case that \(a_3 &gt; b_3\). We already know that \(S_2 &gt; T_2\), so adding a larger number to \(S_2\) than we add to \(T_2\) makes \(S_3 &gt; T_3\).
+</p></span></span>
+</li>
+<li id="li-2959">Which is larger, \(a_n\) or \(b_n\)? Explain. Based on that answer, which is larger, \(S_n\) or \(T_n\)?
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-165" id="solution-165"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-165" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2228">
+Since \(n^2+n &gt; n^2\) when \(n\) is positive, we have \(\frac{1}{n^2} &gt; \frac{1}{n^2+n}\) or \(a_n &gt; b_n\). So at each step, we are adding larger numbers to the partial sums of \( \sum \frac{1}{k^2}\) than we are to the partial sums of \( \sum \frac{1}{k^2+k}\), we conclude that \(S_n &gt; T_n\).
+</p></span></span>
+</li>
+<li id="li-2960">Based on your response to the previous part of this exercise, what relationship do you expect there to be between \( \sum \frac{1}{k^2}\) and  \( \sum \frac{1}{k^2+k}\)? Do you expect \( \sum \frac{1}{k^2+k}\) to converge or diverge? Why?
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-166" id="solution-166"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-166" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2229">
+Since \(S_n &gt; T_n\), we should expect \( \lim_{n \to \infty} S_n &gt; \lim_{n \to \infty} T_n\) or
+</p>
+<span class="displaymath" id="me-904">\[
+ \sum \frac{1}{k^2} &gt;  \sum \frac{1}{k^2+k}.
+\]</span><p id="p-2230">
+Since \( \sum \frac{1}{k^2}\) is a \(p\)-series with \(p=2 &gt; 1\), we know that \( \sum \frac{1}{k^2}\) converges (and is finite). Now \( \sum \frac{1}{k^2+k}\) is a sum of positive terms and is therefore positive, and is also less than a finite number (\( \sum \frac{1}{k^2}\)), so we expect that \( \sum \frac{1}{k^2+k}\) converges as well.
+</p></span></span>
+</li>
+</ul></article><span class="incontext"><a href="S_8.3.Series.html#li-2955">in-context</a></span>

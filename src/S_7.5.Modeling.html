@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:52-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Modeling with differential equations</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_7.4.Separable.html">Previous</a><a class="up-button button toolbar-item" href="C_7.html">Up</a><a class="next-button button toolbar-item" href="S_7.6.Logistic.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_7.4.Separable.html">Previous</a><a class="up-button button toolbar-item" href="C_7.html">Up</a><a class="next-button button toolbar-item" href="S_7.6.Logistic.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link active"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html" class="active">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_7.5.Modeling"><header><h1 class="heading" alt="Section 7.5 Modeling with differential equations" title="Section 7.5 Modeling with differential equations">
+<span class="type">Section</span><span class="codenumber">7.5</span><span class="title">Modeling with differential equations</span><a href="S_7.5.Modeling.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-41"><h5 class="heading"></h5>
+<p id="p-1880">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2628">How can we use differential equations to describe 
+  phenomena in the world around us?</li>
+<li id="li-2629">How can we use differential equations to better understand these
+  phenomena?</li>
+</ul>
+<p id="p-1881">
+} 
+</p></article><section class="subsection" id="subsection-138"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.5.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-1882">
+In our work to date, we have seen several ways that
+differential equations arise in the natural world, from the growth of
+a population to the temperature of a cup of coffee. In this section,
+we will look more closely at how differential equations give us a
+natural way to describe various phenoma. As we'll see, the key is to
+focus on understanding the different factors that cause a quantity to
+change.
+</p>
+<article class="paragraphs" id="PA_7.5"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1883">
+Any time that the rate of change of a quantity is related to the amount of a quantity, a differential equation naturally arises. In the following two problems, we see two such scenarios; for each, we want to develop a differential equation whose solution is the quantity of interest.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2630">Suppose you have a bank account in which money grows at an
+  annual rate of 3%.
+  <ul style="list-style-type: disc;">
+<li id="li-2631">If you have $10,000 in the account, at what rate is your
+      money growing?</li>
+<li id="li-2632">Suppose that you are also withdrawing money from the account
+      at $1,000 per year.  What is the rate of change in the amount
+      of money in the account?  What are the units on this rate of change?</li>
+</ul>
+</li>
+<li id="li-2633">Suppose that a water tank holds 100 gallons and that a salty
+  solution, which contains 20 grams of salt in every gallon, enters the
+  tank at 2 gallons per minute.   
+  <ul style="list-style-type: disc;">
+<li id="li-2634">How much salt enters the tank each minute?</li>
+<li id="li-2635">Suppose that initially there are 300 grams of salt in the tank.  How
+      much salt is in each gallon at this point in time?</li>
+<li id="li-2636">Finally, suppose that evenly mixed solution is pumped out of the tank at the
+      rate of 2 gallons per minute.  How much salt leaves the tank
+      each minute?</li>
+<li id="li-2637">What is the total rate of change in the amount of salt in
+      the tank?</li>
+</ul>
+</li>
+</ol></article></section><section class="subsection" id="subsection-139"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.5.2</span><span class="title">Developing a differential equation</span>
+</h1></header><p id="p-1884">
+Preview <a href="S_7.5.Modeling.html#PA_7.5" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">activity </a> demonstrates the kind of thinking we will be
+doing in this section. In each of the two examples we considered, there is a
+quantity, such as the amount of money in the bank account or the
+amount of salt in the tank, that is changing due to several factors.
+The governing differential equation results from the total rate of change being the difference between the rate of
+increase and the rate of decrease.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_7.5.1" id="Ex_7.5.1"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">7.5.1</span>
+</h5></article></a></div>
+<div id="hk-Ex_7.5.1" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-1885">
+In the Great Lakes region, rivers flowing into the lakes carry a great
+deal of pollution in the form of small pieces of plastic averaging 1
+millimeter in diameter. In order to understand how the amount of
+plastic in Lake Michigan is changing, construct a model for how this type pollution has built up in the lake.
+</p></article></div>
+<p id="p-1886">
+Solution.    
+</p>
+<p id="p-1887">
+First, some basic facts about Lake Michigan.
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2638">The volume of the lake is
+    \(5\cdot10^{12}\) cubic meters.</li>
+<li id="li-2639">Water flows into the lake at a rate of
+    \(5\cdot10^{10}\) cubic meters per year.  It flows out of the lake
+    at the same rate.</li>
+<li id="li-2640">Each cubic meter flowing
+    into the lake contains roughly \(3\cdot10^{-8}\) cubic meters of
+    plastic pollution.</li>
+</ul>
+<p id="p-1888">
+Let's denote the amount of pollution in the lake by \(P(t)\), where \(P\)
+is measured in cubic meters of plastic and \(t\) in years. Our goal
+is to describe the rate of change of this function; in other
+words, we want to develop a differential equation describing \(P(t)\).
+</p>
+<p id="p-1889">
+First, we will measure how \(P(t)\) increases due to pollution flowing
+into the lake. We know that \(5\cdot10^{10}\) cubic meters of water
+enters the lake every year and each cubic meter of water contains
+\(3\cdot10^{-8}\) cubic meters of pollution. Therefore, pollution
+enters the lake at the rate of
+</p>
+<span class="displaymath" id="me-745">\[
+
+\left(5\cdot 10^{10} \frac{m^3 \mbox{\ water} }{\mbox{year} }\right) \cdot \left(3\cdot10^{-8} \frac{m^3 \mbox{\ plastic} }{m^3 \mbox{\ water} } \right) = 1.5\cdot 10^3\quad
+\mbox{cubic m of plastic per year} .
+
+\]</span><p id="p-1890">
+Second, we will measure how \(P(t)\) decreases due to pollution flowing
+out of the lake. If the total amount of pollution is \(P\) cubic
+meters and the volume of Lake Michigan is \(5\cdot 10^{12}\) cubic
+meters, then the concentration of plastic pollution in Lake Michigan is
+</p>
+<span class="displaymath" id="me-746">\[
+
+\frac{P}{5\cdot10^{12}} \quad \mbox{cubic meters of plastic per cubic meter of water} .
+
+\]</span><p id="p-1891">
+Since \(5\cdot10^{10}\) cubic meters of water flow out each year<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-50" id="fn-50"><sup> 1 </sup></a></span><span id="hk-fn-50" style="display: none;" class="tex2jax_ignore"><span class="footnote">and we assume that each cubic meter of water that flows out carries with it the plastic pollution it contains</span></span>, then
+the plastic pollution leaves the lake at the rate of
+</p>
+<span class="displaymath" id="me-747">\[
+
+\left(\frac{P}{5\cdot10^{12}} \frac{m^3 \mbox{\ plastic} }{m^3 \mbox{\ water} } \right) \cdot \left(5\cdot10^{10} \frac{m^3 \mbox{\ water} }{\mbox{year} } \right)=\frac{P}{100} 
+\quad \mbox{cubic meters of plastic
+  per year} .
+
+\]</span><p id="p-1892">
+The total rate of change of \(P\) is thus the difference between the rate at which
+pollution enters the lake minus the rate at which pollution leaves the
+lake; that is,
+</p>
+<span class="displaymath" id="md-77">\begin{align*}
+\frac{dP}{dt} \amp  = \amp 1.5\cdot10^{3}-\frac{P}{100}\\
+\amp  = \amp  \frac{1}{100}(1.5\cdot10^{5} - P).
+\end{align*}</span><p id="p-1893">
+We have now found a differential equation that describes the rate
+at which the amount of pollution is changing. To better understand the
+behavior of \(P(t)\), we now apply some
+of the techniques we have recently developed.
+</p>
+<p id="p-1894">
+Since this is an autonomous differential equation, we can sketch
+\(dP/dt\) as a function of \(P\) and then construct a slope field, as shown in <a knowl="./knowl/F_7.5.Ex1.html" knowl-id="xref-F_7.5.Ex1" alt="Figure 7.5.2 " title="Figure 7.5.2 ">Figure 7.5.2</a>.
+</p>
+<figure class="figure-like" id="F_7.5.Ex1"><img width="100%" src="images/7_5_lake_michigan.png"><img width="100%" src="images/7_5_slope_field.png"><figcaption><span class="heading">Figure</span><span class="codenumber">7.5.2</span>Plots of \(\frac{dP}{dt}\) vs. \(P\) and the slope field for the differential equation \(\frac{dP}{dt} = \frac{1}{100}(1.5\cdot10^{5} - P)\).</figcaption></figure><p id="p-1895">
+These plots both show that \(P=1.5\cdot10^5\) is a stable equilibrium. Therefore,
+we should expect that the amount of pollution in Lake Michigan will
+stabilize near \(1.5\cdot10^5\) cubic meters of pollution.
+</p>
+<p id="p-1896">
+Next, assuming that there is initially no pollution in the lake, we will
+solve the initial value problem
+</p>
+<span class="displaymath" id="me-748">\[
+
+\frac{dP}{dt} = \frac{1}{100}(1.5\cdot10^{5} - P), \ P(0) = 0.
+
+\]</span><p id="p-1897">
+Separating variables, we find that
+</p>
+<span class="displaymath" id="me-749">\[
+
+\frac1{1.5\cdot10^5-P} \frac{dP}{dt} = \frac1{100}.
+
+\]</span><p id="p-1898">
+Integrating with respect to \(t\), we have
+</p>
+<span class="displaymath" id="me-750">\[
+  \int \frac1{1.5\cdot10^5-P} \frac{dP}{dt}~dt = \int \frac1{100}~dt,
+\]</span><p id="p-1899">
+and thus changing variables on the left and antidifferentiating on both sides, we find that
+</p>
+<span class="displaymath" id="md-78">\begin{align*}
+\int \frac{dP}{1.5\cdot10^5-P} \amp =\amp  \int \frac1{100}~dt\\
+-\ln|1.5\cdot10^5 - P| \amp  = \amp  \frac1{100}t + C
+\end{align*}</span><p id="p-1900">
+Finally, multiplying both sides by \(-1\) and using the definition of the logarithm, we find that
+</p>
+<span class="displaymath" id="E_7.5.Ex1C">\begin{equation}
+ 1.5\cdot10^5 - P = C e^{-t/100}.
+\label{E_7.5.Ex1C}\tag{7.5.1}\end{equation}</span><p id="p-1901">
+This is a good time to determine the constant \(C\). Since \(P =
+0\) when \(t=0\), we have
+</p>
+<span class="displaymath" id="me-751">\[
+
+1.5\cdot 10^5 - 0 = Ce^0 = C.
+
+\]</span><p id="p-1902">
+In other words, \(C=1.5\cdot10^5\).
+</p>
+<p id="p-1903">
+Using this value of \(C\) in Equation <a knowl="./knowl/E_7.5.Ex1C.html" knowl-id="xref-E_7.5.Ex1C" alt="Equation 7.5.1 " title="Equation 7.5.1 ">(7.5.1)</a> and solving for \(P\), we arrive at the solution
+</p>
+<span class="displaymath" id="me-752">\[
+ P(t) = 1.5\cdot10^5(1-e^{-t/100}).
+\]</span><p id="p-1904">
+Superimposing the graph of \(P\) on the slope field we saw in <a knowl="./knowl/F_7.5.Ex1.html" knowl-id="xref-F_7.5.Ex1" alt="Figure 7.5.2 " title="Figure 7.5.2 ">Figure 7.5.2</a>, we see, as shown in <a knowl="./knowl/F_7.5.Ex1a.html" knowl-id="xref-F_7.5.Ex1a" alt="Figure 7.5.3 " title="Figure 7.5.3 ">Figure 7.5.3</a>
+</p>
+<figure class="figure-like" id="F_7.5.Ex1a"><img width="100%" src="images/7_5_solution.png"><figcaption><span class="heading">Figure</span><span class="codenumber">7.5.3</span>The solution \(P(t)\) and the slope field for the differential equation \(\frac{dP}{dt} = \frac{1}{100}(1.5\cdot10^{5} - P)\).</figcaption></figure><p id="p-1905">
+We see that, as expected, the amount of plastic pollution stabilizes around
+\(1.5\cdot10^5\) cubic meters.
+</p>\hspace{5.0in}<p id="p-1906">
+There are many important lessons to learn from <a knowl="./knowl/Ex_7.5.1.html" knowl-id="xref-Ex_7.5.1" alt="Example 7.5.1 " title="Example 7.5.1 ">Example 7.5.1</a>. Foremost is how we can develop a differential equation by thinking about the “total rate = rate in - rate out” model. In addition, we note how we can bring together all of our available understanding (plotting \(\frac{dP}{dt}\) vs. \(P\), creating a slope field, solving the differential equation) to see how the differential equation describes the behavior of a changing quantity.
+</p>
+<p id="p-1907">
+Of course, we can also explore what happens when certain aspects of the problem change. For instance, let's suppose we are at a time when the plastic pollution entering Lake Michigan has
+stabilized at \(1.5\cdot10^5\) cubic meters, and that new legislation is
+passed to prevent this type of pollution entering the lake. So, there is no longer any inflow of plastic pollution to the lake. How does the amount of plastic pollution in Lake Michigan now change? For example, how long does it take for the amount of plastic pollution in the lake to halve?
+</p>
+<p id="p-1908">
+Restarting the problem at time \(t=0\), we now have the modified initial value problem
+</p>
+<span class="displaymath" id="me-753">\[
+
+\frac{dP}{dt} = -\frac{1}{100}P, \ P(0) = 1.5\cdot10^5.
+
+\]</span><p id="p-1909">
+It is a straightforward and familiar exercise to find that the solution to this equation is \(P(t) = 1.5\cdot10^5
+e^{-t/100}\). The time that it takes for half of the pollution to flow
+out of the lake is given by \(T\) where \(P(T) = 0.75\cdot10^5\). Thus, we must solve the equation
+</p>
+<span class="displaymath" id="me-754">\[
+0.75\cdot10^5 = 1.5\cdot10^5e^{-T/100},
+\]</span><p id="p-1910">
+or
+</p>
+<span class="displaymath" id="me-755">\[
+ \frac12 = e^{-T/100}.
+\]</span><p id="p-1911">
+It follows that
+</p>
+<span class="displaymath" id="me-756">\[
+T = -100\,\ln\left(\frac12\right) \approx 69.3 \quad\mbox{years.} 
+\]</span><p id="p-1912">
+In the upcoming activities, we explore some other natural settings in which differential equation model changing quantities.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_7.4.finance" id="A_7.4.finance"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">7.5.4</span>
+</h5></a></div>
+<div id="hk-A_7.4.finance" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1913">
+Suppose you have a bank account that grows by 5% every year. Let \(A(t)\) be the amount of money in the account in year \(t\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2641">What is the rate of change of \(A\) with respect to \(t\)?</li>
+<li id="li-2642">Suppose that you are also withdrawing $10,000 per year.  Write
+  a differential equation that expresses the total rate of change of
+  \(A\).</li>
+<li id="li-2643">Sketch a slope field for this differential equation, find any
+  equilibrium solutions, and identify them as either stable or
+  unstable.  Write a sentence or two that describes the significance
+  of the stability of the equilibrium solution.</li>
+<li id="li-2644">Suppose that you initially deposit $100,000 into the account.  How
+  long does it take for you to deplete the account?</li>
+<li id="li-2645">What is the smallest amount of money you would need to have in
+  the account to guarantee that you never deplete the money in the
+  account?</li>
+<li id="li-2646">If your initial deposit is $300,000, how much could you
+  withdraw every year without depleting the account?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-235" id="hint-235"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-235" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2647">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-236" id="hint-236"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-236" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2648">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-116" id="solution-116"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-116" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2649">Solutions for each of the prompts above.</li></ol></span></span><div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_7.5.iv" id="A_7.5.iv"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">7.5.5</span>
+</h5></a></div>
+<div id="hk-A_7.5.iv" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1914">
+A dose of morphine is
+absorbed from the bloodstream of a patient at a rate
+proportional to the amount in the bloodstream.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2650">Write a differential equation for \(M(t)\), the amount of
+          morphine in the patient's bloodstream, using \(k\) as the
+          constant proportionality.</li>
+<li id="li-2651">Assuming that the initial dose of morphine is \(M_0\),
+          solve the initial value problem to find \(M(t)\).  Use the
+          fact that the half-life for the absorption of morphine is
+          two hours to find the constant \(k\).</li>
+<li id="li-2652">Suppose that a patient is given morphine intraveneously
+          at the rate of 3 milligrams per hour.  Write a differential
+          equation that combines the intraveneous administration of
+          morphine with the body's natural absorption.</li>
+<li id="li-2653">Find any equilibrium solutions and determine their
+          stability.</li>
+<li id="li-2654">Assuming that there is initially no morphine in the
+          patient's bloodstream, solve the initial value problem to
+          determine \(M(t)\).  What happens to \(M(t)\) after a very long time?</li>
+<li id="li-2655">To what rate should a doctor reduce the
+          intraveneous rate so that there is eventually 7 milligrams
+          of morphine in the patient's bloodstream?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-237" id="hint-237"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-237" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2656">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-238" id="hint-238"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-238" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2657">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-117" id="solution-117"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-117" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2658">Solutions for each of the prompts above.</li></ol></span></span><p id="p-1915">
+\item Differential equations arise in a situation when we understand
+how various factors cause a quantity to change.
+\item We may use the tools we have developed so far — slope
+fields, Euler's methods, and our method for solving separable
+equations — to understand a quantity described by a differential
+equation.
+</p>
+<p id="p-1916">
+\hrulefill
+</p>
+<p id="p-1917">
+\begin{exercises}
+\item Congratulations, you just won the lottery! In one option
+presented to you, you will be paid one million dollars a year for
+the next 25 years. You can deposit this money in an account that
+will earn 5% each year.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2659">Set up a differential equation that describes the rate of
+    change in the amount of money in the account.  Two factors cause
+    the amount to grow — first, you are depositing one millon dollars
+    per year and second, you are earning 5% interest.</li>
+<li id="li-2660">If there is no amount of money in the account when you open
+    it, how much money will you have in the account after 25 years?</li>
+<li id="li-2661">The second option presented to you is to take a lump sum of 10
+    million dollars, which you will deposit into a similar account.  How
+    much money will you have in that account after 25 years?</li>
+<li id="li-2662">Do you prefer the first or second option?  Explain your thinking.</li>
+<li id="li-2663">At what time does the amount of money in the account under the
+    first option overtake the amount of money in the account under the
+    second option?</li>
+</ol>
+<p id="p-1918">
+\item When a skydiver jumps from a plane, gravity causes
+her downward velocity to increase at the rate of \(g\approx 9.8\)
+meters per second squared. At the same time, wind resistance
+causes her velocity to decrease at a rate proportional to the
+velocity.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2664">Using \(k\) to represent the constant of proportionality,
+      write a differential equation that describes the rate of change
+      of the skydiver's velocity.</li>
+<li id="li-2665">Find any equilibrium solutions and decide whether they are
+        stable or unstable.  Your result should depend on \(k\).</li>
+<li id="li-2666">Suppose that the initial velocity is zero.  Find the
+        velocity \(v(t)\).</li>
+<li id="li-2667">A typical terminal velocity for a skydiver falling face
+        down is 54 meters per second.  What is the value of \(k\) for
+        this skydiver?</li>
+<li id="li-2668">How long does it take to reach 50% of the terminal
+        velocity?</li>
+</ol>
+<p id="p-1919">
+\item During the first few years of life, the rate at which a baby
+gains weight is proportional to the reciprocal of its weight.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2669">Express this fact as a differential equation.</li>
+<li id="li-2670">Suppose that a baby weighs 8 pounds at birth and 9 pounds
+        one month later.  How much will he weigh at one year?</li>
+<li id="li-2671">Do you think this is a realistic model for a long time?</li>
+</ol>
+<p id="p-1920">
+\item Suppose that you have a water tank that holds 100 gallons of water.
+A briny solution, which contains 20 grams of salt per gallon, enters
+the tank at the rate of 3 gallons per minute.
+</p>
+<p id="p-1921">
+At the same time, the solution is well mixed, and water is pumped
+out of the tank at the rate of 3 gallons per minute.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2672">Since 3 gallons enters the tank every minute and 3 gallons
+  leaves every minute, what can you conclude about the volume of water
+  in the tank.</li>
+<li id="li-2673">How many grams of salt enters the tank every minute?</li>
+<li id="li-2674">Suppose that \(S(t)\) denotes the number of grams of salt in the
+  tank in minute \(t\).  How many grams are there in each gallon in
+  minute \(t\)?</li>
+<li id="li-2675">Since water leaves the tank at 3 gallons per minute, how many
+  grams of salt leave the tank each minute?</li>
+<li id="li-2676">Write a differential equation that expresses the total rate of
+  change of \(S\).</li>
+<li id="li-2677">Identify any equilibrium solutions and determine whether they
+  are stable or unstable.</li>
+<li id="li-2678">Suppose that there is initially no salt in the tank.  Find the
+  amount of salt \(S(t)\) in minute \(t\).</li>
+<li id="li-2679">What happens to \(S(t)\) after a very long time?  Explain how you
+  could have predicted this only knowing how much salt there is in
+  each gallon of the
+  briny solution that enters the tank.</li>
+</ol>
+<p id="p-1922">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1923">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:11-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">3.3.2.2</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-1391">For \(h(x) = xe^{-x}\), we know that \(h'(x) = xe^{-x}(-1) + e^{-x} = e^{-x}(-x+1)\).  Therefore, the only critical value of \(h\) is \(x = 1\).  Next, we compute \(h(1)\), \(h(0)\), and \(h(3)\).  Observe that 
+	<ul style="list-style-type: disc;">
+<li id="li-1392">\(h(1) = e^{-1} \approx 0.36788\)</li>
+<li id="li-1393">\(h(0) = 0\)</li>
+<li id="li-1394">\(h(3) = 3e^{-3} \approx 0.14936\)</li>
+</ul>  
+	Thus, on \([0,3]\), the absolute maximum of \(h\) is \(e^{-1}\) and the absolute minimum is \(0\).</li>
+<li id="li-1395">Given \(p(t) = \sin(t) + \cos(t)\), it follows \(p'(t) = \cos(t) - \sin(t)\), so \(p'(t) = 0\) implies that \(\cos(t) =\sin(t)\).   The sine and cosine functions have the same value at \(\frac{\pi}{4} \pm k\pi\) for any integer \(k\).  The only time this occurs in \([-\frac{\pi}{2}, \frac{\pi}{2}]\) is for \(x = \frac{\pi}{4}\), and thus this is the only critical value of \(p\) in the given interval.  Now,
+	<ul style="list-style-type: disc;">
+<li id="li-1396">\(p(\frac{\pi}{4}) = \sin(\frac{\pi}{4}) + \cos(\frac{\pi}{4}) = \frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2} = \sqrt{2} \approx 1.41421\)</li>
+<li id="li-1397">\(p(-\frac{\pi}{2}) = \sin(-\frac{\pi}{2}) + \cos(-\frac{\pi}{2}) = -1 + 0 = -1\)</li>
+<li id="li-1398">\(p(\frac{\pi}{2}) = \sin(\frac{\pi}{2}) + \cos(\frac{\pi}{2}) = 1 + 0 = 1\)</li>
+</ul>  	
+	Therefore, on \([-\frac{\pi}{2},\frac{\pi}{2}]\), the absolute maximum of \(p\) is \(\sqrt{2}\) and the absolute minimum is \(-1\).</li>
+<li id="li-1399">With \(q(x) = \frac{x^2}{x-2}\), we have 
+	
+<span class="displaymath" id="me-334">\[
+q'(x) = \frac{(x-2)(2x) - x^2(1)}{(x-2)^2} = \frac{2x^2 - 4x - x^2}{(x-2)^2} = \frac{x^2-4x}{(x-2)^2} = \frac{x(x-4)}{(x-2)^2}.
+\]</span>
+ 
+	Hence, the critical values of \(q\) are \(x = 0\) and \(x = 4\).  Only the latter critical value lies in the interval \([3,7]\), and thus we evaluate \(q\) and find
+	<ul style="list-style-type: disc;">
+<li id="li-1400">\(q(4) = \frac{16}{2} = 8\)</li>
+<li id="li-1401">\(q(3) = \frac{9}{1} = 9\)</li>
+<li id="li-1402">\(q(7) = \frac{49}{5} = 9.8\)</li>
+</ul>   
+	We now see that on \([3,7]\) the absolute maximum of \(q\) is 9.8 and the absolute minimum is 8.</li>
+<li id="li-1403">Here, we first observe that we are working on the domain of all real numbers, not a closed bounded interval.  Hence, we need to think about the overall behavior of the function.  First, since \(f(x) = 4 - e^{-(x-2)^2}\), by the chain rule we see that \(f'(x) = -e^{-(x-2)^2}(-2(x-2)) = 2(x-2)e^{-(x-2)^2}.\)  Since \(e^{-(x-2)^2}\) is always positive (in particular, never zero), it follows that the only critical value of \(f\) is \(x = 2\).  Furthermore, with \(f'(x) = 2(x-2)e^{-(x-2)^2}\), we see that for \(x \lt  2\), \(f'(x) \lt  0\), while for \(x &gt; 2\), \(f'(x) &gt; 0\).  This tells us by the first derivative test that \(f\) is decreasing for \(x \lt  2\) and increasing for \(x &gt; 2\), which tells us that \(f\) has an absolute minimum at \(x = 2\), and \(f\) does not have an absolute maximum.</li>
+</ol></span><span class="incontext"><a href="S_3.3.Optimization.html#solution-53">in-context</a></span>

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:52-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Separable differential equations</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_7.3.Euler.html">Previous</a><a class="up-button button toolbar-item" href="C_7.html">Up</a><a class="next-button button toolbar-item" href="S_7.5.Modeling.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_7.3.Euler.html">Previous</a><a class="up-button button toolbar-item" href="C_7.html">Up</a><a class="next-button button toolbar-item" href="S_7.5.Modeling.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link active"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html" class="active">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_7.4.Separable"><header><h1 class="heading" alt="Section 7.4 Separable differential equations" title="Section 7.4 Separable differential equations">
+<span class="type">Section</span><span class="codenumber">7.4</span><span class="title">Separable differential equations</span><a href="S_7.4.Separable.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-40"><h5 class="heading"></h5>
+<p id="p-1831">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2573">What is a separable differential equation?</li>
+<li id="li-2574">How can we find solutions to a separable differential equation?</li>
+<li id="li-2575">Are some of the differential equations that arise in applications separable?</li>
+</ul>
+<p id="p-1832">
+} 
+</p></article><section class="subsection" id="subsection-136"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.4.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-1833">
+In <a href="S_7.2.Qualitative.html" alt="Section 7.2 Qualitative behavior of solutions to DEs" title="Section 7.2 Qualitative behavior of solutions to DEs">Sections 7.2</a> and <a href="S_7.3.Euler.html" alt="Section 7.3 Euler's method" title="Section 7.3 Euler's method">7.3</a>, we have seen several ways to approximate the solution to
+an initial value problem. Given the frequency with which differential equations arise in the world around us, we would like to have some techniques
+for finding explicit algebraic solutions of certain initial value
+problems. In this section, we focus on a particular class of differential
+equations (called <!--Style me with CSS--><em>separable</em>) and develop a method for finding
+algebraic formulas for solutions to these equations.
+</p>
+<p id="p-1834">
+A <!--Style me with CSS--><em>separable differential equation</em>\knownindex{\lt main&gt;separable\lt /main&gt;} is a differential equation whose algebraic structure permits the variables present to be separated in a particular way. For instance, consider the equation
+</p>
+<span class="displaymath" id="me-718">\[
+
+\frac{dy}{dt} = ty.
+
+\]</span><p id="p-1835">
+We would like to separate the variables \(t\) and \(y\) so that all
+occurrences of \(t\) appear on the right-hand side, and all occurrences
+of \(y\) appears on the left and multiply \(dy/dt\). We may do this in the preceding differential equation by dividing both sides by
+\(y\):
+</p>
+<span class="displaymath" id="me-719">\[
+
+\frac1y\frac{dy}{dt} = t.
+
+\]</span><p id="p-1836">
+Note particularly that when we attempt to separate the variables in a differential equation, we require that the left-hand side be a product in which the derivative \(dy/dt\) is one term.
+</p>
+<p id="p-1837">
+Not every differential equation is separable. For example, if we consider the
+equation
+</p>
+<span class="displaymath" id="me-720">\[
+
+\frac{dy}{dt} = t-y,
+
+\]</span><p id="p-1838">
+it may seem natural to separate it by writing
+</p>
+<span class="displaymath" id="me-721">\[
+
+y + \frac{dy}{dt} = t.
+
+\]</span><p id="p-1839">
+As we will see, this will not be helpful since the left-hand side is
+not a product of a function of \(y\) with \(\frac{dy}{dt}\).
+</p>
+<article class="paragraphs" id="PA_7.4"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1840">
+In this preview activity, we explore whether certain differential equations are separable or not, and then revisit some key ideas from earlier work in integral calculus.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2576">Which of the following differential equations are separable?  If the equation is separable, write the equation in the revised form \(g(y) \frac{dy}{dt} = h(t)\).
+  <ol style="list-style-type: lower-alpha;">
+<li id="li-2577">\(\displaystyle \frac{dy}{dt} = -3y\).</li>
+<li id="li-2578">\(\displaystyle \frac{dy}{dt} = ty - y\).</li>
+<li id="li-2579">\(\displaystyle \frac{dy}{dt} = t + 1\).</li>
+<li id="li-2580">\(\displaystyle \frac{dy}{dt} = t^2 - y^2\).</li>
+</ol>
+</li>
+<li id="li-2581">Explain why any autonomous differential equation is guaranteed to be separable.</li>
+<li id="li-2582">Why do we include the term “\(+C\)” in the expression 
+<span class="displaymath" id="me-722">\[
+\int x~dx =
+  \frac{x^2}{2} + C?
+\]</span>
+</li>
+<li id="li-2583">Suppose we know that a certain function \(f\) satisfies the equation
+  
+<span class="displaymath" id="me-723">\[
+
+  \int f'(x)~dx = \int x~dx.
+  
+\]</span>
+ 
+  What can you conclude about \(f\)?</li>
+</ol></article></section><section class="subsection" id="subsection-137"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.4.2</span><span class="title">Solving separable differential equations</span>
+</h1></header><p id="p-1841">
+\knownindex{\lt main&gt;separable\lt /main&gt;}
+</p>
+<p id="p-1842">
+Before we discuss a general approach to solving a separable differential equation, it is instructive to consider an example.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_7.4.1" id="Ex_7.4.1"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">7.4.1</span>
+</h5></article></a></div>
+<div id="hk-Ex_7.4.1" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-1843">
+Find all functions \(y\) that are solutions to the differential equation
+</p>
+<span class="displaymath" id="me-724">\[
+\frac{dy}{dt}= \frac{t}{y^2}.
+\]</span></article></div>
+<p id="p-1844">
+Solution.    
+We begin by separating the variables and writing
+</p>
+<span class="displaymath" id="me-725">\[
+
+    y^2\frac{dy}{dt} = t.
+    
+\]</span><p id="p-1845">
+Integrating both sides of the equation with respect to the independent
+variable \(t\) shows that
+</p>
+<span class="displaymath" id="me-726">\[
+
+    \int y^2\frac{dy}{dt}~dt = \int t~dt.
+    
+\]</span><p id="p-1846">
+Next, we notice that the left-hand side allows us to change
+the variable of antidifferentiation<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-48" id="fn-48"><sup> 1 </sup></a></span><span id="hk-fn-48" style="display: none;" class="tex2jax_ignore"><span class="footnote">This is why we required that the left-hand side be written as a
+    product in which \(dy/dt\) is one of the terms.</span></span> from \(t\) to \(y\). In
+particular,
+\(dy = \frac{dy}{dt}~dt\), so we now have
+</p>
+<span class="displaymath" id="me-727">\[
+
+    \int y^2 ~dy = \int t~dt.
+    
+\]</span><p id="p-1847">
+This most recent equation says that two families of antiderivatives are
+equal to one another. Therefore, when we find representative
+antiderivatives of both sides, we know they must differ by
+arbitrary constant \(C\). Antidifferentiating and including the integration constant \(C\) on the right, we find that
+</p>
+<span class="displaymath" id="me-728">\[
+
+    \frac{y^3}{3} = \frac{t^2}{2} + C.
+    
+\]</span><p id="p-1848">
+Again, note that it is not necessary to include an arbitrary constant on both sides
+of the equation; we know that \(y^3/3\) and \(t^2/2\) are in the same
+family of antiderivatives and must therefore differ by a single
+constant.
+</p>
+<p id="p-1849">
+Finally, we may now solve the last equation above for \(y\) as a function of \(t\), which gives
+</p>
+<span class="displaymath" id="me-729">\[
+
+    y(t) = \sqrt[3]{\frac 32 \, t^2 + 3C}.
+    
+\]</span><p id="p-1850">
+Of course, the term \(3C\) on the right-hand side represents
+3 times an unknown constant. It is, therefore, still an unknown
+constant, which we will rewrite as \(C\). We thus conclude that the funtion
+</p>
+<span class="displaymath" id="me-730">\[
+
+    y(t) = \sqrt[3]{\frac 32 \, t^2 + C}
+    
+\]</span><p id="p-1851">
+is a solution to the original differential equation for any value of \(C\).
+</p>
+<p id="p-1852">
+Notice that because this solution depends on the arbitrary constant \(C\), we have found an infinite family of
+solutions. This makes sense because we expect to find a unique solution that corresponds to any given
+initial value.
+</p>
+<p id="p-1853">
+For example, if we want to solve the initial value problem
+</p>
+<span class="displaymath" id="me-731">\[
+
+  \frac{dy}{dt} = \frac{t}{y^2}, \
+  y(0) = 2,
+
+\]</span><p id="p-1854">
+we know that the solution has the form \(y(t) = \sqrt[3]{\frac32\,
+  t^2 + C}\) for some constant \(C\). We therefore must find the appropriate
+value for \(C\) that gives the initial value \(y(0)=2\). Hence,
+</p>
+<span class="displaymath" id="me-732">\[
+
+  2 = y(0)  \sqrt[3]{\frac 32 \, 0^2 + C} = \sqrt[3]{C},
+  
+\]</span><p id="p-1855">
+which shows that \(C = 2^3 = 8\). The solution to the initial value problem is then
+</p>
+<span class="displaymath" id="me-733">\[
+
+y(t) = \sqrt[3]{\frac32\, t^2+8}.
+
+\]</span>\hspace{5.0in}<p id="p-1856">
+The strategy of <a knowl="./knowl/Ex_7.4.1.html" knowl-id="xref-Ex_7.4.1" alt="Example 7.4.1 " title="Example 7.4.1 ">Example 7.4.1</a> may be applied to any differential equation of the form \(\frac{dy}{dt} = g(y) \cdot h(t)\), and any differential equation of this form is said to be <!--Style me with CSS--><em>separable</em>. We work to solve a separable differential equation by writing
+</p>
+<span class="displaymath" id="me-734">\[
+\frac{1}{g(y)} \frac{dy}{dt} = h(t),
+\]</span><p id="p-1857">
+and then integrating both sides with respect to \(t\). After integrating, we strive to solve algebraically for \(y\) in order to write \(y\) as a function of \(t\).
+</p>
+<p id="p-1858">
+We consider one more example before doing further exploration in some activities.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_7.4.2" id="Ex_7.4.2"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">7.4.2</span>
+</h5></article></a></div>
+<div id="hk-Ex_7.4.2" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-1859">
+Solve the differential equation
+</p>
+<span class="displaymath" id="me-735">\[
+\frac{dy}{dt} =3y.
+\]</span></article></div>
+<p id="p-1860">
+Solution.    
+Following the same strategy as in <a knowl="./knowl/Ex_7.4.1.html" knowl-id="xref-Ex_7.4.1" alt="Example 7.4.1 " title="Example 7.4.1 ">Example 7.4.1</a>, we have
+</p>
+<span class="displaymath" id="me-736">\[
+  \frac 1y \frac{dy}{dt} = 3. 
+\]</span><p id="p-1861">
+Integrating both sides with respect to \(t\),
+</p>
+<span class="displaymath" id="me-737">\[
+  \int \frac 1y\frac{dy}{dt}~dt = \int 3~dt,
+\]</span><p id="p-1862">
+and thus
+</p>
+<span class="displaymath" id="me-738">\[
+ \int \frac 1y~dy =  \int 3~dt.
+\]</span><p id="p-1863">
+Antidifferentiating and including the integration constant, we find that
+</p>
+<span class="displaymath" id="me-739">\[
+  \ln|y| = 3t + C.
+\]</span><p id="p-1864">
+Finally, we need to solve for \(y\). Here, one point deserves careful
+attention. By the definition of the natural logarithm function, it follows that
+</p>
+<span class="displaymath" id="me-740">\[
+
+|y| = e^{3t+C} = e^{3t}e^C.
+
+\]</span><p id="p-1865">
+Since \(C\) is an unknown constant, \(e^C\) is as well, though we do know
+that it is positive (because \(e^x\) is positive for any \(x\)).
+When we remove the absolute value in order to solve for \(y\), however, this constant may be either positive or
+negative. We
+will denote this updated constant (that accounts for a possible \(+\) or \(-\)) by \(C\) to obtain
+</p>
+<span class="displaymath" id="me-741">\[
+
+y(t) = Ce^{3t}.
+
+\]</span><p id="p-1866">
+There is one more slightly technical point to make. Notice that \(y=0\)
+is an equilibrium solution to this differential equation. In solving
+the equation above, we begin by dividing both sides by \(y\), which
+is not allowed if \(y=0\). To be perfectly careful, therefore, we will typically
+consider the equilibrium solutions separably. In this case, notice that the final
+form of our solution captures the equilibrium solution by allowing
+\(C=0\).
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_7.4.1" id="A_7.4.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">7.4.3</span>
+</h5></a></div>
+<div id="hk-A_7.4.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1867">
+Suppose that the population of a town is growing continuously at an annual rate of 3% per year.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2584">Let \(P(t)\) be the population of the town in year \(t\).  Write a
+  differential equation that describes the annual growth rate.</li>
+<li id="li-2585">Find the solutions of this differential equation.</li>
+<li id="li-2586">If you know that the town's population in year 0 is 10,000, find
+  the population \(P(t)\).</li>
+<li id="li-2587">How long does it take for the population to double?  This time
+  is called the <!--Style me with CSS--><em>doubling time</em>.</li>
+<li id="li-2588">Working more generally, find the doubling time if the annual
+  growth rate is \(k\) times the population.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-229" id="hint-229"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-229" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2589">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-230" id="hint-230"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-230" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2590">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-113" id="solution-113"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-113" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2591">Solutions for each of the prompts above.</li></ol></span></span><div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_7.4.2" id="A_7.4.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">7.4.4</span>
+</h5></a></div>
+<div id="hk-A_7.4.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1868">
+Suppose that a cup of coffee is initially at a temperature of
+105\(^\circ\) F and is placed in a 75\(^\circ\) F room. Newton's law of
+cooling says that
+</p>
+<span class="displaymath" id="me-742">\[
+
+  \frac{dT}{dt} = -k(T-75),
+  
+\]</span><p id="p-1869">
+where \(k\) is a constant of proportionality.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2592">Suppose you measure that the coffee is cooling at one degree per
+  minute at the time the coffee is brought into the room.  Use the
+  differential equation to determine the value of the constant \(k\).</li>
+<li id="li-2593">Find all the solutions of this differential equation.</li>
+<li id="li-2594">What happens to all the solutions as \(t\to\infty\)?  Explain how
+  this agrees with your intuition.</li>
+<li id="li-2595">What is the temperature of the cup of coffee after 20 minutes?</li>
+<li id="li-2596">How long does it take for the coffee to cool to 80\(^\circ\)?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-231" id="hint-231"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-231" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2597">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-232" id="hint-232"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-232" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2598">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-114" id="solution-114"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-114" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2599">Solutions for each of the prompts above.</li></ol></span></span><div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_7.4.3" id="A_7.4.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">7.4.5</span>
+</h5></a></div>
+<div id="hk-A_7.4.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1870">
+Solve each of the following differential equations or initial value problems.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2600">\(\ds \frac{dy}{dt} - (2-t) y = 2-t\)</li>
+<li id="li-2601">\(\ds \frac{1}{t}\frac{dy}{dt} = e^{t^2-2y}\)</li>
+<li id="li-2602">\(y' = 2y+2\),   \(y(0)=2\)</li>
+<li id="li-2603">\(y' = 2y^2\),   \(y(-1) = 2\)</li>
+<li id="li-2604">\(\ds \frac{dy}{dt} = \frac{-2ty}{t^2 + 1}\),   \(y(0) = 4\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-233" id="hint-233"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-233" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2605">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-234" id="hint-234"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-234" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2606">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-115" id="solution-115"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-115" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2607">Solutions for each of the prompts above.</li></ol></span></span><p id="p-1871">
+\item A separable differential equation is one that may be rewritten
+with all occurrences of the dependent variable multiplying the
+derivative and all occurrences of the independent variable on the
+other side of the equation.
+\item We may find the solutions to certain separable differential equations
+by separating variables, integrating with respect to \(t\), and ultimately solving the resulting algebraic equation for \(y\).
+</p>
+<p id="p-1872">
+\item This technique allows us to solve many important differential
+equations that arise in the world around us. For instance, questions of
+growth and decay and Newton's Law of Cooling give rise to separable
+differential equations. Later, we will learn in <a href="S_7.6.Logistic.html" alt="Section 7.6 Population Growth and the Logistic Equation" title="Section 7.6 Population Growth and the Logistic Equation">Section 7.6</a> that the important logistic differential equation is also separable.
+</p>
+<p id="p-1873">
+\hrulefill
+</p>
+<p id="p-1874">
+\begin{exercises}
+\item The mass of a radioactive sample decays at a rate that is
+proportional to its mass.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2608">Express this fact as a differential equation for the mass
+    \(M(t)\) using \(k\) for the constant of proportionality.</li>
+<li id="li-2609">If the initial mass is \(M_0\), find an expression for the
+      mass \(M(t)\).</li>
+<li id="li-2610">The <!--Style me with CSS--><em>half-life</em> of the sample is the amount of time
+      required for half of the mass to decay.  Knowing that the
+      half-life of Carbon-14 is 5730 years, find the value of \(k\) for
+      a sample of Carbon-14.</li>
+<li id="li-2611">How long does it take for a sample of Carbon-14 to be
+      reduced to one-quarter its original mass?</li>
+<li id="li-2612">Carbon-14 naturally occurs in our environment; any
+      living organism takes in Carbon-14 when it eats and breathes.  Upon
+      dying, however, the organism no longer takes in Carbon-14. 
+      
+      Suppose that you find remnants of a pre-historic firepit.  By
+      analyzing the charred wood in the pit, you determine that the
+      amount of Carbon-14 is only 30% of the amount in living trees.
+      Estimate the age of the firepit.<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-49" id="fn-49"><sup> 2 </sup></a></span><span id="hk-fn-49" style="display: none;" class="tex2jax_ignore"><span class="footnote">This approach is the basic idea behind radiocarbon dating.</span></span>
+</li>
+</ol>
+<p id="p-1875">
+\item Consider the initial value problem
+</p>
+<span class="displaymath" id="me-743">\[
+  \frac{dy}{dt} = -\frac ty, \ y(0) = 8
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-2613">Find the solution of the initial value problem and sketch its
+      graph.</li>
+<li id="li-2614">For what values of \(t\) is the solution defined?</li>
+<li id="li-2615">What is the value of \(y\) at the last time that the
+      solution is defined?</li>
+<li id="li-2616">By looking at the differential equation, explain why we
+      should not expect to find solutions with the value of \(y\) you noted in (c).</li>
+</ol>
+<p id="p-1876">
+\item Suppose that a cylindrical water tank with a hole in the
+bottom is filled with water. The water, of course, will leak out
+and the height of the water will decrease. Let \(h(t)\) denote the
+height of the water. A physical principle called <!--Style me with CSS--><em>Torricelli's
+Law</em> implies that the height decreases at a rate proportional to
+the square root of the height.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2617">Express this fact using \(k\) as the constant of
+      proportionality.</li>
+<li id="li-2618">Suppose you have two tanks, one with \(k=1\) and another with
+      \(k=10\).  What physical differences would you expect to find?</li>
+<li id="li-2619">Suppose you have a tank for which the height decreases at 20
+      inches per minute when the water is filled to a depth of 100
+      inches.  Find the value of \(k\).</li>
+<li id="li-2620">Solve the initial value problem for the tank in part (c), and graph the solution you determine.</li>
+<li id="li-2621">How long does it take for the water to run out of the tank?</li>
+<li id="li-2622">Is the solution that you found valid for all time \(t\)?  If
+      so, explain how you know this.  If not, explain why not.</li>
+</ol>
+<p id="p-1877">
+\item The <!--Style me with CSS--><em>Gompertz equation</em> is a model that is used to
+describe the growth of certain populations. Suppose that \(P(t)\)
+is the population of some organism and that
+</p>
+<span class="displaymath" id="me-744">\[
+
+    \frac{dP}{dt} = -P\ln\left(\frac P3\right) = -P(\ln P - \ln 3).
+    
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-2623">Sketch a slope field for \(P(t)\) over the range \(0\leq P\leq
+      6\).</li>
+<li id="li-2624">Identify any equilibrium solutions and determine whether
+      they are stable or unstable.</li>
+<li id="li-2625">Find the population \(P(t)\) assuming that \(P(0) = 1\) and sketch
+      its graph.  What happens to \(P(t)\) after a very long time?</li>
+<li id="li-2626">Find the population \(P(t)\) assuming that \(P(0) = 6\) and sketch
+      its graph.  What happens to \(P(t)\) after a very long time?</li>
+<li id="li-2627">Verify that the long-term behavior of your solutions agrees
+      with what you predicted by looking at the slope field.</li>
+</ol>
+<p id="p-1878">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1879">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

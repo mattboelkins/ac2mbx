@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:37-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The notion of limit</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_1.1.Velocity.html">Previous</a><a class="up-button button toolbar-item" href="C_1.html">Up</a><a class="next-button button toolbar-item" href="S_1.3.DerivativePt.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_1.1.Velocity.html">Previous</a><a class="up-button button toolbar-item" href="C_1.html">Up</a><a class="next-button button toolbar-item" href="S_1.3.DerivativePt.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link active"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html" class="active">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_1.2.Limits"><header><h1 class="heading" alt="Section 1.2 The notion of limit" title="Section 1.2 The notion of limit">
+<span class="type">Section</span><span class="codenumber">1.2</span><span class="title">The notion of limit</span><a href="S_1.2.Limits.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-2"><h5 class="heading"></h5>
+<p id="p-36">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-54">What is the mathematical notion of <!--Style me with CSS--><em>limit</em> and what role do limits play in the study of functions?</li>
+<li id="li-55">What is the meaning of the notation \(\ds \lim_{x \to a} f(x) = L\)?</li>
+<li id="li-56">How do we go about determining the value of the limit of a function at a point?</li>
+<li id="li-57">How does the notion of limit allow us to move from average velocity to instantaneous velocity?</li>
+</ul>
+<p id="p-37">
+} 
+</p></article><section class="subsection" id="subsection-4"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.2.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-38">
+Functions are at the heart of mathematics: a function is a process or rule that associates each individual input to exactly one corresponding output. Students learn in courses prior to calculus that there are many different ways to represent functions, including through formulas, graphs, tables, and even words. For example, the squaring function can be thought of in any of these ways. In words, the squaring function takes any real number \(x\) and computes its square. The formulaic and graphical representations go hand in hand, as \(y = f(x) = x^2\) is one of the simplest curves to graph. Finally, we can also partially represent this function through a table of values, essentially by listing some of the ordered pairs that lie on the curve, such as \((-2,4)\), \((-1,1)\), \((0,0)\), \((1,1)\), and \((2,4)\).
+</p>
+<p id="p-39">
+Functions are especially important in calculus because they often model important phenomena – the location of a moving object at a given time, the rate at which an automobile is consuming gasoline at a certain velocity, the reaction of a patient to the size of a dose of a drug – and calculus can be used to study how these output quantities change in response to changes in the input variable. Moreover, thinking about concepts like average and instantaneous velocity leads us naturally from an initial function to a related, sometimes more complicated function. As one example of this, think about the falling ball whose position function is given by \(s(t) = 64 - 16t^2\) and the average velocity of the ball on the interval \([1,x]\). Observe that
+</p>
+<span class="displaymath" id="me-9">\[
+AV_{[1,x]} = \frac{s(x) - s(1)}{x-1} = \frac{(64-16x^2) - (64-16)}{x-1} = \frac{16 - 16x^2}{x-1}.
+\]</span><p id="p-40">
+Now, two things are essential to note: this average velocity depends on \(x\) (indeed, \(AV_{[1,x]}\) is a function of \(x\)), and our most focused interest in this function occurs near \(x = 1\), which is where the function is not defined. Said differently, the function \(g(x) = \frac{16 - 16x^2}{x-1}\) tells us the average velocity of the ball on the interval from \(t = 1\) to \(t = x\), and if we are interested in the instantaneous velocity of the ball when \(t = 1\), we'd like to know what happens to \(g(x)\) as \(x\) gets closer and closer to \(1\). At the same time, \(g(1)\) is not defined, because it leads to the quotient \(0/0\).
+</p>
+<p id="p-41">
+This is where the idea of <!--Style me with CSS--><em>limits</em> comes in. By using a limit, we'll be able to allow \(x\) to get arbitrarily close, but not equal, to \(1\) and fully understand the behavior of \(g(x)\) near this value. We'll develop key language, notation, and conceptual understanding in what follows, but for now we consider a preliminary activity that uses the graphical interpretation of a function to explore points on a graph where interesting behavior occurs.
+</p>
+<article class="paragraphs" id="PA_1.2"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-42">
+Suppose that \(g\) is the function given by the graph below. Use the graph to answer each of the following questions.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-58">Determine the values \(g(-2)\), \(g(-1)\), \(g(0)\), \(g(1)\), and \(g(2)\), if defined.  If the function value is not defined, explain what feature of the graph tells you this.</li>
+<li id="li-59">For each of the values \(a = -1\), \(a = 0\), and \(a = 2\), complete the following sentence: “As \(x\) gets closer and closer (but not equal) to \(a\), \(g(x)\) gets as close as we want to .”</li>
+<li id="li-60">What happens as \(x\) gets closer and closer (but not equal) to \(a = 1\)?  Does the function \(g(x)\) get as close as we would like to a single value?</li>
+</ol>
+<figure class="figure-like" id="F_1.2.PA1"><img width="100%" src="images/1_2_PA1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.2.1</span>Graph of \(y = g(x)\) for Preview <a href="S_1.2.Limits.html#PA_1.2" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>.</figcaption></figure></article></section><section class="subsection" id="subsection-5"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.2.2</span><span class="title">The Notion of Limit</span>
+</h1></header><p id="p-43">
+Limits can be thought of as a way to study the tendency or trend of a function as the input variable approaches a fixed value, or even as the input variable increases or decreases without bound. We put off the study of the latter idea until further along in the course when we will have some helpful calculus tools for understanding the end behavior of functions. Here, we focus on what it means to say that “a function \(f\) has limit \(L\) as \(x\) approaches \(a\).” To begin, we think about a recent example.
+</p>
+<p id="p-44">
+In Preview <a href="S_1.2.Limits.html#PA_1.2" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, you saw that for the given function \(g\), as \(x\) gets closer and closer (but not equal) to 0, \(g(x)\) gets as close as we want to the value 4. At first, this may feel counterintuitive, because the value of \(g(0)\) is \(1\), not \(4\). By their very definition, limits regard the behavior of a function <!--Style me with CSS--><em>arbitrarily close to</em> a fixed input, but the value of the function <!--Style me with CSS--><em>at</em> the fixed input does not matter. More formally<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-1" id="fn-1"><sup> 1 </sup></a></span><span id="hk-fn-1" style="display: none;" class="tex2jax_ignore"><span class="footnote">What follows here is not what mathematicians consider the formal definition of a limit.  To be completely precise, it is necessary to quantify both what it means to say “as close to \(L\) as we like” and “sufficiently close to \(a\).”  That can be accomplished through what is traditionally called the epsilon-delta definition of limits.  The definition presented here is sufficient for the purposes of this text.</span></span>, we say the following.
+</p>
+<article class="definition-like" id="definition-1"><h5 class="heading">
+<span class="type">Definition</span><span class="codenumber">1.2.2</span>
+</h5>
+<p id="p-45">
+Given a function \(f\), a fixed input \(x = a\), and a real number \(L\), we say that \(f\) has limit\knownindex{\lt main&gt;limit\lt /main&gt;\lt sub&gt;definition\lt /sub&gt;} \(L\) as \(x\) approaches \(a\), and write
+</p>
+<span class="displaymath" id="me-10">\[
+\lim_{x \to a} f(x) = L
+\]</span><p id="p-46">
+provided that we can make \(f(x)\) as close to \(L\) as we like by taking \(x\) sufficiently close (but not equal) to \(a\). If we cannot make \(f(x)\) as close to a single value as we would like as \(x\) approaches \(a\), then we say that \(f\) does not have a limit as \(x\) approaches \(a\).
+</p></article><p id="p-47">
+For the function \(g\) pictured in <a knowl="./knowl/F_1.2.PA1.html" knowl-id="xref-F_1.2.PA1" alt="Figure 1.2.1 " title="Figure 1.2.1 ">Figure 1.2.1</a>, we can make the following observations:
+</p>
+<span class="displaymath" id="me-11">\[
+\ds \lim_{x \to -1} g(x) = 3, \ \ds \lim_{x \to 0} g(x) = 4, \ \mbox{and}  \ \ds \lim_{x \to 2} g(x) = 1,
+\]</span><p id="p-48">
+but \(g\) does not have a limit as \(x \to 1\). When working graphically, it suffices to ask if the function approaches a single value from each side of the fixed input, while understanding that the function value right at the fixed input is irrelevant. This reasoning explains the values of the first three stated limits. In a situation such as the jump in the graph of \(g\) at \(x = 1\), the issue is that if we approach \(x = 1\) from the left, the function values tend to get as close to 3 as we'd like, but if we approach \(x = 1\) from the right, the function values get as close to 2 as we'd like, and there is no single number that all of these function values approach. This is why the limit of \(g\) does not exist at \(x = 1\).
+</p>
+<p id="p-49">
+For any function \(f\), there are typically three ways to answer the question “does \(f\) have a limit at \(x = a\), and if so, what is the limit?” The first is to reason graphically as we have just done with the example from Preview <a href="S_1.2.Limits.html#PA_1.2" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>. If we have a formula for \(f(x)\), there are two additional possibilities: (1) evaluate the function at a sequence of inputs that approach \(a\) on either side, typically using some sort of computing technology, and ask if the sequence of outputs seems to approach a single value; (2) use the algebraic form of the function to understand the trend in its output as the input values approach \(a\). The first approach only produces an approximation of the value of the limit, while the latter can often be used to determine the limit exactly. The following example demonstrates both of these approaches, while also using the graphs of the respective functions to help confirm our conclusions.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_1.2.Limits" id="Ex_1.2.Limits"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">1.2.3</span>
+</h5></article></a></div>
+<div id="hk-Ex_1.2.Limits" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-50">
+For each of the following functions, we'd like to know whether or not the function has a limit at the stated \(a\)-values. Use both numerical and algebraic approaches to investigate and, if possible, estimate or determine the value of the limit. Compare the results with a careful graph of the function on an interval containing the points of interest.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-61">\(\ds f(x) = \frac{4-x^2}{x+2}\); \(a = -1\), \(a = -2\)</li>
+<li id="li-62">\(\ds g(x) = \sin\left(\frac{\pi}{x}\right)\); \(a = 3\), \(a = 0\)</li>
+</ol></article></div>
+<p id="p-51">
+Solution.    
+We first construct a graph of \(f\) along with tables of values near \(a = -1\) and \(a = -2\).
+</p>
+<figure class="figure-like" id="F_1.2.Ex1f"><figure class="figure-like" id="table-1">
+	\raisebox{.5in}{<figure class="figure-like" id="table-2"> \(x\) \amp  \(f(x)\)  -0.9 \amp  2.9  -0.99 \amp  2.99  -0.999 \amp  2.999  -0.9999 \amp  2.9999  -1.1 \amp  3.1  -1.01 \amp  3.01  -1.001 \amp  3.001  -1.0001 \amp  3.0001 </figure>  } \amp 	
+	\raisebox{.5in}{<figure class="figure-like" id="table-3"> \(x\) \amp  \(f(x)\)  -1.9 \amp  3.9  -1.99 \amp  3.99  -1.999 \amp  3.999  -1.9999 \amp  3.9999  -2.1 \amp  4.1  -2.01 \amp  4.01  -2.001 \amp  4.001  -2.0001 \amp  4.0001 </figure>  } \amp 
+	\hspace{0.25in} <img width="100%" src="images/1_2_Ex1f.png"> </figure><figcaption><span class="heading">Figure</span><span class="codenumber">1.2.4</span>Tables and graph for \(\ds f(x) = \frac{4-x^2}{x+2}\). </figcaption></figure><p id="p-52">
+From the left table, it appears that we can make \(f\) as close as we want to 3 by taking \(x\) sufficiently close to \(-1\), which suggests that \(\ds \lim_{x \to -1} f(x) = 3\).	This is also consistent with the graph of \(f\). To see this a bit more rigorously and from an algebraic point of view, consider the formula for \(f\): \(f(x) = \frac{4-x^2}{x+2}\). The numerator and denominator are each polynomial functions, which are among the most well-behaved functions that exist. Formally, such functions are <!--Style me with CSS--><em>continuous</em><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-2" id="fn-2"><sup> 2 </sup></a></span><span id="hk-fn-2" style="display: none;" class="tex2jax_ignore"><span class="footnote">See <a href="S_1.7.LimContDiff.html" alt="Section 1.7 Limits, Continuity, and Differentiability" title="Section 1.7 Limits, Continuity, and Differentiability">Section 1.7</a> for more on the notion of continuity.</span></span>, which means that the limit of the function at any point is equal to its function value. Here, it follows that as \(x \to -1\), \((4-x^2) \to (4 - (-1)^2) = 3\), and \((x+2) \to (-1 + 2) = 1\), so as \(x \to -1\), the numerator of \(f\) tends to 3 and the denominator tends to 1, hence \(\ds \lim_{x \to -1} f(x) = \frac{3}{1} = 3\).
+</p>
+<p id="p-53">
+The situation is more complicated when \(x \to -2\), due in part to the fact that \(f(-2)\) is not defined. If we attempt to use a similar algebraic argument regarding the numerator and denominator, we observe that as \(x \to -2\), \((4-x^2) \to (4 - (-2)^2) = 0\), and \((x+2) \to (-2 + 2) = 0\), so as \(x \to -2\), the numerator of \(f\) tends to 0 and the denominator tends to 0. We call \(0/0\) an <!--Style me with CSS--><em>indeterminate form</em>\knownindex{\lt main&gt;indeterminate\lt /main&gt;} and will revisit several important issues surrounding such quantities later in the course. For now, we simply observe that this tells us there is somehow more work to do. From the table and the graph, it appears that \(f\) should have a limit of \(4\) at \(x = -2\). To see algebraically why this is the case, let's work directly with the form of \(f(x)\). Observe that
+</p>
+<span class="displaymath" id="md-3">\begin{align*}
+\lim_{x \to -2} f(x) \amp  = \amp  \lim_{x \to -2} \frac{4-x^2}{x+2}\\
+\amp  = \amp  \lim_{x \to -2} \frac{(2-x)(2+x)}{x+2}.
+\end{align*}</span><p id="p-54">
+At this point, it is important to observe that since we are taking the limit as \(x \to -2\), we are considering \(x\) values that are close, but not equal, to \(-2\). Since we never actually allow \(x\) to equal \(-2\), the quotient \(\frac{2+x}{x+2}\) has value 1 for every possible value of \(x\). Thus, we can simplify the most recent expression above, and now find that
+</p>
+<span class="displaymath" id="me-12">\[
+\lim_{x \to -2} f(x) = \lim_{x \to -2} 2-x.
+\]</span><p id="p-55">
+Because \(2-x\) is simply a linear function, this limit is now easy to determine, and its value clearly is \(4\). Thus, from several points of view we've seen that \(\ds\lim_{x \to -2} f(x) = 4.\)
+</p>
+<p id="p-56">
+Next we turn to the function \(g\), and construct two tables and a graph.
+</p>
+<figure class="figure-like" id="F_1.2.Ex1g"><figure class="figure-like" id="table-4">
+	\raisebox{-.05in}{<figure class="figure-like" id="table-5"> \(x\) \amp  \(g(x)\)  2.9 \amp  0.84864  2.99 \amp  0.86428  2.999 \amp  0.86585  2.9999 \amp  0.86601  3.1 \amp  0.88351  3.01 \amp   0.86777  3.001 \amp  0.86620  3.0001 \amp   0.86604 </figure>  } \amp 	
+	\raisebox{-.05in}{<figure class="figure-like" id="table-6"> \(x\) \amp  \(g(x)\)  -0.1 \amp  0  -0.01 \amp  0  -0.001 \amp  0  -0.0001 \amp  0  0.1 \amp  0  0.01 \amp  0  0.001 \amp  0  0.0001 \amp  0 </figure>  } \amp 
+	\hspace{0.25in} <img width="100%" src="images/1_2_Ex1g.png"> </figure><figcaption><span class="heading">Figure</span><span class="codenumber">1.2.5</span>Tables and graph for \(\ds g(x) = \sin\left(\frac{\pi}{x}\right)\).</figcaption></figure><p id="p-57">
+First, as \(x \to 3\), it appears from the data (and the graph) that the function is approaching approximately \(0.866025\). To be precise, we have to use the fact that \(\frac{\pi}{x} \to \frac{\pi}{3}\), and thus we find that \(g(x) = \sin(\frac{\pi}{x}) \to \sin(\frac{\pi}{3})\) as \(x \to 3\). The exact value of \(\sin(\frac{\pi}{3})\) is \(\frac{\sqrt{3}}{2}\), which is approximately 0.8660254038. Thus, we see that
+</p>
+<span class="displaymath" id="me-13">\[
+\lim_{x \to 3} g(x) = \frac{\sqrt{3}}{2}.
+\]</span><p id="p-58">
+As \(x \to 0\), we observe that \(\frac{\pi}{x}\) does not behave in an elementary way. When \(x\) is positive and approaching zero, we are dividing by smaller and smaller positive values, and \(\frac{\pi}{x}\) increases without bound. When \(x\) is negative and approaching zero, \(\frac{\pi}{x}\) decreases without bound. In this sense, as we get close to \(x = 0\), the inputs to the sine function are growing rapidly, and this leads to wild oscillations in the graph of \(g\). It is an instructive exercise to plot the function \(g(x) = \sin\left(\frac{\pi}{x}\right)\) with a graphing utility and then zoom in on \(x = 0\). Doing so shows that the function never settles down to a single value near the origin and suggests that \(g\) does not have a limit at \(x = 0\).
+</p>
+<p id="p-59">
+How do we reconcile this with the righthand table above, which seems to suggest that the limit of \(g\) as \(x\) approaches \(0\) may in fact be \(0\)? Here we need to recognize that the data misleads us because of the special nature of the sequence \(\{0.1, 0.01, 0.001, \ldots\}\): when we evaluate \(g(10^{-k})\), we get \(g(10^{-k}) = \sin\left(\frac{\pi}{10^{-k}}\right) = \sin(10^k \pi) = 0\) for each positive integer value of \(k\). But if we take a different sequence of values approaching zero, say \(\{0.3, 0.03, 0.003, \ldots\}\), then we find that
+</p>
+<span class="displaymath" id="me-14">\[
+g(3 \cdot 10^{-k}) = \sin\left(\frac{\pi}{3 \cdot 10^{-k}}\right) = \sin\left(\frac{10^k \pi}{3}\right) = \frac{\sqrt{3}}{2} \approx 0.866025.
+\]</span><p id="p-60">
+That sequence of data would suggest that the value of the limit is \(\frac{\sqrt{3}}{2}\). Clearly the function cannot have two different values for the limit, and this shows that \(g\) has no limit as \(x \to 0\).
+</p>\hspace{5.0in}<p id="p-61">
+An important lesson to take from <a knowl="./knowl/Ex_1.2.Limits.html" knowl-id="xref-Ex_1.2.Limits" alt="Example 1.2.3 " title="Example 1.2.3 ">Example 1.2.3</a> is that tables can be misleading when determining the value of a limit. While a table of values is useful for investigating the possible value of a limit, we should also use other tools to confirm the value, if we think the table suggests the limit exists.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.2.1" id="A_1.2.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.2.6</span>
+</h5></a></div>
+<div id="hk-A_1.2.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-62">
+Estimate the value of each of the following limits by constructing appropriate tables of values. Then determine the exact value of the limit by using algebra to simplify the function. Finally, plot each function on an appropriate interval to check your result visually.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-63">\(\ds \lim_{x \to 1} \frac{x^2 - 1}{x-1}\)</li>
+<li id="li-64">\(\ds \lim_{x \to 0} \frac{(2+x)^3 - 8}{x}\)</li>
+<li id="li-65">\(\ds \lim_{x \to 0} \frac{\sqrt{x+1} - 1}{x}\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-7" id="hint-7"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-7" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-66">\((x^2 - 1)\) can be factored.</li>
+<li id="li-67">Expand the expression \((2+x)^3\), and then combine like terms in the numerator.</li>
+<li id="li-68">Try multiplying the given function by this fancy form of 1: \(\frac{\sqrt{x+1} + 1}{\sqrt{x+1} + 1}\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-8" id="hint-8"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-8" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-69">\((x^2 - 1) = (x+1)(x-1)\).</li>
+<li id="li-70">Expand the expression \((2+x)^3\) using the rule \((a+b)^3 = a^3 + 3a^2b + 3ab^2 + b^3\), and then combine like terms in the numerator.</li>
+<li id="li-71">Try multiplying the given function by this fancy form of 1: \(\frac{\sqrt{x+1} + 1}{\sqrt{x+1} + 1}\).  Expand and simplify the numerator, and then see what happens as \(x \to 0\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-4" id="solution-4"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-4" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-63">
+Estimating the values of the limits with tables is straightforward and should suggest the exact values stated below.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-72">\(\ds \lim_{x \to 1} \frac{x^2 - 1}{x-1} = \lim_{x \to 1} \frac{(x+1)(x-1)}{x-1} = \lim_{x \to 1} (x+1) = 2\).</li>
+<li id="li-73">\(\ds \lim_{x \to 0} \frac{(2+x)^3 - 8}{x} = \lim_{x \to 0} \frac{8 + 12x + 6x^2 + x^3 - 8}{x} = \lim_{x \to 0} \frac{12x + 6x^2 + x^3}{x} =  \lim_{x \to 0} (12 + 6x + x^2) = 12\).</li>
+<li id="li-74">\(\ds \lim_{x \to 0} \frac{\sqrt{x+1} - 1}{x} = \lim_{x \to 0} \frac{\sqrt{x+1} - 1}{x} \cdot \frac{\sqrt{x+1} + 1}{\sqrt{x+1} + 1} = \lim_{x \to 0} \frac{x+1-1}{x(\sqrt{x+1}+1)} = \lim_{x \to 0} \frac{1}{\sqrt{x+1}+1} = \frac{1}{2}.\)</li>
+</ol></span></span><p id="p-64">
+This concludes a rather lengthy introduction to the notion of limits. It is important to remember that our primary motivation for considering limits of functions comes from our interest in studying the rate of change of a function. To that end, we close this section by revisiting our previous work with average and instantaneous velocity and highlighting the role that limits play.
+</p></section><section class="subsection" id="subsection-6"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.2.3</span><span class="title">Instantaneous Velocity</span>
+</h1></header><p id="p-65">
+Suppose that we have a moving object whose position at time \(t\) is given by a function \(s\). We know that the average velocity of the object on the time interval \([a,b]\) is \(AV_{[a,b]} = \frac{s(b)-s(a)}{b-a}.\) We define the <!--Style me with CSS--><em>instantaneous velocity</em> \knownindex{\lt main&gt;instantaneous velocity\lt /main&gt;} at \(a\) to be the limit of average velocity as \(b\) approaches \(a\). Note particularly that as \(b \to a\), the length of the time interval gets shorter and shorter (while always including \(a\)). In <a href="S_1.3.DerivativePt.html" alt="Section 1.3 The derivative of a function at a point" title="Section 1.3 The derivative of a function at a point">Section 1.3</a>, we will introduce a helpful shorthand notation to represent the instantaneous rate of change. For now, we will write \(IV_{t=a}\) for the instantaneous velocity at \(t = a\), and thus
+</p>
+<span class="displaymath" id="me-15">\[
+IV_{t=a} = \lim_{b \to a} AV_{[a,b]} = \lim_{b \to a} \frac{s(b)-s(a)}{b-a}.
+\]</span><p id="p-66">
+Equivalently, if we think of the changing value \(b\) as being of the form \(b = a + h\), where \(h\) is some small number, then we may instead write
+</p>
+<span class="displaymath" id="me-16">\[
+IV_{t=a} = \lim_{h \to 0} AV_{[a,a+h]} = \lim_{h \to 0} \frac{s(a+h)-s(a)}{h}.
+\]</span><p id="p-67">
+Again, the most important idea here is that to compute instantaneous velocity\knownindex{\lt main&gt;instantaneous velocity\lt /main&gt;}, we take a limit of average velocities as the time interval shrinks. Two different activities offer the opportunity to investigate these ideas and the role of limits further. <br>
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.2.2" id="A_1.2.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.2.7</span>
+</h5></a></div>
+<div id="hk-A_1.2.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-68">
+Consider a moving object whose position function is given by \(s(t) = t^2\), where \(s\) is measured in meters and \(t\) is measured in minutes.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-75">Determine the most simplified expression for the average velocity of the object on the interval \([3, 3+h]\), where \(h &gt; 0\).</li>
+<li id="li-76">Determine the average velocity of the object on the interval \([3,3.2]\).  Include units on your answer.</li>
+<li id="li-77">Determine the instantaneous velocity of the object when \(t = 3\).  Include units on your answer.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-9" id="hint-9"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-9" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-78">\(s(3+h) = (3+h)^2\).</li>
+<li id="li-79">Recall that \(AV_{[a,b]} = \frac{s(b)-s(a)}{b-a}\).</li>
+<li id="li-80">Consider \(\lim_{h \to 0} \frac{s(3+h)-s(3)}{h}\) and use your work in (a).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-10" id="hint-10"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-10" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-81">\(s(3+h) = (3+h)^2 = 9 + 6h + h^2\); show that \(s(3+h) - s(3) = 6h + h^2\).</li>
+<li id="li-82">Compute \(AV_{[3,3.2]} = \frac{s(3.2)-s(3)}{3.2-3}\).</li>
+<li id="li-83">Consider \(\lim_{h \to 0} \frac{s(3+h)-s(3)}{h} = \lim_{h \to 0} \frac{6h + h^2}{h}\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-5" id="solution-5"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-5" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-84">Observe that \(AV_{[3, 3+h]} =  \frac{s(3+h)-s(3)}{h} = \frac{(3+h)^2 - 3^2}{h} = \frac{9 + 6h + h^2 - 9}{h} = \frac{6h + h^2}{h} = \frac{h(6 + h)}{h} = 6 + h.\)</li>
+<li id="li-85">Using the expression just found in (a) with \(h = 0.2\), \(AV_{[3,3.2]} = 6 + 0.2 = 6.2\) meters/min.</li>
+<li id="li-86">Taking the limit of average velocity and using our work from (a), we find that
+	
+<span class="displaymath" id="me-17">\[
+IV_{t = 3} = \lim_{h \to 0} AV_{[3, 3+h]} = \lim_{h \to 0} 6+h = 6,
+\]</span>
+ 
+	so the instantaneous velocity of the object when \(t = 3\) is 6 meters per minute.</li>
+</ol></span></span><p id="p-69">
+The closing activity of this section asks you to make some connections among average velocity, instantaneous velocity, and slopes of certain lines.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.2.3" id="A_1.2.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.2.8</span>
+</h5></a></div>
+<div id="hk-A_1.2.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-70">
+For the moving object whose position \(s\) at time \(t\) is given by the graph below, answer each of the following questions. Assume that \(s\) is measured in feet and \(t\) is measured in seconds.
+</p>
+<figure class="figure-like" id="figure-8"><img width="100%" src="images/1_2_Act3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.2.9</span>Plot of the position function \(y = s(t)\) in <a knowl="./knowl/A_1.2.3.html" knowl-id="xref-A_1.2.3" alt="Exercise 1.2.8 " title="Exercise 1.2.8 ">Activity 1.2.8</a>.</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-87">Use the graph to estimate the average velocity of the object on each of the following intervals: \([0.5,1]\), \([1.5,2.5]\), \([0,5]\).  Draw each line whose slope represents the average velocity you seek.</li>
+<li id="li-88">How could you use average velocities or slopes of lines to estimate the instantaneous velocity of the object at a fixed time?</li>
+<li id="li-89">Use the graph to estimate the instantaneous velocity of the object when \(t = 2\).  Should this instantaneous velocity at \(t = 2\) be greater or less than the average velocity on \([1.5,2.5]\) that you computed in (a)?  Why?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-11" id="hint-11"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-11" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-90">Remember that average velocity on an interval computes the quotient of “change in \(s\) over change in \(t\).”  This is the slope of the line between the corresponding two points on the graph of \(s\).</li>
+<li id="li-91">Think about shorter and shorter time intervals and drawing the lines whose slopes represent average velocity.</li>
+<li id="li-92">Think about zooming in on the graph at \(t = 2\) and drawing a line that, up close, looks just like the curve \(s(t)\).  What is the approximate slope of that line?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-12" id="hint-12"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-12" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-93">Remember that average velocity on an interval computes the quotient of “change in \(s\) over change in \(t\).”  This is the slope of the line between the corresponding two points on the graph of \(s\).  For example, the average velocity on \([0.5,1]\) is \(\frac{1-1}{1-0.5} = 0\).</li>
+<li id="li-94">Think about shorter and shorter time intervals and drawing the lines whose slopes represent average velocity.  If those lines' slopes are approaching a single number, that number represents the instantaneous velocity.</li>
+<li id="li-95">Think about zooming in on the graph at \(t = 2\) and drawing a line that, up close, looks just like the curve \(s(t)\).  What is the approximate slope of that line?  By drawing this line that looks like \(s(t)\) near the point \((2,s(2))\) and comparing the line through the points \((1.5,s(1.5))\) and \((2.5, s(2.5))\), you should be able to compare the lines and see which has greater slope.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-6" id="solution-6"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-6" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-96">The average velocity on \([0.5,1]\) is the slope of the line joining the points \((0.5,s(0.5))\) and \((1,s(1))\), which is \(AV_{[0.5,1]} = \frac{1-1}{1-0.5} = 0\).  On \([1.5,2.5]\), we similarly find \(AV_{[1.5,2.5]} = \frac{3-1}{2.5-1.5} = 2\), and on \([0,5]\), we have \(AV_{[0,5]} = \frac{5-0}{5-0} = 1\).</li>
+<li id="li-97">Take shorter and shorter time intervals and draw the lines whose slopes represent average velocity.  If those lines' slopes are approaching a single number, that number represents the instantaneous velocity.  For example, to estimate the instantaneous velocity at \(t = 2\), we might consider average velocities on \([2,3]\), \([2,2.5]\), and \([2,2.25]\).</li>
+<li id="li-98">If we draw the line through \((2,2)\) and \((2.1,s(2.1))\), it looks like the line's slope is approximately 2.5: if we go over one grid-width, we appear to go up about 2.5.  The slope of this line is clearly greater than the slope of the line through \((1.5, s(1.5))\) and \((2.5, s(2.5))\), which is 2. Hence the instantaneous velocity at \(t = 2\) is greater than the average velocity on \([1.5,2.5]\).</li>
+</ol></span></span><p id="p-71">
+\begin{authornote}
+This is an author note.
+\end{authornote}
+</p>
+<p id="p-72">
+\item Limits enable us to examine trends in function behavior near a specific point. In particular, taking a limit at a given point asks if the function values nearby tend to approach a particular fixed value.
+\item When we write \(\ds \lim_{x \to a} f(x) = L\), we read this as saying “the limit of \(f\) as \(x\) approaches \(a\) is \(L\),” and this means that we can make the value of \(f(x)\) as close to \(L\) as we want by taking \(x\) sufficiently close (but not equal) to \(a\).
+\item If we desire to know \(\ds \lim_{x \to a} f(x)\) for a given value of \(a\) and a known function \(f\), we can estimate this value from the graph of \(f\) or by generating a table of function values that result from a sequence of \(x\)-values that are closer and closer to \(a\). If we want the exact value of the limit, we need to work with the function algebraically and see if we can use familiar properties of known, basic functions to understand how different parts of the formula for \(f\) change as \(x \to a\).
+\item The instantaneous velocity of a moving object at a fixed time is found by taking the limit of average velocities of the object over shorter and shorter time intervals that all contain the time of interest.
+</p>
+<p id="p-73">
+\hrulefill
+</p>
+<p id="p-74">
+\begin{exercises}
+\item Consider the function whose formula is \(\ds f(x) = \frac{16-x^4}{x^2-4}\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-99">What is the domain of \(f\)?</li>
+<li id="li-100">Use a sequence of values of \(x\) near \(a = 2\) to estimate the value of \(\ds \lim_{x \to 2} f(x),\)
+	if you think the limit exists.  If you think the limit doesn't exist, explain why.</li>
+<li id="li-101">Use algebra to simplify the expression \(\frac{16-x^4}{x^2-4}\) and hence work to evaluate \(\lim_{x \to 2} f(x)\) exactly, if it exists, or to explain how your work shows the limit fails to exist.  Discuss how your findings compare to your results in (b).</li>
+<li id="li-102">True or false: \(f(2) = -8\).  Why?</li>
+<li id="li-103">True or false: \(\frac{16-x^4}{x^2-4} = -4-x^2.\)  Why?  How is this equality connected to your work above with the function \(f\)?</li>
+<li id="li-104">Based on all of your work above, construct an accurate, labeled graph of \(y = f(x)\) on the interval \([1,3]\), and write a sentence that explains what you now know about \(\ds \lim_{x \to 2} \frac{16-x^4}{x^2-4}\).</li>
+</ol>
+<p id="p-75">
+\item Let \(\ds g(x) = -\frac{|x+3|}{x+3}\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-105">What is the domain of \(g\)?</li>
+<li id="li-106">Use a sequence of values near \(a = -3\) to estimate the value of
+	\(\lim_{x \to -3} g(x),\)
+	if you think the limit exists.  If you think the limit doesn't exist, explain why.</li>
+<li id="li-107">Use algebra to simplify the expression \(\frac{|x+3|}{x+3}\) and hence work to evaluate \(\lim_{x \to -3} g(x)\) exactly, if it exists, or to explain how your work shows the limit fails to exist.  Discuss how your findings compare to your results in (b).  (Hint: \(|a| = a\) whenever \(a \ge 0\), but \(|a| = -a\) whenever \(a \lt  0\).)</li>
+<li id="li-108">True or false: \(g(-3) = -1\).  Why?</li>
+<li id="li-109">True or false: \(-\frac{|x+3|}{x+3} = -1.\)  Why?  How is this equality connected to your work above with the function \(g\)?</li>
+<li id="li-110">Based on all of your work above, construct an accurate, labeled graph of \(y = g(x)\) on the interval \([-4,-2]\), and write a sentence that explains what you now know about \(\ds \lim_{x \to -3} g(x)\).</li>
+</ol>
+<p id="p-76">
+\item For each of the following prompts, sketch a graph on the provided axes of a function that has the stated properties.
+</p>
+<figure class="figure-like" id="F_1.2.Ez3"><img width="100%" src="images/1_2_Ez3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.2.10</span>Axes for plotting \(y = f(x)\) in (a) and \(y = g(x)\) in (b).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-111">\(y = f(x)\) such that 
+	<ul style="list-style-type: disc;">
+<li id="li-112">\(f(-2) = 2\) and \(\ds \lim_{x \to -2} f(x) = 1\)</li>
+<li id="li-113">\(f(-1) = 3\) and \(\ds \lim_{x \to -1} f(x) = 3\)</li>
+<li id="li-114">\(f(1)\) is not defined and \(\ds \lim_{x \to 1} f(x) = 0\)</li>
+<li id="li-115">\(f(2) = 1\) and \(\ds \lim_{x \to 2} f(x)\) does not exist.</li>
+</ul>
+</li>
+<li id="li-116">\(y = g(x)\) such that
+	<ul style="list-style-type: disc;">
+<li id="li-117">\(g(-2) = 3\), \(g(-1) = -1\), \(g(1) = -2\), and \(g(2) = 3\)</li>
+<li id="li-118">At \(x = -2, -1, 1\) and \(2\), \(g\) has a limit, and its limit equals the value of the function at that point.</li>
+<li id="li-119">\(g(0)\) is not defined and \(\ds \lim_{x \to 0} g(x)\) does not exist.</li>
+</ul>
+</li>
+</ol>
+<p id="p-77">
+\item A bungee jumper dives from a tower at time \(t=0\). Her height \(s\) in feet at time \(t\) in seconds is given by \(s(t) = 100\cos(0.75t) \cdot e^{-0.2t}+100\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-120">Write an expression for the average velocity of the bungee jumper on the interval <br>\([1,1+h]\).</li>
+<li id="li-121">Use computing technology to estimate the value of the limit as \(h \to 0\) of the quantity you found in (a).</li>
+<li id="li-122">What is the meaning of the value of the limit in (b)?  What are its units?</li>
+</ol>
+<p id="p-78">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-79">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

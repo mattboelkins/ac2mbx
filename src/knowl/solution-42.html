@@ -1,0 +1,103 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:08-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">2.7.2.3</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-1121">Differentiating with respect to \(x\),
+		
+<span class="displaymath" id="me-245">\[
+\frac{d}{dx}[x^3 - y^3] = \frac{d}{dx}[6xy],
+\]</span>
+ 
+		so that by the chain and product rules we have
+		
+<span class="displaymath" id="me-246">\[
+3x^2 - 3y^2 \frac{dy}{dx} = 6x\frac{dy}{dx}+ 6y.
+\]</span>
+ 
+		Rearranging to get all terms with \(\frac{dy}{dx}\) on the same side, it follows that
+		
+<span class="displaymath" id="me-247">\[
+-3y^2 \frac{dy}{dx} - 6x\frac{dy}{dx} = 6y-3x^2,
+\]</span>
+ 
+		and thus
+		
+<span class="displaymath" id="me-248">\[
+\frac{dy}{dx}(-3y^2 - 6x) = 6y-3x^2.
+\]</span>
+ 
+		Finally, we have established that 
+		
+<span class="displaymath" id="me-249">\[
+\frac{dy}{dx} = \frac{6y-3x^2}{-3y^2 - 6x},
+\]</span>
+ 
+		so evaluating at
+		 \((-3,3)\), we have
+		 \(\left. \frac{dy}{dx} \right|_{(-3,3)} = \frac{6(3)-3(-3)^2}{-3(3)^2 - 6(3)} = -1.\)
+		 Thus, the tangent line has equation \(y - 3 = -1(x+3).\)</li>
+<li id="li-1122">After differentiating with respect to \(x\), we have
+		 
+<span class="displaymath" id="me-250">\[
+\cos(y) \frac{dy}{dx} + \frac{dy}{dx} = 3x^2 + 1.
+\]</span>
+ 
+		 Taking the usual steps to solve for \(\frac{dy}{dx}\), we find that
+		 
+<span class="displaymath" id="me-251">\[
+\frac{dy}{dx} = \frac{3x^2 + 1}{\cos(y) + 1}.
+\]</span>
+ 
+		 Evaluating the slope of the tangent line at
+		 \((0,0)\), we have
+		 \(\left. \frac{dy}{dx} \right|_{(0,0)} = \frac{1}{2},\)
+		 and thus the tangent line at \((0,0)\) has equation \(y = \frac{1}{2}x\).</li>
+<li id="li-1123">When we differentiate both sides with respect to \(x\), 
+		
+<span class="displaymath" id="me-252">\[
+\frac{d}{dx}[x e^{-xy}] = \frac{d}{dx}[y^2],
+\]</span>
+ 
+		we first observe that the product rule is needed on the left and the chain rule on the right.  Applying those rules, we have
+		
+<span class="displaymath" id="me-253">\[
+x\frac{d}{dx}[e^{-xy}] + e^{-xy} = 2y\frac{dy}{dx}.
+\]</span>
+ 
+		Next, we apply the chain rule to differentiate \(e^{-xy}\), which yields
+		
+<span class="displaymath" id="me-254">\[
+xe^{-xy}\frac{d}{dx}[-xy] + e^{-xy} = 2y\frac{dy}{dx}.
+\]</span>
+ 
+		Finally, to complete the process of differentiation, we use the product rule and get
+		
+<span class="displaymath" id="me-255">\[
+xe^{-xy}(-x\frac{dy}{dx} - y) + e^{-xy} = 2y\frac{dy}{dx}.
+\]</span>
+ 
+		To solve for \(\frac{dy}{dx}\), we first expand to have
+		
+<span class="displaymath" id="me-256">\[
+-x^2e^{-xy}\frac{dy}{dx} - xye^{-xy} + e^{-xy} = 2y\frac{dy}{dx},
+\]</span>
+ 
+		and then the usual algebraic work may be done to deduce that
+		
+<span class="displaymath" id="me-257">\[
+\frac{dy}{dx} = \frac{-xye^{-xy} + e^{-xy}}{x^2e^{-xy}+2}.
+\]</span>
+ 
+		Evaluating at the point
+		\((0.571433,1)\), it follows that the slope of the tangent line is
+		
+<span class="displaymath" id="me-258">\[
+\left. \frac{dy}{dx} \right|_{(0.571433,1)} = \frac{-0.571433 e^{-0.571433} + e^{-0.571433}}{(0.571433)^2e^{-0.571433}+2} \approx 0.110794.
+\]</span>
+ 
+		Thus, the tangent line is given by \(y - 1 = 0.110794(x - 0.571433)\).</li>
+</ol></span><span class="incontext"><a href="S_2.7.Implicit.html#solution-42">in-context</a></span>

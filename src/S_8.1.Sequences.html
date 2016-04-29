@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:54-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Sequences</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="C_8.html">Previous</a><a class="up-button button toolbar-item" href="C_8.html">Up</a><a class="next-button button toolbar-item" href="S_8.2.Geometric.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="C_8.html">Previous</a><a class="up-button button toolbar-item" href="C_8.html">Up</a><a class="next-button button toolbar-item" href="S_8.2.Geometric.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link active"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html" class="active">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_8.1.Sequences"><header><h1 class="heading" alt="Section 8.1 Sequences" title="Section 8.1 Sequences">
+<span class="type">Section</span><span class="codenumber">8.1</span><span class="title">Sequences</span><a href="S_8.1.Sequences.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-43"><h5 class="heading"></h5>
+<p id="p-1980">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2720">What is a sequence?</li>
+<li id="li-2721">What does it mean for a sequence to converge?</li>
+<li id="li-2722">What does it mean for a sequence to diverge?</li>
+</ul>
+<p id="p-1981">
+} 
+</p></article><section class="subsection" id="subsection-143"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">8.1.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-1982">
+We encounter sequences every day. Your monthly rent payments, the annual interest you earn on investments, a list of your car's miles per gallon every time you fill up; all are examples of sequences. Other sequences with which you may be familiar include the Fibonacci sequence\knownindex{\lt main&gt;Fibonacci sequence\lt /main&gt;}
+</p>
+<span class="displaymath" id="me-781">\[
+1, 1, 2, 3, 5, 8, \ldots
+\]</span><p id="p-1983">
+in which each entry is the sum of the two preceding entries and the triangular numbers\knownindex{\lt main&gt;triangular numbers\lt /main&gt;}
+</p>
+<span class="displaymath" id="me-782">\[
+1, 3, 6, 10, 15, 21, 28, 36, 45, 55, \ldots
+\]</span><p id="p-1984">
+which are numbers that correspond to the number of vertices seen in the triangles in <a knowl="./knowl/F_8.1.Triangular_numbers.html" knowl-id="xref-F_8.1.Triangular_numbers" alt="Figure 8.1.1 " title="Figure 8.1.1 ">Figure 8.1.1</a>.
+</p>
+<figure class="figure-like" id="F_8.1.Triangular_numbers"><img width="100%" src="images/8_1_Triangular_Numbers.png"><figcaption><span class="heading">Figure</span><span class="codenumber">8.1.1</span>Triangular numbers</figcaption></figure><p id="p-1985">
+Sequences of integers are of such interest to mathematicians and others that they have a journal<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-51" id="fn-51"><sup> 1 </sup></a></span><span id="hk-fn-51" style="display: none;" class="tex2jax_ignore"><span class="footnote"><!--Style me with CSS--><em>The Journal of Integer Sequences</em> at \url{http://www.cs.uwaterloo.ca/journals/JIS/}</span></span> devoted to them and an on-line encyclopedia<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-52" id="fn-52"><sup> 2 </sup></a></span><span id="hk-fn-52" style="display: none;" class="tex2jax_ignore"><span class="footnote">The On-Line Encyclopedia of Integer Sequences at \url{http://oeis.org/}</span></span> that catalogs a huge number of integer sequences and their connections. Sequences are also used in digital recordings and digital images.
+</p>
+<p id="p-1986">
+To this point, most of our studies in calculus have dealt with continuous information (e.g., continuous functions). The major difference we will see now is that sequences model <!--Style me with CSS--><em>discrete</em> instead of continuous information. We will study ways to represent and work with discrete information in this chapter as we investigate <!--Style me with CSS--><em>sequences</em> and <!--Style me with CSS--><em>series</em>, and ultimately see key connections between the discrete and continuous.
+</p>
+<article class="paragraphs" id="PA_8.1"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1987">
+Suppose you receive \(\dollar5000\) through an inheritance. You decide to invest this money into a fund that pays \(8\%\) annually, compounded monthly. That means that each month your investment earns \(\frac{0.08}{12} \cdot P\) additional dollars, where \(P\) is your principal balance at the start of the month. So in the first month your investment earns
+</p>
+<span class="displaymath" id="me-783">\[
+5000 \left(\frac{0.08}{12}\right)
+\]</span><p id="p-1988">
+or \(\dollar33.33\). If you reinvest this money, you will then have \(\dollar5033.33\) in your account at the end of the first month. From this point on, assume that you reinvest all of the interest you earn.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2723">How much interest will you earn in the second month? How much money will you have in your account at the end of the second month?</li>
+<li id="li-2724">Complete <a knowl="./knowl/T_PA_8.1.Interest.html" knowl-id="xref-T_PA_8.1.Interest" alt="Figure 8.1.2 " title="Figure 8.1.2 ">Table 8.1.2</a> to determine the interest earned and total amount of money in this investment each month for one year.
+<figure class="figure-like" id="T_PA_8.1.Interest"><figure class="figure-like" id="table-40">
+Month   \amp Interest earned    \amp Total amount of money in the account 
+0       \amp \(\dollar0\)              \amp \(\dollar5000.00\)  
+1       \amp \(\dollar33.33\)          \amp \(\dollar5033.33\)  
+2       \amp                    \amp 
+3       \amp                    \amp 
+4       \amp                    \amp 
+5       \amp                    \amp 
+6       \amp                    \amp 
+7       \amp                    \amp 
+8       \amp                    \amp 
+9       \amp                    \amp 
+10      \amp                    \amp 
+11      \amp                    \amp 
+12      \amp                    \amp </figure><figcaption><span class="heading">Figure</span><span class="codenumber">8.1.2</span>Interest</figcaption></figure>
+</li>
+<li id="li-2725">As we will see later, the amount of money \(P_n\) in the account after month \(n\) is given by
+    
+<span class="displaymath" id="me-784">\[
+P_n = 5000\left(1+\frac{0.08}{12}\right)^{n}.
+\]</span>
+ 
+    Use this formula to check your calculations in <a knowl="./knowl/T_PA_8.1.Interest.html" knowl-id="xref-T_PA_8.1.Interest" alt="Figure 8.1.2 " title="Figure 8.1.2 ">Table 8.1.2</a>. Then find the amount of money in the account after 5 years.</li>
+<li id="li-2726">How many years will it be before the account has doubled in value to $10000?</li>
+</ol></article></section><section class="subsection" id="subsection-144"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">8.1.2</span><span class="title">Sequences</span>
+</h1></header><p id="p-1989">
+\knownindex{\lt main&gt;sequence\lt /main&gt;}
+</p>
+<p id="p-1990">
+As our discussion in the introduction and Preview <a href="S_8.1.Sequences.html#PA_8.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> illustrate, many discrete phenomena can be represented as lists of numbers (like the amount of money in an account over a period of months). We call these any such list a <!--Style me with CSS--><em>sequence</em>. In other words, a sequence is nothing more than list of terms in some order. To be able to refer to a sequence in a general sense, we often list the entries of the sequence with subscripts,
+</p>
+<span class="displaymath" id="me-785">\[
+s_1, s_2, \ldots, s_n \ldots,
+\]</span><p id="p-1991">
+where the subscript denotes the position of the entry in the sequence. More formally,
+</p>
+<article class="definition-like" id="D_8.1.sequence"><h5 class="heading">
+<span class="type">Definition</span><span class="codenumber">8.1.3</span>
+</h5>
+<p id="p-1992">
+A sequence is a list of terms \(s_1, s_2, s_3, \ldots\) in a specified order.
+</p></article><p id="p-1993">
+As an alternative to <a knowl="./knowl/D_8.1.sequence.html" knowl-id="xref-D_8.1.sequence" alt="Definition 8.1.3 " title="Definition 8.1.3 ">Definition 8.1.3</a>, we can also consider a sequence to be a function \(f\) whose domain is the set of positive integers. In this context, the sequence \(s_1\), \(s_2\), \(s_3\), \(\ldots\) would correspond to the function \(f\) satisfying \(f(n) = s_n\) for each positive integer \(n\). This alternative view will be be useful in many situations.
+</p>
+<p id="p-1994">
+We will often write the sequence
+</p>
+<span class="displaymath" id="me-786">\[
+s_1, s_2, s_3, \ldots
+\]</span><p id="p-1995">
+using the shorthand notation \(\{s_n\}\). The value \(s_n\) (alternatively \(s(n)\)) is called the \(n\)th <!--Style me with CSS--><em>term</em>\knownindex{\lt main&gt;sequence\lt /main&gt;\lt sub&gt;term\lt /sub&gt;} in the sequence. If the terms are all 0 after some fixed value of \(n\), we say the sequence is finite. Otherwise the sequence is infinite. We will work with both finite and infinite sequences, but focus more on the infinite sequences. With infinite sequences, we are often interested in their end behavior and the idea of <!--Style me with CSS--><em>convergent</em> sequences.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.1.Act1" id="x8.1.Act1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.1.4</span>
+</h5></a></div>
+<div id="hk-x8.1.Act1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><ol style="list-style-type: decimal;">
+<li id="li-2727">Let \(s_n\) be the \(n\)th term in the sequence \(1, 2, 3, \ldots\). 
+
+Find a formula for \(s_n\) and use appropriate technological tools to draw a graph of entries in this sequence by plotting points of the form \((n,s_n)\) for some values of \(n\). Most graphing calculators can plot sequences; directions follow for the TI-84.
+<ul style="list-style-type: disc;">
+<li id="li-2728">In the MODE menu, highlight SEQ in the FUNC line and press ENTER.</li>
+<li id="li-2729">In the Y= menu, you will now see lines to enter sequences. Enter a value for \(n\)Min (where the sequence starts), a function for \(u(n)\) (the \(n\)th term in the sequence), and the value of \(u_{n\text{Min} }\).</li>
+<li id="li-2730">Set your window coordinates (this involves choosing limits for \(n\) as well as the window coordinates XMin, XMax, YMin, and YMax.</li>
+<li id="li-2731">The GRAPH key will draw a plot of your  sequence.</li>
+</ul>  
+Using your knowledge of limits of continuous functions as \(x \to \infty\), decide if this sequence \(\{s_n\}\) has a limit as \(n \to \infty\). Explain your reasoning.</li>
+<li id="li-2732">Let \(s_n\) be the \(n\)th term in the sequence \(1, \frac{1}{2}, \frac{1}{3}, \ldots\). Find a formula for \(s_n\). Draw a graph of some points in this sequence. Using your knowledge of limits of continuous functions as \(x \to \infty\), decide if this sequence \(\{s_n\}\) has a limit as \(n \to \infty\). Explain your reasoning.</li>
+<li id="li-2733">Let \(s_n\) be the \(n\)th term in the sequence \(2, \frac{3}{2}, \frac{4}{3}, \frac{5}{4}, \ldots\). Find a formula for \(s_n\). Using your knowledge of limits of continuous functions as \(x \to \infty\), decide if this sequence \(\{s_n\}\) has a limit as \(n \to \infty\). Explain your reasoning.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-243" id="hint-243"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-243" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2734">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-244" id="hint-244"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-244" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2735">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-120" id="solution-120"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-120" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-2736">By observation we see that a formula for \(s_n\) is \(s_n = n\). A plot of the first 50 points in the sequence is shown here.
+We recalling that a function \(f\) has a limit \(L\) at infinity if we can make the values of \(f(x)\) as large as we want by choosing \(x\) as large as we need. Since we can make the values of \(n\) in our sequence as large as we want by choosing \(n\) to be as large as we need, we suspect that this sequence does not have a limit as \(n\) goes to infinity.</li>
+<li id="li-2737">By observation we see that a formula for \(s_n\) is \(s_n = \frac{1}{n}\). A plot of the first 50 points in the sequence is shown here.
+Since we can make the values of \(\frac{1}{n}\) in our sequence as close to 0 as we want by choosing \(n\) to be as large as we need, we suspect that this sequence has a limit of 0 as \(n\) goes to infinity.</li>
+<li id="li-2738">Since the numerator is always 1 more than the denominator, a formula for \(s_n\) is \(s_n = \frac{n+1}{n}\). A plot of the first 50 points in the sequence is shown here.
+Since we can make the values of \(\frac{n+1}{n}\) in our sequence as close to 1 as we want by choosing \(n\) to be as large as we need, we suspect that this sequence has a limit of 1 as \(n\) goes to infinity.</li>
+</ol></span></span><p id="p-1996">
+Next we formalize the ideas from <a knowl="./knowl/x8.1.Act1.html" knowl-id="xref-x8.1.Act1" alt="Exercise 8.1.4 " title="Exercise 8.1.4 ">Activity 8.1.4</a>.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.1.Act2" id="x8.1.Act2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.1.5</span>
+</h5></a></div>
+<div id="hk-x8.1.Act2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><ol style="list-style-type: decimal;">
+<li id="li-2739">Recall our earlier work with limits involving infinity in <a href="S_2.8.LHR.html" alt="Section 2.8 Using Derivatives to Evaluate Limits" title="Section 2.8 Using Derivatives to Evaluate Limits">Section 2.8</a>.  State clearly what it means for a continuous function \(f\) to have a limit \(L\) as \(x \to \infty\).</li>
+<li id="li-2740">Given that an infinite sequence of real numbers is a function from the integers to the real numbers, apply the idea from part (a) to explain what you think it means for a sequence \(\{s_n\}\) to have a limit as \(n \to \infty\).</li>
+<li id="li-2741">Based on your response to (b), decide if the sequence \(\left\{ \frac{1+n}{2+n}\right\}\) has a limit as \(n \to \infty\). If so, what is the limit? If not, why not?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-245" id="hint-245"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-245" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2742">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-246" id="hint-246"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-246" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2743">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-121" id="solution-121"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-121" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-2744">A continuous function \(f\) has a limit \(L\) as the independent variable \(x\) goes to infinity if we can make the values of \(f(x)\) as close to \(L\) as we want by choosing \(x\) as large as we need.</li>
+<li id="li-2745">We expect that a sequence \(\{s_n\}\) will have a limit \(L\) as \(n\) goes to infinity if we can make the entries \(s_n\) in the sequence as close to \(L\) as we want by choosing \(n\) as large as we need.</li>
+<li id="li-2746">As \(n\) gets large, the constant terms become infinitesimally small compared to \(n\) and so \(\frac{1+n}{2+n}\) looks like \(\frac{n}{n}\) or 1 for large \(n\). So the sequence \(\left\{ \frac{1+n}{2+n}\right\}\) has a limit of 1 at infinity.</li>
+</ol></span></span><p id="p-1997">
+In <a knowl="./knowl/x8.1.Act1.html" knowl-id="xref-x8.1.Act1" alt="Exercise 8.1.4 " title="Exercise 8.1.4 ">Activities 8.1.4</a> and <a knowl="./knowl/x8.1.Act2.html" knowl-id="xref-x8.1.Act2" alt="Exercise 8.1.5 " title="Exercise 8.1.5 ">8.1.5</a> we investigated the notion of a sequence \(\{s_n\}\) having a limit as \(n\) goes to infinity. If a sequence \(\{s_n\}\) has a limit as \(n\) goes to infinity, we say that the sequence <!--Style me with CSS--><em>converges</em>\knownindex{\lt main&gt;converge\lt /main&gt;\lt sub&gt;sequence\lt /sub&gt;} or is a <!--Style me with CSS--><em>convergent sequence</em>\knownindex{\lt main&gt;convergent sequence\lt /main&gt;}. If the limit of a convergent sequence is the number \(L\), we use the same notation as we did for continuous functions and write
+</p>
+<span class="displaymath" id="me-787">\[
+\lim_{n \to \infty} s_n = L.
+\]</span><p id="p-1998">
+If a sequence \(\{s_n\}\) does not converge then we say that the sequence \(\{s_n\}\) <!--Style me with CSS--><em>diverges</em>\knownindex{\lt main&gt;diverge\lt /main&gt;\lt sub&gt;sequence\lt /sub&gt;}. Convergence of sequences is a major idea in this section and we describe it more formally as follows.
+</p>
+<p id="p-1999">
+
+{
+A sequence \(\{s_n\}\) of real numbers converges to a number \(L\) if we can make all values of \(s_k\) for \(k \ge n\) as close to \(L\) as we want by choosing \(n\) to be sufficiently large.
+} 
+
+</p>
+<p id="p-2000">
+Remember, the idea of sequence having a limit as \(n \to \infty\) is the same as the idea of a continuous function having a limit as \(x \to \infty\). The only new wrinkle here is that our sequences are discrete instead of continuous.
+</p>
+<p id="p-2001">
+We conclude this section with a few more examples in the following activity.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.1.Act3" id="x8.1.Act3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.1.6</span>
+</h5></a></div>
+<div id="hk-x8.1.Act3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-2002">
+Use graphical and/or algebraic methods to determine whether each of the following sequences converges or diverges.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2747">\(\left\{\frac{1+2n}{3n-2}\right\}\)</li>
+<li id="li-2748">\(\left\{\frac{5+3^n}{10+2^n}\right\}\)</li>
+<li id="li-2749">\(\left\{\frac{10^n}{n!}\right\}\) (where \(!\) is the <!--Style me with CSS--><em>factorial</em> symbol and \(n! = n(n-1)(n-2) \cdots (2)(1)\) for any positive integer \(n\) (as convention we define \(0!\) to be 1)).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-247" id="hint-247"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-247" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2750">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-248" id="hint-248"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-248" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2751">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-122" id="solution-122"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-122" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-2752">A plot of the first 50 terms of the sequence \(\left\{\frac{1+2n}{3n-2}\right\}\) is shown here.
+\resizebox{!}{1.75in}{<img width="100%" src="images/8_2_Sequence_a.png"> } 
+The plot implies that the sequence has a limit between 0.5 and 1. For large \(n\) the \(2n\) term dominates the numerator and the \(3n\) term the denominator. So \(\frac{1+2n}{3n-2}\) looks like \(\frac{2n}{3n} = \frac{2}{3}\) when \(n\) is big. So the sequence \(\left\{\frac{1+2n}{3n-2}\right\}\) converges to \(\frac{2}{3}\).</li>
+<li id="li-2753">A plot of the first 50 terms of the sequence \(\left\{\frac{5+3^n}{10+2^n}\right\}\) is shown here.
+\resizebox{!}{1.75in}{<img width="100%" src="images/8_2_Sequence_b.png"> } 
+The plot implies that the sequence does not have a limit as \(n\) goes to infinity. For large \(n\) the \(3^n\) term dominates the numerator and the \(2^n\) term the denominator. So \(\frac{5+3^n}{10+2^n}\) looks like \(\frac{3^n}{2^n} = \left(\frac{3}{2}\right)^n\) when \(n\) is big. Since \(\frac{3}{2} &gt; 1\), the sequence \(\left\{\frac{5+3^n}{10+2^n}\right\}\) diverges to infinity.</li>
+<li id="li-2754">A plot of the first 50 terms of the sequence \(\left\{\frac{10^n}{n!}\right\}\) is shown here.
+\resizebox{!}{1.75in}{<img width="100%" src="images/8_2_Sequence_b.png"> } 
+Initially, it looks as though the terms increase without bound, but beginning at about \(n=10\) the factorial in the denominator dominates the numerator. Notice that
+ 
+<span class="displaymath" id="me-788">\[
+\frac{10^n}{n!} = \frac{10 \times 10 \times 10 \times \cdots \times 10}{1 \times 2 \times 3 \times \cdots n}
+\]</span>
+ 
+When \(n &gt; 20\), we have that \(\frac{10}{n} \lt  \frac{1}{2}\) and 
+
+<span class="displaymath" id="md-81">\begin{align*}
+\frac{10^n}{n!} \amp = \left(\frac{10 \times 10 \times 10 \times \cdots \times 10}{1 \times 2 \times 3 \times \cdots 20}\right) \left(\frac{10 \times 10 \times 10 \times \cdots \times 10}{21 \times 22 \times 23 \times \cdots n}\right)\\
+\amp = \left(\frac{10^{20}}{20!}\right) \left(\frac{10}{21}\right) \left(\frac{10}{22}\right) \cdots \left(\frac{10}{n}\right)\\
+\amp \lt  \left(\frac{10^{20}}{20!}\right) \left(\frac{1}{2}\right)^{n-20}.
+\end{align*}</span>
+ 
+Since \(\frac{1}{2}\lt 1\), the term \(\left(\frac{1}{2}\right)^{n-20}\) goes to 0 as \(n\) goes to infinity. The fact that \(\frac{10^{20}}{20!}\) is a constant means that \(\frac{10^n}{n!} \to 0\) as \(n \to \infty\).</li>
+</ol></span></span><p id="p-2003">
+\vfill 
+</p>
+<p id="p-2004">
+\item A sequence is a list of objects in a specified order. We will typically work with sequences of real numbers and can also think of a sequence as a function from the positive integers to the set of real numbers.
+\item A sequence \(\{s_n\}\) of real numbers converges to a number \(L\) if we can make every value of \(s_k\) for \(k \ge n\) as close as we want to \(L\) by choosing \(n\) sufficiently large.
+\item A sequence diverges if it does not converge.
+</p>
+<p id="p-2005">
+\hrulefill
+</p>
+<p id="p-2006">
+\begin{exercises}
+\item Finding limits of convergent sequences can be a challenge. However, there is a useful tool we can adapt from our study of limits of continuous functions at infinity to use to find limits of sequences. We illustrate in this exercise with the example of the sequence
+</p>
+<span class="displaymath" id="me-789">\[
+\frac{\ln(n)}{n}.
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-2755">Calculate the first 10 terms of this sequence. Based on these calculations, do you think the sequence converges or diverges? Why?</li>
+<li id="li-2756">For this sequence, there is a corresponding continuous function \(f\) defined by
+    
+<span class="displaymath" id="me-790">\[
+f(x) = \frac{\ln(x)}{x}.
+\]</span>
+ 
+    Draw the graph of \(f(x)\) on the interval \([0,10]\) and then plot the entries of the sequence on the graph. What conclusion do you think we can draw about the sequence \(\left\{\frac{\ln(n)}{n}\right\}\) if \(\lim_{x \to \infty} f(x) = L\)? Explain.</li>
+<li id="li-2757">Note that \(f(x)\) has the indeterminate form \(\frac{\infty}{\infty}\) as \(x\) goes to infinity. What idea from differential calculus can we use to calculate \(\lim_{x \to \infty} f(x)\)? Use this method to find \(\lim_{x \to \infty} f(x)\). What, then, is \(\lim_{n \to \infty} \frac{\ln(n)}{n}\)?</li>
+</ol>
+<p id="p-2007">
+\item We return to the example begun in Preview <a href="S_8.1.Sequences.html#PA_8.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> to see how to derive the formula for the amount of money in an account at a given time. We do this in a general setting. Suppose you invest \(P\) dollars (called the <!--Style me with CSS--><em>principal</em>) in an account paying \(r\%\) interest compounded monthly. In the first month you will receive \(\frac{r}{12}\) (here \(r\) is in decimal form; e.g., if we have \(8\%\) interest, we write \(\frac{0.08}{12}\)) of the principal \(P\) in interest, so you earn
+</p>
+<span class="displaymath" id="me-791">\[
+P\left(\frac{r}{12}\right)
+\]</span><p id="p-2008">
+dollars in interest. Assume that you reinvest all interest. Then at the end of the first month your account will contain the original principal \(P\) plus the interest, or a total of
+</p>
+<span class="displaymath" id="me-792">\[
+P_1 = P + P\left(\frac{r}{12}\right) = P\left( 1 + \frac{r}{12}\right)
+\]</span><p id="p-2009">
+dollars.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2758">Given that your principal is now \(P_1\) dollars, how much interest will you earn in the second month? If \(P_2\) is the total amount of money in your account at the end of the second month, explain why
+        
+<span class="displaymath" id="me-793">\[
+P_2 = P_1\left( 1 + \frac{r}{12}\right) = P\left( 1 + \frac{r}{12}\right)^2.
+\]</span>
+</li>
+<li id="li-2759">Find a formula for \(P_3\), the total amount of money in the account at the end of the third month in terms of the original investment \(P\).</li>
+<li id="li-2760">There is a pattern to these calculations. Let \(P_n\) the total amount of money in the account at the end of the third month in terms of the original investment \(P\). Find a formula for \(P_n\).</li>
+</ol>
+<p id="p-2010">
+\item Sequences have many applications in mathematics and the sciences. In a recent paper<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-53" id="fn-53"><sup> 3 </sup></a></span><span id="hk-fn-53" style="display: none;" class="tex2jax_ignore"><span class="footnote">Hui H, Farilla L, Merkel P, Perfetti R. The short half-life of glucagon-like peptide-1 in plasma does not reflect its long-lasting beneficial effects, <!--Style me with CSS--><em>Eur J Endocrinol</em> 2002 Jun;146(6):863-9.</span></span> the authors write
+</p>The incretin hormone glucagon-like peptide-1 (GLP-1) is capable of ameliorating glucose-dependent insulin secretion in subjects with diabetes. However, its very short half-life (1.5-5 min) in plasma represents a major limitation for its use in the clinical setting.<p id="p-2011">
+The half-life of GLP-1 is the time it takes for half of the hormone to decay in its medium. For this exercise, assume the half-life of GLP-1 is 5 minutes. So if \(A\) is the amount of GLP-1 in plasma at some time \(t\), then only \(\frac{A}{2}\) of the hormone will be present after \(t+5\) minutes. Suppose \(A_0 = 100\) grams of the hormone are initially present in plasma.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2761">Let \(A_1\) be the amount of GLP-1 present after 5 minutes. Find the value of \(A_1\).</li>
+<li id="li-2762">Let \(A_2\) be the amount of GLP-1 present after 10 minutes. Find the value of \(A_2\).</li>
+<li id="li-2763">Let \(A_3\) be the amount of GLP-1 present after 15 minutes. Find the value of \(A_3\).</li>
+<li id="li-2764">Let \(A_4\) be the amount of GLP-1 present after 20 minutes. Find the value of \(A_4\).</li>
+<li id="li-2765">Let \(A_n\) be the amount of GLP-1 present after \(5n\) minutes. Find a formula for \(A_n\).</li>
+<li id="li-2766">Does the sequence \(\{A_n\}\) converge or diverge? If the sequence converges, find its limit and explain why this value makes sense in the context of this problem.</li>
+<li id="li-2767">Determine the number of minutes it takes until the amount of GLP-1 in plasma is 1 gram.</li>
+</ol>
+<p id="p-2012">
+\item Continuous data is the basis for analog information, like music stored on old cassette tapes or vinyl records. A digital signal like on a CD or MP3 file is obtained by sampling an analog signal at some regular time interval and storing that information. For example, the sampling rate of a compact disk is 44,100 samples per second. So a digital recording is only an approximation of the actual analog information. Digital information can be manipulated in many useful ways that allow for, among other things, noisy signals to be cleaned up and large collections of information to be compressed and stored in much smaller space. While we won't investigate these techniques in this chapter, this exercise is intended to give an idea of the importance of discrete (digital) techniques.
+</p>
+<p id="p-2013">
+Let \(f\) be the continuous function defined by \(f(x) = \sin(4x)\) on the interval \([0,10]\). A graph of \(f\) is shown in <a knowl="./knowl/F_8.1.PA1.html" knowl-id="xref-F_8.1.PA1" alt="Figure 8.1.7 " title="Figure 8.1.7 ">Figure 8.1.7</a>.
+</p>
+<figure class="figure-like" id="F_8.1.PA1"><img width="100%" src="images/8_1_Exercise_1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">8.1.7</span>The graph of \(f(x) = \sin(4x)\) on the interval \([0,10]\)</figcaption></figure><p id="p-2014">
+We approximate \(f\) by <!--Style me with CSS--><em>sampling</em>, that is by partitioning the interval \([0,10]\) into uniform subintervals and recording the values of \(f\) at the endpoints.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2768">Ineffective sampling can lead to several problems in reproducing the original signal. As an example, partition the interval \([0,10]\) into 8 equal length subintervals and create a list of points (the <!--Style me with CSS--><em>sample</em>) using the endpoints of each subinterval. Plot your sample on graph of \(f\) in Figure <a knowl="./knowl/F_8.1.PA1.html" knowl-id="xref-F_8.1.PA1" alt="Figure 8.1.7 " title="Figure 8.1.7 ">Figure 8.1.7</a>. What can you say about the period of your sample as compared to the period of the original function?</li>
+<li id="li-2769">The sampling rate is the number of samples of a signal taken per second. As part (a) illustrates, sampling at too small a rate can cause serious problems with reproducing the original signal (this problem of inefficient sampling leading to an inaccurate approximation is called <!--Style me with CSS--><em>aliasing</em>). There is an elegant  theorem called the Nyquist-Shannon Sampling Theorem that says that human perception is limited, which allows that replacement of a continuous signal with a digital one without any perceived loss of information. This theorem also provides the <!--Style me with CSS--><em>lowest</em> rate at which a signal can be sampled (called the Nyquist rate) without such a loss of information. The theorem states that we should sample at double the maximum desired frequency so that every cycle of the original signal will be sampled at at least two points.
+
+        Recall that the frequency of a sinusoidal function is the reciprocal of the period. Identify the frequency of the function \(f\) and determine the number of partitions of the interval \([0,10]\) that give us the Nyquist rate.</li>
+<li id="li-2770">Humans cannot typically pick up signals above 20 kHz. Explain why, then, that information on a compact disk is sampled at 44,100 Hz.</li>
+</ol>
+<p id="p-2015">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-2016">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

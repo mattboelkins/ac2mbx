@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:37-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The derivative function</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_1.3.DerivativePt.html">Previous</a><a class="up-button button toolbar-item" href="C_1.html">Up</a><a class="next-button button toolbar-item" href="S_1.5.Units.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_1.3.DerivativePt.html">Previous</a><a class="up-button button toolbar-item" href="C_1.html">Up</a><a class="next-button button toolbar-item" href="S_1.5.Units.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link active"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html" class="active">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_1.4.DerivativeFxn"><header><h1 class="heading" alt="Section 1.4 The derivative function" title="Section 1.4 The derivative function">
+<span class="type">Section</span><span class="codenumber">1.4</span><span class="title">The derivative function</span><a href="S_1.4.DerivativeFxn.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-4"><h5 class="heading"></h5>
+<p id="p-122">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-215">How does the limit definition of the derivative of a function \(f\) lead to an entirely new (but related) function \(f'\)?</li>
+<li id="li-216">What is the difference between writing \(f'(a)\) and \(f'(x)\)?</li>
+<li id="li-217">How is the graph of the derivative function \(f'(x)\) connected to the graph of \(f(x)\)?</li>
+<li id="li-218">What are some examples of functions \(f\) for which \(f'\) is not defined at one or more points?</li>
+</ul>
+<p id="p-123">
+} 
+</p></article><section class="subsection" id="subsection-9"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.4.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-124">
+Given a function \(y = f(x)\), we now know that if we are interested in the instantaneous rate of change of the function at \(x = a\), or equivalently the slope of the tangent line to \(y = f(x)\) at \(x = a\), we can compute the value \(f'(a)\). In all of our examples to date, we have arbitrarily identified a particular value of \(a\) as our point of interest: \(a = 1\), \(a = 3\), etc. But it is not hard to imagine that we will often be interested in the derivative value for more than just one \(a\)-value, and possibly for many of them. In this section, we explore how we can move from computing simply \(f'(1)\) or \(f'(3)\) to working more generally with \(f'(a)\), and indeed \(f'(x)\). Said differently, we will work toward understanding how the so-called process of “taking the derivative” generates a new function that is derived from the original function \(y = f(x)\). The following preview activity starts us down this path.
+</p>
+<article class="paragraphs" id="PA_1.4"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-125">
+Consider the function \(f(x) = 4x - x^2\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-219">Use the limit definition to compute the following derivative values:  \(f'(0)\), \(f'(1)\), \(f'(2)\), and \(f'(3)\).</li>
+<li id="li-220">Observe that the work to find \(f'(a)\) is the same, regardless of the value of \(a\).  Based on your work in (a), what do you conjecture is the value of \(f'(4)\)?  How about \(f'(5)\)?  (Note: you should <!--Style me with CSS--><em>not</em> use the limit definition of the derivative to find either value.)</li>
+<li id="li-221">Conjecture a formula for \(f'(a)\) that depends only on the value \(a\).  That is, in the same way that we have a formula for \(f(x)\) (recall \(f(x) = 4x - x^2\)), see if you can use your work above to guess a formula for \(f'(a)\) in terms of \(a\).</li>
+</ol></article></section><section class="subsection" id="subsection-10"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.4.2</span><span class="title">How the derivative is itself a function</span>
+</h1></header><p id="p-126">
+In your work in Preview <a href="S_1.4.DerivativeFxn.html#PA_1.4" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> with \(f(x) = 4x - x^2\), you may have found several patterns. One comes from observing that \(f'(0) = 4\), \(f'(1) = 2\), \(f'(2) = 0\), and \(f'(3) = -2\). That sequence of values leads us naturally to conjecture that \(f'(4) = -4\) and \(f'(5) = -6.\) Even more than these individual numbers, if we consider the role of \(0\), \(1\), \(2\), and \(3\) in the process of computing the value of the derivative through the limit definition, we observe that the particular number has very little effect on our work. To see this more clearly, we compute \(f'(a)\), where \(a\) represents a number to be named later. Following the now standard process of using the limit definition of the derivative,
+</p>
+<span class="displaymath" id="md-7">\begin{align*}
+f'(a) \amp  = \amp  \lim_{h \to 0} \frac{f(a + h) - f(a)}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{4(a + h) - (a + h)^2 - (4a-a^2)}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{4a + 4h - a^2 - 2ha - h^2 - 4a+a^2}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{4h - 2ha - h^2}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{h(4 - 2a - h)}{h}\\
+\amp  = \amp  \lim_{h \to 0} (4 - 2a - h).
+\end{align*}</span><p id="p-127">
+Here we observe that neither \(4\) nor \(2a\) depend on the value of \(h\), so as \(h \to 0\), \((4 - 2a - h) \to (4 - 2a)\). Thus, \(f'(a) = 4 - 2a\).
+</p>
+<p id="p-128">
+This observation is consistent with the specific values we found above: e.g., \(f'(3) = 4 - 2(3) = -2\). And indeed, our work with \(a\) confirms that while the particular value of \(a\) at which we evaluate the derivative affects the value of the derivative, that value has almost no bearing on the process of computing the derivative. We note further that the letter being used is immaterial: whether we call it \(a\), \(x\), or anything else, the derivative at a given value is simply given by “4 minus 2 times the value.” We choose to use \(x\) for consistency with the original function given by \(y = f(x)\), as well as for the purpose of graphing the derivative function, and thus we have found that for the function \(f(x) = 4x - x^2\), it follows that \(f'(x) = 4 - 2x.\)
+</p>
+<p id="p-129">
+Because the value of the derivative function is so closely linked to the graphical behavior of the original function, it makes sense to look at both of these functions plotted on the same domain.
+</p>
+<figure class="figure-like" id="F_1.4.ffprime"><img width="100%" src="images/1_4_ffprimeplot.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.4.1</span>The graphs of \(f(x) = 4x - x^2\) (at left) and \(f'(x) = 4 - 2x\) (at right).  Slopes on the graph of \(f\) correspond to heights on the graph of \(f'\).</figcaption></figure><p id="p-130">
+In <a knowl="./knowl/F_1.4.ffprime.html" knowl-id="xref-F_1.4.ffprime" alt="Figure 1.4.1 " title="Figure 1.4.1 ">Figure 1.4.1</a>, on the left we show a plot of \(f(x) = 4x - x^2\) together with a selection of tangent lines at the points we've considered above. On the right, we show a plot of \(f'(x) = 4 - 2x\) with emphasis on the heights of the derivative graph at the same selection of points. Notice the connection between colors in the left and right graph: the green tangent line on the original graph is tied to the green point on the right graph in the following way: <!--Style me with CSS--><em>the slope of the tangent line</em> at a point on the lefthand graph is the same as the <!--Style me with CSS--><em>height</em> at the corresponding point on the righthand graph. That is, at each respective value of \(x\), the slope of the tangent line to the original function at that \(x\)-value is the same as the height of the derivative function at that \(x\)-value. Do note, however, that the units on the vertical axes are different: in the left graph, the vertical units are simply the output units of \(f\). On the righthand graph of \(y = f'(x)\), the units on the vertical axis are units of \(f\) per unit of \(x\).
+</p>
+<p id="p-131">
+Of course, this relationship between the graph of a function \(y = f(x)\) and its derivative is a dynamic one. An excellent way to explore how the graph of \(f(x)\) generates the graph of \(f'(x)\) is through a java applet. See, for instance, the applets at \href{http://gvsu.edu/s/5C}{<tt class="code-inline">http://gvsu.edu/s/5C</tt>} or \href{http://gvsu.edu/s/5D}{<tt class="code-inline">http://gvsu.edu/s/5D</tt>}, via the sites of Austin and Renault<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-5" id="fn-5"><sup> 1 </sup></a></span><span id="hk-fn-5" style="display: none;" class="tex2jax_ignore"><span class="footnote">David Austin, \href{http://gvsu.edu/s/5r}{<tt class="code-inline">http://gvsu.edu/s/5r</tt>}; Marc Renault, \href{http://gvsu.edu/s/5p}{<tt class="code-inline">http://gvsu.edu/s/5p</tt>}.</span></span>.
+</p>
+<p id="p-132">
+In <a href="S_1.3.DerivativePt.html" alt="Section 1.3 The derivative of a function at a point" title="Section 1.3 The derivative of a function at a point">Section 1.3</a> when we first defined the derivative, we wrote the definition in terms of a value \(a\) to find \(f'(a)\). As we have seen above, the letter \(a\) is merely a placeholder, and it often makes more sense to use \(x\) instead. For the record, here we restate the definition of the derivative\knownindex{\lt main&gt;derivative\lt /main&gt;\lt sub&gt;definition\lt /sub&gt;}.
+</p>
+<article class="definition-like" id="D_derivativedefnx"><h5 class="heading">
+<span class="type">Definition</span><span class="codenumber">1.4.2</span>
+</h5>
+<p id="p-133">
+Let \(f\) be a function and \(x\) a value in the function's domain. We define the derivative of \(f\) with respect to \(x\) at the value \(x\), denoted \(f'(x)\), by the formula
+\(\ds f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h},\)
+provided this limit exists.
+</p></article><p id="p-134">
+We now may take two different perspectives on thinking about the derivative function: given a graph of \(y = f(x)\), how does this graph lead to the graph of the derivative function \(y = f'(x)\)? and given a formula for \(y = f(x)\), how does the limit definition of the derivative generate a formula for \(y = f'(x)\)? Both of these issues are explored in the following activities.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.4.1" id="A_1.4.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.4.3</span>
+</h5></a></div>
+<div id="hk-A_1.4.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-135">
+For each given graph of \(y = f(x)\), sketch an approximate graph of its derivative function, \(y = f'(x)\), on the axes immediately below. The scale of the grid for the graph of \(f\) is \(1 \times 1\); assume the horizontal scale of the grid for the graph of \(f'\) is identical to that for \(f\). If necessary, adjust and label the vertical scale on the axes for \(f'\).
+</p>
+<img width="100%" src="images/1_4_Act1a.png"><img width="100%" src="images/1_4_Act1b.png"><img width="100%" src="images/1_4_Act1c.png"> 
+\hspace{4in} 
+<img width="100%" src="images/1_4_Act1d.png"><p id="p-136">
+When you are finished with all 8 graphs, write several sentences that describe your overall process for sketching the graph of the derivative function, given the graph the original function. What are the values of the derivative function that you tend to identify first? What do you do thereafter? How do key traits of the graph of the derivative function exemplify properties of the graph of the original function?
+</p></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-19" id="hint-19"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-19" style="display: none;" class="tex2jax_ignore"><span class="solution">Points where the slope of the tangent line is equal to zero are particularly important.  Try finding these points first in your effort to plot \(y = f'(x)\) and plotting those zero values on the axes where you'll graph \(y = f'(x)\).</span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-20" id="hint-20"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-20" style="display: none;" class="tex2jax_ignore"><span class="solution">Points where the slope of the tangent line is equal to zero are particularly important.  Try finding these points first in your effort to plot \(y = f'(x)\) and plotting those zero values on the axes where you'll graph \(y = f'(x)\).  After doing so, think carefully as well about the questions: at this point, is \(f'(x)\) positive or negative?  is \(f'(x)\) big or small.  Use these ideas to help you sketch the derivative graph for the following functions.</span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-10" id="solution-10"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-10" style="display: none;" class="tex2jax_ignore"><span class="solution"><img width="100%" src="images/1_4_Act1aSoln.png"><br>\hspace{4in}<br><br><img width="100%" src="images/1_4_Act1bSoln.png"><img width="100%" src="images/1_4_Act1cSoln.png"><br>\hspace{4in}<br><br><img width="100%" src="images/1_4_Act1dSoln.png"></span></span><p id="p-137">
+For a dynamic investigation that allows you to experiment with graphing \(f'\) when given the graph of \(f\), see \href{http://gvsu.edu/s/8y}{<tt class="code-inline">http://gvsu.edu/s/8y</tt>}.<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-6" id="fn-6"><sup> 2 </sup></a></span><span id="hk-fn-6" style="display: none;" class="tex2jax_ignore"><span class="footnote">Marc Renault, Calculus Applets Using Geogebra.</span></span>
+</p>
+<p id="p-138">
+Now, recall the opening example of this section: we began with the function \(y = f(x) = 4x - x^2\) and used the limit definition of the derivative to show that \(f'(a) = 4 - 2a\), or equivalently that \(f'(x) = 4 - 2x\). We subsequently graphed the functions \(f\) and \(f'\) as shown in <a knowl="./knowl/F_1.4.ffprime.html" knowl-id="xref-F_1.4.ffprime" alt="Figure 1.4.1 " title="Figure 1.4.1 ">Figure 1.4.1</a>. Following <a knowl="./knowl/A_1.4.1.html" knowl-id="xref-A_1.4.1" alt="Exercise 1.4.3 " title="Exercise 1.4.3 ">Activity 1.4.3</a>, we now understand that we could have constructed a fairly accurate graph of \(f'(x)\) <!--Style me with CSS--><em>without</em> knowing a formula for either \(f\) or \(f'\). At the same time, it is ideal to know a formula for the derivative function whenever it is possible to find one.
+</p>
+<p id="p-139">
+In the next activity, we further explore the more algebraic approach to finding \(f'(x)\): given a formula for \(y = f(x)\), the limit definition of the derivative will be used to develop a formula for \(f'(x)\).
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.4.2" id="A_1.4.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.4.4</span>
+</h5></a></div>
+<div id="hk-A_1.4.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-140">
+For each of the listed functions, determine a formula for the derivative function. For the first two, determine the formula for the derivative by thinking about the nature of the given function and its slope at various points; do not use the limit definition. For the latter four, use the limit definition. Pay careful attention to the function names and independent variables. It is important to be comfortable with using letters other than \(f\) and \(x\). For example, given a function \(p(z)\), we call its derivative \(p'(z)\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-222">\(f(x) = 1\)</li>
+<li id="li-223">\(g(t) = t\)</li>
+<li id="li-224">\(p(z) = z^2\)</li>
+<li id="li-225">\(q(s) = s^3\)</li>
+<li id="li-226">\(F(t) = \frac{1}{t}\)</li>
+<li id="li-227">\(G(y) = \sqrt{y}\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-21" id="hint-21"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-21" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-228">What is the slope of the function at every point?</li>
+<li id="li-229">What is the slope of the function at every point?</li>
+<li id="li-230">\(p(z+h) = (z+h)^2\)</li>
+<li id="li-231">\(q(s+h) = (s+h)^3\)</li>
+<li id="li-232">\(F(t+h) = \frac{1}{t+h}\)</li>
+<li id="li-233">\(G(y+h) = \sqrt{y+h}\)</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-22" id="hint-22"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-22" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-234">The function is a horizontal line.</li>
+<li id="li-235">The function is a line with slope 1.</li>
+<li id="li-236">\(p(z+h) - p(z) = (z+h)^2 - z^2 = z^2 + 2zh + h^2 - z^2\)</li>
+<li id="li-237">\(q(s+h) - q(s) = (s+h)^3 - s^3 = s^3 + 3s^2h + 3sh^2 + h^3 - s^3\)</li>
+<li id="li-238">Find a common denominator for \( \frac{1}{t+h} - \frac{1}{t}\).</li>
+<li id="li-239">Multiply the difference quotient by this form of 1: \(\frac{\sqrt{y+h} + \sqrt{y}}{\sqrt{y+h} + \sqrt{y}}.\)</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-11" id="solution-11"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-11" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-240">\(f'(x) = 0\) because the slope of the tangent line to the horizontal line given by \(f(x) = 1\) is zero at every value of \(x\).</li>
+<li id="li-241">\(g'(t) = 1\) because the slope of the tangent line to the line given by \(g(t) = t\) is 1 at every value of \(t\).</li>
+<li id="li-242"><span class="displaymath" id="md-8">\begin{align*}
+p'(z) \amp  = \amp  \lim_{h \to 0} \frac{p(z+h) - p(z)}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{(z+h)^2 - z^2}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{z^2 + 2zh + h^2 - z^2}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{2zh + h^2}{h}\\
+\amp  = \amp  \lim_{h \to 0} 2z + h\\
+\amp  = \amp  2z
+\end{align*}</span></li>
+<li id="li-243"><span class="displaymath" id="md-9">\begin{align*}
+q'(s) \amp  = \amp  \lim_{h \to 0} \frac{q(s+h) - q(s)}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{(s+h)^3 - s^3}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{s^3 + 3s^2h + 3sh^2 + h^3 - s^3}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{3s^2h + 3sh^2 + h^2}{h}\\
+\amp  = \amp  \lim_{h \to 0} 3s^2 + 3sh + h\\
+\amp  = \amp  3s^2
+\end{align*}</span></li>
+<li id="li-244"><span class="displaymath" id="md-10">\begin{align*}
+F'(t) \amp  = \amp  \lim_{h \to 0} \frac{F(t+h) - F(s)}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{\frac{1}{t+h} - \frac{1}{t}}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{\frac{t - (t+h)}{t(t+h)}}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{-h}{ht(t+h)}\\
+\amp  = \amp  \lim_{h \to 0} \frac{-1}{t(t+h)}\\
+\amp  = \amp  \frac{-1}{t^2}
+\end{align*}</span></li>
+<li id="li-245"><span class="displaymath" id="md-11">\begin{align*}
+G'(y) \amp  = \amp  \lim_{h \to 0} \frac{G(y+h) - G(y)}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{\sqrt{y+h}-\sqrt{y}}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{\sqrt{y+h}-\sqrt{y}}{h} \cdot \frac{\sqrt{y+h} + \sqrt{y}}{\sqrt{y+h} + \sqrt{y}}\\
+\amp  = \amp  \lim_{h \to 0} \frac{(y+h)-y}{h(\sqrt{y+h} + \sqrt{y})}\\
+\amp  = \amp  \lim_{h \to 0} \frac{h}{h(\sqrt{y+h} + \sqrt{y})}\\
+\amp  = \amp  \lim_{h \to 0} \frac{1}{\sqrt{y+h} + \sqrt{y}}\\
+\amp  = \amp  \frac{1}{2\sqrt{y}}
+\end{align*}</span></li>
+</ol></span></span><p id="p-141">
+\begin{authornote}
+This is an author note.
+\end{authornote}
+</p>
+<p id="p-142">
+\item The limit definition of the derivative, \(f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}\), produces a value for each \(x\) at which the derivative is defined, and this leads to a new function whose formula is \(y = f'(x)\). Hence we talk both about a given function \(f\) and its derivative \(f'\). It is especially important to note that taking the derivative is a process that starts with a given function (\(f\)) and produces a new, related function (\(f'\)).
+\item There is essentially no difference between writing \(f'(a)\) (as we did regularly in <a href="S_1.3.DerivativePt.html" alt="Section 1.3 The derivative of a function at a point" title="Section 1.3 The derivative of a function at a point">Section 1.3</a>) and writing \(f'(x)\). In either case, the variable is just a placeholder that is used to define the rule for the derivative function.
+\item Given the graph of a function \(y = f(x)\), we can sketch an approximate graph of its derivative \(y = f'(x)\) by observing that <!--Style me with CSS--><em>heights</em> on the derivative's graph correspond to <!--Style me with CSS--><em>slopes</em> on the original function's graph.
+\item In <a knowl="./knowl/A_1.4.1.html" knowl-id="xref-A_1.4.1" alt="Exercise 1.4.3 " title="Exercise 1.4.3 ">Activity 1.4.3</a>, we encountered some functions that had sharp corners on their graphs, such as the shifted absolute value function. At such points, the derivative fails to exist, and we say that \(f\) is not differentiable there. For now, it suffices to understand this as a consequence of the jump that must occur in the derivative function at a sharp corner on the graph of the original function.
+</p>
+<p id="p-143">
+\hrulefill
+</p>
+<p id="p-144">
+\begin{exercises}
+\item Let \(f\) be a function with the following properties: \(f\) is differentiable at every value of \(x\) (that is, \(f\) has a derivative at every point), \(f(-2) = 1\), and \(f'(-2) = -2\), \(f'(-1) = -1\), \(f'(0) = 0\), \(f'(1) = 1\), and \(f'(2) = 2\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-246">On the axes provided at left in <a knowl="./knowl/F_1.4.Ez1.html" knowl-id="xref-F_1.4.Ez1" alt="Figure 1.4.5 " title="Figure 1.4.5 ">Figure 1.4.5</a>, sketch a possible graph of \(y = f(x)\).  Explain why your graph meets the stated criteria.</li>
+<li id="li-247">On the axes at right in <a knowl="./knowl/F_1.4.Ez1.html" knowl-id="xref-F_1.4.Ez1" alt="Figure 1.4.5 " title="Figure 1.4.5 ">Figure 1.4.5</a>, sketch a possible graph of \(y = f'(x)\).  What type of curve does the provided data suggest for the graph of \(y = f'(x)\)?</li>
+<li id="li-248">Conjecture a formula for the function \(y = f(x)\).  Use the limit definition of the derivative to determine the corresponding formula for \(y = f'(x)\).  Discuss both graphical and algebraic evidence for whether or not your conjecture is correct.</li>
+</ol>
+<figure class="figure-like" id="F_1.4.Ez1"><img width="100%" src="images/1_2_Ez3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.4.5</span>Axes for plotting \(y = f(x)\) in (a) and \(y = f'(x)\) in (b).</figcaption></figure><p id="p-145">
+\item Consider the function \(g(x) = x^2 - x + 3\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-249">Use the limit definition of the derivative to determine a formula for \(g'(x)\).</li>
+<li id="li-250">Use a graphing utility to plot both \(y = g(x)\) and your result for \(y = g'(x)\); does your formula for \(g'(x)\) generate the graph you expected?</li>
+<li id="li-251">Use the limit definition of the derivative to find a formula for \(h'(x)\) where \(h(x) = 5x^2 - 4x + 12.\)</li>
+<li id="li-252">Compare and contrast the formulas for \(g'(x)\) and \(h'(x)\) you have found.  How do the constants 5, 4, 12, and 3 affect the results?</li>
+</ol>
+<p id="p-146">
+\item Let \(g\) be a continuous function (that is, one with no jumps or holes in the graph) and suppose that a graph of \(y= g'(x)\) is given by the graph on the right in <a knowl="./knowl/F_1.4.Ez2.html" knowl-id="xref-F_1.4.Ez2" alt="Figure 1.4.6 " title="Figure 1.4.6 ">Figure 1.4.6</a>.
+</p>
+<figure class="figure-like" id="F_1.4.Ez2"><img width="100%" src="images/1_4_Ez2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.4.6</span>Axes for plotting \(y = g(x)\) and, at right, the graph of \(y = g'(x)\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-253">Observe that for every value of \(x\) that satisfies \(0 \lt  x \lt  2\), the value of \(g'(x)\) is constant.  What does this tell you about the behavior of the graph of \(y = g(x)\) on this interval?</li>
+<li id="li-254">On what intervals other than \(0 \lt  x \lt  2\) do you expect \(y = g(x)\) to be a linear function?  Why?</li>
+<li id="li-255">At which values of \(x\) is \(g'(x)\) not defined?  What behavior does this lead you to expect to see in the graph of \(y=g(x)\)?</li>
+<li id="li-256">Suppose that \(g(0) = 1\).  On the axes provided at left in  <a knowl="./knowl/F_1.4.Ez2.html" knowl-id="xref-F_1.4.Ez2" alt="Figure 1.4.6 " title="Figure 1.4.6 ">Figure 1.4.6</a>, sketch an accurate graph of \(y = g(x)\).</li>
+</ol>
+<p id="p-147">
+\item For each graph that provides an original function \(y = f(x)\) in <a knowl="./knowl/F_1.4.Ez3a.html" knowl-id="xref-F_1.4.Ez3a" alt="Figure 1.4.7 " title="Figure 1.4.7 ">Figure 1.4.7</a> (on the following page), your task is to sketch an approximate graph of its derivative function, \(y = f'(x)\), on the axes immediately below. View the scale of the grid for the graph of \(f\) as being \(1 \times 1\), and assume the horizontal scale of the grid for the graph of \(f'\) is identical to that for \(f\). If you need to adjust the vertical scale on the axes for the graph of \(f'\), you should label that accordingly.
+</p>
+<figure class="figure-like" id="F_1.4.Ez3a"><img width="100%" src="images/1_4_Ez3a.png"><br>\hspace{4in}<br><br><img width="100%" src="images/1_4_Ez3b.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.4.7</span>Graphs of \(y = f(x)\) and grids for plotting the corresponding graph of \(y = f'(x)\).</figcaption></figure><p id="p-148">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-149">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

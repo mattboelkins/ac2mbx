@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:37-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The derivative of a function at a point</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_1.2.Limits.html">Previous</a><a class="up-button button toolbar-item" href="C_1.html">Up</a><a class="next-button button toolbar-item" href="S_1.4.DerivativeFxn.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_1.2.Limits.html">Previous</a><a class="up-button button toolbar-item" href="C_1.html">Up</a><a class="next-button button toolbar-item" href="S_1.4.DerivativeFxn.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link active"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html" class="active">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_1.3.DerivativePt"><header><h1 class="heading" alt="Section 1.3 The derivative of a function at a point" title="Section 1.3 The derivative of a function at a point">
+<span class="type">Section</span><span class="codenumber">1.3</span><span class="title">The derivative of a function at a point</span><a href="S_1.3.DerivativePt.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-3"><h5 class="heading"></h5>
+<p id="p-80">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-123">How is the average rate of change of a function on a given interval defined, and what does this quantity measure?</li>
+<li id="li-124">How is the instantaneous rate of change of a function at a particular point defined?  How is the instantaneous rate of change linked to average rate of change?</li>
+<li id="li-125">What is the derivative of a function at a given point?  What does this derivative value measure? How do we interpret the derivative value graphically?</li>
+<li id="li-126">How are limits used formally in the computation of derivatives?</li>
+</ul>
+<p id="p-81">
+} 
+</p></article><section class="subsection" id="subsection-7"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.3.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-82">
+An idea that sits at the foundations of calculus is the <!--Style me with CSS--><em>instantaneous rate of change</em> of a function. This rate of change is always considered with respect to change in the input variable, often at a particular fixed input value. This is a generalization of the notion of instantaneous velocity and essentially allows us to consider the question “how do we measure how fast a particular function is changing at a given point?” When the original function represents the position of a moving object, this instantaneous rate of change is precisely velocity, and might be measured in units such as feet per second. But in other contexts, instantaneous rate of change could measure the number of cells added to a bacteria culture per day, the number of additional gallons of gasoline consumed by going one mile per additional mile per hour in a car's velocity, or the number of dollars added to a mortgage payment for each percentage increase in interest rate. Regardless of the presence of a physical or practical interpretation of a function, the instantaneous rate of change may also be interpreted geometrically in connection to the function's graph, and this connection is also foundational to many of the main ideas in calculus.
+</p>
+<p id="p-83">
+In what follows, we will introduce terminology and notation that makes it easier to talk about the instantaneous rate of change of a function at a point. In addition, just as instantaneous velocity is defined in terms of average velocity, the more general instantaneous rate of change will be connected to the more general average rate of change. Recall that for a moving object with position function \(s\), its average velocity on the time interval \(t = a\) to \(t = a+h\) is given by the quotient
+</p>
+<span class="displaymath" id="me-18">\[
+AV_{[a,a+h]} = \frac{s(a+h)-s(a)}{h}.
+\]</span><p id="p-84">
+In a similar way, we make the following definition for an arbitrary function \(y = f(x).\)
+</p>
+<article class="definition-like" id="definition-2"><h5 class="heading">
+<span class="type">Definition</span><span class="codenumber">1.3.1</span>
+</h5>
+<p id="p-85">
+For a function \(f\), the average rate of change\knownindex{\lt main&gt;average rate of change\lt /main&gt;} of \(f\) on the interval \([a,a+h]\) is given by the value
+</p>
+<span class="displaymath" id="me-19">\[
+AV_{[a,a+h]} = \frac{f(a+h)-f(a)}{h}.
+\]</span></article><p id="p-86">
+Equivalently, if we want to consider the average rate of change of \(f\) on \([a,b]\), we compute
+</p>
+<span class="displaymath" id="me-20">\[
+AV_{[a,b]} = \frac{f(b)-f(a)}{b-a}.
+\]</span><p id="p-87">
+It is essential to understand how the average rate of change of \(f\) on an interval is connected to its graph.
+</p>
+<article class="paragraphs" id="PA_1.3"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-88">
+Suppose that \(f\) is the function given by the graph below and that \(a\) and \(a+h\) are the input values as labeled on the \(x\)-axis. Use the graph in <a knowl="./knowl/F_1.3.PA1.html" knowl-id="xref-F_1.3.PA1" alt="Figure 1.3.2 " title="Figure 1.3.2 ">Figure 1.3.2</a> to answer the following questions.
+</p>
+<figure class="figure-like" id="F_1.3.PA1"><img width="100%" src="images/1_3_PA1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.3.2</span>Plot of \(y = f(x)\) for Preview <a href="S_1.3.DerivativePt.html#PA_1.3" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>.</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-127">Locate and label the points \((a,f(a))\) and \((a+h, f(a+h))\) on the graph.</li>
+<li id="li-128">Construct a right triangle whose hypotenuse is the line segment from \((a,f(a))\) to <br>\((a+h,f(a+h))\).  What are the lengths of the respective legs of this triangle?</li>
+<li id="li-129">What is the slope of the line that connects the points \((a,f(a))\) and \((a+h, f(a+h))\)?</li>
+<li id="li-130">Write a meaningful sentence that explains how the average rate of change of the function on a given interval and the slope of a related line are connected.</li>
+</ol></article></section><section class="subsection" id="subsection-8"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.3.2</span><span class="title">The Derivative of a Function at a Point</span>
+</h1></header><p id="p-89">
+\knownindex{\lt main&gt;derivative\lt /main&gt;}
+</p>
+<p id="p-90">
+Just as we defined instantaneous velocity in terms of average velocity, we now define the instantaneous rate of change of a function at a point in terms of the average rate of change of the function \(f\) over related intervals. In addition, we give a special name to “the instantaneous rate of change of \(f\) at \(a\),”\knownindex{\lt main&gt;instantaneous rate of change\lt /main&gt;} calling this quantity “the <!--Style me with CSS--><em>derivative</em> of \(f\) at \(a\),” with this value being represented by the shorthand notation \(f'(a)\). Specifically, we make the following definition.
+</p>
+<article class="definition-like" id="D_derivativedefna"><h5 class="heading">
+<span class="type">Definition</span><span class="codenumber">1.3.3</span>
+</h5>
+<p id="p-91">
+Let \(f\) be a function and \(x = a\) a value in the function's domain. We define the derivative of \(f\) with respect to \(x\) evaluated at \(x = a\)\knownindex{\lt main&gt;derivative\lt /main&gt;\lt sub&gt;definition\lt /sub&gt;}, denoted \(f'(a)\), by the formula
+</p>
+<span class="displaymath" id="me-21">\[
+f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h},
+\]</span><p id="p-92">
+provided this limit exists.
+</p></article><p id="p-93">
+Aloud, we read the symbol \(f'(a)\) as either “\(f\)-prime at \(a\)” or “the derivative of \(f\) evaluated at \(x = a\).” Much of the next several chapters will be devoted to understanding, computing, applying, and interpreting derivatives. For now, we make the following important notes.
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-131">The derivative of \(f\) at the value \(x = a\) is defined as the limit of the average rate of change of \(f\) on the interval \([a,a+h]\) as \(h \to 0\).  It is possible for this limit not to exist, so not every function has a derivative at every point.</li>
+<li id="li-132">We say that a function that has a derivative at \(x = a\) is <!--Style me with CSS--><em>differentiable</em>\knownindex{\lt main&gt;differentiable\lt /main&gt;} at \(x = a\).</li>
+<li id="li-133">The derivative is a generalization of the instantaneous velocity of a position function:  when \(y = s(t)\) is a position function of a moving body, \(s'(a)\) tells us the instantaneous velocity of the body at time \(t=a\).</li>
+<li id="li-134">Because the units on \(\frac{f(a+h)-f(a)}{h}\) are “units of \(f\) per unit of \(x\),” the derivative has these very same units.  For instance, if \(s\) measures position in feet and \(t\) measures time in seconds, the units on \(s'(a)\) are feet per second.</li>
+<li id="li-135">Because the quantity \(\frac{f(a+h)-f(a)}{h}\) represents the slope of the line through \((a,f(a))\) and \((a+h, f(a+h))\), when we compute the derivative we are taking the limit of a collection of slopes of lines, and thus the derivative itself represents the slope of a particularly important line.</li>
+</ul>
+<p id="p-94">
+While all of the above ideas are important and we will add depth and perspective to them through additional time and study, for now it is most essential to recognize how the derivative of a function at a given value represents the slope of a certain line. Thus, we expand upon the last bullet item above.
+</p>
+<p id="p-95">
+As we move from an average rate of change to an instantaneous one, we can think of one point as “sliding towards” another. In particular, provided the function has a derivative at \((a,f(a))\), the point \((a+h,f(a+h))\) will approach \((a,f(a))\) as \(h \to 0\). Because this process of taking a limit is a dynamic one, it can be helpful to use computing technology to visualize what the limit is accomplishing. While there are many different options<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-3" id="fn-3"><sup> 1 </sup></a></span><span id="hk-fn-3" style="display: none;" class="tex2jax_ignore"><span class="footnote">For a helpful collection of java applets, consider the work of David Austin of Grand Valley State University at \href{http://gvsu.edu/s/5r}{<tt class="code-inline">http://gvsu.edu/s/5r</tt>}, and the particularly relevant example at \href{http://gvsu.edu/s/5s}{<tt class="code-inline">http://gvsu.edu/s/5s</tt>}.  For applets that have been built in Geogebra, a nice example is the work of Marc Renault of Shippensburg University at \href{http://gvsu.edu/s/5p}{<tt class="code-inline">http://gvsu.edu/s/5p</tt>}, with the example at \href{http://gvsu.edu/s/5q}{<tt class="code-inline">http://gvsu.edu/s/5q</tt>} being especially fitting for our work in this section.  There are scores of other examples posted by other authors on the internet.</span></span>, one of the best is a java applet in which the user is able to control the point that is moving. See the examples referenced in the footnote here, or consider building your own, perhaps using the fantastic free program Geogebra<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-4" id="fn-4"><sup> 2 </sup></a></span><span id="hk-fn-4" style="display: none;" class="tex2jax_ignore"><span class="footnote">Available for free download from \href{http://geogebra.org}{<tt class="code-inline">http://geogebra.org</tt>}.</span></span>.
+</p>
+<p id="p-96">
+In <a knowl="./knowl/F_1.3.SeqToTanSeq.html" knowl-id="xref-F_1.3.SeqToTanSeq" alt="Figure 1.3.4 " title="Figure 1.3.4 ">Figure 1.3.4</a>, we provide a sequence of figures with several different lines through the points \((a, f(a))\) and \((a+h,f(a+h))\) that are generated by different values of \(h\). These lines (shown in the first three figures in magenta), are often called <!--Style me with CSS--><em>secant lines</em> \knownindex{\lt main&gt;secant line\lt /main&gt;} to the curve \(y = f(x)\). A secant line to a curve is simply a line that passes through two points that lie on the curve. For each such line, the slope of the secant line is \(m = \frac{f(a+h) - f(a)}{h}\), where the value of \(h\) depends on the location of the point we choose. We can see in the diagram how, as \(h \to 0\), the secant lines start to approach a single line that passes through the point \((a,f(a))\). In the situation where the limit of the slopes of the secant lines exists, we say that the resulting value is the slope of the <!--Style me with CSS--><em>tangent line</em> to the curve. This tangent line\knownindex{\lt main&gt;tangent line\lt /main&gt;} (shown in the right-most figure in green) to the graph of \(y = f(x)\) at the point \((a,f(a))\) is the line through \((a,f(a))\) whose slope is \(m = f'(a)\).
+</p>
+<figure class="figure-like" id="F_1.3.SeqToTanSeq"><img width="100%" src="images/1_3_SecToTanSeq.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.3.4</span>A sequence of secant lines approaching the tangent line to \(f\) at \((a,f(a))\).</figcaption></figure><p id="p-97">
+As we will see in subsequent study, the existence of the tangent line at \(x = a\) is connected to whether or not the function \(f\) looks like a straight line when viewed up close at \((a,f(a))\), which can also be seen in <a knowl="./knowl/F_1.3.SeqToTan.html" knowl-id="xref-F_1.3.SeqToTan" alt="Figure 1.3.5 " title="Figure 1.3.5 ">Figure 1.3.5</a>, where we combine the four graphs in <a knowl="./knowl/F_1.3.SeqToTanSeq.html" knowl-id="xref-F_1.3.SeqToTanSeq" alt="Figure 1.3.4 " title="Figure 1.3.4 ">Figure 1.3.4</a> into the single one on the left, and then we zoom in on the box centered at \((a,f(a))\), with that view expanded on the right (with two of the secant lines omitted). Note how the tangent line sits relative to the curve \(y = f(x)\) at \((a,f(a))\) and how closely it resembles the curve near \(x = a\).
+</p>
+<figure class="figure-like" id="F_1.3.SeqToTan"><img width="100%" src="images/1_3_SecToTan.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.3.5</span>A sequence of secant lines approaching the tangent line to \(f\) at \((a,f(a))\).  At right, we zoom in on the point \((a,f(a))\).  The slope of the tangent line (in green) to \(f\) at \((a,f(a))\) is given by \(f'(a)\).</figcaption></figure><p id="p-98">
+At this time, it is most important to note that \(f'(a)\), the instantaneous rate of change of \(f\) with respect to \(x\) at \(x = a\), also measures the slope of the tangent line\knownindex{\lt main&gt;tangent line\lt /main&gt;\lt sub&gt;slope\lt /sub&gt;} to the curve \(y = f(x)\) at \((a,f(a))\). The following example demonstrates several key ideas involving the derivative of a function.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-example-3" id="example-3"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">1.3.6</span>
+</h5></article></a></div>
+<div id="hk-example-3" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-99">
+For the function given by \(f(x) = x - x^2\), use the limit definition of the derivative to compute \(f'(2)\). In addition, discuss the meaning of this value and draw a labeled graph that supports your explanation.
+</p></article></div>
+<p id="p-100">
+Solution.    
+From the limit definition, we know that
+</p>
+<span class="displaymath" id="me-22">\[
+f'(2) = \lim_{h \to 0} \frac{f(2+h)-f(2)}{h}.
+\]</span><p id="p-101">
+Now we use the rule for \(f\), and observe that \(f(2) = 2 - 2^2 = -2\) and \(f(2+h) = (2+h) - (2+h)^2.\) Substituting these values into the limit definition, we have that
+</p>
+<span class="displaymath" id="me-23">\[
+f'(2) = \lim_{h \to 0} \frac{(2+h) - (2+h)^2 -  (-2)}{h}.
+\]</span><p id="p-102">
+Observe that with \(h\) in the denominator and our desire to let \(h \to 0\), we have to wait to take the limit (that is, we wait to actually let \(h\) approach 0). Thus, we do additional algebra. Expanding and distributing in the numerator,
+</p>
+<span class="displaymath" id="me-24">\[
+f'(2) = \lim_{h \to 0} \frac{2+h - 4 - 4h - h^2 + 2}{h}.
+\]</span><p id="p-103">
+Combining like terms, we have
+</p>
+<span class="displaymath" id="me-25">\[
+f'(2) = \lim_{h \to 0} \frac{ -3h - h^2}{h}.
+\]</span><p id="p-104">
+Next, we observe that there is a common factor of \(h\) in both the numerator and denominator, which allows us to simplify and find that
+</p>
+<span class="displaymath" id="me-26">\[
+f'(2) = \lim_{h \to 0} (-3-h).
+\]</span><p id="p-105">
+Finally, we are able to take the limit as \(h \to 0\), and thus conclude that \(f'(2) = -3\).
+</p>
+<p id="p-106">
+Now, we know that \(f'(2)\) represents the slope of the tangent line to the curve \(y = x - x^2\) at the point \((2,-2)\); \(f'(2)\) is also the instantaneous rate of change of \(f\) at the point \((2,-2)\). Graphing both the function and the line through \((2,-2)\) with slope \(m = f'(2) = -3\), we indeed see that by calculating the derivative, we have found the slope of the tangent line at this point, as shown in <a knowl="./knowl/F_1.3.Ex1.html" knowl-id="xref-F_1.3.Ex1" alt="Figure 1.3.7 " title="Figure 1.3.7 ">Figure 1.3.7</a>.
+</p>
+<figure class="figure-like" id="F_1.3.Ex1"><img width="100%" src="images/1_3_Ex1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.3.7</span>The tangent line to \(y = x - x^2\) at the point \((2,-2)\).</figcaption></figure>\hspace{5.0in}<p id="p-107">
+The following activities will help you explore a variety of key ideas related to derivatives.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.3.1" id="A_1.3.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.3.8</span>
+</h5></a></div>
+<div id="hk-A_1.3.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-108">
+Consider the function \(f\) whose formula is \(\displaystyle f(x) = 3 - 2x\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-136">What familiar type of function is \(f\)?  What can you say about the slope of \(f\) at every value of \(x\)?</li>
+<li id="li-137">Compute the average rate of change of \(f\) on the intervals \([1,4]\), \([3,7]\), and \([5,5+h]\); simplify each result as much as possible.  What do you notice about these quantities?</li>
+<li id="li-138">Use the limit definition of the derivative to compute the exact instantaneous rate of change of \(f\) with respect to \(x\) at the value \(a = 1\).  That is, compute \(f'(1)\) using the limit definition.  Show your work.  Is your result surprising?</li>
+<li id="li-139">Without doing any additional computations, what are the values of \(f'(2)\), \(f'(\pi)\), and \(f'(-\sqrt{2})\)?  Why?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-13" id="hint-13"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-13" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-140">If \(f(x) = 3x^2 + 2x - 4\), we say “\(f\) is quadratic.”  If \(f(x) = 5 e^{2x-1}\), we say “\(f\) is exponential.”  What do we say about \(f(x) = 3-2x\).</li>
+<li id="li-141">Remember that to compute the average rate of change of \(f\) on \([a,b]\), we calculate \(\frac{f(b)-f(a)}{b-a}\).</li>
+<li id="li-142">Observe that \(f(1+h) = 3 - 2(1+h) = 3 - 2 - 2h = 1 - 2h\).</li>
+<li id="li-143">Think about the how the graph of \(f\) appears.  What is the same at every point?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-14" id="hint-14"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-14" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-144">Observe that the function \(f\) is of the form \(f(x) = mx + b\).</li>
+<li id="li-145">To compute the average rate of change of \(f\) on \([1,4]\), we calculate \(\frac{f(4)-f(1)}{4-1}\).</li>
+<li id="li-146">Note that \(f(1+h) - f(1) = (3 - 2(1+h)) - (3-2) = 3 - 2 - 2h - 1 = -2h\).</li>
+<li id="li-147">Remember that \(f'(a)\) represents the slope of the function \(f\) at the value \(a\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-7" id="solution-7"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-7" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-148">Because \(f(x) = 3 - 2x\) is of the form \(f(x) = mx + b\), we call \(f\) a <!--Style me with CSS--><em>linear</em> function.</li>
+<li id="li-149">The average rate of change on \([1,4]\) is \(\frac{f(4)-f(1)}{4-1} = \frac{-5 - 1}{3} = -2\).  Similar calculations show the average rate of change on \([3,7]\) is also \(-2\).  On \([5,5+h]\), observe that 
+	
+<span class="displaymath" id="me-27">\[
+\frac{f(5+h)-f(5)}{h} = \frac{3-2(5+h) - (3-10)}{h} = \frac{3 - 10 - 2h + 7}{h} = \frac{-2h}{h} = -2.
+\]</span>
+</li>
+<li id="li-150">Using the limit definition of the derivative, we find that
+	
+<span class="displaymath" id="md-4">\begin{align*}
+f'(1) \amp  = \amp  \lim_{h \to 0} \frac{f(1+h) - f(1)}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{(3 - 2(1+h)) - (3-2)}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{3 - 2 - 2h - 1}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{-2h}{h}\\
+\amp  = \amp  \lim_{h \to 0} -2\\
+\amp  = \amp  -2.
+\end{align*}</span>
+</li>
+</ol></span></span><div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.3.2" id="A_1.3.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.3.9</span>
+</h5></a></div>
+<div id="hk-A_1.3.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-109">
+A water balloon is tossed vertically in the air from a window. The balloon's height in feet at time \(t\) in seconds after being launched is given by \(s(t) = -16t^2 + 16t + 32\). Use this function to respond to each of the following questions.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-151">Sketch an accurate, labeled graph of \(s\) on the axes provided in <a knowl="./knowl/F_1.3.Act2.html" knowl-id="xref-F_1.3.Act2" alt="Figure 1.3.10 " title="Figure 1.3.10 ">Figure 1.3.10</a>.  You should be able to do this without using computing technology.
+	<figure class="figure-like" id="F_1.3.Act2"><img width="100%" src="images/1_3_Act2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.3.10</span>Axes for plotting \(y = s(t)\) in <a knowl="./knowl/A_1.3.2.html" knowl-id="xref-A_1.3.2" alt="Exercise 1.3.9 " title="Exercise 1.3.9 ">Activity 1.3.9</a>.</figcaption></figure>
+</li>
+<li id="li-152">Compute the average rate of change of \(s\) on the time interval \([1,2]\).  Include units on your answer and write one sentence to explain the meaning of the value you found.</li>
+<li id="li-153">Use the limit definition to compute the instantaneous rate of change of \(s\) with respect to time, \(t\), at the instant \(a = 1\).  Show your work using proper notation, include units on your answer, and write one sentence to explain the meaning of the value you found.</li>
+<li id="li-154">On your graph in (a), sketch two lines:  one whose slope represents the average rate of change of \(s\) on \([1,2]\), the other whose slope represents the instantaneous rate of change of \(s\) at the instant \(a=1\).  Label each line clearly.</li>
+<li id="li-155">For what values of \(a\) do you expect \(s'(a)\) to be positive?  Why?  Answer the same questions when “positive” is replaced by “negative” and  “zero.”</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-15" id="hint-15"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-15" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-156">Observe that \((t^2 - t - 2) = (t-2)(t+1)\) and that \(s(t)\) has its vertex at \(t = \frac{1}{2}\).</li>
+<li id="li-157">Recall the formula for average rate of change.</li>
+<li id="li-158">Note that \(s(1+h) = -16(1+h)^2 + 16(1+h) + 32\).</li>
+<li id="li-159">Think about a secant line and a tangent line.</li>
+<li id="li-160">A line with positive slope is one that is rising; a line with negative slope is one that is falling.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-16" id="hint-16"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-16" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-161">Show that the quadratic function has \(t\)-intercepts at \((2,0)\) and \((-1,0)\); \(s\)-intercept \((0,32)\); and vertex at the point where \(t = \frac{1}{2}\).</li>
+<li id="li-162">Compute \(\frac{s(2)-s(1)}{2-1}\).</li>
+<li id="li-163">Observe that \(s(1+h) - s(1) = (-16(1+h)^2 + 16(1+h) + 32) - (-16(1)^2 + 16(1) + 32) = -16 - 32h - 16h^2 + 16 + 16h + 32 - 32\) and combine like terms carefully.</li>
+<li id="li-164">Consider the line through \((1,s(1))\) and \((2,s(2))\), as well as the line through \((1,s(1))\) with slope \(s'(1)\).</li>
+<li id="li-165">Observe that whenever the ball is rising, it's position function is rising, and thus the slope of its tangent line at any such point will be positive.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-8" id="solution-8"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-8" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-166">Since \(s(t) = -16t^2 + 16t + 32 = -16(t^2 - t - 2) = -16(t-2)(t+1)\), \(s\) has \(t\)-intercepts at \((2,0)\) and \((-1,0)\); the \(s\)-intercept is clearly \((0,32)\); and the vertex is \((\frac{1}{2},36)\).</li>
+<li id="li-167">Observe that \(\frac{s(2)-s(1)}{2-1} = \frac{0 - 32}{1} = -32\) feet per second.  This value represents the average rate at which the ball is falling over the time interval from \(t = 1\) to \(t = 2\).</li>
+<li id="li-168">We compute \(s'(1)\) as follows:
+	
+<span class="displaymath" id="md-5">\begin{align*}
+s'(1) \amp  = \amp  \lim_{h \to 0} \frac{s(1+h)-s(1)}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{(-16(1+h)^2 + 16(1+h) + 32) - (-16(1)^2 + 16(1) + 32)}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{-16 - 32h - 16h^2 + 16 + 16h + 32 - 32}{h}\\
+\amp  = \amp  \lim_{h \to 0} \frac{-16h - 16h^2}{h}\\
+\amp  = \amp  \lim_{h \to 0} (-16-16h)\\
+\amp  = \amp  -16.
+\end{align*}</span>
+</li>
+<li id="li-169">We plot and label the secant line through \((1,s(1))\) and \((2,s(2))\), as well as the tangent line through \((1,s(1))\) with slope \(s'(1)\).
+
+	<img width="100%" src="images/1_3_Act2Soln.png">
+</li>
+<li id="li-170">Observe that whenever the ball is rising, it's position function is rising, and thus the slope of its tangent line at any such point will be positive. This means that we should find \(s'(a)\) to be positive whenever \(0 \le a \lt  \frac{1}{2}\), and similarly \(s'(a)\) to be negative whenever \(\frac{1}{2} \lt  a \lt  2\) (which is when the ball is falling).  At the instant \(a = \frac{1}{2}\), the ball is at its vertex and is neither rising nor falling, and at that point, \(s'(\frac{1}{2}) = 0.\)</li>
+</ol></span></span><div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.3.3" id="A_1.3.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.3.11</span>
+</h5></a></div>
+<div id="hk-A_1.3.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-110">
+A rapidly growing city in Arizona has its population \(P\) at time \(t\), where \(t\) is the number of decades after the year 2010, modeled by the formula \(P(t) = 25000 e^{t/5}\). Use this function to respond to the following questions.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-171">Sketch an accurate graph of \(P\) for \(t = 0\) to \(t = 5\) on the axes provided in <a knowl="./knowl/F_1.3.Act3.html" knowl-id="xref-F_1.3.Act3" alt="Figure 1.3.12 " title="Figure 1.3.12 ">Figure 1.3.12</a>.  Label the scale on the axes carefully.
+	<figure class="figure-like" id="F_1.3.Act3"><img width="100%" src="images/1_3_Act3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.3.12</span>Axes for plotting \(y = P(t)\) in <a knowl="./knowl/A_1.3.3.html" knowl-id="xref-A_1.3.3" alt="Exercise 1.3.11 " title="Exercise 1.3.11 ">Activity 1.3.11</a>.</figcaption></figure>
+</li>
+<li id="li-172">Compute the average rate of change of \(P\) between 2030 and 2050.  Include units on your answer and write one sentence to explain the meaning (in everyday language) of the value you found.</li>
+<li id="li-173">Use the limit definition to write an expression for the instantaneous rate of change of \(P\) with respect to time, \(t\), at the instant \(a = 2\).  Explain why this limit is difficult to evaluate exactly.</li>
+<li id="li-174">Estimate the limit in (c) for the instantaneous rate of change of \(P\) at the instant \(a = 2\) by using several small \(h\) values.  Once you have determined an accurate estimate of \(P'(2)\), include units on your answer, and write one sentence (using everyday language) to explain the meaning of the value you found.</li>
+<li id="li-175">On your graph above, sketch two lines:  one whose slope represents the average rate of change of \(P\) on \([2,4]\), the other whose slope represents the instantaneous rate of change of \(P\) at the instant \(a=2\).</li>
+<li id="li-176">In a carefully-worded sentence, describe the behavior of \(P'(a)\) as \(a\) increases in value.  What does this reflect about the behavior of the given function \(P\)?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-17" id="hint-17"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-17" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-177">\(P(t)\) is the standard exponential function, scaled by \(25000\).</li>
+<li id="li-178">Use the formula for the average rate of change of a function.</li>
+<li id="li-179">Because of the exponential nature of \(P(t)\), we're not able to simplify \(\frac{P(2+h)-P(2)}{h}\) in a way that removes \(h\) from the denominator.</li>
+<li id="li-180">Try using \(h = 0.001, 0.0001, 0.00001\) and \(h = -0.001, -0.0001, -0.00001\).  Be careful not to round or use computing precision that is too limited.</li>
+<li id="li-181">For the first line, think about the points \((2,P(2))\) and \((4,P(4))\).</li>
+<li id="li-182">Visualize the slope of the tangent line and how it changes as a point moves along the curve.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-18" id="hint-18"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-18" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-183">\(P(t)\) is the standard exponential function, scaled by \(25000\).</li>
+<li id="li-184">Remember that \(AV_{[2,4]} = \frac{P(4)-P(2)}{4-2}\), and that the units on \(P\) are people, while \(t\) is the number of decades after 2010.</li>
+<li id="li-185">Note that
+	
+<span class="displaymath" id="me-28">\[
+P'(2) = \lim_{h \to 0} \frac{P(2+h)-P(2)}{h} = \lim_{h \to 0} \frac{25000 e^{2+h}-25000e^2}{h}.
+\]</span>
+</li>
+<li id="li-186">Try using \(h = 0.001, 0.0001, 0.00001\) and \(h = -0.001, -0.0001, -0.00001\).  Be careful not to round or use computing precision that is too limited.  Think about how using the two values of \(h\) nearest 0 together could give you the most accurate result.</li>
+<li id="li-187">For the first line, think about the points \((2,P(2))\) and \((4,P(4))\).  For the second, try the line through \((2,P(2))\) with slope \(P'(2)\).</li>
+<li id="li-188">Visualize the slope of the tangent line and how it changes as a point moves along the curve.  Does the slope of the tangent line increase, decrease, or stay the same as the point of tangency moves along the curve from right to left?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-9" id="solution-9"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-9" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-189"><img width="100%" src="images/1_3_Act3.png"></li>
+<li id="li-190">\(AV_{[2,4]} = \frac{P(4)-P(2)}{4-2} = \frac{25000e^{4/5} - 25000e^{2/5}}{2} \approx 9171\) people per decade is expected to be the average rate of change of the city's population over the two decades from 2030 to 2050.</li>
+<li id="li-191">Note that
+	
+<span class="displaymath" id="md-6">\begin{align*}
+P'(2) \amp  = \amp  \lim_{h \to 0} \frac{P(2+h)-P(2)}{h} = \lim_{h \to 0} \frac{25000 e^{(2+h)/5}-25000e^{2/5}}{h}\\
+\amp  = \amp   \lim_{h \to 0} \frac{25000 e^{2/5} e^{h/5} -25000e^{2/5}}{h} =  \lim_{h \to 0} 25000e^{2/5}\left( \frac{e^{h/5} - 1}{h}\right)
+\end{align*}</span>
+ 
+Because there is no way to remove a factor of \(h\) from the numerator, we cannot eliminate the \(h\) that is making the denominator go to zero, so it appears we need to be content estimating the limit with small values of \(h\).</li>
+<li id="li-192">Using \(h = 0.00001\), we find \(\frac{P(2+0.00001)-P(2)}{0.00001} \approx 7457\); using \(h = -0.00001\), we find \(\frac{P(2-0.00001)-P(2)}{-0.00001} \approx 7460\).  Averaging these two results, we find that
+	
+<span class="displaymath" id="me-29">\[
+P'(2) =  \lim_{h \to 0} \frac{P(2+h)-P(2)}{h} \approx 7458.5
+\]</span>
+ 
+	which is measured in people per decade.</li>
+<li id="li-193">See the graph provided in (a) above.  The magenta line has slope equal to the average rate of change of \(P\) on \([2,4]\), while the green line is the tangent line at \((2,P(2))\) with slope \(P'(2)\).</li>
+<li id="li-194">If we consider the point where \(t = a\) and let \(a\) start at 0 and then increase, it appears that the tangent line's slope at the point \((a,P(a))\) will increase as \(a\) increases.</li>
+</ol></span></span><p id="p-111">
+\begin{authornote}
+This is an author note.
+\end{authornote}
+</p>
+<p id="p-112">
+\item The average rate of change of a function \(f\) on the interval \([a,b]\) is \(\ds \frac{f(b)-f(a)}{b-a}\). The units on the average rate of change are units of \(f\) per unit of \(x\), and the numerical value of the average rate of change represents the slope of the secant line between the points \((a,f(a))\) and \((b,f(b))\) on the graph of \(y = f(x)\). If we view the interval as being \([a,a+h]\) instead of \([a,b]\), the meaning is still the same, but the average rate of change is now computed by \(\ds \frac{f(a+h)-f(a)}{h}\).
+\item The instantaneous rate of change with respect to \(x\) of a function \(f\) at a value \(x = a\) is denoted \(f'(a)\) (read “the derivative of \(f\) evaluated at \(a\)” or “\(f\)-prime at \(a\)”) and is defined by the formula
+</p>
+<span class="displaymath" id="me-30">\[
+f'(a) = \lim_{h \to 0} \frac{f(a+h)-f(a)}{h},
+\]</span><p id="p-113">
+provided the limit exists. Note particularly that the instantaneous rate of change at \(x = a\) is the limit of the average rate of change on \([a,a+h]\) as \(h \to 0\).
+\item Provided the derivative \(f'(a)\) exists, its value tells us the instantaneous rate of change of \(f\) with respect to \(x\) at \(x = a\), which geometrically is the slope of the tangent line to the curve \(y = f(x)\) at the point \((a,f(a))\). We even say that \(f'(a)\) is the <!--Style me with CSS--><em>slope of the curve</em> \(y = f(x)\) at the point \((a,f(a))\).
+\item Limits are the link between average rate of change and instantaneous rate of change: they allow us to move from the rate of change over an interval to the rate of change at a single point.
+</p>
+<p id="p-114">
+\hrulefill
+</p>
+<p id="p-115">
+\begin{exercises}
+\item Consider the graph of \(y = f(x)\) provided in <a knowl="./knowl/F_1.3.Ez1.html" knowl-id="xref-F_1.3.Ez1" alt="Figure 1.3.13 " title="Figure 1.3.13 ">Figure 1.3.13</a>.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-195">On the graph of \(y = f(x)\), sketch and label the following quantities:
+		<ul style="list-style-type: disc;">
+<li id="li-196">the secant line to \(y = f(x)\) on the interval \([-3,-1]\) and the secant line to \(y = f(x)\) on the interval \([0,2]\).</li>
+<li id="li-197">the tangent line to \(y = f(x)\) at \(x = -3\) and the tangent line to \(y = f(x)\) at \(x = 0\).</li>
+</ul>
+<figure class="figure-like" id="F_1.3.Ez1"><img width="100%" src="images/1_3_Ez1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.3.13</span>Plot of \(y = f(x)\).</figcaption></figure>
+</li>
+<li id="li-198">What is the approximate value of the average rate of change of \(f\) on \([-3,-1]\)?  On \([0,2]\)?  How are these values related to your work in (a)?</li>
+<li id="li-199">What is the approximate value of the instantaneous rate of change of \(f\) at \(x = -3\)?  At \(x = 0\)?  How are these values related to your work in (a)?</li>
+</ol>
+<p id="p-116">
+\item For each of the following prompts, sketch a graph on the provided axes in <a knowl="./knowl/F_1.3.Ez2.html" knowl-id="xref-F_1.3.Ez2" alt="Figure 1.3.14 " title="Figure 1.3.14 ">Figure 1.3.14</a> of a function that has the stated properties.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-200">\(y = f(x)\) such that 
+	<ul style="list-style-type: disc;">
+<li id="li-201">the average rate of change of \(f\) on \([-3,0]\) is \(-2\) and the average rate of change of \(f\) on \([1,3]\) is 0.5, and</li>
+<li id="li-202">the instantaneous rate of change of \(f\) at \(x = -1\) is \(-1\) and the instantaneous rate of change of \(f\) at \(x = 2\) is 1.</li>
+</ul>
+</li>
+<li id="li-203">\(y = g(x)\) such that
+	<ul style="list-style-type: disc;">
+<li id="li-204">\(\frac{g(3)-g(-2)}{5} = 0\) and \(\frac{g(1)-g(-1)}{2} = -1\), and</li>
+<li id="li-205">\(g'(2) = 1\) and \(g'(-1) = 0\)</li>
+</ul>
+<figure class="figure-like" id="F_1.3.Ez2"><img width="100%" src="images/1_2_Ez3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.3.14</span>Axes for plotting \(y = f(x)\) in (a) and \(y = g(x)\) in (b).</figcaption></figure>
+</li>
+</ol>
+<p id="p-117">
+\item Suppose that the population, \(P\), of China (in billions) can be approximated by the function \(P(t) = 1.15(1.014)^t\) where \(t\) is the number of years since the start of 1993.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-206">According to the model, what was the total change in the population of China between January 1, 1993 and January 1, 2000?  What will be the average rate of change of the population over this time period?  Is this average rate of change greater or less than the instantaneous rate of change of the population on January 1, 2000?  Explain and justify, being sure to include proper units on all your answers.</li>
+<li id="li-207">According to the model, what is the average rate of change of the population of China in the ten-year period starting on January 1, 2012?</li>
+<li id="li-208">Write an expression involving limits that, if evaluated, would give the exact instantaneous rate of change of the population on today's date.  Then estimate the value of this limit (discuss how you chose to do so) and explain the meaning (including units) of the value you have found.</li>
+<li id="li-209">Find an equation for the tangent line to the function \(y = P(t)\) at the point where the \(t\)-value is given by today's date.</li>
+</ol>
+<p id="p-118">
+\item The goal of this problem is to compute the value of the derivative at a point for several different functions, where for each one we do so in three different ways, and then to compare the results to see that each produces the same value.
+</p>
+<p id="p-119">
+For each of the following functions, use the limit definition of the derivative to compute the value of \(f'(a)\) using three different approaches: strive to use the algebraic approach first (to compute the limit exactly), then test your result using numerical evidence (with small values of \(h\)), and finally plot the graph of \(y = f(x)\) near \((a,f(a))\) along with the appropriate tangent line to estimate the value of \(f'(a)\) visually. Compare your findings among all three approaches; if you are unable to complete the algebraic approach, still work numerically and graphically.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-210">\(f(x) = x^2 - 3x\), \(a = 2\)</li>
+<li id="li-211">\(f(x) = \frac{1}{x}\), \(a = 1\)</li>
+<li id="li-212">\(f(x) = \sqrt{x}\), \(a = 1\)</li>
+<li id="li-213">\(f(x) = 2 - |x-1|\), \(a = 1\)</li>
+<li id="li-214">\(f(x) = \sin(x)\), \(a = \frac{\pi}{2}\)</li>
+</ol>
+<p id="p-120">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-121">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

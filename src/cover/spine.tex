@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage[margin=0in,noheadfoot,paperwidth=9.94in,paperheight=1.5in]{geometry}
+\pagestyle{empty}
+\setlength{\parindent}{0in}
+\usepackage{tgadventor}
+\renewcommand*\familydefault{\sfdefault}
+\usepackage[letterspace=70]{microtype}
+\usepackage{xcolor}
+\definecolor{covergreen}{rgb}{0.1,0.5,0.5}
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\begin{document}
+\begin{tikzpicture}[x=1in,y=1in]
+\clip (-0.125,0) rectangle (9.905,1.5);
+\draw[fill=covergreen] (-0.125,0) rectangle (9.905,1.5);
+\foreach \x in {-.1,-0.05,...,9.9} {
+    \foreach \y in {.1,0.15,...,1.4} {
+       \pgfmathsetmacro{\vx}{(\y-.625)*0.025}
+        \pgfmathsetmacro{\vy}{sin(45*\x)*0.025}
+        \draw[thick,color=white,opacity=.3] (\x-\vx,\y-\vy) -- (\x+\vx, \y+\vy);
+    }
+}
+\node[scale=4,anchor=mid] at (3.3,.675) {{\color{white}\textls{\textbf{ACTIVE CALCULUS}}}};
+\node[scale=1.75,anchor=mid] at (7.75,.7) {{\color{white}{Boelkins/Austin/Schlicker}}};
+
+\end{tikzpicture}
+\end{document}

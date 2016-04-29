@@ -1,0 +1,117 @@
+\section{Constructing Accurate Graphs of Antiderivatives} \label{S:5.1.AntiDGraphs}
+
+\vspace*{-14 pt}
+\framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{\begin{goals}
+\item Given the graph of a function's derivative, how can we construct a completely accurate graph of the original function?
+\item How many antiderivatives does a given function have?  What do those antiderivatives all have in common?
+\item Given a function $f$, how does the rule $A(x) = \int_0^x f(t) \, dt$ define a new function $A$?
+\end{goals}} \hspace*{3 pt}}
+
+\subsection*{Introduction}
+
+A recurring theme in our discussion of differential calculus has been the question ``Given information about the derivative of an unknown function $f$, how much information can we obtain about $f$ itself?''  For instance, in Activity~\ref{A:1.8.2}, we explored the situation where the graph of $y = f'(x)$ was known (along with the value of $f$ at a single point) and endeavored to sketch a possible graph of $f$ near the known point.  In Example~\ref{Ex:f_from_f'} -- and indeed throughout Section~\ref{S:3.1.Tests} -- we investigated how the first derivative test enables us to use information regarding $f'$ to determine where the original function $f$ is increasing and decreasing, as well as where $f$ has relative extreme values.  Further, if we know a formula or graph of $f'$, by computing $f''$ we can find where the original function $f$ is concave up and concave down.  Thus, the combination of knowing $f'$ and $f''$ enables us to fully understand the shape of the graph of $f$.
+
+We returned to this question in even more detail in Section~\ref{S:4.1.VelocityDistance}; there, we considered the situation where we knew the instantaneous velocity of a moving object and worked from that information to determine as much information as possible about the object's position function.  We found key connections between the net-signed area under the velocity function and the corresponding change in position of the function; in Section~\ref{S:4.4.FTC}, the Total Change Theorem further illuminated these connections between $f'$ and $f$ in a more general setting, such as the one found in Figure~\ref{F:4.4.TCT}, showing that the total change in the value of $f$ over an interval $[a,b]$ is determined by the exact net-signed area bounded by $f'$ and the $x$-axis on the same interval.
+
+In what follows, we explore these issues still further, with a particular emphasis on the situation where we possess an accurate graph of the derivative function along with a single value of the function $f$.  From that information, we desire to completely determine an accurate graph of $f$ that not only represents correctly where $f$ is increasing, decreasing, concave up, and concave down, but also allows us to find an accurate function value at any point of interest to us.
+
+\input{previews/5.1.PA1}
+
+\subsection*{Constructing the graph of an antiderivative}\index{antiderivative!graph}
+
+Preview Activity~\ref{PA:5.1} demonstrates that when we can find the exact area under a given graph on any given interval, it is possible to construct an accurate graph of the given function's antiderivative: that is, we can find a representation of a function whose derivative is the given one.  While we have considered this question at different points throughout our study, it is important to note here that we now can determine not only the overall shape of the antiderivative, but also the actual \emph{height} of the antiderivative at any point of interest.
+
+Indeed, this is one key consequence of the Fundamental Theorem of Calculus:  if we know a function $f$ and wish to know information about its antiderivative, $F$, provided that we have some starting point $a$ for which we know the value of $F(a)$, we can determine the value of $F(b)$ via the definite integral.  In particular, since $F(b) - F(a) = \int_a^b f(x) \, dx$, it follows that 
+\begin{equation} \label{E:FTCTCT}
+F(b) = F(a) + \int_a^b f(x) \, dx.
+\end{equation}
+Moreover, in the discussion surrounding Figure~\ref{F:4.4.TCT}, we made the observation that differences in heights of a function correspond to net-signed areas bounded by its derivative.  Rephrasing this in terms of a given function $f$ and its antiderivative $F$, we observe that on an interval $[a,b]$,
+\begin{quote}
+\emph{differences in heights on the antiderivative} (\emph{such as $F(b) - F(a)$}) \emph{correspond to the net-signed area bounded by the original function on the interval $[a,b]$} ($\int_a^b f(x) \, dx$).
+\end{quote}
+For example, say that $f(x) = x^2$ and that we are interested in an antiderivative of $f$ that satisfies $F(1) = 2$.  Thinking of $a = 1$ and $b = 2$ in Equation~(\ref{E:FTCTCT}), it follows from the Fundamental Theorem of Calculus that
+\begin{eqnarray*}
+F(2) & = & F(1) + \int_1^2 x^2 \, dx \\
+	& = & 2 + \left. \frac{1}{3}x^3 \right|_1^2 \\
+	& = & 2 + \left(\frac{8}{3} - \frac{1}{3}\right) \\
+	& = & \frac{13}{3}.
+\end{eqnarray*}
+In this way, we see that if we are given a function $f$ for which we can find the exact net-signed area bounded by $f$ on a given interval, along with one value of a corresponding antiderivative $F$, we can find any other value of $F$ that we seek, and in this way construct a completely accurate graph of $F$.  We have two main options for finding the exact net-signed area:  using the Fundamental Theorem of Calculus (which requires us to find an algebraic formula for an antiderivative of the given function $f$), or, in the case where $f$ has nice geometric properties, finding net-signed areas through the use of known area formulas.
+
+\input{activities/5.1.Act1}
+
+\subsection*{Multiple antiderivatives of a single function}%\index{}\index{}
+
+In the final question of Activity~\ref{A:5.1.1}, we encountered a very important idea:  a given function $f$ has more than one antiderivative.  In addition, any antiderivative of $f$ is determined uniquely by identifying the value of the desired antiderivative at a single point.  For example, suppose that $f$ is the function given at left in Figure~\ref{F:5.1.Ex1},
+\begin{figure}[h]
+\begin{center}
+\includegraphics{figures/5_1_Ex1.eps}
+\end{center}
+\caption{At left, the graph of $y = f(x)$.  At right, three different antiderivatives of $f$.} \label{F:5.1.Ex1}
+\end{figure}
+and we say that $F$ is an antiderivative of $f$ that satisfies $F(0) = 1$.  
+
+Then, using Equation~\ref{E:FTCTCT}, we can compute $F(1) = 1.5$, $F(2) = 1.5$, $F(3) = -0.5$, $F(4) = -2$, $F(5) = -0.5$, and $F(6) = 1$, plus we can use the fact that $F' = f$ to ascertain where $F$ is increasing and decreasing, concave up and concave down, and has relative extremes and inflection points.  Through work similar to what we encountered in Preview Activity~\ref{PA:5.1} and Activity~\ref{A:5.1.1}, we ultimately find that the graph of $F$ is the one given in blue in Figure~\ref{F:5.1.Ex1}.
+
+If we instead chose to consider a function $G$ that is an antiderivative of $f$ but has the property that $G(0) = 3$, then $G$ will have the exact same shape as $F$ (since both share the derivative $f$), but $G$ will be shifted vertically away from the graph of $F$, as pictured in red in Figure~\ref{F:5.1.Ex1}.  Note that $G(1) - G(0) = \int_0^1 f(x) \, dx = 0.5$, just as $F(1) - F(0) = 0.5,$, but since $G(0) = 3$, $G(1) = G(0) + 0.5 = 3.5$, whereas $F(1) = F(0) + 0.5 = 1.5$, since $F(0) = 1$.  In the same way, if we assigned a different initial value to the antiderivative, say $H(0) = -1$, we would get still another antiderivative, as shown in magenta in Figure~\ref{F:5.1.Ex1}.
+
+This example demonstrates an important fact that holds more generally: 
+
+ \vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+If $G$ and $H$ are both antiderivatives of a function $f$, then the function $G - H$ must be constant.
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+\nin To see why this result holds, observe that if $G$ and $H$ are both antiderivatives of $f$, then $G' = f$ and $H' = f$.  Hence, $\frac{d}{dx}[ G(x) - H(x) ] = G'(x) - H'(x) = f(x) - f(x) = 0$.  Since the only way a function can have derivative zero is by being a constant function, it follows that the function $G - H$ must be constant.
+
+Further, we now see that if a function has a single antiderivative, it must have infinitely many: we can add any constant of our choice to the antiderivative and get another antiderivative.  For this reason, we sometimes refer to the \emph{general antiderivative} \index{antiderivative!general} of a function $f$.  For example, if $f(x) = x^2$, its general antiderivative is $F(x) = \frac{1}{3}x^3 + C$, where we include the ``$+C$'' to indicate that $F$ includes \emph{all} of the possible antiderivatives of $f$.  To identify a particular antiderivative of $f$, we must be provided a single value of the antiderivative $F$ (this value is often called an \emph{initial condition}\index{initial condition}).  In the present example, suppose that condition is $F(2) = 3$; substituting the value of 2 for $x$ in  $F(x) = \frac{1}{3}x^3 + C$, we find that
+$$3 = \frac{1}{3}(2)^3 + C,$$
+and thus $C = 3 - \frac{8}{3} = \frac{1}{3}$.  Therefore, the particular antiderivative in this case is $F(x) = \frac{1}{3}x^3 + \frac{1}{3}.$
+
+\input{activities/5.1.Act2}
+
+\subsection*{Functions defined by integrals}
+
+In Equation~(\ref{E:FTCTCT}), we found an important rule that enables us to compute the value of the antiderivative $F$ at a point $b$, provided that we know $F(a)$ and can evaluate the definite integral from $a$ to $b$ of $f$.  Again, that rule is
+$$F(b) = F(a) + \int_a^b f(x) \, dx.$$
+In several examples, we have used this formula to compute several different values of $F(b)$ and then plotted the points $(b,F(b))$ to assist us in generating an accurate graph of $F$.  That suggests that we may want to think of $b$, the upper limit of integration, as a variable itself.  To that end, we introduce the idea of an \emph{integral function}\index{integral function}, a function whose formula involves a definite integral.
+
+Given a continuous function $f$, we define the corresponding integral function $A$ according to the rule 
+\begin{equation} \label{E:intfxn}
+A(x) = \int_a^x f(t) \, dt.
+\end{equation}
+Note particularly that because we are using the variable $x$ as the independent variable in the function $A$, and $x$ determines the other endpoint of the interval over which we integrate (starting from $a$), we need to use a variable other than $x$ as the variable of integration.  A standard choice is $t$, but any variable other than $x$ is acceptable.
+
+One way to think of the function $A$ is as the ``net-signed area from $a$ up to $x$'' function, where we consider the region bounded by $y = f(t)$ on the relevant interval.  For example, in Figure~\ref{F:5.1.IntFxn}, we see a given function $f$ pictured at left, and its corresponding area function (choosing $a = 0$), $A(x) = \int_0^x f(t) \, dt$ shown at right.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics{figures/5_1_IntFxn.eps}
+\end{center}
+\caption{At left, the graph of the given function $f$.  At right, the area function $A(x) = \int_0^x f(t) \, dt$.} \label{F:5.1.IntFxn}
+\end{figure}
+
+Note particularly that the function $A$ measures the net-signed area from $t = 0$ to $t = x$ bounded by the curve $y = f(t)$; this value is then reported as the corresponding height on the graph of $y = A(x)$.  It is even more natural to think of this relationship between $f$ and $A$ dynamically.  At \href{http://gvsu.edu/s/cz}{\texttt{http://gvsu.edu/s/cz}}, we find a java applet\footnote{David Austin, Grand Valley State University} that brings the static picture in Figure~\ref{F:5.1.IntFxn} to life.  There, the user can move the red point on the function $f$ and see how the corresponding height changes at the light blue point on the graph of $A$.
+
+The choice of $a$ is somewhat arbitrary.  In the activity that follows, we explore how the value of $a$ affects the graph of the integral function, as well as some additional related issues.
+
+\input{activities/5.1.Act3}
+
+
+%\nin \framebox{\hspace*{3 pt}
+%\parbox{6.25 in}{
+\begin{summary}
+\item Given the graph of a function $f$, we can construct the graph of its antiderivative $F$ provided that (a) we know a starting value of $F$, say $F(a)$, and (b) we can evaluate the integral $\int_a^b f(x) \, dx$ exactly for relevant choices of $a$ and $b$.  For instance, if we wish to know $F(3)$, we can compute $F(3) = F(a) + \int_a^3 f(x) \, dx$.  When we combine this information about the function values of $F$ together with our understanding of how the behavior of $F' = f$ affects the overall shape of $F$, we can develop a completely accurate graph of the antiderivative $F$.
+\item Because the derivative of a constant is zero, if $F$ is an antiderivative of $f$, it follows that $G(x) = F(x) + C$ will also be an antiderivative of $f$.  Moreover, any two antiderivatives of a function $f$ differ precisely by a constant.  Thus, any function with at least one antiderivative in fact has infinitely many, and the graphs of any two antiderivatives will differ only by a vertical translation.
+\item Given a function $f$, the rule $A(x) = \int_a^x f(t) \, dt$ defines a new function $A$ that measures the net-signed area bounded by $f$ on the interval $[a,x]$.  We call the function $A$ the integral function corresponding to $f$.
+\end{summary}
+%} \hspace*{3 pt}}
+
+\nin \hrulefill
+
+\input{exercises/5.1.AntiDGraphs(Ex)} 
+
+\clearpage

@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:45-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Constructing Accurate Graphs of Antiderivatives</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="C_5.html">Previous</a><a class="up-button button toolbar-item" href="C_5.html">Up</a><a class="next-button button toolbar-item" href="S_5.2.FTC2.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="C_5.html">Previous</a><a class="up-button button toolbar-item" href="C_5.html">Up</a><a class="next-button button toolbar-item" href="S_5.2.FTC2.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link active"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html" class="active">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_5.1.AntiDGraphs"><header><h1 class="heading" alt="Section 5.1 Constructing Accurate Graphs of Antiderivatives" title="Section 5.1 Constructing Accurate Graphs of Antiderivatives">
+<span class="type">Section</span><span class="codenumber">5.1</span><span class="title">Constructing Accurate Graphs of Antiderivatives</span><a href="S_5.1.AntiDGraphs.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-26"><h5 class="heading"></h5>
+<p id="p-1131">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1871">Given the graph of a function's derivative, how can we construct a completely accurate graph of the original function?</li>
+<li id="li-1872">How many antiderivatives does a given function have?  What do those antiderivatives all have in common?</li>
+<li id="li-1873">Given a function \(f\), how does the rule \(A(x) = \int_0^x f(t) \, dt\) define a new function \(A\)?</li>
+</ul>
+<p id="p-1132">
+} 
+</p></article><section class="subsection" id="subsection-79"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">5.1.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-1133">
+A recurring theme in our discussion of differential calculus has been the question “Given information about the derivative of an unknown function \(f\), how much information can we obtain about \(f\) itself?” For instance, in <a knowl="./knowl/A_1.8.2.html" knowl-id="xref-A_1.8.2" alt="Exercise 1.8.6 " title="Exercise 1.8.6 ">Activity 1.8.6</a>, we explored the situation where the graph of \(y = f'(x)\) was known (along with the value of \(f\) at a single point) and endeavored to sketch a possible graph of \(f\) near the known point. In <a knowl="./knowl/Ex_f_from_f_.html" knowl-id="xref-Ex_f_from_f_" alt="Example 3.1.4 " title="Example 3.1.4 ">Example 3.1.4</a> – and indeed throughout <a href="S_3.1.Tests.html" alt="Section 3.1 Using derivatives to identify extreme values" title="Section 3.1 Using derivatives to identify extreme values">Section 3.1</a> – we investigated how the first derivative test enables us to use information regarding \(f'\) to determine where the original function \(f\) is increasing and decreasing, as well as where \(f\) has relative extreme values. Further, if we know a formula or graph of \(f'\), by computing \(f''\) we can find where the original function \(f\) is concave up and concave down. Thus, the combination of knowing \(f'\) and \(f''\) enables us to fully understand the shape of the graph of \(f\).
+</p>
+<p id="p-1134">
+We returned to this question in even more detail in <a href="S_4.1.VelocityDistance.html" alt="Section 4.1 Determining distance traveled from velocity" title="Section 4.1 Determining distance traveled from velocity">Section 4.1</a>; there, we considered the situation where we knew the instantaneous velocity of a moving object and worked from that information to determine as much information as possible about the object's position function. We found key connections between the net-signed area under the velocity function and the corresponding change in position of the function; in <a href="S_4.4.FTC.html" alt="Section 4.4 The Fundamental Theorem of Calculus" title="Section 4.4 The Fundamental Theorem of Calculus">Section 4.4</a>, the Total Change Theorem further illuminated these connections between \(f'\) and \(f\) in a more general setting, such as the one found in <a knowl="./knowl/F_4.4.TCT.html" knowl-id="xref-F_4.4.TCT" alt="Figure 4.4.7 " title="Figure 4.4.7 ">Figure 4.4.7</a>, showing that the total change in the value of \(f\) over an interval \([a,b]\) is determined by the exact net-signed area bounded by \(f'\) and the \(x\)-axis on the same interval.
+</p>
+<p id="p-1135">
+In what follows, we explore these issues still further, with a particular emphasis on the situation where we possess an accurate graph of the derivative function along with a single value of the function \(f\). From that information, we desire to completely determine an accurate graph of \(f\) that not only represents correctly where \(f\) is increasing, decreasing, concave up, and concave down, but also allows us to find an accurate function value at any point of interest to us.
+</p>
+<article class="paragraphs" id="PA_5.1"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1136">
+Suppose that the following information is known about a function \(f\): the graph of its derivative, \(y = f'(x)\), is given in <a knowl="./knowl/F_5.1.PA1.html" knowl-id="xref-F_5.1.PA1" alt="Figure 5.1.1 " title="Figure 5.1.1 ">Figure 5.1.1</a>. Further, assume that \(f'\) is piecewise linear (as pictured) and that for \(x \le 0\) and \(x \ge 6\), \(f'(x) = 0\). Finally, it is given that \(f(0) = 1\).
+</p>
+<figure class="figure-like" id="F_5.1.PA1"><img width="100%" src="images/5_1_PA1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.1.1</span>At left, the graph of \(y = f'(x)\); at right, axes for plotting \(y = f(x)\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1874">On what interval(s) is \(f\) an increasing function?  On what intervals is \(f\) decreasing?</li>
+<li id="li-1875">On what interval(s) is \(f\) concave up?  concave down?</li>
+<li id="li-1876">At what point(s) does \(f\) have a relative minimum?  a relative maximum?</li>
+<li id="li-1877">Recall that the Total Change Theorem tells us that 
+
+<span class="displaymath" id="me-491">\[
+f(1) - f(0) = \int_0^1 f'(x) \, dx.
+\]</span>
+ 
+What is the exact value of \(f(1)\)?</li>
+<li id="li-1878">Use the given information and similar reasoning to that in (d) to determine the exact value of \(f(2)\), \(f(3)\), \(f(4)\), \(f(5)\), and \(f(6)\).</li>
+<li id="li-1879">Based on your responses to all of the preceding questions, sketch a complete and accurate graph of \(y = f(x)\) on the axes provided, being sure to indicate the behavior of \(f\) for \(x \lt  0\) and \(x &gt; 6\).</li>
+</ol></article></section><section class="subsection" id="subsection-80"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">5.1.2</span><span class="title">Constructing the graph of an antiderivative</span>
+</h1></header><p id="p-1137">
+\knownindex{\lt main&gt;antiderivative\lt /main&gt;\lt sub&gt;graph\lt /sub&gt;}
+</p>
+<p id="p-1138">
+Preview <a href="S_5.1.AntiDGraphs.html#PA_5.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> demonstrates that when we can find the exact area under a given graph on any given interval, it is possible to construct an accurate graph of the given function's antiderivative: that is, we can find a representation of a function whose derivative is the given one. While we have considered this question at different points throughout our study, it is important to note here that we now can determine not only the overall shape of the antiderivative, but also the actual <!--Style me with CSS--><em>height</em> of the antiderivative at any point of interest.
+</p>
+<p id="p-1139">
+Indeed, this is one key consequence of the Fundamental Theorem of Calculus: if we know a function \(f\) and wish to know information about its antiderivative, \(F\), provided that we have some starting point \(a\) for which we know the value of \(F(a)\), we can determine the value of \(F(b)\) via the definite integral. In particular, since \(F(b) - F(a) = \int_a^b f(x) \, dx\), it follows that
+</p>
+<span class="displaymath" id="E_FTCTCT">\begin{equation}
+ F(b) = F(a) + \int_a^b f(x) \, dx.
+\label{E_FTCTCT}\tag{5.1.1}\end{equation}</span><p id="p-1140">
+Moreover, in the discussion surrounding <a knowl="./knowl/F_4.4.TCT.html" knowl-id="xref-F_4.4.TCT" alt="Figure 4.4.7 " title="Figure 4.4.7 ">Figure 4.4.7</a>, we made the observation that differences in heights of a function correspond to net-signed areas bounded by its derivative. Rephrasing this in terms of a given function \(f\) and its antiderivative \(F\), we observe that on an interval \([a,b]\),
+</p>
+<!--Style me with CSS--><em>differences in heights on the antiderivative</em> (<!--Style me with CSS--><em>such as \(F(b) - F(a)\)</em>) <!--Style me with CSS--><em>correspond to the net-signed area bounded by the original function on the interval \([a,b]\)</em> (\(\int_a^b f(x) \, dx\)).<p id="p-1141">
+For example, say that \(f(x) = x^2\) and that we are interested in an antiderivative of \(f\) that satisfies \(F(1) = 2\). Thinking of \(a = 1\) and \(b = 2\) in Equation <a knowl="./knowl/E_FTCTCT.html" knowl-id="xref-E_FTCTCT" alt="Equation 5.1.1 " title="Equation 5.1.1 ">(5.1.1)</a>, it follows from the Fundamental Theorem of Calculus that
+</p>
+<span class="displaymath" id="md-55">\begin{align*}
+F(2) \amp  = \amp  F(1) + \int_1^2 x^2 \, dx\\
+\amp  = \amp  2 + \left. \frac{1}{3}x^3 \right|_1^2\\
+\amp  = \amp  2 + \left(\frac{8}{3} - \frac{1}{3}\right)\\
+\amp  = \amp  \frac{13}{3}.
+\end{align*}</span><p id="p-1142">
+In this way, we see that if we are given a function \(f\) for which we can find the exact net-signed area bounded by \(f\) on a given interval, along with one value of a corresponding antiderivative \(F\), we can find any other value of \(F\) that we seek, and in this way construct a completely accurate graph of \(F\). We have two main options for finding the exact net-signed area: using the Fundamental Theorem of Calculus (which requires us to find an algebraic formula for an antiderivative of the given function \(f\)), or, in the case where \(f\) has nice geometric properties, finding net-signed areas through the use of known area formulas.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_5.1.1" id="A_5.1.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">5.1.2</span>
+</h5></a></div>
+<div id="hk-A_5.1.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1143">
+Suppose that the function \(y = f(x)\) is given by the graph shown in <a knowl="./knowl/F_5.1.Act1.html" knowl-id="xref-F_5.1.Act1" alt="Figure 5.1.3 " title="Figure 5.1.3 ">Figure 5.1.3</a>, and that the pieces of \(f\) are either portions of lines or portions of circles. In addition, let \(F\) be an antiderivative of \(f\) and say that \(F(0) = -1\). Finally, assume that for \(x \le 0\) and \(x \ge 7\), \(f(x) = 0\).
+</p>
+<figure class="figure-like" id="F_5.1.Act1"><img width="100%" src="images/5_1_Act1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.1.3</span>At left, the graph of \(y = f(x)\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1880">On what interval(s) is \(F\) an increasing function?  On what intervals is \(F\) decreasing?</li>
+<li id="li-1881">On what interval(s) is \(F\) concave up?  concave down? neither?</li>
+<li id="li-1882">At what point(s) does \(F\) have a relative minimum?  a relative maximum?</li>
+<li id="li-1883">Use the given information to determine the exact value of \(F(x)\) for \(x = 1, 2, \ldots, 7\).  In addition, what are the values of \(F(-1)\) and \(F(8)\)?</li>
+<li id="li-1884">Based on your responses to all of the preceding questions, sketch a complete and accurate graph of \(y = F(x)\) on the axes provided, being sure to indicate the behavior of \(F\) for \(x \lt  0\) and \(x &gt; 7\).  Clearly indicate the scale on the vertical and horizontal axes of your graph.</li>
+<li id="li-1885">What happens if we change one key piece of information:  in particular, say that \(G\) is an antiderivative of \(f\) and \(G(0) = 0\).  How (if at all) would your answers to the preceding questions change?  Sketch a graph of \(G\) on the same axes as the graph of \(F\) you constructed in (e).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-151" id="hint-151"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-151" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1886">Consider the sign of \(F' = f\).</li>
+<li id="li-1887">Consider the sign of \(F'' = f'\).</li>
+<li id="li-1888">Where does \(F' = f\) change sign?</li>
+<li id="li-1889">Recall that \(F(1) = F(0) + \int_0^1 f(t) \, dt\).</li>
+<li id="li-1890">Use the function values found in (d) and the earlier information regarding the shape of \(F\).</li>
+<li id="li-1891">Note that \(G(1) = G(0) + \int_0^1 f(t) \, dt\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-152" id="hint-152"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-152" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1892">Consider the sign of \(F' = f\) and recall that wherever \(F' &gt; 0\), \(F\) is increasing.</li>
+<li id="li-1893">Consider the sign of \(F'' = f'\) and recall that wherever \(F''&gt;0\), \(F\) is concave up.  Note particularly that \(F''&gt;0\) if and only if \(f\) is increasing.</li>
+<li id="li-1894">Where does \(F' = f\) change sign?  A relative maximum for \(F\) will occur wherever \(F'\) changes from positive to negative.</li>
+<li id="li-1895">Recall that \(F(1) = F(0) + \int_0^1 f(t) \, dt\).  Similarly, \(F(2) = F(0) + \int_0^1 f(t) \, dt\).</li>
+<li id="li-1896">Use the function values found in (d) and the earlier information regarding the shape of \(F\).</li>
+<li id="li-1897">Note that \(G(1) = G(0) + \int_0^1 f(t) \, dt\).  Since \(G(0) = 0\) (while \(F(0) = -1\)), this changes each response in (e) by the same constant amount.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-75" id="solution-75"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-75" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1898">Wherever \(F' &gt; 0\), \(F\) is increasing, so \(F\) is increasing on \((0,2)\) and \((5,7)\), while \(F\) is decreasing on \((2,5)\).</li>
+<li id="li-1899">Wherever \(F''&gt;0\), \(F\) is concave up; note particularly that \(F''&gt;0\) if and only if \(f\) is increasing.  Thus, \(F\) is concave up on \((0,1)\), \((4,6)\), and concave down on \((1,3)\), \((6,7)\), and neither on \((3,4)\).</li>
+<li id="li-1900">A relative maximum for \(F\) will occur wherever \(F'\) changes from positive to negative, and thus at \(x = 2\); similarly, \(F\) has a relative minimum at \(x = 5\).</li>
+<li id="li-1901">Recall that \(F(1) = F(0) + \int_0^1 f(t) \, dt\), so \(F(1) = -1 + \frac{1}{2} = -\frac{1}{2}\).  Similarly, \(F(2) = F(0) + \int_0^1 f(t) \, dt = -1 + \frac{1}{2} + \frac{\pi}{4} = \frac{\pi}{4} - \frac{1}{2}\).  Continuing these calculations, \(F(3) = \frac{\pi}{4} - 1\), \(F(4) = \frac{\pi}{4}-2\), \(F(5) = \frac{\pi}{4} - \frac{5}{2}\), \(F(6) = \frac{\pi}{2} - \frac{5}{2}\),  \(F(7) = \frac{3\pi}{4} - \frac{5}{2}\).  Furthermore, since \(f(t) = 0\) for all \(t \lt  0\) and all \(t &gt; 7\), it follows \(F(8) =  \frac{3\pi}{4} - \frac{5}{2}\) and \(F(-1) = -1\).</li>
+<li id="li-1902">Use the function values found in (d) and the earlier information regarding the shape of \(F\).</li>
+<li id="li-1903">Note that \(G(1) = G(0) + \int_0^1 f(t) \, dt\).  Since \(G(0) = 0\) (while \(F(0) = -1\)), this changes each response in by 1: \(G(x) = F(x) + 1\).</li>
+</ol></span></span></section><section class="subsection" id="subsection-81"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">5.1.3</span><span class="title">Multiple antiderivatives of a single function</span>
+</h1></header><p id="p-1144">
+In the final question of <a knowl="./knowl/A_5.1.1.html" knowl-id="xref-A_5.1.1" alt="Exercise 5.1.2 " title="Exercise 5.1.2 ">Activity 5.1.2</a>, we encountered a very important idea: a given function \(f\) has more than one antiderivative. In addition, any antiderivative of \(f\) is determined uniquely by identifying the value of the desired antiderivative at a single point. For example, suppose that \(f\) is the function given at left in <a knowl="./knowl/F_5.1.Ex1.html" knowl-id="xref-F_5.1.Ex1" alt="Figure 5.1.4 " title="Figure 5.1.4 ">Figure 5.1.4</a>,
+</p>
+<figure class="figure-like" id="F_5.1.Ex1"><img width="100%" src="images/5_1_Ex1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.1.4</span>At left, the graph of \(y = f(x)\).  At right, three different antiderivatives of \(f\).</figcaption></figure><p id="p-1145">
+and we say that \(F\) is an antiderivative of \(f\) that satisfies \(F(0) = 1\).
+</p>
+<p id="p-1146">
+Then, using <a knowl="./knowl/E_FTCTCT.html" knowl-id="xref-E_FTCTCT" alt="Equation 5.1.1 " title="Equation 5.1.1 ">Equation (5.1.1)</a>, we can compute \(F(1) = 1.5\), \(F(2) = 1.5\), \(F(3) = -0.5\), \(F(4) = -2\), \(F(5) = -0.5\), and \(F(6) = 1\), plus we can use the fact that \(F' = f\) to ascertain where \(F\) is increasing and decreasing, concave up and concave down, and has relative extremes and inflection points. Through work similar to what we encountered in Preview <a href="S_5.1.AntiDGraphs.html#PA_5.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> and <a knowl="./knowl/A_5.1.1.html" knowl-id="xref-A_5.1.1" alt="Exercise 5.1.2 " title="Exercise 5.1.2 ">Activity 5.1.2</a>, we ultimately find that the graph of \(F\) is the one given in blue in <a knowl="./knowl/F_5.1.Ex1.html" knowl-id="xref-F_5.1.Ex1" alt="Figure 5.1.4 " title="Figure 5.1.4 ">Figure 5.1.4</a>.
+</p>
+<p id="p-1147">
+If we instead chose to consider a function \(G\) that is an antiderivative of \(f\) but has the property that \(G(0) = 3\), then \(G\) will have the exact same shape as \(F\) (since both share the derivative \(f\)), but \(G\) will be shifted vertically away from the graph of \(F\), as pictured in red in <a knowl="./knowl/F_5.1.Ex1.html" knowl-id="xref-F_5.1.Ex1" alt="Figure 5.1.4 " title="Figure 5.1.4 ">Figure 5.1.4</a>. Note that \(G(1) - G(0) = \int_0^1 f(x) \, dx = 0.5\), just as \(F(1) - F(0) = 0.5,\), but since \(G(0) = 3\), \(G(1) = G(0) + 0.5 = 3.5\), whereas \(F(1) = F(0) + 0.5 = 1.5\), since \(F(0) = 1\). In the same way, if we assigned a different initial value to the antiderivative, say \(H(0) = -1\), we would get still another antiderivative, as shown in magenta in <a knowl="./knowl/F_5.1.Ex1.html" knowl-id="xref-F_5.1.Ex1" alt="Figure 5.1.4 " title="Figure 5.1.4 ">Figure 5.1.4</a>.
+</p>
+<p id="p-1148">
+This example demonstrates an important fact that holds more generally:
+</p>
+<p id="p-1149">
+
+{
+If \(G\) and \(H\) are both antiderivatives of a function \(f\), then the function \(G - H\) must be constant.
+} 
+
+</p>
+<p id="p-1150">
+To see why this result holds, observe that if \(G\) and \(H\) are both antiderivatives of \(f\), then \(G' = f\) and \(H' = f\). Hence, \(\frac{d}{dx}[ G(x) - H(x) ] = G'(x) - H'(x) = f(x) - f(x) = 0\). Since the only way a function can have derivative zero is by being a constant function, it follows that the function \(G - H\) must be constant.
+</p>
+<p id="p-1151">
+Further, we now see that if a function has a single antiderivative, it must have infinitely many: we can add any constant of our choice to the antiderivative and get another antiderivative. For this reason, we sometimes refer to the <!--Style me with CSS--><em>general antiderivative</em> \knownindex{\lt main&gt;antiderivative\lt /main&gt;\lt sub&gt;general\lt /sub&gt;} of a function \(f\). For example, if \(f(x) = x^2\), its general antiderivative is \(F(x) = \frac{1}{3}x^3 + C\), where we include the “\(+C\)” to indicate that \(F\) includes <!--Style me with CSS--><em>all</em> of the possible antiderivatives of \(f\). To identify a particular antiderivative of \(f\), we must be provided a single value of the antiderivative \(F\) (this value is often called an <!--Style me with CSS--><em>initial condition</em>\knownindex{\lt main&gt;initial condition\lt /main&gt;}). In the present example, suppose that condition is \(F(2) = 3\); substituting the value of 2 for \(x\) in \(F(x) = \frac{1}{3}x^3 + C\), we find that
+</p>
+<span class="displaymath" id="me-492">\[
+3 = \frac{1}{3}(2)^3 + C,
+\]</span><p id="p-1152">
+and thus \(C = 3 - \frac{8}{3} = \frac{1}{3}\). Therefore, the particular antiderivative in this case is \(F(x) = \frac{1}{3}x^3 + \frac{1}{3}.\)
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_5.1.2" id="A_5.1.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">5.1.5</span>
+</h5></a></div>
+<div id="hk-A_5.1.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1153">
+For each of the following functions, sketch an accurate graph of the antiderivative that satisfies the given initial condition. In addition, sketch the graph of two additional antiderivatives of the given function, and state the corresponding initial conditions that each of them satisfy. If possible, find an algebraic formula for the antiderivative that satisfies the initial condition.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1904">original function: \(g(x) = \left| x \right| - 1\); <br>
+      initial condition: \(G(-1) = 0\); <br>
+      interval for sketch: \([-2,2]\)</li>
+<li id="li-1905">original function: \(h(x) = \sin(x)\); <br>
+      initial condition: \(H(0) = 1\); <br>
+      interval for sketch: \([0,4\pi]\)</li>
+<li id="li-1906">original function: \(p(x) =
+\begin{cases}x^2, \amp  \text{if }  0 \lt  x \le 1 \\
+-(x-2)^2, \amp  \text{if }  1 \lt  x \lt  2 \\
+0 \amp  \text{otherwise} 
+\end{cases} 
+\); <br>
+initial condition: \(P(0) = 1\); <br>
+interval for sketch: \([-1,3]\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-153" id="hint-153"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-153" style="display: none;" class="tex2jax_ignore"><span class="solution">For</span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-154" id="hint-154"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-154" style="display: none;" class="tex2jax_ignore"><span class="solution">For</span></span></section><section class="subsection" id="subsection-82"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">5.1.4</span><span class="title">Functions defined by integrals</span>
+</h1></header><p id="p-1154">
+In Equation <a knowl="./knowl/E_FTCTCT.html" knowl-id="xref-E_FTCTCT" alt="Equation 5.1.1 " title="Equation 5.1.1 ">(5.1.1)</a>, we found an important rule that enables us to compute the value of the antiderivative \(F\) at a point \(b\), provided that we know \(F(a)\) and can evaluate the definite integral from \(a\) to \(b\) of \(f\). Again, that rule is
+</p>
+<span class="displaymath" id="me-493">\[
+F(b) = F(a) + \int_a^b f(x) \, dx.
+\]</span><p id="p-1155">
+In several examples, we have used this formula to compute several different values of \(F(b)\) and then plotted the points \((b,F(b))\) to assist us in generating an accurate graph of \(F\). That suggests that we may want to think of \(b\), the upper limit of integration, as a variable itself. To that end, we introduce the idea of an <!--Style me with CSS--><em>integral function</em>\knownindex{\lt main&gt;integral function\lt /main&gt;}, a function whose formula involves a definite integral.
+</p>
+<p id="p-1156">
+Given a continuous function \(f\), we define the corresponding integral function \(A\) according to the rule
+</p>
+<span class="displaymath" id="E_intfxn">\begin{equation}
+ A(x) = \int_a^x f(t) \, dt.
+\label{E_intfxn}\tag{5.1.2}\end{equation}</span><p id="p-1157">
+Note particularly that because we are using the variable \(x\) as the independent variable in the function \(A\), and \(x\) determines the other endpoint of the interval over which we integrate (starting from \(a\)), we need to use a variable other than \(x\) as the variable of integration. A standard choice is \(t\), but any variable other than \(x\) is acceptable.
+</p>
+<p id="p-1158">
+One way to think of the function \(A\) is as the “net-signed area from \(a\) up to \(x\)” function, where we consider the region bounded by \(y = f(t)\) on the relevant interval. For example, in <a knowl="./knowl/F_5.1.IntFxn.html" knowl-id="xref-F_5.1.IntFxn" alt="Figure 5.1.6 " title="Figure 5.1.6 ">Figure 5.1.6</a>, we see a given function \(f\) pictured at left, and its corresponding area function (choosing \(a = 0\)), \(A(x) = \int_0^x f(t) \, dt\) shown at right.
+</p>
+<figure class="figure-like" id="F_5.1.IntFxn"><img width="100%" src="images/5_1_IntFxn.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.1.6</span>At left, the graph of the given function \(f\).  At right, the area function \(A(x) = \int_0^x f(t)   dt\).</figcaption></figure><p id="p-1159">
+Note particularly that the function \(A\) measures the net-signed area from \(t = 0\) to \(t = x\) bounded by the curve \(y = f(t)\); this value is then reported as the corresponding height on the graph of \(y = A(x)\). It is even more natural to think of this relationship between \(f\) and \(A\) dynamically. At \href{http://gvsu.edu/s/cz}{<tt class="code-inline">http://gvsu.edu/s/cz</tt>}, we find a java applet<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-31" id="fn-31"><sup> 1 </sup></a></span><span id="hk-fn-31" style="display: none;" class="tex2jax_ignore"><span class="footnote">David Austin, Grand Valley State University</span></span> that brings the static picture in <a knowl="./knowl/F_5.1.IntFxn.html" knowl-id="xref-F_5.1.IntFxn" alt="Figure 5.1.6 " title="Figure 5.1.6 ">Figure 5.1.6</a> to life. There, the user can move the red point on the function \(f\) and see how the corresponding height changes at the light blue point on the graph of \(A\).
+</p>
+<p id="p-1160">
+The choice of \(a\) is somewhat arbitrary. In the activity that follows, we explore how the value of \(a\) affects the graph of the integral function, as well as some additional related issues.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_5.1.3" id="A_5.1.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">5.1.7</span>
+</h5></a></div>
+<div id="hk-A_5.1.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1161">
+Suppose that \(g\) is given by the graph at left in <a knowl="./knowl/F_5.1.Act3.html" knowl-id="xref-F_5.1.Act3" alt="Figure 5.1.8 " title="Figure 5.1.8 ">Figure 5.1.8</a> and that \(A\) is the corresponding integral function defined by \(A(x) = \int_1^x g(t) \, dt\).
+</p>
+<figure class="figure-like" id="F_5.1.Act3"><img width="100%" src="images/5_1_Act3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.1.8</span>At left, the graph of \(y = g(t)\); at right, axes for plotting \(y = A(x)\), where \(A\) is defined by the formula \(A(x) = \int_1^x g(t)   dt\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1907">On what interval(s) is \(A\) an increasing function?  On what intervals is \(A\) decreasing?  Why?</li>
+<li id="li-1908">On what interval(s) do you think \(A\) is concave up?  concave down?  Why?</li>
+<li id="li-1909">At what point(s) does \(A\) have a relative minimum?  a relative maximum?</li>
+<li id="li-1910">Use the given information to determine the exact values of \(A(0)\), \(A(1)\), \(A(2)\), \(A(3)\), \(A(4)\), \(A(5)\), and \(A(6)\).</li>
+<li id="li-1911">Based on your responses to all of the preceding questions, sketch a complete and accurate graph of \(y = A(x)\) on the axes provided, being sure to indicate the behavior of \(A\) for \(x \lt  0\) and \(x &gt; 6\).</li>
+<li id="li-1912">How does the graph of \(B\) compare to \(A\) if \(B\) is instead defined by \(B(x) = \int_0^x g(t) \, dt\)?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-155" id="hint-155"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-155" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1913">Where is \(A\) accumulating positive signed area?</li>
+<li id="li-1914">As \(A\) accumulates positive or negative signed area, where is the rate at which such area is accumulated increasing?</li>
+<li id="li-1915">Where does \(A\) change from accumulating positive signed area to accumulating negative signed area?</li>
+<li id="li-1916">Note, for instance, that \(A(2) = \int_1^2 g(t) \, dt\).</li>
+<li id="li-1917">Use your work in (a)-(d) appropriately.</li>
+<li id="li-1918">What is the value of \(B(0)\)?  How does this compare to \(A(0)\)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-156" id="hint-156"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-156" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1919">Where is \(A\) accumulating positive signed area? Where is \(A\) accumulating negative signed area?</li>
+<li id="li-1920">As \(A\) accumulates positive or negative signed area, where is the rate at which such area is accumulated increasing?  Contrast, for instance, the behavior of \(A\) on the intervals \((0,1)\) and \((1,2)\).</li>
+<li id="li-1921">Where does \(A\) change from accumulating positive signed area to accumulating negative signed area?  From negative to positive?</li>
+<li id="li-1922">Note, for instance, that \(A(2) = \int_1^2 g(t) \, dt\), \(A(0) = \int_1^0 g(t) \, dt\), and particularly that \(A(1) = \int_1^1 g(t) \, dt = 0\).</li>
+<li id="li-1923">Use your work in (a)-(d) appropriately.</li>
+<li id="li-1924">What is the value of \(B(0)\)?  How does this compare to \(A02)\)?  What if we compare \(B(1)\) and \(A(1)\)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-76" id="solution-76"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-76" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1925">\(A\) is accumulating positive signed area wherever \(g\) is positive, and thus \(A\) is increasing on \((0,1.5)\), \((4,6)\);  \(A\) is accumulating negative signed area and therefore decreasing wherever \(g\) is negative, which occurs on \((1.5,4)\).</li>
+<li id="li-1926">Here we want to consider where \(A\) is changing at an increasing rate (concave up) or changing at a decreasing rate (concave down).  On \((0,1)\) and \((4,5)\), \(A\) is increasing, and we can also see that since \(g\) is increasing, \(A\) is increasing at an increasing rate.  Similarly, on \((3,4)\) (where \(g\) is negative so \(A\) is decreasing), since \(g\) is increasing it follows that \(A\) is decreasing at an increasing rate.  Thus, \(A\) is concave up on \((0,1)\) and \((3,5)\).  Analogous reasoning shows that \(A\) is concave down on \((1,3)\) and \((5,6)\).</li>
+<li id="li-1927">Based on our work in (a), we see that \(A\) changes from increasing to decreasing at \(x = 1.5\), and thus \(A\) has a relative maximum there.  Similarly, \(A\) has a relative minimum at \(x = 4\).</li>
+<li id="li-1928">Using the fact that \(g\) is piecewise linear and the definition of \(A\), we find that \(A(0) = \int_1^0 g(t) \, dt = -\int_0^1 g(t) \, dt = -\frac{1}{2}\); \(A(1) = \int_1^1 g(t) \, dt = 0\); \(A(2) = \int_1^2 g(t) \, dt = 0\).  Analogous reasoning shows that \(A(3) = -2\), \(A(4) = -3.5\), \(A(5) = -2\), \(A(6) = -0.5\).</li>
+<li id="li-1929">Use your work in (a)-(d) appropriately.</li>
+<li id="li-1930">Note that \(B(0) = 0\), while \(A(0) = -\frac{1}{2}\).  Likewise, \(B(1) = \frac{1}{2}\), while \(A(1) = 0\).  Indeed, we can see that for any value of \(x\), \(B(x) = A(x) + \frac{1}{2}\).</li>
+</ol></span></span><p id="p-1162">
+\item Given the graph of a function \(f\), we can construct the graph of its antiderivative \(F\) provided that (a) we know a starting value of \(F\), say \(F(a)\), and (b) we can evaluate the integral \(\int_a^b f(x) \, dx\) exactly for relevant choices of \(a\) and \(b\). For instance, if we wish to know \(F(3)\), we can compute \(F(3) = F(a) + \int_a^3 f(x) \, dx\). When we combine this information about the function values of \(F\) together with our understanding of how the behavior of \(F' = f\) affects the overall shape of \(F\), we can develop a completely accurate graph of the antiderivative \(F\).
+\item Because the derivative of a constant is zero, if \(F\) is an antiderivative of \(f\), it follows that \(G(x) = F(x) + C\) will also be an antiderivative of \(f\). Moreover, any two antiderivatives of a function \(f\) differ precisely by a constant. Thus, any function with at least one antiderivative in fact has infinitely many, and the graphs of any two antiderivatives will differ only by a vertical translation.
+\item Given a function \(f\), the rule \(A(x) = \int_a^x f(t) \, dt\) defines a new function \(A\) that measures the net-signed area bounded by \(f\) on the interval \([a,x]\). We call the function \(A\) the integral function corresponding to \(f\).
+</p>
+<p id="p-1163">
+\hrulefill
+</p>
+<p id="p-1164">
+\begin{exercises}
+\item A moving particle has its velocity given by the quadratic function \(v\) pictured in <a knowl="./knowl/F_5.1.Ez1.html" knowl-id="xref-F_5.1.Ez1" alt="Figure 5.1.9 " title="Figure 5.1.9 ">Figure 5.1.9</a>. In addition, it is given that \(A_1 = \frac{7}{6}\) and \(A_2 = \frac{8}{3}\), as well as that for the corresponding position function \(s\), \(s(0) = 0.5\).
+</p>
+<figure class="figure-like" id="F_5.1.Ez1"><img width="100%" src="images/5_1_Ez1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.1.9</span>At left, the given graph of \(v\).  At right, axes for plotting \(s\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1931">Use the given information to determine \(s(1)\), \(s(3)\), \(s(5)\), and \(s(6)\).</li>
+<li id="li-1932">On what interval(s) is \(s\) increasing?  On what interval(s) is \(s\) decreasing?</li>
+<li id="li-1933">On what interval(s) is \(s\) concave up?  On what interval(s) is \(s\) concave down?</li>
+<li id="li-1934">Sketch an accurate, labeled graph of \(s\) on the axes at right in <a knowl="./knowl/F_5.1.Ez1.html" knowl-id="xref-F_5.1.Ez1" alt="Figure 5.1.9 " title="Figure 5.1.9 ">Figure 5.1.9</a>.</li>
+<li id="li-1935">Note that \(v(t) = -2 + \frac{1}{2}(t-3)^2\).  Find a formula for \(s\).</li>
+</ol>
+<p id="p-1165">
+\item A person exercising on a treadmill experiences different levels of resistance and thus burns calories at different rates, depending on the treadmill's setting. In a particular workout, the rate at which a person is burning calories is given by the piecewise constant function \(c\) pictured in <a knowl="./knowl/F_5.1.Ez2.html" knowl-id="xref-F_5.1.Ez2" alt="Figure 5.1.10 " title="Figure 5.1.10 ">Figure 5.1.10</a>. Note that the units on \(c\) are “calories per minute.”
+</p>
+<figure class="figure-like" id="F_5.1.Ez2"><img width="100%" src="images/5_1_Ez2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.1.10</span>At left, the given graph of \(c\).  At right, axes for plotting \(C\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1936">Let \(C\) be an antiderivative of \(c\).  What does the function \(C\) measure?  What are its units?</li>
+<li id="li-1937">Assume that \(C(0) = 0\).  Determine the exact value of \(C(t)\) at the values \(t = 5, 10, 15, 20, 25, 30\).</li>
+<li id="li-1938">Sketch an accurate graph of \(C\) on the axes provided at right in <a knowl="./knowl/F_5.1.Ez2.html" knowl-id="xref-F_5.1.Ez2" alt="Figure 5.1.10 " title="Figure 5.1.10 ">Figure 5.1.10</a>.  Be certain to label the scale on the vertical axis.</li>
+<li id="li-1939">Determine a formula for \(C\) that does not involve an integral and is valid for \(5 \le t \le 10\).</li>
+</ol>
+<p id="p-1166">
+\item Consider the piecewise linear function \(f\) given in <a knowl="./knowl/F_5.1.Ez3.html" knowl-id="xref-F_5.1.Ez3" alt="Figure 5.1.11 " title="Figure 5.1.11 ">Figure 5.1.11</a>. Let the functions \(A\), \(B\), and \(C\) be defined by the rules \(A(x) = \int_{-1}^{x} f(t) \, dt\), \(B(x) = \int_{0}^{x} f(t) \, dt\), and \(C(x) = \int_{1}^{x} f(t) \, dt\).
+</p>
+<figure class="figure-like" id="F_5.1.Ez3"><img width="100%" src="images/5_1_Ez3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.1.11</span>At left, the given graph of \(f\).  At right, axes for plotting \(A\), \(B\), and \(C\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1940">For the values \(x = -1, 0, 1, \ldots, 6\), make a table that lists corresponding values of \(A(x)\), \(B(x)\), and \(C(x)\).</li>
+<li id="li-1941">On the axes provided in <a knowl="./knowl/F_5.1.Ez3.html" knowl-id="xref-F_5.1.Ez3" alt="Figure 5.1.11 " title="Figure 5.1.11 ">Figure 5.1.11</a>, sketch the graphs of \(A\), \(B\), and \(C\).</li>
+<li id="li-1942">How are the graphs of \(A\), \(B\), and \(C\) related?</li>
+<li id="li-1943">How would you best describe the relationship between the function \(A\) and the function \(f\)?</li>
+</ol>
+<p id="p-1167">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1168">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

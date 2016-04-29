@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:40-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Derivatives of Functions Given Implicitly</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_2.6.Inverse.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.8.LHR.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_2.6.Inverse.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.8.LHR.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link active"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html" class="active">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_2.7.Implicit"><header><h1 class="heading" alt="Section 2.7 Derivatives of Functions Given Implicitly" title="Section 2.7 Derivatives of Functions Given Implicitly">
+<span class="type">Section</span><span class="codenumber">2.7</span><span class="title">Derivatives of Functions Given Implicitly</span><a href="S_2.7.Implicit.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-15"><h5 class="heading"></h5>
+<p id="p-579">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1076">What does it mean to say that a curve is an implicit function of \(x\), rather than an explicit function of \(x\)?</li>
+<li id="li-1077">How does implicit differentiation enable us to find a formula for \(\frac{dy}{dx}\) when \(y\) is an implicit function of \(x\)?</li>
+<li id="li-1078">In the context of an implicit curve, how can we use \(\frac{dy}{dx}\) to answer important questions about the tangent line to the curve?</li>
+</ul>
+<p id="p-580">
+} 
+</p></article><section class="subsection" id="subsection-46"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.7.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-581">
+In all of our studies with derivatives to date, we have worked in a setting where we can express a formula for the function of interest explicitly in terms of \(x\). But there are many interesting curves that are determined by an equation involving \(x\) and \(y\) for which it is impossible to solve for \(y\) in terms of \(x\).
+</p>
+<figure class="figure-like" id="F_2.7.Intro"><img width="100%" src="images/2_7_Intro.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.7.1</span>At left, the circle given by \(x^2 + y^2 = 16\).  In the middle, the portion of the circle \(x^2 + y^2 = 16\) that has been highlighted in the box at left.  And at right, the lemniscate given by \(x^3 - y^3 = 6xy\).</figcaption></figure><p id="p-582">
+Perhaps the simplest and most natural of all such curves are circles. Because of the circle's symmetry, for each \(x\) value strictly between the endpoints of the horizontal diameter, there are two corresponding \(y\)-values. For instance, in <a knowl="./knowl/F_2.7.Intro.html" knowl-id="xref-F_2.7.Intro" alt="Figure 2.7.1 " title="Figure 2.7.1 ">Figure 2.7.1</a>, we have labeled \(A = (-3,\sqrt{7})\) and \(B = (-3,-\sqrt{7})\), and these points demonstrate that the circle fails the vertical line test. Hence, it is impossible to represent the circle through a single function of the form \(y = f(x)\). At the same time, portions of the circle can be represented explicitly as a function of \(x\), such as the highlighted arc that is magnified in the center of <a knowl="./knowl/F_2.7.Intro.html" knowl-id="xref-F_2.7.Intro" alt="Figure 2.7.1 " title="Figure 2.7.1 ">Figure 2.7.1</a>. Moreover, it is evident that the circle is locally linear, so we ought to be able to find a tangent line to the curve at every point; thus, it makes sense to wonder if we can compute \(\frac{dy}{dx}\) at any point on the circle, even though we cannot write \(y\) explicitly as a function of \(x\). Finally, we note that the righthand curve in <a knowl="./knowl/F_2.7.Intro.html" knowl-id="xref-F_2.7.Intro" alt="Figure 2.7.1 " title="Figure 2.7.1 ">Figure 2.7.1</a> is called a <!--Style me with CSS--><em>lemniscate</em> \knownindex{\lt main&gt;lemniscate\lt /main&gt;} and is just one of many fascinating possibilities for implicitly given curves.
+</p>
+<p id="p-583">
+In working with implicit functions, we will often be interested in finding an equation for \(\frac{dy}{dx}\) that tells us the slope of the tangent line to the curve at a point \((x,y)\). To do so, it will be necessary for us to work with \(y\) while thinking of \(y\) as a function of \(x\), but without being able to write an explicit formula for \(y\) in terms of \(x\). The following preview activity reminds us of some ways we can compute derivatives of functions in settings where the function's formula is not known. For instance, recall the earlier example \(\frac{d}{dx}[e^{u(x)}] = e^{u(x)}u'(x)\).
+</p>
+<article class="paragraphs" id="PA_2.7"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-584">
+Let \(f\) be a differentiable function of \(x\) (whose formula is not known) and recall that \(\frac{d}{dx}[f(x)]\) and \(f'(x)\) are interchangeable notations. Determine each of the following derivatives of combinations of explicit functions of \(x\), the unknown function \(f\), and an arbitrary constant \(c\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1079">\(\ds \frac{d}{dx} \left[ x^2 + f(x) \right]\)</li>
+<li id="li-1080">\(\ds \frac{d}{dx} \left[ x^2 f(x) \right]\)</li>
+<li id="li-1081">\(\ds \frac{d}{dx} \left[ c + x + f(x)^2 \right]\)</li>
+<li id="li-1082">\(\ds \frac{d}{dx} \left[ f(x^2) \right]\)</li>
+<li id="li-1083">\(\ds \frac{d}{dx} \left[ xf(x) + f(cx) + cf(x) \right]\)</li>
+</ol></article></section><section class="subsection" id="subsection-47"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.7.2</span><span class="title">Implicit Differentiation</span>
+</h1></header><p id="p-585">
+Because a circle is perhaps the simplest of all curves that cannot be represented explicitly as a single function of \(x\), we begin our exploration of implicit differentiation with the example of the circle given by \(x^2 + y^2 = 16.\) It is visually apparent that this curve is locally linear, so it makes sense for us to want to find the slope of the tangent line to the curve at any point, and moreover to think that the curve is differentiable. The big question is: how do we find a formula for \(\frac{dy}{dx}\), the slope of the tangent line to the circle at a given point on the circle? By viewing \(y\) as an <!--Style me with CSS--><em>implicit</em><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-19" id="fn-19"><sup> 1 </sup></a></span><span id="hk-fn-19" style="display: none;" class="tex2jax_ignore"><span class="footnote">Essentially the idea of an implicit function is that it can be broken into pieces where each piece can be viewed as an explicit function of \(x\), and the combination of those pieces constitutes the full implicit function.  For the circle, we could choose to take the top half as one explicit function of \(x\), and the bottom half as another.</span></span> \knownindex{\lt main&gt;implicit function\lt /main&gt;} function of \(x\), we essentially think of \(y\) as some function whose formula \(f(x)\) is unknown, but which we can differentiate. Just as \(y\) represents an unknown formula, so too its derivative with respect to \(x\), \(\frac{dy}{dx}\), will be (at least temporarily) unknown.
+</p>
+<p id="p-586">
+Consider the equation \(x^2 + y^2 = 16\) and view \(y\) as an unknown differentiable function of \(x\). Differentiating both sides of the equation with respect to \(x\), we have
+</p>
+<span class="displaymath" id="me-216">\[
+\frac{d}{dx} \left[ x^2 + y^2 \right] = \frac{d}{dx} \left[ 16 \right].
+\]</span><p id="p-587">
+On the right, the derivative of the constant 16 is 0, and on the left we can apply the sum rule, so it follows that
+</p>
+<span class="displaymath" id="me-217">\[
+\frac{d}{dx} \left[ x^2 \right]  + \frac{d}{dx} \left[ y^2 \right] = 0.
+\]</span><p id="p-588">
+Next, it is essential that we recognize the different roles being played by \(x\) and \(y\). Since \(x\) is the independent variable, it is the variable with respect to which we are differentiating, and thus \(\frac{d}{dx} \left[x^2\right] = 2x.\) But \(y\) is the dependent variable and \(y\) is an implicit function of \(x\). Thus, when we want to compute \(\frac{d}{dx}[y^2]\) it is identical to the situation in Preview <a href="S_2.7.Implicit.html#PA_2.7" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> where we computed \(\frac{d}{dx}[f(x)^2]\). In both situations, we have an unknown function being squared, and we seek the derivative of the result. This requires the chain rule, by which we find that \(\frac{d}{dx}[y^2] = 2y^1 \frac{dy}{dx}.\) Therefore, continuing our work in differentiating both sides of \(x^2 + y^2 = 16\), we now have that
+</p>
+<span class="displaymath" id="me-218">\[
+2x + 2y \frac{dy}{dx} = 0.
+\]</span><p id="p-589">
+Since our goal is to find an expression for \(\frac{dy}{dx}\), we solve this most recent equation for \(\frac{dy}{dx}\). Subtracting \(2x\) from both sides and dividing by \(2y\),
+</p>
+<span class="displaymath" id="me-219">\[
+\frac{dy}{dx} = -\frac{2x}{2y} = -\frac{x}{y}.
+\]</span><figure class="figure-like" id="F_2.7.Circle"><img width="100%" src="images/2_7_Circle.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.7.2</span>The circle given by \(x^2 + y^2 = 16\) with point \((a,b)\) on the circle and the tangent line at that point, with labeled slopes of the radial line, \(m_r\), and tangent line, \(m_t\).</figcaption></figure><p id="p-590">
+There are several important things to observe about the result that \(\frac{dy}{dx} = -\frac{x}{y}\). First, this expression for the derivative involves both \(x\) and \(y\). It makes sense that this should be the case, since for each value of \(x\) between \(-4\) and \(4\), there are two corresponding points on the circle, and the slope of the tangent line is different at each of these points. Second, this formula is entirely consistent with our understanding of circles. If we consider the radius from the origin to the point \((a,b)\), the slope of this line segment is \(m_r = \frac{b}{a}\). The tangent line to the circle at \((a,b)\) will be perpendicular to the radius, and thus have slope \(m_t = -\frac{a}{b}\), as shown in <a knowl="./knowl/F_2.7.Circle.html" knowl-id="xref-F_2.7.Circle" alt="Figure 2.7.2 " title="Figure 2.7.2 ">Figure 2.7.2</a>. Finally, the slope of the tangent line is zero at \((0,4)\) and \((0,-4)\), and is undefined at \((-4,0)\) and \((4,0)\); all of these values are consistent with the formula \(\frac{dy}{dx} = -\frac{x}{y}\).
+</p>
+<p id="p-591">
+We consider the following more complicated example to investigate and demonstrate some additional algebraic issues that arise in problems involving implicit differentiation.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_2.7.1" id="Ex_2.7.1"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">2.7.3</span>
+</h5></article></a></div>
+<div id="hk-Ex_2.7.1" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-592">
+For the curve given implicitly by \(x^3 + y^2 - 2xy = 2\), shown in <a knowl="./knowl/F_2.7.Ex1.html" knowl-id="xref-F_2.7.Ex1" alt="Figure 2.7.4 " title="Figure 2.7.4 ">Figure 2.7.4</a>, find the slope of the tangent line at \((-1,1)\).
+</p>
+<figure class="figure-like" id="F_2.7.Ex1"><img width="100%" src="images/2_7_Ex1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.7.4</span>The curve \(x^3 + y^2 - 2xy = 2\).</figcaption></figure></article></div>
+<p id="p-593">
+Solution.    
+We begin by differentiating the curve's equation implicitly. Taking the derivative of each side with respect to \(x\),
+</p>
+<span class="displaymath" id="me-220">\[
+\frac{d}{dx}\left[ x^3 + y^2 - 2xy \right] = \frac{d}{dx} \left[ 2 \right],
+\]</span><p id="p-594">
+by the sum rule and the fact that the derivative of a constant is zero, we have
+</p>
+<span class="displaymath" id="me-221">\[
+\frac{d}{dx}[x^3] + \frac{d}{dx}[y^2] - \frac{d}{dx}[2xy] = 0.
+\]</span><p id="p-595">
+For the three derivatives we now must execute, the first uses the simple power rule, the second requires the chain rule (since \(y\) is an implicit function of \(x\)), and the third necessitates the product rule (again since \(y\) is a function of \(x\)). Applying these rules, we now find that
+</p>
+<span class="displaymath" id="me-222">\[
+3x^2 + 2y\frac{dy}{dx} - [2x \frac{dy}{dx} + 2y] = 0.
+\]</span><p id="p-596">
+Remembering that our goal is to find an expression for \(\frac{dy}{dx}\) so that we can determine the slope of a particular tangent line, we want to solve the preceding equation for \(\frac{dy}{dx}\). To do so, we get all of the terms involving \(\frac{dy}{dx}\) on one side of the equation and then factor. Expanding and then subtracting \(3x^2 - 2y\) from both sides, it follows that
+</p>
+<span class="displaymath" id="me-223">\[
+2y\frac{dy}{dx} - 2x \frac{dy}{dx}= 2y - 3x^2.
+\]</span><p id="p-597">
+Factoring the left side to isolate \(\frac{dy}{dx}\), we have
+</p>
+<span class="displaymath" id="me-224">\[
+\frac{dy}{dx}(2y - 2x) = 2y - 3x^2.
+\]</span><p id="p-598">
+Finally, we divide both sides by \((2y - 2x)\) and conclude that
+</p>
+<span class="displaymath" id="me-225">\[
+\frac{dy}{dx} = \frac{2y-3x^2}{2y-2x}.
+\]</span><p id="p-599">
+Here again, the expression for \(\frac{dy}{dx}\) depends on both \(x\) and \(y\). To find the slope of the tangent line at \((-1,1)\), we substitute this point in the formula for \(\frac{dy}{dx}\), using the notation
+</p>
+<span class="displaymath" id="me-226">\[
+ \left. \frac{dy}{dx} \right|_{(-1,1)} = \frac{2(1)-3(-1)^2}{2(1)-2(-1)} = -\frac14.
+\]</span><p id="p-600">
+This value matches our visual estimate of the slope of the tangent line shown in <a knowl="./knowl/F_2.7.Ex1.html" knowl-id="xref-F_2.7.Ex1" alt="Figure 2.7.4 " title="Figure 2.7.4 ">Figure 2.7.4</a>.
+</p>\hspace{5.0in}<p id="p-601">
+<a knowl="./knowl/Ex_2.7.1.html" knowl-id="xref-Ex_2.7.1" alt="Example 2.7.3 " title="Example 2.7.3 ">Example 2.7.3</a> shows that it is possible when differentiating implicitly to have multiple terms involving \(\frac{dy}{dx}\). Regardless of the particular curve involved, our approach will be similar each time. After differentiating, we expand so that each side of the equation is a sum of terms, some of which involve \(\frac{dy}{dx}\). Next, addition and subtraction are used to get all terms involving \(\frac{dy}{dx}\) on one side of the equation, with all remaining terms on the other. Finally, we factor to get a single instance of \(\frac{dy}{dx}\), and then divide to solve for \(\frac{dy}{dx}\).
+</p>
+<p id="p-602">
+Note, too, that since \(\frac{dy}{dx}\) is often a function of both \(x\) and \(y\), we use the notation
+</p>
+<span class="displaymath" id="me-227">\[
+ \left. \frac{dy}{dx} \right|_{(a,b)}
+\]</span><p id="p-603">
+to denote the evaluation of \(\frac{dy}{dx}\) at the point \((a,b)\). This is analogous to writing \(f'(a)\) when \(f'\) depends on a single variable.
+</p>
+<p id="p-604">
+Finally, there is a big difference between writing \(\frac{d}{dx}\) and \(\frac{dy}{dx}\). For example,
+</p>
+<span class="displaymath" id="me-228">\[
+\frac{d}{dx}[x^2 + y^2]
+\]</span><p id="p-605">
+gives an instruction to take the derivative with respect to \(x\) of the quantity \(x^2 + y^2\), presumably where \(y\) is a function of \(x\). On the other hand,
+</p>
+<span class="displaymath" id="me-229">\[
+\frac{dy}{dx}(x^2 + y^2)
+\]</span><p id="p-606">
+means the product of the derivative of \(y\) with respect to \(x\) with the quantity \(x^2 + y^2\). Understanding this notational subtlety is essential.
+</p>
+<p id="p-607">
+The following activities present opportunities to explore several different problems involving implicit differentiation.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.7.1" id="A_2.7.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.7.5</span>
+</h5></a></div>
+<div id="hk-A_2.7.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-608">
+Consider the curve defined by the equation \(x = y^5 - 5y^3 + 4y\), whose graph is pictured in <a knowl="./knowl/F_2.7.Act1.html" knowl-id="xref-F_2.7.Act1" alt="Figure 2.7.6 " title="Figure 2.7.6 ">Figure 2.7.6</a>.
+</p>
+<figure class="figure-like" id="F_2.7.Act1"><img width="100%" src="images/2_7_Act1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.7.6</span>The curve \(x = y^5 - 5y^3 + 4y\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1084">Explain why it is not possible to express \(y\) as an explicit function of \(x\).</li>
+<li id="li-1085">Use implicit differentiation to find a formula for \(dy/dx\).</li>
+<li id="li-1086">Use your result from part (b) to find an equation of the line tangent to the graph of \(x = y^5 -
+5y^3 + 4y\) at the point \((0, 1)\).</li>
+<li id="li-1087">Use your result from part (b) to determine all of the points at
+which the graph of \(x = y^5 - 5y^3 + 4y\) has a vertical tangent
+line.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-81" id="hint-81"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-81" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1088">Does the graph pass the vertical line test?</li>
+<li id="li-1089">Note, for instance, that \(\frac{d}{dx}[y^5] = 5y^4\).</li>
+<li id="li-1090">Remember the meaning of \(\left. \frac{dy}{dx} \right|_{(0,1)}\).</li>
+<li id="li-1091">What is the slope of a vertical line?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-82" id="hint-82"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-82" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1092">Does the graph pass the vertical line test?  Can you solve the degree 5 equation \(x = y^5 - 5y^3 + 4y\) for \(y\)?</li>
+<li id="li-1093">Note, for instance, that \(\frac{d}{dx}[y^5] = 5y^4\).  After differentiating, factor to get a single instance of \(\frac{dy}{dx}\) on one side of the equation.</li>
+<li id="li-1094">Remember the meaning of \(\left. \frac{dy}{dx} \right|_{(0,1)}\) and that point-slope form of a line is \(y - y_0 = m(x-x_0)\).</li>
+<li id="li-1095">A line is vertical if and only if its slope is undefined.  What point(s) make \(\frac{dy}{dx}\) undefined?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-40" id="solution-40"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-40" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1096">Because the graph of the curve fails the vertical line test, \(y\) cannot be a function of \(x\).  This also confirms our intuition that there is not an algebraic means by which we can rearrange the equation \(x = y^5 - 5y^3 + 4y\) to write \(y\) in terms of \(x\).</li>
+<li id="li-1097">We differentiate implicitly, taking the derivative of each side with respect to \(x\),
+	
+<span class="displaymath" id="me-230">\[
+\frac{d}{dx}[x ]= \frac{d}{dx}[y^5 - 5y^3 + 4y],
+\]</span>
+ 
+	and evaluate the elementary derivative on the left and use the sum rule on the right to find that
+	
+<span class="displaymath" id="me-231">\[
+1 = \frac{d}{dx}[y^5] - \frac{d}{dx}[5y^3] + \frac{d}{dx}[4y].
+\]</span>
+ 
+	By the chain and constant multiple rules, viewing \(y\) as a function of \(x\), we now have
+	
+<span class="displaymath" id="me-232">\[
+1 = 5y^4\frac{dy}{dx} - 15y^2\frac{dy}{dx} + 4\frac{dy}{dx}.
+\]</span>
+ 
+	Factoring,
+	
+<span class="displaymath" id="me-233">\[
+1 = \frac{dy}{dx}(5y^4 - 15y^2 + 4),
+\]</span>
+ 
+	and therefore
+	
+<span class="displaymath" id="me-234">\[
+\frac{dy}{dx} = \frac{1}{5y^4 - 15y^2 + 4}.
+\]</span>
+</li>
+<li id="li-1098">To find an equation of the line tangent to the graph of \(x = y^5 - 5y^3 + 4y\) at the point \((0, 1)\), we only need the slope of the tangent line.  Hence we compute 
+	
+<span class="displaymath" id="me-235">\[
+\left. \frac{dy}{dx} \right|_{(0,1)} = \frac{1}{5 \cdot 1^4 - 15 \cdot 1^2 + 4} = -\frac{1}{6}.
+\]</span>
+ 
+	Therefore, the equation of the tangent line is
+	
+<span class="displaymath" id="me-236">\[
+y - 1 = -\frac{1}{6}(x-0)
+\]</span>
+ 
+	or \(y = -\frac{1}{6}x + 1\).</li>
+<li id="li-1099">Since a line is vertical whenever its slope is undefined, we seek all points \((x,y)\) that make \(\frac{dy}{dx}\) undefined.  This will occur precisely when the denominator, \(5y^4 - 15y^2 + 4\), is zero.  Using a graphing utility or computer algebra system to solve the equation \(5y^4 - 15y^2 + 4 = 0\), we find that this happens at the four approximate \(y\)-values \(y \approx \pm 0.543912, \pm 1.64443\).  For each such value, we use the original equation \(x = y^5 - 5y^3 + 4y\) to find the \(x\)-value of the point.  Doing so, we have established that there are four points at which the tangent line is vertical, and they are approximately \((1.418697,0.543912)\), \((-1.418697,-0.543912)\), \((-3.63143, 1.64443)\), and \((3.63143, -1.64443)\).</li>
+</ol></span></span><p id="p-609">
+Two natural questions to ask about any curve involve where the tangent line can be vertical or horizontal. To be horizontal, the slope of the tangent line must be zero, while to be vertical, the slope must be undefined. It is typically the case when differentiating implicitly that the formula for \(\frac{dy}{dx}\) is expressed as a quotient of functions of \(x\) and \(y\), say
+</p>
+<span class="displaymath" id="me-237">\[
+\frac{dy}{dx} = \frac{p(x,y)}{q(x,y)}.
+\]</span><p id="p-610">
+Thus, we observe that the tangent line will be horizontal precisely when the numerator is zero and the denominator is nonzero, making the slope of the tangent line zero. Similarly, the tangent line will be vertical whenever \(q(x,y) = 0\) and \(p(x,y) \ne 0\), making the slope undefined. If both \(x\) and \(y\) are involved in an equation such as \(p(x,y) = 0\), we try to solve for one of them in terms of the other, and then use the resulting condition in the original equation that defines the curve to find an equation in a single variable that we can solve to determine the point(s) that lie on the curve at which the condition holds. It is not always possible to execute the desired algebra due to the possibly complicated combinations of functions that often arise.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.7.2" id="A_2.7.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.7.7</span>
+</h5></a></div>
+<div id="hk-A_2.7.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-611">
+Consider the curve defined by the equation \(y(y^2-1)(y-2) = x(x-1)(x-2)\), whose graph is pictured in <a knowl="./knowl/F_2.7.Act2.html" knowl-id="xref-F_2.7.Act2" alt="Figure 2.7.8 " title="Figure 2.7.8 ">Figure 2.7.8</a>.
+</p>
+<figure class="figure-like" id="F_2.7.Act2"><img width="100%" src="images/2_7_Act2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.7.8</span>The curve \(y(y^2-1)(y-2) = x(x-1)(x-2)\).</figcaption></figure><p id="p-612">
+Through implicit differentiation, it can be shown that
+</p>
+<span class="displaymath" id="me-238">\[
+\frac{dy}{dx} = \frac{(x-1)(x-2) + x(x-2) + x(x-1)}{(y^2-1)(y-2) + 2y^2(y-2) + y(y^2-1)}.
+\]</span><p id="p-613">
+Use this fact to answer each of the following questions.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1100">Determine all points \((x,y)\) at which the tangent line to the curve is horizontal.  (Use technology appropriately to find the needed zeros of the relevant polynomial function.)</li>
+<li id="li-1101">Determine all points \((x,y)\) at which the tangent line is vertical.  (Use technology appropriately to find the needed zeros of the relevant polynomial function.)</li>
+<li id="li-1102">Find the equation of the tangent line to the curve at one of the points where \(x = 1\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-83" id="hint-83"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-83" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1103">Note that the numerator of \(\frac{dy}{dx}\) is a quadratic function of \(x\).</li>
+<li id="li-1104">The denominator of \(\frac{dy}{dx}\) is a cubic function of \(y\).</li>
+<li id="li-1105">When \(x = 1\), then \(y\) must satisfy the equation \(y(y^2-1)(y-2) = 0\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-84" id="hint-84"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-84" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1106">Note that the numerator of \(\frac{dy}{dx}\) is a quadratic function of \(x\).  What are its zeros?</li>
+<li id="li-1107">The denominator of \(\frac{dy}{dx}\) is a cubic function of \(y\).  Use appropriate technology to determine the zeros of this function.</li>
+<li id="li-1108">When \(x = 1\), then \(y\) must satisfy the equation \(y(y^2-1)(y-2) = 0\).  Evaluate \(\frac{dy}{dx}\) at one such point and use your result appropriately.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-41" id="solution-41"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-41" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1109">To find where the tangent line to the curve is horizontal, we set \(\frac{dy}{dx} = 0\), which requires that the numerator be zero, or in other words that
+	
+<span class="displaymath" id="me-239">\[
+(x-1)(x-2) + x(x-2) + x(x-1) = 0.
+\]</span>
+ 
+	Expanding and combining like terms, we find that \(3x^2 - 6x + 2 = 0\), which occurs where \(x = \frac{3\pm\sqrt{3}}{3} \approx 0.42265, 1.57735\). From the graph in <a knowl="./knowl/F_2.7.Act2.html" knowl-id="xref-F_2.7.Act2" alt="Figure 2.7.8 " title="Figure 2.7.8 ">Figure 2.7.8</a>, we observe that at each such \(x\)-value, there are several corresponding \(y\)-values for which the tangent line will be horizontal.  For instance, when \(x = 0.42265\), then \(y\) must satisfy the equation
+	
+<span class="displaymath" id="me-240">\[
+y(y^2-1)(y-2) = 0.42265(0.42265-1)(0.42265-2) = 0.384900.
+\]</span>
+ 
+	Because this is a quartic equation (degree 4) equation in \(y\), we use computational technology to help us find the solutions.  Doing so, we find four approximate values for \(y\), \(y \approx -1.05782, 0.229478, 0.770522, 2.05782\), and thus our estimates for four points at which the tangent line is horizontal are
+	
+<span class="displaymath" id="me-241">\[
+(0.42265, -1.05782); (0.42265, 0.229478);  (0.42265, 0.770522); (0.42265, 2.05782).
+\]</span>
+ 
+	Similar work can be done to find the four points at which the tangent line is horizontal when \(x \approx 1.57735\).</li>
+<li id="li-1110">The tangent line to the curve is vertical wherever \(\frac{dy}{dx}\) is undefined, which occurs precisely where 
+	
+<span class="displaymath" id="me-242">\[
+(y^2-1)(y-2) + 2y^2(y-2) + y(y^2-1) = 0.
+\]</span>
+ 
+	Expanding and combining like terms, we see that we need to solve the cubic equation \(4y^3 - 6y^2 - 2y + 2 = 0\); using a computer algebra system, we find that this occurs when \(y = \frac{1}{2}, \frac{1 \pm \sqrt{5}}{2}.\)  It now remains to find the \(x\)-coordinate that corresponds to each such \(y\)-value.  For instance, when \(y = \frac{1}{2}\), \(x\) must satisfy
+	
+<span class="displaymath" id="me-243">\[
+\frac{1}{2}(\frac{1}{4}-1)(\frac{1}{2}-2) = x(x-1)(x-2),
+\]</span>
+ 
+	or in other words, \(x^3 - 3x^2 + 2x = \frac{9}{16}.\)  Here, too, we use technology to determine that there is only one such \(x\), and \(x \approx 2.21028\).  Similar work can be done to find the \(x\)-values that correspond to \(y = \frac{1 \pm \sqrt{5}}{2}\).</li>
+<li id="li-1111">There are four points on the curve where \(x = 1\), which correspond to the \(y\)-values that satisfy \(y(y^2-1)(y-2) = 0\): \((1,0)\), \((1,1)\), \((1,-1)\), \((1,2)\).  We choose the point \((1,1)\) and evaluate \(\frac{dy}{dx}\) at this point.  Doing so,
+	  
+<span class="displaymath" id="me-244">\[
+\left.\frac{dy}{dx} \right|_{(1,1)} = \frac{(1-1)(1-2) + 1(1-2) + 1(1-1)}{(1^2-1)(1-2) + 2\cdot 1^2(1-2) + 1(1^2-1)} = \frac{-1}{-2} = \frac{1}{2}.
+\]</span>
+ 
+Thus, the equation of the tangent line to the curve at \((1,1)\) is \(y - 1 = \frac{1}{2}(x-1)\).</li>
+</ol></span></span><p id="p-614">
+The closing activity in this section offers more opportunities to practice implicit differentiation.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.7.3" id="A_2.7.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.7.9</span>
+</h5></a></div>
+<div id="hk-A_2.7.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-615">
+For each of the following curves, use implicit differentiation to find \(dy/dx\) and determine the equation of the tangent line at the given point.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1112">\(x^3 - y^3 = 6xy\),   \((-3,3)\)</li>
+<li id="li-1113">\(\sin(y) + y = x^3 + x\),   \((0,0)\)</li>
+<li id="li-1114">\(3x e^{-xy} = y^2\),   \((0.619061,1)\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-85" id="hint-85"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-85" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1115">Note that \(\frac{d}{dx}[6xy]\) requires the product rule.</li>
+<li id="li-1116">With \(y\) being a function of \(x\), \(\frac{d}{dx}[\sin(y)]\) requires the chain rule.</li>
+<li id="li-1117">To calculate \(\frac{d}{dx}[x e^{-xy}]\), first use the product rule and temporarily defer computing \(\frac{d}{dx}[e^{-xy}]\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-86" id="hint-86"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-86" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1118">Note that \(\frac{d}{dx}[6xy]\) requires the product rule; don't forget to use the chain rule for \(\frac{d}{dx}[y^3]\).</li>
+<li id="li-1119">With \(y\) being a function of \(x\), \(\frac{d}{dx}[\sin(y)]\) requires the chain rule.</li>
+<li id="li-1120">To calculate \(\frac{d}{dx}[x e^{-xy}]\), first use the product rule; when you compute compute \(\frac{d}{dx}[e^{-xy}]\), note that this uses the chain rule and that differentiating the inner function will again use the product rule.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-42" id="solution-42"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-42" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1121">Differentiating with respect to \(x\),
+		
+<span class="displaymath" id="me-245">\[
+\frac{d}{dx}[x^3 - y^3] = \frac{d}{dx}[6xy],
+\]</span>
+ 
+		so that by the chain and product rules we have
+		
+<span class="displaymath" id="me-246">\[
+3x^2 - 3y^2 \frac{dy}{dx} = 6x\frac{dy}{dx}+ 6y.
+\]</span>
+ 
+		Rearranging to get all terms with \(\frac{dy}{dx}\) on the same side, it follows that
+		
+<span class="displaymath" id="me-247">\[
+-3y^2 \frac{dy}{dx} - 6x\frac{dy}{dx} = 6y-3x^2,
+\]</span>
+ 
+		and thus
+		
+<span class="displaymath" id="me-248">\[
+\frac{dy}{dx}(-3y^2 - 6x) = 6y-3x^2.
+\]</span>
+ 
+		Finally, we have established that 
+		
+<span class="displaymath" id="me-249">\[
+\frac{dy}{dx} = \frac{6y-3x^2}{-3y^2 - 6x},
+\]</span>
+ 
+		so evaluating at
+		 \((-3,3)\), we have
+		 \(\left. \frac{dy}{dx} \right|_{(-3,3)} = \frac{6(3)-3(-3)^2}{-3(3)^2 - 6(3)} = -1.\)
+		 Thus, the tangent line has equation \(y - 3 = -1(x+3).\)</li>
+<li id="li-1122">After differentiating with respect to \(x\), we have
+		 
+<span class="displaymath" id="me-250">\[
+\cos(y) \frac{dy}{dx} + \frac{dy}{dx} = 3x^2 + 1.
+\]</span>
+ 
+		 Taking the usual steps to solve for \(\frac{dy}{dx}\), we find that
+		 
+<span class="displaymath" id="me-251">\[
+\frac{dy}{dx} = \frac{3x^2 + 1}{\cos(y) + 1}.
+\]</span>
+ 
+		 Evaluating the slope of the tangent line at
+		 \((0,0)\), we have
+		 \(\left. \frac{dy}{dx} \right|_{(0,0)} = \frac{1}{2},\)
+		 and thus the tangent line at \((0,0)\) has equation \(y = \frac{1}{2}x\).</li>
+<li id="li-1123">When we differentiate both sides with respect to \(x\), 
+		
+<span class="displaymath" id="me-252">\[
+\frac{d}{dx}[x e^{-xy}] = \frac{d}{dx}[y^2],
+\]</span>
+ 
+		we first observe that the product rule is needed on the left and the chain rule on the right.  Applying those rules, we have
+		
+<span class="displaymath" id="me-253">\[
+x\frac{d}{dx}[e^{-xy}] + e^{-xy} = 2y\frac{dy}{dx}.
+\]</span>
+ 
+		Next, we apply the chain rule to differentiate \(e^{-xy}\), which yields
+		
+<span class="displaymath" id="me-254">\[
+xe^{-xy}\frac{d}{dx}[-xy] + e^{-xy} = 2y\frac{dy}{dx}.
+\]</span>
+ 
+		Finally, to complete the process of differentiation, we use the product rule and get
+		
+<span class="displaymath" id="me-255">\[
+xe^{-xy}(-x\frac{dy}{dx} - y) + e^{-xy} = 2y\frac{dy}{dx}.
+\]</span>
+ 
+		To solve for \(\frac{dy}{dx}\), we first expand to have
+		
+<span class="displaymath" id="me-256">\[
+-x^2e^{-xy}\frac{dy}{dx} - xye^{-xy} + e^{-xy} = 2y\frac{dy}{dx},
+\]</span>
+ 
+		and then the usual algebraic work may be done to deduce that
+		
+<span class="displaymath" id="me-257">\[
+\frac{dy}{dx} = \frac{-xye^{-xy} + e^{-xy}}{x^2e^{-xy}+2}.
+\]</span>
+ 
+		Evaluating at the point
+		\((0.571433,1)\), it follows that the slope of the tangent line is
+		
+<span class="displaymath" id="me-258">\[
+\left. \frac{dy}{dx} \right|_{(0.571433,1)} = \frac{-0.571433 e^{-0.571433} + e^{-0.571433}}{(0.571433)^2e^{-0.571433}+2} \approx 0.110794.
+\]</span>
+ 
+		Thus, the tangent line is given by \(y - 1 = 0.110794(x - 0.571433)\).</li>
+</ol></span></span><p id="p-616">
+\item When we have an equation involving \(x\) and \(y\) where \(y\) cannot be solved for explicitly in terms of \(x\), but where portions of the curve can be thought of as being generated by explicit functions of \(x\), we say that \(y\) is an implicit function of \(x\). A good example of such a curve is the unit circle.
+\item In the process of implicit differentiation, we take the equation that generates an implicitly given curve and differentiate both sides with respect to \(x\) while treating \(y\) as a function of \(x\). In so doing, the chain rule leads \(\frac{dy}{dx}\) to arise, and then we may subsequently solve for \(\frac{dy}{dx}\) using algebra.
+\item While \(\frac{dy}{dx}\) may now involve both the variables \(x\) and \(y\), \(\frac{dy}{dx}\) still measures the slope of the tangent line to the curve, and thus this derivative may be used to decide when the tangent line is horizontal (\(\frac{dy}{dx} = 0\)) or vertical (\(\frac{dy}{dx}\) is undefined), or to find the equation of the tangent line at a particular point on the curve.
+</p>
+<p id="p-617">
+\hrulefill
+</p>
+<p id="p-618">
+\begin{exercises}
+\item Consider the curve given by the equation \(2y^3+y^2-y^5 = x^4 - 2x^3  + x^2\). Find all points at which the tangent line to the curve is horizontal or vertical.
+\item For the curve given by the equation \(\sin(x+y) + \cos(x-y) = 1\), find the equation of the tangent line to the curve at the point \((\frac{\pi}{2}, \frac{\pi}{2})\).
+\item Implicit differentiation enables us a different perspective from which to see why the rule \(\frac{d}{dx} [a^x] = a^x \ln(a)\) holds, if we assume that \(\frac{d}{dx}[\ln(x)] = \frac{1}{x}\). This exercise leads you through the key steps to do so.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1124">Let \(y = a^x\).  Rewrite this equation using the natural logarithm function to write \(x\) in terms of \(y\) (and the constant \(a\)).</li>
+<li id="li-1125">Differentiate both sides of the equation you found in (a) with respect to \(x\), keeping in mind that \(y\) is implicitly a function of \(x\).</li>
+<li id="li-1126">Solve the equation you found in (b) for \(\frac{dy}{dx}\), and then use the definition of \(y\) to write \(\frac{dy}{dx}\) solely in terms of \(x\).  What have you found?</li>
+</ol>
+<p id="p-619">
+\end{exercises}
+\afterexercises
+</p></section></section></div></main>
+</div>
+</body>
+</html>

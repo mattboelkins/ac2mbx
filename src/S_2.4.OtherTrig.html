@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:39-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Derivatives of other trigonometric functions</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_2.3.ProdQuot.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.5.Chain.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_2.3.ProdQuot.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.5.Chain.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link active"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html" class="active">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_2.4.OtherTrig"><header><h1 class="heading" alt="Section 2.4 Derivatives of other trigonometric functions" title="Section 2.4 Derivatives of other trigonometric functions">
+<span class="type">Section</span><span class="codenumber">2.4</span><span class="title">Derivatives of other trigonometric functions</span><a href="S_2.4.OtherTrig.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-12"><h5 class="heading"></h5>
+<p id="p-435">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-835">What are the derivatives of the tangent, cotangent, secant, and cosecant functions?</li>
+<li id="li-836">How do the derivatives of \(\tan(x)\), \(\cot(x)\), \(\sec(x)\), and \(\csc(x)\) combine with other derivative rules we have developed to expand the library of functions we can quickly differentiate?</li>
+</ul>
+<p id="p-436">
+} 
+</p></article><section class="subsection" id="subsection-35"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.4.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-437">
+One of the powerful themes in trigonometry \knownindex{\lt main&gt;trigonometry\lt /main&gt;} is that the entire subject emanates from a very simple idea: locating a point on the unit circle.
+</p>
+<figure class="figure-like" id="F_2.4.UnitCircle"><img width="100%" src="images/2_4_UnitCircle.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.4.1</span>The unit circle and the definition of the sine and cosine functions.</figcaption></figure><p id="p-438">
+Because each angle \(\theta\) corresponds to one and only one point \((x,y)\) on the unit circle, the \(x\)- and \(y\)-coordinates of this point are each functions of \(\theta\). Indeed, this is the very definition of \(\cos(\theta)\) and \(\sin(\theta)\): \(\cos(\theta)\) is the \(x\)-coordinate of the point on the unit circle corresponding to the angle \(\theta\), and \(\sin(\theta)\) is the \(y\)-coordinate. From this simple definition, all of trigonometry is founded. For instance, the fundamental trigonometric identity\knownindex{\lt main&gt;trigonometry\lt /main&gt;\lt sub&gt;fundamental trigonometric identity\lt /sub&gt;},
+</p>
+<span class="displaymath" id="me-128">\[
+\sin^2(\theta) + \cos^2(\theta) = 1,
+\]</span><p id="p-439">
+is a restatement of the Pythagorean Theorem, applied to the right triangle shown in <a knowl="./knowl/F_2.4.UnitCircle.html" knowl-id="xref-F_2.4.UnitCircle" alt="Figure 2.4.1 " title="Figure 2.4.1 ">Figure 2.4.1</a>.
+</p>
+<p id="p-440">
+We recall as well that there are four other trigonometric functions, each defined in terms of the sine and/or cosine functions. These six trigonometric functions together offer us a wide range of flexibility in problems involving right triangles. The tangent function \knownindex{\lt main&gt;tangent\lt /main&gt;} is defined by \(\tan(\theta) = \frac{\sin(\theta)}{\cos(\theta)}\), while the cotangent function is its reciprocal: \(\cot(\theta) = \frac{\cos(\theta)}{\sin(\theta)}\). The secant function is the reciprocal of the cosine function, \(\sec(\theta) = \frac{1}{\cos(\theta)}\), and the cosecant function is the reciprocal of the sine function, \(\csc(\theta) = \frac{1}{\sin(\theta)}\).
+</p>
+<p id="p-441">
+Because we know the derivatives of the sine and cosine function, and the other four trigonometric functions are defined in terms of these familiar functions, we can now develop shortcut differentiation rules for the tangent, cotangent, secant, and cosecant functions. In this section's preview activity, we work through the steps to find the derivative of \(y = \tan(x)\).
+</p>
+<article class="paragraphs" id="PA_2.4"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-442">
+Consider the function \(\ds f(x) = \tan(x)\), and remember that <br> \(\ds \tan(x) = \frac{\sin(x)}{\cos(x)}\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-837">What is the domain of \(f\)?</li>
+<li id="li-838">Use the quotient rule to show that one expression for \(f'(x)\) is
+	
+<span class="displaymath" id="me-129">\[
+f'(x) = \frac{\cos(x)\cos(x) + \sin(x)\sin(x)}{\cos^2(x)}.
+\]</span>
+</li>
+<li id="li-839">What is the Fundamental Trigonometric Identity?  How can this identity be used to find a simpler form for \(f'(x)\)?</li>
+<li id="li-840">Recall that \(\sec(x) = \frac{1}{\cos(x)}\).  How can we express \(f'(x)\) in terms of the secant function?</li>
+<li id="li-841">For what values of \(x\) is \(f'(x)\) defined?  How does this set compare to the domain of \(f\)?</li>
+</ol></article></section><section class="subsection" id="subsection-36"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.4.2</span><span class="title">Derivatives of the cotangent, secant, and cosecant functions</span>
+</h1></header><p id="p-443">
+\knownindex{\lt main&gt;cotangent\lt /main&gt;} \knownindex{\lt main&gt;secant\lt /main&gt;} \knownindex{\lt main&gt;cosecant\lt /main&gt;}
+</p>
+<p id="p-444">
+In Preview <a href="S_2.4.OtherTrig.html#PA_2.4" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, we found that the derivative of the tangent function can be expressed in several ways, but most simply in terms of the secant function. Next, we develop the derivative of the cotangent function.
+</p>
+<p id="p-445">
+Let \(g(x) = \cot(x)\). To find \(g'(x)\), we observe that \(g(x) = \frac{\cos(x)}{\sin(x)}\) and apply the quotient rule. Hence
+</p>
+<span class="displaymath" id="md-20">\begin{align*}
+g'(x) \amp  = \amp  \frac{\sin(x)(-\sin(x)) - \cos(x) \cos(x)}{\sin^2(x)}\\
+\amp  = \amp  -\frac{\sin^2(x) + \cos^2(x)}{\sin^2(x)}
+\end{align*}</span><p id="p-446">
+By the Fundamental Trigonometric Identity, we see that \(g'(x) = -\frac{1}{\sin^2(x)}\); recalling that \(\csc(x) = \frac{1}{\sin(x)}\), it follows that we can most simply express \(g'\) by the rule
+</p>
+<span class="displaymath" id="me-130">\[
+g'(x) = -\csc^2(x).
+\]</span><p id="p-447">
+Note that neither \(g\) nor \(g'\) is defined when \(\sin(x) = 0\), which occurs at every integer multiple of \(\pi\). Hence we have the following rule.
+</p>
+<p id="p-448">
+
+{
+Cotangent Function: \knownindex{\lt main&gt;derivative\lt /main&gt;\lt sub&gt;cotangent\lt /sub&gt;} For all real numbers \(x\) such that \(x \ne k\pi\), where \(k = 0, \pm 1, \pm 2, \ldots\),
+</p>
+<span class="displaymath" id="me-131">\[
+\frac{d}{dx} [\cot(x)] = -\csc^2(x).
+\]</span><p id="p-449">
+} 
+
+</p>
+<p id="p-450">
+Observe that the shortcut rule for the cotangent function is very similar to the rule we discovered in Preview <a href="S_2.4.OtherTrig.html#PA_2.4" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> for the tangent function.
+</p>
+<p id="p-451">
+
+{
+Tangent Function: \knownindex{\lt main&gt;derivative\lt /main&gt;\lt sub&gt;tangent\lt /sub&gt;} For all real numbers \(x\) such that \(x \ne \frac{(2k+1)\pi}{2}\), where \(k = \pm 1, \pm 2, \ldots\),
+</p>
+<span class="displaymath" id="me-132">\[
+\frac{d}{dx} [\tan(x)] = \sec^2(x).
+\]</span><p id="p-452">
+} 
+
+</p>
+<p id="p-453">
+In the next two activities, we develop the rules for differentiating the secant and cosecant functions.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.4.1" id="A_2.4.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.4.2</span>
+</h5></a></div>
+<div id="hk-A_2.4.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-454">
+Let \(h(x) = \sec(x)\) and recall that \(\sec(x) = \frac{1}{\cos(x)}\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-842">What is the domain of \(h\)?</li>
+<li id="li-843">Use the quotient rule to develop a formula for \(h'(x)\) that is expressed completely in terms of \(\sin(x)\) and \(\cos(x)\).</li>
+<li id="li-844">How can you use other relationships among trigonometric functions to write \(h'(x)\) only in terms of \(\tan(x)\) and \(\sec(x)\)?</li>
+<li id="li-845">What is the domain of \(h'\)?  How does this compare to the domain of \(h\)?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-63" id="hint-63"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-63" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-846">For what values of \(x\) is \(\cos(x) = 0\)?</li>
+<li id="li-847">Don't forget that \(\frac{d}{dx}[1] = 0\).</li>
+<li id="li-848">Consider rewriting \(\frac{\sin(x)}{\cos^2(x)}\) as \(\frac{1}{\cos(x)} \cdot \frac{\sin(x)}{\cos(x)}\).</li>
+<li id="li-849">Observe that \(\cos(x)\) is still present in the denominator of \(h'(x)\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-64" id="hint-64"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-64" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-850">Remember that one value of \(x\) for which \(\cos(x) = 0\) is \(x = \frac{\pi}{2}\).  What are the others?</li>
+<li id="li-851">Don't forget that \(\frac{d}{dx}[1] = 0\), and be careful with your signs.</li>
+<li id="li-852">Consider rewriting \(\frac{\sin(x)}{\cos^2(x)}\) as \(\frac{1}{\cos(x)} \cdot \frac{\sin(x)}{\cos(x)}\).</li>
+<li id="li-853">Observe that \(\cos(x)\) is still present in the denominator of \(h'(x)\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-31" id="solution-31"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-31" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-854">\(h(x) = \sec(x)\) is defined for all \(x\) for which \(\cos(x) \ne 0\).  Hence the domain of \(h\) is all real numbers \(x\) such that \(x \ne \frac{k\pi}{2}\), where \(k = \pm 1, \pm 2, \ldots\).</li>
+<li id="li-855">By the quotient rule,
+	
+<span class="displaymath" id="me-133">\[
+h'(x) = \frac{0 - 1  (-\sin(x))}{\cos^2(x)} = \frac{\sin(x)}{\cos^2(x)}.
+\]</span>
+</li>
+<li id="li-856">Observe that \(h'(x) = \frac{\sin(x)}{\cos^2(x)} = \frac{1}{\cos(x)} \cdot \frac{\sin(x)}{\cos(x)},\) so
+	
+<span class="displaymath" id="me-134">\[
+h'(x) = \sec(x) \tan(x).
+\]</span>
+</li>
+<li id="li-857">The derivative \(h'(x)\) is, like \(h(x)\), defined for all values of \(x\) for which \(\cos(x) \ne 0\).  Therefore, \(h\) and \(h'\) have the same domain:  all real numbers \(x\) such that \(x \ne \frac{k\pi}{2}\), where \(k = \pm 1, \pm 2, \ldots\).</li>
+</ol></span></span><div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.4.2" id="A_2.4.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.4.3</span>
+</h5></a></div>
+<div id="hk-A_2.4.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-455">
+Let \(p(x) = \csc(x)\) and recall that \(\csc(x) = \frac{1}{\sin(x)}\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-858">What is the domain of \(p\)?</li>
+<li id="li-859">Use the quotient rule to develop a formula for \(p'(x)\) that is expressed completely in terms of \(\sin(x)\) and \(\cos(x)\).</li>
+<li id="li-860">How can you use other relationships among trigonometric functions to write \(p'(x)\) only in terms of \(\cot(x)\) and \(\csc(x)\)?</li>
+<li id="li-861">What is the domain of \(p'\)?  How does this compare to the domain of \(p\)?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-65" id="hint-65"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-65" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-862">For what values of \(x\) is \(\sin(x) = 0\)?</li>
+<li id="li-863">Don't forget that \(\frac{d}{dx}[1] = 0\).</li>
+<li id="li-864">Consider rewriting \(\frac{\cos(x)}{\sin^2(x)}\) as \(\frac{1}{\sin(x)} \cdot \frac{\cos(x)}{\sin(x)}\).</li>
+<li id="li-865">Observe that \(\sin(x)\) is still present in the denominator of \(h'(x)\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-66" id="hint-66"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-66" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-866">Remember that one value of \(x\) for which \(\sin(x) = 0\) is \(x = \pi\).  What are the others?</li>
+<li id="li-867">Don't forget that \(\frac{d}{dx}[1] = 0\), and be careful with your signs.</li>
+<li id="li-868">Consider rewriting \(\frac{\cos(x)}{\sin^2(x)}\) as \(\frac{1}{\sin(x)} \cdot \frac{\cos(x)}{\sin(x)}\).</li>
+<li id="li-869">Observe that \(\sin(x)\) is still present in the denominator of \(h'(x)\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-32" id="solution-32"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-32" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-870">\(p(x) = \csc(x)\) is defined for all \(x\) for which \(\sin(x) \ne 0\).  Hence the domain of \(h\) is all real numbers \(x\) such that \(x k\pi\), where \(k = 0, \pm 1, \pm 2, \ldots\).</li>
+<li id="li-871">By the quotient rule,
+	
+<span class="displaymath" id="me-135">\[
+h'(x) = \frac{0 - 1 \cdot (\cos(x))}{\sin^2(x)} = -\frac{\cos(x)}{\sin^2(x)}.
+\]</span>
+</li>
+<li id="li-872">Observe that \(h'(x) = -\frac{\cos(x)}{\sin^2(x)} = -\frac{1}{\sin(x)} \cdot \frac{\cos(x)}{\sin(x)},\) so
+	
+<span class="displaymath" id="me-136">\[
+h'(x) = -\csc(x) \cot(x).
+\]</span>
+</li>
+<li id="li-873">The derivative \(p'(x)\) is, like \(p(x)\), defined for all values of \(x\) for which \(\sin(x) \ne 0\).  Therefore, \(p\) and \(p'\) have the same domain:  all real numbers \(x\) such that \(x \ne k\pi\), where \(k = 0, \pm 1, \pm 2, \ldots\).</li>
+</ol></span></span><p id="p-456">
+The quotient rule has thus enabled us to determine the derivatives of the tangent, cotangent, secant, and cosecant functions, expanding our overall library of basic functions we can differentiate. Moreover, we observe that just as the derivative of any polynomial function is a polynomial, and the derivative of any exponential function is another exponential function, so it is that the derivative of any basic trigonometric function is another function that consists of basic trigonometric functions. This makes sense because all trigonometric functions are periodic, and hence their derivatives will be periodic, too.
+</p>
+<p id="p-457">
+As has been and will continue to be the case throughout our work in <a href="C_2.html" alt="Chapter 2 Computing Derivatives" title="Chapter 2 Computing Derivatives">Chapter 2</a>, the derivative retains all of its fundamental meaning as an instantaneous rate of change and as the slope of the tangent line to the function under consideration. Our present work primarily expands the list of functions for which we can quickly determine a formula for the derivative. Moreover, with the addition of \(\tan(x)\), \(\cot(x)\), \(\sec(x)\), and \(\csc(x)\) to our library of basic functions, there are many more functions we can differentiate through the sum, constant multiple, product, and quotient rules.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.4.3" id="A_2.4.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.4.4</span>
+</h5></a></div>
+<div id="hk-A_2.4.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-458">
+Answer each of the following questions. Where a derivative is requested, be sure to label the derivative function with its name using proper notation.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-874">Let \(f(x) = 5 \sec(x) - 2\csc(x)\).  Find the slope of the tangent line to \(f\) at the point where \(x =\frac{\pi}{3}\).</li>
+<li id="li-875">Let \(p(z) = z^2\sec(z) - z\cot(z)\).  Find the instantaneous rate of change of \(p\) at the point where \(z = \frac{\pi}{4}\).</li>
+<li id="li-876">Let \(h(t) = \displaystyle \frac{\tan (t)}{t^2+1} - 2e^t \cos(t)\).  Find \(h'(t)\).</li>
+<li id="li-877">Let \(g(r) = \displaystyle \frac{r \sec(r) }{5^r}\).  Find \(g'(r)\).</li>
+<li id="li-878">When a mass hangs from a spring and is set in motion, the object's position oscillates in a way that the size of the oscillations decrease.  This is usually called a <!--Style me with CSS--><em>damped oscillation</em>.  Suppose that for a particular object, its displacement from equilibrium (where the object sits at rest) is modeled by the function 
+<span class="displaymath" id="me-137">\[
+s(t) = \frac{15 \sin(t)}{e^t}.
+\]</span>
+ 
+Assume that \(s\) is measured in inches and \(t\) in seconds.  Sketch a graph of this function for \(t \ge 0\) to see how it represents the situation described.  Then compute \(ds/dt\), state the units on this function, and explain what it tells you about the object's motion.  Finally, compute and interpret \(s'(2)\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-67" id="hint-67"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-67" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-879">What rule(s) can help you determine \(f'(x)\)?</li>
+<li id="li-880">Note that \(p\) is a sum of two functions.  What rule is needed to differentiate each term in the sum?</li>
+<li id="li-881">Observe that \(h\) is a sum of two functions; the first term in the sum is a quotient, while the second is a product.</li>
+<li id="li-882">What is the overall structure of \(g\)?  What is the algebraic structure of the numerator of \(g\)?</li>
+<li id="li-883">Keep in mind that the derivative of position tells us the instantaneous velocity.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-68" id="hint-68"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-68" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-884">Use the sum and constant multiple rules help you determine \(f'(x)\).</li>
+<li id="li-885">Note that \(p\) is a sum of two functions and that each term in the sum is a product.</li>
+<li id="li-886">Observe that \(h\) is a sum of two functions; the first term in the sum is a quotient, while the second is a product.</li>
+<li id="li-887">What is the overall structure of \(g\)?  What is the algebraic structure of the numerator of \(g\)?</li>
+<li id="li-888">Keep in mind that the derivative of position tells us the instantaneous velocity, and observe that differentiating \(s\) will require the quotient rule.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-33" id="solution-33"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-33" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-889">Using the sum and constant multiple rules along with the formulas for the derivatives of \(\sec(x)\) and \(\csc(x)\), we find that
+	
+<span class="displaymath" id="me-138">\[
+f'(x) = 5 \sec(x)\tan(x) + 2\csc(x)\cot(x).
+\]</span>
+   Therefore, the slope of the tangent line to \(f\) at the point where \(x =\frac{\pi}{3}\) is given by \(m = f'(\frac{\pi}{3}) =  5 \sec(\frac{\pi}{3})\tan(\frac{\pi}{3}) + 2\csc(\frac{\pi}{3})\cot(\frac{\pi}{3}) = 5 \cdot 2 \cdot \sqrt{3} + 2 \cdot \frac{2}{\sqrt{3}} \cdot \frac{1}{\sqrt{3}} = 10\sqrt{3} + \frac{4}{3}.\)</li>
+<li id="li-890">By the sum rule and two applications of the product rule, we have
+	
+<span class="displaymath" id="md-21">\begin{align*}
+p'(z) \amp  = \amp  \frac{d}{dz}[z^2\sec(z)] - \frac{d}{dz}[z\cot(z)]\\
+\amp  = \amp   [z^2 \sec(z) \tan(z) + \sec(z) \cdot 2z] - [z(-\csc^2(z)) + \cot(z) \cdot 1]\\
+\amp  = \amp   z^2 \sec(z) \tan(z) + 2z\sec(z) + z\csc^2(z) - \cot(z).
+\end{align*}</span>
+ 
+	Thus, the instantaneous rate of change of \(p\) at the point where \(z = \frac{\pi}{4}\) is
+	
+<span class="displaymath" id="md-22">\begin{align*}
+p'(\frac{\pi}{4}) \amp  = \amp   (\frac{\pi}{4})^2 \sec(\frac{\pi}{4}) \tan(\frac{\pi}{4}) + 2\frac{\pi}{4}\sec(\frac{\pi}{4}) + \frac{\pi}{4}\csc^2(\frac{\pi}{4}) - \cot(\frac{\pi}{4})\\
+\amp  = \amp   \frac{\pi^2}{16} \sqrt{2} + 2\frac{\pi}{4}\sqrt{2} + \frac{\pi}{4}2 - 1\\
+\amp  = \amp   \frac{\pi^2}{16} \sqrt{2} + \frac{\sqrt{2}\pi}{2} + \frac{\pi}{2} - 1
+\end{align*}</span>
+</li>
+<li id="li-891">Using the sum and constant multiple rules, followed by the quotient rule on the first term and the product rule on the second, we find that
+        
+<span class="displaymath" id="md-23">\begin{align*}
+h'(t) \amp  = \amp  \frac{d}{dt}\left[ \frac{\tan (t)}{t^2+1} \right] - 2\frac{d}{dt}\left[e^t \cos(t)\right]\\
+\amp  = \amp  \frac{(t^2+1) \sec^2(t) - \tan(t) (2t)}{(t^2 + 1)^2} - 2(e^t(-\sin(t)) + \cos(t)e^t)\\
+\amp  = \amp   \frac{(t^2+1) \sec^2(t) - 2t \tan(t)}{(t^2 + 1)^2} + 2e^t \sin(t) - 2 e^t\cos(t)
+\end{align*}</span>
+</li>
+<li id="li-892">Note that \(g\) is fundamentally a quotient, so we need to use the quotient rule.  But the numerator of \(g\) is a product, so the product rule will be required to compute the derivative of the top function.  Executing the quotient rule and proceeding, we find that
+        
+<span class="displaymath" id="md-24">\begin{align*}
+g'(r) \amp  = \amp  \frac{5^r \frac{d}{dr}[r \sec(r)] - r\sec(r) \cdot 5^r \ln(5) }{(5^r)^2}\\
+\amp  = \amp  \frac{5^r [r \sec(r) \tan(r) + \sec(r) \cdot 1] - r\sec(r) \cdot 5^r \ln(5) }{(5^r)^2}\\
+\amp  = \amp  \frac{r \sec(r) \tan(r) + \sec(r) - r 5^r \sec(r)}{5^r}
+\end{align*}</span>
+</li>
+<li id="li-893">By the quotient rule, 
+        
+<span class="displaymath" id="me-139">\[
+\frac{ds}{dt} = \frac{e^t \cdot 15 \cos(t) - 15\sin(t) \cdot e^t}{(e^t)^2} = \frac{15\cos(t) - 15\sin(t)}{e^t}.
+\]</span>
+ 
+The function \(\frac{ds}{dt} = s'(t)\) measures the instantaneous vertical velocity of the mass that is attached to the spring.  In particular, \(s'(2) = \frac{15\cos(2) - 15\sin(2)}{e^2} \approx -2.69\) inches per second, which tells us at the instant \(t = 2\), the mass is moving downward at an instantaneous rate of 2.69 inches per second.</li>
+</ol></span></span><p id="p-459">
+\item The derivatives of the other four trigonometric functions are
+</p>
+<span class="displaymath" id="me-140">\[
+\frac{d}{dx}[\tan(x)] = \sec^2(x), \ \ \frac{d}{dx}[\cot(x)] = -\csc^2(x),
+\]</span><span class="displaymath" id="me-141">\[
+\frac{d}{dx}[\sec(x)] = \sec(x)\tan(x), \ \mbox{and}  \ \frac{d}{dx}[\csc(x)] = -\csc(x)\cot(x).
+\]</span><p id="p-460">
+Each derivative exists and is defined on the same domain as the original function. For example, both the tangent function and its derivative are defined for all real numbers \(x\) such that \(x \ne \frac{k\pi}{2}\), where \(k = \pm 1, \pm 2, \ldots\).
+\item The above four rules for the derivatives of the tangent, cotangent, secant, and cosecant can be used along with the rules for power functions, exponential functions, and the sine and cosine, as well as the sum, constant multiple, product, and quotient rules, to quickly differentiate a wide range of different functions.
+</p>
+<p id="p-461">
+\hrulefill
+</p>
+<p id="p-462">
+\begin{exercises}
+\item An object moving vertically has its height at time \(t\) (measured in feet, with time in seconds) given by the function \(h(t) = 3 + \frac{2\cos(t)}{1.2^t}\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-894">What is the object's instantaneous velocity when \(t =2\)?</li>
+<li id="li-895">What is the object's acceleration at the instant \(t = 2\)?</li>
+<li id="li-896">Describe in everyday language the behavior of the object at the instant \(t = 2\).</li>
+</ol>
+<p id="p-463">
+\item Let \(f(x) = \sin(x) \cot(x)\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-897">Use the product rule to find \(f'(x)\).</li>
+<li id="li-898">True or false: for all real numbers \(x\), \(f(x) = \cos(x)\).</li>
+<li id="li-899">Explain why the function that you found in (a) is almost the opposite of the sine function, but not quite.  (Hint: convert all of the trigonometric functions in (a) to sines and cosines, and work to simplify.  Think carefully about the domain of \(f\) and the domain of \(f'\).)</li>
+</ol>
+<p id="p-464">
+\item Let \(p(z)\) be given by the rule
+</p>
+<span class="displaymath" id="me-142">\[
+p(z) = \frac{z\tan(z)}{z^2\sec(z) + 1} + 3 e^z + 1.
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-900">Determine \(p'(z)\).</li>
+<li id="li-901">Find an equation for the tangent line to \(p\) at the point where \(z = 0\).</li>
+<li id="li-902">At \(z = 0\), is \(p\) increasing, decreasing, or neither?  Why?</li>
+</ol>
+<p id="p-465">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-466">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

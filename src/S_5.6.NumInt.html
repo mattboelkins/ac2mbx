@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:47-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Numerical Integration</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_5.5.OtherOpt.html">Previous</a><a class="up-button button toolbar-item" href="C_5.html">Up</a><a class="next-button button toolbar-item" href="C_6.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_5.5.OtherOpt.html">Previous</a><a class="up-button button toolbar-item" href="C_5.html">Up</a><a class="next-button button toolbar-item" href="C_6.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link active"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html" class="active">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_5.6.NumInt"><header><h1 class="heading" alt="Section 5.6 Numerical Integration" title="Section 5.6 Numerical Integration">
+<span class="type">Section</span><span class="codenumber">5.6</span><span class="title">Numerical Integration</span><a href="S_5.6.NumInt.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-31"><h5 class="heading"></h5>
+<p id="p-1399">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2166">How do we accurately evaluate a definite integral such as \(\int_0^1 e^{-x^2} \, dx\) when we cannot use the First Fundamental Theorem of Calculus because the integrand lacks an elementary algebraic antiderivative?  Are there ways to generate accurate estimates without using extremely large values of \(n\) in Riemann sums?</li>
+<li id="li-2167">What is the Trapezoid Rule, and how is it related to left, right, and middle Riemann sums?</li>
+<li id="li-2168">How are the errors in the Trapezoid Rule and Midpoint Rule related, and how can they be used to develop an even more accurate rule?</li>
+</ul>
+<p id="p-1400">
+} 
+</p></article><section class="subsection" id="subsection-101"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">5.6.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-1401">
+When we were first exploring the problem of finding the net-signed area bounded by a curve, we developed the concept of a Riemann sum as a helpful estimation tool and a key step in the definition of the definite integral. In particular, as we found in <a href="S_4.2.Riemann.html" alt="Section 4.2 Riemann Sums" title="Section 4.2 Riemann Sums">Section 4.2</a>, recall that the left, right, and middle Riemann sums of a function \(f\) on an interval \([a,b]\) are denoted \(L_n\), \(R_n\), and \(M_n\), with formulas
+</p>
+<span class="displaymath" id="E_Left">\begin{equation}
+ L_n = f(x_0) \triangle x + f(x_1) \triangle x + \cdots + f(x_{n-1}) \triangle x = \sum_{i = 0}^{n-1} f(x_i) \triangle x,
+\label{E_Left}\tag{5.6.1}\end{equation}</span><span class="displaymath" id="E_Right">\begin{equation}
+ R_n = f(x_1) \triangle x + f(x_2) \triangle x + \cdots + f(x_{n}) \triangle x = \sum_{i = 1}^{n} f(x_i) \triangle x,
+\label{E_Right}\tag{5.6.2}\end{equation}</span><span class="displaymath" id="E_Mid">\begin{equation}
+ M_n = f(\overline{x}_1) \triangle x + f(\overline{x}_2) \triangle x + \cdots + f(\overline{x}_{n}) \triangle x = \sum_{i = 1}^{n} f(\overline{x}_i) \triangle x,
+\label{E_Mid}\tag{5.6.3}\end{equation}</span><p id="p-1402">
+where \(x_0 = a\), \(x_i = a + i\triangle x\), \(x_n = b\), and \(\triangle x = \frac{b-a}{n}\). For the middle sum, note that \(\overline{x}_{i} = (x_{i-1} + x_i)/2\).
+</p>
+<p id="p-1403">
+Further, recall that a Riemann sum is essentially a sum of (possibly signed) areas of rectangles, and that the value of \(n\) determines the number of rectangles, while our choice of left endpoints, right endpoints, or midpoints determines how we use the given function to find the heights of the respective rectangles we choose to use. Visually, we can see the similarities and differences among these three options in <a knowl="./knowl/F_5.6.LRMsum.html" knowl-id="xref-F_5.6.LRMsum" alt="Figure 5.6.1 " title="Figure 5.6.1 ">Figure 5.6.1</a>, where we consider the function \(f(x) = \frac{1}{20}(x-4)^3 + 7\) on the interval \([1,8]\), and use 5 rectangles for each of the Riemann sums.
+</p>
+<figure class="figure-like" id="F_5.6.LRMsum"><img width="100%" src="images/5_6_LRMsum.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.6.1</span>Left, right, and middle Riemann sums for \(y = f(x)\) on \([1,8]\) with 5 subintervals.</figcaption></figure><p id="p-1404">
+While it is a good exercise to compute a few Riemann sums by hand, just to ensure that we understand how they work and how varying the function, the number of subintervals, and the choice of endpoints or midpoints affects the result, it is of course the case that using computing technology is the best way to determine \(L_n\), \(R_n\), and \(M_n\) going forward. Any computer algebra system will offer this capability; as we saw in Preview <a href="S_4.3.DefiniteIntegral.html#PA_4.3" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, a straightforward option that happens to also be freely available online is the applet<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-38" id="fn-38"><sup> 1 </sup></a></span><span id="hk-fn-38" style="display: none;" class="tex2jax_ignore"><span class="footnote">Marc Renault, Shippensburg University</span></span> at \href{http://gvsu.edu/s/a9}{<tt class="code-inline">http://gvsu.edu/s/a9</tt>}.
+</p>
+<p id="p-1405">
+Note that we can adjust the formula for \(f(x)\), the window of \(x\)- and \(y\)-values of interest, the number of subintervals, and the method. See Preview <a href="S_4.3.DefiniteIntegral.html#PA_4.3" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> for any needed reminders on how the applet works.
+</p>
+<p id="p-1406">
+In what follows in this section we explore several different alternatives, including left, right, and middle Riemann sums, for estimating definite integrals. One of our main goals in the upcoming section is to develop formulas that enable us to estimate definite integrals accurately without having to use exceptionally large numbers of rectangles.
+</p>
+<article class="paragraphs" id="PA_5.6"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1407">
+As we begin to investigate ways to approximate definite integrals, it will be insightful to compare results to integrals whose exact values we know. To that end, the following sequence of questions centers on \(\int_0^3 x^2 \, dx\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2169">Use the applet at \href{http://gvsu.edu/s/a9}{<tt class="code-inline">http://gvsu.edu/s/a9</tt>} with the function \(f(x) = x^2\) on the window of \(x\) values from \(0\) to \(3\) to compute \(L_3\), the left Riemann sum with three subintervals.</li>
+<li id="li-2170">Likewise, use the applet to compute \(R_3\) and \(M_3\), the right and middle Riemann sums with three subintervals, respectively.</li>
+<li id="li-2171">Use the Fundamental Theorem of Calculus to compute the exact value of \(I = \int_0^3 x^2 \, dx\).</li>
+<li id="li-2172">We define the <!--Style me with CSS--><em>error</em> in an approximation of a definite integral to be the difference between the integral's exact value and the approximation's value.  What is the error that results from using \(L_3\)? From \(R_3\)?  From \(M_3\)?</li>
+<li id="li-2173">In what follows in this section, we will learn a new approach to estimating the value of a definite integral known as the Trapezoid Rule.  The basic idea is to use trapezoids, rather than rectangles, to estimate the area under a curve.  What is the formula for the area of a trapezoid with bases of length \(b_1\) and \(b_2\) and height \(h\)?</li>
+<li id="li-2174">Working by hand, estimate the area under \(f(x) = x^2\) on \([0,3]\) using three subintervals and three corresponding trapezoids.  What is the error in this approximation?  How does it compare to the errors you calculated in (d)?</li>
+</ol></article></section><section class="subsection" id="subsection-102"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">5.6.2</span><span class="title">The Trapezoid Rule</span>
+</h1></header><p id="p-1408">
+\knownindex{\lt main&gt;trapezoid rule\lt /main&gt;}
+</p>
+<p id="p-1409">
+Throughout our work to date with developing and estimating definite integrals, we have used the simplest possible quadrilaterals (that is, rectangles) to subdivide regions with complicated shapes. It is natural, however, to wonder if other familiar shapes might serve us even better. In particular, our goal is to be able to accurately estimate \(\int_a^b f(x) \, dx\) without having to use extremely large values of \(n\) in Riemann sums.
+</p>
+<p id="p-1410">
+To this end, we consider an alternative to \(L_n\), \(R_n\), and \(M_n\), know as the <!--Style me with CSS--><em>Trapezoid Rule</em>. The fundamental idea is simple: rather than using a rectangle to estimate the (signed) area bounded by \(y = f(x)\) on a small interval, we use a trapezoid. For example, in <a knowl="./knowl/F_5.6.TRAP.html" knowl-id="xref-F_5.6.TRAP" alt="Figure 5.6.2 " title="Figure 5.6.2 ">Figure 5.6.2</a>, we estimate the area under the pictured curve using three subintervals and the trapezoids that result from connecting the corresponding points on the curve with straight lines.
+</p>
+<figure class="figure-like" id="F_5.6.TRAP"><img width="100%" src="images/5_6_TRAP.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.6.2</span>Estimating \(\int_a^b f(x)   dx\) using three subintervals and trapezoids, rather than rectangles, where \(a = x_0\) and \(b = x_3\).</figcaption></figure><p id="p-1411">
+The biggest difference between the Trapezoid Rule and a left, right, or middle Riemann sum is that on each subinterval, the Trapezoid Rule uses two function values, rather than one, to estimate the (signed) area bounded by the curve. For instance, to compute \(D_1\), the area of the trapezoid generated by the curve \(y = f(x)\) in <a knowl="./knowl/F_5.6.TRAP.html" knowl-id="xref-F_5.6.TRAP" alt="Figure 5.6.2 " title="Figure 5.6.2 ">Figure 5.6.2</a> on \([x_0, x_1]\), we observe that the left base of this trapezoid has length \(f(x_0)\), while the right base has length \(f(x_1)\). In addition, the height of this trapezoid is \(x_1 - x_0 = \triangle x = \frac{b-a}{3}\). Since the area of a trapezoid is the average of the bases times the height, we have
+</p>
+<span class="displaymath" id="me-587">\[
+D_1 = \frac{1}{2}(f(x_0) + f(x_1)) \cdot \triangle x.
+\]</span><p id="p-1412">
+Using similar computations for \(D_2\) and \(D_3\), we find that \(T_3\), the trapezoidal approximation to \(\int_a^b f(x) \, dx\) is given by
+</p>
+<span class="displaymath" id="md-68">\begin{align*}
+T_3 \amp  = \amp  D_1 + D_2 + D_3\\
+\amp  =  \amp  \frac{1}{2}(f(x_0) + f(x_1)) \cdot \triangle x + \frac{1}{2}(f(x_1) + f(x_2)) \cdot \triangle x + \frac{1}{2}(f(x_2) + f(x_3)) \cdot \triangle x.
+\end{align*}</span><p id="p-1413">
+Because both left and right endpoints are being used, we recognize within the trapezoidal approximation the use of both left and right Riemann sums. In particular, rearranging the expression for \(T_3\) by removing a factor of \(\frac{1}{2}\), grouping the left endpoint evaluations of \(f\), and grouping the right endpoint evaluations of \(f\), we see that
+\begingroup
+
+</p>
+<span class="displaymath" id="E_Trap3">\begin{equation}
+ T_3 =  \frac{1}{2} \left[ (f(x_0) \triangle x + f(x_1) \triangle x + f(x_2) \triangle x)  + (f(x_1) \triangle x + f(x_2) \triangle x + f(x_3) \triangle x) \right].
+\label{E_Trap3}\tag{5.6.4}\end{equation}</span><p id="p-1414">
+\endgroup
+At this point, we observe that two familiar sums have arisen. Since the left Riemann sum \(L_3\) is \(L_3 = f(x_0) \triangle x + f(x_1) \triangle x + f(x_2) \triangle x\), and the right Riemann sum is \(R_3 = f(x_1) \triangle x + f(x_2) \triangle x + f(x_3) \triangle x\), substituting \(L_3\) and \(R_3\) for the corresponding expressions in <a knowl="./knowl/E_Trap3.html" knowl-id="xref-E_Trap3" alt="Equation 5.6.4 " title="Equation 5.6.4 ">Equation (5.6.4)</a>, it follows that \(T_3 = \frac{1}{2} \left[ L_3 + R_3 \right].\)
+We have thus seen the main ideas behind a very important result: using trapezoids to estimate the (signed) area bounded by a curve is the same as averaging the estimates generated by using left and right endpoints.
+{
+(The Trapezoid Rule) The trapezoidal approximation, \(T_n\), of the definite integral \(\int_a^b f(x) \, dx\) using \(n\) subintervals is given by the rule
+\begingroup
+
+</p>
+<span class="displaymath" id="md-69">\begin{align*}
+T_n \amp  = \amp  \frac{1}{2}(f(x_0) + f(x_1)) \triangle x + \frac{1}{2}(f(x_1) + f(x_2)) \triangle x + \cdots + \frac{1}{2}(f(x_{n-1}) + f(x_n)) \triangle x.\\
+\amp  =  \amp  \sum_{i=0}^{n-1} \frac{1}{2}(f(x_i) + f(x_{i+1})).
+\end{align*}</span><p id="p-1415">
+\endgroup
+Moreover,
+\(T_n = \frac{1}{2} \left[ L_n + R_n \right].\)
+} 
+
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_5.6.1" id="A_5.6.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">5.6.3</span>
+</h5></a></div>
+<div id="hk-A_5.6.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1416">
+In this activity, we explore the relationships among the errors generated by left, right, midpoint, and trapezoid approximations to the definite integral \(\int_1^2 \frac{1}{x^2} \, dx\)
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2175">Use the First FTC to evaluate \(\int_1^2 \frac{1}{x^2} \, dx\) exactly.</li>
+<li id="li-2176">Use appropriate computing technology to compute the following approximations for \(\int_1^2 \frac{1}{x^2} \, dx\):  \(T_4\), \(M_4\), \(T_8\), and \(M_8\).</li>
+<li id="li-2177">Let the <!--Style me with CSS--><em>error</em> \knownindex{\lt main&gt;error\lt /main&gt;} \knownindex{\lt main&gt;trapezoid rule\lt /main&gt;\lt sub&gt;error\lt /sub&gt;} \knownindex{\lt main&gt;midpoint rule\lt /main&gt;\lt sub&gt;error\lt /sub&gt;} of an approximation be the difference between the exact value of the definite integral and the resulting approximation.  For instance, if we let \(E_{T,4}\) represent the error that results from using the trapezoid rule with 4 subintervals to estimate the integral, we have 
+	
+<span class="displaymath" id="me-588">\[
+E_{T,4} = \int_1^2 \frac{1}{x^2} \, dx -  T_4.
+\]</span>
+ 
+	Similarly, we compute the error of the midpoint rule approximation with 8 subintervals by the formula
+	
+<span class="displaymath" id="me-589">\[
+E_{M,8} = \int_1^2 \frac{1}{x^2} \, dx -  M_8.
+\]</span>
+ 
+	Based on your work in (a) and (b) above, compute \(E_{T,4}\), \(E_{T,8}\), \(E_{M,4}\), \(E_{M,8}\).</li>
+<li id="li-2178">Which rule consistently over-estimates the exact value of the definite integral?  Which rule consistently under-estimates the definite integral?</li>
+<li id="li-2179">What behavior(s) of the function \(f(x) = \frac{1}{x^2}\) lead to your observations in (d)?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-179" id="hint-179"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-179" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2180">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-180" id="hint-180"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-180" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2181">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-88" id="solution-88"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-88" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2182">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-103"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">5.6.3</span><span class="title">Comparing the Midpoint and Trapezoid Rules</span>
+</h1></header><p id="p-1417">
+We know from the definition of the definite integral of a continuous function \(f\), that if we let \(n\) be large enough, we can make the value of any of the approximations \(L_n\), \(R_n\), and \(M_n\) as close as we'd like (in theory) to the exact value of \(\int_a^b f(x) \, dx\). Thus, it may be natural to wonder why we ever use any rule other than \(L_n\) or \(R_n\) (with a sufficiently large \(n\) value) to estimate a definite integral. One of the primary reasons is that as \(n \to \infty\), \(\triangle x = \frac{b-a}{n} \to 0\), and thus in a Riemann sum calculation with a large \(n\) value, we end up multiplying by a number that is very close to zero. Doing so often generates roundoff error, as representing numbers close to zero accurately is a persistent challenge for computers.
+</p>
+<p id="p-1418">
+Hence, we are exploring ways by which we can estimate definite integrals to high levels of precision, but without having to use extremely large values of \(n\). Paying close attention to patterns in errors, such as those observed in <a knowl="./knowl/A_5.6.1.html" knowl-id="xref-A_5.6.1" alt="Exercise 5.6.3 " title="Exercise 5.6.3 ">Activity 5.6.3</a>, is one way to begin to see some alternate approaches.
+</p>
+<p id="p-1419">
+To begin, we make a comparison of the errors in the Midpoint and Trapezoid rules from two different perspectives. First, consider a function of consistent concavity on a given interval, and picture approximating the area bounded on that interval by both the Midpoint and Trapezoid rules using a single subinterval.
+</p>
+<figure class="figure-like" id="F_5.6.MidVTrap"><img width="100%" src="images/5_6_MidVTrap.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.6.4</span>Estimating \(\int_a^b f(x)   dx\) using a single subinterval: at left, the trapezoid rule; in the middle, the midpoint rule; at right, a modified way to think about the midpoint rule.</figcaption></figure><p id="p-1420">
+As seen in <a knowl="./knowl/F_5.6.MidVTrap.html" knowl-id="xref-F_5.6.MidVTrap" alt="Figure 5.6.4 " title="Figure 5.6.4 ">Figure 5.6.4</a>, it is evident that whenever the function is concave up on an interval, the Trapezoid Rule with one subinterval, \(T_1\), will overestimate the exact value of the definite integral on that interval. Moreover, from a careful analysis of the line that bounds the top of the rectangle for the Midpoint Rule (shown in magenta), we see that if we rotate this line segment until it is tangent to the curve at the point on the curve used in the Midpoint Rule (as shown at right in <a knowl="./knowl/F_5.6.MidVTrap.html" knowl-id="xref-F_5.6.MidVTrap" alt="Figure 5.6.4 " title="Figure 5.6.4 ">Figure 5.6.4</a>), the resulting trapezoid has the same area as \(M_1\), and this value is less than the exact value of the definite integral. Hence, when the function is concave up on the interval, \(M_1\) underestimates the integral's true value.
+</p>
+<p id="p-1421">
+These observations extend easily to the situation where the function's concavity remains consistent but we use higher values of \(n\) in the Midpoint and Trapezoid Rules. Hence, whenever \(f\) is concave up on \([a,b]\), \(T_n\) will overestimate the value of \(\int_a^b f(x) \, dx\), while \(M_n\) will underestimate \(\int_a^b f(x) \, dx\). The reverse observations are true in the situation where \(f\) is concave down.
+</p>
+<p id="p-1422">
+Next, we compare the size of the errors between \(M_n\) and \(T_n\). Again, we focus on \(M_1\) and \(T_1\) on an interval where the concavity of \(f\) is consistent. In <a knowl="./knowl/F_5.6.MidTrapError.html" knowl-id="xref-F_5.6.MidTrapError" alt="Figure 5.6.5 " title="Figure 5.6.5 ">Figure 5.6.5</a>, where the error of the Trapezoid Rule is shaded in red, while the error of the Midpoint Rule is shaded lighter red,
+</p>
+<figure class="figure-like" id="F_5.6.MidTrapError"><img width="100%" src="images/5_6_MidTrapError.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.6.5</span>Comparing the error in estimating \(\int_a^b f(x)   dx\) using a single subinterval: in red, the error from the Trapezoid rule; in light red, the error from the Midpoint rule.</figcaption></figure><p id="p-1423">
+it is visually apparent that the error in the Trapezoid Rule is more significant. To see how much more significant, let's consider two examples and some particular computations.
+</p>
+<p id="p-1424">
+If we let \(f(x) = 1-x^2\) and consider \(\int_0^1 f(x) \,dx\), we know by the First FTC that the exact value of the integral is
+</p>
+<span class="displaymath" id="me-590">\[
+\int_0^1 (1-x^2) \, dx = x - \frac{x^3}{3} \bigg\vert_0^1 = \frac{2}{3}.
+\]</span><p id="p-1425">
+Using appropriate technology to compute \(M_4\), \(M_8\), \(T_4\), and \(T_8\), as well as the corresponding errors \(E_{M,4}\), \(E_{M,8}\), \(E_{T,4}\), and \(E_{T,8}\), as we did in <a knowl="./knowl/A_5.6.1.html" knowl-id="xref-A_5.6.1" alt="Exercise 5.6.3 " title="Exercise 5.6.3 ">Activity 5.6.3</a>, we find the results summarized in <a knowl="./knowl/T_5.6.Ex2.html" knowl-id="xref-T_5.6.Ex2" alt="Figure 5.6.6 " title="Figure 5.6.6 ">Table 5.6.6</a>. Note that in the table, we also include the approximations and their errors for the example \(\int_1^2 \frac{1}{x^2} \, dx\) from <a knowl="./knowl/A_5.6.1.html" knowl-id="xref-A_5.6.1" alt="Exercise 5.6.3 " title="Exercise 5.6.3 ">Activity 5.6.3</a>.
+\begingroup
+
+</p>
+<figure class="figure-like" id="T_5.6.Ex2"><figure class="figure-like" id="table-25"> 
+   \T  \amp  \(\int_0^1 (1-x^2) \,dx = 0.\overline{6} \) \amp   error  \amp  \(\int_1^2 \frac{1}{x^2} \, dx = 0.5\) \amp  error   \B 
+   \T \(T_4\) \amp  0.65625 \amp  -0.0104166667 \amp  0.5089937642 \amp   0.0089937642 \B 
+   \T \(M_4\) \amp  0.671875 \amp   0.0052083333 \amp  0.4955479365 \amp  -0.0044520635 \B 
+   \T \(T_8\) \amp  0.6640625 \amp  -0.0026041667 \amp  0.5022708502 \amp   0.0022708502 \B 
+   \T \(M_8\) \amp  0.66796875 \amp   0.0013020833 \amp  0.4988674899 \amp  -0.0011325101 \B </figure><figcaption><span class="heading">Figure</span><span class="codenumber">5.6.6</span>Calculations of \(T_4\), \(M_4\), \(T_8\), and \(M_8\), along with corresponding errors, for the definite integrals \(\int_0^1 (1-x^2)   dx\) and \(\int_1^2 \frac{1}{x^2}   dx\).</figcaption></figure><p id="p-1426">
+\endgroup
+</p>
+<p id="p-1427">
+Recall that for a given function \(f\) and interval \([a,b]\), \(E_{T,4} = \int_a^b f(x) \,dx - T_4\) calculates the difference between the exact value of the definite integral and the approximation generated by the Trapezoid Rule with \(n = 4\). If we look at not only \(E_{T,4}\), but also the other errors generated by using \(T_n\) and \(M_n\) with \(n = 4\) and \(n = 8\) in the two examples noted in <a knowl="./knowl/T_5.6.Ex2.html" knowl-id="xref-T_5.6.Ex2" alt="Figure 5.6.6 " title="Figure 5.6.6 ">Table 5.6.6</a>, we see an evident pattern. Not only is the sign of the error (which measures whether the rule generates an over- or under-estimate) tied to the rule used and the function's concavity, but the magnitude of the errors generated by \(T_n\) and \(M_n\) seems closely connected. In particular, the errors generated by the Midpoint Rule seem to be about half the size of those generated by the Trapezoid Rule.
+</p>
+<p id="p-1428">
+That is, we can observe in both examples that \(E_{M,4} \approx -\frac{1}{2} E_{T,4}\) and \(E_{M,8} \approx -\frac{1}{2}E_{T,8}\), which demonstrates a property of the Midpoint and Trapezoid Rules that turns out to hold in general: for a function of consistent concavity, the error in the Midpoint Rule has the opposite sign and approximately half the magnitude of the error of the Trapezoid Rule. Said symbolically,
+</p>
+<span class="displaymath" id="me-591">\[
+E_{M,n} \approx -\frac{1}{2} E_{T,n}.
+\]</span><p id="p-1429">
+This important relationship suggests a way to combine the Midpoint and Trapezoid Rules to create an even more accurate approximation to a definite integral.
+</p></section><section class="subsection" id="subsection-104"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">5.6.4</span><span class="title">Simpson's Rule</span>
+</h1></header><p id="p-1430">
+\knownindex{\lt main&gt;Simpson's rule\lt /main&gt;}
+</p>
+<p id="p-1431">
+When we first developed the Trapezoid Rule, we observed that it can equivalently be viewed as resulting from the average of the Left and Right Riemann sums:
+</p>
+<span class="displaymath" id="me-592">\[
+T_n = \frac{1}{2}(L_n + R_n).
+\]</span><p id="p-1432">
+Whenever a function is always increasing or always decreasing on the interval \([a,b]\), one of \(L_n\) and \(R_n\) will over-estimate the true value of \(\int_a^b f(x) \, dx\), while the other will under-estimate the integral. Said differently, the errors found in \(L_n\) and \(R_n\) will have opposite signs; thus, averaging \(L_n\) and \(R_n\) eliminates a considerable amount of the error present in the respective approximations. In a similar way, it makes sense to think about averaging \(M_n\) and \(T_n\) in order to generate a still more accurate approximation.
+</p>
+<p id="p-1433">
+At the same time, we've just observed that \(M_n\) is typically about twice as accurate as \(T_n\). Thus, we instead choose to use the weighted average \knownindex{\lt main&gt;weighted average\lt /main&gt;}
+</p>
+<span class="displaymath" id="E_Simpson">\begin{equation}
+ S_n = \frac{2M_n + T_n}{3}.
+\label{E_Simpson}\tag{5.6.5}\end{equation}</span><p id="p-1434">
+The rule for \(S_n\) giving by <a knowl="./knowl/E_Simpson.html" knowl-id="xref-E_Simpson" alt="Equation 5.6.5 " title="Equation 5.6.5 ">Equation (5.6.5)</a> is usually known as <!--Style me with CSS--><em>Simpson's Rule</em>.<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-39" id="fn-39"><sup> 2 </sup></a></span><span id="hk-fn-39" style="display: none;" class="tex2jax_ignore"><span class="footnote">Thomas Simpson was an 18th century mathematician; his idea was to extend the Trapezoid rule, but rather than using straight lines to build trapezoids, to use quadratic functions to build regions whose area was bounded by parabolas (whose areas he could find exactly).  Simpson's Rule is often developed from the more sophisticated perspective of using interpolation by quadratic functions.</span></span> We build upon the results in <a knowl="./knowl/T_5.6.Ex2.html" knowl-id="xref-T_5.6.Ex2" alt="Figure 5.6.6 " title="Figure 5.6.6 ">Table 5.6.6</a> to see the approximations generated by Simpson's Rule. In particular, in <a knowl="./knowl/T_5.6.Ex3.html" knowl-id="xref-T_5.6.Ex3" alt="Figure 5.6.7 " title="Figure 5.6.7 ">Table 5.6.7</a>, we include all of the results in <a knowl="./knowl/T_5.6.Ex2.html" knowl-id="xref-T_5.6.Ex2" alt="Figure 5.6.6 " title="Figure 5.6.6 ">Table 5.6.6</a>, but include additional results for \(S_4 = \frac{2M_4 + T_4}{3}\) and \(S_8 = \frac{2M_8 + T_8}{3}\).
+\begingroup
+
+</p>
+<figure class="figure-like" id="T_5.6.Ex3"><figure class="figure-like" id="table-26"> 
+   \T  \amp  \(\int_0^1 (1-x^2) \,dx = 0.\overline{6} \) \amp   error  \amp  \(\int_1^2 \frac{1}{x^2} \, dx = 0.5\) \amp  error   \B 
+   \T \(T_4\) \amp  0.65625 \amp  -0.0104166667 \amp  0.5089937642 \amp   0.0089937642 \B 
+   \T \(M_4\) \amp  0.671875 \amp   0.0052083333 \amp  0.4955479365 \amp  -0.0044520635 \B 
+   \T \(S_4\) \amp  0.6666666668 \amp  \(10^{-10}\)   \amp  0.5000298792 \amp   0.0000298792 \B 
+   \T \(T_8\) \amp  0.6640625 \amp  -0.0026041667 \amp  0.5022708502 \amp   0.0022708502 \B 
+   \T \(M_8\) \amp  0.66796875 \amp   0.0013020833 \amp  0.4988674899 \amp  -0.0011325101 \B 
+   \T \(S_8\) \amp  0.6666666667 \amp   0 \amp  0.5000019434 \amp   0.0000019434 \B </figure><figcaption><span class="heading">Figure</span><span class="codenumber">5.6.7</span><a knowl="./knowl/T_5.6.Ex2.html" knowl-id="xref-T_5.6.Ex2" alt="Figure 5.6.6 " title="Figure 5.6.6 ">Table 5.6.6</a> updated to include \(S_4\), \(S_8\), and the corresponding errors.</figcaption></figure><p id="p-1435">
+\endgroup
+</p>
+<p id="p-1436">
+The results seen in <a knowl="./knowl/T_5.6.Ex3.html" knowl-id="xref-T_5.6.Ex3" alt="Figure 5.6.7 " title="Figure 5.6.7 ">Table 5.6.7</a> are striking. If we consider the \(S_8\) approximation of \(\int_1^2 \frac{1}{x^2} \, dx\), the error is only \(E_{S,8} = 0.0000019434\). By contrast, \(L_8 = 0.5491458502\), so the error of that estimate is \(E_{L,8} = -0.0491458502\). Moreover, we observe that generating the approximations for Simpson's Rule is almost no additional work: once we have \(L_n\), \(R_n\), and \(M_n\) for a given value of \(n\), it is a simple exercise to generate \(T_n\), and from there to calculate \(S_n\). The error in the Simpson's Rule approximations of \(\int_0^1 x^2 \, dx\) is even smaller.<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-40" id="fn-40"><sup> 3 </sup></a></span><span id="hk-fn-40" style="display: none;" class="tex2jax_ignore"><span class="footnote">Similar to how the Midpoint and Trapezoid approximations are exact for linear functions, Simpson's Rule approximations are exact for quadratic and cubic functions.  See additional discussion on this issue later in the section and in the exercises.</span></span>
+</p>
+<p id="p-1437">
+These rules are not only useful for approximating definite integrals such as \(\int_0^1 e^{-x^2} \, dx\), for which we cannot find an elementary antiderivative of \(e^{-x^2}\), but also for approximating definite integrals in the setting where we are given a function through a table of data.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_5.6.2" id="A_5.6.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">5.6.8</span>
+</h5></a></div>
+<div id="hk-A_5.6.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1438">
+A car traveling along a straight road is braking and its velocity is measured at several different points in time, as given in the following table. Assume that \(v\) is continuous, always decreasing, and always decreasing at a decreasing rate, as is suggested by the data.
+</p>
+<figure class="figure-like" id="table-27">
+seconds, \(t\) \amp  0 \amp  0.3 \amp  0.6 \amp  0.9 \amp  1.2 \amp  1.5 \amp  1.8 
+Velocity in ft/sec, \(v(t)\) \amp  100 \amp  99 \amp  96 \amp  90 \amp  80 \amp  50 \amp  0 </figure><ol style="list-style-type: decimal;">
+<li id="li-2183">Plot the given data on the set of axes provided in <a knowl="./knowl/F_5.6.Act2.html" knowl-id="xref-F_5.6.Act2" alt="Figure 5.6.9 " title="Figure 5.6.9 ">Figure 5.6.9</a> with time on the horizontal axis and the velocity on the vertical axis.</li>
+<li id="li-2184">What definite integral will give you the exact distance the car traveled on \([0,1.8]\)?</li>
+<li id="li-2185">Estimate the total distance traveled on \([0,1.8]\) by computing \(L_3\), \(R_3\), and \(T_3\).  Which of these under-estimates the true distance traveled?</li>
+<li id="li-2186">Estimate the total distance traveled on \([0,1.8]\) by computing \(M_3\).  Is this an over- or under-estimate?  Why?</li>
+<li id="li-2187">Using your results from (c) and (d), improve your estimate further by using Simpson's Rule.</li>
+<li id="li-2188">What is your best estimate of the average velocity of the car on \([0,1.8]\)?  Why?  What are the units on this quantity?</li>
+</ol>
+<figure class="figure-like" id="F_5.6.Act2"><img width="100%" src="images/5_6_Act2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.6.9</span>Axes for plotting the data in <a knowl="./knowl/A_5.6.2.html" knowl-id="xref-A_5.6.2" alt="Exercise 5.6.8 " title="Exercise 5.6.8 ">Activity 5.6.8</a>.</figcaption></figure></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-181" id="hint-181"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-181" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2189">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-182" id="hint-182"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-182" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2190">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-89" id="solution-89"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-89" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2191">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-105"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">5.6.5</span><span class="title">Overall observations regarding \(L_n\), \(R_n\), \(T_n\), \(M_n\), and \(S_n\).</span>
+</h1></header><p id="p-1439">
+As we conclude our discussion of numerical approximation of definite integrals, it is important to summarize general trends in how the various rules over- or under-estimate the true value of a definite integral, and by how much. To revisit some past observations and see some new ones, we consider the following activity.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_5.6.3" id="A_5.6.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">5.6.10</span>
+</h5></a></div>
+<div id="hk-A_5.6.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1440">
+Consider the functions \(f(x) = 2-x^2\), \(g(x) = 2-x^3\), and \(h(x) = 2-x^4\), all on the interval \([0,1]\). For each of the questions that require a numerical answer in what follows, write your answer exactly in fraction form.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2192">On the three sets of axes provided in <a knowl="./knowl/F_5.6.Act3.html" knowl-id="xref-F_5.6.Act3" alt="Figure 5.6.11 " title="Figure 5.6.11 ">Figure 5.6.11</a>, sketch a graph of each function on the interval \([0,1]\), and compute \(L_1\) and \(R_1\) for each.  What do you observe?</li>
+<li id="li-2193">Compute \(M_1\) for each function to approximate \(\int_0^1 f(x) \,dx\), \(\int_0^1 g(x) \,dx\), and \(\int_0^1 h(x) \,dx\), respectively.</li>
+<li id="li-2194">Compute \(T_1\) for each of the three functions, and hence compute \(S_1\) for each of the three functions.</li>
+<li id="li-2195">Evaluate each of the integrals \(\int_0^1 f(x) \,dx\), \(\int_0^1 g(x) \,dx\), and \(\int_0^1 h(x) \,dx\) exactly using the First FTC.</li>
+<li id="li-2196">For each of the three functions \(f\), \(g\), and \(h\), compare the results of \(L_1\), \(R_1\), \(M_1\), \(T_1\), and \(S_1\) to the true value of the corresponding definite integral.  What patterns do you observe?</li>
+</ol>
+<figure class="figure-like" id="F_5.6.Act3"><img width="100%" src="images/5_6_Act3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.6.11</span>Axes for plotting the functions in <a knowl="./knowl/A_5.6.3.html" knowl-id="xref-A_5.6.3" alt="Exercise 5.6.10 " title="Exercise 5.6.10 ">Activity 5.6.10</a>.</figcaption></figure></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-183" id="hint-183"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-183" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2197">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-184" id="hint-184"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-184" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2198">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-90" id="solution-90"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-90" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2199">Solutions for each of the prompts above.</li></ol></span></span><p id="p-1441">
+The results seen in the examples in <a knowl="./knowl/A_5.6.3.html" knowl-id="xref-A_5.6.3" alt="Exercise 5.6.10 " title="Exercise 5.6.10 ">Activity 5.6.10</a> generalize nicely. For instance, for any function \(f\) that is decreasing on \([a,b]\), \(L_n\) will over-estimate the exact value of \(\int_a^b f(x) \,dx\), and for any function \(f\) that is concave down on \([a,b]\), \(M_n\) will over-estimate the exact value of the integral. An excellent exercise is to write a collection of scenarios of possible function behavior, and then categorize whether each of \(L_n\), \(R_n\), \(T_n\), and \(M_n\) is an over- or under-estimate.
+</p>
+<p id="p-1442">
+Finally, we make two important notes about Simpson's Rule. When T. Simpson first developed this rule, his idea was to replace the function \(f\) on a given interval with a quadratic function that shared three values with the function \(f\). In so doing, he guaranteed that this new approximation rule would be exact for the definite integral of any quadratic polynomial. In one of the pleasant surprises of numerical analysis, it turns out that even though it was designed to be exact for quadratic polynomials, Simpson's Rule is exact for any cubic polynomial: that is, if we are interested in an integral such as \(\int_2^5 (5x^3 - 2x^2 + 7x - 4)\, dx\), \(S_n\) will always be exact, regardless of the value of \(n\). This is just one more piece of evidence that shows how effective Simpson's Rule is as an approximation tool for estimating definite integrals.<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-41" id="fn-41"><sup> 4 </sup></a></span><span id="hk-fn-41" style="display: none;" class="tex2jax_ignore"><span class="footnote">One reason that Simpson's Rule is so effective is that \(S_n\) benefits from using \(2n+1\) points of data.  Because it combines \(M_n\), which uses \(n\) midpoints, and \(T_n\), which uses the \(n+1\) endpoints of the chosen subintervals, \(S_n\) takes advantage of the maximum amount of information we have when we know function values at the endpoints and midpoints of \(n\) subintervals.</span></span>
+</p>
+<p id="p-1443">
+\item For a definite integral such as \(\int_0^1 e^{-x^2} \, dx\) when we cannot use the First Fundamental Theorem of Calculus because the integrand lacks an elementary algebraic antiderivative, we can estimate the integral's value by using a sequence of Riemann sum approximations. Typically, we start by computing \(L_n\), \(R_n\), and \(M_n\) for one or more chosen values of \(n\).
+\item The Trapezoid Rule, which estimates \(\int_a^b f(x) \, dx\) by using trapezoids, rather than rectangles, can also be viewed as the average of Left and Right Riemann sums. That is, \(T_n = \frac{1}{2}(L_n + R_n)\).
+\item The Midpoint Rule is typically twice as accurate as the Trapezoid Rule, and the signs of the respective errors of these rules are opposites. Hence, by taking the weighted average \(S_n = \frac{2M_n + T_n}{3}\), we can build a much more accurate approximation to \(\int_a^b f(x) \, dx\) by using approximations we have already computed. The rule for \(S_n\) is known as Simpson's Rule, which can also be developed by approximating a given continuous function with pieces of quadratic polynomials.
+</p>
+<p id="p-1444">
+\hrulefill
+</p>
+<p id="p-1445">
+\begin{exercises}
+\item Consider the definite integral \(\int_0^1 x \tan(x) \, dx\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2200">Explain why this integral cannot be evaluated exactly by using either \(u\)-substitution or by integrating by parts.</li>
+<li id="li-2201">Using 4 subintervals, compute \(L_4\), \(R_4\), \(M_4\), \(T_4\), and \(S_4\).</li>
+<li id="li-2202">Which of the approximations in (b) is an over-estimate to the true value of \(\int_0^1 x \tan(x) \, dx\)?  Which is an under-estimate?  How do you know?</li>
+</ol>
+<p id="p-1446">
+\item For an unknown function \(f(x)\), the following information is known.
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2203">\(f\) is continuous on \([3,6]\);</li>
+<li id="li-2204">\(f\) is either always increasing or always decreasing on \([3,6]\);</li>
+<li id="li-2205">\(f\) has the same concavity throughout the interval \([3,6]\);</li>
+<li id="li-2206">As approximations to \(\int_3^6 f(x) \, dx\), \(L_4 = 7.23\), \(R_4 = 6.75\), and \(M_4 = 7.05\).</li>
+</ul>
+<ol style="list-style-type: decimal;">
+<li id="li-2207">Is \(f\) increasing or decreasing on \([3,6]\)?  What data tells you?</li>
+<li id="li-2208">Is \(f\) concave up or concave down on \([3,6]\)?  Why?</li>
+<li id="li-2209">Determine the best possible estimate you can for \(\int_3^6 f(x) \, dx\), based on the given information.</li>
+</ol>
+<p id="p-1447">
+\item The rate at which water flows through Table Rock Dam on the White River in Branson, MO, is measured in thousands of cubic feet per second (TCFS). As engineers open the floodgates, flow rates are recorded according to the following chart.
+</p>
+<figure class="figure-like" id="table-28">
+seconds, \(t\) \amp  0 \amp  10 \amp  20 \amp  30 \amp  40 \amp  50 \amp  60 
+flow in TCFS, \(r(t)\) \amp  2000 \amp  2100 \amp  2400 \amp  3000 \amp  3900 \amp  5100 \amp  6500 </figure><ol style="list-style-type: decimal;">
+<li id="li-2210">What definite integral measures the total volume of water to flow through the dam in the 60 second time period provided by the table above?</li>
+<li id="li-2211">Use the given data to calculate \(M_n\) for the largest possible value of \(n\) to approximate the integral you stated in (a).  Do you think \(M_n\) over- or under-estimates the exact value of the integral?  Why?</li>
+<li id="li-2212">Approximate the integral stated in (a) by calculating \(S_n\) for the largest possible value of \(n\), based on the given data.</li>
+<li id="li-2213">Compute \(\frac{1}{60} S_n\) and \(\frac{2000+2100+2400+3000+3900+5100+6500}{7}\).  What quantity do both of these values estimate?  Which is a more accurate approximation?</li>
+</ol>
+<p id="p-1448">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1449">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

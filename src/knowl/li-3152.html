@@ -1,0 +1,22 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:51-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">6</span>
+</h5>Since \(e^x\) is increasing on \([0,5]\) we know that \(e^x \lt  e^5\) on \([0,5]\). Now \(e^5 \lt  243\), so 
+
+<span class="displaymath" id="me-1072">\[
+\left|P_n(5) - e^5\right| \leq 243\frac{|5|^{n+1}}{(n+1)!}.
+\]</span>
+ 
+We want a value of \(n\) that makes this error term less than \(10^{-8}\). Testing various values of \(n\) gives us 
+
+<span class="displaymath" id="me-1073">\[
+243\frac{|5|^{28+1}}{(28+1)!} \approx 5.119146745 \times 10^{-9}
+\]</span>
+ 
+so we can choose \(n=28\). A computer algebra system shows that \(P_{28}(5) \approx 148.413159102551\) while \(e^5 \approx 148.413159102577\) and we can see that these two approximations agree to 8 decimal places.</article><span class="incontext"><a href="S_8.5.Taylor.html#li-3152">in-context</a></span>

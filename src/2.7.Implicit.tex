@@ -1,0 +1,133 @@
+\section{Derivatives of Functions Given Implicitly} \label{S:2.7.Implicit}
+
+\vspace*{-14 pt}
+\framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{\begin{goals}
+\item What does it mean to say that a curve is an implicit function of $x$, rather than an explicit function of $x$?
+\item How does implicit differentiation enable us to find a formula for $\frac{dy}{dx}$ when $y$ is an implicit function of $x$?
+\item In the context of an implicit curve, how can we use $\frac{dy}{dx}$ to answer important questions about the tangent line to the curve?
+\end{goals}} \hspace*{3 pt}}
+
+\subsection*{Introduction}
+
+In all of our studies with derivatives to date, we have worked in a setting where we can express a formula for the function of interest explicitly in terms of $x$.  But there are many interesting curves that are determined by an equation involving $x$ and $y$ for which it is impossible to solve for $y$ in terms of $x$.
+\begin{figure}[h]
+\begin{center}
+\scalebox{0.9}{\includegraphics{figures/2_7_Intro.eps}}
+\caption{At left, the circle given by $x^2 + y^2 = 16$.  In the middle, the portion of the circle $x^2 + y^2 = 16$ that has been highlighted in the box at left.  And at right, the lemniscate given by $x^3 - y^3 = 6xy$.} \label{F:2.7.Intro}
+\end{center}
+\end{figure}
+Perhaps the simplest and most natural of all such curves are circles.  Because of the circle's symmetry, for each $x$ value strictly between the endpoints of the horizontal diameter, there are two corresponding $y$-values.  For instance, in Figure~\ref{F:2.7.Intro}, we have labeled $A = (-3,\sqrt{7})$ and $B = (-3,-\sqrt{7})$, and these points demonstrate that the circle fails the vertical line test.  Hence, it is impossible to represent the circle through a single function of the form $y = f(x)$.  At the same time, portions of the circle can be represented explicitly as a function of $x$, such as the highlighted arc that is magnified in the center of Figure~\ref{F:2.7.Intro}.  Moreover, it is evident that the circle is locally linear, so we ought to be able to find a tangent line to the curve at every point; thus, it makes sense to wonder if we can compute $\frac{dy}{dx}$ at any point on the circle, even though we cannot write $y$ explicitly as a function of $x$.  Finally, we note that the righthand curve in Figure~\ref{F:2.7.Intro} is called a \emph{lemniscate} \index{lemniscate} and is just one of many fascinating possibilities for implicitly given curves.
+
+In working with implicit functions, we will often be interested in finding an equation for $\frac{dy}{dx}$ that tells us the slope of the tangent line to the curve at a point $(x,y)$.  To do so, it will be necessary for us to work with $y$ while thinking of $y$ as a function of $x$, but without being able to write an explicit formula for $y$ in terms of $x$.  The following preview activity reminds us of some ways we can compute derivatives of functions in settings where the function's formula is not known.  For instance, recall the earlier example $\frac{d}{dx}[e^{u(x)}] = e^{u(x)}u'(x)$.
+
+\input{previews/2.7.PA1}
+
+\subsection*{Implicit Differentiation}
+
+Because a circle is perhaps the simplest of all curves that cannot be represented explicitly as a single function of $x$, we begin our exploration of implicit differentiation with the example of the circle given by $x^2 + y^2 = 16.$  It is visually apparent that this curve is locally linear, so it makes sense for us to want to find the slope of the tangent line to the curve at any point, and moreover to think that the curve is differentiable.  The big question is:  how do we find a formula for $\frac{dy}{dx}$, the slope of the tangent line to the circle at a given point on the circle?  By viewing $y$ as an \emph{implicit}\footnote{Essentially the idea of an implicit function is that it can be broken into pieces where each piece can be viewed as an explicit function of $x$, and the combination of those pieces constitutes the full implicit function.  For the circle, we could choose to take the top half as one explicit function of $x$, and the bottom half as another.} \index{implicit function} function of $x$, we essentially think of $y$ as some function whose formula $f(x)$ is unknown, but which we can differentiate.  Just as $y$ represents an unknown formula, so too its derivative with respect to $x$, $\frac{dy}{dx}$, will be (at least temporarily) unknown.
+
+Consider the equation $x^2 + y^2 = 16$ and view $y$ as an unknown differentiable function of $x$.  Differentiating both sides of the equation with respect to $x$, we have 
+$$\frac{d}{dx} \left[ x^2 + y^2 \right] = \frac{d}{dx} \left[ 16 \right].$$
+On the right, the derivative of the constant 16 is 0, and on the left we can apply the sum rule, so it follows that
+$$\frac{d}{dx} \left[ x^2 \right]  + \frac{d}{dx} \left[ y^2 \right] = 0.$$
+Next, it is essential that we recognize the different roles being played by $x$ and $y$.  Since $x$ is the independent variable, it is the variable with respect to which we are differentiating, and thus $\frac{d}{dx} \left[x^2\right] = 2x.$  But $y$ is the dependent variable and $y$ is an implicit function of $x$.  Thus, when we want to compute $\frac{d}{dx}[y^2]$ it is identical to the situation in Preview Activity~\ref{PA:2.7} where we computed $\frac{d}{dx}[f(x)^2]$.  In both situations, we have an unknown function being squared, and we seek the derivative of the result.  This requires the chain rule, by which we find that $\frac{d}{dx}[y^2] = 2y^1 \frac{dy}{dx}.$  Therefore, continuing our work in differentiating both sides of $x^2 + y^2 = 16$, we now have that
+$$2x + 2y \frac{dy}{dx} = 0.$$
+Since our goal is to find an expression for $\frac{dy}{dx}$, we solve this most recent equation for $\frac{dy}{dx}$.  Subtracting $2x$ from both sides and dividing by $2y$,
+$$\frac{dy}{dx} = -\frac{2x}{2y} = -\frac{x}{y}.$$
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics{figures/2_7_Circle.eps}
+\caption{The circle given by $x^2 + y^2 = 16$ with point $(a,b)$ on the circle and the tangent line at that point, with labeled slopes of the radial line, $m_r$, and tangent line, $m_t$.} \label{F:2.7.Circle}
+\end{center}
+\end{figure}
+
+There are several important things to observe about the result that $\frac{dy}{dx} = -\frac{x}{y}$.  First, this expression for the derivative involves both $x$ and $y$.  It makes sense that this should be the case, since for each value of $x$ between $-4$ and $4$, there are two corresponding points on the circle, and the slope of the tangent line is different at each of these points.  Second, this formula is entirely consistent with our understanding of circles.  If we consider the radius from the origin to the point $(a,b)$, the slope of this line segment is $m_r = \frac{b}{a}$.  The tangent line to the circle at $(a,b)$ will be perpendicular to the radius, and thus have slope $m_t = -\frac{a}{b}$, as shown in Figure~\ref{F:2.7.Circle}.  Finally, the slope of the tangent line is zero at $(0,4)$ and $(0,-4)$, and is undefined at $(-4,0)$ and $(4,0)$; all of these values are consistent with the formula $\frac{dy}{dx} = -\frac{x}{y}$.
+
+We consider the following more complicated example to investigate and demonstrate some additional algebraic issues that arise in problems involving implicit differentiation.
+
+\bex \label{Ex:2.7.1}
+For the curve given implicitly by $x^3 + y^2 - 2xy = 2$, shown in Figure~\ref{F:2.7.Ex1}, find the slope of the tangent line at $(-1,1)$.
+\begin{figure}[h]
+\begin{center}
+\includegraphics{figures/2_7_Ex1.eps}
+\caption{The curve $x^3 + y^2 - 2xy = 2$.} \label{F:2.7.Ex1}
+\end{center}
+\end{figure}
+\eex
+We begin by differentiating the curve's equation implicitly.  Taking the derivative of each side with respect to $x$,
+$$\frac{d}{dx}\left[ x^3 + y^2 - 2xy \right] = \frac{d}{dx} \left[ 2 \right],$$
+by the sum rule and the fact that the derivative of a constant is zero, we have
+$$\frac{d}{dx}[x^3] + \frac{d}{dx}[y^2] - \frac{d}{dx}[2xy] = 0.$$
+For the three derivatives we now must execute, the first uses the simple power rule, the second requires the chain rule (since $y$ is an implicit function of $x$), and the third necessitates the product rule (again since $y$ is a function of $x$).  Applying these rules, we now find that
+$$3x^2 + 2y\frac{dy}{dx} - [2x \frac{dy}{dx} + 2y] = 0.$$
+Remembering that our goal is to find an expression for $\frac{dy}{dx}$ so that we can determine the slope of a particular tangent line, we want to solve the preceding equation for $\frac{dy}{dx}$.  To do so, we get all of the terms involving $\frac{dy}{dx}$ on one side of the equation and then factor.  Expanding and then subtracting $3x^2 - 2y$ from both sides, it follows that
+$$2y\frac{dy}{dx} - 2x \frac{dy}{dx}= 2y - 3x^2.$$
+Factoring the left side to isolate $\frac{dy}{dx}$, we have
+$$\frac{dy}{dx}(2y - 2x) = 2y - 3x^2.$$
+Finally, we divide both sides by $(2y - 2x)$ and conclude that
+$$\frac{dy}{dx} = \frac{2y-3x^2}{2y-2x}.$$
+Here again, the expression for $\frac{dy}{dx}$ depends on both $x$ and $y$.  To find the slope of the tangent line at $(-1,1)$, we substitute this point in the formula for $\frac{dy}{dx}$, using the notation
+$$ \left. \frac{dy}{dx} \right|_{(-1,1)} = \frac{2(1)-3(-1)^2}{2(1)-2(-1)} = -\frac14.$$
+This value matches our visual estimate of the slope of the tangent line shown in Figure~\ref{F:2.7.Ex1}.
+
+%We now proceed to find all points on the curve where the tangent line is horizontal.  To have a horizontal tangent line, it must be the case that $\frac{dy}{dx} = 0$.  Taking the formula we derived for $\frac{dy}{dx}$, for this expression to be zero, its numerator must be zero, and thus $2y - 3x^2 = 0$, so that $y = \frac{3}{2}x^2.$  This tells us that at any point on the curve $x^3 + y^2 - 2xy = 2$ where $y = \frac{3}{2}x^2$, the tangent line will be horizontal.  To find the actual values of such points, we combine the two conditions $x^3 + y^2 - 2xy = 2$ and $y = \frac{3}{2}x^2$ by substituting the latter into the former.  Doing so, we get the equation
+%$$x^3 + \left(\frac{3}{2}x^2\right)^2 - 2x \left(\frac{3}{2}x^2\right) = 2,$$
+%which is solely in terms of $x$.  Expanding, combining like terms, and rearranging, we have
+%$$9x^4 - 8x^3 - 8 = 0.$$
+%Using a graphing utility or computer algebra system, we find that the approximate solutions to this equation are $x \approx -0.806374, 1.29664$.  Hence, these are the $x$-coordinates at which the curve $x^3 + y^2 - 2xy = 2$ has a horizontal tangent line. To find the corresponding $y$-coordinates, we substitute each value for $x$ and solve the resulting quadratic equation in $y$.  For example, using $x \approx -0.806374$, we have
+%$$(-0.806374)^3 + y^2 - 2(-0.806374)y = 2,$$
+%so that
+%$$y^2 + 1.61275y - 2.152434 = 0,$$
+%which has approximate solutions $y \approx -2.58811, 0.97536$.  From the graph (or from the fact that $y = \frac{3}{2}x^2$ at any point where the tangent line is horizontal), we know to reject the negative $y$-value, and thus $A \approx (-0.806374, 0.97536)$ is one point at which the tangent line is horizontal.  
+%\begin{figure}[h]
+%\begin{center}
+%\includegraphics{figures/2_7_Ex1a.eps}
+%\caption{The curve $x^3 + y^2 - 2xy = 2$ and its horizontal tangent lines at $A \approx (-0.806374, 0.97536)$ and $B \approx (1.29664, 2.5219)$.} \label{F:2.7.Ex1a}
+%\end{center}
+%\end{figure}
+%Executing similar work with $x \approx 1.29664$, it follows $y \approx 2.5219$, the other point at which there is a horizontal tangent line is $B \approx (1.29664, 2.5219)$.  The points $A$ and $B$ and these horizontal tangent lines are exemplified in Figure~\ref{F:2.7.Ex1a}.
+
+\afterex
+
+Example~\ref{Ex:2.7.1} shows that it is possible when differentiating implicitly to have multiple terms involving $\frac{dy}{dx}$.  Regardless of the particular curve involved, our approach will be similar each time.  After differentiating, we expand so that each side of the equation is a sum of terms, some of which involve $\frac{dy}{dx}$.  Next, addition and subtraction are used to get all terms involving $\frac{dy}{dx}$ on one side of the equation, with all remaining terms on the other.   Finally, we factor to get a single instance of $\frac{dy}{dx}$, and then divide to solve for $\frac{dy}{dx}$.
+
+Note, too, that since $\frac{dy}{dx}$ is often a function of both $x$ and $y$, we use the notation 
+$$ \left. \frac{dy}{dx} \right|_{(a,b)}$$
+to denote the evaluation of $\frac{dy}{dx}$ at the point $(a,b)$.  This is analogous to writing $f'(a)$ when $f'$ depends on a single variable.
+
+Finally, there is a big difference between writing $\frac{d}{dx}$ and $\frac{dy}{dx}$.  For example,
+$$\frac{d}{dx}[x^2 + y^2]$$
+gives an instruction to take the derivative with respect to $x$ of the quantity $x^2 + y^2$, presumably where $y$ is a function of $x$.  On the other hand,
+$$\frac{dy}{dx}(x^2 + y^2)$$
+means the product of the derivative of $y$ with respect to $x$ with the quantity $x^2 + y^2$.  Understanding this notational subtlety is essential.
+
+The following activities present opportunities to explore several different problems involving implicit differentiation.
+
+\input{activities/2.7.Act1}
+
+Two natural questions to ask about any curve involve where the tangent line can be vertical or horizontal.  To be horizontal, the slope of the tangent line must be zero, while to be vertical, the slope must be undefined.  It is typically the case when differentiating implicitly that the formula for $\frac{dy}{dx}$ is expressed as a quotient of functions of $x$ and $y$, say
+$$\frac{dy}{dx} = \frac{p(x,y)}{q(x,y)}.$$  
+Thus, we observe that the tangent line will be horizontal precisely when the numerator is zero and the denominator is nonzero, making the slope of the tangent line zero.  Similarly, the tangent line will be vertical whenever $q(x,y) = 0$ and $p(x,y) \ne 0$, making the slope undefined.  If both $x$ and $y$ are involved in an equation such as $p(x,y) = 0$, we try to solve for one of them in terms of the other, and then use the resulting condition in the original equation that defines the curve to find an equation in a single variable that we can solve to determine the point(s) that lie on the curve at which the condition holds.  It is not always possible to execute the desired algebra due to the possibly complicated combinations of functions that often arise.  
+
+\input{activities/2.7.Act2}
+
+%\frac{d}{dx} \left[ \right]
+
+The closing activity in this section offers more opportunities to practice implicit differentiation.
+
+\input{activities/2.7.Act3}
+
+%\nin \framebox{\hspace*{3 pt}
+%\parbox{6.25 in}{
+\begin{summary}
+\item When we have an equation involving $x$ and $y$ where $y$ cannot be solved for explicitly in terms of $x$, but where portions of the curve can be thought of as being generated by explicit functions of $x$, we say that $y$ is an implicit function of $x$.  A good example of such a curve is the unit circle.
+\item In the process of implicit differentiation, we take the equation that generates an implicitly given curve and differentiate both sides with respect to $x$ while treating $y$ as a function of $x$.  In so doing, the chain rule leads $\frac{dy}{dx}$ to arise, and then we may subsequently solve for $\frac{dy}{dx}$ using algebra. 
+\item While $\frac{dy}{dx}$ may now involve both the variables $x$ and $y$, $\frac{dy}{dx}$ still measures the slope of the tangent line to the curve, and thus this derivative may be used to decide when the tangent line is horizontal ($\frac{dy}{dx} = 0$) or vertical ($\frac{dy}{dx}$ is undefined), or to find the equation of the tangent line at a particular point on the curve.
+\end{summary}
+%} \hspace*{3 pt}}
+
+\nin \hrulefill
+
+\input{exercises/2.7.Implicit(Ex)} 

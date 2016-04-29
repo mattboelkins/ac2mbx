@@ -1,0 +1,29 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:16-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">4.3.4.1</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-1782">The curve \(y = v(t) = \sqrt{4-(t-2)^2}\) is the top half of the circle \((t-2)^2 + y^2 = 4\), which has radius 2 and is centered at \((2,0)\).</li>
+<li id="li-1783">Thus, the value of \(\int_0^4 v(t) \, dt\) is the area of a semicircle of radius 2, which is \(\frac{1}{2} \pi (2)^2 = 2\pi\).</li>
+<li id="li-1784">Because the velocity \(v(t)\) is always nonnegative in this problem, the meaning of \(\int_0^4 v(t) \, dt = 2\pi\) is both the distance traveled and the change in position of the object on the interval \(0 \le t \le \pi\).  Specifically, the object moved \(2 \pi\) meters in 4 minutes.</li>
+<li id="li-1785">We know \(v_{\mbox{\tiny{AVG}} }[a,b] = \frac{1}{b-a}  \int_a^b v(t) \, dt\), so
+	
+<span class="displaymath" id="me-454">\[
+v_{\mbox{\tiny{AVG}} }[0,4] = \frac{1}{4-0}  \int_0^4 \sqrt{4-(t-2)^2} \, dt = \frac{1}{4} 2\pi = \frac{\pi}{2},
+\]</span>
+ 
+	which is measured in meters per minute, since the units on “4” are minutes and on “\(2\pi\)” are meters.</li>
+<li id="li-1786">Constructing a figure similar to those shown in this section on the topic of average value of a function, we find the following, which demonstrates a rectangle having the same area as the semicircle.
+	<img width="100%" src="images/4_3_Act3Soln.png"> 
+	The height of the rectangle is the average value of \(v\), specifically \(v_{\mbox{\tiny{AVG}} }[0,4] = \frac{\pi}{2} \approx 1.57\).</li>
+<li id="li-1787">Knowing that average velocity is \(\frac{\pi}{2}\), it follows from the fact that distance traveled equals average rate times time (provided velocity is always nonnegative), we have
+	
+<span class="displaymath" id="me-455">\[
+D = \frac{\pi}{2} \cdot 4 = 2\pi.
+\]</span>
+ 
+	We see from (c) or (f) that we are simply considering the situation from two different perspectives: if we know the distance traveled, we can find average velocity, or if we know average velocity, we can find distance traveled.</li>
+</ol></span><span class="incontext"><a href="S_4.3.DefiniteIntegral.html#solution-71">in-context</a></span>

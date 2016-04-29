@@ -1,0 +1,42 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:50-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">8.5.5.1</span></span><p id="p-2437">
+In this example, if we can find a value of \(n\) so that
+</p>
+<span class="displaymath" id="me-1058">\[
+ M\frac{|2-0|^{n+1}}{(n+1)!} \lt  10^{-20}
+\]</span><p id="p-2438">
+then we will have
+</p>
+<span class="displaymath" id="me-1059">\[
+|P_n(2) - f(2)| \leq M\frac{|2-0|^{n+1}}{(n+1)!} \lt  10^{-20}.
+\]</span><p id="p-2439">
+Again we use \(f(x) = \sin(x)\), \(c = 2\), \(a=0\), and \(M = 1\) from the previous example. So we need to find \(n\) to make
+</p>
+<span class="displaymath" id="me-1060">\[
+\frac{2^{n+1}}{(n+1)!} \leq 10^{-20}.
+\]</span><p id="p-2440">
+There is no good way to solve equations involving factorials, so we simply use trial and error, evaluating \(\frac{2^{n+1}}{(n+1)!}\) at different values of \(n\) until we get one we need.
+</p>
+<figure class="figure-like" id="table-54">
+\(n\)     \amp \(\frac{2^{n+1}}{(n+1)!}\) 
+10      \amp \(5.130671797 \times 10^{-5}\) 
+20      \amp \(4.104743250 \times 10^{-14}\) 
+25      \amp \(1.664028884 \times 10^{-19}\) 
+26      \amp \(1.232613988 \times 10^{-20}\) 
+27      \amp \(8.804385630 \times 10^{-22}\) </figure><p id="p-2441">
+So we need to use an \(n\) of at least 27 to ensure accuracy to 20 decimal places.
+</p>
+<p id="p-2442">
+A computer algebra system gives
+</p>
+<span class="displaymath" id="me-1061">\[
+P_{27}(2) \approx 0.9092974268256816953960 \ \ \text{ and }  \sin(2) \approx 0.9092974268256816953960
+\]</span><p id="p-2443">
+and we can see that these agree to 20 places.
+</p></span><span class="incontext"><a href="S_8.5.Taylor.html#solution-192">in-context</a></span>

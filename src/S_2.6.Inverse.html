@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:40-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Derivatives of Inverse Functions</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_2.5.Chain.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.7.Implicit.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_2.5.Chain.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.7.Implicit.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link active"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html" class="active">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_2.6.Inverse"><header><h1 class="heading" alt="Section 2.6 Derivatives of Inverse Functions" title="Section 2.6 Derivatives of Inverse Functions">
+<span class="type">Section</span><span class="codenumber">2.6</span><span class="title">Derivatives of Inverse Functions</span><a href="S_2.6.Inverse.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-14"><h5 class="heading"></h5>
+<p id="p-525">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-983">What is the derivative of the natural logarithm function?</li>
+<li id="li-984">What are the derivatives of the inverse trigonometric functions \(\arcsin(x)\) and \(\arctan(x)\)?</li>
+<li id="li-985">If \(g\) is the inverse of a differentiable function \(f\), how is \(g'\) computed in terms of \(f\), \(f'\), and \(g\)?</li>
+</ul>
+<p id="p-526">
+} 
+</p></article><section class="subsection" id="subsection-41"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.6.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-527">
+Much of mathematics centers on the notion of function. Indeed, throughout our study of calculus, we are investigating the behavior of functions, often doing so with particular emphasis on how fast the output of the function changes in response to changes in the input. Because each function represents a process, a natural question to ask is whether or not the particular process can be reversed. That is, if we know the output that results from the function, can we determine the input that led to it? Connected to this question, we now also ask: if we know how fast a particular process is changing, can we determine how fast the inverse process is changing?
+</p>
+<p id="p-528">
+As we have noted, one of the most important functions in all of mathematics is the natural exponential function \(f(x) = e^x\). Because the natural logarithm, \(g(x) = \ln(x)\), is the inverse of the natural exponential function, the natural logarithm is similarly important. One of our goals in this section is to learn how to differentiate the logarithm function, and thus expand our library of basic functions with known derivative formulas. First, we investigate a more familiar setting to refresh some of the basic concepts surrounding functions and their inverses.
+</p>
+<article class="paragraphs" id="PA_2.6"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-529">
+The equation \(y = \frac{5}{9}(x-32)\) relates a temperature given in \(x\) degrees Fahrenheit to the corresponding temperature \(y\) measured in degrees Celcius.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-986">Solve the equation \(y = \frac{5}{9}(x-32)\) for \(x\) to write \(x\) (Fahrenheit temperature) in terms of \(y\) (Celcius temperature).</li>
+<li id="li-987">Let \(C(x) = \frac{5}{9}(x-32)\) be the function that takes a Fahrenheit temperature as input and produces the Celcius temperature as output.  In addition,  let \(F(y)\) be the function that converts a temperature given in \(y\) degrees Celcius to the temperature \(F(y)\) measured in degrees Fahrenheit.  Use your work in (a) to write a formula for \(F(y)\).</li>
+<li id="li-988">Next consider the new function defined by \(p(x) = F(C(x))\).  Use the formulas for \(F\) and \(C\) to determine an expression for \(p(x)\) and simplify this expression as much as possible.  What do you observe?</li>
+<li id="li-989">Now, let \(r(y) = C(F(y))\).  Use the formulas for \(F\) and \(C\) to determine an expression for \(r(y)\) and simplify this expression as much as possible.  What do you observe?</li>
+<li id="li-990">What is the value of \(C'(x)\)?  of \(F'(y)\)?  How do these values appear to be related?</li>
+</ol></article></section><section class="subsection" id="subsection-42"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.6.2</span><span class="title">Basic facts about inverse functions</span>
+</h1></header><p id="p-530">
+A function \knownindex{\lt main&gt;function\lt /main&gt;} \(f : A \to B\) is a rule that associates each element in the set \(A\) to one and only one element in the set \(B\). We call \(A\) the <!--Style me with CSS--><em>domain</em> \knownindex{\lt main&gt;domain\lt /main&gt;} of \(f\) and \(B\) the <!--Style me with CSS--><em>codomain</em> \knownindex{\lt main&gt;codomain\lt /main&gt;}of \(f\). If there exists a function \(g : B \to A\) such that \(g(f(a)) = a\) for every possible choice of \(a\) in the set \(A\) and \(f(g(b)) = b\) for every \(b\) in the set \(B\), then we say that \(g\) is the <!--Style me with CSS--><em>inverse</em> of \(f\). We often use the notation \(f^{-1}\) (read “\(f\)-inverse”) to denote the inverse of \(f\). Perhaps the most essential thing to observe about the inverse function is that it undoes the work of \(f\). Indeed, if \(y = f(x)\), then
+</p>
+<span class="displaymath" id="me-190">\[
+f^{-1}(y) = f^{-1}(f(x)) = x,
+\]</span><p id="p-531">
+and this leads us to another key observation: writing \(y = f(x)\) and \(x = f^{-1}(y)\) say the exact same thing. The only difference between the two equations is one of perspective – one is solved for \(x\), while the other is solved for \(y\).
+</p>
+<p id="p-532">
+Here we briefly remind ourselves of some key facts about inverse functions. For a function \(f : A \to B\),
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-991">\(f\) has an inverse if and only if \(f\) is one-to-one<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-17" id="fn-17"><sup> 1 </sup></a></span><span id="hk-fn-17" style="display: none;" class="tex2jax_ignore"><span class="footnote">A function \(f\) is <!--Style me with CSS--><em>one-to-one</em> \knownindex{\lt main&gt;one-to-one\lt /main&gt;} provided that no two distinct inputs lead to the same output.</span></span> and onto<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-18" id="fn-18"><sup> 2 </sup></a></span><span id="hk-fn-18" style="display: none;" class="tex2jax_ignore"><span class="footnote">A function \(f\) is <!--Style me with CSS--><em>onto</em> \knownindex{\lt main&gt;onto\lt /main&gt;} provided that every possible element of the codomain can be realized as an output of the function for some choice of input from the domain.</span></span>;</li>
+<li id="li-992">provided \(f^{-1}\) exists, the domain of \(f^{-1}\) is the codomain of \(f\), and the codomain of \(f^{-1}\) is the domain of \(f\);</li>
+<li id="li-993">\(f^{-1}(f(x)) = x\) for every \(x\) in the domain of \(f\) and \(f(f^{-1}(y)) = y\) for every \(y\) in the codomain of \(f\);</li>
+<li id="li-994">\(y = f(x)\) if and only if \(x = f^{-1}(y)\).</li>
+</ul>
+<p id="p-533">
+The last stated fact reveals a special relationship between the graphs of \(f\) and \(f^{-1}\). In particular, if we consider \(y = f(x)\) and a point \((x,y)\) that lies on the graph of \(f\), then it is also true that \(x = f^{-1}(y)\), which means that the point \((y,x)\) lies on the graph of \(f^{-1}\). This shows us that the graphs of \(f\) and \(f^{-1}\) are the reflections of one another across the line \(y = x\), since reflecting across \(y = x\) is precisely the geometric action that swaps the coordinates in an ordered pair. In <a knowl="./knowl/F_2.6.InversePlot.html" knowl-id="xref-F_2.6.InversePlot" alt="Figure 2.6.1 " title="Figure 2.6.1 ">Figure 2.6.1</a>, we see this exemplified for the function \(y = f(x) = 2^x\) and its inverse, with the points \((-1,\frac{1}{2})\) and \((\frac{1}{2},-1)\) highlighting the reflection of the curves across \(y = x\).
+</p>
+<figure class="figure-like" id="F_2.6.InversePlot"><img width="100%" src="images/2_6_InversePlot.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.6.1</span>A graph of a function \(y = f(x)\) along with its inverse, \(y = f^{-1}(x)\).</figcaption></figure><p id="p-534">
+To close our review of important facts about inverses, we recall that the natural exponential function \(y = f(x) = e^x\) has an inverse function, and its inverse is the natural logarithm, \(x = f^{-1}(y) = \ln(y)\). Indeed, writing \(y = e^x\) is interchangeable with \(x = \ln(y)\), plus
+\(\ln(e^x) = x\) for every real number \(x\) and \(e^{\ln(y)} = y\) for every positive real number \(y.\)
+</p></section><section class="subsection" id="subsection-43"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.6.3</span><span class="title">The derivative of the natural logarithm function</span>
+</h1></header><p id="p-535">
+In what follows, we determine a formula for the derivative of \(g(x) = \ln(x)\). To do so, we take advantage of the fact that we know the derivative of the natural exponential function, which is the inverse of \(g\). In particular, we know that writing \(g(x) = \ln(x)\) is equivalent to writing \(e^{g(x)} = x\). Now we differentiate both sides of this most recent equation. In particular, we observe that
+</p>
+<span class="displaymath" id="me-191">\[
+\frac{d}{dx}\left[e^{g(x)}\right] = \frac{d}{dx}[x].
+\]</span><p id="p-536">
+The righthand side is simply \(1\); applying the chain rule to the left side, we find that
+</p>
+<span class="displaymath" id="me-192">\[
+e^{g(x)} g'(x) = 1.
+\]</span><p id="p-537">
+Since our goal is to determine \(g'(x)\), we solve for \(g'(x)\), so
+</p>
+<span class="displaymath" id="me-193">\[
+g'(x) = \frac{1}{e^{g(x)}}.
+\]</span><p id="p-538">
+Finally, we recall that since \(g(x) = \ln(x)\), \(e^{g(x)} = e^{\ln(x)} = x\), and thus
+</p>
+<span class="displaymath" id="me-194">\[
+g'(x) = \frac{1}{x}.
+\]</span><p id="p-539">
+
+{
+Natural Logarithm: \knownindex{\lt main&gt;derivative\lt /main&gt;\lt sub&gt;logarithm\lt /sub&gt;} For all positive real numbers \(x\), \(\ds \frac{d}{dx}[\ln(x)] = \frac{1}{x}.\)
+} 
+
+</p>
+<p id="p-540">
+This rule for the natural logarithm function now joins our list of other basic derivative rules that we have already established. There are two particularly interesting things to note about the fact that \(\frac{d}{dx}[\ln(x)] = \frac{1}{x}\). One is that this rule is restricted to only apply to positive values of \(x\), as these are the only values for which the original function is defined. The other is that for the first time in our work, differentiating a basic function of a particular type has led to a function of a very different nature: the derivative of the natural logarithm is not another logarithm, nor even an exponential function, but rather a rational one.
+</p>
+<p id="p-541">
+Derivatives of logarithms may now be computed in concert with all of the rules known to date. For instance, if \(f(t) = \ln(t^2 + 1)\), then by the chain rule, \(f'(t) = \frac{1}{t^2 + 1} \cdot 2t\).
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.6.1" id="A_2.6.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.6.2</span>
+</h5></a></div>
+<div id="hk-A_2.6.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-542">
+For each function given below, find its derivative.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-995">\(h(x) = x^2\ln(x)\)</li>
+<li id="li-996">\(p(t) = \ds \frac{\ln(t)}{e^t + 1}\)</li>
+<li id="li-997">\(s(y) = \ln(\cos(y) + 2)\)</li>
+<li id="li-998">\(z(x) = \tan(\ln(x))\)</li>
+<li id="li-999">\(m(z) = \ln(\ln(z))\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-75" id="hint-75"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-75" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1000">Is \(h\) a product, quotient, or composition of basic functions?</li>
+<li id="li-1001">Is \(p\) a product, quotient, or composition of basic functions?</li>
+<li id="li-1002">Is \(s\) a product, quotient, or composition of basic functions?</li>
+<li id="li-1003">Is \(z\) a product, quotient, or composition of basic functions?</li>
+<li id="li-1004">Is \(m\) a product, quotient, or composition of basic functions?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-76" id="hint-76"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-76" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1005">Try using the product rule.</li>
+<li id="li-1006">Note that \(p\) is a quotient of basic functions.</li>
+<li id="li-1007">Observe that \(s\) is a composite function with \(f(y) = \ln(y)\) as the outer function.</li>
+<li id="li-1008">What is the outer function in this composite function?  The inner function?</li>
+<li id="li-1009">The natural log function is being composed with itself.  What are the inner and outer functions?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-37" id="solution-37"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-37" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1010">By the product rule, 
+	   
+<span class="displaymath" id="me-195">\[
+h'(x) = x^2\cdot \frac{1}{x} + \ln(x) \cdot 2x = x + 2x\ln(x).
+\]</span>
+</li>
+<li id="li-1011">By the quotient rule, 
+	   
+<span class="displaymath" id="me-196">\[
+p'(t) = \frac{(e^t + 1) \frac{1}{t} - \ln(t) \cdot e^t}{(e^t + 1)^2}.
+\]</span>
+</li>
+<li id="li-1012">The chain rule tells us that
+           
+<span class="displaymath" id="me-197">\[
+s'(y) = \frac{1}{\cos(y) + 2)} \cdot (-\sin(y)).
+\]</span>
+</li>
+<li id="li-1013">Again using the chain rule,
+           
+<span class="displaymath" id="me-198">\[
+z'(x) = \sec^2(\ln(x)) \cdot \frac{1}{x}.
+\]</span>
+</li>
+<li id="li-1014">Noting that \(m\) is composite with the natural logarithm function serving as both the inner and outer function, we find that
+           
+<span class="displaymath" id="me-199">\[
+m'(z) = \frac{1}{\ln(z)} \cdot \frac{1}{z}.
+\]</span>
+</li>
+</ol></span></span><p id="p-543">
+In addition to the important rule we have derived for the derivative of the natural log functions, there are additional interesting connections to note between the graphs of \(f(x) = e^x\) and \(f^{-1}(x) = \ln(x)\).
+</p>
+<figure class="figure-like" id="F_2.6.LogExp"><img width="100%" src="images/2_6_LogExp.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.6.3</span>A graph of the function \(y = e^x\) along with its inverse, \(y = \ln(x)\), where both functions are viewed using the input variable \(x\).</figcaption></figure><p id="p-544">
+In <a knowl="./knowl/F_2.6.LogExp.html" knowl-id="xref-F_2.6.LogExp" alt="Figure 2.6.3 " title="Figure 2.6.3 ">Figure 2.6.3</a>, we are reminded that since the natural exponential function has the property that its derivative is itself, the slope of the tangent to \(y = e^x\) is equal to the height of the curve at that point. For instance, at the point \(A = (\ln(0.5), 0.5)\), the slope of the tangent line is \(m_A = 0.5\), and at \(B = (\ln(5), 5)\), the tangent line's slope is \(m_B = 5\). At the corresponding points \(A'\) and \(B'\) on the graph of the natural logarithm function (which come from reflecting across the line \(y = x\)), we know that the slope of the tangent line is the reciprocal of the \(x\)-coordinate of the point (since \(\frac{d}{dx}[\ln(x)] = \frac{1}{x}\)). Thus, with \(A' = (0.5, \ln(0.5))\), we have \(m_{A'} = \frac{1}{0.5} = 2\), and at \(B' = (5, \ln(5))\), \(m_{B'} = \frac{1}{5}\).
+</p>
+<p id="p-545">
+In particular, we observe that \(m_{A'} = \frac{1}{m_A}\) and \(m_{B'} = \frac{1}{m_B}\). This is not a coincidence, but in fact holds for any curve \(y = f(x)\) and its inverse, provided the inverse exists. One rationale for why this is the case is due to the reflection across \(y = x\): in so doing, we essentially change the roles of \(x\) and \(y\), thus reversing the rise and run, which leads to the slope of the inverse function at the reflected point being the reciprocal of the slope of the original function. At the close of this section, we will also look at how the chain rule provides us with an algebraic formulation of this general phenomenon.
+</p></section><section class="subsection" id="subsection-44"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.6.4</span><span class="title">Inverse trigonometric functions and their derivatives</span>
+</h1></header><p id="p-546">
+Trigonometric functions are periodic, so they fail to be one-to-one, and thus do not have inverses. However, if we restrict the domain of each trigonometric function, we can force the function to be one-to-one. For instance, consider the sine function on the domain \([-\frac{\pi}{2}, \frac{\pi}{2}]\).
+</p>
+<figure class="figure-like" id="F_2.6.arcsine"><img width="100%" src="images/2_6_arcsine.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.6.4</span>A graph of \(f(x) = \sin(x)\) (in blue), restricted to the domain \([-\frac{\pi}{2}, \frac{\pi}{2}]\), along with its inverse, \(f^{-1}(x) = \arcsin(x)\) (in magenta).</figcaption></figure><p id="p-547">
+Because no output of the sine function is repeated on this interval, the function is one-to-one and thus has an inverse. In particular, if we view \(f(x) = \sin(x)\) as having domain \([-\frac{\pi}{2}, \frac{\pi}{2}]\) and codomain \([-1,1]\), then there exists an inverse function \(f^{-1}\) such that
+</p>
+<span class="displaymath" id="me-200">\[
+f^{-1} : [-1,1] \to [-\frac{\pi}{2}, \frac{\pi}{2}].
+\]</span><p id="p-548">
+We call \(f^{-1}\) the <!--Style me with CSS--><em>arcsine</em> \knownindex{\lt main&gt;arcsine\lt /main&gt;} (or inverse sine) function and write \(f^{-1}(y) = \arcsin(y).\) It is especially important to remember that writing
+</p>
+<span class="displaymath" id="me-201">\[
+y = \sin(x) \ \ \mbox{and}  \ \ x = \arcsin(y)
+\]</span><p id="p-549">
+say the exact same thing. We often read “the arcsine of \(y\)” as “the angle whose sine is \(y\).” For example, we say that \(\frac{\pi}{6}\) is the angle whose sine is \(\frac{1}{2}\), which can be written more concisely as \(\arcsin(\frac{1}{2}) = \frac{\pi}{6}\), which is equivalent to writing \(\sin(\frac{\pi}{6}) = \frac{1}{2}.\)
+</p>
+<p id="p-550">
+Next, we determine the derivative of the arcsine function. Letting \(h(x) = \arcsin(x)\), our goal is to find \(h'(x)\). Since \(h(x)\) is the angle whose sine is \(x\), it is equivalent to write
+</p>
+<span class="displaymath" id="me-202">\[
+\sin(h(x)) = x.
+\]</span><p id="p-551">
+Differentiating both sides of the previous equation, we have
+</p>
+<span class="displaymath" id="me-203">\[
+\frac{d}{dx}[\sin(h(x))] = \frac{d}{dx}[x],
+\]</span><p id="p-552">
+and by the fact that the righthand side is simply \(1\) and by the chain rule applied to the left side,
+</p>
+<span class="displaymath" id="me-204">\[
+\cos(h(x)) h'(x) = 1.
+\]</span><p id="p-553">
+Solving for \(h'(x)\), it follows that
+</p>
+<span class="displaymath" id="me-205">\[
+h'(x) = \frac{1}{\cos(h(x))}.
+\]</span><p id="p-554">
+Finally, we recall that \(h(x) = \arcsin(x)\), so the denominator of \(h'(x)\) is the function \(\cos(\arcsin(x))\), or in other words, “the cosine of the angle whose sine is \(x\).” A bit of right triangle trigonometry allows us to simplify this expression considerably.
+</p>
+<figure class="figure-like" id="F_2.6.cosarcsin"><img width="100%" src="images/2_6_cosarcsin.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.6.5</span>The right triangle that corresponds to the angle \(\theta = \arcsin(x)\).</figcaption></figure><p id="p-555">
+Let's say that \(\theta = \arcsin(x)\), so that \(\theta\) is the angle whose sine is \(x\). From this, it follows that we can picture \(\theta\) as an angle in a right triangle with hypotenuse \(1\) and a vertical leg of length \(x\), as shown in <a knowl="./knowl/F_2.6.cosarcsin.html" knowl-id="xref-F_2.6.cosarcsin" alt="Figure 2.6.5 " title="Figure 2.6.5 ">Figure 2.6.5</a>. The horizontal leg must be \(\sqrt{1-x^2}\), by the Pythagorean Theorem. Now, note particularly that \(\theta = \arcsin(x)\) since \(\sin(\theta) = x\), and recall that we want to know a different expression for \(\cos(\arcsin(x))\). From the figure, \(\cos(\arcsin(x)) = \cos(\theta) = \sqrt{1-x^2}.\)
+</p>
+<p id="p-556">
+Thus, returning to our earlier work where we established that if \(h(x) = \arcsin(x)\), then \(h'(x) = \frac{1}{\cos(\arcsin(x))}\), we have now shown that
+</p>
+<span class="displaymath" id="me-206">\[
+h'(x) = \frac{1}{\sqrt{1-x^2}}.
+\]</span><p id="p-557">
+
+{
+Inverse sine: \knownindex{\lt main&gt;derivative\lt /main&gt;\lt sub&gt;arcsine\lt /sub&gt;} For all real numbers \(x\) such that \(-1 \lt  x \lt  1\), \(\ds \frac{d}{dx}[\arcsin(x)] = \frac{1}{\sqrt{1-x^2}}.\)
+} 
+
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.6.2" id="A_2.6.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.6.6</span>
+</h5></a></div>
+<div id="hk-A_2.6.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-558">
+The following prompts in this activity will lead you to develop the derivative of the inverse tangent function.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1015">Let \(r(x) = \arctan(x)\).  Use the relationship between the arctangent and tangent functions to rewrite this equation using only the tangent function.</li>
+<li id="li-1016">Differentiate both sides of the equation you found in (a).  Solve the resulting equation for \(r'(x)\), writing \(r'(x)\) as simply as possible in terms of a trigonometric function evaluated at \(r(x)\).</li>
+<li id="li-1017">Recall that \(r(x) = \arctan(x)\).  Update your expression for \(r'(x)\) so that it only involves trigonometric functions and the independent variable \(x\).</li>
+<li id="li-1018">Introduce a right triangle with angle \(\theta\) so that \(\theta = \arctan(x)\).  What are the three sides of the triangle?</li>
+<li id="li-1019">In terms of only \(x\) and \(1\), what is the value of \(\cos(\arctan(x))\)?</li>
+<li id="li-1020">Use the results of your work above to find an expression involving only \(1\) and \(x\) for \(r'(x)\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-77" id="hint-77"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-77" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1021">Recall that for any function and its inverse, writing \(y = f^{-1}(x)\) is equivalent to writing \(f(y) = x\).</li>
+<li id="li-1022">Apply the chain rule to differentiate \(\tan(r(x))\).</li>
+<li id="li-1023">This question is only asking you to substitute the expression for \(r(x)\) into what you found in (b).</li>
+<li id="li-1024">Let the vertical leg of the triangle be \(x\).  What must the horizontal leg be?</li>
+<li id="li-1025">Recall that the cosine of an angle is the length of the adjacent leg over the length of they hypotenuse.</li>
+<li id="li-1026">Note that \(\cos^2(\alpha) = (\cos(\alpha))^2.\)</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-78" id="hint-78"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-78" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1027">Recall that for any function and its inverse, writing \(y = f^{-1}(x)\) is equivalent to writing \(f(y) = x\).</li>
+<li id="li-1028">Remember that \(\frac{d}{dx}[\tan(u(x))] = \sec^2(u(x)) u'(x)\).</li>
+<li id="li-1029">This question is only asking you to substitute the expression for \(r(x)\) into what you found in (b).</li>
+<li id="li-1030">Let the vertical leg of the triangle be \(x\).  What must the horizontal leg be?  From there, how can you find the hypotenuse?</li>
+<li id="li-1031">Recall that the cosine of an angle is the length of the adjacent leg over the length of they hypotenuse.</li>
+<li id="li-1032">Note that \(\cos^2(\alpha) = (\cos(\alpha))^2.\)</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-38" id="solution-38"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-38" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1033">Since \(r(x) = \arctan(x)\), it is equivalent to write \(\tan(r(x)) = x\).</li>
+<li id="li-1034">Differentiating, we have \(\frac{d}{dx}[\tan(r(x))] = \frac{d}{dx}[x]\), so
+	
+<span class="displaymath" id="me-207">\[
+\sec^2(r(x)) r'(x) = 1,
+\]</span>
+ 
+	and thus 
+	
+<span class="displaymath" id="me-208">\[
+r'(x) = \frac{1}{\sec^2(r(x))} = \cos^2(r(x)),
+\]</span>
+ 
+	since \(\frac{1}{\sec(\alpha)} = \cos(\alpha).\)</li>
+<li id="li-1035">Since \(r(x) = \arctan(x)\), we now have that \(r'(x) = \cos^2(\arctan(x)).\)</li>
+<li id="li-1036">Letting \(\theta = \arctan(x)\), it follows that we can view \(\theta\) as an angle in a right triangle with legs \(1\) and \(x\) (so that \(\tan(\theta) = \frac{x}{1}\), and thus by the Pythagorean Theorem, the triangle's hypotenuse is \(\sqrt{1+x^2}\), as shown below.
+	<img width="100%" src="images/2_6_cosarctan.png">
+</li>
+<li id="li-1037">To evaluate \(\cos(\arctan(x))\), we use the right triangle developed in (d) and observe that 
+	
+<span class="displaymath" id="me-209">\[
+\cos(\arctan(x)) = \frac{1}{\sqrt{1+x^2}}.
+\]</span>
+</li>
+<li id="li-1038">Finally, we recall that we know \(r'(x) = \cos^2(\arctan(x)) = \left( \cos(\arctan(x)) \right)^2\).  Having established that \(\cos(\arctan(x)) = \frac{1}{\sqrt{1+x^2}}\), we now have that
+	
+<span class="displaymath" id="me-210">\[
+r'(x) = \frac{1}{1+x^2}.
+\]</span>
+</li>
+</ol></span></span><p id="p-559">
+While derivatives for other inverse trigonometric functions can be established similarly, we primarily limit ourselves to the arcsine and arctangent functions. With these rules added to our library of derivatives of basic functions, we can differentiate even more functions using derivative shortcuts. In <a knowl="./knowl/A_2.6.3.html" knowl-id="xref-A_2.6.3" alt="Exercise 2.6.7 " title="Exercise 2.6.7 ">Activity 2.6.7</a>, we see each of these rules at work.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.6.3" id="A_2.6.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.6.7</span>
+</h5></a></div>
+<div id="hk-A_2.6.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-560">
+Determine the derivative of each of the following functions.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1039">\(\displaystyle f(x) = x^3 \arctan(x) + e^x \ln(x)\)</li>
+<li id="li-1040">\(\displaystyle p(t) = 2^{t\arcsin(t)}\)</li>
+<li id="li-1041">\(\displaystyle h(z) = (\arcsin(5z) + \arctan(4-z))^{27}\)</li>
+<li id="li-1042">\(\displaystyle s(y) = \cot(\arctan(y))\)</li>
+<li id="li-1043">\(\displaystyle m(v) = \ln(\sin^2(v)+1)\)</li>
+<li id="li-1044">\(\displaystyle g(w) = \arctan\left( \frac{\ln(w)}{1+w^2} \right)\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-79" id="hint-79"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-79" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1045">Use the sum rule followed by the product rule on each term in the sum.</li>
+<li id="li-1046">Use the chain rule first.  What rule is needed to differentiate \(t\arcsin(t)\)?</li>
+<li id="li-1047">Note that the chain rule is needed to differentiate \(\arcsin(5z)\).</li>
+<li id="li-1048">You can use right triangle trigonometry to simplify the function first.</li>
+<li id="li-1049">Use the chain rule twice.</li>
+<li id="li-1050">Think about the overall structure of this function.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-80" id="hint-80"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-80" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1051">Use the sum rule followed by the product rule on each term in the sum.</li>
+<li id="li-1052">Use the chain rule first.  What rule is needed to differentiate \(t\arcsin(t)\)?</li>
+<li id="li-1053">Note that the chain rule is needed to differentiate \(\arcsin(5z)\).</li>
+<li id="li-1054">You can use right triangle trigonometry to simplify the function first.</li>
+<li id="li-1055">Use the chain rule twice.</li>
+<li id="li-1056">Think about the overall structure of this function.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-39" id="solution-39"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-39" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1057">By the sum rule followed by two applications of the product rule,
+	  
+<span class="displaymath" id="md-26">\begin{align*}
+f'(x) \amp  = \amp  \frac{d}{dx}[x^3 \arctan(x)] + \frac{d}{dx}[e^x \ln(x)]\\
+\amp  = \amp  \left[x^3 \cdot \frac{1}{1+x^2} + \arctan(x) \cdot 3x^2 \right] + \left[e^x \cdot \frac{1}{x} + \ln(x) \cdot e^x\right]
+\end{align*}</span>
+</li>
+<li id="li-1058">Using the chain rule followed by the product rule,
+           
+<span class="displaymath" id="md-27">\begin{align*}
+p'(t) \amp  = \amp  2^{t\arcsin(t)} \ln(2) \frac{d}{dt}[t\arcsin(t)]\\
+\amp  = \amp  2^{t\arcsin(t)} \ln(2) [t \cdot \frac{1}{\sqrt{1-t^2}} + \arcsin(t) \cdot 1]
+\end{align*}</span>
+</li>
+<li id="li-1059">Applying the chain rule twice,
+           
+<span class="displaymath" id="md-28">\begin{align*}
+h'(z) \amp  = \amp  27(\arcsin(5z) + \arctan(4-z))^{26} \frac{d}{dz}[\arcsin(5z) + \arctan(4-z)]\\
+\amp  = \amp  27(\arcsin(5z) + \arctan(4-z))^{26} \left[\frac{1}{1-(5z)^2} \cdot \frac{d}{dz}[5z] + \frac{1}{1+(4-z)^2} \cdot \frac{d}{dz}[4-z] \right]\\
+\amp  = \amp  27(\arcsin(5z) + \arctan(4-z))^{26} \left[\frac{1}{1-(5z)^2} \cdot 5 + \frac{1}{1+(4-z)^2} \cdot (-1) \right]
+\end{align*}</span>
+</li>
+<li id="li-1060">Using right triangle trigonometry, it is straightforward to show that \(\cot(\arctan(y)) = \frac{1}{y}\).  As such, \(s'(y) = -\frac{1}{y^2}.\)</li>
+<li id="li-1061">By two applications of the chain rule (noting particularly that \(\sin^2(v) = (\sin(v))^2\), we have
+	  
+<span class="displaymath" id="md-29">\begin{align*}
+m'(v) \amp  = \amp  \frac{1}{\sin^2(v)+1} \cdot \frac{d}{dv} \left[ \sin^2(v) + 1 \right]\\
+\amp  = \amp   \frac{1}{\sin^2(v)+1} \cdot \left[ 2\sin(v)\cos(v) \right]
+\end{align*}</span>
+</li>
+<li id="li-1062">By the chain rule followed by the quotient rule,
+	 
+<span class="displaymath" id="md-30">\begin{align*}
+g'(w) \amp  = \amp  \frac{1}{1+ \left( \frac{\ln(w)}{1+w^2} \right)^2} \cdot \frac{d}{dw} \left[ \frac{\ln(w)}{1+w^2} \right]\\
+\amp  = \amp  \frac{1}{1+ \left( \frac{\ln(w)}{1+w^2} \right)^2} \cdot \left[ \frac{(1+w^2) \frac{1}{w} - \ln(w) \cdot 2w}{(1+w^2)^2} \right]
+\end{align*}</span>
+</li>
+</ol></span></span></section><section class="subsection" id="subsection-45"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.6.5</span><span class="title">The link between the derivative of a function and the derivative of its inverse</span>
+</h1></header><p id="p-561">
+In <a knowl="./knowl/F_2.6.LogExp.html" knowl-id="xref-F_2.6.LogExp" alt="Figure 2.6.3 " title="Figure 2.6.3 ">Figure 2.6.3</a>, we saw an interesting relationship between the slopes of tangent lines to the natural exponential and natural logarithm functions at points that corresponded to reflection across the line \(y = x\). In particular, we observed that for a point such as \((\ln(2), 2)\) on the graph of \(f(x) = e^x\), the slope of the tangent line at this point is \(f'(\ln(2)) = 2\), while at the corresponding point \((2, \ln(2))\) on the graph of \(f^{-1}(x) = \ln(x)\), the slope of the tangent line at this point is \((f^{-1})'(2) = \frac{1}{2}\), which is the reciprocal of \(f'(\ln(2))\).
+</p>
+<p id="p-562">
+That the two corresponding tangent lines having slopes that are reciprocals of one another is not a coincidence. If we consider the general setting of a differentiable function \(f\) with differentiable inverse \(g\) such that \(y = f(x)\) if and only if \(x = g(y)\), then we know that \(f(g(x)) = x\) for every \(x\) in the domain of \(f^{-1}\). Differentiating both sides of this equation with respect to \(x\), we have
+</p>
+<span class="displaymath" id="me-211">\[
+\frac{d}{dx} [f(g(x))] = \frac{d}{dx} [x],
+\]</span><p id="p-563">
+and by the chain rule,
+</p>
+<span class="displaymath" id="me-212">\[
+f'(g(x)) g'(x) = 1.
+\]</span><p id="p-564">
+Solving for \(g'(x)\), we have \(g'(x) = \frac{1}{f'(g(x))}.\) Here we see that the slope of the tangent line to the inverse function \(g\) at the point \((x,g(x))\) is precisely the reciprocal of the slope of the tangent line to the original function \(f\) at the point \((g(x),f(g(x))) = (g(x),x)\).
+</p>
+<figure class="figure-like" id="F_2.6.GenInv"><img width="100%" src="images/2_6_GenInv.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.6.8</span>A graph of function \(y = f(x)\) along with its inverse, \(y = g(x) = f^{-1}(x)\).  Observe that the slopes of the two tangent lines are reciprocals of one another.</figcaption></figure><p id="p-565">
+To see this more clearly, consider the graph of the function \(y = f(x)\) shown in <a knowl="./knowl/F_2.6.GenInv.html" knowl-id="xref-F_2.6.GenInv" alt="Figure 2.6.8 " title="Figure 2.6.8 ">Figure 2.6.8</a>, along with its inverse \(y = g(x)\). Given a point \((a,b)\) that lies on the graph of \(f\), we know that \((b,a)\) lies on the graph of \(g\); said differently, \(f(a) = b\) and \(g(b) = a\). Now, applying the rule that \(g'(x) = 1/f'(g(x))\) to the value \(x = b\), we have
+</p>
+<span class="displaymath" id="me-213">\[
+g'(b) = \frac{1}{f'(g(b))} = \frac{1}{f'(a)},
+\]</span><p id="p-566">
+which is precisely what we see in the figure: the slope of the tangent line to \(g\) at \((b,a)\) is the reciprocal of the slope of the tangent line to \(f\) at \((a,b)\), since these two lines are reflections of one another across the line \(y = x\).
+</p>
+<p id="p-567">
+
+{
+Derivative of an inverse function: Suppose that \(f\) is a differentiable function with inverse \(g\) and that \((a,b)\) is a point that lies on the graph of \(f\) at which \(f'(a) \ne 0\). Then
+</p>
+<span class="displaymath" id="me-214">\[
+g'(b) = \frac{1}{f'(a)}.
+\]</span><p id="p-568">
+More generally, for any \(x\) in the domain of \(g'\), we have \(g'(x) = 1/f'(g(x)).\)
+} 
+
+</p>
+<p id="p-569">
+The rules we derived for \(\ln(x)\), \(\arcsin(x)\), and \(\arctan(x)\) are all just specific examples of this general property of the derivative of an inverse function. For example, with \(g(x) = \ln(x)\) and \(f(x) = e^x\), it follows that
+</p>
+<span class="displaymath" id="me-215">\[
+g'(x) = \frac{1}{f'(g(x))} = \frac{1}{e^{\ln(x)}} = \frac{1}{x}.
+\]</span><p id="p-570">
+\item For all positive real numbers \(x\), \(\ds \frac{d}{dx}[\ln(x)] = \frac{1}{x}\).
+\item For all real numbers \(x\) such that \(-1 \le x \le 1\), \(\ds \frac{d}{dx}[\arcsin(x)] = \frac{1}{\sqrt{1-x^2}}\). In addition, for all real numbers \(x\), \(\ds \frac{d}{dx}[\arctan(x)] = \frac{1}{1+x^2}\).
+\item If \(g\) is the inverse of a differentiable function \(f\), then for any point \(x\) in the domain of \(g'\), <br> \(\ds g'(x) = \frac{1}{f'(g(x))}.\)
+</p>
+<p id="p-571">
+\hrulefill
+</p>
+<p id="p-572">
+\begin{exercises}
+</p>
+<p id="p-573">
+\item Determine the derivative of each of the following functions. Use proper notation and clearly identify the derivative rules you use.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1063">\(f(x) = \ln(2\arctan(x) + 3\arcsin(x) + 5)\)</li>
+<li id="li-1064">\(r(z) = \arctan(\ln(\arcsin(z)))\)</li>
+<li id="li-1065">\(q(t) = \arctan^2(3t) \arcsin^4(7t)\)</li>
+<li id="li-1066">\(\ds g(v) =  \ln\left( \frac{\arctan(v)}{\arcsin(v) + v^2} \right)\)</li>
+</ol>
+<figure class="figure-like" id="F_2.6.Ez4"><img width="100%" src="images/2_6_Ez4.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.6.9</span>A function \(y = f(x)\) for use in Exercise 2.</figcaption></figure><p id="p-574">
+\item Consider the graph of \(y = f(x)\) provided in <a knowl="./knowl/F_2.6.Ez4.html" knowl-id="xref-F_2.6.Ez4" alt="Figure 2.6.9 " title="Figure 2.6.9 ">Figure 2.6.9</a> and use it to answer the following questions.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1067">Use the provided graph to estimate the value of \(f'(1)\).</li>
+<li id="li-1068">Sketch an approximate graph of \(y = f^{-1}(x)\).  Label at least three distinct points on the graph that correspond to three points on the graph of \(f\).</li>
+<li id="li-1069">Based on your work in (a), what is the value of \((f^{-1})'(-1)\)?  Why?</li>
+</ol>
+<p id="p-575">
+\item Let \(f(x) = \frac{1}{4}x^3 + 4.\)
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1070">Sketch a graph of \(y = f(x)\) and explain why \(f\) is an invertible function.</li>
+<li id="li-1071">Let \(g\) be the inverse of \(f\) and determine a formula for \(g\).</li>
+<li id="li-1072">Compute \(f'(x)\), \(g'(x)\), \(f'(2)\), and \(g'(6)\).  What is the special relationship between \(f'(2)\) and \(g'(6)\)?  Why?</li>
+</ol>
+<p id="p-576">
+\item Let \(h(x) = x + \sin(x)\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1073">Sketch a graph of \(y = h(x)\) and explain why \(h\) must be invertible.</li>
+<li id="li-1074">Explain why it does not appear to be algebraically possible to determine a formula for \(h^{-1}\).</li>
+<li id="li-1075">Observe that the point \((\frac{\pi}{2}, \frac{\pi}{2} + 1)\) lies on the graph of \(y = h(x)\).  Determine the value of \((h^{-1})'(\frac{\pi}{2} + 1)\).</li>
+</ol>
+<p id="p-577">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-578">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

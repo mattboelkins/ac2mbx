@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:39-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The product and quotient rules</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_2.2.SinCos.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.4.OtherTrig.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_2.2.SinCos.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.4.OtherTrig.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link active"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html" class="active">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_2.3.ProdQuot"><header><h1 class="heading" alt="Section 2.3 The product and quotient rules" title="Section 2.3 The product and quotient rules">
+<span class="type">Section</span><span class="codenumber">2.3</span><span class="title">The product and quotient rules</span><a href="S_2.3.ProdQuot.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-11"><h5 class="heading"></h5>
+<p id="p-378">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-754">How does the algebraic structure of a function direct us in computing its derivative using shortcut rules?</li>
+<li id="li-755">How do we compute the derivative of a product of two basic functions in terms of the derivatives of the basic functions?</li>
+<li id="li-756">How do we compute the derivative of a quotient of two basic functions in terms of the derivatives of the basic functions?</li>
+<li id="li-757">How do the product and quotient rules combine with the sum and constant multiple rules to expand the library of functions we can quickly differentiate?</li>
+</ul>
+<p id="p-379">
+} 
+</p></article><section class="subsection" id="subsection-31"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.3.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-380">
+So far, the basic functions we know how to differentiate include power functions (\(x^n\)), exponential functions (\(a^x\)), and the two fundamental trigonometric functions (\(\sin(x)\) and \(\cos(x)\)). With the sum rule and constant multiple rules, we can also compute the derivative of combined functions such as
+</p>
+<span class="displaymath" id="me-90">\[
+f(x) = 7x^{11} - 4 \cdot 9^x + \pi \sin(x) - \sqrt{3}\cos(x),
+\]</span><p id="p-381">
+because the function \(f\) is fundamentally a sum of basic functions. Indeed, we can now quickly say that \(f'(x) = 77x^{10} - 4 \cdot 9^x \ln(9) + \pi \cos(x) + \sqrt{3} \sin(x)\).
+</p>
+<p id="p-382">
+But we can of course combine basic functions in ways other than multiplying them by constants and taking sums and differences. For example, we could consider the function that results from a product of two basic functions, such as
+</p>
+<span class="displaymath" id="me-91">\[
+p(z) = z^3 \cos(z),
+\]</span><p id="p-383">
+or another that is generated by the quotient of two basic functions, one like
+</p>
+<span class="displaymath" id="me-92">\[
+q(t) = \frac{\sin(t)}{2^t}.
+\]</span><p id="p-384">
+While the derivative of a sum is the sum of the derivatives, it turns out that the rules for computing derivatives of products and quotients are more complicated. In what follows we explore why this is the case, what the product and quotient rules actually say, and work to expand our repertoire of functions we can easily differentiate. To start, Preview <a href="S_2.3.ProdQuot.html#PA_2.3" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> asks you to investigate the derivative of a product and quotient of two polynomials.
+</p>
+<article class="paragraphs" id="PA_2.3"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-385">
+Let \(f\) and \(g\) be the functions defined by \(f(t) = 2t^2\) and \(g(t) = t^3 + 4t\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-758">Determine \(f'(t)\) and \(g'(t)\).</li>
+<li id="li-759">Let \(p(t) = 2t^2 (t^3 + 4t)\) and observe that \(p(t) = f(t) \cdot g(t)\).  Rewrite the formula for \(p\) by distributing the \(2t^2\) term.  Then, compute \(p'(t)\) using the sum and constant multiple rules.</li>
+<li id="li-760">True or false: \(p'(t) = f'(t) \cdot g'(t)\).</li>
+<li id="li-761">Let \(\ds q(t) = \frac{t^3 + 4t}{2t^2}\) and observe that \(\ds q(t) = \frac{g(t)}{f(t)}\).  Rewrite the formula for \(q\) by dividing each term in the numerator by the denominator and simplify to write \(q\) as a sum of constant multiples of powers of \(t\).  Then, compute \(q'(t)\) using the sum and constant multiple rules.</li>
+<li id="li-762">True or false: \(\ds q'(t) = \frac{g'(t)}{f'(t)}\).</li>
+</ol></article></section><section class="subsection" id="subsection-32"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.3.2</span><span class="title">The product rule</span>
+</h1></header><p id="p-386">
+As parts (b) and (d) of Preview <a href="S_2.3.ProdQuot.html#PA_2.3" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> show, it is not true in general that the derivative of a product of two functions is the product of the derivatives of those functions. Indeed, the rule for differentiating a function of the form \(p(x) = f(x) \cdot g(x)\) in terms of the derivatives of \(f\) and \(g\) is more complicated than simply taking the product of the derivatives of \(f\) and \(g\). To see further why this is the case, as well as to begin to understand how the product rule actually works, we consider an example involving meaningful functions.
+</p>
+<p id="p-387">
+Say that an investor is regularly purchasing stock in a particular company. Let \(N(t)\) be a function that represents the number of shares owned on day \(t\), where \(t = 0\) represents the first day on which shares were purchased. Further, let \(S(t)\) be a function that gives the value of one share of the stock on day \(t\); note that the units on \(S(t)\) are dollars per share. Moreover, to compute the total value on day \(t\) of the stock held by the investor, we use the function \(V(t) = N(t) \cdot S(t)\). By taking the product
+</p>
+<span class="displaymath" id="me-93">\[
+V(t) = N(t) \, \mbox{shares}  \cdot S(t) \, \mbox{dollars per share} ,
+\]</span><p id="p-388">
+we have the total value in dollars of the shares held. Observe that over time, both the number of shares and the value of a given share will vary. The derivative \(N'(t)\) measures the rate at which the number of shares held is changing, while \(S'(t)\) measures the rate at which the value per share is changing. The big question we'd like to answer is: how do these respective rates of change affect the rate of change of the total value function?
+</p>
+<p id="p-389">
+To help better understand the relationship among changes in \(N\), \(S\), and \(V\), let's consider some specific data. Suppose that on day 100, the investor owns 520 shares of stock and the stock's current value is $27.50 per share. This tells us that \(N(100) = 520\) and \(S(100) = 27.50\). In addition, say that on day 100, the investor purchases an additional 12 shares (so the number of shares held is rising at a rate of 12 shares per day), and that on that same day the price of the stock is rising at a rate of 0.75 dollars per share per day. Viewed in calculus notation, this tells us that \(N'(100) = 12\) (shares per day) and \(S'(100) = 0.75\) (dollars per share per day). At what rate is the value of the investor's total holdings changing on day 100?
+</p>
+<p id="p-390">
+Observe that the increase in total value comes from two sources: the growing number of shares, and the rising value of each share. If only the number of shares is rising (and the value of each share is constant), the rate at which which total value would rise is found by computing the product of the current value of the shares with the rate at which the number of shares is changing. That is, the rate at which total value would change is given by
+</p>
+<span class="displaymath" id="me-94">\[
+S(100) \cdot N'(100) = 27.50 \, \frac{\mbox{dollars} }{\mbox{share} } \cdot 12 \, \frac{\mbox{shares} }{\mbox{day} } = 330 \, \frac{\mbox{dollars} }{\mbox{day} }.
+\]</span><p id="p-391">
+Note particularly how the units make sense and explain that we are finding the rate at which the total value \(V\) is changing, measured in dollars per day. If instead the number of shares is constant, but the value of each share is rising, then the rate at which the total value would rise is found similarly by taking the product of the number of shares with the rate of change of share value. In particular, the rate total value is rising is
+</p>
+<span class="displaymath" id="me-95">\[
+N(100) \cdot S'(100) = 520 \, \mbox{shares}  \cdot 0.75 \, \frac{\mbox{dollars per share} }{\mbox{day} } = 390 \, \frac{\mbox{dollars} }{\mbox{day} }.
+\]</span><p id="p-392">
+Of course, when both the number of shares is changing and the value of each share is changing, we have to include both of these sources, and hence the rate at which the total value is rising is
+</p>
+<span class="displaymath" id="me-96">\[
+V'(100) = S(100) \cdot N'(100) + N(100) \cdot S'(100) = 330 + 390 = 720 \, \frac{\mbox{dollars} }{\mbox{day} }.
+\]</span><p id="p-393">
+This tells us that we expect the total value of the investor's holdings to rise by about $720 on the 100th day.<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-14" id="fn-14"><sup> 1 </sup></a></span><span id="hk-fn-14" style="display: none;" class="tex2jax_ignore"><span class="footnote">While this example highlights why the product rule is true, there are some subtle issues to recognize.  For one, if the stock's value really does rise exactly $0.75 on day 100, and the number of shares really rises by 12 on day 100, then we'd expect that \(V(101) = N(101) \cdot S(101) = 532 \cdot 28.25 = 15029\).  If, as noted above, we expect the total value to rise by $720, then with \(V(100) = N(100) \cdot S(100) = 520 \cdot 27.50 = 14300\), then it seems like we should find that \(V(101) = V(100) + 720 = 15020.\)  Why do the two results differ by 9?  One way to understand why this difference occurs is to recognize that \(N'(100) = 12\) represents an <!--Style me with CSS--><em>instantaneous</em> rate of change, while our (informal) discussion has also thought of this number as the total change in the number of shares over the course of a single day.  The formal proof of the product rule reconciles this issue by taking the limit as the change in the input tends to zero.</span></span>
+</p>
+<p id="p-394">
+Next, we expand our perspective from the specific example above to the more general and abstract setting of a product \(p\) of two differentiable functions, \(f\) and \(g\). If we have \(P(x) = f(x) \cdot g(x)\), our work above suggests that \(P'(x) = f(x) g'(x) + g(x) f'(x).\) Indeed, a formal proof using the limit definition of the derivative can be given to show that the following rule, called the <!--Style me with CSS--><em>product rule</em>\knownindex{\lt main&gt;product rule\lt /main&gt;}, holds in general.
+</p>
+<p id="p-395">
+
+{
+Product Rule: \knownindex{\lt main&gt;product rule\lt /main&gt;} If \(f\) and \(g\) are differentiable functions, then their product \(P(x) = f(x) \cdot g(x)\) is also a differentiable function, and
+</p>
+<span class="displaymath" id="me-97">\[
+P'(x) = f(x) g'(x) + g(x) f'(x).
+\]</span><p id="p-396">
+} 
+
+</p>
+<p id="p-397">
+In light of the earlier example involving shares of stock, the product rule also makes sense intuitively: the rate of change of \(P\) should take into account both how fast \(f\) and \(g\) are changing, as well as how large \(f\) and \(g\) are at the point of interest. Furthermore, we note in words what the product rule says: if \(P\) is the product of two functions \(f\) (the first function) and \(g\) (the second), then “the derivative of \(P\) is the first times the derivative of the second, plus the second times the derivative of the first.” It is often a helpful mental exercise to say this phrasing aloud when executing the product rule.
+</p>
+<p id="p-398">
+For example, if \(P(z) = z^3 \cdot \cos(z)\), we can now use the product rule to differentiate \(P\). The first function is \(z^3\) and the second function is \(\cos(z)\). By the product rule, \(P'\) will be given by the first, \(z^3\), times the derivative of the second, \(-\sin(z)\), plus the second, \(\cos(z)\), times the derivative of the first, \(3z^2\). That is,
+</p>
+<span class="displaymath" id="me-98">\[
+P'(z) = z^3(-\sin(z)) + \cos(z) 3z^2 = -z^3 \sin(z) + 3z^2 \cos(z).
+\]</span><p id="p-399">
+The following activity further explores the use of the product rule.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.3.1" id="A_2.3.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.3.1</span>
+</h5></a></div>
+<div id="hk-A_2.3.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-400">
+Use the product rule to answer each of the questions below. Throughout, be sure to carefully label any derivative you find by name. It is not necessary to algebraically simplify any of the derivatives you compute.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-763">Let \(m(w)=3w^{17} 4^w\).  Find \(m'(w)\).</li>
+<li id="li-764">Let \(h(t) = (\sin(t) + \cos(t))t^4\).  Find \(h'(t)\).</li>
+<li id="li-765">Determine the slope of the tangent line to the curve \(y = f(x)\) at the point where \(a = 1\) if \(f\) is given by the rule \(f(x) = e^x \sin(x)\).</li>
+<li id="li-766">Find the tangent line approximation \(L(x)\) to the function \(y = g(x)\) at the point where \(a = -1\) if \(g\) is given by the rule \(g(x) = (x^2 + x) 2^x\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-57" id="hint-57"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-57" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-767">Let the first function be \(3w^{17}\).</li>
+<li id="li-768">Let the first function be \((\sin(t) + \cos(t))\).</li>
+<li id="li-769">Remember that the slope of the tangent line to \(y = f(x)\) at \((a,f(a))\) is given by \(f'(a)\).</li>
+<li id="li-770">Remember that \(L(x) = g(a) + g'(a)(x-a).\)</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-58" id="hint-58"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-58" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-771">Let the first function be \(3w^{17}\) and the second function be \(4^w\).</li>
+<li id="li-772">Let the first function be \((\sin(t) + \cos(t))\) and the second function be \(t^4\).</li>
+<li id="li-773">Remember that the slope of the tangent line to \(y = f(x)\) at \((a,f(a))\) is given by \(f'(a)\).</li>
+<li id="li-774">Remember that \(L(x) = g(a) + g'(a)(x-a).\)  In differentiating \(g\), let the first function be \((x^2 + x)\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-28" id="solution-28"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-28" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-775">By the product rule, 
+	
+<span class="displaymath" id="me-99">\[
+m'(w) = 3w^{17} \cdot 4^w \ln(4) + 4^w \cdot 3w^17.
+\]</span>
+</li>
+<li id="li-776">By the product rule, 
+	
+<span class="displaymath" id="me-100">\[
+h'(t) = (\sin(t) + \cos(t)) \cdot 4t^3 + t^4 \cdot (\cos(t) - \sin(t)).
+\]</span>
+</li>
+<li id="li-777">To determine the slope of the tangent line at \(a = 1\), we want to find \(f'(1)\).  Since \(f(x) = e^x \sin(x)\), the product rule tells us that \(f'(x) = e^x \cdot \cos(x) + \sin(x) \cdot e^x\).  Thus, \(f'(1) = e^1 \cdot \cos(1) + \sin(1) \cdot e^1 = e(\cos(1) + \sin(1)) \approx 3.756\).</li>
+<li id="li-778">First, observe that \(g(-1) = ((-1)^2 - 1) \cdot 2^{-1} = 0\).  Further, by the product rule, \(g'(x) = (x^2 + x) \cdot 2^x \ln(2) + 2^x \cdot (2x + 1)\), and therefore \(g'(-1) = ((-1)^2 - 1) \cdot 2^{-1} \ln(2) + 2^{-1} \cdot (2(-1) + 1) = 0 + \frac{1}{2}(-1) = -\frac{1}{2}.\)  Therefore,
+	
+<span class="displaymath" id="me-101">\[
+L(x) = g(-1) + g'(-1)(x+1) = 0 - \frac{1}{2}(x+1) = -\frac{1}{2}(x+1).
+\]</span>
+</li>
+</ol></span></span></section><section class="subsection" id="subsection-33"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.3.3</span><span class="title">The quotient rule</span>
+</h1></header><p id="p-401">
+Because quotients and products are closely linked, we can use the product rule to understand how to take the derivative of a quotient. In particular, let \(Q(x)\) be defined by \(Q(x) = f(x)/g(x)\), where \(f\) and \(g\) are both differentiable functions. We desire a formula for \(Q'\) in terms of \(f\), \(g\), \(f'\), and \(g'\). It turns out that \(Q\) is differentiable everywhere that \(g(x) \ne 0\). Moreover, taking the formula \(Q = f/g\) and multiplying both sides by \(g\), we can observe that
+</p>
+<span class="displaymath" id="me-102">\[
+f(x) = Q(x) \cdot g(x).
+\]</span><p id="p-402">
+Thus, we can use the product rule to differentiate \(f\). Doing so,
+</p>
+<span class="displaymath" id="me-103">\[
+f'(x) = Q(x) g'(x) + g(x) Q'(x).
+\]</span><p id="p-403">
+Since we want to know a formula for \(Q'\), we work to solve this most recent equation for \(Q'(x)\), finding first that
+</p>
+<span class="displaymath" id="me-104">\[
+Q'(x) g(x) = f'(x) - Q(x) g'(x).
+\]</span><p id="p-404">
+Dividing both sides by \(g(x)\), we have
+</p>
+<span class="displaymath" id="me-105">\[
+Q'(x) = \frac{f'(x) - Q(x) g'(x)}{g(x)}.
+\]</span><p id="p-405">
+Finally, we also recall that \(Q(x) = \frac{f(x)}{g(x)}.\) Using this expression in the preceding equation and simplifying, we have
+</p>
+<span class="displaymath" id="md-15">\begin{align*}
+Q'(x) \amp  = \amp  \frac{f'(x) - \frac{f(x)}{g(x)} g'(x)}{g(x)}\\
+\amp  = \amp  \frac{f'(x) - \frac{f(x)}{g(x)} g'(x)}{g(x)} \cdot \frac{g(x)}{g(x)}\\
+\amp  = \amp  \frac{g(x) f'(x) -  f(x) g'(x)}{g(x)^2}.
+\end{align*}</span><p id="p-406">
+This shows the fundamental argument for why the <!--Style me with CSS--><em>quotient rule</em> holds.
+</p>
+<p id="p-407">
+
+{
+Quotient Rule: \knownindex{\lt main&gt;quotient rule\lt /main&gt;} If \(f\) and \(g\) are differentiable functions, then their quotient \(Q(x) = \frac{f(x)}{g(x)}\) is also a differentiable function for all \(x\) where \(g(x) \ne 0\), and
+</p>
+<span class="displaymath" id="me-106">\[
+Q'(x) = \frac{g(x)f'(x) - f(x) g'(x)}{g(x)^2}.
+\]</span><p id="p-408">
+} 
+
+</p>
+<p id="p-409">
+Like the product rule, it can be helpful to think of the quotient rule verbally. If a function \(Q\) is the quotient of a top function \(f\) and a bottom function \(g\), then \(Q'\) is given by “the bottom times the derivative of the top, minus the top times the derivative of the bottom, all over the bottom squared.” For example, if \(Q(t) = \sin(t)/2^t\), then we can identify the top function as \(\sin(t)\) and the bottom function as \(2^t\). By the quotient rule, we then have that \(Q'\) will be given by the bottom, \(2^t\), times the derivative of the top, \(\cos(t)\), minus the top, \(\sin(t)\), times the derivative of the bottom, \(2^t \ln(2)\), all over the bottom squared, \((2^t)^2\). That is,
+</p>
+<span class="displaymath" id="me-107">\[
+Q'(t) = \frac{2^t \cos(t) - \sin(t) 2^t \ln(2)}{(2^t)^2}.
+\]</span><p id="p-410">
+In this particular example, it is possible to simplify \(Q'(t)\) by removing a factor of \(2^t\) from both the numerator and denominator, hence finding that
+</p>
+<span class="displaymath" id="me-108">\[
+Q'(t) = \frac{\cos(t) - \sin(t) \ln(2)}{2^t}.
+\]</span><p id="p-411">
+In general, we must be careful in doing any such simplification, as we don't want to correctly execute the quotient rule but then find an incorrect overall derivative due to an algebra error. As such, we will often place more emphasis on correctly using derivative rules than we will on simplifying the result that follows. The next activity further explores the use of the quotient rule.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.3.2" id="A_2.3.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.3.2</span>
+</h5></a></div>
+<div id="hk-A_2.3.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-412">
+Use the quotient rule to answer each of the questions below. Throughout, be sure to carefully label any derivative you find by name.
+That is, if you're given a formula for \(f(x)\), clearly label the formula you find for \(f'(x)\). It is not necessary to algebraically simplify any of the derivatives you compute.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-779">Let \(\ds r(z)=\frac{3^z}{z^4 + 1}\).  Find \(r'(z)\).</li>
+<li id="li-780">Let \(\ds v(t) = \frac{\sin(t)}{\cos(t) + t^2}\).  Find \(v'(t)\).</li>
+<li id="li-781">Determine the slope of the tangent line to the curve \(\displaystyle R(x) = \frac{x^2 - 2x - 8}{x^2 - 9}\) at the point where \(x = 0\).</li>
+<li id="li-782">When a camera flashes, the intensity \(I\) of light seen by the eye is given by the function
+
+<span class="displaymath" id="me-109">\[
+I(t) = \frac{100t}{e^t},
+\]</span>
+ 
+where \(I\) is measured in candles and \(t\) is measured in milliseconds.  Compute \(I'(0.5)\), \(I'(2)\), and \(I'(5)\); include appropriate units on each value; and discuss the meaning of each.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-59" id="hint-59"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-59" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-783">When applying the quotient rule, use parentheses around the bottom function, \(z^4 + 1\), to ensure that when you compute “the bottom times the derivative of the top” that the rule is applied correctly.</li>
+<li id="li-784">When applying the quotient rule, use parentheses around the bottom function, \(\cos(t) + t^2\), and its derivative to ensure that the rule is applied correctly.</li>
+<li id="li-785">Remember one of the key interpretations of the derivative.</li>
+<li id="li-786">Let the top function be \(100t\) and simply use the constant multiple rule to find its derivative.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-60" id="hint-60"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-60" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-787">When applying the quotient rule, use parentheses around the bottom function, \(z^4 + 1\), to ensure that when you compute “the bottom times the derivative of the top” that the rule is applied correctly.</li>
+<li id="li-788">When applying the quotient rule, use parentheses around the bottom function, \(\cos(t) + t^2\), and its derivative to ensure that the rule is applied correctly.</li>
+<li id="li-789">Remember that the derivative evaluated at a particular value gives the slope of the tangent line there.</li>
+<li id="li-790">Let the top function be \(100t\) and simply use the constant multiple rule to find its derivative.  Further, note that since the units on \(I\) are candles and those on \(t\) are milliseconds, the units on \(I'(t)\) will be candles per millisecond.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-29" id="solution-29"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-29" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-791">By the quotient rule,
+	
+<span class="displaymath" id="me-110">\[
+r'(z)=\frac{(z^4+1) 3^z \ln(3) - 3^z(4z^3)}{(z^4 + 1)^2}.
+\]</span>
+</li>
+<li id="li-792">By the quotient rule, 
+	
+<span class="displaymath" id="me-111">\[
+v'(t) = \frac{(\cos(t) + t^2)\cos(t) - \sin(t)(\sin(t) + 2t)}{(\cos(t) + t^2)^2}.
+\]</span>
+</li>
+<li id="li-793">We first compute \(R'(x)\).  By the quotient rule,
+	
+<span class="displaymath" id="me-112">\[
+R'(x) = \frac{(x^2 - 9)(2x - 2) - (x^2 - 2x - 8)(2x)}{(x^2 - 9)^2}.
+\]</span>
+ 
+	From this, it follows that \(R'(0) = \frac{(-9)(-2)-(-8)(0)}{(-9)^2} = -\frac{2}{9}\), which is the slope of the tangent line to the curve at the point where \(x = 0\).</li>
+<li id="li-794">By the quotient rule and algebraic simplification,
+
+<span class="displaymath" id="me-113">\[
+I'(t) = \frac{e^t 100 - 100te^t}{(e^t)^2} = \frac{100-100t}{e^t}.
+\]</span>
+ 
+Thus, \(I'(0.5) = \frac{50}{e^{0.5}} \approx 30.327\), \(I'(2) = \frac{-100}{e^{2}} \approx -13.534\), and \(I'(5) = \frac{-400}{e^4} \approx -2.695\), each measured in candles per millisecond.  These results show that at \(t = 0.5\), the intensity of the flash is increasing rapidly, while at \(t = 2\) and \(t = 5\), the intensity is decreasing, with the intensity decreasing more rapidly when \(t = 2\).</li>
+</ol></span></span></section><section class="subsection" id="subsection-34"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.3.4</span><span class="title">Combining rules</span>
+</h1></header><p id="p-413">
+One of the challenges to learning to apply various derivative shortcut rules correctly and effectively is recognizing the fundamental structure of a function. For instance, consider the function given by
+</p>
+<span class="displaymath" id="me-114">\[
+f(x) = x\sin(x) + \frac{x^2}{\cos(x) + 2}.
+\]</span><p id="p-414">
+How do we decide which rules to apply? Our first task is to recognize the overall structure of the given function. Observe that the function \(f\) is fundamentally a sum of two slightly less complicated functions, so we can apply the sum rule<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-15" id="fn-15"><sup> 2 </sup></a></span><span id="hk-fn-15" style="display: none;" class="tex2jax_ignore"><span class="footnote">When taking a derivative that involves the use of multiple derivative rules, it is often helpful to use the notation \(\frac{d}{dx} \left[ ~~\right]\) to wait to apply subsequent rules.  This is demonstrated in each of the two examples presented here.</span></span> and get
+</p>
+<span class="displaymath" id="md-16">\begin{align*}
+f'(x) \amp  = \amp  \frac{d}{dx} \left[ x\sin(x) + \frac{x^2}{\cos(x) + 2} \right]\\
+\amp  = \amp  \frac{d}{dx} \left[ x\sin(x) \right] + \frac{d}{dx}\left[ \frac{x^2}{\cos(x) + 2} \right]
+\end{align*}</span><p id="p-415">
+Now, the left-hand term above is a product, so the product rule is needed there, while the right-hand term is a quotient, so the quotient rule is required. Applying these rules respectively, we find that
+</p>
+<span class="displaymath" id="md-17">\begin{align*}
+f'(x) \amp  = \amp  \left( x \cos(x) + \sin(x) \right) + \frac{(\cos(x) + 2) 2x - x^2(-\sin(x))}{(\cos(x) + 2)^2}\\
+\amp  = \amp  x \cos(x) + \sin(x) + \frac{2x\cos(x) + 4x^2 + x^2\sin(x)}{(\cos(x) + 2)^2}.
+\end{align*}</span><p id="p-416">
+We next consider how the situation changes with the function defined by
+</p>
+<span class="displaymath" id="me-115">\[
+s(y) = \frac{y \cdot 7^y}{y^2 + 1}.
+\]</span><p id="p-417">
+Overall, \(s\) is a quotient of two simpler function, so the quotient rule will be needed. Here, we execute the quotient rule and use the notation \(\frac{d}{dy}\) to defer the computation of the derivative of the numerator and derivative of the denominator. Thus,
+</p>
+<span class="displaymath" id="me-116">\[
+s'(y) = \frac{(y^2 + 1) \cdot \frac{d}{dy}\left[ y \cdot 7^y \right] - y \cdot 7^y \cdot \frac{d}{dy}\left[y^2 + 1 \right]}{(y^2 + 1)^2}.
+\]</span><p id="p-418">
+Now, there remain two derivatives to calculate. The first one, \(\frac{d}{dy}\left[ y \cdot 7^y \right]\) calls for use of the product rule, while the second, \(\frac{d}{dy}\left[y^2 + 1 \right]\) takes only an elementary application of the sum rule. Applying these rules, we now have
+</p>
+<span class="displaymath" id="me-117">\[
+s'(y) = \frac{(y^2 + 1) [y \cdot 7^y \ln(7) + 7^y \cdot 1] - y \cdot 7^y [2y]}{(y^2 + 1)^2}.
+\]</span><p id="p-419">
+While some minor simplification is possible, we are content to leave \(s'(y)\) in its current form, having found the desired derivative of \(s\). In summary, to compute the derivative of \(s\), we applied the quotient rule. In so doing, when it was time to compute the derivative of the top function, we used the product rule; at the point where we found the derivative of the bottom function, we used the sum rule.
+</p>
+<p id="p-420">
+In general, one of the main keys to success in applying derivative rules is to recognize the structure of the function, followed by the careful and diligent application of relevant derivative rules. The best way to get good at this process is by doing a large number of exercises, and the next activity provides some practice and exploration to that end.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.3.3" id="A_2.3.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.3.3</span>
+</h5></a></div>
+<div id="hk-A_2.3.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-421">
+Use relevant derivative rules to answer each of the questions below. Throughout, be sure to use proper notation and carefully label any derivative you find by name.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-795">Let \(\ds f(r) = (5r^3 + \sin(r))(4^r - 2\cos(r))\).  Find \(f'(r)\).</li>
+<li id="li-796">Let \(\displaystyle p(t) = \frac{\cos(t)}{t^6 \cdot 6^t}\).  Find \(p'(t)\).</li>
+<li id="li-797">Let \(\ds g(z) = 3z^7 e^z - 2z^2 \sin(z) + \frac{z}{z^2 + 1}.\)  Find \(g'(z)\).</li>
+<li id="li-798">A moving particle has its position in feet at time \(t\) in seconds given by the function \(\ds s(t) = \frac{3\cos(t) - \sin(t)}{e^t}\).  Find the particle's instantaneous velocity at the moment \(t = 1\).</li>
+<li id="li-799">Suppose that \(f(x)\) and \(g(x)\) are differentiable functions and it is known that \(f(3) = -2\), \(f'(3) = 7\), \(g(3) = 4\), and  \(g'(3) = -1\).  If \(p(x) = f(x) \cdot g(x)\) and \(\displaystyle q(x) = \frac{f(x)}{g(x)}\), calculate \(p'(3)\) and \(q'(3)\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-61" id="hint-61"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-61" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-800">Observe that \(f\) is fundamentally a product.  Which is the first function?  The second?</li>
+<li id="li-801">Note that \(p\) has the overall structure of a quotient.</li>
+<li id="li-802">Think about how \(g\) is a sum of three functions.  What is the structure of each of the three functions in the sum?</li>
+<li id="li-803">How is the velocity of a moving object related to its position?</li>
+<li id="li-804">Since we know \(p(x) = f(x) \cdot g(x)\), it follows \(p'(x) = f(x) g'(x) + g(x) f'(x).\)</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-62" id="hint-62"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-62" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-805">Observe that \(f\) is fundamentally a product.  Which is the first function?  The second?  What rule(s) are needed to differentiate the first function?  The second?</li>
+<li id="li-806">Note that \(p\) has the overall structure of a quotient.  What is the structure of the bottom function?</li>
+<li id="li-807">Think about how \(g\) is a sum of three functions.  What is the structure of each of the three functions in the sum?</li>
+<li id="li-808">How is the velocity of a moving object related to its position?  What is the structure of \(s(t)\)?</li>
+<li id="li-809">Since we know \(p(x) = f(x) \cdot g(x)\), it follows \(p'(x) = f(x) g'(x) + g(x) f'(x)\) for any value of \(x\).  How can you use the given information?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-30" id="solution-30"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-30" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-810">Using the product rule, followed by the sum and constant multiple rule, observe that
+	
+<span class="displaymath" id="md-18">\begin{align*}
+f'(r) \amp  = \amp  (5r^3 + \sin(r))\frac{d}{dr}[4^r - 2\cos(r)] +  (4^r - 2\cos(r))\frac{d}{dr}[5r^3 + \sin(r)]\\
+\amp  = \amp   (5r^3 + \sin(r))[4^r \ln(4) + 2\sin(r)] +  (4^r - 2\cos(r))[15r^2 + \cos(r)]
+\end{align*}</span>
+</li>
+<li id="li-811">We use the quotient rule on \(p\), followed by the product rule to differentiate the denominator, finding that
+	
+<span class="displaymath" id="md-19">\begin{align*}
+p'(t) \amp  = \amp  \frac{t^6 \cdot 6^t \frac{d}{dt}[\cos(t)] - \cos(t) \frac{d}{dt}[t^6 \cdot 6^t]}{(t^6 \cdot 6^t)^2}\\
+\amp  = \amp  \frac{t^6 \cdot 6^t [-\sin(t)] - \cos(t) [t^6 \cdot 6^t \ln(6) + 6^t \cdot 6t^5]}{(t^6 \cdot 6^t)^2}
+\end{align*}</span>
+</li>
+<li id="li-812">Using the sum and constant multiple rules, it follows first that
+	
+<span class="displaymath" id="me-118">\[
+g'(z) = 3 \frac{d}{dz}[z^7 e^z] - 2\frac{d}{dz}[z^2 \sin(z)] + \frac{d}{dz}\left[ \frac{z}{z^2 + 1} \right].
+\]</span>
+   
+	Applying the product rule in the first two terms and the quotient rule in the third, we find that
+	
+<span class="displaymath" id="me-119">\[
+g'(z) = 3 [z^7 e^z +  7z^6e^z] - 2[z^2 \cos(z) + 2z\sin(z)] + \frac{(z^2+1) 1 - z(2z)}{(z^2 + 1)^2}.
+\]</span>
+</li>
+<li id="li-813">The particle's instantaneous velocity at the moment \(t = 1\) is given by \(s'(1)\).  We use the quotient rule to find \(s'(t)\), and simplify by removing a common factor of \(e^t\) to get
+	
+<span class="displaymath" id="me-120">\[
+s'(t) = \frac{e^t(-3\sin(t) - \cos(t))-(3\cos(t) - \sin(t))e^t}{(e^t)^2} = \frac{-2\sin(t)-4\cos(t)}{e^t}.
+\]</span>
+ 
+	Thus, \(s'(1) = \frac{-2\sin(1)-4\cos(1)}{e^1} \approx -1.414\), which is the particle's instantaneous velocity in feet per second at the moment \(t = 1\).</li>
+<li id="li-814">Since \(p(x) = f(x) \cdot g(x)\), the product rule tells us
+	
+<span class="displaymath" id="me-121">\[
+p'(x) = f(x)g'(x) + g(x)f'(x),
+\]</span>
+ 
+	and since \(\displaystyle q(x) = \frac{f(x)}{g(x)}\), by the quotient rule we know
+	
+<span class="displaymath" id="me-122">\[
+q'(x) = \frac{g(x)f'(x)-f(x)g'(x)}{g(x)^2}.
+\]</span>
+ 
+	Using the given information (\(f(3) = -2\), \(f'(3) = 7\), \(g(3) = 4\), and  \(g'(3) = -1\)) we now see that
+	
+<span class="displaymath" id="me-123">\[
+p'(3) = f(3)g'(3) + g(3)f'(3) = (-2)(-1) + (4)(7) = 30
+\]</span>
+ 
+	and
+	
+<span class="displaymath" id="me-124">\[
+q'(x) = \frac{g(3)f'(3)-f(3)g'(3)}{g(3)^2} = \frac{(4)(7) - (-2)(-1)}{4^2} = \frac{13}{8}.
+\]</span>
+</li>
+</ol></span></span><p id="p-422">
+As the algebraic complexity of the functions we are able to differentiate continues to increase, it is important to remember that all of the derivative's meaning continues to hold. Regardless of the structure of the function \(f\), the value of \(f'(a)\) tells us the instantaneous rate of change of \(f\) with respect to \(x\) at the moment \(x = a\), as well as the slope of the tangent line to \(y = f(x)\) at the point \((a,f(a))\).
+</p>
+<p id="p-423">
+\item If a function is a sum, product, or quotient of simpler functions, then we can use the sum, product, or quotient rules to differentiate the overall function in terms of the simpler functions and their derivatives.
+\item The product rule tells us that if \(P\) is a product of differentiable functions \(f\) and \(g\) according to the rule \(P(x) = f(x) g(x)\), then
+</p>
+<span class="displaymath" id="me-125">\[
+P'(x) = f(x)g'(x) + g(x)f'(x).
+\]</span><p id="p-424">
+\item The quotient rule tells us that if \(Q\) is a quotient of differentiable functions \(f\) and \(g\) according to the rule \(Q(x) = \frac{f(x)}{g(x)}\), then
+</p>
+<span class="displaymath" id="me-126">\[
+Q'(x) = \frac{g(x)f'(x) - f(x)g'(x)}{g(x)^2}.
+\]</span><p id="p-425">
+\item The product and quotient rules now complement the constant multiple and sum rules and enable us to compute the derivative of any function that consists of sums, constant multiples, products, and quotients of basic functions we already know how to differentiate. For instance, if \(F\) has the form
+</p>
+<span class="displaymath" id="me-127">\[
+F(x) = \frac{2a(x) - 5b(x)}{c(x) \cdot d(x)},
+\]</span><p id="p-426">
+then \(F\) is fundamentally a quotient, and the numerator is a sum of constant multiples and the denominator is a product. Hence the derivative of \(F\) can be found by applying the quotient rule and then using the sum and constant multiple rules to differentiate the numerator and the product rule to differentiate the denominator.
+</p>
+<p id="p-427">
+\hrulefill
+</p>
+<p id="p-428">
+\begin{exercises}
+\item Let \(f\) and \(g\) be differentiable functions for which the following information is known: \(f(2) = 5\), \(g(2) = -3\), \(f'(2) = -1/2\), \(g'(2) = 2\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-815">Let \(h\) be the new function defined by the rule \(h(x) = g(x) \cdot f(x)\).  Determine \(h(2)\) and \(h'(2)\).</li>
+<li id="li-816">Find an equation for the tangent line to \(y = h(x)\) at the point \((2,h(2))\) (where \(h\) is the function defined in (a)).</li>
+<li id="li-817">Let \(r\) be the function defined by the rule \(r(x) = \frac{g(x)}{f(x)}\).  Is \(r\) increasing, decreasing, or neither at \(a = 2\)?  Why?</li>
+<li id="li-818">Estimate the value of \(r(2.06)\) (where \(r\) is the function defined in (c)) by using the local linearization of \(r\) at the point \((2,r(2))\).</li>
+</ol>
+<p id="p-429">
+\item Consider the functions \(r(t) = t^t\) and \(s(t) = \arccos(t)\), for which you are given the facts that \(r'(t) = t^t(\ln(t) + 1)\) and \(s'(t) = -\frac{1}{\sqrt{1-t^2}}\). Do not be concerned with where these derivative formulas come from. We restrict our interest in both functions to the domain \(0 \lt  t \lt  1\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-819">Let \(w(t) = t^t \arccos(t)\).  Determine \(w'(t)\).</li>
+<li id="li-820">Find an equation for the tangent line to \(y = w(t)\) at the point \((\frac{1}{2}, w(\frac{1}{2}))\).</li>
+<li id="li-821">Let \(v(t) = \frac{t^t}{\arccos(t)}\).  Is \(v\) increasing or decreasing at the instant \(t = \frac{1}{2}\)?  Why?</li>
+</ol>
+<p id="p-430">
+\item Let functions \(p\) and \(q\) be the piecewise linear functions given by their respective graphs in <a knowl="./knowl/F_2.3.Ez3.html" knowl-id="xref-F_2.3.Ez3" alt="Figure 2.3.4 " title="Figure 2.3.4 ">Figure 2.3.4</a>. Use the graphs to answer the following questions.
+</p>
+<figure class="figure-like" id="F_2.3.Ez3"><img width="100%" src="images/2_1_Ez3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.3.4</span>The graphs of \(p\) (in blue) and \(q\) (in green).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-822">Let \(r(x) = p(x) \cdot q(x)\).  Determine \(r'(-2)\) and \(r'(0)\).</li>
+<li id="li-823">Are there values of \(x\) for which \(r'(x)\) does not exist?  If so, which values, and why?</li>
+<li id="li-824">Find an equation for the tangent line to \(y = r(x)\) at the point \((2,r(2))\).</li>
+<li id="li-825">Let \(z(x) = \frac{q(x)}{p(x)}\).  Determine \(z'(0)\) and \(z'(2)\).</li>
+<li id="li-826">Are there values of \(x\) for which \(z'(x)\) does not exist?  If so, which values, and why?</li>
+</ol>
+<p id="p-431">
+\item A farmer with large land holdings has historically grown a wide variety of crops. With the price of ethanol fuel rising, he decides that it would be prudent to devote more and more of his acreage to producing corn. As he grows more and more corn, he learns efficiencies that increase his yield per acre. In the present year, he used 7000 acres of his land to grow corn, and that land had an average yield of 170 bushels per acre. At the current time, he plans to increase his number of acres devoted to growing corn at a rate of 600 acres/year, and he expects that right now his average yield is increasing at a rate of 8 bushels per acre per year. Use this information to answer the following questions.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-827">Say that the present year is \(t = 0\), that \(A(t)\) denotes the number of acres the farmer devotes to growing corn in year \(t\), \(Y(t)\) represents the average yield in year \(t\) (measured in bushels per acre), and \(C(t)\) is the total number of bushels of corn the farmer produces.  What is the formula for \(C(t)\) in terms of \(A(t)\) and \(Y(t)\)?  Why?</li>
+<li id="li-828">What is the value of \(C(0)\)?  What does it measure?</li>
+<li id="li-829">Write an expression for \(C'(t)\) in terms of \(A(t)\), \(A'(t)\), \(Y(t)\), and \(Y'(t)\).  Explain your thinking.</li>
+<li id="li-830">What is the value of \(C'(0)\)?  What does it measure?</li>
+<li id="li-831">Based on the given information and your work above, estimate the value of \(C(1)\).</li>
+</ol>
+<p id="p-432">
+\item Let \(f(v)\) be the gas consumption (in liters/km) of a car going at velocity \(v\) (in km/hour). In other words, \(f(v)\) tells you how many liters of gas the car uses to go one kilometer if it is traveling at \(v\) kilometers per hour. In addition, suppose that \(f(80)=0.05\) and \(f'(80) = 0.0004\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-832">Let \(g(v)\) be the distance the same car goes on one liter of gas at velocity \(v\).  What is the relationship between \(f(v)\) and \(g(v)\)? Hence find \(g(80)\) and \(g'(80)\).</li>
+<li id="li-833">Let \(h(v)\) be the gas consumption in liters per hour of a car going at velocity \(v\). In other words, \(h(v)\) tells you how many liters of gas the car uses in one hour if it is going at velocity \(v\).   What is the algebraic relationship between \(h(v)\) and \(f(v)\)?  Hence find \(h(80)\) and \(h'(80)\).</li>
+<li id="li-834">How would you explain the practical meaning of these function and derivative values to a driver who knows no calculus?  Include units on each of the function and derivative values you discuss in your response.</li>
+</ol>
+<p id="p-433">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-434">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

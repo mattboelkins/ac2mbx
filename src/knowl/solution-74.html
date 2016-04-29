@@ -1,0 +1,58 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:17-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">4.4.4.1</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-1856">Since the units on a rectangle in a Riemann sum are cal/min for the height and min for the width, the units on the area of such a rectangle are calories, and hence the units on area under the curve \(y = c(t)\) are given in total calories.  Hence, the total calories burned during the first 10 minutes of the workout is given by the definite integral \(\int_0^{10} c(t) \, dt\).  We use the FTC and evaluate the integral, finding that
+	
+<span class="displaymath" id="md-53">\begin{align*}
+\int_0^{10} (-0.05t^2 + t + 10) \, dt \amp  = \amp  \left. \left( -\frac{0.05}{3} t^3 + \frac{1}{2} t^2 + 10t \right) \right|_0^{10}\\
+\amp  = \amp   \left( -\frac{0.05}{3} (10)^3 + \frac{1}{2} (10)^2 + 10(10) \right) - (-0 + 0 + 0)\\
+\amp  = \amp  \frac{400}{3} \ \mbox{calories} .
+\end{align*}</span>
+ 
+	Thus, the person burned approximately 133.33 calories in the first 10 minutes of the workout.</li>
+<li id="li-1857">We observe first that by the Total Change Theorem, \(C(30) - C(0) = \int_0^{30} C'(t) \, dt = \int_0^{30} c(t) \, dt\), and therefore, as discussed in (a), the meaning of this value is the total calories burned on \([0,30]\).</li>
+<li id="li-1858">The exact average rate at which the person burned calories on \(0 \le t \le 30\) is given by 
+	
+<span class="displaymath" id="me-481">\[
+c_{\mbox{\tiny{AVG}} [0,30]} = \frac{1}{30-0} \int_0^{30} c(t) \, dt.
+\]</span>
+ 
+	To calculate \(\int_0^{30} c(t) \, dt,\) we recognize that \(c(t)\) is defined in piecewise fashion, and use the additive property of the definite integral, which tells us that 
+	
+<span class="displaymath" id="me-482">\[
+\int_0^{30} c(t) \, dt = \int_0^{10} c(t) \, dt +  \int_{10}^{20} c(t) \, dt +  \int_{20}^{30} c(t) \, dt.
+\]</span>
+ 
+	We know from our work in (a) that \(\int_0^{10} c(t) \, dt = \frac{400}{3}\).  Since \(c(t) = 15\) is constant on \(10 \le t \le 20\), it follows that \( \int_{10}^{20} c(t) \, dt  = 15 \cdot 10 = 150\).  And finally, it is straightforward to show using \(c(t) = -0.05t^2 + 2t - 5\) on \(20 \le t \le 30\) that \(\int_{20}^{30} c(t) \, dt = \frac{400}{3}\).  Hence,
+	
+<span class="displaymath" id="md-54">\begin{align*}
+\int_0^{30} c(t) \, dt \amp  = \amp  \int_0^{10} c(t) \, dt +  \int_{10}^{20} c(t) \, dt +  \int_{20}^{30} c(t) \, dt\\
+\amp  = \amp  \frac{400}{3} + 150 + \frac{400}{3}\\
+\amp  = \amp  \frac{1250}{3} \approx 416.67 \ \mbox{calories} .
+\end{align*}</span>
+ 
+	Now, it follows that the exact average rate at which calories were burned on \([0,30]\) is
+	
+<span class="displaymath" id="me-483">\[
+c_{\mbox{\tiny{AVG}} [0,30]} = \frac{1}{30-0} \int_0^{30} c(t) \, dt = \frac{1}{30} \cdot \frac{1250}{3} = \frac{1250}{90} \approx 13.89 \ \mbox{cal/min} .
+\]</span>
+</li>
+<li id="li-1859">It makes sense intuitively that there must be at least one time at which the instantaneous rate at which calories are burned equals the average rate at which calories are burned, as it would be impossible for a continuous instantaneous rate of change to always be above its average value.  Since we know from (c) that \(c_{\mbox{\tiny{AVG}} [0,30]} = \frac{125}{9}\), and \(c(t)\) tells us the instantaneous rate at which calories are burned, it follows that we want to solve the equation
+	
+<span class="displaymath" id="me-484">\[
+c(t) = \frac{125}{9}.
+\]</span>
+ 
+From the graph, it appears that there are two such values of \(t\) for which this equation is true, one in the first ten minutes, and one in the last ten.  For instance, solving
+
+<span class="displaymath" id="me-485">\[
+-0.05t^2 + t + 10 = \frac{125}{9},
+\]</span>
+ 
+it follows that \(t = 10 \pm 10\sqrt{2}/3 \approx 14.714, 5.286\), only the second of which lies in \(0 \le t \le 10\).  So one time at which the instantaneous rate at which calories are burned equals the average rate on \([0,30]\) is \(t = 10 - 10\sqrt{2}/3 \approx 5.286.\)  Similar reasoning shows that the other time is \(t = 20 + 10\sqrt{2}/3 \approx 24.714\).</li>
+</ol></span><span class="incontext"><a href="S_4.4.FTC.html#solution-74">in-context</a></span>

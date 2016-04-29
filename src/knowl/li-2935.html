@@ -1,0 +1,30 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:42-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">1</span>
+</h5>Since \(\lim_{n \to \infty} \frac{n}{2^n} = 0\), the Divergence Test does not apply. The Ratio Test is a good one to apply with series whose terms involve exponentials and polynomials.
+
+In this example we have \(a_{n+1} = \frac{n+1}{2^{n+1}}\) and \(a_n = \frac{n}{2^n}\). So
+
+<span class="displaymath" id="me-885">\[
+\frac{a_{n+1}}{a_n} = \frac{\frac{n+1}{2^{n+1}}}{\frac{n}{2^n}} = \frac{n+1}{2n}.
+\]</span>
+ 
+As \(n\) goes to infinity, the fraction \(\frac{n+1}{n}\) goes to 1 and so
+
+<span class="displaymath" id="me-886">\[
+\lim_{n \to \infty} \frac{n+1}{2n} = \frac{1}{2}.
+\]</span>
+ 
+So in this example, for large \(n\) we have that \(\frac{a_{n+1}}{a_n} \approx \frac{1}{2}\) or that \(\sum a_n\) is roughly a geometric series for large \(n\) with ratio \(\frac{1}{2}\). Since geometric series with ratio \(\frac{1}{2}\) converges, we can conclude that
+
+<span class="displaymath" id="me-887">\[
+\sum \frac{n}{2^n}
+\]</span>
+ 
+converges as well.</article><span class="incontext"><a href="S_8.3.Series.html#li-2935">in-context</a></span>

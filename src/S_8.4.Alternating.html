@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:58-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Alternating Series</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_8.3.Series.html">Previous</a><a class="up-button button toolbar-item" href="C_8.html">Up</a><a class="next-button button toolbar-item" href="S_8.5.Taylor.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_8.3.Series.html">Previous</a><a class="up-button button toolbar-item" href="C_8.html">Up</a><a class="next-button button toolbar-item" href="S_8.5.Taylor.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link active"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html" class="active">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_8.4.Alternating"><header><h1 class="heading" alt="Section 8.4 Alternating Series" title="Section 8.4 Alternating Series">
+<span class="type">Section</span><span class="codenumber">8.4</span><span class="title">Alternating Series</span><a href="S_8.4.Alternating.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-46"><h5 class="heading"></h5>
+<p id="p-2239">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2966">What is an alternating series?</li>
+<li id="li-2967">What does it mean for an alternating series to converge?</li>
+<li id="li-2968">Under what conditions does an alternating series converge? Why?</li>
+<li id="li-2969">How well does the \(n\)th partial sum of a convergent alternating series approximate the actual sum of the series? Why?</li>
+<li id="li-2970">What is the difference between absolute convergence and conditional convergence?</li>
+</ul>
+<p id="p-2240">
+} 
+</p></article><section class="subsection" id="subsection-152"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">8.4.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-2241">
+In our study of series so far, almost every series that we've considered has exclusively nonnegative terms. Of course, it is possible to consider series that have some negative terms. For instance, if we consider the geometric series
+</p>
+<span class="displaymath" id="me-909">\[
+2 - \frac{4}{3} + \frac{8}{9} - \cdots + 2 \left( \frac{-2}{3} \right)^n + \cdots,
+\]</span><p id="p-2242">
+which has \(a = 2\) and \(r = -\frac{2}{3}\), we see that not only does every other term alternate in sign, but also that this series converges to
+</p>
+<span class="displaymath" id="me-910">\[
+S = \frac{a}{1-r} = \frac{2}{1- \left(-\frac{2}{3}\right)} = \frac{6}{5}.
+\]</span><p id="p-2243">
+In Preview <a href="S_8.4.Alternating.html#PA_8.4" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> and our following discussion, we investigate the behavior of similar series where consecutive terms have opposite signs.
+</p>
+<article class="paragraphs" id="PA_8.4"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-2244">
+Preview <a href="S_8.3.Series.html#PA_8.3" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> showed how we can approximate the number \(e\) with linear, quadratic, and other polynomial approximations. We use a similar approach in this activity to obtain linear and quadratic approximations to \(\ln(2)\). Along the way, we encounter a type of series that is different than most of the ones we have seen so far. Throughout this activity, let \(f(x) = \ln(1+x)\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2971">Find the tangent line to \(f\) at \(x=0\) and use this linearization to approximate \(\ln(2)\).  That is, find \(L(x)\), the tangent line approximation to \(f(x)\), and use the fact that \(L(1) \approx f(1)\) to estimate \(\ln(2)\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-170" id="solution-170"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-170" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2245">
+The linearization of \(f\) at \(x=a\) is
+</p>
+<span class="displaymath" id="me-911">\[
+f(a) + f'(a)(x-a),
+\]</span><p id="p-2246">
+so the linearization \(P_1(x)\) of \(f(x) = \ln(1+x)\) at \(x=0\) is
+</p>
+<span class="displaymath" id="me-912">\[
+P_1(x) = 0 + \frac{1}{1+0}(x-0) = x.
+\]</span><p id="p-2247">
+Now
+</p>
+<span class="displaymath" id="me-913">\[
+f(x) \approx P_1(x)
+\]</span><p id="p-2248">
+for \(x\) close to \(0\) and so
+</p>
+<span class="displaymath" id="me-914">\[
+\ln(2) = \ln(1+1) \approx P_1(1) = 1.
+\]</span></span></span>
+</li>
+<li id="li-2972">The linearization of \(\ln(1+x)\) does not provide a very good approximation to \(\ln(2)\) since 1 is not that close to 0. To obtain a better approximation, we alter our approach; instead of using a straight line to approximate \(\ln(2)\), we use a quadratic function to account for the concavity of \(\ln(1+x)\) for \(x\) close to 0. With the linearization, both the function's value and slope agree with the linearization's value and slope at \(x=0\). We will now make a quadratic approximation \(P_2(x)\) to \(f(x) = \ln(1+x)\) centered at \(x=0\) with the property that \(P_2(0) = f(0)\), \(P'_2(0) = f'(0)\), \text{and}  \(P''_2(0) = f''(0)\). 
+    <ul style="list-style-type: disc;">
+<li id="li-2973">Let \(P_2(x) =  x - \frac{x^2}{2}\). Show that \(P_2(0) = f(0)\), \(P'_2(0) = f'(0)\), \text{and}  \(P''_2(0) = f''(0)\). Use \(P_2(x)\) to approximate \(\ln(2)\) by using the fact that \(P_2(1) \approx f(1)\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-171" id="solution-171"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-171" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2249">
+The derivatives of \(P_2\) and \(f\) are
+</p>
+<span class="displaymath" id="md-111">\begin{align*}
+P_2(x) \amp = x - \frac{x^2}{2} \amp  f(x) \amp = \ln(1+x)\\
+P'_2(x) \amp = 1-x \amp  f'(x) \amp = \frac{1}{1+x}\\
+P''_2(x) \amp = -1 \amp  f''(x) \amp = -\frac{1}{(1+x)^2},
+\end{align*}</span><p id="p-2250">
+and so the derivatives of \(P_2\) and \(f\) evaluated at 0 are
+</p>
+<span class="displaymath" id="md-112">\begin{align*}
+P_2(0) \amp = 0 \amp  f(0) \amp = \ln(1) = 0\\
+P'_2(0) \amp = 1 \amp  f'(0) \amp = \frac{1}{1+0} = 1\\
+P''_2(0) \amp = -1 \amp = -\frac{1}{(1+0)^2} = -1.
+\end{align*}</span><p id="p-2251">
+Then
+</p>
+<span class="displaymath" id="me-915">\[
+\ln(2) = \ln(1+1) \approx P_2(1) = 1 - \frac{1}{2} = \frac{1}{2}.
+\]</span></span></span>
+</li>
+<li id="li-2974">We can continue approximating \(\ln(2)\) with polynomials of larger degree whose derivatives agree with those of \(f\) at 0. This makes the polynomials fit the graph of \(f\) better for more values of \(x\) around 0. For example, let \(P_3(x) = x - \frac{x^2}{2}+\frac{x^3}{3}\). Show that \(P_3(0) = f(0)\), \(P'_3(0) = f'(0)\), \(P''_3(0) = f''(0)\), and \(P'''_3(0) = f'''(0)\). Taking a similar approach to preceding questions, use \(P_3(x)\) to approximate \(\ln(2)\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-172" id="solution-172"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-172" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2252">
+The derivatives of \(P_3\) and \(f\) are
+</p>
+<span class="displaymath" id="md-113">\begin{align*}
+P_3(x) \amp = x-\frac{x^2}{2}+\frac{x^3}{3} \amp  f(x) \amp = \ln(1+x)\\
+P'_3(x) \amp = 1 - x + x^2  \amp  f'(x) \amp = \frac{1}{1+x}\\
+P''_3(x) \amp = -1+2x  \amp  f''(x) \amp = -\frac{1}{(1+x)^2}\\
+P'''_3(x) \amp = 2  \amp  f'''(x) \amp = \frac{2}{(1+x)^3},
+\end{align*}</span><p id="p-2253">
+and so the derivatives of \(P_3\) and \(f\) evaluated at 0 are
+</p>
+<span class="displaymath" id="md-114">\begin{align*}
+P_3(0) \amp = 0 \amp  f(0) \amp = \ln(1+0) = 0\\
+P'_3(0) \amp = 1 \amp  f'(0) \amp = \frac{1}{1+0} = 1\\
+P''_3(0) \amp = -1 \amp  f''(0) \amp = -\frac{1}{(1+0)^2} = -1\\
+P'''_3(0) \amp = 2 \amp  f'''(0) \amp = \frac{2}{(1+0)^3} = 2.
+\end{align*}</span><p id="p-2254">
+Then
+</p>
+<span class="displaymath" id="me-916">\[
+\ln(2) = \ln(1+1) \approx P_3(0) = 1 - \frac{1}{2} + \frac{1}{3} = \frac{5}{6} \approx 0.83.
+\]</span></span></span>
+</li>
+<li id="li-2975">If we used a degree 4 or degree 5 polynomial to approximate \(\ln(1+x)\), what approximations of \(\ln(2)\) do you think would result?  Use the preceding questions to conjecture a pattern that holds, and state the degree 4 and degree 5 approximation.</li>
+</ul>
+</li>
+</ol></article><p id="p-2255">
+Preview <a href="S_8.4.Alternating.html#PA_8.4" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> gives us several approximations to \(\ln(2)\), the linear approximation is 1 and the quadratic approximation is \(1 - \frac{1}{2} = \frac{1}{2}\). If we continue this process we will obtain approximations from cubic, quartic (degree 4), quintic (degree 5), and higher degree polynomials giving us the following approximations to \(\ln(2)\):
+</p>
+<figure class="figure-like" id="table-49"> 
+linear  \amp \(1\)            \amp \(1\) \vspace{0.02in}   
+quadratic \amp \(1 - \frac{1}{2}\)    \amp \(0.5\) \vspace{0.02in} 
+cubic \amp \(1 - \frac{1}{2} + \frac{1}{3}\)  \amp \(0.8\overline{3}\)  \vspace{0.02in} 
+quartic  \amp \(1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4}\) \amp \(0.58\overline{3}\) \vspace{0.02in}  
+quintic  \amp \(1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \frac{1}{5}\)   \amp \(0.78\overline{3}\) \vspace{0.02in} </figure><p id="p-2256">
+The pattern here shows the fact that the number \(\ln(2)\) can be approximated by the partial sums of the infinite series
+</p>
+<span class="displaymath" id="eq_ln_2">\begin{equation}
+ \sum_{k=1}^{\infty} (-1)^{k+1} \frac{1}{k}
+\label{eq_ln_2}\tag{8.4.1}\end{equation}</span><p id="p-2257">
+where the alternating signs are determined by the factor \((-1)^{k+1}\).
+</p>
+<p id="p-2258">
+Using computational technology, we find that 0.6881721793 is the sum of the first 100 terms in this series. As a comparison, \(\ln(2) \approx 0.6931471806\). This shows that even though the series <a knowl="./knowl/eq_ln_2.html" knowl-id="xref-eq_ln_2" alt="Equation 8.4.1 " title="Equation 8.4.1 ">(8.4.1)</a> converges to \(\ln(2)\), it must do so quite slowly, since the sum of the first 100 terms isn't particularly close to \(\ln(2)\). We will investigate the issue of how quickly an alternating series converges later in this section. Again, note particularly that the series <a knowl="./knowl/eq_ln_2.html" knowl-id="xref-eq_ln_2" alt="Equation 8.4.1 " title="Equation 8.4.1 ">(8.4.1)</a> is different from the series we have consider earlier in that some of the terms are negative. We call such a series an <!--Style me with CSS--><em>alternating series</em>\knownindex{\lt main&gt;alternating series\lt /main&gt;}.
+</p>
+<article class="definition-like" id="definition-14"><h5 class="heading">
+<span class="type">Definition</span><span class="codenumber">8.4.1</span>
+</h5>
+<p id="p-2259">
+An alternating series is a series of the form
+</p>
+<span class="displaymath" id="me-917">\[
+\sum_{k=0}^{\infty} (-1)^k a_k,
+\]</span><p id="p-2260">
+where \(a_k \geq 0\) for each \(k\).
+</p></article><p id="p-2261">
+We have some flexibility in how we write an alternating series; for example, the series
+</p>
+<span class="displaymath" id="me-918">\[
+\sum_{k=1}^{\infty} (-1)^{k+1} a_k,
+\]</span><p id="p-2262">
+whose index starts at \(k = 1\), is also alternating. As we will soon see, there are several very nice results that hold about alternating series, while alternating series can also demonstrate some unusual behaivior.
+</p>
+<p id="p-2263">
+It is important to remember that most of the series tests we have seen in previous sections apply only to series with nonnegative terms. Thus, alternating series require a different test. To investigate this idea, we return to the example in Preview <a href="S_8.4.Alternating.html#PA_8.4" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.4.Act1" id="x8.4.Act1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.4.2</span>
+</h5></a></div>
+<div id="hk-x8.4.Act1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-2264">
+Remember that, by definition, a series converges if and only if its corresponding sequence of partial sums converges.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2976">Complete <a knowl="./knowl/T_8.4.1_alt_harmonic.html" knowl-id="xref-T_8.4.1_alt_harmonic" alt="Figure 8.4.3 " title="Figure 8.4.3 ">Table 8.4.3</a> by calculating the first few partial sums (to 10 decimal places) of the alternating series
+
+<span class="displaymath" id="me-919">\[
+ \sum_{k=1}^{\infty} (-1)^{k+1}\frac{1}{k}.
+\]</span><figure class="figure-like" id="T_8.4.1_alt_harmonic"><figure class="figure-like" id="table-50"> 
+\(\ds \sum_{k=1}^{1} (-1)^{k+1}\frac{1}{k}\)  \amp  =  \amp   \amp  \amp \(\ds \sum_{k=1}^{6} (-1)^{k+1}\frac{1}{k}\) 	\amp  =\amp  
+\(\ds \sum_{k=1}^{2} (-1)^{k+1}\frac{1}{k}\)  \amp  = \amp   \amp  \amp \(\ds \sum_{k=1}^{7} (-1)^{k+1}\frac{1}{k}\) 	\amp  =\amp  
+\(\ds \sum_{k=1}^{3} (-1)^{k+1}\frac{1}{k}\)  \amp  = \amp   \amp  \amp \(\ds \sum_{k=1}^{8} (-1)^{k+1}\frac{1}{k}\)\amp  =	\amp  
+\(\ds \sum_{k=1}^{4} (-1)^{k+1}\frac{1}{k}\)  \amp  = \amp   \amp  \amp \(\ds \sum_{k=1}^{9} (-1)^{k+1}\frac{1}{k}\)	\amp  =\amp  
+\(\ds \sum_{k=1}^{5} (-1)^{k+1}\frac{1}{k}\)  \amp  = \amp   \amp  \amp \(\ds \sum_{k=1}^{10} (-1)^{k+1}\frac{1}{k}\)	\amp  =\amp  </figure><figcaption><span class="heading">Figure</span><span class="codenumber">8.4.3</span>Partial sums of the alternating series \(\sum_{k=1}^{\infty} (-1)^{k+1} \frac{1}{k}\)</figcaption></figure>
+</li>
+<li id="li-2977">Plot the sequence of partial sums from part (a) in the plane. What do you notice about this sequence?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-273" id="hint-273"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-273" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2978">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-274" id="hint-274"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-274" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2979">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-173" id="solution-173"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-173" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-2980">The completed table is shown below.
+<figure class="figure-like" id="table-51"> 
+\(\ds \sum_{k=1}^{1} (-1)^{k+1}\frac{1}{k}\)   \amp  \(1\) 				\amp 	\amp \(\ds \sum_{k=1}^{6} (-1)^{k+1}\frac{1}{k}\)   \amp  \(0.6166666667\) 
+\(\ds \sum_{k=1}^{2} (-1)^{k+1}\frac{1}{k}\)   \amp  \(0.5\) 			\amp 	\amp \(\ds \sum_{k=1}^{7} (-1)^{k+1}\frac{1}{k}\)   \amp  \(0.7595238095\) 
+\(\ds \sum_{k=1}^{3} (-1)^{k+1}\frac{1}{k}\)   \amp  \(0.8333333333\) 	\amp 	\amp \(\ds \sum_{k=1}^{8} (-1)^{k+1}\frac{1}{k}\)   \amp  \(0.6345238095\) 
+\(\ds \sum_{k=1}^{4} (-1)^{k+1}\frac{1}{k}\)   \amp  \(0.5833333333\) 	\amp 	\amp \(\ds \sum_{k=1}^{9} (-1)^{k+1}\frac{1}{k}\)   \amp  \(0.7456349206\) 
+\(\ds \sum_{k=1}^{5} (-1)^{k+1}\frac{1}{k}\)   \amp  \(0.7833333333\) 	\amp 	\amp \(\ds \sum_{k=1}^{10} (-1)^{k+1}\frac{1}{k}\)  \amp  \(0.6456349206\) </figure>
+</li>
+<li id="li-2981">The entries in the sequence of partial sums from part (a) is shown in the figure below.
+\resizebox{!}{1.25in}{<img width="100%" src="images/8_4_Alternating_Series.png"> } 
+Notice that the partial sums seem to oscillate back and forth around some fixed number, getting closer to that fixed number at each successive step. So there appears to be a limit for this sequence of partial sums.</li>
+</ol></span></span><p id="p-2265">
+<a knowl="./knowl/x8.4.Act1.html" knowl-id="xref-x8.4.Act1" alt="Exercise 8.4.2 " title="Exercise 8.4.2 ">Activity 8.4.2</a> exemplifies the general behavior that any convergent alternating series will demonstrate. In this example, we see that the partial sums of the alternating harmonic series oscillate around a fixed number that turns out to be the sum of the series.
+</p>
+<p id="p-2266">
+Recall that if \( \lim_{k \to \infty} a_k \neq 0\), then the series \(\sum a_k\) diverges by the Divergence Test. From this point forward, we will thus only consider alternating series
+</p>
+<span class="displaymath" id="me-920">\[
+\sum_{k=1}^{\infty} (-1)^{k+1} a_k
+\]</span><p id="p-2267">
+in which the sequence \(a_k\) consists of positive numbers that decrease to 0. For such a series, the \(n\)th partial sum \(S_n\) satisfies
+</p>
+<span class="displaymath" id="me-921">\[
+S_n = \sum_{k=1}^n (-1)^{k+1} a_k.
+\]</span><p id="p-2268">
+Notice that
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2982">\(S_1 = a_1\)</li>
+<li id="li-2983">\(S_2 = a_1 - a_2\), and since \(a_1 &gt; a_2\) we have
+
+<span class="displaymath" id="me-922">\[
+0 \lt  S_2 \lt  S_1.
+\]</span>
+</li>
+<li id="li-2984">\(S_3 = S_2+a_3\) and so \(S_2 \lt  S_3\). But \(a_3 \lt  a_2\), so \(S_3 \lt  S_1\). Thus,
+
+<span class="displaymath" id="me-923">\[
+0 \lt  S_2 \lt  S_3 \lt  S_1.
+\]</span>
+</li>
+<li id="li-2985">\(S_4 = S_3-a_4\) and so \(S_4 \lt  S_3\). But \(a_4 \lt  a_3\), so \(S_2 \lt  S_4\). Thus,
+
+<span class="displaymath" id="me-924">\[
+0 \lt  S_2 \lt  S_4 \lt  S_3 \lt  S_1.
+\]</span>
+</li>
+<li id="li-2986">\(S_5 = S_4+a_5\) and so \(S_4 \lt  S_5\). But \(a_5 \lt  a_4\), so \(S_5 \lt  S_3\). Thus,
+
+<span class="displaymath" id="me-925">\[
+0 \lt  S_2 \lt  S_4 \lt  S_5 \lt  S_3 \lt  S_1.
+\]</span>
+</li>
+</ul>
+<p id="p-2269">
+This pattern continues as illustrated in <a knowl="./knowl/Fig_8.4_Alternating_Series_Test.html" knowl-id="xref-Fig_8.4_Alternating_Series_Test" alt="Figure 8.4.4 " title="Figure 8.4.4 ">Figure 8.4.4</a> (with \(n\) odd) so that each partial sum lies between the previous two partial sums. Note further that the absolute value of the difference between the \((n-1)\)st partial sum \(S_{n-1}\) and the \(n\)th partial sum \(S_n\) is
+</p>
+<span class="displaymath" id="me-926">\[
+\left| S_n - S_{n-1} \right| = a_n.
+\]</span><p id="p-2270">
+Since the sequence \(\{a_n\}\) converges to 0, the distance between successive partial sums becomes as close to zero as we'd like, and thus the sequence of partial sums converges (even though we don't know the exact value to which the sequence of partial sums converges).
+</p>
+<p id="p-2271">
+The preceding discussion has demonstrated the truth of the Alternating Series Test. \knownindex{\lt main&gt;alternating series test\lt /main&gt;}
+</p>
+<figure class="figure-like" id="Fig_8.4_Alternating_Series_Test"><img width="100%" src="images/8_4_Alternating_Series_Test.png"><figcaption><span class="heading">Figure</span><span class="codenumber">8.4.4</span>Partial sums of an alternating series</figcaption></figure><p id="p-2272">
+
+{
+The Alternating Series Test.  The alternating series
+</p>
+<span class="displaymath" id="me-927">\[
+\sum (-1)^k a_k
+\]</span><p id="p-2273">
+converges if and only if the sequence \(\{a_k\}\) of positive terms decreases to 0 as \(k \to \infty\).
+} 
+
+</p>
+<p id="p-2274">
+Note particularly that if the limit of the sequence \(\{a_k\}\) is not 0, then the alternating series diverges.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.4.Act2" id="x8.4.Act2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.4.5</span>
+</h5></a></div>
+<div id="hk-x8.4.Act2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-2275">
+Which series converge and which diverge? Justify your answers.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2987">\(\ds \sum_{k=1}^{\infty} \frac{(-1)^k}{k^2+2}\)</li>
+<li id="li-2988">\(\ds \sum_{k=1}^{\infty} \frac{(-1)^{k+1}2k}{k+5}\)</li>
+<li id="li-2989">\(\ds \sum_{k=2}^{\infty} \frac{(-1)^{k}}{\ln(k)}\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-275" id="hint-275"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-275" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2990">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-276" id="hint-276"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-276" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2991">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-174" id="solution-174"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-174" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-2992">Since \((k+1)^2 + 2 &gt; k^2+2\) it follows that \(\frac{1}{(k+1)^2+2} \lt  \frac{1}{k^2+2}\) and the sequence \(\frac{1}{k^2+2}\) decreases to 0. The Alternating Series Test shows then that the series \(\ds \sum_{k=1}^{\infty} \frac{(-1)^k}{k^2+2}\) converges.</li>
+<li id="li-2993">In this case we have that \(\lim_{k \to \infty} \frac{2k}{k+5} = 2\) and so the sequence of \(k\)th terms does not even converge to 0. So the series \(\ds \sum_{k=1}^{\infty} \frac{2(-1)^{k+1}k}{k+5}\) diverges by the Divergence Test.</li>
+<li id="li-2994">We know that the natural log is an increasing function, so \(\frac{1}{\ln(k)}\) is a decreasing function. It is also true that \(\lim_{k \to \infty} \frac{1}{\ln(k)} = 0\) and so the series \(\ds \sum_{k=2}^{\infty} \frac{(-1)^{k}}{\ln(k)}\) converges by the Alternating Series Test.</li>
+</ol></span></span><p id="p-2276">
+The argument for the Alternating Series Test also provides us with a method to determine how close the \(n\)th partial sum \(S_n\) is to the actual sum of a convergent alternating series. To see how this works, let \(S\) be the sum of a convergent alternating series, so
+</p>
+<span class="displaymath" id="me-928">\[
+S = \sum_{k=1}^{\infty} (-1)^k a_k.
+\]</span><p id="p-2277">
+Recall that the sequence of partial sums oscillates around the sum \(S\) so that
+</p>
+<span class="displaymath" id="me-929">\[
+\left|S - S_n \right| \lt  \left| S_{n+1} - S_n \right| = a_{n+1}.
+\]</span><p id="p-2278">
+Therefore, the value of the term \(a_{n+1}\) provides an error estimate for how well the partial sum \(S_n\) approximates the actual sum \(S\). We summarize this fact in the statement of the Alternating Series Estimation Theorem. \knownindex{\lt main&gt;alternating series estimation theorem\lt /main&gt;}
+</p>
+<p id="p-2279">
+
+{
+Alternating Series Estimation Theorem.  If the alternating series
+</p>
+<span class="displaymath" id="me-930">\[
+\sum_{k=1}^{\infty} (-1)^{k+1}a_k
+\]</span><p id="p-2280">
+converges and has sum \(S\), and
+</p>
+<span class="displaymath" id="me-931">\[
+S_n = \sum_{k=1}^{n} (-1)^{k+1}a_k
+\]</span><p id="p-2281">
+is the \(n\)th partial sum of the alternating series, then
+</p>
+<span class="displaymath" id="me-932">\[
+\left\lvert \sum_{k=1}^{\infty} (-1)^{k+1}a_k - S_n \right\rvert \leq a_{n+1}.
+\]</span><p id="p-2282">
+} 
+
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_8.4.1" id="Ex_8.4.1"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">8.4.6</span>
+</h5></article></a></div>
+<div id="hk-Ex_8.4.1" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-2283">
+Let's determine how well the 100th partial sum \(S_{100}\) of
+</p>
+<span class="displaymath" id="me-933">\[
+\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}
+\]</span><p id="p-2284">
+approximates the sum of the series.
+</p></article></div>
+<p id="p-2285">
+Solution.    
+</p>
+<p id="p-2286">
+If we let \(S\) be the sum of the series \( \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}\), then we know that
+</p>
+<span class="displaymath" id="me-934">\[
+\left| S_{100} - S \right| \lt  a_{101}.
+\]</span><p id="p-2287">
+Now
+</p>
+<span class="displaymath" id="me-935">\[
+a_{101} = \frac{1}{101} \approx 0.0099,
+\]</span><p id="p-2288">
+so the 100th partial sum is within 0.0099 of the sum of the series. We have discussed the fact (and will later verify) that
+</p>
+<span class="displaymath" id="me-936">\[
+S = \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k} = \ln(2),
+\]</span><p id="p-2289">
+and so \(S \approx 0.693147\) while
+</p>
+<span class="displaymath" id="me-937">\[
+S_{100} = \sum_{k=1}^{100} \frac{(-1)^{k+1}}{k} \approx 0.6881721793.
+\]</span><p id="p-2290">
+We see that the actual difference between \(S\) and \(S_{100}\) is approximately \(0.0049750013\), which is indeed less than \(0.0099\).
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.4.Act3" id="x8.4.Act3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.4.7</span>
+</h5></a></div>
+<div id="hk-x8.4.Act3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-2291">
+Determine the number of terms it takes to approximate the sum of the convergent alternating series
+</p>
+<span class="displaymath" id="me-938">\[
+\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k^4}
+\]</span><p id="p-2292">
+to within 0.0001.
+</p></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-277" id="hint-277"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-277" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2995">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-278" id="hint-278"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-278" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2996">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-175" id="solution-175"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-175" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2293">
+First note that the sequence \(\ds \left\{\frac{1}{k^4}\right\}\) decreases to 0, so the series \(\ds \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k^4}\) converges by the Alternating Series Test. Let \(S\) be the sum \(\ds \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k^4}\) and \(S_n\) the \(n\)th partial sum of the series. We know that
+</p>
+<span class="displaymath" id="me-939">\[
+|S - S_n| \lt  a_{n+1} = \frac{1}{(n+1)^4}.
+\]</span><p id="p-2294">
+So we only need to determine the value of \(n\) so that
+</p>
+<span class="displaymath" id="me-940">\[
+\frac{1}{(n+1)^4} \lt  0.0001.
+\]</span><p id="p-2295">
+This happens when \((n+1)^4 \lt  10000\) or when \(n+1 &gt; 10\). So \(n = 10\) will do. A computer algebra system gives \(S_{10} \approx 0.9469925924\) while \(\frac{7}{720} \pi^4 \approx 0.9470328299\). These do agree to \(0.0001\).
+</p></span></span></section><section class="subsection" id="subsection-153"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">8.4.2</span><span class="title">Absolute and Conditional Convergence</span>
+</h1></header><p id="p-2296">
+\knownindex{\lt main&gt;absolute convergence\lt /main&gt;} \knownindex{\lt main&gt;conditional convergence\lt /main&gt;} \knownindex{\lt main&gt;convergence\lt /main&gt;\lt sub&gt;absolute\lt /sub&gt;} \knownindex{\lt main&gt;convergence\lt /main&gt;\lt sub&gt;conditional\lt /sub&gt;}
+</p>
+<p id="p-2297">
+A series such as
+</p>
+<span class="displaymath" id="eq_8.4_abs_convergence">\begin{equation}
+ 1 - \frac{1}{4} - \frac{1}{9} + \frac{1}{16} + \frac{1}{25} + \frac{1}{36} - \frac{1}{49}  - \frac{1}{64}  - \frac{1}{81}  - \frac{1}{100}  + \cdots
+\label{eq_8.4_abs_convergence}\tag{8.4.2}\end{equation}</span><p id="p-2298">
+whose terms are neither all nonnegative nor alternating is different from any series that we have considered to date. The behavior of these series can be rather complicated, but there is an important connection between these arbitrary series that have some negative terms and series with all nonnegative terms that we illustrate with the next activity.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.4.Act4" id="x8.4.Act4"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.4.8</span>
+</h5></a></div>
+<div id="hk-x8.4.Act4" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><ol style="list-style-type: decimal;">
+<li id="li-2997">Explain why the series
+
+<span class="displaymath" id="me-941">\[
+1 - \frac{1}{4} - \frac{1}{9} + \frac{1}{16} + \frac{1}{25} + \frac{1}{36} - \frac{1}{49}  - \frac{1}{64}  - \frac{1}{81}  - \frac{1}{100}  + \cdots
+\]</span>
+ 
+must have a sum that is less than the series
+
+<span class="displaymath" id="me-942">\[
+\sum_{k=1}^{\infty} \frac{1}{k^2}.
+\]</span>
+</li>
+<li id="li-2998">Explain why the series
+
+<span class="displaymath" id="me-943">\[
+1 - \frac{1}{4} - \frac{1}{9} + \frac{1}{16} + \frac{1}{25} + \frac{1}{36} - \frac{1}{49}  - \frac{1}{64}  - \frac{1}{81}  - \frac{1}{100}  + \cdots
+\]</span>
+ 
+must have a sum that is greater than the series
+
+<span class="displaymath" id="me-944">\[
+\sum_{k=1}^{\infty} -\frac{1}{k^2}.
+\]</span>
+</li>
+<li id="li-2999">Given that the terms in the series 
+
+<span class="displaymath" id="me-945">\[
+1 - \frac{1}{4} - \frac{1}{9} + \frac{1}{16} + \frac{1}{25} + \frac{1}{36} - \frac{1}{49}  - \frac{1}{64}  - \frac{1}{81}  - \frac{1}{100}  + \cdots
+\]</span>
+ 
+converge to 0, what do you think the previous two results tell us about the convergence status of this series?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-279" id="hint-279"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-279" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3000">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-280" id="hint-280"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-280" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3001">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-176" id="solution-176"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-176" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-3002">Each term in the series 
+
+<span class="displaymath" id="me-946">\[
+1 - \frac{1}{4} - \frac{1}{9} + \frac{1}{16} + \frac{1}{25} + \frac{1}{36} - \frac{1}{49}  - \frac{1}{64}  - \frac{1}{81}  - \frac{1}{100}  + \cdots
+\]</span>
+ 
+is of the form \(\frac{1}{k^2}\) or \(-\frac{1}{k^2}\). Since each of these terms is less than or equal to \(\frac{1}{k^2}\) it follows that 
+
+<span class="displaymath" id="me-947">\[
+1 - \frac{1}{4} - \frac{1}{9} + \frac{1}{16} + \frac{1}{25} + \frac{1}{36} - \frac{1}{49}  - \frac{1}{64}  - \frac{1}{81}  - \frac{1}{100}  + \cdots \lt  \sum_{k=1}^{\infty} \frac{1}{k^2}.
+\]</span>
+</li>
+<li id="li-3003">Each term in the series
+
+<span class="displaymath" id="me-948">\[
+1 - \frac{1}{4} - \frac{1}{9} + \frac{1}{16} + \frac{1}{25} + \frac{1}{36} - \frac{1}{49}  - \frac{1}{64}  - \frac{1}{81}  - \frac{1}{100}  + \cdots
+\]</span>
+ 
+is of the form \(\frac{1}{k^2}\) or \(-\frac{1}{k^2}\). Since each of these terms is greater than or equal to \(-\frac{1}{k^2}\) it follows that
+
+<span class="displaymath" id="me-949">\[
+1 - \frac{1}{4} - \frac{1}{9} + \frac{1}{16} + \frac{1}{25} + \frac{1}{36} - \frac{1}{49}  - \frac{1}{64}  - \frac{1}{81}  - \frac{1}{100}  + \cdots &gt; \sum_{k=1}^{\infty} -\frac{1}{k^2}.
+\]</span>
+</li>
+<li id="li-3004">We know that \(\ds \sum_{k=1}^{\infty} \frac{1}{k^2}\) is a \(p\)-series with \(p = 2 &gt; 1\) and so is a convergent series. Since \(\ds \sum_{k=1}^{\infty} \frac{1}{k^2} = -\ds \sum_{k=1}^{\infty} \frac{1}{k^2}\), the series \(\ds \sum_{k=1}^{\infty} -\frac{1}{k^2}\) also converges. Since the terms in the series 
+
+<span class="displaymath" id="me-950">\[
+1 - \frac{1}{4} - \frac{1}{9} + \frac{1}{16} + \frac{1}{25} + \frac{1}{36} - \frac{1}{49}  - \frac{1}{64}  - \frac{1}{81}  - \frac{1}{100}  + \cdots
+\]</span>
+ 
+converge to 0 and the series itself is bounded between two convergent series, we should expect this series to converge to some finite number between \(\ds \sum_{k=1}^{\infty} -\frac{1}{k^2}\) and \(\ds \sum_{k=1}^{\infty} \frac{1}{k^2}\).</li>
+</ol></span></span><p id="p-2299">
+As the example in <a knowl="./knowl/x8.4.Act4.html" knowl-id="xref-x8.4.Act4" alt="Exercise 8.4.8 " title="Exercise 8.4.8 ">Activity 8.4.8</a> suggests, if we have a series \( \sum a_k,\)
+(some of whose terms may be negative) such that
+\( \sum |a_k|\)
+converges, it turns out to always be the case that the original series, \( \sum a_k\), must also converge. That is,
+if \( \sum | a_k |\) converges, then so must \( \sum a_k.\)
+</p>
+<p id="p-2300">
+As we just observed, this is the case for the series <a knowl="./knowl/eq_8.4_abs_convergence.html" knowl-id="xref-eq_8.4_abs_convergence" alt="Equation 8.4.2 " title="Equation 8.4.2 ">(8.4.2)</a>, since the corresponding series of the absolute values of its terms is the convergent \(p\)-series \( \sum \frac{1}{k^2}\). At the same time, there are series like the alternating harmonic series \( \sum (-1)^{k+1} \frac{1}{k}\) that converge, while the corresponding series of absolute values, \( \sum \frac{1}{k}\), diverges. We distinguish between these behaviors by introducing the following language.
+</p>
+<article class="definition-like" id="definition-15"><h5 class="heading">
+<span class="type">Definition</span><span class="codenumber">8.4.9</span>
+</h5>
+<p id="p-2301">
+Consider a series \(\sum a_k\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-3005">The series \(\sum a_k\)<!--Style me with CSS--><em>converges absolutely</em> (or is <!--Style me with CSS--><em>absolutely convergent</em>) provided that \(\sum | a_k |\) converges.</li>
+<li id="li-3006">The series \(\sum a_k\)<!--Style me with CSS--><em>converges conditionally</em> (or is <!--Style me with CSS--><em>conditionally convergent</em>) provided that \(\sum | a_k |\) diverges and \(\sum a_k\) converges.</li>
+</ol></article><p id="p-2302">
+In this terminology, the series <a knowl="./knowl/eq_8.4_abs_convergence.html" knowl-id="xref-eq_8.4_abs_convergence" alt="Equation 8.4.2 " title="Equation 8.4.2 ">(8.4.2)</a> converges absolutely while the alternating harmonic series is conditionally convergent.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.4.Act5" id="x8.4.Act5"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.4.10</span>
+</h5></a></div>
+<div id="hk-x8.4.Act5" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><ol style="list-style-type: decimal;">
+<li id="li-3007">Consider the series \(\ds \sum (-1)^k \frac{\ln(k)}{k}\).
+    <ul style="list-style-type: disc;">
+<li id="li-3008">Does this series converge? Explain.</li>
+<li id="li-3009">Does this series converge absolutely? Explain what test you use to determine your answer.</li>
+</ul>
+</li>
+<li id="li-3010">Consider the series \(\ds \sum (-1)^k \frac{\ln(k)}{k^2}\).
+     <ul style="list-style-type: disc;">
+<li id="li-3011">Does this series converge? Explain.</li>
+<li id="li-3012">Does this series converge absolutely? Hint: Use the fact that \(\ln(k) \lt  \sqrt{k}\) for large values of \(k\) and the compare to an appropriate \(p\)-series.</li>
+</ul>
+</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-281" id="hint-281"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-281" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3013">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-282" id="hint-282"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-282" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3014">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-177" id="solution-177"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-177" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-3015">\begin{thmlist}</li>
+<li id="li-3016">By L'Hopital's Rule we have 
+        
+<span class="displaymath" id="me-951">\[
+\lim_{k \to \infty} \frac{\ln(k)}{k} = \lim_{k \to \infty} \frac{1}{k} = 0.
+\]</span>
+ 
+        Also, \(\frac{d}{dk} \frac{\ln(k)}{k} = \frac{1-ln(k)}{k^2}\) is negative when \(k &gt; e\), so the sequence \(\left\{ \frac{\ln(k)}{k} \right\}\) ultimately decreases to 0. Since the first few terms in a series are irrelevant to its convergence or divergence, we conclude that the series \(\ds \sum (-1)^k \frac{\ln(k)}{k}\) converges by the Alternating Series test.</li>
+<li id="li-3017">Note that
+        
+<span class="displaymath" id="md-115">\begin{align*}
+\lim_{t \to \infty} \int_{1}^{t} \frac{\ln(x}{x} \amp = \lim_{t \to \infty} \left. \frac{\ln(x)^2}{2} \right|_1^t\\
+\amp = \lim_{t \to \infty} \frac{\ln(t)^2}{2}\\
+\amp = \lim_{t \to \infty} \frac{\ln(t)^2}{2}\\
+\amp = \infty.
+\end{align*}</span>
+ 
+        Since the improper integral diverges, the Integral Test shows that the series \(\ds \sum (-1)^k \frac{\ln(k)}{k}\) diverges. So the series \(\ds \sum (-1)^k \frac{\ln(k)}{k}\) converges conditionally.
+
+        \end{thmlist}</li>
+<li id="li-3018">\begin{thmlist}</li>
+<li id="li-3019">By L'Hopital's Rule we have
+        
+<span class="displaymath" id="me-952">\[
+\lim_{k \to \infty} \frac{\ln(k)}{k^2} = \lim_{k \to \infty} \frac{1}{2k^2} = 0.
+\]</span>
+ 
+        Also,
+        
+<span class="displaymath" id="me-953">\[
+\frac{d}{dk} \frac{\ln(k)}{k^2} = \frac{k-2kln(k)}{k^4} = \frac{1-2ln(k)}{k^3}
+\]</span>
+ 
+         is negative when \(k &gt; e\), so the sequence \(\left\{ \frac{\ln(k)}{k^2} \right\}\) ultimately decreases to 0. Since the first few terms in a series are irrelevant to its convergence or divergence, we conclude that the series \(\ds \sum (-1)^k \frac{\ln(k)}{k^2}\) converges by the Alternating Series test.</li>
+<li id="li-3020">Notice that
+        
+<span class="displaymath" id="me-954">\[
+\lim_{k \to \infty} \frac{ \ln(k) }{ k^{1/2} } = \lim_{k \to \infty} \frac{2}{k^{1/2}} = 0,
+\]</span>
+ 
+        So \(\frac{1}{\sqrt{k}}\) dominates \(\ln(k)\) and \(\ln(k) \lt  sqrt{k}\) for large \(k\). It follows that
+        
+<span class="displaymath" id="me-955">\[
+\frac{\ln(k)}{k^2} \lt  \frac{ \sqrt{k} }{k^2} = \frac{1}{k^{3/2}}
+\]</span>
+ 
+        for large \(k\). Therefore,
+        
+<span class="displaymath" id="me-956">\[
+\sum \frac{\ln(k)}{k^2} \lt  \sum \frac{1}{k^{3/2}}
+\]</span>
+ 
+        for large \(k\). Since \(\ds \sum \frac{1}{k^{3/2}}\) is a \(p\)-series with \(p=\frac{3}{2} &gt; 1\), the series \(\ds \sum \frac{1}{k^{3/2}}\) converges. This forces the series \(\sum \frac{\ln(k)}{k^2}\) to converge as well. So \(\ds \sum (-1)^k \frac{\ln(k)}{k^2}\) converges absolutely.
+        
+        \end{thmlist}</li>
+</ol></span></span><p id="p-2303">
+Conditionally convergent series turn out to be very interesting. If the sequence \(\{a_n\}\) decreases to 0, but the series \(\sum a_k\) diverges, the conditionally convergent series \(\sum (-1)^k a_k\) is right on the borderline of being a divergent series. As a result, any conditionally convergent series converges very slowly. Furthermore, some very strange things can happen with conditionally convergent series, as illustrated in some of the exercises.
+</p></section><section class="subsection" id="subsection-154"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">8.4.3</span><span class="title">Summary of Tests for Convergence of Series</span>
+</h1></header><p id="p-2304">
+We have discussed several tests for convergence/divergence of series in our sections and in exercises. We close this section of the text with a summary of all the tests we have encountered, followed by an activity that challenges you to decide which convergence test to apply to several different series.
+</p>
+<p id="p-2305">
+\begingroup
+\footnotesize
+</p>
+<figure class="figure-like" id="table-52">
+ \vphantom{{M}}Geometric Series   \amp  The geometric series \(\sum ar^k\) with ratio \(r\) converges for \(-1 \lt  r \lt  1\) and diverges for \(|r| \geq 1\). \amp The sum of the convergent geometric series \(\displaystyle \sum_{k=0}^{\infty} ar^k\) is \(\frac{a}{1-r}\). 
+ \vphantom{{M}} Divergence Test   \amp If the sequence \(a_n\) does not converge to 0, then the series \(\sum a_k\) diverges. \amp This is the first test to apply because the conclusion is simple. However, if \(\lim_{n \to \infty} a_n = 0\), no conclusion can be drawn. </figure><p id="p-2306">
+\endgroup
+</p>
+<p id="p-2307">
+\begingroup
+\footnotesize
+</p>
+<figure class="figure-like" id="table-53">
+ \vphantom{{M}} Integral Test  \amp  
+Let \(f\) be a positive, decreasing function on an interval \([c,\infty]\) and let \(a_k = f(k)\) for each positive integer \(k \geq c\).
+	<ul style="list-style-type: disc;">
+<li id="li-3021">If \(\int_c^{\infty} f(t) \ dt\) converges, then \(\sum a_k\) converges.</li>
+<li id="li-3022">If \( \int_c^{\infty} f(t) \ dt\) diverges, then \(\sum a_k\) diverges.</li>
+</ul>  
+\amp Use this test when \(f(x)\) is easy to integrate. 
+ \vphantom{{M}} Direct Comparision Test (see Ex 4 in <a href="S_8.3.Series.html" alt="Section 8.3 Series of Real Numbers" title="Section 8.3 Series of Real Numbers">Section 8.3</a>)  \amp Let \(0 \leq a_k \leq b_k\) for each positive integer \(k\).
+	<ul style="list-style-type: disc;">
+<li id="li-3023">If \(\sum b_k\) converges, then \(\sum a_k\) converges.</li>
+<li id="li-3024">If \(\sum a_k\) diverges, then \(\sum b_k\) diverges.</li>
+</ul>  
+\amp Use this test when you have a series with known behavior that you can compare to – this test can be difficult to apply. 
+ \vphantom{{M}} Limit Comparison Test  \amp Let \(a_n\) and \(b_n\) be sequences of positive terms. If
+
+<span class="displaymath" id="me-957">\[
+\displaystyle \lim_{k \to \infty} \frac{a_k}{b_k} = L
+\]</span>
+ 
+for some positive finite number \(L\), then the two series \(\sum a_k\) and \(\sum b_k\) either both converge or both diverge. \amp Easier to apply in general than the comparison test, but you must have a series with known behavior to compare. Useful to apply to series of rational functions. 
+ \vphantom{{M}} Ratio Test \amp  Let \(a_k \neq 0\) for each \(k\) and suppose
+
+<span class="displaymath" id="me-958">\[
+\displaystyle \lim_{k \to \infty} \frac{|a_{k+1}|}{|a_k|} = r.
+\]</span>
+ 
+	<ul style="list-style-type: disc;">
+<li id="li-3025">If \(r \lt  1\), then the series \(\sum a_k\) converges absolutely.</li>
+<li id="li-3026">If \(r &gt; 1\), then the series \(\sum a_k\) diverges.</li>
+<li id="li-3027">If \(r=1\), then test is inconclusive.</li>
+</ul>  
+\amp This test is useful when a series involves factorials and powers. 
+ \vphantom{{M}} Root Test (see Exercise 2 in <a href="S_8.3.Series.html" alt="Section 8.3 Series of Real Numbers" title="Section 8.3 Series of Real Numbers">Section 8.3</a>) \amp  Let \(a_k \geq 0\) for each \(k\) and suppose
+
+<span class="displaymath" id="me-959">\[
+\displaystyle \lim_{k \to \infty} \sqrt[k]{a_k} = r.
+\]</span>
+ 
+	<ul style="list-style-type: disc;">
+<li id="li-3028">If \(r \lt  1\), then the series \(\sum a_k\) converges.</li>
+<li id="li-3029">If \(r &gt; 1\), then the series \(\sum a_k\) diverges.</li>
+<li id="li-3030">If \(r=1\), then test is inconclusive.</li>
+</ul>  
+\amp In general, the Ratio Test can usually be used in place of the Root Test. However, the Root Test can be quick to use when \(a_k\) involves \(k\)th powers. 
+ \vphantom{{M}} Alternating Series Test \amp If \(a_n\) is a positive, decreasing sequence so that \(\displaystyle \lim_{n \to \infty} a_n = 0\), then the alternating series \(\sum (-1)^{k+1} a_k\) converges. \amp This test applies only to alternating series – we assume that the terms \(a_n\) are all positive and that the sequence \(\{a_n\}\) is decreasing. 
+ \vphantom{{M}} Alternating Series Estimation Theorem \amp Let \(S_n = \displaystyle \sum_{k=1}^n (-1)^{k+1} a_k\) be the \(n\)th partial sum of the alternating series \(\displaystyle \sum_{k=1}^{\infty} (-1)^{k+1} a_k\). Assume \(a_n &gt; 0\) for each positive integer \(n\), the sequence \(a_n\) decreases to 0 and \(\displaystyle \lim_{n \to \infty} S_n = S\). Then it follows that
+\(|S - S_n| \lt  a_{n+1}.\)
+\amp This bound can be used to determine the accuracy of the partial sum \(S_n\) as an approximation of the sum of a convergent alternating series. </figure><p id="p-2308">
+\endgroup
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.4.Act6" id="x8.4.Act6"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.4.11</span>
+</h5></a></div>
+<div id="hk-x8.4.Act6" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-2309">
+For (a)-(j), use appropriate tests to determine the convergence or divergence of the following series. Throughout, if a series is a convergent geometric series, find its sum.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-3031">\(\ds \sum_{k=3}^{\infty} \ \frac{2}{\sqrt{k-2}}\)</li>
+<li id="li-3032">\(\ds \sum_{k=1}^{\infty} \ \frac{k}{1+2k}\)</li>
+<li id="li-3033">\(\ds \sum_{k=0}^{\infty} \ \frac{2k^2+1}{k^3+k+1}\)</li>
+<li id="li-3034">\(\ds \sum_{k=0}^{\infty} \ \frac{100^k}{k!}\)</li>
+<li id="li-3035">\(\ds \sum_{k=1}^{\infty} \ \frac{2^k}{5^k}\)</li>
+<li id="li-3036">\(\ds \sum_{k=1}^{\infty} \ \frac{k^3-1}{k^5+1}\)</li>
+<li id="li-3037">\(\ds \sum_{k=2}^{\infty} \ \frac{3^{k-1}}{7^k}\)</li>
+<li id="li-3038">\(\ds \sum_{k=2}^{\infty} \ \frac{1}{k^k}\)</li>
+<li id="li-3039">\(\ds \sum_{k=1}^{\infty} \ \frac{(-1)^{k+1}}{\sqrt{k+1}}\)</li>
+<li id="li-3040">\(\ds \sum_{k=2}^{\infty} \ \frac{1}{k \ln(k)}\)</li>
+<li id="li-3041">Determine a value of \(n\) so that the \(n\)th partial sum \(S_n\) of the alternating series \(\ds \sum_{n=2}^{\infty} \frac{(-1)^n}{\ln(n)}\) approximates the sum to within 0.001.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-283" id="hint-283"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-283" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3042">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-284" id="hint-284"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-284" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3043">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-178" id="solution-178"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-178" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-3044">For large values of \(k\), \(\frac{2}{\sqrt{k-2}}\) looks like \(\frac{2}{\sqrt{k}}\). We will use the Limit Comparison Test to compare these two series:
+
+<span class="displaymath" id="md-116">\begin{align*}
+\lim_{k \to \infty} \frac{\frac{2}{\sqrt{k-2}}}{\frac{2}{\sqrt{k}}} \amp = \lim_{k \to \infty} \frac{\sqrt{k}}{\sqrt{k-2}}\\
+\amp = \lim_{k \to \infty} \sqrt{\frac{1}{1-\frac{2}{k}}}\\
+\amp = 1.
+\end{align*}</span>
+ 
+Since this limit is a positive constant, we know that the two series \(\ds \sum_{k=3}^{\infty} \ \frac{2}{\sqrt{k-2}}\) and \(\ds \sum_{k=3}^{\infty} \ \frac{2}{\sqrt{k}}\) either both converge or both diverge. Now \(\ds \sum_{k=3}^{\infty} \ \frac{2}{\sqrt{k}} = 2\sum_{k=3}^{\infty} \ \frac{1}{k^{1/2}}\) is constant times a \(p\)-series with \(p=\frac{1}{2}\), so \(\ds \sum_{k=3}^{\infty} \ \frac{2}{\sqrt{k}}\) diverges. Therefore, \(\ds \sum_{k=3}^{\infty} \ \frac{2}{\sqrt{k-2}}\) diverges as well.</li>
+<li id="li-3045">Note that
+
+<span class="displaymath" id="me-960">\[
+ \lim_{k \to \infty} \frac{k}{1+2k} = \lim_{k \to \infty} \frac{k}{2k} = \frac{1}{2},
+\]</span>
+ 
+so the Divergence Test shows that \(\ds \sum_{k=1}^{\infty} \ \frac{k}{1+2k}\) diverges.</li>
+<li id="li-3046">For large values of \(k\), \(\frac{2k^2+1}{k^3+k+1}\) looks like \(\frac{2}{k}\). We will use the Limit Comparison Test to compare these two series:
+
+<span class="displaymath" id="md-117">\begin{align*}
+\lim_{k \to \infty} \frac{\frac{2k^2+1}{k^3+k+1}}{\frac{2}{k}} \amp = \lim_{k \to \infty} \frac{(2k^2+1)k}{2(k^3+k+1)}\\
+\amp = \lim_{k \to \infty} \frac{2 + \frac{1}{k^2}}{2+\frac{1}{k^2}+\frac{1}{k^3}}\\
+\amp = 1.
+\end{align*}</span>
+ 
+Since this limit is a positive constant, we know that the two series \(\ds \sum_{k=1}^{\infty} \ \frac{2k^2+1}{k^3+k+1}\) and \(\ds \sum_{k=1}^{\infty} \ \frac{2}{k}\) either both converge or both diverge. Now \(\ds \sum_{k=1}^{\infty} \ \frac{2}{k} = 2\sum_{k=1}^{\infty} \ \frac{1}{k}\) is constant times a \(p\)-series with \(p=1\), so \(\ds \sum_{k=1}^{\infty} \ \frac{2}{k}\) diverges. Therefore, \(\ds \sum_{k=0}^{\infty} \ \frac{2k^2+1}{k^3+k+1}\) diverges as well.</li>
+<li id="li-3047">Series that involve factorials are good candidates for the Ratio Test:
+
+<span class="displaymath" id="md-118">\begin{align*}
+\lim_{k \to \infty} \frac{\frac{100^{k+1}}{(k+1)!}}{\frac{100^k}{k!}} \amp = \lim_{k \to \infty} \frac{100^{k+1}k!}{100^k(k+1)!}\\
+\amp = \lim_{k \to \infty} \frac{100}{k+1}\\
+\amp = 0.
+\end{align*}</span>
+ 
+Since this limit is 0, the Ratio Test tells us that the series \(\ds \sum_{k=0}^{\infty} \ \frac{100^k}{k!}\) converges.</li>
+<li id="li-3048">Notice that \(\ds \sum_{k=1}^{\infty} \ \frac{2^k}{5^k} = \sum_{k=1}^{\infty} \ \left(\frac{2}{5}\right)^k\) is a geometric series with ratio \(\frac{2}{5}\). Let's write out the first few terms to identify the value of \(a\):
+
+<span class="displaymath" id="me-961">\[
+ \sum_{k=1}^{\infty} \ \left(\frac{2}{5}\right)^k = \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \left(\frac{2}{5}\right)^3 + \cdots = \left(\frac{2}{5}\right)\left[ 1 + \frac{2}{5} + \left(\frac{2}{5}\right)^2 + \cdots \right].
+\]</span>
+ 
+So \(a = \frac{2}{5}\). Since the ratio of this geometric series is between \(-1\) and 1, the series converges. The sum of the series is
+
+<span class="displaymath" id="me-962">\[
+ \sum_{k=1}^{\infty} \ \frac{2^k}{5^k} = \left(\frac{2}{5}\right) \left(\frac{1}{1-\frac{2}{5}} \right) = \left(\frac{2}{5}\right)\left(\frac{5}{3}\right) = \frac{2}{3}.
+\]</span>
+</li>
+<li id="li-3049">For large values of \(n\), \(\frac{k^3-1}{k^5+1}\) looks like \(\frac{k^3}{k^5}=\frac{1}{k^2}\). We will use the Limit Comparison Test to compare \(\ds \sum_{k=1}^{\infty} \ \frac{k^3-1}{k^5+1}\) and \(\ds \sum_{k=1}^{\infty} \ \frac{1}{k^2}\):
+
+<span class="displaymath" id="md-119">\begin{align*}
+\lim_{k \to \infty} \frac{\frac{k^3-1}{k^5+1}}{\frac{1}{k^2}} \amp = \lim_{k \to \infty} \frac{k^5-k^2}{k^5+1}\\
+\amp = \lim_{k \to \infty} \frac{1-\frac{1}{k^3}}{1+\frac{1}{k^5}}\\
+\amp = 1.
+\end{align*}</span>
+ 
+Since this limit is 1, we know that the two series \(\ds \sum_{k=1}^{\infty} \ \frac{k^3-1}{k^5+1}\) and \(\ds \sum_{k=1}^{\infty} \ \frac{1}{k^2}\) either both converge or both diverge. Now \(\ds \sum_{k=1}^{\infty} \ \frac{1}{k^2}\) is a \(p\)-series with \(p=2\), so \(\ds \sum_{k=1}^{\infty} \ \frac{1}{k^2}\) converges. Therefore, \(\ds \sum_{k=1}^{\infty} \ \frac{k^3-1}{k^5+1}\) converges as well.</li>
+<li id="li-3050">This series looks geometric, but to be sure let's write out the first few terms of this series:
+
+<span class="displaymath" id="me-963">\[
+ \sum_{k=2}^{\infty} \ \frac{3^{k-1}}{7^k} = \frac{3}{7^2} + \frac{3^2}{7^3} + \frac{3^3}{7^4} + \cdots = \left( \frac{3}{7^2} \right) \left[1 + \frac{3}{7} + \left( \frac{3}{7} \right)^2 + \left( \frac{3}{7} \right)^3 + \cdots \right].
+\]</span>
+ 
+So \(\ds \sum_{k=2}^{\infty} \ \frac{3^{k-1}}{7^k}\) is a geometric series with \(a = \frac{3}{49}\) and \(r = \frac{3}{7}\). Since the ratio of this geometric series is between \(-1\) and 1, the series converges. The sum of the series is
+
+<span class="displaymath" id="md-120">\begin{align*}
+\sum_{k=2}^{\infty} \ \frac{3^{k-1}}{7^k} \amp = \left(\frac{3}{49}\right) \left(\frac{1}{1-\frac{3}{7}} \right)\\
+\amp = \left(\frac{3}{49}\right)\left(\frac{7}{4}\right)\\
+\amp = \frac{3}{28}.
+\end{align*}</span>
+</li>
+<li id="li-3051">\(\ds \sum_{k=2}^{\infty} \ \frac{1}{k^k}\)</li>
+<li id="li-3052">This series is an alternating series of the form \(\ds \sum_{k=1}^{\infty} (-1)^{k+1} a_k\) with \(a_k = \frac{1}{\sqrt{k+1}}\). Since
+
+<span class="displaymath" id="me-964">\[
+\ds \lim_{k \to \infty} \frac{1}{\sqrt{k+1}} = 0
+\]</span>
+ 
+and \(\frac{1}{\sqrt{k+1}}\) decreases to 0, the Alternating Series Test shows that \(\ds \sum_{k=1}^{\infty} \ \frac{(-1)^{k+1}}{\sqrt{k+1}}\) converges.</li>
+<li id="li-3053">For this example we will use the Integral Test with the substitution \(w = \ln(x)\), \(dw = \frac{1}{x} \ dx\):
+
+<span class="displaymath" id="md-121">\begin{align*}
+\displaystyle \int_2^{\infty} \frac{1}{x \ln(x)} \ dx \amp = \lim_{b \to \infty} \int_2^b \frac{1}{x \ln(x)} \ dx\\
+\amp = \displaystyle \lim_{b \to \infty} \int_{\ln(2)}^{\ln(b)} \frac{1}{w} \ dw\\
+\amp = \displaystyle \lim_{b \to \infty} \ln(w) \bigm|_{\ln(2)}^{\ln(b)}\\
+\amp = \displaystyle \lim_{b \to \infty} \left[ \ln(\ln(b)) - \ln(\ln(2)) \right]\\
+\amp = \infty.
+\end{align*}</span>
+ 
+Since \(\ds \int_2^{\infty} \frac{1}{x \ln(x)} \ dx\) diverges, we conclude \(\ds \sum_{k=2}^{\infty} \ \frac{1}{k \ln(k)}\) diverges.</li>
+<li id="li-3054">First note that the terms \(\frac{1}{\ln(k)}\) decrease to \(0\), so the Alternating Series Test shows that the alternating series \(\ds \sum_{k=2}^{\infty} \frac{(-1)^k}{\ln(k)}\) converges. Let \(S = \ds \sum_{k=2}^{\infty} \frac{(-1)^k}{\ln(k)}\) and let \(S_n\) be the \(n\)th partial sum of this series. Recall that
+
+<span class="displaymath" id="me-965">\[
+|S_n - S| \lt  |S_n - S_{n+1}| = a_{n+1}
+\]</span>
+ 
+where \(a_{n+1} = \frac{1}{\ln(n+1)}\). If we can find a value of \(n\) so that \(a_{n+1} \lt  0.001\), then \(|S_n - S| \lt  0.001\) as desired. Now
+
+<span class="displaymath" id="md-122">\begin{align*}
+a_{n+1} \amp \lt  0.001\\
+\frac{1}{\ln(n+1)} \amp \lt  0.001\\
+\ln(n+1) \amp &gt; 1000\\
+n+1 \amp &gt; e^{1000}\\
+n \amp &gt; e^{1000}-1.
+\end{align*}</span>
+ 
+So if we choose \(n = e^{1000}\), then \(S_n\) approximates the sum of the series to within 0.001. Notice that \(e^{1000} \approx 1.97 \times 10^{434}\) is a very large number. This shows that the series \(\ds \sum_{k=2}^{\infty} \frac{(-1)^k}{\ln(k)}\) converges very slowly.</li>
+</ol></span></span><p id="p-2310">
+\vfill 
+</p>
+<p id="p-2311">
+\item An alternating series is a series whose terms alternate in sign. In other words, an alternating series is a series of the form
+</p>
+<span class="displaymath" id="me-966">\[
+\sum (-1)^ka_k
+\]</span><p id="p-2312">
+where \(a_k\) is a positive real number for each \(k\).
+\item An alternating series \(\sum_{k=1}^{\infty} (-1)^ka_k\) converges if and only if its sequence \(\{S_n\}\) of partial sums converges, where
+</p>
+<span class="displaymath" id="me-967">\[
+S_n = \sum_{k=1}^{n} (-1)^ka_k.
+\]</span><p id="p-2313">
+\item The sequence of partial sums of a convergent alternating series oscillates around and converge to the sum of the series if the sequence of \(n\)th terms converges to 0. That is why the Alternating Series Test shows that the alternating series \(\sum_{k=1}^{\infty} (-1)^ka_k\) converges whenever the sequence \(\{a_n\}\) of \(n\)th terms decreases to 0.
+\item The difference between the \(n-1\)st partial sum \(S_{n-1}\) and the \(n\)th partial sum \(S_n\) of a convergent alternating series \(\sum_{k=1}^{\infty} (-1)^ka_k\) is \(|S_n - S_{n-1}| = a_n\). Since the partial sums oscillate around the sum \(S\) of the series, it follows that
+</p>
+<span class="displaymath" id="me-968">\[
+|S - S_n| \lt  a_n.
+\]</span><p id="p-2314">
+So the \(n\)th partial sum of a convergent alternating series \(\sum_{k=1}^{\infty} (-1)^ka_k\) approximates the actual sum of the series to within \(a_n\).
+</p>
+<p id="p-2315">
+\hrulefill
+\begin{exercises}
+\item Conditionally convergent series converge very slowly. As an example, consider the famous formula<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-56" id="fn-56"><sup> 1 </sup></a></span><span id="hk-fn-56" style="display: none;" class="tex2jax_ignore"><span class="footnote">We will derive this formula in upcoming work.</span></span>
+</p>
+<span class="displaymath" id="Ex_8.4_pi">\begin{equation}
+ \frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots = \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{2k+1}.
+\label{Ex_8.4_pi}\tag{8.4.3}\end{equation}</span><p id="p-2316">
+In theory, the partial sums of this series could be used to approximate \(\pi\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-3055">Show that the series in <a knowl="./knowl/Ex_8.4_pi.html" knowl-id="xref-Ex_8.4_pi" alt="Equation 8.4.3 " title="Equation 8.4.3 ">(8.4.3)</a> converges conditionally.</li>
+<li id="li-3056">Let \(S_n\) be the \(n\)th partial sum of the series in <a knowl="./knowl/Ex_8.4_pi.html" knowl-id="xref-Ex_8.4_pi" alt="Equation 8.4.3 " title="Equation 8.4.3 ">(8.4.3)</a>. Calculate the error in approximating \(\frac{\pi}{4}\) with \(S_{100}\) and explain why this is not a very good approximation.</li>
+<li id="li-3057">Determine the number of terms it would take in the series <a knowl="./knowl/Ex_8.4_pi.html" knowl-id="xref-Ex_8.4_pi" alt="Equation 8.4.3 " title="Equation 8.4.3 ">(8.4.3)</a> to approximate \(\frac{\pi}{4}\) to 10 decimal places. (The fact that it takes such a large number of terms to obtain even a modest degree of accuracy is why we say that conditionally convergent series converge very slowly.)
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-179" id="solution-179"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-179" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2317">
+In this case we have
+</p>
+<span class="displaymath" id="me-969">\[
+|S_n - \sum_{k=0}^{\infty} (-1)^{k} \frac{1}{2k+1}| \lt  a_{n+1} = \frac{1}{2n+1}.
+\]</span><p id="p-2318">
+To have \(a_{n+1} \lt  10^{-10}\) would require
+</p>
+<span class="displaymath" id="md-123">\begin{align*}
+\frac{1}{2n+1} \amp \lt  10^{-10}\\
+2n+1 \amp &gt; 10^{10}\\
+n \amp &gt; \frac{10^{10}-1}{2}\\
+n \amp &gt; 4,999,999,999.5.
+\end{align*}</span></span></span>
+</li>
+</ol>
+<p id="p-2319">
+\item We have shown that if \(\sum (-1)^{k+1} a_k\) is a convergent alternating series, then the sum \(S\) of the series lies between any two consecutive partial sums \(S_n\). This suggests that the average \(\frac{S_n+S_{n+1}}{2}\)
+is a better approximation to \(S\) than is \(S_n\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-3058">Show that \(\frac{S_n+S_{n+1}}{2} = S_n + \frac{1}{2}(-1)^{n+2} a_{n+1}\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-180" id="solution-180"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-180" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2320">
+Since \(S_{n+1} = S_n + (-1)^{n+2}a_{n+1}\) we have
+</p>
+<span class="displaymath" id="md-124">\begin{align*}
+\frac{S_n+S_{n+1}}{2} \amp = \frac{S_n+S_{n} + (-1)^{n+2}a_{n+1}}{2}\\
+\amp = \frac{2S_{n} + (-1)^{n+2}a_{n+1}}{2}\\
+\amp = S_n + \frac{1}{2}(-1)^{n+2}a_{n+1}.
+\end{align*}</span></span></span>
+</li>
+<li id="li-3059">Use this revised approximation in (a) with \(n = 20\) to approximate \(\ln(2)\) given that
+    
+<span class="displaymath" id="me-970">\[
+\ln(2) = \sum_{k=1}^{\infty} (-1)^{k+1} \frac{1}{k}.
+\]</span>
+ 
+    Compare this to the approximation using just \(S_{20}\). For your convenience, \(S_{20} = \frac{155685007}{232792560}\).</li>
+</ol>
+<p id="p-2321">
+\item In this exercise, we examine one of the conditions of the Alternating Series Test. Consider the alternating series
+</p>
+<span class="displaymath" id="me-971">\[
+1 - 1 + \frac{1}{2} - \frac{1}{4} + \frac{1}{3} - \frac{1}{9} + \frac{1}{4} - \frac{1}{16} + \cdots,
+\]</span><p id="p-2322">
+where the terms are selected alternately from the sequences \(\left\{\frac{1}{n}\right\}\) and \(\left\{-\frac{1}{n^2}\right\}\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-3060">Explain why the \(n\)th term of the given series converges to 0 as \(n\) goes to infinity. 
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-181" id="solution-181"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-181" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2323">
+Since both sequences \(\left\{\frac{1}{n}\right\}\) and \(\left\{-\frac{1}{n^2}\right\}\) converge to 0 as \(n\) goes to infinity, we see that the sequence of \(n\)th terms of our series converge to 0 as \(n\) goes to infinity.
+</p></span></span>
+</li>
+<li id="li-3061">Rewrite the given series by grouping terms in the following manner:
+
+<span class="displaymath" id="me-972">\[
+(1 - 1) + \left(\frac{1}{2} - \frac{1}{4}\right) + \left(\frac{1}{3} - \frac{1}{9}\right) + \left(\frac{1}{4} - \frac{1}{16}\right) + \cdots. 
+\]</span>
+ 
+Use this regrouping to determine if the series converges or diverges. 
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-182" id="solution-182"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-182" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2324">
+Notice that \(\frac{1}{k} - \frac{1}{k^2} = \frac{k-1}{k^2}\). So our series can be rewritten as
+</p>
+<span class="displaymath" id="me-973">\[
+\sum_{k=1}^{\infty} \frac{k-1}{k^2}.
+\]</span><p id="p-2325">
+Since
+</p>
+<span class="displaymath" id="me-974">\[
+\lim_{k \to \infty} \frac{ \frac{k-1}{k^2} }{ \frac{1}{k} } = \lim_{k \to \infty} \frac{k^2-k}{k^2} = 1,
+\]</span><p id="p-2326">
+the Limit Comparison Test shows that the series \(\sum_{k=1}^{\infty} \frac{k-1}{k^2}\) behaves like the harmonic series \(\sum_{k=1}^{\infty} \frac{1}{k}\). Since the harmonic series diverges, it follows that the series \(\sum_{k=1}^{\infty} \frac{k-1}{k^2}\) diverges as well.
+</p></span></span>
+</li>
+<li id="li-3062">Explain why the condition that the sequence \(\{a_n\}\)<!--Style me with CSS--><em>decreases</em> to a limit of 0 is included in the Alternating Series Test.</li>
+</ol>
+<p id="p-2327">
+\item Conditionally convergent series exhibit interesting and unexpected behavior. In this exercise we examine the conditionally convergent alternating harmonic series \(\ds \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}\) and discover that addition is not commutative for conditionally convergent series. We will also encounter Riemann's Theorem concerning rearrangements of conditionally convergent series. Before we begin, we remind ourselves that
+</p>
+<span class="displaymath" id="me-975">\[
+\sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k} = \ln(2),
+\]</span><p id="p-2328">
+a fact which will be verified in a later section.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-3063">First we make a quick analysis of the positive and negative terms of the alternating harmonic series.
+    <ul style="list-style-type: disc;">
+<li id="li-3064">Show that the series \(\ds \sum_{k=1}^{\infty} \frac{1}{2k}\) diverges.</li>
+<li id="li-3065">Show that the series \(\ds \sum_{k=1}^{\infty} \frac{1}{2k+1}\) diverges.</li>
+<li id="li-3066">Based on the results of the previous parts of this exercise, what can we say about the sums \(\ds \sum_{k=C}^{\infty} \frac{1}{2k}\) and \(\ds \sum_{k=C}^{\infty} \frac{1}{2k+1}\) for any positive integer \(C\)? Be specific in your explanation.</li>
+</ul>
+</li>
+<li id="li-3067">Recall addition of real numbers is commutative; that is
+
+<span class="displaymath" id="me-976">\[
+a + b = b + a
+\]</span>
+ 
+for any real numbers \(a\) and \(b\). This property is valid for any sum of finitely many terms, but does this property extend when we add infinitely many terms together?
+
+ The answer is no, and something even more odd happens. Riemann's Theorem (after the nineteenth-century mathematician Georg Friedrich Bernhard Riemann) states that a conditionally convergent series can be rearranged to converge to <!--Style me with CSS--><em>any</em> prescribed sum. More specifically, this means that if we choose any real number \(S\), we can rearrange the terms of the alternating harmonic series \(\ds \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}\) so that the sum is \(S\). To understand how Riemann's Theorem works, let's assume for the moment that the number \(S\) we want our rearrangement to converge to is positive. Our job is to find a way to order the sum of terms of the alternating harmonic series to converge to \(S\).
+    <ul style="list-style-type: disc;">
+<li id="li-3068">Explain how we know that, regardless of the value of \(S\), we can find a partial sum \(P_1\)<span class="displaymath" id="me-977">\[
+P_1 = \sum_{k=1}^{n_1} \frac{1}{2k+1} = 1 + \frac{1}{3} + \frac{1}{5} + \cdots + \frac{1}{2n_1+1}
+\]</span>
+ 
+    of the positive terms of the alternating harmonic series that equals or exceeds \(S\). Let
+    
+<span class="displaymath" id="me-978">\[
+S_1 = P_1.
+\]</span>
+</li>
+<li id="li-3069">Explain how we know that, regardless of the value of \(S_1\), we can find a partial sum \(N_1\)<span class="displaymath" id="me-979">\[
+N_1 = -\sum_{k=1}^{m_1} \frac{1}{2k} = -\frac{1}{2} - \frac{1}{4} - \frac{1}{6} - \cdots - \frac{1}{2m_1}
+\]</span>
+ 
+    so that
+    
+<span class="displaymath" id="me-980">\[
+S_2 = S_1 + N_1 \leq S.
+\]</span>
+</li>
+<li id="li-3070">Explain how we know that, regardless of the value of \(S_2\), we can find a partial sum \(P_2\)<span class="displaymath" id="me-981">\[
+P_2 = \sum_{k=n_1+1}^{n_2} \frac{1}{2k+1} = \frac{1}{2(n_1+1)+1} + \frac{1}{2(n_1+2)+1} + \cdots + \frac{1}{2n_2+1}
+\]</span>
+ 
+    of the remaining positive terms of the alternating harmonic series so that
+    
+<span class="displaymath" id="me-982">\[
+S_3 = S_2 + P_2 \geq S.
+\]</span>
+</li>
+<li id="li-3071">Explain how we know that, regardless of the value of \(S_3\), we can find a partial sum
+    
+<span class="displaymath" id="me-983">\[
+N_2 = -\sum_{k=m_1+1}^{m_2} \frac{1}{2k} = -\frac{1}{2(m_1+1)} - \frac{1}{2(m_1+2)} - \cdots - \frac{1}{2m_2}
+\]</span>
+ 
+     of the remaining negative terms of the alternating harmonic series so that
+    
+<span class="displaymath" id="me-984">\[
+S_4 = S_3 + N_2 \leq S.
+\]</span>
+</li>
+<li id="li-3072">Explain why we can continue this process indefinitely and find a sequence \(\{S_n\}\) whose terms are partial sums of a rearrangement of the terms in the alternating harmonic series so that \(\ds \lim_{n \to \infty} S_n = S\).</li>
+</ul>
+</li>
+</ol>
+<p id="p-2329">
+\end{exercises}
+</p>
+<p id="p-2330">
+\afterexercises
+</p>
+<p id="p-2331">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

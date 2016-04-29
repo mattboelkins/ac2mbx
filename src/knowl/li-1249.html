@@ -1,0 +1,30 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:09-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">2</span>
+</h5>Treating \(k\) as an arbitrary constant, we first observe that \(h'(x) = 2x - k\sin(kx)\). Again treating \(k\) as a constant and differentiating, we find
+		
+<span class="displaymath" id="me-311">\[
+h''(x) = 2 - k^2\cos(kx).
+\]</span>
+ 
+		We seek the values of \(x\) for which \(h''(x) = 0\) at which \(h''\) changes sign.  Setting \(h''(x) = 0\) and rearranging the resulting equation, we now seek \(x\) such that 
+		
+<span class="displaymath" id="me-312">\[
+k^2 \cos(kx) = 2,
+\]</span>
+ 
+		or
+		
+<span class="displaymath" id="me-313">\[
+\cos(kx) = \frac{2}{k^2}.
+\]</span>
+ 
+		Now, remember that \(k\) is an arbitrary positive constant and recall that \(-1 \le \cos(\theta) \le 1\) for all input values \(\theta\).  If \(\frac{2}{k^2} &gt; 1\), then the equation \(\cos(kx) = \frac{2}{k^2}\) has no solution.  Hence, whenever \(k^2 \lt  2\), or \(k \lt  \sqrt{2} \approx 1.414\), it follows that the equation \(\cos(kx) = \frac{2}{k^2}\) has no solutions \(x\), which means that \(h''(x)\) is never zero (indeed, for these \(k\)-values, \(h''(x)\) is always positive so that \(h\) is always concave up).
+		
+On the other hand, if \(k \ge \sqrt{2}\), then \(\frac{2}{k^2} \le 1\), which guarantees that \(\cos(kx) = \frac{2}{k^2}\) has infinitely many solutions, due to the periodicity of the cosine function.  At each such point, \(h''(x) = 2 - k^2 \cos(kx)\) changes sign, and therefore \(h\) has infinitely many inflection points whenever \(k \ge \sqrt{2}\).</article><span class="incontext"><a href="S_3.1.Tests.html#li-1249">in-context</a></span>

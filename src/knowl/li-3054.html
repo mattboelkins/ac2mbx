@@ -1,0 +1,26 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:46-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">11</span>
+</h5>First note that the terms \(\frac{1}{\ln(k)}\) decrease to \(0\), so the Alternating Series Test shows that the alternating series \(\ds \sum_{k=2}^{\infty} \frac{(-1)^k}{\ln(k)}\) converges. Let \(S = \ds \sum_{k=2}^{\infty} \frac{(-1)^k}{\ln(k)}\) and let \(S_n\) be the \(n\)th partial sum of this series. Recall that
+
+<span class="displaymath" id="me-965">\[
+|S_n - S| \lt  |S_n - S_{n+1}| = a_{n+1}
+\]</span>
+ 
+where \(a_{n+1} = \frac{1}{\ln(n+1)}\). If we can find a value of \(n\) so that \(a_{n+1} \lt  0.001\), then \(|S_n - S| \lt  0.001\) as desired. Now
+
+<span class="displaymath" id="md-122">\begin{align*}
+a_{n+1} \amp \lt  0.001\\
+\frac{1}{\ln(n+1)} \amp \lt  0.001\\
+\ln(n+1) \amp &gt; 1000\\
+n+1 \amp &gt; e^{1000}\\
+n \amp &gt; e^{1000}-1.
+\end{align*}</span>
+ 
+So if we choose \(n = e^{1000}\), then \(S_n\) approximates the sum of the series to within 0.001. Notice that \(e^{1000} \approx 1.97 \times 10^{434}\) is a very large number. This shows that the series \(\ds \sum_{k=2}^{\infty} \frac{(-1)^k}{\ln(k)}\) converges very slowly.</article><span class="incontext"><a href="S_8.4.Alternating.html#li-3054">in-context</a></span>

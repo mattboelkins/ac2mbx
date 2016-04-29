@@ -1,0 +1,336 @@
+\section{Taylor Polynomials and Taylor Series} \label{S:8.5.Taylor}
+
+\vspace*{-14 pt}
+\framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{\begin{goals}
+\item What is a Taylor polynomial? For what purposes are Taylor polynomials used?
+\item What is a Taylor series?
+\item How are Taylor polynomials and Taylor series different? How are they related?
+\item How do we determine the accuracy when we use a Taylor polynomial to approximate a function?
+\end{goals}} \hspace*{3 pt}}
+
+\subsection*{Introduction}
+
+In our work to date in Chapter~\ref{C:8}, essentially every sum we have considered has been a sum of numbers.  In particular, each infinite series that we have discussed has been a series of real numbers, such as
+\begin{equation} \label{E:geom12}
+1 + \frac{1}{2} + \frac{1}{4} + \cdots + \frac{1}{2^k} + \cdots = \sum_{k=0}^{\infty} \frac{1}{2^k}.
+\end{equation}
+In the remainder of this chapter, we will expand our notion of series to include series that involve a variable, say $x$.  For instance, if in the geometric series in Equation~(\ref{E:geom12}) we replace the ratio $r = \frac{1}{2}$ with the variable $x$, then we have the infinite (still geometric) series
+\begin{equation} \label{E:geomx}
+1 + x + x^2 + \cdots + x^k + \cdots = \sum_{k=0}^{\infty} x^k.
+\end{equation}
+Here we see something very interesting:  since a geometric series converges whenever its ratio $r$ satisfies $|r|<1$, and the sum of a convergent geometric series is $\frac{a}{1-r}$, we can say that for $|x| < 1$,
+\begin{equation} \label{E:geomxsummed}
+1 + x + x^2 + \cdots + x^k + \cdots = \frac{1}{1-x}.
+\end{equation}
+Note well what Equation~(\ref{E:geomxsummed}) states:  the non-polynomial function $\frac{1}{1-x}$ on the right is equal to the infinite polynomial expresssion on the left.  Moreover, it appears natural to truncate the infinite sum on the left (whose terms get very small as $k$ gets large) and say, for example, that
+$$1 + x + x^2 + x^3 \approx \frac{1}{1-x}$$
+for small values of $x$.  This shows one way that a polynomial function can be used to approximate a non-polynomial function; such approximations are one of the main themes in this section and the next.
+
+In Preview Activity~\ref{PA:8.5}, we begin our explorations of approximating non-polynomial functions with polynomials, from which we will also develop ideas regarding infinite series that involve a variable, $x$.
+
+\input{previews/8.5.PA1}
+
+\subsection*{Taylor Polynomials} \index{Taylor polynomials}
+
+Preview Activity \ref{PA:8.5} illustrates the first steps in the process of approximating complicated functions with polynomials. Using this process we can approximate trigonometric, exponential, logarithmic, and other nonpolynomial functions as closely as we like (for certain values of $x$) with polynomials. This is extraordinarily useful in that it allows us to calculate values of these functions to whatever precision we like using only the operations of addition, subtraction, multiplication, and division, which are operations that can be easily programmed in a computer.
+
+We next extend the approach in Preview Activity \ref{PA:8.5} to arbitrary functions at arbitrary points. Let $f$ be a function that has as many derivatives at a point $x=a$ as we need. Since first learning it in Section~\ref{S:1.8.TanLineApprox}, we have regularly used the linear approximation $P_1(x)$ to $f$ at $x=a$, which in one sense is the best linear approximation to $f$ near $a$.  Recall that $P_1(x)$  is the tangent line to $f$ at $(a,f(a))$ and is given by the formula
+\[P_1(x) = f(a) + f'(a)(x-a).\]
+If we proceed as in Preview Activity \ref{PA:8.5}, we then want to find the best quadratic approximation
+\[P_2(x) = P_1(x) + c_2(x-a)^2\]
+so that $P_2(x)$ more closely models $f(x)$ near $x=a$.
+Consider the following calculations of the values and derivatives of $P_2(x)$:
+\begin{figure}[h]
+\begin{center}
+\begin{minipage}{3in}
+\begin{align*}
+P_2(x) &= P_1(x) + c_2(x-a)^2 \\
+P'_2(x) &= P'_1(x) + 2c_2(x-a) \\
+P''_2(x) &= 2c_2
+\end{align*}
+\end{minipage}
+\begin{minipage}{3in}
+\begin{align*}
+P_2(a) &= P_1(a) = f(a) \\
+P'_2(a) &= P'_1(a) = f'(a) \\
+P''_2(a) &= 2c_2.
+\end{align*}
+\end{minipage}
+\end{center}
+\end{figure}
+
+To make $P_2(x)$ fit $f(x)$ better than $P_1(x)$, we want $P_2(x)$ and $f(x)$ to have the same concavity at $x=a$. That is, we want to have
+\[P''_2(a) = f''(a).\]
+This implies that
+\[2c_2 = f''(a)\]
+and thus
+\[c_2 = \frac{f''(a)}{2}.\]
+Therefore, the quadratic approximation $P_2(x)$ to $f$ centered at $x=0$ is
+\[P_2(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2.\]
+
+This approach extends naturally to polynomials of higher degree. In this situation, we define polynomials
+\begin{align*}
+P_3(x) &= P_2(x) + c_3(x-a)^3, \\
+P_4(x) &= P_3(x) + c_4(x-a)^4, \\
+P_5(x) &= P_4(x) + c_5(x-a)^5, \\
+\end{align*}
+and so on, with the general one being
+\[P_n(x) = P_{n-1}(x) + c_n(x-a)^n.\]
+The defining property of these polynomials is that for each $n$, $P_n(x)$ must have its value and all its first $n$ derivatives agree with those of $f$ at $x = a$. In other words we require that
+\[P^{(k)}_n(a) = f^{(k)}(a)\]
+for all $k$ from 0 to $n$.
+
+To see the conditions under which this happens, suppose
+\[P_n(x) = c_0 + c_1(x-a) + c_2(x-a)^2 + \cdots + c_n(x-a)^n.\]
+Then
+\begin{align*}
+P^{(0)}_n(a) &= c_0 \\
+P^{(1)}_n(a) &= c_1 \\
+P^{(2)}_n(a) &= 2c_2 \\
+P^{(3)}_n(a) &= (2)(3)c_3 \\
+P^{(4)}_n(a) &= (2)(3)(4)c_4 \\
+P^{(5)}_n(a) &= (2)(3)(4)(5)c_5
+\end{align*}
+and, in general,
+\[P^{(k)}_n(a) = (2)(3)(4) \cdots (k-1)(k)c_k = k!c_k.\]
+So having
+\[P^{(k)}_n(a) = f^{(k)}(a)\]
+means that
+\[k!c_k = f^{(k)}(a)\]
+and therefore
+\[c_k = \frac{f^{(k)}(a)}{k!}\]
+for each value of $k$. In this expression for $c_k$, we have found the formula for the degree $n$ polynomial approximation of $f$ that we seek.  
+
+\vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+The $n$th \emph{order Taylor polynomial} of $f$ centered at $x = a$ is given by
+\begin{eqnarray*} P_n(x) &  = & f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n \\ & = & \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k.
+\end{eqnarray*}
+This degree $n$ polynomial approximates $f(x)$ near $x=a$ and has the property that $P_n^{(k)}(a) = f^{(k)}(a)$ for $k = 0 \ldots n$. 
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+%Taylor polynomials have many important applications. For example, a paper\footnote{1Trajectory Generation for Car-Like Robots using Cubic Curvature Polynomials, \emph{Field and Service Robots}, 2001} for car-like robots states, ``...cubic curves can be used to determine a unique trajectory to an arbitrary target posture using a single continuous primitive. Such curves are also the lowest order curves which are continuous in the torque applied to steering mechanisms, so they generate trajectories which are relatively easily tracked by a real vehicle." Other uses of polynomials include cubic splines and Bezier curves that are used in computer-aided design and computer graphics.\footnote{See \url{http://www.math.ucla.edu/ baker/java/hoefer/Bezier.htm} for a Bezier curves demo.}
+
+
+
+\bex \label{Ex:8.5.1}
+Determine the third order Taylor polynomial for $f(x) = e^x$, as well as the general $n$th order Taylor polynomial for $f$ centered at $x=0$.
+\eex
+We know that $f'(x) = e^x$ and so $f''(x) = e^x$ and $f'''(x) = e^x$. Thus,
+\[f(0) = f'(0) = f''(0) = f'''(0) = 1.\]
+So the third order Taylor polynomial of $f(x) = e^x$ centered at $x=0$ is
+\[P_3(x) = f(0) + f'(0)(x-0) + \frac{f''(0)}{2!}(x-0)^2 + \frac{f'''(0)}{3!}(x-0)^3 = 1 + x + \frac{x^2}{2} + \frac{x^3}{6}.\]
+In general, for the exponential function $f$ we have $f^{(k)}(x) = e^x$ for every positive integer $k$. Thus, the $k$th term in the $n$th order Taylor polynomial for $f(x)$ centered at $x=0$ is
+\[\frac{f^{(k)}(0)}{k!}(x-0)^k = \frac{1}{k!}x^k.\]
+Therefore, the $n$th order Taylor polynomial for $f(x) = e^x$ centered at $x=0$ is
+\[P_n(x) = 1+x+\frac{x^2}{2!} + \cdots + \frac{1}{n!}x^n = \sum_{k=0}^n \frac{x^k}{k!}.\]
+\afterex
+
+\input{activities/8.5.Act2}
+
+It is possible that an $n$th order Taylor polynomial is not a polynomial of degree $n$; that is, the order of the approximation can be different from the degree of the polynomial.  For example, in Activity \ref{8.5.Act2} we found that the second order Taylor polynomial $P_2(x)$ centered at 0 for $\sin(x)$ is $P_2(x) = x$. In this case, the second order Taylor polynomial is a degree 1 polynomial. 
+
+\subsection*{Taylor Series} \index{Taylor series}
+
+In Activity \ref{8.5.Act2} we saw that the fourth order Taylor polynomial $P_4(x)$ for $\sin(x)$ centered at 0 is
+\[P_4(x) = x - \frac{x^3}{3!}.\]
+The pattern we found for the derivatives $f^{(k)}(0)$ describe the higher-order Taylor polynomials, e.g.,
+\[P_5(x) = x - \frac{x^3}{3!} + \frac{x^{(5)}}{5!}, \ P_7(x) = x - \frac{x^3}{3!} + \frac{x^{(5)}}{5!} - \frac{x^{(7)}}{7!}, \  P_9(x) = x - \frac{x^3}{3!} + \frac{x^{(5)}}{5!} - \frac{x^{(7)}}{7!} + \frac{x^{(9)}}{9!},\]
+and so on.  It is instructive to consider the graphical behavior of these functions; Figure \ref{F:8.5.Taylor1to9} shows the graphs of a few of the Taylor polynomials centered at 0 for the sine function.
+
+\begin{figure}[h]
+\begin{center}
+\resizebox{!}{1.3in}{\includegraphics{figures/8_5_Taylor1.eps}}  \resizebox{!}{1.3in}{\includegraphics{figures/8_5_Taylor5.eps}}  \resizebox{!}{1.3in}{\includegraphics{figures/8_5_Taylor7.eps}}   \resizebox{!}{1.3in}{\includegraphics{figures/8_5_Taylor9.eps}}  
+\caption{The order 1, 5, 7, and 9 Taylor polynomials centered at $x = 0$ for $f(x) = \sin(x)$.} \label{F:8.5.Taylor1to9}
+\end{center}
+\end{figure}
+
+
+Notice that $P_1(x)$ is close to the sine function only for values of $x$ that are close to 0, but as we increase the degree of the Taylor polynomial the Taylor polynomials provide a better fit to the graph of the sine function over larger intervals. This illustrates the general behavior of Taylor polynomials: for any sufficiently well-behaved function, the sequence $\{P_n(x)\}$ of Taylor polynomials converges to the function $f$ on larger and larger intervals (though those intervals may not necessarily increase without bound). If the Taylor polynomials ultimately converge to $f$ on its entire domain, we write
+\[f(x) = \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!}(x-a)^k.\]
+
+\begin{definition} \label{D:8.5.Taylor_series} \index{Taylor series}
+Let $f$ be a function all of whose derivatives exist at $x=a$. The \textbf{Taylor series} for $f$ centered at $x=a$ is the series $T_f(x)$ defined by
+\[T_f(x) = \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!}(x-a)^k.\]
+\end{definition}
+
+In the special case where $a=0$ in Definition \ref{D:8.5.Taylor_series}, the Taylor series is also called the \emph{Maclaurin} series\index{Maclaurin series} for $f$.  From Example \ref{Ex:8.5.1} we know the $n$th order Taylor polynomial centered at 0 for the exponential function $e^x$; thus, the Maclaurin series for $e^x$ is
+ \[\sum_{k=0}^{\infty} \frac{x^k}{k!}.\]
+ 
+ \input{activities/8.5.Act2b}
+ 
+The next activity further considers the important issue of the $x$-values for which the Taylor series of a function converges to the function itself. 
+
+\input{activities/8.5.Act3}
+
+The Maclaurin series for $e^x$, $\sin(x)$, $\cos(x)$, and $\frac{1}{1-x}$ will be used frequently, so we should be certain to know and recognize them well.
+
+\subsection*{The Interval of Convergence of a Taylor Series} \index{Taylor series!interval of convergence} \index{interval of convergence}
+
+In the previous section (in Figure \ref{F:8.5.Taylor1to9} and Activity \ref{8.5.Act3}) we observed that the Taylor polynomials centered at 0 for $e^x$, $\cos(x)$, and $\sin(x)$ converged to these functions for all values of $x$ in their domain, but that the Taylor polynomials centered at 0 for $\frac{1}{1-x}$ converged to $\frac{1}{1-x}$ for only some values of $x$. In fact, the Taylor polynomials centered at 0 for $\frac{1}{1-x}$ converge to $\frac{1}{1-x}$ on the interval $(-1,1)$ and diverge for all other values of $x$. So the Taylor series for a function $f(x)$ does not need to converge for all values of $x$ in the domain of $f$. 
+
+Our observations to date suggest two natural questions: can we determine the values of $x$ for which a given Taylor series converges? Moreover, given the Taylor series for a function $f$, does it actually converge to $f(x)$ for those values of $x$ for which the Taylor series converges? 
+
+\bex \label{Ex:8.5.2} Graphical evidence suggests that the Taylor series centered at 0 for $e^x$ converges for all values of $x$. To verify this, use the Ratio Test to determine all values of $x$ for which the Taylor series
+\begin{equation} \label{eq:8.5.exponential}
+\sum_{k=0}^{\infty} \frac{x^k}{k!}
+\end{equation}
+converges absolutely.
+\eex
+In previous work, we used the Ratio Test on series of numbers that did not involve a variable; recall, too, that the Ratio Test only applies to series of nonnegative terms.  In this example, we have to address  the presence of the variable $x$.  Because we are interested in absolute convergence, we apply the Ratio Test to the series
+\[\sum_{k=0}^{\infty} \left| \frac{x^k}{k!} \right| = \sum_{k=0}^{\infty} \frac{| x |^k}{k!}.\]
+Now, observe that
+\begin{align*}
+\lim_{k \to \infty} \frac{a_{k+1}}{a_k}   & = \lim_{k \to \infty} \frac{\frac{| x |^{k+1}}{(k+1)!} }{ \frac{| x |^k}{k} }  \\
+    &= \lim_{k \to \infty} \frac{| x |^{k+1}k!}{ | x |^{k}(k+1)! } \\
+    &= \lim_{k \to \infty} \frac{| x |}{k+1} \\
+    &= 0
+\end{align*}
+for any value of $x$. So the Taylor series (\ref{eq:8.5.exponential}) converges absolutely for every value of $x$, and thus converges for every value of $x$. 
+
+\afterex
+
+One key question remains: while the Taylor series for $e^x$ converges for all $x$, what we have done does not tell us that this Taylor series actually converges to $e^x$ for each $x$. We'll return to this question when we consider the error in a Taylor approximation near the end of this section.
+
+We can apply the main idea from Example \ref{Ex:8.5.2} in general. To determine the values of $x$ for which a Taylor series
+\[\sum_{k=0}^{\infty} c_k (x-a)^k,\]
+centered at $x = a$  will converge, we apply the Ratio Test with $a_k = | c_k (x-a)^k |$ and recall that the series to which the Ratio Test is applied converges if $\lim_{k \to \infty} \frac{a_{k+1}}{a_k} < 1$. 
+
+Observe that
+\[\frac{a_{k+1}}{{a_k}} = | x-a | \frac{| c_{k+1} |}{| c_{k} |},\]
+so when we apply the Ratio Test, we get that
+$$\lim_{k \to \infty} \frac{a_{k+1}}{a_k} = \lim_{k \to \infty} |x-a| \frac{c_{k+1}}{c_k}.$$
+Note further that $c_k = \frac{f^{(k)}(a)}{k!}$, and say that $$\lim_{k \to \infty} \frac{c_{k+1}}{c_k} = L.$$
+Thus, we have found that 
+$$\lim_{k \to \infty} \frac{a_{k+1}}{a_k} = |x-a| \cdot L.$$
+There are three important possibilities for $L$:  $L$ can be 0, a finite positive value, or infinite.  Based on this value of $L$, we can therefore determine for which values of $x$ the original Taylor series converges.
+\begin{itemize}
+\item If $L = 0$, then the Taylor series converges on $(-\infty, \infty)$.
+\item If $L$ is infinite, then the Taylor series converges only at $x = a$.
+\item If $L$ is finite and nonzero, then the Taylor series converges absolutely for all $x$ that satisfy
+$$|x-a| \cdot L < 1.$$
+In other words, the series converges absolutely for all $x$ such that 
+$$|x-a| < \frac{1}{L},$$
+which is also the interval
+\[\left(a-\frac{1}{L}, a+\frac{1}{L}\right).\]
+Because the Ratio Test is inconclusive when the $|x-a| \cdot L = 1$, the endpoints $a \pm \frac{1}{L}$ have to be checked separately.
+\end{itemize}
+
+It is important to notice that the set of $x$ values at which a Taylor series converges is always an interval centered at $x=a$. For this reason, the set on which a Taylor series converges is called the \emph{interval of convergence}. Half the length of the interval of convergence is called the \emph{radius of convergence}\index{Taylor series!radius of convergence}. If the interval of convergence of a Taylor series is infinite, then we say that the radius of convergence is infinite.
+
+\input{activities/8.5.Act4}
+
+The Ratio Test tells us how we can determine the set of $x$ values for which a Taylor series converges absolutely. However, just because a Taylor series for a function $f$ converges, we cannot be certain that the Taylor series actually converges to $f(x)$ on its interval of convergence. To show why and where a Taylor series does in fact converge to the function $f$, we next consider the error that is present in Taylor polynomials.
+
+\subsection*{Error Approximations for Taylor Polynomials} \index{Taylor polynomial!error}
+
+We now know how to find Taylor polynomials for functions such as $\sin(x)$, as well as how to determine the interval of convergence of the corresponding Taylor series.  We next develop an error bound that will tell us how well an $n$th order Taylor polynomial $P_n(x)$ approximates its generating function $f(x)$. This error bound will also allow us to determine whether a Taylor series on its interval of convergence actually equals the function $f$ from which the Taylor series is derived. Finally, we will be able to use the error bound to determine the order of the Taylor polynomial $P_n(x)$ for a function $f$ that we need to ensure that $P_n(x)$ approximates $f(x)$ to any desired degree of accuracy.
+
+In all of this, we need to compare $P_n(x)$ to $f(x)$. For this argument, we assume throughout that we center our approximations at 0 (a similar argument holds for approximations centered at $a$). We define the exact error, $E_n(x)$, that results from approximating $f(x)$ with $P_n(x)$ by
+\[E_n(x) = f(x) - P_n(x).\]
+We are particularly interested in $|E_n(x)|$, the distance between $P_n$ and $f$. Note that since
+\[P^{(k)}_n(0) = f^{(k)}(0)\]
+for $0 \leq k \leq n$, we know that
+\[E^{(k)}_n(0) = 0\]
+for $0 \leq k \leq n$. Furthermore, since $P_n(x)$ is a polynomial of degree less than or equal to $n$, we know that
+\[P_n^{(n+1)}(x) = 0.\]
+Thus, since $E^{(n+1)}_n(x) = f^{(n+1)}(x) - P_n^{(n+1)}(x)$, it follows that
+\[E^{(n+1)}_n(x) = f^{(n+1)}(x)\]
+for all $x$.
+
+Suppose that we want to approximate $f(x)$ at a number $c$ close to 0 using $P_n(c)$.  If we assume $|f^{(n+1)}(t)|$ is bounded by some number $M$ on $[0, c]$, so that
+\[\left|f^{(n+1)}(t)\right| \leq M\]
+for all $0 \leq t \leq c$, then we can say that
+\[\left|E^{(n+1)}_n(t)\right| = \left|f^{(n+1)}(t)\right| \leq M\]
+for all $t$ between 0 and $c$.  Equivalently, 
+\begin{equation} \label{E:ErrorIneq}
+-M \leq E^{(n+1)}_n(t) \leq M
+\end{equation}
+on [0, c]. Next, we integrate the three terms in the inequality~(\ref{E:ErrorIneq}) from $t = 0$ to $t = x$, and thus find that
+\[\int_0^x -M \ dt \leq \int_0^x E^{(n+1)}_n(t) \ dt \leq \int_0^x M \ dt\]
+for every value of $x$ in $[0, c]$. Since $E^{(n)}_n(0) = 0$, the First FTC tells us that
+\[-Mx \leq E^{(n)}_n(x) \leq Mx\]
+for every $x$ in $[0, c]$.
+
+Integrating the most recent inequality, we obtain
+\[\int_0^x -Mt \ dt \leq \int_0^x E^{(n)}_n(t) \ dt \leq \int_0^x Mt \ dt\]
+and thus
+\[-M\frac{x^2}{2} \leq E^{(n-1)}_n(x) \leq M\frac{x^2}{2}\]
+for all $x$ in $[0, c]$.
+
+Integrating $n$ times, we arrive at
+\[-M\frac{x^{n+1}}{(n+1)!} \leq E_n(x) \leq M\frac{x^{n+1}}{(n+1)!}\]
+for all $x$ in $[0, c]$.  This enables us to conclude that
+\[\left|E_n(x)\right| \leq M\frac{|x|^{n+1}}{(n+1)!}\]
+for all $x$ in $[0, c]$, which shows an important bound on the approximation's error, $E_n$.  
+
+Our work above was based on the approximation centered at $a = 0$; the argument may be generalized to hold for any value of $a$, which results in the following theorem.
+
+\vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+\textbf{The Lagrange Error Bound for $P_n(x)$.}\index{Lagrange error bound} Let $f$ be a continuous function with $n+1$ continuous derivatives. Suppose that $M$ is a positive real number such that $\left|f^{(n+1)}(x)\right| \le M$ on the interval $[a, c]$. If $P_n(x)$ is the $n$th order Taylor polynomial for $f(x)$ centered at $x=a$, then
+\[\left|P_n(c) - f(c)\right| \leq M\frac{|c-a|^{n+1}}{(n+1)!}.\]
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+This error bound may now be used to tell us important information about Taylor polynomials and Taylor series, as we see in the following examples and activities.
+
+\bex \label{Ex:8.5.3}
+Determine how well the 10th order Taylor polynomial $P_{10}(x)$ for $\sin(x)$, centered at 0, approximates $\sin(2)$.
+\eex
+To answer this question we use $f(x) = \sin(x)$,  $c = 2$, $a=0$, and $n = 10$ in the Lagrange error bound formula. To use the bound, we also need to find an appropriate value for $M$. Note that the derivatives of $f(x) = \sin(x)$ are all equal to $\pm \sin(x)$ or $\pm \cos(x)$. Thus,
+\[\left| f^{(n+1)}(x) \right| \leq 1\]
+for any $n$ and $x$. Therefore, we can choose $M$ to be 1. Then
+\[\left|P_{10}(2) - f(2)\right| \leq (1)\frac{|2-0|^{11}}{(11)!} = \frac{2^{11}}{(11)!} \approx 0.00005130671797.\]
+So $P_{10}(2)$ approximates $\sin(2)$ to within at most 0.00005130671797. A computer algebra system tells us that
+\[P_{10}(2) \approx 0.9093474427 \ \ \text{ and } \ \ \sin(2) \approx 0.9092974268\]
+with an actual difference of about 0.0000500159.
+\afterex
+
+\input{activities/8.5.Act5}
+
+\bex \label{Ex:8.5.4} Show that the Taylor series for $\sin(x)$ actually converges to $\sin(x)$ for all $x$.
+\eex
+Recall from the previous example that since $f(x) = \sin(x)$, we know
+\[\left| f^{(n+1)}(x) \right| \leq 1\]
+for any $n$ and $x$. This allows us to choose $M = 1$ in the Lagrange error bound formula. Thus,
+\begin{equation} \label{E:ErrorIneqSine}
+|P_n(x) - \sin(x)| \leq \frac{|x|^{n+1}}{(n+1)!}
+\end{equation}
+for every $x$.
+
+We showed in earlier work with the Taylor series $\ds \sum_{k=0}^{\infty} \frac{x^k}{k!}$ converges for every value of $x$.  Since the terms of any convergent series must approach zero, it follows that
+\[\lim_{n \to \infty} \frac{x^{n+1}}{(n+1)!} = 0\]
+for every value of $x$. Thus, taking the limit as $n \to \infty$ in the inequality~(\ref{E:ErrorIneqSine}), it follows that 
+$$\lim_{n \to \infty} |P_n(x) - \sin(x)| = 0.$$ As a result, we can now write
+\[\sin(x) = \sum_{n=0}^{\infty} \frac{(-1)^nx^{2n+1}}{(2n+1)!}\]
+for every real number $x$.
+\afterex
+
+\input{activities/8.5.Act6}
+
+
+%\nin \framebox{\hspace*{3 pt}
+%\parbox{6.25 in}{
+\begin{summary}
+\item We can use Taylor polynomials to approximate complicated functions. This allows us to approximate values of complicated functions using only addition, subtraction, multiplication, and division of real numbers. The $n$th order Taylor polynomial centered at $x=a$ of a function $f$ is
+    \begin{eqnarray*} P_n(x) &  = & f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n \\ & = & \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k.
+\end{eqnarray*}
+\item The Taylor series centered at $x=a$ for a function $f$ is
+\[\sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!}(x-a)^k.\]
+\item The $n$th order Taylor polynomial centered at $a$ for $f$ is the $n$th partial sum of its Taylor series centered at $a$. So the $n$th order Taylor polynomial for a function $f$ is an approximation to $f$ on the interval where the Taylor series converges; for the values of $x$ for which the Taylor series converges to $f$ we write
+\[f(x) = \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!}(x-a)^k.\]
+\item The Lagrange Error Bound shows us how to determine the accuracy in using a Taylor polynomial to approximate a function. More specifically, if $P_n(x)$ is the $n$th order Taylor polynomial for $f$ centered at $x=a$ and if $M$ is an upper bound for $\left|f^{(n+1)}(x)\right|$ on the interval $[a, c]$, then
+    \[\left|P_n(c) - f(c)\right| \leq M\frac{|c-a|^{n+1}}{(n+1)!}.\]
+\end{summary}
+%} \hspace*{3 pt}}
+
+\nin \hrulefill
+
+\input{exercises/8.5.Taylor(Ex)}
+
+\clearpage

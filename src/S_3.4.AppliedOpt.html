@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:42-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Applied Optimization</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_3.3.Optimization.html">Previous</a><a class="up-button button toolbar-item" href="C_3.html">Up</a><a class="next-button button toolbar-item" href="S_3.5.RelatedRates.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_3.3.Optimization.html">Previous</a><a class="up-button button toolbar-item" href="C_3.html">Up</a><a class="next-button button toolbar-item" href="S_3.5.RelatedRates.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link active"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html" class="active">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_3.4.AppliedOpt"><header><h1 class="heading" alt="Section 3.4 Applied Optimization" title="Section 3.4 Applied Optimization">
+<span class="type">Section</span><span class="codenumber">3.4</span><span class="title">Applied Optimization</span><a href="S_3.4.AppliedOpt.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-20"><h5 class="heading"></h5>
+<p id="p-797">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;"><li id="li-1450">In a setting where a situation is described for which optimal parameters are sought, how do we develop a function that models the situation and use calculus to find the desired maximum or minimum?</li></ul>
+<p id="p-798">
+} 
+</p></article><section class="subsection" id="subsection-59"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">3.4.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-799">
+Near the conclusion of <a href="S_3.3.Optimization.html" alt="Section 3.3 Global Optimization" title="Section 3.3 Global Optimization">Section 3.3</a>, we considered two examples of optimization problems where determining the function to be optimized was part of a broader question. In <a knowl="./knowl/Ex_3.3.1.html" knowl-id="xref-Ex_3.3.1" alt="Example 3.3.5 " title="Example 3.3.5 ">Example 3.3.5</a>, we sought to use a single piece of wire to build two geometric figures (an equilateral triangle and square) and to understand how various choices for how to cut the wire led to different values of the area enclosed. One of our conclusions was that in order to maximize the total combined area enclosed by the triangle and square, all of the wire must be used to make a square. In the subsequent <a knowl="./knowl/A_3.3.3.html" knowl-id="xref-A_3.3.3" alt="Exercise 3.3.8 " title="Exercise 3.3.8 ">Activity 3.3.8</a>, we investigated how the volume of a box constructed from a piece of cardboard by removing squares from each corner and folding up the sides depends on the size of the squares removed.
+</p>
+<p id="p-800">
+Both of these problems exemplify situations where there is not a function explicitly provided to optimize. Rather, we first worked to understand the given information in the problem, drawing a figure and introducing variables, and then sought to develop a formula for a function that models the quantity (area or volume, in the two examples, respectively) to be optimized. Once the function was established, we then considered what domain was appropriate on which to pursue the desired absolute minimum or maximum (or both). At this point in the problem, we are finally ready to apply the ideas of calculus to determine and justify the absolute minimum or maximum. Thus, what is primarily different about problems of this type is that the problem-solver must do considerable work to introduce variables and develop the correct function and domain to represent the described situation.
+</p>
+<p id="p-801">
+Throughout what follows in the current section, the primary emphasis is on the reader solving problems. Initially, some substantial guidance is provided, with the problems progressing to require greater independence as we move along.
+</p>
+<article class="paragraphs" id="PA_3.4"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-802">
+According to U.S. postal regulations, the girth plus the length of a parcel sent by mail may not exceed 108 inches, where by “girth” we mean the perimeter of the smallest end. What is the largest possible volume of a rectangular parcel with a square end that can be sent by mail? What are the dimensions of the package of largest volume?
+</p>
+<figure class="figure-like" id="F_3.4.PA1"><img width="100%" src="images/3_4_PA1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.4.1</span>A rectangular parcel with a square end.</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1451">Let \(x\) represent the length of one side of the square end and \(y\) the length of the longer side.  Label these quantities appropriately on the image shown in <a knowl="./knowl/F_3.4.PA1.html" knowl-id="xref-F_3.4.PA1" alt="Figure 3.4.1 " title="Figure 3.4.1 ">Figure 3.4.1</a>.</li>
+<li id="li-1452">What is the quantity to be optimized in this problem?  Find a formula for this quantity in terms of \(x\) and \(y\).</li>
+<li id="li-1453">The problem statement tells us that the parcel's girth plus length may not exceed 108 inches.  In order to maximize volume, we assume that we will actually need the girth plus length to equal 108 inches.  What equation does this produce involving \(x\) and \(y\)?</li>
+<li id="li-1454">Solve the equation you found in (c) for one of \(x\) or \(y\) (whichever is easier).</li>
+<li id="li-1455">Now use your work in (b) and (d) to determine a formula for the volume of the parcel so that this formula is a function of a single variable.</li>
+<li id="li-1456">Over what domain should we consider this function?  Note that both \(x\) and \(y\) must be positive; how does the constraint that girth plus length is 108 inches produce intervals of possible values for \(x\) and \(y\)?</li>
+<li id="li-1457">Find the absolute maximum of the volume of the parcel on the domain you established in (f) and hence also determine the dimensions of the box of greatest volume.  Justify that you've found the maximum using calculus.</li>
+</ol></article></section><section class="subsection" id="subsection-60"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">3.4.2</span><span class="title">More applied optimization problems</span>
+</h1></header><p id="p-803">
+Many of the steps in Preview <a href="S_3.4.AppliedOpt.html#PA_3.4" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> are ones that we will execute in any applied optimization problem. We briefly summarize those here to provide an overview of our approach in subsequent questions.
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1458">Draw a picture and introduce variables.  It is essential to first understand what quantities are allowed to vary in the problem and then to represent those values with variables.  Constructing a figure with the variables labeled is almost always an essential first step.  Sometimes drawing several diagrams can be especially helpful to get a sense of the situation.  A nice example of this can be seen at \href{http://gvsu.edu/s/99}{<tt class="code-inline">http://gvsu.edu/s/99</tt>}, where the choice of where to bend a piece of wire into the shape of a rectangle determines both the rectangle's shape and area.</li>
+<li id="li-1459">Identify the quantity to be optimized as well as any key relationships among the variable quantities.  Essentially this step involves writing equations that involve the variables that have been introduced: one to represent the quantity whose minimum or maximum is sought, and possibly others that show how multiple variables in the problem may be interrelated.</li>
+<li id="li-1460">Determine a function of a single variable that models the quantity to be optimized; this may involve using other relationships among variables to eliminate one or more variables in the function formula.  For example, in Preview <a href="S_3.4.AppliedOpt.html#PA_3.4" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, we initially found that \(V = x^2 y\), but then the additional relationship that \(4x + y = 108\) (girth plus length equals 108 inches) allows us to relate \(x\) and \(y\) and thus observe equivalently that \(y = 108-4x\).  Substituting for \(y\) in the volume equation yields \(V(x) = x^2(108-4x)\), and thus we have written the volume as a function of the single variable \(x\).</li>
+<li id="li-1461">Decide the domain on which to consider the function being optimized.  Often the physical constraints of the problem will limit the possible values that the independent variable can take on.  Thinking back to the diagram describing the overall situation and any relationships among variables in the problem often helps identify the smallest and largest values of the input variable.</li>
+<li id="li-1462">Use calculus to identify the absolute maximum and/or minimum of the quantity being optimized.  This always involves finding the critical values of the function first.  Then, depending on the domain, we either construct a first derivative sign chart (for an open or unbounded interval) or evaluate the function at the endpoints and critical values (for a closed, bounded interval), using ideas we've studied so far in <a href="C_3.html" alt="Chapter 3 Using Derivatives" title="Chapter 3 Using Derivatives">Chapter 3</a>.</li>
+<li id="li-1463">Finally, we make certain we have answered the question:  does the question seek the absolute maximum of a quantity, or the values of the variables that produce the maximum?  That is, finding the absolute maximum volume of a parcel is different from finding the dimensions of the parcel that produce the maximum.</li>
+</ul>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_3.4.1" id="A_3.4.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">3.4.2</span>
+</h5></a></div>
+<div id="hk-A_3.4.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-804">
+A soup can in the shape of a right circular cylinder is to be made from two materials. The material for the side of the can costs $0.015 per square inch and the material for the lids costs $\(0.027\) per square inch. Suppose that we desire to construct a can that has a volume of 16 cubic inches. What dimensions minimize the cost of the can?
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1464">Draw a picture of the can and label its dimensions with appropriate variables.</li>
+<li id="li-1465">Use your variables to determine expressions for the volume, surface area, and cost of the can.</li>
+<li id="li-1466">Determine the total cost function as a function of a single variable.  What is the domain on which you should consider this function?</li>
+<li id="li-1467">Find the absolute minimum cost and the dimensions that produce this value.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-111" id="hint-111"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-111" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1468">Note that both the radius and the height of the can are variable.</li>
+<li id="li-1469">Remember that volume is the area of the base times the height, while surface are can be thought of in terms of the area of the two lids, plus the area of the “side” of the can.</li>
+<li id="li-1470">Use the fact that \(V = 16\) to write one of the variables in terms of the other to get the cost as a function of a single variable.</li>
+<li id="li-1471">Differentiate the total cost function and find its critical value(s) first.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-112" id="hint-112"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-112" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1472">Note that both the radius and the height of the can are variable.</li>
+<li id="li-1473">Remember that volume is the area of the base times the height, while surface are can be thought of in terms of the area of the two lids, plus the area of the “side” of the can.  The side of the can has the shape of a rectangle (think about cutting the cylinder vertically and unrollling it).  The cost of the can is directly related to surface area.  For instance, the cost of the lids is \(2 \cdot 0.027 \cdot\)(area of one lid).</li>
+<li id="li-1474">Use the fact that \(V = 16\) to write one of the variables in terms of the other to get the cost as a function of a single variable.</li>
+<li id="li-1475">Differentiate the total cost function and find its critical value(s) first.  Use either the first or second derivative test to justify your conclusion.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-55" id="solution-55"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-55" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1476">We let \(r\) be the radius of the base of the cylindrical can and \(h\) be its height.</li>
+<li id="li-1477">Volume is the area of the base times the height, so \(V = \pi r^2 h\).  Surface area is the area of the lids plus the area of the side, the latter of which is a rectangle with height \(h\) and width the perimeter of the base.  Hence, \(S = 2 \pi r^2 + 2 \pi r h\).  Finally, the total cost is the cost of the lids plus the cost of the sides, which is
+	
+<span class="displaymath" id="me-339">\[
+C = 2 \pi r^2 \cdot 0.027 + 2 \pi r h \cdot 0.015.
+\]</span>
+</li>
+<li id="li-1478">Because the volume is fixed at 16 cubic inches, we know that \(16 =  \pi r^2 h\).  Solving for \(h\), \(h = \frac{16}{\pi r^2}\).  Substituting this expression for \(h\) in the formula for total cost, we now have that
+	
+<span class="displaymath" id="me-340">\[
+C = 2 \pi r^2 \cdot 0.027 + 2 \pi r \left( \frac{16}{\pi r^2} \right) \cdot 0.015 = 0.054 \pi r^2 + 0.48 \frac{1}{r} .
+\]</span>
+ 
+	With \(C(r) = 0.054 \pi r^2 + 0.48 \frac{1}{r}\), we note that the only constraint on \(r\) is that \(r &gt; 0\), hence this is the domain on which we seek to minimize \(C\).</li>
+<li id="li-1479">Noting that \(C'(r) = 0.108 \pi r - 0.48 \frac{1}{r^2}\), we set \(C'(r) = 0\) and solve for \(r\) to find that 
+	
+<span class="displaymath" id="me-341">\[
+0.108 \pi r = \frac{0.48}{r^2},
+\]</span>
+ 
+	so that \(r^3 = \frac{0.48}{0.108 \pi} \approx 1.41471\), from which it follows that \(r = \sqrt[3]{ \frac{0.48}{0.108 \pi} } \approx 1.12259\) is the only critical value of \(C\).
+	At this point, we can use either the first or second derivative test to justify that \(C\) has an absolute minimum at \(r = 1.12259\).  We choose to use the second derivative test; note that \(C''(r) = 0.108 \pi + 0.96 \frac{1}{r^3}\), which is always positive for \(r &gt; 0\), hence \(C\) is always concave up on the relevant domain (\(r &gt; 0\)), which makes \(r = \sqrt[3]{ \frac{0.48}{0.108 \pi} } \approx 1.12259\) where the absolute minimum of \(C\) occurs.  In addition, we note that since \(h = \frac{16}{\pi r^2}\), the corresponding \(h\) value is \(h \approx 4.041337\), and the overall minimum cost is \(C(1.12259) \approx 0.64137\).</li>
+</ol></span></span><p id="p-805">
+Familiarity with common geometric formulas is particularly helpful in problems like the one in <a knowl="./knowl/A_3.4.1.html" knowl-id="xref-A_3.4.1" alt="Exercise 3.4.2 " title="Exercise 3.4.2 ">Activity 3.4.2</a>. Sometimes those involve perimeter, area, volume, or surface area. At other times, the constraints of a problem introduce right triangles (where the Pythagorean Theorem applies) or other functions whose formulas provide relationships among variables present.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_3.4.2" id="A_3.4.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">3.4.3</span>
+</h5></a></div>
+<div id="hk-A_3.4.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-806">
+A hiker starting at a point \(P\) on a straight road walks east towards point \(Q\), which is on the road and 3 kilometers from point \(P\). Two kilometers due north of point \(Q\) is a cabin. The hiker will walk down the road for a while, at a pace of 8 kilometers per hour. At some point \(Z\) between \(P\) and \(Q\), the hiker leaves the road and makes a straight line towards the cabin through the woods, hiking at a pace of 3 kph, as pictured in <a knowl="./knowl/F_3.4.Act2.html" knowl-id="xref-F_3.4.Act2" alt="Figure 3.4.4 " title="Figure 3.4.4 ">Figure 3.4.4</a>. In order to minimize the time to go from \(P\) to \(Z\) to the cabin, where should the hiker turn into the forest?
+</p>
+<figure class="figure-like" id="F_3.4.Act2"><img width="100%" src="images/3_4_Act2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.4.4</span>A hiker walks from \(P\) to \(Z\) to the cabin, as pictured.</figcaption></figure></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-113" id="hint-113"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-113" style="display: none;" class="tex2jax_ignore"><span class="solution">Let \(x\) be the distance from \(Z\) to \(Q\). What is then the distance from \(P\) to \(Z\) in terms of \(x\)?  How about the distance from \(Z\) to the cabin?  How does time depend on distance and rate?</span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-114" id="hint-114"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-114" style="display: none;" class="tex2jax_ignore"><span class="solution">Let \(x\) be the distance from \(Z\) to \(Q\). What is then the distance from \(P\) to \(Z\) in terms of \(x\)?  How about the distance from \(Z\) to the cabin?  Remember that since distance equals rate times time, time is given by distance divided by rate.  Find an expression for the total time, \(T\), as a function of \(x\).</span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-56" id="solution-56"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-56" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-807">
+We begin by letting \(x\) be the distance from \(Z\) to \(Q\). Since it is 3 km from \(P\) to \(Q\), the distance from \(P\) to \(Z\) is \(3-x\). Further, by the Pythagorean Theorem, the distance from \(Z\) to the cabin is \(\sqrt{4+x^2}\).
+</p>
+<p id="p-808">
+Next, we want to determine the hiker's time as a function of \(x\). Because distance equals rate times time, time is thus distance divided by rate. Along the road, the hiker's distance is \(3-x\) km and her rate is \(8\) km/hr, thus her time on the road, \(T_r\) is
+</p>
+<span class="displaymath" id="me-342">\[
+T_r = \frac{3-x}{8}.
+\]</span><p id="p-809">
+Once she enters the woods, her rate drops to \(3\) km/hr and travels a distance of \(\sqrt{4+x^2}\) km, making her time in the woods, \(T_w\), given by
+</p>
+<span class="displaymath" id="me-343">\[
+T_w = \frac{\sqrt{4+x^2}}{3}.
+\]</span><p id="p-810">
+Thus, the hiker's total time is given by the function
+</p>
+<span class="displaymath" id="me-344">\[
+T(x) = \frac{3-x}{8} + \frac{\sqrt{4+x^2}}{3}.
+\]</span><p id="p-811">
+Because the only values of \(x\) that make sense to use are \(0 \le x \le 3\) (using either negative values or values greater than 3 clearly add unnecessary time to the trip), we use this domain for \(T\) and now seek the absolute minimum of \(T\) on \([0,3]\). First, we find that
+</p>
+<span class="displaymath" id="me-345">\[
+T'(x) = -\frac{1}{8} + \frac{1}{3} \cdot \frac{1}{2} (4+x^2)^{-1/2} (2x) = -\frac{1}{8} + \frac{x}{3\sqrt{4+x^2}}.
+\]</span><p id="p-812">
+Setting \(T'(x) = 0\) and solving for \(x\), we have \(\frac{x}{3\sqrt{4+x^2}} = \frac{1}{8}\), so \(8x = 3\sqrt{4+x^2}\). Squaring both sides, \(64x^2 = 9(4+x^2) = 36 + 9x^2\). Hence, \(55x^2 = 36\), so \(x = \sqrt{\frac{36}{55}} \approx 0.80904\). (We don't consider the critical value \(x = -\sqrt{\frac{36}{55}}\) because this doesn't lie in the relevant domain of \(T\).)
+</p>
+<p id="p-813">
+Finally, we evaluate \(T\) at the only critical value in the interval and at the interval's endpoints. Doing so, we find \(T(0) = \frac{3}{8} + \frac{2}{3} \approx 1.0417\), \(T(3) = \frac{\sqrt{13}{3}} \approx 1.20185\), and \(T(\sqrt{\frac{36}{55}}) = \frac{3}{8} + \frac{\sqrt{55}}{12} \approx 0.99302\), and thus the absolute minimum time the hiker can achieve is \(0.99302\) hours, which is attained by hiking about 2.2 km from \(P\) to \(Q\) and then turning into the woods for the remainder of the trip.
+</p></span></span><p id="p-814">
+In more geometric problems, we often use curves or functions to provide natural constraints. For instance, we could investigate which isosceles triangle that circumscribes a unit circle has the smallest area, which you can explore for yourself at \href{http://gvsu.edu/s/9b}{<tt class="code-inline">http://gvsu.edu/s/9b</tt>}. Or similarly, for a region bounded by a parabola, we might seek the rectangle of largest area that fits beneath the curve, as shown at \href{http://gvsu.edu/s/9c}{<tt class="code-inline">http://gvsu.edu/s/9c</tt>}. The next activity is similar to the latter problem.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_3.4.3" id="A_3.4.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">3.4.5</span>
+</h5></a></div>
+<div id="hk-A_3.4.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-815">
+Consider the region in the \(x\)-\(y\) plane that is bounded by the \(x\)-axis and the function \(f(x) = 25-x^2\). Construct a rectangle whose base lies on the \(x\)-axis and is centered at the origin, and whose sides extend vertically until they intersect the curve \(y = 25-x^2\). Which such rectangle has the maximum possible area? Which such rectangle has the greatest perimeter? Which has the greatest combined perimeter and area? (Challenge: answer the same questions in terms of positive parameters \(a\) and \(b\) for the function \(f(x) = b-ax^2\).)
+</p></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-115" id="hint-115"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-115" style="display: none;" class="tex2jax_ignore"><span class="solution">Let \(x\) represent half the width of the rectangle's base.  How does the rectangle's height depend on \(x\)?</span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-116" id="hint-116"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-116" style="display: none;" class="tex2jax_ignore"><span class="solution">Let \(x\) represent half the width of the rectangle's base.  How does the rectangle's height depend on \(x\)?  Don't forget that every point that lies on the parabola is of the form \((x,25-x^2)\).</span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-57" id="solution-57"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-57" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-816">
+Letting \(x\) represent half the width of the rectangle's base, it follows that the rectangle's height is \(25-x^2\). Hence the area of the rectangle is
+</p>
+<span class="displaymath" id="me-346">\[
+A(x) = 2x(25-x^2) = 50x - 2x^3.
+\]</span><p id="p-817">
+Based on the region, the only possible values of \(x\) are for \(0 \le x \le 5\); moreover, it is evident that for either \(x = 0\) or \(x = 5\), the area of the corresponding rectangle is zero, which can't be where the maximum occurs. Differentiating,
+</p>
+<span class="displaymath" id="me-347">\[
+A'(x) = 50 - 6x^2,
+\]</span><p id="p-818">
+so we find the critical value of \(A\) by solving \(6x^2 = 50\), which yields \(x = \frac{5}{\sqrt{3}} \approx 2.8868\), which results in the maximum possible area of
+</p>
+<span class="displaymath" id="me-348">\[
+A(\frac{5}{\sqrt{3}}) = \frac{500}{9}\sqrt{3} \approx 96.225
+\]</span><p id="p-819">
+square units.
+</p>
+<p id="p-820">
+To maximize perimeter, we note that the rectangle's perimeter is
+</p>
+<span class="displaymath" id="me-349">\[
+P(x) = 2x + (25-x^2) + 2x + (25 - x^2) = -2x^2 + 4x + 50.
+\]</span><p id="p-821">
+It is straightforward to show that the only critical number of the quadratic function \(P\) occurs when \(x = 1\) and that the corresponding absolute maximum value is \(P(1) = 52\).
+</p>
+<p id="p-822">
+Finally, to consider combined area and perimeter, examine the function \(f(x) = A(x) + P(x)\) on the interval \(0 \le x \le 5.\) You should find that the only relevant critical number is \(x = \frac{\sqrt{82}-1}{3}\) and that the absolute maximum of \(f\) occurs at that value.
+</p></span></span><div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_3.4.4" id="A_3.4.4"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">3.4.6</span>
+</h5></a></div>
+<div id="hk-A_3.4.4" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-823">
+A trough is being constructed by bending a \(4 \times 24\) (measured in feet) rectangular piece of sheet metal. Two symmetric folds 2 feet apart will be made parallel to the longest side of the rectangle so that the trough has cross-sections in the shape of a trapezoid, as pictured in <a knowl="./knowl/F_3.4.Act4.html" knowl-id="xref-F_3.4.Act4" alt="Figure 3.4.7 " title="Figure 3.4.7 ">Figure 3.4.7</a>. At what angle should the folds be made to produce the trough of maximum volume?
+</p>
+<figure class="figure-like" id="F_3.4.Act4"><img width="100%" src="images/3_4_Act4.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.4.7</span>A cross-section of the trough formed by folding to an angle of \(\theta\).</figcaption></figure></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-117" id="hint-117"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-117" style="display: none;" class="tex2jax_ignore"><span class="solution">Drop altitudes from the top of the trough to the base of length 2.  In the two triangles that are formed, what are the lengths of the legs in terms of \(\theta\)?</span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-118" id="hint-118"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-118" style="display: none;" class="tex2jax_ignore"><span class="solution">Drop altitudes from the top of the trough to the base of length 2.  In the two triangles that are formed, what are the lengths of the legs in terms of \(\theta\)?  What is the overall area in terms of \(\theta\)?  (Note that since the length of the trough is constant, the volume will be maximized by maximizing cross-sectional area.)  Finally, after you differentiate \(A(\theta)\), use the identity \(\sin^2(\theta) = 1 - \cos^2(\theta)\) to write \(A'(\theta)\) solely in terms of the cosine function and note that the result is a quadratic equation in \(\cos(theta)\).</span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-58" id="solution-58"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-58" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-824">
+Once we choose the angle \(\theta\), the two right triangles in the trapezoid are determined, and each has a horizontal leg of length \(\cos(\theta)\) and a vertical leg of length \(\sin(\theta)\). Thus, the sum of the areas of the two triangles is \(\sin(\theta) \cos(\theta)\), and the area of the rectangle between them is \(2\sin(theta)\). Hence, the area of the trapezoidal cross-section is \(A(\theta) = \sin(\theta) \cos(\theta) + 2 \sin(\theta)\). Because the length of the trough is constant, the trough's volume will be maximized by maximizing cross-sectional area. Note, too, that the domain for \(\theta\) is \(0 \le \theta \le \frac{\pi}{2}\).
+</p>
+<p id="p-825">
+Differentiating, we find that
+</p>
+<span class="displaymath" id="me-350">\[
+A'(\theta) = \sin(\theta) (-\sin(\theta)) + \cos(\theta) \cos(\theta) + 2 \cos(\theta) = -\sin^2(\theta) + \cos^2(\theta) + 2 \cos(\theta).
+\]</span><p id="p-826">
+Using the identity \(\sin^2(\theta) = 1 - \cos^2(\theta)\), it follows that
+</p>
+<span class="displaymath" id="me-351">\[
+A'(\theta) = \cos^2(\theta) - 1 + \cos^2(\theta) + 2 \cos(\theta) = 2\cos^2(\theta) + 2 \cos(\theta) - 1.
+\]</span><p id="p-827">
+This most recent equation is quadratic in \(\cos(\theta)\), so letting \(u = \cos(\theta)\), we can start to solve the equation \(A'(\theta) = 0\) by solving \(2u^2 + 2u - 1 = 0\). Doing so, we find that
+</p>
+<span class="displaymath" id="me-352">\[
+u = \frac{-1 \pm \sqrt{3}}{2} \approx 0.3660254, -1.3660254,
+\]</span><p id="p-828">
+so only \(u = \frac{-1 + \sqrt{3}}{2}\) will be a potential value of the cosine function from an angle that lies in the interval \([0,\frac{\pi}{2}]\). Now, recalling that \(\cos(\theta) = u\), to find the critical value \(\theta\), we solve \(\cos(\theta) = \frac{-1 + \sqrt{3}}{2}\), which implies \(\theta = \arccos(\frac{-1 + \sqrt{3}}{2}) \approx 1.19606\) radians, or \(\theta \approx 68.5292^\circ\).
+</p>
+<p id="p-829">
+Finally, to confirm that \(A\) has an absolute maximum at \(\theta = \arccos(\frac{-1 + \sqrt{3}}{2}) \approx 1.19606\), we consider this value as well as the endpoints of \([0, \frac{\pi}{2}]\), and evaluate \(A\) to find that \(A(0) = 0\), \(A(\frac{\pi}{2}) = 2\), and \(A(1.19606) \approx 2.2018\), which is the absolute maximum possible cross-sectional area.
+</p></span></span><p id="p-830">
+\item While there is no single algorithm that works in every situation where optimization is used, in most of the problems we consider, the following steps are helpful: draw a picture and introduce variables; identify the quantity to be optimized and find relationships among the variables; determine a function of a single variable that models the quantity to be optimized; decide the domain on which to consider the function being optimized; use calculus to identify the absolute maximum and/or minimum of the quantity being optimized.
+</p>
+<p id="p-831">
+\hrulefill
+</p>
+<p id="p-832">
+\begin{exercises}
+	\item A rectangular box with a square bottom and closed top is to be made from two materials. The material for the side costs $1.50 per square foot and the material for the bottom costs $3.00 per square foot. If you are willing to spend $15 on the box, what is the largest volume it can contain? Justify your answer completely using calculus.
+	\item A farmer wants to start raising cows, horses, goats, and sheep, and desires to have a rectangular pasture for the animals to graze in. However, no two different kinds of animals can graze together. In order to minimize the amount of fencing she will need, she has decided to enclose a large rectangular area and then divide it into four equally sized pens by adding three segments of fence inside the large rectangle that are parallel to two existing sides. She has decided to purchase 7500 ft of fencing. What is the maximum possible area that each of the four pens will enclose?
+	\item Two vertical poles of heights 60 ft and 80 ft stand on level ground, with their bases 100 ft apart. A cable that is stretched from the top of one pole to some point on the ground between the poles, and then to the top of the other pole. What is the minimum possible length of cable required? Justify your answer completely using calculus.
+	\item A company is designing propane tanks that are cylindrical with hemispherical ends. Assume that the company wants tanks that will hold 1000 cubic feet of gas, and that the ends are more expensive to make, costing $5 per square foot, while the cylindrical barrel between the ends costs $2 per square foot. Use calculus to determine the minimum cost to construct such a tank.
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-833">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

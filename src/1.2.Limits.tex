@@ -1,0 +1,131 @@
+\section{The notion of limit} \label{S:1.2.Limits}
+
+\vspace*{-14 pt}
+\framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{\begin{goals}
+\item What is the mathematical notion of \emph{limit} and what role do limits play in the study of functions?
+\item What is the meaning of the notation $\ds \lim_{x \to a} f(x) = L$?
+\item How do we go about determining the value of the limit of a function at a point?
+\item How does the notion of limit allow us to move from average velocity to instantaneous velocity?
+\end{goals}} \hspace*{3 pt}}
+
+\subsection*{Introduction}
+
+Functions are at the heart of mathematics: a function is a process or rule that associates each individual input to exactly one corresponding output.  Students learn in courses prior to calculus that there are many different ways to represent functions, including through formulas, graphs, tables, and even words.  For example, the squaring function can be thought of in any of these ways.  In words, the squaring function takes any real number $x$ and computes its square.  The formulaic and graphical representations go hand in hand, as $y = f(x) = x^2$ is one of the simplest curves to graph.  Finally, we can also partially represent this function through a table of values, essentially by listing some of the ordered pairs that lie on the curve, such as  $(-2,4)$, $(-1,1)$, $(0,0)$, $(1,1)$, and $(2,4)$.
+
+Functions are especially important in calculus because they often model important phenomena -- the location of a moving object at a given time, the rate at which an automobile is consuming gasoline at a certain velocity, the reaction of a patient to the size of a dose of a drug -- and calculus can be used to study how these output quantities change in response to changes in the input variable.  Moreover, thinking about concepts like average and instantaneous velocity leads us naturally from an initial function to a related, sometimes more complicated function.  As one example of this, think about the falling ball whose position function is given by $s(t) = 64 - 16t^2$ and the average velocity of the ball on the interval $[1,x]$.  Observe that
+$$AV_{[1,x]} = \frac{s(x) - s(1)}{x-1} = \frac{(64-16x^2) - (64-16)}{x-1} = \frac{16 - 16x^2}{x-1}.$$
+Now, two things are essential to note:  this average velocity depends on $x$ (indeed, $AV_{[1,x]}$ is a function of $x$), and our most focused interest in this function occurs near $x = 1$, which is where the function is not defined.  Said differently, the function $g(x) = \frac{16 - 16x^2}{x-1}$ tells us the average velocity of the ball on the interval from $t = 1$ to $t = x$, and if we are interested in the instantaneous velocity of the ball when $t = 1$, we'd like to know what happens to $g(x)$ as $x$ gets closer and closer to $1$.  At the same time, $g(1)$ is not defined, because it leads to the quotient $0/0$.
+
+This is where the idea of \emph{limits} comes in.  By using a limit, we'll be able to allow $x$ to get arbitrarily close, but not equal, to $1$ and fully understand the behavior of $g(x)$ near this value.  We'll develop key language, notation, and conceptual understanding in what follows, but for now we consider a preliminary activity that uses the graphical interpretation of a function to explore points on a graph where interesting behavior occurs.
+
+\input{previews/1.2.PA1}
+
+\subsection*{The Notion of Limit}
+
+Limits can be thought of as a way to study the tendency or trend of a function as the input variable approaches a fixed value, or even as the input variable increases or decreases without bound.  We put off the study of the latter idea until further along in the course when we will have some helpful calculus tools for understanding the end behavior of functions.  Here, we focus on what it means to say that ``a function $f$ has limit $L$ as $x$ approaches $a$.''  To begin, we think about a recent example.
+
+In Preview Activity \ref{PA:1.2}, you saw that for the given function $g$, as $x$ gets closer and closer (but not equal) to 0, $g(x)$ gets as close as we want to the value 4.  At first, this may feel counterintuitive, because the value of $g(0)$ is $1$, not $4$.  By their very definition, limits regard the behavior of a function \emph{arbitrarily close to} a fixed input, but the value of the function \emph{at} the fixed input does not matter.  More formally\footnote{What follows here is not what mathematicians consider the formal definition of a limit.  To be completely precise, it is necessary to quantify both what it means to say ``as close to $L$ as we like'' and ``sufficiently close to $a$.''  That can be accomplished through what is traditionally called the epsilon-delta definition of limits.  The definition presented here is sufficient for the purposes of this text.}, we say the following.
+
+\begin{definition}
+Given a function $f$, a fixed input $x = a$, and a real number $L$, we say that \emph{$f$ has limit\index{limit!definition} $L$ as $x$ approaches $a$}, and write
+$$\lim_{x \to a} f(x) = L$$
+provided that we can make $f(x)$ as close to $L$ as we like by taking $x$ sufficiently close (but not equal) to $a$.  If we cannot make $f(x)$ as close to a single value as we would like as $x$ approaches $a$, then we say that \emph{$f$ does not have a limit as $x$ approaches $a$.}
+\end{definition}
+For the function $g$ pictured in Figure \ref{F:1.2.PA1}, we can make the following observations:  
+$$\ds \lim_{x \to -1} g(x) = 3, \ \ds \lim_{x \to 0} g(x) = 4, \ \mbox{and} \ \ds \lim_{x \to 2} g(x) = 1,$$ but $g$ does not have a limit as $x \to 1$.  When working graphically, it suffices to ask if the function approaches a single value from each side of the fixed input, while understanding that the function value right at the fixed input is irrelevant.  This reasoning explains the values of the first three stated limits.  In a situation such as the jump in the graph of $g$ at $x = 1$, the issue is that if we approach $x = 1$ from the left, the function values tend to get as close to 3 as we'd like, but if we approach $x = 1$ from the right, the function values get as close to 2 as we'd like, and there is no single number that all of these function values approach.  This is why the limit of $g$ does not exist at $x = 1$.
+
+For any function $f$, there are typically three ways to answer the question ``does $f$ have a limit at $x = a$, and if so, what is the limit?''  The first is to reason graphically as we have just done with the example from Preview Activity \ref{PA:1.2}.  If we have a formula for $f(x)$, there are two additional possibilities:  (1) evaluate the function at a sequence of inputs that approach $a$ on either side, typically using some sort of computing technology, and ask if the sequence of outputs seems to approach a single value; (2) use the algebraic form of the function to understand the trend in its output as the input values approach $a$.  The first approach only produces an approximation of the value of the limit, while the latter can often be used to determine the limit exactly.  The following example demonstrates both of these approaches, while also using the graphs of the respective functions to help confirm our conclusions.
+
+\bex \label{Ex:1.2.Limits}
+For each of the following functions, we'd like to know whether or not the function has a limit at the stated $a$-values.  Use both numerical and algebraic approaches to investigate and, if possible, estimate or determine the value of the limit.  Compare the results with a careful graph of the function on an interval containing the points of interest.
+\ba
+	\item $\ds f(x) = \frac{4-x^2}{x+2}$; $a = -1$, $a = -2$
+	\item $\ds g(x) = \sin\left(\frac{\pi}{x}\right)$; $a = 3$, $a = 0$
+\ea
+\eex
+We first construct a graph of $f$ along with tables of values near $a = -1$ and $a = -2$.  
+
+\begin{figure}[h]
+\centering
+\begin{tabular}{ccc}
+	\raisebox{.5in}{\begin{tabular}[b]{r|l} $x$ & $f(x)$ \\ \hline -0.9 & 2.9 \\ -0.99 & 2.99 \\ -0.999 & 2.999 \\ -0.9999 & 2.9999 \\ -1.1 & 3.1 \\ -1.01 & 3.01 \\ -1.001 & 3.001 \\ -1.0001 & 3.0001 \\ \end{tabular} } &	
+	\raisebox{.5in}{\begin{tabular}[b]{r|l} $x$ & $f(x)$ \\ \hline -1.9 & 3.9 \\ -1.99 & 3.99 \\ -1.999 & 3.999 \\ -1.9999 & 3.9999 \\ -2.1 & 4.1 \\ -2.01 & 4.01 \\ -2.001 & 4.001 \\ -2.0001 & 4.0001 \\ \end{tabular} } &
+	\hspace{0.25in} \includegraphics{figures/1_2_Ex1f.eps} 
+\end{tabular}
+\caption{Tables and graph for $\ds f(x) = \frac{4-x^2}{x+2}$. } \label{F:1.2.Ex1f}
+\end{figure}
+
+From the left table, it appears that we can make $f$ as close as we want to 3 by taking $x$ sufficiently close to $-1$, which suggests that $\ds \lim_{x \to -1} f(x) = 3$.	This is also consistent with the graph of $f$.  To see this a bit more rigorously and from an algebraic point of view, consider the formula for $f$:  $f(x) = \frac{4-x^2}{x+2}$.  The numerator and denominator are each polynomial functions, which are among the most well-behaved functions that exist.  Formally, such functions are \emph{continuous}\footnote{See Section~\ref{S:1.7.LimContDiff} for more on the notion of continuity.}, which means that the limit of the function at any point is equal to its function value.  Here, it follows that as $x \to -1$,  $(4-x^2) \to (4 - (-1)^2) = 3$, and $(x+2) \to (-1 + 2) = 1$, so as $x \to -1$, the numerator of $f$ tends to 3 and the denominator tends to 1, hence $\ds \lim_{x \to -1} f(x) = \frac{3}{1} = 3$.
+
+The situation is more complicated when $x \to -2$, due in part to the fact that $f(-2)$ is not defined.  If we attempt to use a similar algebraic argument regarding the numerator and denominator, we observe that as $x \to -2$, $(4-x^2) \to (4 - (-2)^2) = 0$, and $(x+2) \to (-2 + 2) = 0$, so as $x \to -2$, the numerator of $f$ tends to 0 and the denominator tends to 0.  We call $0/0$ an \emph{indeterminate form}\index{indeterminate} and will revisit several important issues surrounding such quantities later in the course.  For now, we simply observe that this tells us there is somehow more work to do.  From the table and the graph, it appears that $f$ should have a limit of $4$ at $x = -2$.  To see algebraically why this is the case, let's work directly with the form of $f(x)$.  Observe that
+\begin{eqnarray*}
+	\lim_{x \to -2} f(x) & = & \lim_{x \to -2} \frac{4-x^2}{x+2} \\
+				& = & \lim_{x \to -2} \frac{(2-x)(2+x)}{x+2}. \\
+\end{eqnarray*}
+At this point, it is important to observe that since we are taking the limit as $x \to -2$, we are considering $x$ values that are close, but not equal, to $-2$.  Since we never actually allow $x$ to equal $-2$, the quotient $\frac{2+x}{x+2}$ has value 1 for every possible value of $x$.  Thus, we can simplify the most recent expression above, and now find that
+$$\lim_{x \to -2} f(x) = \lim_{x \to -2} 2-x.$$
+Because $2-x$ is simply a linear function, this limit is now easy to determine, and its value clearly is $4$.  Thus, from several points of view we've seen that $\ds\lim_{x \to -2} f(x) = 4.$
+
+Next we turn to the function $g$, and construct two tables and a graph.
+\begin{figure}[h]
+\centering
+\begin{tabular}{ccc}
+	\raisebox{-.05in}{\begin{tabular}[b]{r|l} $x$ & $g(x)$ \\ \hline 2.9 & 0.84864 \\ 2.99 & 0.86428 \\ 2.999 & 0.86585 \\ 2.9999 & 0.86601 \\ 3.1 & 0.88351 \\ 3.01 &  0.86777 \\ 3.001 & 0.86620 \\ 3.0001 &  0.86604 \\ \end{tabular} } &	
+	\raisebox{-.05in}{\begin{tabular}[b]{r|l} $x$ & $g(x)$ \\ \hline -0.1 & 0 \\ -0.01 & 0 \\ -0.001 & 0 \\ -0.0001 & 0 \\ 0.1 & 0 \\ 0.01 & 0 \\ 0.001 & 0 \\ 0.0001 & 0 \\ \end{tabular} } &
+	\hspace{0.25in} \includegraphics{figures/1_2_Ex1g.eps} 
+\end{tabular}
+\caption{Tables and graph for $\ds g(x) = \sin\left(\frac{\pi}{x}\right)$.} \label{F:1.2.Ex1g}
+\end{figure}
+
+First, as $x \to 3$, it appears from the data (and the graph) that the function is approaching approximately $0.866025$.  To be precise, we have to use the fact that $\frac{\pi}{x} \to \frac{\pi}{3}$, and thus we find that $g(x) = \sin(\frac{\pi}{x}) \to \sin(\frac{\pi}{3})$ as $x \to 3$.  The exact value of $\sin(\frac{\pi}{3})$ is $\frac{\sqrt{3}}{2}$, which is approximately 0.8660254038.  Thus, we see that
+$$\lim_{x \to 3} g(x) = \frac{\sqrt{3}}{2}.$$
+
+As $x \to 0$, we observe that $\frac{\pi}{x}$ does not behave in an elementary way.  When $x$ is positive and approaching zero, we are dividing by smaller and smaller positive values, and $\frac{\pi}{x}$ increases without bound.  When $x$ is negative and approaching zero, $\frac{\pi}{x}$ decreases without bound.  In this sense, as we get close to $x = 0$, the inputs to the sine function are growing rapidly, and this leads to wild oscillations in the graph of $g$.  It is an instructive exercise to plot the function $g(x) = \sin\left(\frac{\pi}{x}\right)$ with a graphing utility and then zoom in on $x = 0$.  Doing so shows that the function never settles down to a single value near the origin and suggests that $g$ does not have a limit at $x = 0$.
+
+How do we reconcile this with the righthand table above, which seems to suggest that the limit of $g$ as $x$ approaches $0$ may in fact be $0$?  Here we need to recognize that the data misleads us because of the special nature of the sequence $\{0.1, 0.01, 0.001, \ldots\}$: when we evaluate $g(10^{-k})$, we get $g(10^{-k}) = \sin\left(\frac{\pi}{10^{-k}}\right) = \sin(10^k \pi) = 0$ for each positive integer value of $k$.  But if we take a different sequence of values approaching zero, say $\{0.3, 0.03, 0.003, \ldots\}$, then we find that 
+$$g(3 \cdot 10^{-k}) = \sin\left(\frac{\pi}{3 \cdot 10^{-k}}\right) = \sin\left(\frac{10^k \pi}{3}\right) = \frac{\sqrt{3}}{2} \approx 0.866025.$$
+That sequence of data would suggest that the value of the limit is $\frac{\sqrt{3}}{2}$.  Clearly the function cannot have two different values for the limit, and this shows that $g$ has no limit as $x \to 0$.
+\afterex
+
+An important lesson to take from Example~\ref{Ex:1.2.Limits} is that tables can be misleading when determining the value of a limit.  While a table of values is useful for investigating the possible value of a limit, we should also use other tools to confirm the value, if we think the table suggests the limit exists.
+
+\input{activities/1.2.Act1}
+
+
+This concludes a rather lengthy introduction to the notion of limits.  It is important to remember that our primary motivation for considering limits of functions comes from our interest in studying the rate of change of a function.  To that end, we close this section by revisiting our previous work with average and instantaneous velocity and highlighting the role that limits play. 
+
+\subsection*{Instantaneous Velocity}
+
+Suppose that we have a moving object whose position at time $t$ is given by a function $s$.  We know that the average velocity of the object on the time interval $[a,b]$ is $AV_{[a,b]} = \frac{s(b)-s(a)}{b-a}.$  We define the \emph{instantaneous velocity} \index{instantaneous velocity} at $a$ to be the limit of average velocity as $b$ approaches $a$.  Note particularly that as $b \to a$, the length of the time interval gets shorter and shorter (while always including $a$).  In Section~\ref{S:1.3.DerivativePt}, we will introduce a helpful shorthand notation to represent the instantaneous rate of change.  For now, we will write $IV_{t=a}$ for the instantaneous velocity at $t = a$, and thus
+$$IV_{t=a} = \lim_{b \to a} AV_{[a,b]} = \lim_{b \to a} \frac{s(b)-s(a)}{b-a}.$$
+Equivalently, if we think of the changing value $b$ as being of the form $b = a + h$, where $h$ is some small number, then we may instead write
+$$IV_{t=a} = \lim_{h \to 0} AV_{[a,a+h]} = \lim_{h \to 0} \frac{s(a+h)-s(a)}{h}.$$
+Again, the most important idea here is that to compute instantaneous velocity\index{instantaneous velocity}, we take a limit of average velocities as the time interval shrinks.  Two different activities offer the opportunity to investigate these ideas and the role of limits further. \\
+
+\input{activities/1.2.Act2}
+
+\nin The closing activity of this section asks you to make some connections among average velocity, instantaneous velocity, and slopes of certain lines.
+
+\input{activities/1.2.Act3}
+
+\begin{authornote}
+This is an author note.
+\end{authornote}
+
+
+%\nin \framebox{\hspace*{3 pt}
+%\parbox{6.25 in}{
+\begin{summary}
+\item Limits enable us to examine trends in function behavior near a specific point.  In particular, taking a limit at a given point asks if the function values nearby tend to approach a particular fixed value.
+\item When we write $\ds \lim_{x \to a} f(x) = L$, we read this as saying ``the limit of $f$ as $x$ approaches $a$ is $L$,'' and this means that we can make the value of $f(x)$ as close to $L$ as we want by taking $x$ sufficiently close (but not equal) to $a$.
+\item If we desire to know $\ds \lim_{x \to a} f(x)$ for a given value of $a$ and a known function $f$, we can estimate this value from the graph of $f$ or by generating a table of function values that result from a sequence of $x$-values that are closer and closer to $a$.  If we want the exact value of the limit, we need to work with the function algebraically and see if we can use familiar properties of known, basic functions to understand how different parts of the formula for $f$ change as $x \to a$. 
+\item The instantaneous velocity of a moving object at a fixed time is found by taking the limit of average velocities of the object over shorter and shorter time intervals that all contain the time of interest.
+\end{summary}
+%} \hspace*{3 pt}}
+
+\nin \hrulefill
+
+\input{exercises/1.2.Limits(Ex)} 
+
+\clearpage

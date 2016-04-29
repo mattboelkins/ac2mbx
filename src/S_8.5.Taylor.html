@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:59-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Taylor Polynomials and Taylor Series</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_8.4.Alternating.html">Previous</a><a class="up-button button toolbar-item" href="C_8.html">Up</a><a class="next-button button toolbar-item" href="S_8.6.PowerSeries.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_8.4.Alternating.html">Previous</a><a class="up-button button toolbar-item" href="C_8.html">Up</a><a class="next-button button toolbar-item" href="S_8.6.PowerSeries.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link active"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html" class="active">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_8.5.Taylor"><header><h1 class="heading" alt="Section 8.5 Taylor Polynomials and Taylor Series" title="Section 8.5 Taylor Polynomials and Taylor Series">
+<span class="type">Section</span><span class="codenumber">8.5</span><span class="title">Taylor Polynomials and Taylor Series</span><a href="S_8.5.Taylor.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-47"><h5 class="heading"></h5>
+<p id="p-2332">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-3073">What is a Taylor polynomial? For what purposes are Taylor polynomials used?</li>
+<li id="li-3074">What is a Taylor series?</li>
+<li id="li-3075">How are Taylor polynomials and Taylor series different? How are they related?</li>
+<li id="li-3076">How do we determine the accuracy when we use a Taylor polynomial to approximate a function?</li>
+</ul>
+<p id="p-2333">
+} 
+</p></article><section class="subsection" id="subsection-155"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">8.5.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-2334">
+In our work to date in <a href="C_8.html" alt="Chapter 8 Sequences and Series" title="Chapter 8 Sequences and Series">Chapter 8</a>, essentially every sum we have considered has been a sum of numbers. In particular, each infinite series that we have discussed has been a series of real numbers, such as
+</p>
+<span class="displaymath" id="E_geom12">\begin{equation}
+ 1 + \frac{1}{2} + \frac{1}{4} + \cdots + \frac{1}{2^k} + \cdots = \sum_{k=0}^{\infty} \frac{1}{2^k}.
+\label{E_geom12}\tag{8.5.1}\end{equation}</span><p id="p-2335">
+In the remainder of this chapter, we will expand our notion of series to include series that involve a variable, say \(x\). For instance, if in the geometric series in Equation <a knowl="./knowl/E_geom12.html" knowl-id="xref-E_geom12" alt="Equation 8.5.1 " title="Equation 8.5.1 ">(8.5.1)</a> we replace the ratio \(r = \frac{1}{2}\) with the variable \(x\), then we have the infinite (still geometric) series
+</p>
+<span class="displaymath" id="E_geomx">\begin{equation}
+ 1 + x + x^2 + \cdots + x^k + \cdots = \sum_{k=0}^{\infty} x^k.
+\label{E_geomx}\tag{8.5.2}\end{equation}</span><p id="p-2336">
+Here we see something very interesting: since a geometric series converges whenever its ratio \(r\) satisfies \(|r|\lt 1\), and the sum of a convergent geometric series is \(\frac{a}{1-r}\), we can say that for \(|x| \lt  1\),
+</p>
+<span class="displaymath" id="E_geomxsummed">\begin{equation}
+ 1 + x + x^2 + \cdots + x^k + \cdots = \frac{1}{1-x}.
+\label{E_geomxsummed}\tag{8.5.3}\end{equation}</span><p id="p-2337">
+Note well what Equation <a knowl="./knowl/E_geomxsummed.html" knowl-id="xref-E_geomxsummed" alt="Equation 8.5.3 " title="Equation 8.5.3 ">(8.5.3)</a> states: the non-polynomial function \(\frac{1}{1-x}\) on the right is equal to the infinite polynomial expresssion on the left. Moreover, it appears natural to truncate the infinite sum on the left (whose terms get very small as \(k\) gets large) and say, for example, that
+</p>
+<span class="displaymath" id="me-985">\[
+1 + x + x^2 + x^3 \approx \frac{1}{1-x}
+\]</span><p id="p-2338">
+for small values of \(x\). This shows one way that a polynomial function can be used to approximate a non-polynomial function; such approximations are one of the main themes in this section and the next.
+</p>
+<p id="p-2339">
+In Preview <a href="S_8.5.Taylor.html#PA_8.5" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, we begin our explorations of approximating non-polynomial functions with polynomials, from which we will also develop ideas regarding infinite series that involve a variable, \(x\).
+</p>
+<article class="paragraphs" id="PA_8.5"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-2340">
+Preview <a href="S_8.3.Series.html#PA_8.3" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> showed how we can approximate the number \(e\) using linear, quadratic, and other polynomial functions; we then used similar ideas in Preview <a href="S_8.4.Alternating.html#PA_8.4" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> to approximate \(\ln(2)\). In this activity, we review and extend the process to find the ``best" quadratic approximation to the exponential function \(e^x\) around the origin. Let \(f(x) = e^x\) throughout this activity.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-3077">Find a formula for \(P_1(x)\), the linearization of \(f(x)\) at \(x=0\).  (We label this linearization \(P_1\) because it is a first degree polynomial approximation.) Recall that \(P_1(x)\) is a good approximation to \(f(x)\) for values of \(x\) close to \(0\). Plot \(f\) and \(P_1\) near \(x=0\) to illustrate this fact.
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-183" id="solution-183"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-183" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2341">
+We know that
+</p>
+<span class="displaymath" id="me-986">\[
+P_1(x) = f(0) + f'(0)x = 1+x.
+\]</span><p id="p-2342">
+Since \(P_1(0) = f(0) = 1\) and \(P'_1(0) = f'(0) = 1\), the graphs of \(P_1\) and \(f\) agree at \(x=a\) and have the same slope at \(x=0\) (which means they go in the same direction at \(x=0\)). This is why \(P_1(x)\) is a good approximation to \(f(x)\) for values of \(x\) close to \(0\).
+</p></span></span>
+</li>
+<li id="li-3078">Since \(f(x) = e^x\) is not linear, the linear approximation eventually is not a very good one. To obtain better approximations, we want to develop a different approximation that “bends” to make it more closely fit the graph of \(f\) near \(x=0\). To do so, we  add a quadratic term to \(P_1(x)\). In other words, we let
+
+<span class="displaymath" id="me-987">\[
+P_2(x) = P_1(x) + c_2x^2
+\]</span>
+ 
+for some real number \(c_2\). We need to determine the value  of \(c_2\) that makes the graph of \(P_2(x)\) best fit the graph of \(f(x)\) near \(x=0\).
+
+Remember that \(P_1(x)\) was a good linear approximation to \(f(x)\) near \(0\); this is because \(P_1(0) = f(0)\) and \(P'_1(0) = f'(0)\). It is therefore reasonable to seek a value of \(c_2\) so that
+
+<span class="displaymath" id="md-125">\begin{align*}
+P_2(0) \amp = f(0),\\
+P'_2(0) \amp = f'(0), \ \mbox{and}\\
+P''_2(0) \amp = f''(0).
+\end{align*}</span>
+ 
+Remember, we are letting \(P_2(x) = P_1(x) + c_2x^2\).
+    <ul style="list-style-type: disc;">
+<li id="li-3079">Calculate \(P_2(0)\) to show that \(P_2(0) = f(0)\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-184" id="solution-184"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-184" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2343">
+Since
+</p>
+<span class="displaymath" id="me-988">\[
+P_2(x) = P_1(x) + c_2(x)^2 = f(0) + f'(0)x + c_2x^2
+\]</span><p id="p-2344">
+we have that
+</p>
+<span class="displaymath" id="me-989">\[
+P_2(0) = 1 = f(0)
+\]</span><p id="p-2345">
+as desired.
+</p></span></span>
+</li>
+<li id="li-3080">Calculate \(P'_2(0)\) to show that \(P'_2(0) = f'(0)\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-185" id="solution-185"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-185" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2346">
+A simple calculation shows \(P'_2(x) = P'1(x) + 2c_2x\). So \(P'_2(0) = P'_1(0) = 1 = f'(0)\) as desired.
+</p></span></span>
+</li>
+<li id="li-3081">Calculate \(P''_2(x)\). Then find a value for \(c_2\) so that \(P''_2(0) = f''(0)\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-186" id="solution-186"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-186" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2347">
+A simple calculation shows \(P''_2(x) = 2c_2\). So \(P''_2(0) = 2c_2\). To have \(P''_2(0) = f''(0)\) we must have \(2c_2 = f''(0)\) or \(c_2 = \frac{f''(0)}{2} = \frac{1}{2}\).
+</p></span></span>
+</li>
+<li id="li-3082">Explain why the condition \(P''_2(0) = f''(0)\) will put an appropriate ``bend" in the graph of \(P_2\) to make \(P_2\) fit the graph of \(f\) around \(x=0\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-187" id="solution-187"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-187" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2348">
+The second derivative of a function tells us the concavity of the function. Concavity measures how the slopes of the tangent lines to the graph of the function are changing. This tells us how much bend there is in the graph. So if \(P''_2(0) = f''(0)\), then \(P_2\) will have the same bend in it at \(x=0\) as \(f\) does. This will make the graph of \(P_2\) mold to the graph of \(f\) around \(x=0\).
+</p></span></span>
+</li>
+</ul>
+</li>
+</ol></article></section><section class="subsection" id="subsection-156"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">8.5.2</span><span class="title">Taylor Polynomials</span>
+</h1></header><p id="p-2349">
+\knownindex{\lt main&gt;Taylor polynomials\lt /main&gt;}
+</p>
+<p id="p-2350">
+Preview <a href="S_8.5.Taylor.html#PA_8.5" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> illustrates the first steps in the process of approximating complicated functions with polynomials. Using this process we can approximate trigonometric, exponential, logarithmic, and other nonpolynomial functions as closely as we like (for certain values of \(x\)) with polynomials. This is extraordinarily useful in that it allows us to calculate values of these functions to whatever precision we like using only the operations of addition, subtraction, multiplication, and division, which are operations that can be easily programmed in a computer.
+</p>
+<p id="p-2351">
+We next extend the approach in Preview <a href="S_8.5.Taylor.html#PA_8.5" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> to arbitrary functions at arbitrary points. Let \(f\) be a function that has as many derivatives at a point \(x=a\) as we need. Since first learning it in <a href="S_1.8.TanLineApprox.html" alt="Section 1.8 The Tangent Line Approximation" title="Section 1.8 The Tangent Line Approximation">Section 1.8</a>, we have regularly used the linear approximation \(P_1(x)\) to \(f\) at \(x=a\), which in one sense is the best linear approximation to \(f\) near \(a\). Recall that \(P_1(x)\) is the tangent line to \(f\) at \((a,f(a))\) and is given by the formula
+</p>
+<span class="displaymath" id="me-990">\[
+P_1(x) = f(a) + f'(a)(x-a).
+\]</span><p id="p-2352">
+If we proceed as in Preview <a href="S_8.5.Taylor.html#PA_8.5" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, we then want to find the best quadratic approximation
+</p>
+<span class="displaymath" id="me-991">\[
+P_2(x) = P_1(x) + c_2(x-a)^2
+\]</span><p id="p-2353">
+so that \(P_2(x)\) more closely models \(f(x)\) near \(x=a\).
+Consider the following calculations of the values and derivatives of \(P_2(x)\):
+</p>
+<figure class="figure-like" id="figure-199">{3in}
+
+<span class="displaymath" id="md-126">\begin{align*}
+P_2(x) \amp = P_1(x) + c_2(x-a)^2\\
+P'_2(x) \amp = P'_1(x) + 2c_2(x-a)\\
+P''_2(x) \amp = 2c_2
+\end{align*}</span>
+{3in}
+
+<span class="displaymath" id="md-127">\begin{align*}
+P_2(a) \amp = P_1(a) = f(a)\\
+P'_2(a) \amp = P'_1(a) = f'(a)\\
+P''_2(a) \amp = 2c_2.
+\end{align*}</span>
+</figure><p id="p-2354">
+To make \(P_2(x)\) fit \(f(x)\) better than \(P_1(x)\), we want \(P_2(x)\) and \(f(x)\) to have the same concavity at \(x=a\). That is, we want to have
+</p>
+<span class="displaymath" id="me-992">\[
+P''_2(a) = f''(a).
+\]</span><p id="p-2355">
+This implies that
+</p>
+<span class="displaymath" id="me-993">\[
+2c_2 = f''(a)
+\]</span><p id="p-2356">
+and thus
+</p>
+<span class="displaymath" id="me-994">\[
+c_2 = \frac{f''(a)}{2}.
+\]</span><p id="p-2357">
+Therefore, the quadratic approximation \(P_2(x)\) to \(f\) centered at \(x=0\) is
+</p>
+<span class="displaymath" id="me-995">\[
+P_2(x) = f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2.
+\]</span><p id="p-2358">
+This approach extends naturally to polynomials of higher degree. In this situation, we define polynomials
+</p>
+<span class="displaymath" id="md-128">\begin{align*}
+P_3(x) \amp = P_2(x) + c_3(x-a)^3,\\
+P_4(x) \amp = P_3(x) + c_4(x-a)^4,\\
+P_5(x) \amp = P_4(x) + c_5(x-a)^5,
+\end{align*}</span><p id="p-2359">
+and so on, with the general one being
+</p>
+<span class="displaymath" id="me-996">\[
+P_n(x) = P_{n-1}(x) + c_n(x-a)^n.
+\]</span><p id="p-2360">
+The defining property of these polynomials is that for each \(n\), \(P_n(x)\) must have its value and all its first \(n\) derivatives agree with those of \(f\) at \(x = a\). In other words we require that
+</p>
+<span class="displaymath" id="me-997">\[
+P^{(k)}_n(a) = f^{(k)}(a)
+\]</span><p id="p-2361">
+for all \(k\) from 0 to \(n\).
+</p>
+<p id="p-2362">
+To see the conditions under which this happens, suppose
+</p>
+<span class="displaymath" id="me-998">\[
+P_n(x) = c_0 + c_1(x-a) + c_2(x-a)^2 + \cdots + c_n(x-a)^n.
+\]</span><p id="p-2363">
+Then
+</p>
+<span class="displaymath" id="md-129">\begin{align*}
+P^{(0)}_n(a) \amp = c_0\\
+P^{(1)}_n(a) \amp = c_1\\
+P^{(2)}_n(a) \amp = 2c_2\\
+P^{(3)}_n(a) \amp = (2)(3)c_3\\
+P^{(4)}_n(a) \amp = (2)(3)(4)c_4\\
+P^{(5)}_n(a) \amp = (2)(3)(4)(5)c_5
+\end{align*}</span><p id="p-2364">
+and, in general,
+</p>
+<span class="displaymath" id="me-999">\[
+P^{(k)}_n(a) = (2)(3)(4) \cdots (k-1)(k)c_k = k!c_k.
+\]</span><p id="p-2365">
+So having
+</p>
+<span class="displaymath" id="me-1000">\[
+P^{(k)}_n(a) = f^{(k)}(a)
+\]</span><p id="p-2366">
+means that
+</p>
+<span class="displaymath" id="me-1001">\[
+k!c_k = f^{(k)}(a)
+\]</span><p id="p-2367">
+and therefore
+</p>
+<span class="displaymath" id="me-1002">\[
+c_k = \frac{f^{(k)}(a)}{k!}
+\]</span><p id="p-2368">
+for each value of \(k\). In this expression for \(c_k\), we have found the formula for the degree \(n\) polynomial approximation of \(f\) that we seek.
+</p>
+<p id="p-2369">
+
+{
+The \(n\)th <!--Style me with CSS--><em>order Taylor polynomial</em> of \(f\) centered at \(x = a\) is given by
+</p>
+<span class="displaymath" id="md-130">\begin{align*}
+P_n(x) \amp   = \amp  f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n\\
+\amp  = \amp  \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k.
+\end{align*}</span><p id="p-2370">
+This degree \(n\) polynomial approximates \(f(x)\) near \(x=a\) and has the property that \(P_n^{(k)}(a) = f^{(k)}(a)\) for \(k = 0 \ldots n\).
+} 
+
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_8.5.1" id="Ex_8.5.1"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">8.5.1</span>
+</h5></article></a></div>
+<div id="hk-Ex_8.5.1" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-2371">
+Determine the third order Taylor polynomial for \(f(x) = e^x\), as well as the general \(n\)th order Taylor polynomial for \(f\) centered at \(x=0\).
+</p></article></div>
+<p id="p-2372">
+Solution.    
+We know that \(f'(x) = e^x\) and so \(f''(x) = e^x\) and \(f'''(x) = e^x\). Thus,
+</p>
+<span class="displaymath" id="me-1003">\[
+f(0) = f'(0) = f''(0) = f'''(0) = 1.
+\]</span><p id="p-2373">
+So the third order Taylor polynomial of \(f(x) = e^x\) centered at \(x=0\) is
+</p>
+<span class="displaymath" id="me-1004">\[
+P_3(x) = f(0) + f'(0)(x-0) + \frac{f''(0)}{2!}(x-0)^2 + \frac{f'''(0)}{3!}(x-0)^3 = 1 + x + \frac{x^2}{2} + \frac{x^3}{6}.
+\]</span><p id="p-2374">
+In general, for the exponential function \(f\) we have \(f^{(k)}(x) = e^x\) for every positive integer \(k\). Thus, the \(k\)th term in the \(n\)th order Taylor polynomial for \(f(x)\) centered at \(x=0\) is
+</p>
+<span class="displaymath" id="me-1005">\[
+\frac{f^{(k)}(0)}{k!}(x-0)^k = \frac{1}{k!}x^k.
+\]</span><p id="p-2375">
+Therefore, the \(n\)th order Taylor polynomial for \(f(x) = e^x\) centered at \(x=0\) is
+</p>
+<span class="displaymath" id="me-1006">\[
+P_n(x) = 1+x+\frac{x^2}{2!} + \cdots + \frac{1}{n!}x^n = \sum_{k=0}^n \frac{x^k}{k!}.
+\]</span>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.5.Act2" id="x8.5.Act2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.5.2</span>
+</h5></a></div>
+<div id="hk-x8.5.Act2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-2376">
+We have just seen that the \(n\)th order Taylor polynomial centered at \(a = 0\) for the exponential function \(e^x\) is
+</p>
+<span class="displaymath" id="me-1007">\[
+\sum_{k=0}^{n} \frac{x^k}{k!}.
+\]</span><p id="p-2377">
+In this activity, we determine small order Taylor polynomials for several other familiar functions, and look for general patterns that will help us find the Taylor series expansions a bit later.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-3083">Let \(f(x) = \frac{1}{1-x}\).
+    <ul style="list-style-type: disc;">
+<li id="li-3084">Calculate the first four derivatives of \(f(x)\) at \(x=0\). Then find the fourth order Taylor polynomial \(P_4(x)\) for \(\frac{1}{1-x}\) centered at 0.</li>
+<li id="li-3085">Based on your results from part (i), determine a general formula for \(f^{(k)}(0)\).</li>
+</ul>
+</li>
+<li id="li-3086">Let \(f(x) = \cos(x)\).
+    <ul style="list-style-type: disc;">
+<li id="li-3087">Calculate the first four derivatives of \(f(x)\) at \(x=0\). Then find the fourth order Taylor polynomial \(P_4(x)\) for \(\cos(x)\) centered at 0.</li>
+<li id="li-3088">Based on your results from part (i), find a general formula for \(f^{(k)}(0)\).  (Think about how \(k\) being even or odd affects the value of the \(k\)th derivative.)</li>
+</ul>
+</li>
+<li id="li-3089">Let \(f(x) = \sin(x)\).
+    <ul style="list-style-type: disc;">
+<li id="li-3090">Calculate the first four derivatives of \(f(x)\) at \(x=0\). Then find the fourth order Taylor polynomial \(P_4(x)\) for \(\sin(x)\) centered at 0.</li>
+<li id="li-3091">Based on your results from part (i), find a general formula for \(f^{(k)}(0)\).  (Think about how \(k\) being even or odd affects the value of the \(k\)th derivative.)</li>
+</ul>
+</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-285" id="hint-285"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-285" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3092">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-286" id="hint-286"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-286" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3093">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-188" id="solution-188"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-188" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-3094">\begin{thmlist}</li>
+<li id="li-3095">The first four derivatives of \(f(x)\) at \(x=0\) are
+    
+<span class="displaymath" id="md-131">\begin{align*}
+f(x) \amp = \cos(x) \amp  \hspace{0.5in} \amp  f(0) \amp = 1\\
+f'(x) \amp = -\sin(x) \amp  \hspace{0.5in} \amp  f'(0) \amp = 0\\
+f''(x) \amp = -\cos(x) \amp  \hspace{0.5in} \amp  f''(0) \amp = -1\\
+f^{(3)}(x) \amp = \sin(x) \amp  \hspace{0.5in} \amp  f^{(3)}(0) \amp = 0\\
+f^{(4)}(x) \amp = \cos(x) \amp  \hspace{0.5in} \amp  f^{(4)}(0) \amp = 1.
+\end{align*}</span>
+ 
+It appears that the odd derivatives of \(f(x)\) are all plus or minus \(\sin(x)\) and so have values of 0 at \(x=0\) and the even derivatives are \(\pm \cos(x)\) and have alternating values of 1 and \(-1\) at \(x-0\). Since the even numbers can be represented in the form \(2k\) where \(k\) is an integer we have
+
+<span class="displaymath" id="me-1008">\[
+f^{k}(0) = 0 \text{ if }  k \text{ is odd }  \ \ \ \text{ and }  \ \ \ f^{2k}(0) = (-1)^k.
+\]</span>
+</li>
+<li id="li-3096">Based on the previous part of this problem the \(n\)th order Taylor polynomial for \(\cos(x)\) is
+    
+<span class="displaymath" id="me-1009">\[
+1 - \frac{x^2}{2} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots + (-1)^{n/2}\frac{x^n}{n!}
+\]</span>
+ 
+    if \(n\) is even and
+    
+<span class="displaymath" id="me-1010">\[
+1 - \frac{x^2}{2} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots + (-1)^{(n-1)/2}\frac{x^(n-1)}{(n-1)!}
+\]</span>
+ 
+    if \(n\) is odd.
+
+    \end{thmlist}</li>
+<li id="li-3097">\begin{thmlist}</li>
+<li id="li-3098">The first four derivatives of \(f(x)\) at \(x=0\) are
+    
+<span class="displaymath" id="md-132">\begin{align*}
+f(x) \amp = \sin(x) \amp  \hspace{0.5in} \amp  f(0) \amp = 0\\
+f'(x) \amp = \cos(x) \amp  \hspace{0.5in} \amp  f'(0) \amp = 1\\
+f''(x) \amp = -\sin(x) \amp  \hspace{0.5in} \amp  f''(0) \amp = 0\\
+f^{(3)}(x) \amp = -\cos(x) \amp  \hspace{0.5in} \amp  f^{(3)}(0) \amp = -1\\
+f^{(4)}(x) \amp = \sin(x) \amp  \hspace{0.5in} \amp  f^{(4)}(0) \amp = 0.
+\end{align*}</span>
+ 
+It appears that the even derivatives of \(f(x)\) are all plus or minus \(\sin(x)\) and so have values of 0 at \(x=0\) and the odd derivatives are \(\pm \cos(x)\) and have alternating values of 1 and \(-1\) at \(x-0\). Since the odd numbers can be represented in the form \(2k+1\) where \(k\) is an integer we have
+
+<span class="displaymath" id="me-1011">\[
+f^{k}(0) = 0 \text{ if }  k \text{ is even }  \ \ \ \text{ and }  \ \ \ f^{2k+1}(0) = (-1)^k.
+\]</span>
+</li>
+<li id="li-3099">Based on the previous part of this problem the \(n\)th order Taylor polynomial for \(\sin(x)\) is
+    
+<span class="displaymath" id="me-1012">\[
+x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots + (-1)^{(n-1)/2}\frac{x^n}{n!}
+\]</span>
+ 
+    if \(n\) is odd and
+    
+<span class="displaymath" id="me-1013">\[
+x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots + (-1)^{n/2+1}\frac{x^{n-1}}{(n-1)!}
+\]</span>
+ 
+    if \(n\) is even.
+
+    \end{thmlist}</li>
+<li id="li-3100">\begin{thmlist}</li>
+<li id="li-3101">The first four derivatives of \(f(x)\) at \(x=0\) are
+    
+<span class="displaymath" id="md-133">\begin{align*}
+f(x) \amp = \frac{1}{1-x} \amp  \hspace{0.5in} \amp  f(0) \amp = 1\\
+f'(x) \amp = \frac{1}{(1-x)^2} \amp  \hspace{0.5in} \amp  f'(0) \amp = 1\\
+f''(x) \amp = \frac{2}{(1-x)^3} \amp  \hspace{0.5in} \amp  f''(0) \amp = 2\\
+f^{(3)}(x) \amp = \frac{3!}{(1-x)^4} \amp  \hspace{0.5in} \amp  f^{(3)}(0) \amp = 3!\\
+f^{(4)}(x) \amp = \frac{4!}{(1-x)^5} \amp  \hspace{0.5in} \amp  f^{(4)}(0) \amp = 4!.
+\end{align*}</span>
+ 
+It appears that the pattern is
+
+<span class="displaymath" id="me-1014">\[
+f^{(k)}(0) = k!.
+\]</span>
+</li>
+<li id="li-3102">Determine the \(n\) order Taylor polynomial for \(f(x) = \frac{1}{1-x}\) centered at \(x=0\).
+
+The \(n\)th order Taylor polynomial for \(f\) at \(x=0\) is
+
+<span class="displaymath" id="me-1015">\[
+\sum_{k=0}^n \frac{f^{(k)}}{k!} x^k = \sum_{k=0}^n \frac{k!}{k!} x^k = \sum_{k=0}^n  x^k.
+\]</span>
+ 
+This makes sense since \(f(x)\) is the sum of the geometric series with ratio \(x\), so the \(n\)th order Taylor polynomial should just be the \(n\)th partial sum of this geometric series.
+
+    \end{thmlist}</li>
+</ol></span></span><p id="p-2378">
+It is possible that an \(n\)th order Taylor polynomial is not a polynomial of degree \(n\); that is, the order of the approximation can be different from the degree of the polynomial. For example, in <a knowl="./knowl/x8.5.Act2.html" knowl-id="xref-x8.5.Act2" alt="Exercise 8.5.2 " title="Exercise 8.5.2 ">Activity 8.5.2</a> we found that the second order Taylor polynomial \(P_2(x)\) centered at 0 for \(\sin(x)\) is \(P_2(x) = x\). In this case, the second order Taylor polynomial is a degree 1 polynomial.
+</p></section><section class="subsection" id="subsection-157"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">8.5.3</span><span class="title">Taylor Series</span>
+</h1></header><p id="p-2379">
+\knownindex{\lt main&gt;Taylor series\lt /main&gt;}
+</p>
+<p id="p-2380">
+In <a knowl="./knowl/x8.5.Act2.html" knowl-id="xref-x8.5.Act2" alt="Exercise 8.5.2 " title="Exercise 8.5.2 ">Activity 8.5.2</a> we saw that the fourth order Taylor polynomial \(P_4(x)\) for \(\sin(x)\) centered at 0 is
+</p>
+<span class="displaymath" id="me-1016">\[
+P_4(x) = x - \frac{x^3}{3!}.
+\]</span><p id="p-2381">
+The pattern we found for the derivatives \(f^{(k)}(0)\) describe the higher-order Taylor polynomials, e.g.,
+</p>
+<span class="displaymath" id="me-1017">\[
+P_5(x) = x - \frac{x^3}{3!} + \frac{x^{(5)}}{5!}, \ P_7(x) = x - \frac{x^3}{3!} + \frac{x^{(5)}}{5!} - \frac{x^{(7)}}{7!}, \  P_9(x) = x - \frac{x^3}{3!} + \frac{x^{(5)}}{5!} - \frac{x^{(7)}}{7!} + \frac{x^{(9)}}{9!},
+\]</span><p id="p-2382">
+and so on. It is instructive to consider the graphical behavior of these functions; <a knowl="./knowl/F_8.5.Taylor1to9.html" knowl-id="xref-F_8.5.Taylor1to9" alt="Figure 8.5.3 " title="Figure 8.5.3 ">Figure 8.5.3</a> shows the graphs of a few of the Taylor polynomials centered at 0 for the sine function.
+</p>
+<figure class="figure-like" id="F_8.5.Taylor1to9"><img width="100%" src="images/8_5_Taylor1.png"><img width="100%" src="images/8_5_Taylor5.png"><img width="100%" src="images/8_5_Taylor7.png"><img width="100%" src="images/8_5_Taylor9.png"><figcaption><span class="heading">Figure</span><span class="codenumber">8.5.3</span>The order 1, 5, 7, and 9 Taylor polynomials centered at \(x = 0\) for \(f(x) = \sin(x)\).</figcaption></figure><p id="p-2383">
+Notice that \(P_1(x)\) is close to the sine function only for values of \(x\) that are close to 0, but as we increase the degree of the Taylor polynomial the Taylor polynomials provide a better fit to the graph of the sine function over larger intervals. This illustrates the general behavior of Taylor polynomials: for any sufficiently well-behaved function, the sequence \(\{P_n(x)\}\) of Taylor polynomials converges to the function \(f\) on larger and larger intervals (though those intervals may not necessarily increase without bound). If the Taylor polynomials ultimately converge to \(f\) on its entire domain, we write
+</p>
+<span class="displaymath" id="me-1018">\[
+f(x) = \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!}(x-a)^k.
+\]</span><article class="definition-like" id="D_8.5.Taylor_series"><h5 class="heading">
+<span class="type">Definition</span><span class="codenumber">8.5.4</span>
+</h5>
+<p id="p-2384">
+\knownindex{\lt main&gt;Taylor series\lt /main&gt;}
+Let \(f\) be a function all of whose derivatives exist at \(x=a\). The Taylor series for \(f\) centered at \(x=a\) is the series \(T_f(x)\) defined by
+</p>
+<span class="displaymath" id="me-1019">\[
+T_f(x) = \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!}(x-a)^k.
+\]</span></article><p id="p-2385">
+In the special case where \(a=0\) in <a knowl="./knowl/D_8.5.Taylor_series.html" knowl-id="xref-D_8.5.Taylor_series" alt="Definition 8.5.4 " title="Definition 8.5.4 ">Definition 8.5.4</a>, the Taylor series is also called the <!--Style me with CSS--><em>Maclaurin</em> series\knownindex{\lt main&gt;Maclaurin series\lt /main&gt;} for \(f\). From <a knowl="./knowl/Ex_8.5.1.html" knowl-id="xref-Ex_8.5.1" alt="Example 8.5.1 " title="Example 8.5.1 ">Example 8.5.1</a> we know the \(n\)th order Taylor polynomial centered at 0 for the exponential function \(e^x\); thus, the Maclaurin series for \(e^x\) is
+</p>
+<span class="displaymath" id="me-1020">\[
+\sum_{k=0}^{\infty} \frac{x^k}{k!}.
+\]</span><div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.5.Act2b" id="x8.5.Act2b"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.5.5</span>
+</h5></a></div>
+<div id="hk-x8.5.Act2b" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-2386">
+In <a knowl="./knowl/x8.5.Act2.html" knowl-id="xref-x8.5.Act2" alt="Exercise 8.5.2 " title="Exercise 8.5.2 ">Activity 8.5.2</a> we determined small order Taylor polynomials for a few familiar functions, and also found general patterns in the derivatives evaluated at 0. Use that information to write the Taylor series centered at 0 for the following functions.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-3103">\(f(x) = \frac{1}{1-x}\)</li>
+<li id="li-3104">\(f(x) = \cos(x)\) (You will need to carefully consider how to indicate that many of the coefficients are 0. Think about a general way to represent an even integer.)</li>
+<li id="li-3105">\(f(x) = \sin(x)\)  (You will need to carefully consider how to indicate that many of the coefficients are 0. Think about a general way to represent an odd integer.)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-287" id="hint-287"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-287" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3106">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-288" id="hint-288"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-288" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3107">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-189" id="solution-189"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-189" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-3108">\begin{thmlist}</li>
+<li id="li-3109">The first four derivatives of \(f(x)\) at \(x=0\) are
+    
+<span class="displaymath" id="md-134">\begin{align*}
+f(x) \amp = \cos(x) \amp  \hspace{0.5in} \amp  f(0) \amp = 1\\
+f'(x) \amp = -\sin(x) \amp  \hspace{0.5in} \amp  f'(0) \amp = 0\\
+f''(x) \amp = -\cos(x) \amp  \hspace{0.5in} \amp  f''(0) \amp = -1\\
+f^{(3)}(x) \amp = \sin(x) \amp  \hspace{0.5in} \amp  f^{(3)}(0) \amp = 0\\
+f^{(4)}(x) \amp = \cos(x) \amp  \hspace{0.5in} \amp  f^{(4)}(0) \amp = 1.
+\end{align*}</span>
+ 
+It appears that the odd derivatives of \(f(x)\) are all plus or minus \(\sin(x)\) and so have values of 0 at \(x=0\) and the even derivatives are \(\pm \cos(x)\) and have alternating values of 1 and \(-1\) at \(x-0\). Since the even numbers can be represented in the form \(2k\) where \(k\) is an integer we have
+
+<span class="displaymath" id="me-1021">\[
+f^{k}(0) = 0 \text{ if }  k \text{ is odd }  \ \ \ \text{ and }  \ \ \ f^{2k}(0) = (-1)^k.
+\]</span>
+</li>
+<li id="li-3110">Based on the previous part of this problem the \(n\)th order Taylor polynomial for \(\cos(x)\) is
+    
+<span class="displaymath" id="me-1022">\[
+1 - \frac{x^2}{2} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots + (-1)^{n/2}\frac{x^n}{n!}
+\]</span>
+ 
+    if \(n\) is even and
+    
+<span class="displaymath" id="me-1023">\[
+1 - \frac{x^2}{2} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots + (-1)^{(n-1)/2}\frac{x^(n-1)}{(n-1)!}
+\]</span>
+ 
+    if \(n\) is odd.
+
+    \end{thmlist}</li>
+<li id="li-3111">\begin{thmlist}</li>
+<li id="li-3112">The first four derivatives of \(f(x)\) at \(x=0\) are
+    
+<span class="displaymath" id="md-135">\begin{align*}
+f(x) \amp = \sin(x) \amp  \hspace{0.5in} \amp  f(0) \amp = 0\\
+f'(x) \amp = \cos(x) \amp  \hspace{0.5in} \amp  f'(0) \amp = 1\\
+f''(x) \amp = -\sin(x) \amp  \hspace{0.5in} \amp  f''(0) \amp = 0\\
+f^{(3)}(x) \amp = -\cos(x) \amp  \hspace{0.5in} \amp  f^{(3)}(0) \amp = -1\\
+f^{(4)}(x) \amp = \sin(x) \amp  \hspace{0.5in} \amp  f^{(4)}(0) \amp = 0.
+\end{align*}</span>
+ 
+It appears that the even derivatives of \(f(x)\) are all plus or minus \(\sin(x)\) and so have values of 0 at \(x=0\) and the odd derivatives are \(\pm \cos(x)\) and have alternating values of 1 and \(-1\) at \(x-0\). Since the odd numbers can be represented in the form \(2k+1\) where \(k\) is an integer we have
+
+<span class="displaymath" id="me-1024">\[
+f^{k}(0) = 0 \text{ if }  k \text{ is even }  \ \ \ \text{ and }  \ \ \ f^{2k+1}(0) = (-1)^k.
+\]</span>
+</li>
+<li id="li-3113">Based on the previous part of this problem the \(n\)th order Taylor polynomial for \(\sin(x)\) is
+    
+<span class="displaymath" id="me-1025">\[
+x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots + (-1)^{(n-1)/2}\frac{x^n}{n!}
+\]</span>
+ 
+    if \(n\) is odd and
+    
+<span class="displaymath" id="me-1026">\[
+x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots + (-1)^{n/2+1}\frac{x^{n-1}}{(n-1)!}
+\]</span>
+ 
+    if \(n\) is even.
+
+    \end{thmlist}</li>
+<li id="li-3114">\begin{thmlist}</li>
+<li id="li-3115">The first four derivatives of \(f(x)\) at \(x=0\) are
+    
+<span class="displaymath" id="md-136">\begin{align*}
+f(x) \amp = \frac{1}{1-x} \amp  \hspace{0.5in} \amp  f(0) \amp = 1\\
+f'(x) \amp = \frac{1}{(1-x)^2} \amp  \hspace{0.5in} \amp  f'(0) \amp = 1\\
+f''(x) \amp = \frac{2}{(1-x)^3} \amp  \hspace{0.5in} \amp  f''(0) \amp = 2\\
+f^{(3)}(x) \amp = \frac{3!}{(1-x)^4} \amp  \hspace{0.5in} \amp  f^{(3)}(0) \amp = 3!\\
+f^{(4)}(x) \amp = \frac{4!}{(1-x)^5} \amp  \hspace{0.5in} \amp  f^{(4)}(0) \amp = 4!.
+\end{align*}</span>
+ 
+It appears that the pattern is
+
+<span class="displaymath" id="me-1027">\[
+f^{(k)}(0) = k!.
+\]</span>
+</li>
+<li id="li-3116">Determine the \(n\) order Taylor polynomial for \(f(x) = \frac{1}{1-x}\) centered at \(x=0\).
+
+The \(n\)th order Taylor polynomial for \(f\) at \(x=0\) is
+
+<span class="displaymath" id="me-1028">\[
+\sum_{k=0}^n \frac{f^{(k)}}{k!} x^k = \sum_{k=0}^n \frac{k!}{k!} x^k = \sum_{k=0}^n  x^k.
+\]</span>
+ 
+This makes sense since \(f(x)\) is the sum of the geometric series with ratio \(x\), so the \(n\)th order Taylor polynomial should just be the \(n\)th partial sum of this geometric series.
+
+    \end{thmlist}</li>
+</ol></span></span><p id="p-2387">
+The next activity further considers the important issue of the \(x\)-values for which the Taylor series of a function converges to the function itself.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.5.Act3" id="x8.5.Act3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.5.6</span>
+</h5></a></div>
+<div id="hk-x8.5.Act3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><ol style="list-style-type: decimal;">
+<li id="li-3117">Plot the graphs of several of the Taylor polynomials centered at 0 (of order at least 5) for \(e^x\) and convince yourself that these Taylor polynomials converge to \(e^x\) for every value of \(x\).</li>
+<li id="li-3118">Draw the graphs of several of the Taylor polynomials centered at 0 (of order at least 6) for \(\cos(x)\) and convince yourself that these Taylor polynomials converge to \(\cos(x)\) for every value of \(x\). Write the Taylor series centered at 0 for \(\cos(x)\).</li>
+<li id="li-3119">Draw the graphs of several of the Taylor polynomials centered at 0 for \(\frac{1}{1-x}\). Based on your graphs, for what values of \(x\)  do these Taylor polynomials appear to converge to \(\frac{1}{1-x}\)? How is this situation different from what we observe with \(e^x\) and \(\cos(x)\)?  In addition, write the Taylor series centered at 0 for \(\frac{1}{1-x}\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-289" id="hint-289"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-289" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3120">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-290" id="hint-290"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-290" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3121">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-190" id="solution-190"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-190" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-3122">The graphs of the 10th (magenta), 20th (blue), and 30th (green) Taylor polynomials centered at 0 for \(e^x\) are shown below along with the graph of \(f(x)\) in red:
+\resizebox{!}{1.75in}{<img width="100%" src="images/8_5_exp_graphs.png"> }  
+It appears that as we increase the order of the Taylor polynomials, they fit the graph of \(f\) better and better over larger intervals. So it looks like the Taylor polynomials converge to \(e^x\) for every value of \(x\).</li>
+<li id="li-3123">The graphs of the 10th (magenta), 20th (blue), and 30th (green) Taylor polynomials centered at 0 for \(\cos(x)\) are shown below along with the graph of \(f(x)\) in red:
+\resizebox{!}{1.75in}{<img width="100%" src="images/8_5_cos_graphs.png"> } 
+It appears that as we increase the order of the Taylor polynomials, they fit the graph of \(f\) better and better over larger intervals. So it looks like the Taylor polynomials converge to \(\cos(x)\) for every value of \(x\).
+Based on the \(n\)th order Taylor polynomials we found earlier for \(\cos(x)\), the Taylor series for \(f(x)\) centered at 0 is
+
+<span class="displaymath" id="me-1029">\[
+\sum_{k=0}^{\infty} \frac{x^{2k}}{(2k)!}.
+\]</span>
+</li>
+<li id="li-3124">The graphs of the 10th (magenta), 20th (blue), and 30th (green) Taylor polynomials centered at 0 for \(\frac{1}{1-x}\) are shown below along with the graph of \(f(x)\) in red:
+\resizebox{!}{1.75in}{<img width="100%" src="images/8_5_1over1minusx_graphs.png"> } 
+
+It appears that as we increase the order of the Taylor polynomials, they only fit the graph of \(f\) better and better over the interval \((-1,1)\) and appear to diverge outside that interval. So it looks like the Taylor polynomials converge to \(\frac{1}{1-x}\) only on the interval \((-1,1)\).
+
+Based on the \(n\)th order Taylor polynomials we found earlier for \(\frac{1}{1-x}\), the Taylor series for \(f(x)\) centered at 0 is
+
+<span class="displaymath" id="me-1030">\[
+\sum_{k=0}^{\infty} x^k.
+\]</span>
+</li>
+</ol></span></span><p id="p-2388">
+The Maclaurin series for \(e^x\), \(\sin(x)\), \(\cos(x)\), and \(\frac{1}{1-x}\) will be used frequently, so we should be certain to know and recognize them well.
+</p></section><section class="subsection" id="subsection-158"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">8.5.4</span><span class="title">The Interval of Convergence of a Taylor Series</span>
+</h1></header><p id="p-2389">
+\knownindex{\lt main&gt;Taylor series\lt /main&gt;\lt sub&gt;interval of convergence\lt /sub&gt;} \knownindex{\lt main&gt;interval of convergence\lt /main&gt;}
+</p>
+<p id="p-2390">
+In the previous section (in <a knowl="./knowl/F_8.5.Taylor1to9.html" knowl-id="xref-F_8.5.Taylor1to9" alt="Figure 8.5.3 " title="Figure 8.5.3 ">Figure 8.5.3</a> and <a knowl="./knowl/x8.5.Act3.html" knowl-id="xref-x8.5.Act3" alt="Exercise 8.5.6 " title="Exercise 8.5.6 ">Activity 8.5.6</a>) we observed that the Taylor polynomials centered at 0 for \(e^x\), \(\cos(x)\), and \(\sin(x)\) converged to these functions for all values of \(x\) in their domain, but that the Taylor polynomials centered at 0 for \(\frac{1}{1-x}\) converged to \(\frac{1}{1-x}\) for only some values of \(x\). In fact, the Taylor polynomials centered at 0 for \(\frac{1}{1-x}\) converge to \(\frac{1}{1-x}\) on the interval \((-1,1)\) and diverge for all other values of \(x\). So the Taylor series for a function \(f(x)\) does not need to converge for all values of \(x\) in the domain of \(f\).
+</p>
+<p id="p-2391">
+Our observations to date suggest two natural questions: can we determine the values of \(x\) for which a given Taylor series converges? Moreover, given the Taylor series for a function \(f\), does it actually converge to \(f(x)\) for those values of \(x\) for which the Taylor series converges?
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_8.5.2" id="Ex_8.5.2"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">8.5.7</span>
+</h5></article></a></div>
+<div id="hk-Ex_8.5.2" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-2392">
+Graphical evidence suggests that the Taylor series centered at 0 for \(e^x\) converges for all values of \(x\). To verify this, use the Ratio Test to determine all values of \(x\) for which the Taylor series
+</p>
+<span class="displaymath" id="eq_8.5.exponential">\begin{equation}
+ \sum_{k=0}^{\infty} \frac{x^k}{k!}
+\label{eq_8.5.exponential}\tag{8.5.4}\end{equation}</span><p id="p-2393">
+converges absolutely.
+</p></article></div>
+<p id="p-2394">
+Solution.    
+In previous work, we used the Ratio Test on series of numbers that did not involve a variable; recall, too, that the Ratio Test only applies to series of nonnegative terms. In this example, we have to address the presence of the variable \(x\). Because we are interested in absolute convergence, we apply the Ratio Test to the series
+</p>
+<span class="displaymath" id="me-1031">\[
+\sum_{k=0}^{\infty} \left| \frac{x^k}{k!} \right| = \sum_{k=0}^{\infty} \frac{| x |^k}{k!}.
+\]</span><p id="p-2395">
+Now, observe that
+</p>
+<span class="displaymath" id="md-137">\begin{align*}
+\lim_{k \to \infty} \frac{a_{k+1}}{a_k}   \amp  = \lim_{k \to \infty} \frac{\frac{| x |^{k+1}}{(k+1)!} }{ \frac{| x |^k}{k} }\\
+\amp = \lim_{k \to \infty} \frac{| x |^{k+1}k!}{ | x |^{k}(k+1)! }\\
+\amp = \lim_{k \to \infty} \frac{| x |}{k+1}\\
+\amp = 0
+\end{align*}</span><p id="p-2396">
+for any value of \(x\). So the Taylor series <a knowl="./knowl/eq_8.5.exponential.html" knowl-id="xref-eq_8.5.exponential" alt="Equation 8.5.4 " title="Equation 8.5.4 ">(8.5.4)</a> converges absolutely for every value of \(x\), and thus converges for every value of \(x\).
+</p>\hspace{5.0in}<p id="p-2397">
+One key question remains: while the Taylor series for \(e^x\) converges for all \(x\), what we have done does not tell us that this Taylor series actually converges to \(e^x\) for each \(x\). We'll return to this question when we consider the error in a Taylor approximation near the end of this section.
+</p>
+<p id="p-2398">
+We can apply the main idea from <a knowl="./knowl/Ex_8.5.2.html" knowl-id="xref-Ex_8.5.2" alt="Example 8.5.7 " title="Example 8.5.7 ">Example 8.5.7</a> in general. To determine the values of \(x\) for which a Taylor series
+</p>
+<span class="displaymath" id="me-1032">\[
+\sum_{k=0}^{\infty} c_k (x-a)^k,
+\]</span><p id="p-2399">
+centered at \(x = a\) will converge, we apply the Ratio Test with \(a_k = | c_k (x-a)^k |\) and recall that the series to which the Ratio Test is applied converges if \(\lim_{k \to \infty} \frac{a_{k+1}}{a_k} \lt  1\).
+</p>
+<p id="p-2400">
+Observe that
+</p>
+<span class="displaymath" id="me-1033">\[
+\frac{a_{k+1}}{{a_k}} = | x-a | \frac{| c_{k+1} |}{| c_{k} |},
+\]</span><p id="p-2401">
+so when we apply the Ratio Test, we get that
+</p>
+<span class="displaymath" id="me-1034">\[
+\lim_{k \to \infty} \frac{a_{k+1}}{a_k} = \lim_{k \to \infty} |x-a| \frac{c_{k+1}}{c_k}.
+\]</span><p id="p-2402">
+Note further that \(c_k = \frac{f^{(k)}(a)}{k!}\), and say that
+</p>
+<span class="displaymath" id="me-1035">\[
+\lim_{k \to \infty} \frac{c_{k+1}}{c_k} = L.
+\]</span><p id="p-2403">
+Thus, we have found that
+</p>
+<span class="displaymath" id="me-1036">\[
+\lim_{k \to \infty} \frac{a_{k+1}}{a_k} = |x-a| \cdot L.
+\]</span><p id="p-2404">
+There are three important possibilities for \(L\): \(L\) can be 0, a finite positive value, or infinite. Based on this value of \(L\), we can therefore determine for which values of \(x\) the original Taylor series converges.
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-3125">If \(L = 0\), then the Taylor series converges on \((-\infty, \infty)\).</li>
+<li id="li-3126">If \(L\) is infinite, then the Taylor series converges only at \(x = a\).</li>
+<li id="li-3127">If \(L\) is finite and nonzero, then the Taylor series converges absolutely for all \(x\) that satisfy
+
+<span class="displaymath" id="me-1037">\[
+|x-a| \cdot L \lt  1.
+\]</span>
+ 
+In other words, the series converges absolutely for all \(x\) such that 
+
+<span class="displaymath" id="me-1038">\[
+|x-a| \lt  \frac{1}{L},
+\]</span>
+ 
+which is also the interval
+
+<span class="displaymath" id="me-1039">\[
+\left(a-\frac{1}{L}, a+\frac{1}{L}\right).
+\]</span>
+ 
+Because the Ratio Test is inconclusive when the \(|x-a| \cdot L = 1\), the endpoints \(a \pm \frac{1}{L}\) have to be checked separately.</li>
+</ul>
+<p id="p-2405">
+It is important to notice that the set of \(x\) values at which a Taylor series converges is always an interval centered at \(x=a\). For this reason, the set on which a Taylor series converges is called the <!--Style me with CSS--><em>interval of convergence</em>. Half the length of the interval of convergence is called the <!--Style me with CSS--><em>radius of convergence</em>\knownindex{\lt main&gt;Taylor series\lt /main&gt;\lt sub&gt;radius of convergence\lt /sub&gt;}. If the interval of convergence of a Taylor series is infinite, then we say that the radius of convergence is infinite.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.5.Act4" id="x8.5.Act4"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.5.8</span>
+</h5></a></div>
+<div id="hk-x8.5.Act4" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><ol style="list-style-type: decimal;">
+<li id="li-3128">Use the Ratio Test to explicitly determine the interval of convergence of the Taylor series for \(f(x) = \frac{1}{1-x}\) centered at \(x=0\).</li>
+<li id="li-3129">Use the Ratio Test to explicitly determine the interval of convergence of the Taylor series for \(f(x) = \cos(x)\) centered at \(x=0\).</li>
+<li id="li-3130">Use the Ratio Test to explicitly determine the interval of convergence of the Taylor series for \(f(x) = \sin(x)\) centered at \(x=0\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-291" id="hint-291"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-291" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3131">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-292" id="hint-292"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-292" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3132">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-191" id="solution-191"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-191" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-3133">Using the Ratio Test with the \(k\)th term \(\frac{|x|^{2k}}{(2k)!}\) we get
+
+<span class="displaymath" id="md-138">\begin{align*}
+\lim_{k \to \infty} \frac{ \frac{|x|^{2(k+1)}}{(2(k+1))!} }{ \frac{|x|^{2k}}{(2k)!} } \amp = \lim_{k \to \infty} \frac{|x|^{2(k+1)}(2k)!}{|x|^{2k}(2(k+1))!}\\
+\amp = \lim_{k \to \infty} \frac{|x|^{2}}{(2k+2)(2k+1)}\\
+\amp = 0.
+\end{align*}</span>
+ 
+So the interval of convergence of the Taylor series for \(f(x) = \cos(x)\) centered at \(x=0\) is \((-\infty, \infty)\).</li>
+<li id="li-3134">Using the Ratio Test with the \(k\)th term \(\frac{|x|^{2k+1}}{(2k+1)!}\) we get
+
+<span class="displaymath" id="md-139">\begin{align*}
+\lim_{k \to \infty} \frac{ \frac{|x|^{2(k+1)+1}}{(2(k+1)+1)!} }{ \frac{|x|^{2k+1}}{(2k+1)!} } \amp = \lim_{k \to \infty} \frac{|x|^{2(k+1)+1}(2k+1)!}{|x|^{2k+1}(2(k+1)+1)!}\\
+\amp = \lim_{k \to \infty} \frac{|x|^{2}}{(2k+3)(2k+2)}\\
+\amp = 0.
+\end{align*}</span>
+ 
+So the interval of convergence of the Taylor series for \(f(x) = \sin(x)\) centered at \(x=0\) is \((-\infty, \infty)\).</li>
+<li id="li-3135">Using the Ratio Test with the \(k\)th term \(|x|^{k}\) we get
+
+<span class="displaymath" id="me-1040">\[
+\lim_{k \to \infty} \frac{ |x|^{k+1} }{ |x|^{k} } = \lim_{k \to \infty} |x| = |x|,
+\]</span>
+ 
+So the series \(\ds \sum_{k=0}^{\infty} x^k\) converges absolutely when \(|x| \lt  1\) or for \(-1 \lt  x \lt  1\) and diverges when \(|x| &gt; 1\). Since the Ratio Test doesn't tell us what happens when \(x=1\), we need to check the endpoints separately.
+<ul style="list-style-type: disc;">
+<li id="li-3136">When \(x=1\) we have the series \(\sum_{k=0}^{\infty} 1\) which diverges since \(\lim_{k \to \infty} 1 \neq 0\).</li>
+<li id="li-3137">When \(x=-1\) we have the series \(\sum_{k=0}^{\infty} (-1)^k\) which diverges since \(\lim_{k \to \infty} (-1)^k\) does not exist.</li>
+</ul>  
+Therefore, the interval of convergence of the Taylor series for \(f(x) = \frac{1}{1-x}\) centered at \(x=0\) is \((-1,1)\).</li>
+</ol></span></span><p id="p-2406">
+The Ratio Test tells us how we can determine the set of \(x\) values for which a Taylor series converges absolutely. However, just because a Taylor series for a function \(f\) converges, we cannot be certain that the Taylor series actually converges to \(f(x)\) on its interval of convergence. To show why and where a Taylor series does in fact converge to the function \(f\), we next consider the error that is present in Taylor polynomials.
+</p></section><section class="subsection" id="subsection-159"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">8.5.5</span><span class="title">Error Approximations for Taylor Polynomials</span>
+</h1></header><p id="p-2407">
+\knownindex{\lt main&gt;Taylor polynomial\lt /main&gt;\lt sub&gt;error\lt /sub&gt;}
+</p>
+<p id="p-2408">
+We now know how to find Taylor polynomials for functions such as \(\sin(x)\), as well as how to determine the interval of convergence of the corresponding Taylor series. We next develop an error bound that will tell us how well an \(n\)th order Taylor polynomial \(P_n(x)\) approximates its generating function \(f(x)\). This error bound will also allow us to determine whether a Taylor series on its interval of convergence actually equals the function \(f\) from which the Taylor series is derived. Finally, we will be able to use the error bound to determine the order of the Taylor polynomial \(P_n(x)\) for a function \(f\) that we need to ensure that \(P_n(x)\) approximates \(f(x)\) to any desired degree of accuracy.
+</p>
+<p id="p-2409">
+In all of this, we need to compare \(P_n(x)\) to \(f(x)\). For this argument, we assume throughout that we center our approximations at 0 (a similar argument holds for approximations centered at \(a\)). We define the exact error, \(E_n(x)\), that results from approximating \(f(x)\) with \(P_n(x)\) by
+</p>
+<span class="displaymath" id="me-1041">\[
+E_n(x) = f(x) - P_n(x).
+\]</span><p id="p-2410">
+We are particularly interested in \(|E_n(x)|\), the distance between \(P_n\) and \(f\). Note that since
+</p>
+<span class="displaymath" id="me-1042">\[
+P^{(k)}_n(0) = f^{(k)}(0)
+\]</span><p id="p-2411">
+for \(0 \leq k \leq n\), we know that
+</p>
+<span class="displaymath" id="me-1043">\[
+E^{(k)}_n(0) = 0
+\]</span><p id="p-2412">
+for \(0 \leq k \leq n\). Furthermore, since \(P_n(x)\) is a polynomial of degree less than or equal to \(n\), we know that
+</p>
+<span class="displaymath" id="me-1044">\[
+P_n^{(n+1)}(x) = 0.
+\]</span><p id="p-2413">
+Thus, since \(E^{(n+1)}_n(x) = f^{(n+1)}(x) - P_n^{(n+1)}(x)\), it follows that
+</p>
+<span class="displaymath" id="me-1045">\[
+E^{(n+1)}_n(x) = f^{(n+1)}(x)
+\]</span><p id="p-2414">
+for all \(x\).
+</p>
+<p id="p-2415">
+Suppose that we want to approximate \(f(x)\) at a number \(c\) close to 0 using \(P_n(c)\). If we assume \(|f^{(n+1)}(t)|\) is bounded by some number \(M\) on \([0, c]\), so that
+</p>
+<span class="displaymath" id="me-1046">\[
+\left|f^{(n+1)}(t)\right| \leq M
+\]</span><p id="p-2416">
+for all \(0 \leq t \leq c\), then we can say that
+</p>
+<span class="displaymath" id="me-1047">\[
+\left|E^{(n+1)}_n(t)\right| = \left|f^{(n+1)}(t)\right| \leq M
+\]</span><p id="p-2417">
+for all \(t\) between 0 and \(c\). Equivalently,
+</p>
+<span class="displaymath" id="E_ErrorIneq">\begin{equation}
+ -M \leq E^{(n+1)}_n(t) \leq M
+\label{E_ErrorIneq}\tag{8.5.5}\end{equation}</span><p id="p-2418">
+on [0, c]. Next, we integrate the three terms in the inequality <a knowl="./knowl/E_ErrorIneq.html" knowl-id="xref-E_ErrorIneq" alt="Equation 8.5.5 " title="Equation 8.5.5 ">(8.5.5)</a> from \(t = 0\) to \(t = x\), and thus find that
+</p>
+<span class="displaymath" id="me-1048">\[
+\int_0^x -M \ dt \leq \int_0^x E^{(n+1)}_n(t) \ dt \leq \int_0^x M \ dt
+\]</span><p id="p-2419">
+for every value of \(x\) in \([0, c]\). Since \(E^{(n)}_n(0) = 0\), the First FTC tells us that
+</p>
+<span class="displaymath" id="me-1049">\[
+-Mx \leq E^{(n)}_n(x) \leq Mx
+\]</span><p id="p-2420">
+for every \(x\) in \([0, c]\).
+</p>
+<p id="p-2421">
+Integrating the most recent inequality, we obtain
+</p>
+<span class="displaymath" id="me-1050">\[
+\int_0^x -Mt \ dt \leq \int_0^x E^{(n)}_n(t) \ dt \leq \int_0^x Mt \ dt
+\]</span><p id="p-2422">
+and thus
+</p>
+<span class="displaymath" id="me-1051">\[
+-M\frac{x^2}{2} \leq E^{(n-1)}_n(x) \leq M\frac{x^2}{2}
+\]</span><p id="p-2423">
+for all \(x\) in \([0, c]\).
+</p>
+<p id="p-2424">
+Integrating \(n\) times, we arrive at
+</p>
+<span class="displaymath" id="me-1052">\[
+-M\frac{x^{n+1}}{(n+1)!} \leq E_n(x) \leq M\frac{x^{n+1}}{(n+1)!}
+\]</span><p id="p-2425">
+for all \(x\) in \([0, c]\). This enables us to conclude that
+</p>
+<span class="displaymath" id="me-1053">\[
+\left|E_n(x)\right| \leq M\frac{|x|^{n+1}}{(n+1)!}
+\]</span><p id="p-2426">
+for all \(x\) in \([0, c]\), which shows an important bound on the approximation's error, \(E_n\).
+</p>
+<p id="p-2427">
+Our work above was based on the approximation centered at \(a = 0\); the argument may be generalized to hold for any value of \(a\), which results in the following theorem.
+</p>
+<p id="p-2428">
+
+{
+The Lagrange Error Bound for \(P_n(x)\).\knownindex{\lt main&gt;Lagrange error bound\lt /main&gt;} Let \(f\) be a continuous function with \(n+1\) continuous derivatives. Suppose that \(M\) is a positive real number such that \(\left|f^{(n+1)}(x)\right| \le M\) on the interval \([a, c]\). If \(P_n(x)\) is the \(n\)th order Taylor polynomial for \(f(x)\) centered at \(x=a\), then
+</p>
+<span class="displaymath" id="me-1054">\[
+\left|P_n(c) - f(c)\right| \leq M\frac{|c-a|^{n+1}}{(n+1)!}.
+\]</span><p id="p-2429">
+} 
+
+</p>
+<p id="p-2430">
+This error bound may now be used to tell us important information about Taylor polynomials and Taylor series, as we see in the following examples and activities.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_8.5.3" id="Ex_8.5.3"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">8.5.9</span>
+</h5></article></a></div>
+<div id="hk-Ex_8.5.3" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-2431">
+Determine how well the 10th order Taylor polynomial \(P_{10}(x)\) for \(\sin(x)\), centered at 0, approximates \(\sin(2)\).
+</p></article></div>
+<p id="p-2432">
+Solution.    
+To answer this question we use \(f(x) = \sin(x)\), \(c = 2\), \(a=0\), and \(n = 10\) in the Lagrange error bound formula. To use the bound, we also need to find an appropriate value for \(M\). Note that the derivatives of \(f(x) = \sin(x)\) are all equal to \(\pm \sin(x)\) or \(\pm \cos(x)\). Thus,
+</p>
+<span class="displaymath" id="me-1055">\[
+\left| f^{(n+1)}(x) \right| \leq 1
+\]</span><p id="p-2433">
+for any \(n\) and \(x\). Therefore, we can choose \(M\) to be 1. Then
+</p>
+<span class="displaymath" id="me-1056">\[
+\left|P_{10}(2) - f(2)\right| \leq (1)\frac{|2-0|^{11}}{(11)!} = \frac{2^{11}}{(11)!} \approx 0.00005130671797.
+\]</span><p id="p-2434">
+So \(P_{10}(2)\) approximates \(\sin(2)\) to within at most 0.00005130671797. A computer algebra system tells us that
+</p>
+<span class="displaymath" id="me-1057">\[
+P_{10}(2) \approx 0.9093474427 \ \ \text{ and }  \ \ \sin(2) \approx 0.9092974268
+\]</span><p id="p-2435">
+with an actual difference of about 0.0000500159.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.5.Act5" id="x8.5.Act5"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.5.10</span>
+</h5></a></div>
+<div id="hk-x8.5.Act5" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-2436">
+Let \(P_n(x)\) be the \(n\)th order Taylor polynomial for \(\sin(x)\) centered at \(x=0\). Determine how large we need to choose \(n\) so that \(P_n(2)\) approximates \(\sin(2)\) to 20 decimal places.
+</p></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-293" id="hint-293"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-293" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3138">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-294" id="hint-294"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-294" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3139">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-192" id="solution-192"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-192" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2437">
+In this example, if we can find a value of \(n\) so that
+</p>
+<span class="displaymath" id="me-1058">\[
+ M\frac{|2-0|^{n+1}}{(n+1)!} \lt  10^{-20}
+\]</span><p id="p-2438">
+then we will have
+</p>
+<span class="displaymath" id="me-1059">\[
+|P_n(2) - f(2)| \leq M\frac{|2-0|^{n+1}}{(n+1)!} \lt  10^{-20}.
+\]</span><p id="p-2439">
+Again we use \(f(x) = \sin(x)\), \(c = 2\), \(a=0\), and \(M = 1\) from the previous example. So we need to find \(n\) to make
+</p>
+<span class="displaymath" id="me-1060">\[
+\frac{2^{n+1}}{(n+1)!} \leq 10^{-20}.
+\]</span><p id="p-2440">
+There is no good way to solve equations involving factorials, so we simply use trial and error, evaluating \(\frac{2^{n+1}}{(n+1)!}\) at different values of \(n\) until we get one we need.
+</p>
+<figure class="figure-like" id="table-54">
+\(n\)     \amp \(\frac{2^{n+1}}{(n+1)!}\) 
+10      \amp \(5.130671797 \times 10^{-5}\) 
+20      \amp \(4.104743250 \times 10^{-14}\) 
+25      \amp \(1.664028884 \times 10^{-19}\) 
+26      \amp \(1.232613988 \times 10^{-20}\) 
+27      \amp \(8.804385630 \times 10^{-22}\) </figure><p id="p-2441">
+So we need to use an \(n\) of at least 27 to ensure accuracy to 20 decimal places.
+</p>
+<p id="p-2442">
+A computer algebra system gives
+</p>
+<span class="displaymath" id="me-1061">\[
+P_{27}(2) \approx 0.9092974268256816953960 \ \ \text{ and }  \sin(2) \approx 0.9092974268256816953960
+\]</span><p id="p-2443">
+and we can see that these agree to 20 places.
+</p></span></span>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_8.5.4" id="Ex_8.5.4"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">8.5.11</span>
+</h5></article></a></div>
+<div id="hk-Ex_8.5.4" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-2444">
+Show that the Taylor series for \(\sin(x)\) actually converges to \(\sin(x)\) for all \(x\).
+</p></article></div>
+<p id="p-2445">
+Solution.    
+Recall from the previous example that since \(f(x) = \sin(x)\), we know
+</p>
+<span class="displaymath" id="me-1062">\[
+\left| f^{(n+1)}(x) \right| \leq 1
+\]</span><p id="p-2446">
+for any \(n\) and \(x\). This allows us to choose \(M = 1\) in the Lagrange error bound formula. Thus,
+</p>
+<span class="displaymath" id="E_ErrorIneqSine">\begin{equation}
+ |P_n(x) - \sin(x)| \leq \frac{|x|^{n+1}}{(n+1)!}
+\label{E_ErrorIneqSine}\tag{8.5.6}\end{equation}</span><p id="p-2447">
+for every \(x\).
+</p>
+<p id="p-2448">
+We showed in earlier work with the Taylor series \(\ds \sum_{k=0}^{\infty} \frac{x^k}{k!}\) converges for every value of \(x\). Since the terms of any convergent series must approach zero, it follows that
+</p>
+<span class="displaymath" id="me-1063">\[
+\lim_{n \to \infty} \frac{x^{n+1}}{(n+1)!} = 0
+\]</span><p id="p-2449">
+for every value of \(x\). Thus, taking the limit as \(n \to \infty\) in the inequality <a knowl="./knowl/E_ErrorIneqSine.html" knowl-id="xref-E_ErrorIneqSine" alt="Equation 8.5.6 " title="Equation 8.5.6 ">(8.5.6)</a>, it follows that
+</p>
+<span class="displaymath" id="me-1064">\[
+\lim_{n \to \infty} |P_n(x) - \sin(x)| = 0.
+\]</span><p id="p-2450">
+As a result, we can now write
+</p>
+<span class="displaymath" id="me-1065">\[
+\sin(x) = \sum_{n=0}^{\infty} \frac{(-1)^nx^{2n+1}}{(2n+1)!}
+\]</span><p id="p-2451">
+for every real number \(x\).
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.5.Act6" id="x8.5.Act6"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.5.12</span>
+</h5></a></div>
+<div id="hk-x8.5.Act6" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><ol style="list-style-type: decimal;">
+<li id="li-3140">Show that the Taylor series centered at 0 for \(\cos(x)\) converges to \(\cos(x)\) for every real number \(x\).</li>
+<li id="li-3141">Next we consider the Taylor series for \(e^x\).
+    <ul style="list-style-type: disc;">
+<li id="li-3142">Show that the Taylor series centered at 0 for \(e^x\) converges to \(e^x\) for every nonnegative value of \(x\).</li>
+<li id="li-3143">Show that the Taylor series centered at 0 for \(e^x\) converges to \(e^x\) for every negative value of \(x\).</li>
+<li id="li-3144">Explain why the Taylor series centered at 0 for \(e^x\) converges to \(e^x\) for every real number \(x\). Recall that we earlier showed that the Taylor series centered at 0 for \(e^x\) converges for all \(x\), and we have now completed the argument that the Taylor series for \(e^x\) actually converges to \(e^x\) for all \(x\).</li>
+</ul>
+</li>
+<li id="li-3145">Let \(P_n(x)\) be the \(n\)th order Taylor polynomial for \(e^x\) centered at 0. Find a value of \(n\) so that \(P_n(5)\) approximates \(e^5\) correct to 8 decimal places.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-295" id="hint-295"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-295" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-3146">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-296" id="hint-296"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-296" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-3147">Since the derivatives of \(\cos(x)\) are all either \(\pm \cos(x)\) or \(\pm \sin(x)\), we see that all of the derivatives of \(\cos(x)\) are bounded above by 1. If \(P_n(x)\) is the \(n\)th order Taylor polynomial for \(\cos(x)\), then for any \(x\) we have 
+
+<span class="displaymath" id="me-1066">\[
+\left|P_n(x) - f(x)\right| \leq (1)\frac{|x|^{n+1}}{(n+1)!}.
+\]</span>
+ 
+Since 
+
+<span class="displaymath" id="me-1067">\[
+\lim_{n \to \infty} \frac{|x|^{n+1}}{(n+1)!} = 0,
+\]</span>
+ 
+we conclude that \(P_n(x) \to f(x)\) as \(n \to \infty\) for all \(x\) and the Taylor series for \(\cos(x)\) converges to \(\cos(x)\) for every real number \(x\).</li>
+<li id="li-3148">\begin{alphalist2}</li>
+<li id="li-3149">Let \(c\) be a nonnegative number. The derivatives of \(e^x\) are all equal to \(e^x\). Now \(e^x\) is an increasing function so \(e^x \lt  e^c\) for all \(x\) in the interval \([0,c]\). So if \(P_n(x)\) is the \(n\)th order Taylor polynomial centered at 0 for \(e^x\), then for any \(x\) in \([0,c]\) we have
+
+<span class="displaymath" id="me-1068">\[
+\left|P_n(x) - f(x)\right| \leq 1\frac{e^c|x|^{n+1}}{(n+1)!}.
+\]</span>
+ 
+Since
+
+<span class="displaymath" id="me-1069">\[
+\lim_{n \to \infty} e^c\frac{|x|^{n+1}}{(n+1)!} = e^c\lim_{n \to \infty} \frac{|x|^{n+1}}{(n+1)!} = 0,
+\]</span>
+ 
+we conclude that \(P_n(x) \to f(x)\) as \(n \to \infty\) for all nonnegative \(x\).</li>
+<li id="li-3150">Let \(c\) be a negative number. The derivatives of \(e^x\) are all equal to \(e^x\). Now \(e^x\) is an increasing function so \(e^x \lt  1\) for all \(x\) in the interval \([c,0]\). So if \(P_n(x)\) is the \(n\)th order Taylor polynomial centered at 0 for \(e^x\), then for any \(x\) in \([c,0]\) we have
+
+<span class="displaymath" id="me-1070">\[
+\left|P_n(x) - f(x)\right| \leq 1\frac{(1)|x|^{n+1}}{(n+1)!}.
+\]</span>
+ 
+Since
+
+<span class="displaymath" id="me-1071">\[
+\lim_{n \to \infty} \frac{|x|^{n+1}}{(n+1)!} = 0,
+\]</span>
+ 
+we conclude that \(P_n(x) \to f(x)\) as \(n \to \infty\) for all negative \(x\).</li>
+<li id="li-3151">Since the Taylor series centered at 0 for \(e^x\) converges to \(e^x\) for all nonnegative and all negative numbers, we conclude that the Taylor series centered at 0 for \(e^x\) converges to \(e^x\) for all real numbers \(x\).
+    \end{alphalist2}</li>
+<li id="li-3152">Since \(e^x\) is increasing on \([0,5]\) we know that \(e^x \lt  e^5\) on \([0,5]\). Now \(e^5 \lt  243\), so 
+
+<span class="displaymath" id="me-1072">\[
+\left|P_n(5) - e^5\right| \leq 243\frac{|5|^{n+1}}{(n+1)!}.
+\]</span>
+ 
+We want a value of \(n\) that makes this error term less than \(10^{-8}\). Testing various values of \(n\) gives us 
+
+<span class="displaymath" id="me-1073">\[
+243\frac{|5|^{28+1}}{(28+1)!} \approx 5.119146745 \times 10^{-9}
+\]</span>
+ 
+so we can choose \(n=28\). A computer algebra system shows that \(P_{28}(5) \approx 148.413159102551\) while \(e^5 \approx 148.413159102577\) and we can see that these two approximations agree to 8 decimal places.</li>
+</ol></span></span><p id="p-2452">
+\item We can use Taylor polynomials to approximate complicated functions. This allows us to approximate values of complicated functions using only addition, subtraction, multiplication, and division of real numbers. The \(n\)th order Taylor polynomial centered at \(x=a\) of a function \(f\) is
+</p>
+<span class="displaymath" id="md-140">\begin{align*}
+P_n(x) \amp   = \amp  f(a) + f'(a)(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \cdots + \frac{f^{(n)}(a)}{n!}(x-a)^n\\
+\amp  = \amp  \sum_{k=0}^n \frac{f^{(k)}(a)}{k!}(x-a)^k.
+\end{align*}</span><p id="p-2453">
+\item The Taylor series centered at \(x=a\) for a function \(f\) is
+</p>
+<span class="displaymath" id="me-1074">\[
+\sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!}(x-a)^k.
+\]</span><p id="p-2454">
+\item The \(n\)th order Taylor polynomial centered at \(a\) for \(f\) is the \(n\)th partial sum of its Taylor series centered at \(a\). So the \(n\)th order Taylor polynomial for a function \(f\) is an approximation to \(f\) on the interval where the Taylor series converges; for the values of \(x\) for which the Taylor series converges to \(f\) we write
+</p>
+<span class="displaymath" id="me-1075">\[
+f(x) = \sum_{k=0}^{\infty} \frac{f^{(k)}(a)}{k!}(x-a)^k.
+\]</span><p id="p-2455">
+\item The Lagrange Error Bound shows us how to determine the accuracy in using a Taylor polynomial to approximate a function. More specifically, if \(P_n(x)\) is the \(n\)th order Taylor polynomial for \(f\) centered at \(x=a\) and if \(M\) is an upper bound for \(\left|f^{(n+1)}(x)\right|\) on the interval \([a, c]\), then
+</p>
+<span class="displaymath" id="me-1076">\[
+\left|P_n(c) - f(c)\right| \leq M\frac{|c-a|^{n+1}}{(n+1)!}.
+\]</span>
+<p id="p-2456">
+\hrulefill
+</p>
+<p id="p-2457">
+\begin{exercises}
+\item In this exercise we investigation the Taylor series of polynomial functions.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-3153">Find the 3rd order Taylor polynomial centered at \(a = 0\) for \(f(x) = x^3-2x^2+3x-1\). Does your answer surprise you? Explain.</li>
+<li id="li-3154">Without doing any additional computation, find the 4th, 12th, and 100th order Taylor polynomials (centered at \(a = 0\)) for \(f(x) = x^3-2x^2+3x-1\). Why should you expect this?</li>
+<li id="li-3155">Now suppose \(f(x)\) is a degree \(m\) polynomial. Completely describe the \(n\)th order Taylor polynomial (centered at \(a = 0\)) for each \(n\).</li>
+</ol>
+<p id="p-2458">
+\item The examples we have considered in this section have all been for Taylor polynomials and series centered at 0, but Taylor polynomials and series can be centered at any value of \(a\). We look at examples of such Taylor polynomials in this exercise.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-3156">Let \(f(x) = \sin(x)\). Find the Taylor polynomials up through order four of \(f\) centered at \(x = \frac{\pi}{2}\). Then find the Taylor series for \(f(x)\) centered at \(x = \frac{\pi}{2}\). Why should you have expected the result?</li>
+<li id="li-3157">Let \(f(x) = \ln(x)\). Find the Taylor polynomials up through order four of \(f\) centered at \(x = 1\). Then find the Taylor series for \(f(x)\) centered at \(x = 1\).</li>
+<li id="li-3158">Use your result from (b) to determine which Taylor polynomial will approximate \(\ln(2)\) to two decimal places. Explain in detail how you know you have the desired accuracy.</li>
+</ol>
+<p id="p-2459">
+\item We can use known Taylor series to obtain other Taylor series, and we explore that idea in this exercise, as a preview of work in the following section.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-3159">Calculate the first four derivatives of \(\sin(x^2)\) and hence find the fourth order Taylor polynomial for \(\sin(x^2)\) centered at \(a=0\).</li>
+<li id="li-3160">Part (a) demonstrates the brute force approach to computing Taylor polynomials and series. Now we find an easier method that utilizes a known Taylor series. Recall that the Taylor series centered at 0 for \(f(x) = \sin(x)\) is
+    
+<span class="displaymath" id="eq_8.5_Exercise3">\begin{equation}
+ \sum_{k=0}^{\infty} (-1)^{k} \frac{x^{2k+1}}{(2k+1)!}.
+\label{eq_8.5_Exercise3}\tag{8.5.7}\end{equation}</span><ul style="list-style-type: disc;">
+<li id="li-3161">Substitute \(x^2\) for \(x\) in the Taylor series <a knowl="./knowl/eq_8.5_Exercise3.html" knowl-id="xref-eq_8.5_Exercise3" alt="Equation 8.5.7 " title="Equation 8.5.7 ">(8.5.7)</a>. Write out the first several terms and compare to your work in part (a). Explain why the substitution in this problem should give the Taylor series for \(\sin(x^2)\) centered at 0.</li>
+<li id="li-3162">What should we expect the interval of convergence of the series for \(\sin(x^2)\) to be? Explain in detail.</li>
+</ul>
+</li>
+</ol>
+<p id="p-2460">
+\item Based on the examples we have seen, we might expect that the Taylor series for a function \(f\) always converges to the values \(f(x)\) on its interval of convergence. We explore that idea in more detail in this exercise. Let \(f(x) =
+    \begin{cases}e^{-1/x^2} \amp \text{ if }  x \neq 0, \\
+    0   \amp \text{ if }  x = 0.
+\end{cases} \)
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-3163">Show, using the definition of the derivative, that \(f'(0) = 0\).</li>
+<li id="li-3164">It can be shown that \(f^{(n)}(0) = 0\) for all \(n \geq 2\). Assuming that this is true, find the Taylor series for \(f\) centered at 0.</li>
+<li id="li-3165">What is the interval of convergence of the Taylor series centered at 0 for \(f\)? Explain. For which values of \(x\) the interval of convergence of the Taylor series does the Taylor series converge to \(f(x)\)?</li>
+</ol>
+<p id="p-2461">
+\end{exercises}
+</p>
+<p id="p-2462">
+\afterexercises
+</p>
+<p id="p-2463">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

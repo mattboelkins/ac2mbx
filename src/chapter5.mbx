@@ -1,0 +1,7 @@
+
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="C_4">
+<title>The Definite Integral</title> <xi:include  href="section5-1.mbx" />
+ <xi:include  href="section5-2.mbx" />
+ <xi:include  href="section5-3.mbx" />
+ <xi:include  href="section5-4.mbx" />
+ </chapter>

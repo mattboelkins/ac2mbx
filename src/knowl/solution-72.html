@@ -1,0 +1,54 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:17-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">4.4.2.1</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-1830">Because \(\frac{d}{dx}[2x - x^2] = 2-2x\), by the Fundamental Theorem of Calculus,
+	
+<span class="displaymath" id="me-465">\[
+ \int_{-1}^4 (2-2x) \, dx = \left. 2x - x^2 \right|_{-1}^4,
+\]</span>
+ 
+	and therefore 
+	
+<span class="displaymath" id="me-466">\[
+ \int_{-1}^4 (2-2x) \, dx = (2 \cdot 4 - 4^2) - (2(-1) - (-1)^2) = -8 + 3 = -5.
+\]</span>
+</li>
+<li id="li-1831">Since \(\frac{d}{dx} [\cos(x)] = -\sin(x)\), an antiderivative of \(f(x) = \sin(x)\) is \(F(x) = -\cos(x)\).  Therefore, by the FTC,  
+	
+<span class="displaymath" id="me-467">\[
+\ds \int_{0}^{\frac{\pi}{2}} \sin(x) \, dx = \left. -\cos(x) \right|_{-\frac{\pi}{2}}^{\frac{\pi}{2}},
+\]</span>
+ 
+	so
+	
+<span class="displaymath" id="me-468">\[
+\ds \int_{0}^{\frac{\pi}{2}} \sin(x) \, dx = -\cos(\frac{\pi}{2}) - (-\cos(0)) = -0 + 1 = 1.
+\]</span>
+</li>
+<li id="li-1832">Since \(e^x\) is its own derivative, it is also its own antiderivative.  Hence,
+	
+<span class="displaymath" id="me-469">\[
+\int_0^1 e^x \, dx = \left. e^x \right|_0^1 = e^1 - e^0 = e-1.
+\]</span>
+</li>
+<li id="li-1833">Note that since \(\frac{d}{dx} [x^6] = 6x^5\), it follows that \(\frac{d}{dx} [\frac{1}{6}x^6] = x^5\), and thus 
+	
+<span class="displaymath" id="me-470">\[
+\ds \int_{-1}^{1} x^5 \, dx = \left. \frac{1}{6}x^6 \right|_{-1}^1 = \frac{1}{6} (1)^6 - \frac{1}{6}(-1)^6 = 0.
+\]</span>
+</li>
+<li id="li-1834">Using the sum and constant multiple rules for differentiation, we can see that similar results hold for antidifferentiation, and thus that \(F(x) = \frac{3}{4} x^4 - \frac{2}{3} x^3 - e^x\) is an antiderivative of \(f(x) = 3x^3 - 2x^2 - e^x\).  Now, by the FTC,
+	
+<span class="displaymath" id="md-47">\begin{align*}
+\int_0^2 (3x^3 - 2x^2 - e^x) \, dx \amp  = \amp  \left. \frac{3}{4} x^4 - \frac{2}{3} x^3 - e^x \right|_0^2\\
+\amp  = \amp    \frac{3}{4} (2)^4 - \frac{2}{3} (2)^3 - e^2 - (\frac{3}{4} (0)^4 - \frac{2}{3} (0)^3 - e^0)\\
+\amp  = \amp  12 - \frac{16}{3} - e^2 - (0 - 0 - 1)\\
+\amp  = \amp  \frac{17}{3} - e^2.
+\end{align*}</span>
+</li>
+</ol></span><span class="incontext"><a href="S_4.4.FTC.html#solution-72">in-context</a></span>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:39-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Elementary derivative rules</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="C_2.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.2.SinCos.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="C_2.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.2.SinCos.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link active"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html" class="active">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_2.1.ElemRules"><header><h1 class="heading" alt="Section 2.1 Elementary derivative rules" title="Section 2.1 Elementary derivative rules">
+<span class="type">Section</span><span class="codenumber">2.1</span><span class="title">Elementary derivative rules</span><a href="S_2.1.ElemRules.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-9"><h5 class="heading"></h5>
+<p id="p-312">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-573">What are alternate notations for the derivative?</li>
+<li id="li-574">How can we sometimes use the algebraic structure of a function \(f(x)\) to easily compute a formula for \(f'(x)\)?</li>
+<li id="li-575">What is the derivative of a power function of the form \(f(x) = x^n\)?  What is the derivative of an exponential function of form \(f(x) = a^x\)?</li>
+<li id="li-576">If we know the derivative of \(y = f(x)\), how is the derivative of \(y = k f(x)\) computed, where \(k\) is a constant?</li>
+<li id="li-577">If we know the derivatives of \(y = f(x)\) and \(y = g(x)\), how is the derivative of \(y = f(x) + g(x)\) computed?</li>
+</ul>
+<p id="p-313">
+} 
+</p></article><section class="subsection" id="subsection-25"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.1.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-314">
+In <a href="C_1.html" alt="Chapter 1 Understanding the Derivative" title="Chapter 1 Understanding the Derivative">Chapter 1</a>, we developed the concept of the derivative of a function. We now know that the derivative \(f'\) of a function \(f\) measures the instantaneous rate of change of \(f\) with respect to \(x\) as well as the slope of the tangent line to \(y=f(x)\) at any given value of \(x\). To date, we have focused primarily on interpreting the derivative graphically or, in the context of functions in a physical setting, as a meaningful rate of change. To actually calculate the value of the derivative at a specific point, we have typically relied on the limit definition of the derivative.
+</p>
+<p id="p-315">
+In this present chapter, we will investigate how the limit definition of the derivative,
+</p>
+<span class="displaymath" id="me-74">\[
+f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h},
+\]</span><p id="p-316">
+leads to interesting patterns and rules that enable us to quickly find a formula for \(f'(x)\) based on the formula for \(f(x)\) <!--Style me with CSS--><em>without</em> using the limit definition directly. For example, we already know that if \(f(x) = x\), then it follows that \(f'(x) = 1\). While we could use the limit definition of the derivative to confirm this, we know it to be true because \(f(x)\) is a linear function with slope 1 at every value of \(x\). One of our goals is to be able to take standard functions, say ones such as \(g(x) = 4x^7 - \sin(x) + 3e^x\), and, based on the algebraic form of the function, be able to apply shortcuts to almost immediately determine the formula for \(g'(x)\).
+</p>
+<article class="paragraphs" id="PA_2.1"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-317">
+Functions of the form \(f(x) = x^n\), where \(n = 1, 2, 3, \ldots\), are often called <!--Style me with CSS--><em>power functions</em>. The first two questions below revisit work we did earlier in <a href="C_1.html" alt="Chapter 1 Understanding the Derivative" title="Chapter 1 Understanding the Derivative">Chapter 1</a>, and the following questions extend those ideas to higher powers of \(x\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-578">Use the limit definition of the derivative to find \(f'(x)\) for \(f(x) = x^2\).</li>
+<li id="li-579">Use the limit definition of the derivative to find \(f'(x)\) for \(f(x) = x^3\).</li>
+<li id="li-580">Use the limit definition of the derivative to find \(f'(x)\) for \(f(x) = x^4\).  (Hint: \((a+b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4\).  Apply this rule to \((x+h)^4\) within the limit definition.)</li>
+<li id="li-581">Based on your work in (a), (b), and (c), what do you conjecture is the derivative of \(f(x) = x^5\)?  Of \(f(x) = x^{13}\)?</li>
+<li id="li-582">Conjecture a formula for the derivative of \(f(x) = x^n\) that holds for any positive integer \(n\).  That is, given \(f(x) = x^n\) where \(n\) is a positive integer, what do you think is the formula for \(f'(x)\)?</li>
+</ol></article></section><section class="subsection" id="subsection-26"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.1.2</span><span class="title">Some Key Notation</span>
+</h1></header><p id="p-318">
+In addition to our usual \(f'\) notation for the derivative, there are other ways to symbolically denote the derivative of a function, as well as the instruction to take the derivative. We know that if we have a function, say \(f(x) = x^2\), that we can denote its derivative by \(f'(x)\), and we write \(f'(x) = 2x\). Equivalently, if we are thinking more about the relationship between \(y\) and \(x\), we sometimes denote the derivative of \(y\) with respect to \(x\) with the symbol
+</p>
+<span class="displaymath" id="me-75">\[
+\frac{dy}{dx}
+\]</span><p id="p-319">
+which we read “dee-y dee-x.” This notation comes from the fact that the derivative is related to the slope of a line, and slope is measured by \(\frac{\triangle y}{\triangle x}\). Note that while we read \(\frac{\triangle y}{\triangle x}\) as “change in \(y\) over change in \(x\),” for the derivative symbol \(\frac{dy}{dx}\), we view this is a single symbol, not a quotient of two quantities<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-10" id="fn-10"><sup> 1 </sup></a></span><span id="hk-fn-10" style="display: none;" class="tex2jax_ignore"><span class="footnote">That is, we do <!--Style me with CSS--><em>not</em> say “dee-y over dee-x.”</span></span>. For example, if \(y = x^2\), we'll write that the derivative is \(\frac{dy}{dx} = 2x.\)
+</p>
+<p id="p-320">
+Furthermore, we use a variant of \(\frac{dy}{dx}\) notation to convey the instruction to take the derivative of a certain quantity with respect to a given variable. In particular, if we write
+</p>
+<span class="displaymath" id="me-76">\[
+\frac{d}{dx}\left[ \Box \right]
+\]</span><p id="p-321">
+this means “take the derivative of the quantity in \(\Box\) with respect to \(x\).” To continue our example above with the squaring function, here we may write \(\frac{d}{dx}[x^2] = 2x.\)
+</p>
+<p id="p-322">
+It is important to note that the independent variable can be different from \(x\). If we have \(f(z) = z^2\), we then write \(f'(z) = 2z\). Similarly, if \(y = t^2\), we can say \(\frac{dy}{dt} = 2t\). And changing the variable and derivative notation once more, it is also true that \(\frac{d}{dq}[q^2] = 2q\). This notation may also be applied to second derivatives: \(f''(z) =  \frac{d}{dz}\left[\frac{df}{dz}\right] = \frac{d^2 f}{dz^2}\).
+</p>
+<p id="p-323">
+In what follows, we'll be working to widely expand our repertoire of functions for which we can quickly compute the corresponding derivative formula
+</p></section><section class="subsection" id="subsection-27"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.1.3</span><span class="title">Constant, Power, and Exponential Functions</span>
+</h1></header><p id="p-324">
+So far, we know the derivative formula for two important classes of functions: constant functions and power functions. For the first kind, observe that if \(f(x) = c\) is a constant function, then its graph is a horizontal line with slope zero at every point. Thus, \(\frac{d}{dx}[c] = 0\). We summarize this with the following rule.
+</p>
+<p id="p-325">
+
+{
+Constant Functions:\knownindex{\lt main&gt;derivative\lt /main&gt;\lt sub&gt;constant function\lt /sub&gt;} For any real number \(c\), if \(f(x) = c\), then \(f'(x) = 0\).
+} 
+
+</p>
+<p id="p-326">
+Thus, if \(f(x) = 7\), then \(f'(x) = 0\). Similarly, \(\frac{d}{dx} [\sqrt{3}] = 0.\)
+</p>
+<p id="p-327">
+For power functions, from your work in Preview <a href="S_2.1.ElemRules.html#PA_2.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, you have conjectured that for any positive integer \(n\), if \(f(x) = x^n\), then \(f'(x) = nx^{n-1}\). Not only can this rule be formally proved to hold for any positive integer \(n\), but also for any nonzero real number (positive or negative).
+</p>
+<p id="p-328">
+
+{
+Power Functions:\knownindex{\lt main&gt;derivative\lt /main&gt;\lt sub&gt;power function\lt /sub&gt;} For any nonzero real number, if \(f(x) = x^n\), then \(f'(x) = nx^{n-1}\).
+} 
+
+</p>
+<p id="p-329">
+This rule for power functions allows us to find derivatives such as the following: if \(g(z) = z^{-3}\), then \(g'(z) = -3z^{-4}\). Similarly, if \(h(t) = t^{7/5}\), then \(\frac{dh}{dt} = \frac{7}{5}t^{2/5}\); likewise, \(\frac{d}{dq} [q^{\pi}] = \pi q^{\pi - 1}\).
+</p>
+<p id="p-330">
+As we next turn to thinking about derivatives of combinations of basic functions, it will be instructive to have one more type of basic function whose derivative formula we know. For now, we simply state this rule without explanation or justification; we will explore why this rule is true in one of the exercises at the end of this section, plus we will encounter graphical reasoning for why the rule is plausible in Preview <a href="S_2.2.SinCos.html#PA_2.2" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>.
+</p>
+<p id="p-331">
+
+{
+Exponential Functions:\knownindex{\lt main&gt;derivative\lt /main&gt;\lt sub&gt;exponential function\lt /sub&gt;} For any positive real number \(a\), if \(f(x) = a^x\), then \(f'(x) = a^x \ln(a)\).
+} 
+
+</p>
+<p id="p-332">
+For instance, this rule tells us that if \(f(x) = 2^x\), then \(f'(x) = 2^x \ln(2)\). Similarly, for \(p(t) = 10^t\), \(p'(t) = 10^t \ln(10)\). It is especially important to note that when \(a = e\), where \(e\) is the base of the natural logarithm function, we have that
+</p>
+<span class="displaymath" id="me-77">\[
+\frac{d}{dx} [e^x] = e^x \ln(e) = e^x
+\]</span><p id="p-333">
+since \(\ln(e) = 1\). This is an extremely important property of the function \(e^x\): its derivative function is itself!
+</p>
+<p id="p-334">
+Finally, note carefully the distinction between power functions and exponential functions: in power functions, the variable is in the base, as in \(x^2\), while in exponential functions, the variable is in the power, as in \(2^x\). As we can see from the rules, this makes a big difference in the form of the derivative.
+</p>
+<p id="p-335">
+The following activity will check your understanding of the derivatives of the three basic types of functions noted above.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.1.1" id="A_2.1.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.1.1</span>
+</h5></a></div>
+<div id="hk-A_2.1.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-336">
+Use the three rules above to determine the derivative of each of the following functions. For each, state your answer using full and proper notation, labeling the derivative with its name. For example, if you are given a function \(h(z)\), you should write “\(h'(z) = \)” or “\(\frac{dh}{dz} = \)” as part of your response.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-583">\(f(t) = \pi\)</li>
+<li id="li-584">\(g(z) = 7^z\)</li>
+<li id="li-585">\(h(w) = w^{3/4}\)</li>
+<li id="li-586">\(p(x) = 3^{1/2}\)</li>
+<li id="li-587">\(r(t) = (\sqrt{2})^t\)</li>
+<li id="li-588">\(\frac{d}{dq}[q^{-1}]\)</li>
+<li id="li-589">\(m(t) = \frac{1}{t^3}\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-45" id="hint-45"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-45" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-590">Is \(\pi\) a variable or a constant?</li>
+<li id="li-591">Is \(g\) a power or exponential function?</li>
+<li id="li-592">Is \(h\) a power or exponential function?</li>
+<li id="li-593">Is \(3^{1/2}\) a constant or a variable?</li>
+<li id="li-594">\(\sqrt{2}\) is a constant</li>
+<li id="li-595">Remember the notation here means “take the derivative with respect to \(q\) of \(q^{-1}\).”</li>
+<li id="li-596">Rewrite the fraction using a negative exponent.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-46" id="hint-46"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-46" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-597">Note that \(\pi\) is a constant.</li>
+<li id="li-598">Observe that \(g\) an exponential function.</li>
+<li id="li-599">\(h\) is a power function.</li>
+<li id="li-600">\(3^{1/2}\) is a constant.</li>
+<li id="li-601">\(\sqrt{2}\) is a constant, so \(r\) is an exponential function.</li>
+<li id="li-602">Remember the notation here means “take the derivative with respect to \(q\) of \(q^{-1}\).”  Note that \(q{-1}\) is a power function.</li>
+<li id="li-603">Recall that \(\frac{1}{t^3} = t^{-3}\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-22" id="solution-22"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-22" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-604">\(f(t) = \pi\) is constant, so \(f'(t) = 0\).</li>
+<li id="li-605">\(g(z) = 7^z\) is an exponential function, so \(g'(z) = 7^z \ln(7)\).</li>
+<li id="li-606">\(h(w) = w^{3/4}\) is a power function, thus \(h'(w) = \frac{3}{4} w^{-1/4}\).</li>
+<li id="li-607">\(p(x) = 3^{1/2}\) is constant, and therefore \(\frac{dp}{dx} = 0\).</li>
+<li id="li-608">\(r(t) = (\sqrt{2})^t\) is exponential (since \(\sqrt{2}\) is a constant), and so we have \(r'(t) = (\sqrt{2})^t \ln (\sqrt{2})\).</li>
+<li id="li-609">\(\frac{d}{dq}[q^{-1}] = -q^{-2}\), by the rule for power functions.</li>
+<li id="li-610">\(m(t) = \frac{1}{t^3} = t^{-3}\), so \(\frac{dm}{dt} = -3t^{-4} = -\frac{3}{t^4}\).</li>
+</ol></span></span></section><section class="subsection" id="subsection-28"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.1.4</span><span class="title">Constant Multiples and Sums of Functions</span>
+</h1></header><p id="p-337">
+Of course, most of the functions we encounter in mathematics are more complicated than being simply constant, a power of a variable, or a base raised to a variable power. In this section and several following, we will learn how to quickly compute the derivative of a function constructed as an algebraic combination of basic functions. For instance, we'd like to be able to understand how to take the derivative of a polynomial function such as \(p(t) = 3t^5 - 7t^4 + t^2 - 9\), which is a function made up of constant multiples and sums of powers of \(t\). To that end, we develop two new rules: the Constant Multiple Rule and the Sum Rule.
+</p>
+<p id="p-338">
+Say we have a function \(y = f(x)\) whose derivative formula is known. How is the derivative of \(y = kf(x)\) related to the derivative of the original function? Recall that when we multiply a function by a constant \(k\), we vertically stretch the graph by a factor of \(|k|\) (and reflect the graph across \(y = 0\) if \(k \lt  0\)). This vertical stretch affects the slope of the graph, making the slope of the function \(y = kf(x)\) be \(k\) times as steep as the slope of \(y = f(x)\). In terms of the derivative, this is essentially saying that when we multiply a function by a factor of \(k\), we change the value of its derivative by a factor of \(k\) as well. Thus<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-11" id="fn-11"><sup> 2 </sup></a></span><span id="hk-fn-11" style="display: none;" class="tex2jax_ignore"><span class="footnote">The Constant Multiple Rule can be formally proved as a consequence of properties of limits, using the limit definition of the derivative.</span></span>, the Constant Multiple Rule holds:
+</p>
+<p id="p-339">
+
+{
+The Constant Multiple Rule:\knownindex{\lt main&gt;constant multiple rule\lt /main&gt;} For any real number \(k\), if \(f(x)\) is a differentiable function with derivative \(f'(x)\), then \(\frac{d}{dx}[k f(x)] = k f'(x)\).
+} 
+
+</p>
+<p id="p-340">
+In words, this rule says that “the derivative of a constant times a function is the constant times the derivative of the function.” For example, if \(g(t) = 3 \cdot 5^t\), we have \(g'(t) = 3 \cdot 5^t \ln(5)\). Similarly, \(\frac{d}{dz} [5z^{-2}] = 5 (-2z^{-3})\).
+</p>
+<p id="p-341">
+Next we examine what happens when we take a sum of two functions. If we have \(y = f(x)\) and \(y = g(x)\), we can compute a new function \(y = (f+g)(x)\) by adding the outputs of the two functions: \((f+g)(x) = f(x) + g(x)\). Not only does this result in the value of the new function being the sum of the values of the two known functions, but also the slope of the new function is the sum of the slopes of the known functions. Therefore<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-12" id="fn-12"><sup> 3 </sup></a></span><span id="hk-fn-12" style="display: none;" class="tex2jax_ignore"><span class="footnote">Like the Constant Multiple Rule, the Sum Rule can be formally proved as a consequence of properties of limits, using the limit definition of the derivative.</span></span>, we arrive at the following Sum Rule for derivatives:
+</p>
+<p id="p-342">
+
+{
+The Sum Rule:\knownindex{\lt main&gt;sum rule\lt /main&gt;} If \(f(x)\) and \(g(x)\) are differentiable functions with derivatives \(f'(x)\) and \(g'(x)\) respectively, then \(\frac{d}{dx}[f(x) + g(x)] = f'(x) + g'(x)\).
+} 
+
+</p>
+<p id="p-343">
+In words, the Sum Rule tells us that “the derivative of a sum is the sum of the derivatives.” It also tells us that any time we take a sum of two differentiable functions, the result must also be differentiable. Furthermore, because we can view the difference function \(y = (f-g)(x) = f(x) - g(x)\) as \(y = f(x) + (-1 \cdot g(x))\), the Sum Rule and Constant Multiple Rules together tell us that \(\frac{d}{dx}[f(x) + (-1 \cdot g(x))] = f'(x) - g'(x)\), or that “the derivative of a difference is the difference of the derivatives.” Hence we can now compute derivatives of sums and differences of elementary functions. For instance, \(\frac{d}{dw} (2^w + w^2) = 2^w \ln(2) + 2w\), and if \(h(q) = 3q^6 - 4q^{-3}\), then \(h'(q) = 3 (6q^5) - 4(-3q^{-4}) = 18q^5 + 12q^{-4}\).
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.1.2" id="A_2.1.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.1.2</span>
+</h5></a></div>
+<div id="hk-A_2.1.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-344">
+Use only the rules for constant, power, and exponential functions, together with the Constant Multiple and Sum Rules, to compute the derivative of each function below with respect to the given independent variable. Note well that we do not yet know any rules for how to differentiate the product or quotient of functions. This means that you may have to do some algebra first on the functions below before you can actually use existing rules to compute the desired derivative formula. In each case, label the derivative you calculate with its name using proper notation such as \(f'(x)\), \(h'(z)\), \(dr/dt\), etc.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-611">\(f(x) = x^{5/3} - x^4 + 2^x\)</li>
+<li id="li-612">\(g(x) = 14e^x + 3x^5 - x\)</li>
+<li id="li-613">\(h(z) = \sqrt{z} + \frac{1}{z^4} + 5^z\)</li>
+<li id="li-614">\(r(t) = \sqrt{53} \, t^7 - \pi e^t + e^4\)</li>
+<li id="li-615">\(s(y) = (y^2 + 1)(y^2 - 1)\)</li>
+<li id="li-616">\(q(x) = \ds \frac{x^3 - x + 2}{x}\)</li>
+<li id="li-617">\(p(a) = 3a^4 - 2a^3 + 7a^2 - a + 12\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-47" id="hint-47"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-47" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-618">Use the sum rule.</li>
+<li id="li-619">Use the sum rule together with the constant multiple rule.</li>
+<li id="li-620">How can you rewrite \(\sqrt{z}\) using exponents?</li>
+<li id="li-621">Is \(e^4\) a constant or variable?</li>
+<li id="li-622">Expand the product before attempting to find the derivative.</li>
+<li id="li-623">Rewrite the single fraction as a sum of three fractions, and simplify.</li>
+<li id="li-624">Note that “\(a\)” is the independent variable.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-48" id="hint-48"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-48" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-625">Use the sum rule; think about which functions in the sum are power functions and which are exponential.</li>
+<li id="li-626">Use the sum rule together with the constant multiple rule.  Note which functions are exponential and which are powers of \(x\).</li>
+<li id="li-627">Recall that \(\sqrt{z} = z^{1/2}\); also rewrite \(\frac{1}{z^4}\) as a power of \(z\).</li>
+<li id="li-628">Note that \(\sqrt{53}\), \(\pi\), and \(e^4\) are all constants.</li>
+<li id="li-629">Expand the product and combine like terms before attempting to find the derivative.</li>
+<li id="li-630">Rewrite the single fraction as a sum of three fractions, and simplify.  That is, note that \(q(x) = \ds \frac{x^3 - x + 2}{x} = \ds \frac{x^3}{x} - \frac{x}{x} + \frac{2}{x}\)</li>
+<li id="li-631">Note that “\(a\)” is the independent variable and \(p(a)\) is simply a polynomial in \(a\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-23" id="solution-23"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-23" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-632">\(f(x) = x^{5/3} - x^4 + 2^x\), so by the sum rule, \(f'(x) = \frac{5}{3}x^{2/3} - 4 x^3 + 2^x \ln(2).\)</li>
+<li id="li-633">\(g(x) = 14e^x + 3x^5 - x\), so by the sum and constant multiple rules, \(g'(x) = 14e^x + 3 \cdot 5x^4 - 1\).</li>
+<li id="li-634">\(h(z) = \sqrt{z} + \frac{1}{z^4} + 5^z = z^{1/2} + z^{-4} + 5^z\), thus \(h'(z) = \frac{1}{2}z^{-1/2} - 4z^{-5} + 5^z \ln(5)\).</li>
+<li id="li-635">Since \(r(t) = \sqrt{53} \, t^7 - \pi e^t + e^4\) and \(\sqrt{53}\), \(\pi\), and \(e^4\) are all constants, it follows from the sum and constant multiple rules, as well as the derivative of a constant rule, that \(\frac{dr}{dt} = \sqrt{53} \cdot 7 t^6 - \pi e^t\).  (Note particularly that \(\frac{d}{dt}[e^4] = 0\) since \(e^4\) is constant.</li>
+<li id="li-636">\(s(y) = (y^2 + 1)(y^2 - 1)= y^4 - 1\), thus \(\frac{ds}{dy} = 4y^3\).</li>
+<li id="li-637">\(q(x) = \ds \frac{x^3 - x + 2}{x} = \ds \frac{x^3}{x} - \frac{x}{x} + \frac{2}{x} = x^2 - 1 + 2x^{-1}\).  Now it follows that \(q'(x) = 2x - 2x^{-2}\).</li>
+<li id="li-638">\(p(a) = 3a^4 - 2a^3 + 7a^2 - a + 12\), so \(p'(a) = 12a^3 - 6 a^2 + 14a - 1.\)</li>
+</ol></span></span><p id="p-345">
+In the same way that we have shortcut rules to help us find derivatives, we introduce some language that is simpler and shorter. Often, rather than say “take the derivative of \(f\),” we'll instead say simply “differentiate \(f\).” This phrasing is tied to the notion of having a derivative to begin with: if the derivative exists at a point, we say “\(f\) is differentiable,” which is tied to the fact that \(f\) can be differentiated.
+</p>
+<p id="p-346">
+As we work more and more with the algebraic structure of functions, it is important to strive to develop a big picture view of what we are doing. Here, we can note several general observations based on the rules we have so far. One is that the derivative of any polynomial function will be another polynomial function, and that the degree of the derivative is one less than the degree of the original function. For instance, if \(p(t) = 7t^5 - 4t^3 + 8t\), \(p\) is a degree 5 polynomial, and its derivative, \(p'(t) = 35t^4 - 12t^2 + 8\), is a degree 4 polynomial. Additionally, the derivative of any exponential function is another exponential function: for example, if \(g(z) = 7 \cdot 2^z\), then \(g'(z) = 7 \cdot 2^z \ln(2)\), which is also exponential.
+</p>
+<p id="p-347">
+Furthermore, while our current emphasis is on learning shortcut rules for finding derivatives without directly using the limit definition, we should be certain not to lose sight of the fact that all of the meaning of the derivative still holds that we developed in <a href="C_1.html" alt="Chapter 1 Understanding the Derivative" title="Chapter 1 Understanding the Derivative">Chapter 1</a>. That is, anytime we compute a derivative, that derivative measures the instantaneous rate of change of the original function, as well as the slope of the tangent line at any selected point on the curve. The following activity asks you to combine the just-developed derivative rules with some key perspectives that we studied in <a href="C_1.html" alt="Chapter 1 Understanding the Derivative" title="Chapter 1 Understanding the Derivative">Chapter 1</a>.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.1.3" id="A_2.1.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.1.3</span>
+</h5></a></div>
+<div id="hk-A_2.1.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-348">
+Each of the following questions asks you to use derivatives to answer key questions about functions. Be sure to think carefully about each question and to use proper notation in your responses.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-639">Find the slope of the tangent line to \(h(z) = \sqrt{z} + \frac{1}{z}\) at the point where \(z = 4\).</li>
+<li id="li-640">A population of cells is growing in such a way that its total number in millions is given by the function \(P(t) = 2(1.37)^t + 32\), where \(t\) is measured in days.  
+	<ol style="list-style-type: lower-alpha;">
+<li id="li-641">Determine the instantaneous rate at which the population is growing on day 4, and include units on your answer.</li>
+<li id="li-642">Is the population growing at an increasing rate or growing at a decreasing rate on day 4?  Explain.</li>
+</ol>
+</li>
+<li id="li-643">Find an equation for the tangent line to the curve \(p(a) = 3a^4 - 2a^3 + 7a^2 - a + 12\) at the point where \(a=-1\).</li>
+<li id="li-644">What is the difference between being asked to find the <!--Style me with CSS--><em>slope</em> of the tangent line (asked in (a)) and the <!--Style me with CSS--><em>equation</em> of the tangent line (asked in (c))?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-49" id="hint-49"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-49" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-645">How would \(h'(z)\) help you answer the question?</li>
+<li id="li-646">Think about finding both \(P'(t)\) and \(P''(t)\).</li>
+<li id="li-647">What two important pieces of information do you need to know to determine the equation of a line?</li>
+<li id="li-648">What information do you find in both (a) and (c)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-50" id="hint-50"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-50" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-649">Remember that \(h'(a)\) tells us the slope of the tangent line to \(y = h(z)\) at the point \((a,h(a))\).</li>
+<li id="li-650">Think about how the units on \(P'(t)\) are the units of \(P\) per unit of \(t\).  For the second question, consider the meaning of \(P''(t)\).</li>
+<li id="li-651">Find both \((-1,p(-1))\) and \(p'(-1)\).</li>
+<li id="li-652">Note that both questions require you to find the value of the given function's derivative at a particular point.  How is that value used differently in questions (a) and (c)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-24" id="solution-24"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-24" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-653">Note that since \(h(z) = z^{1/2} + z^{-1}\), we have \(h'(z) = \frac{1}{2}z^{-1/2} - z^{-2}\).  Thus, \(h'(4) = \frac{1}{2(4)^{1/2}} - \frac{1}{4^2} = \frac{1}{4} - \frac{1}{16} = \frac{3}{16}.\)  Thus, the slope of the tangent line to \(h(z)\) at the point where \(z = 4\) is \(\frac{3}{16}\).</li>
+<li id="li-654">For (i.), note that \(P'(t) = 2(1.37)^t \ln(1.37)\), and therefore \(P'(4) =  2(1.37)^4 \ln(1.37) \approx 2.218\) million cells per day.  For (ii.), we can compute \(P''(t)\) and find that \(P''(t) = 2(1.37)^t \ln(1.37) \ln(1.37)\) and therefore find that \(P''(4) \approx  0.69825\).  Since \(P''(4)\) is positive, this tells us that the instantaneous rate of change \(P'(t)\) is increasing at \(t = 4\), and thus the population is growing at an increasing rate.</li>
+<li id="li-655">Given \(p(a) = 3a^4 - 2a^3 + 7a^2 - a + 12\), first observe that \(p(-1) = 3 + 2 + 7 + 1 + 12 = 25\), so the tangent line will pass through \((-1,25)\).  Further, since \(p'(a) = 12a^3 - 6a^2 + 14a - 1\), we have \(p'(-1) = -12 - 6 - 14 - 1 = -33\), which is the slope of the tangent line.  The equation of the tangent line is therefore \(y - 25 = -33(a+1)\).</li>
+<li id="li-656">The biggest difference is that (a) asks for the <!--Style me with CSS--><em>slope</em> of the tangent line, while (c) asks for the <!--Style me with CSS--><em>equation</em> of the tangent line.  The latter requires the slope of the tangent line, but the slope and equation are two different entities.</li>
+</ol></span></span><p id="p-349">
+\begin{authornote}
+This is an author note.
+\end{authornote}
+</p>
+<p id="p-350">
+\item Given a differentiable function \(y = f(x)\), we can express the derivative of \(f\) in several different notations: \(f'(x)\), \(\frac{df}{dx}\), \(\frac{dy}{dx}\), and \(\frac{d}{dx}[f(x)]\).
+\item The limit definition of the derivative leads to patterns among certain families of functions that enable us to compute derivative formulas without resorting directly to the limit definition. For example, if \(f\) is a power function of the form \(f(x) = x^n\), then \(f'(x) = nx^{n-1}\) for any real number \(n\) other than 0. This is called the Rule for Power Functions.
+\item We have stated a rule for derivatives of exponential functions in the same spirit as the rule for power functions: for any positive real number \(a\), if \(f(x) = a^x\), then \(f'(x) = a^x \ln(a)\).
+\item If we are given a constant multiple of a function whose derivative we know, or a sum of functions whose derivatives we know, the Constant Multiple and Sum Rules make it straightforward to compute the derivative of the overall function. More formally, if \(f(x)\) and \(g(x)\) are differentiable with derivatives \(f'(x)\) and \(g'(x)\) and \(a\) and \(b\) are constants, then
+</p>
+<span class="displaymath" id="me-78">\[
+\frac{d}{dx} \left[af(x) + bg(x)\right] = af'(x) + bg'(x).
+\]</span>
+<p id="p-351">
+\hrulefill
+</p>
+<p id="p-352">
+\begin{exercises}
+\item Let \(f\) and \(g\) be differentiable functions for which the following information is known: \(f(2) = 5\), \(g(2) = -3\), \(f'(2) = -1/2\), \(g'(2) = 2\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-657">Let \(h\) be the new function defined by the rule \(h(x) = 3f(x) - 4g(x)\).  Determine \(h(2)\) and \(h'(2)\).</li>
+<li id="li-658">Find an equation for the tangent line to \(y = h(x)\) at the point \((2,h(2))\).</li>
+<li id="li-659">Let \(p\) be the function defined by the rule \(p(x) = -2f(x) + \frac{1}{2}g(x)\).  Is \(p\) increasing, decreasing, or neither at \(a = 2\)?  Why?</li>
+<li id="li-660">Estimate the value of \(p(2.03)\) by using the local linearization of \(p\) at the point \((2,p(2))\).</li>
+</ol>
+<p id="p-353">
+\item Let functions \(p\) and \(q\) be the piecewise linear functions given by their respective graphs in <a knowl="./knowl/F_2.1.Ez3.html" knowl-id="xref-F_2.1.Ez3" alt="Figure 2.1.4 " title="Figure 2.1.4 ">Figure 2.1.4</a>. Use the graphs to answer the following questions.
+</p>
+<figure class="figure-like" id="F_2.1.Ez3"><img width="100%" src="images/2_1_Ez3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.1.4</span>The graphs of \(p\) (in blue) and \(q\) (in green).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-661">At what values of \(x\) is \(p\) not differentiable?  At what values of \(x\) is \(q\) not differentiable? Why?</li>
+<li id="li-662">Let \(r(x) = p(x) + 2q(x)\).  At what values of \(x\) is \(r\) not differentiable? Why?</li>
+<li id="li-663">Determine \(r'(-2)\) and \(r'(0)\).</li>
+<li id="li-664">Find an equation for the tangent line to \(y = r(x)\) at the point \((2,r(2))\).</li>
+</ol>
+<p id="p-354">
+\item Consider the functions \(r(t) = t^t\) and \(s(t) = \arccos(t)\), for which you are given the facts that \(r'(t) = t^t(\ln(t) + 1)\) and \(s'(t) = -\frac{1}{\sqrt{1-t^2}}\). Do not be concerned with where these derivative formulas come from. We restrict our interest in both functions to the domain \(0 \lt  t \lt  1\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-665">Let \(w(t) = 3t^t - 2\arccos(t)\).  Determine \(w'(t)\).</li>
+<li id="li-666">Find an equation for the tangent line to \(y = w(t)\) at the point \((\frac{1}{2}, w(\frac{1}{2}))\).</li>
+<li id="li-667">Let \(v(t) = t^t + \arccos(t)\).  Is \(v\) increasing or decreasing at the instant \(t = \frac{1}{2}\)?  Why?</li>
+</ol>
+<p id="p-355">
+\item Let \(f(x) = a^x\). The goal of this problem is to explore how the value of \(a\) affects the derivative of \(f(x)\), without assuming we know the rule for \(\frac{d}{dx}[a^x]\) that we have stated and used in earlier work in this section.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-668">Use the limit definition of the derivative to show that
+	
+<span class="displaymath" id="me-79">\[
+f'(x) = \lim_{h \to 0} \frac{a^x \cdot a^h - a^x}{h}.
+\]</span>
+</li>
+<li id="li-669">Explain why it is also true that
+	
+<span class="displaymath" id="me-80">\[
+f'(x) = a^x \cdot \lim_{h \to 0} \frac{a^h - 1}{h}.
+\]</span>
+</li>
+<li id="li-670">Use computing technology and small values of \(h\) to estimate the value of 
+	
+<span class="displaymath" id="me-81">\[
+L = \lim_{h \to 0} \frac{a^h - 1}{h}
+\]</span>
+ 
+	when \(a = 2\).  Do likewise when \(a = 3\).</li>
+<li id="li-671">Note that it would be ideal if the value of the limit \(L\) was \(1\), for then \(f\) would be a particularly special function:  its derivative would be simply \(a^x\), which would mean that its derivative is itself.  By experimenting with different values of \(a\) between \(2\) and \(3\), try to find a value for \(a\) for which 
+	
+<span class="displaymath" id="me-82">\[
+L = \lim_{h \to 0} \frac{a^h - 1}{h} = 1.
+\]</span>
+</li>
+<li id="li-672">Compute \(\ln(2)\) and \(\ln(3)\).  What does your work in (b) and (c) suggest is true about \(\frac{d}{dx}[2^x]\) and \(\frac{d}{dx}[3^x]\).</li>
+<li id="li-673">How do your investigations in (d) lead to a particularly important fact about the number \(e\)?</li>
+</ol>
+<p id="p-356">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-357">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

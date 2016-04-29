@@ -1,0 +1,58 @@
+\section{The sine and cosine functions} \label{S:2.2.SinCos}
+
+\vspace*{-14 pt}
+\framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{\begin{goals}
+\item What is a graphical justification for why $\frac{d}{dx}[a^x] = a^x \ln(a)$?
+\item What do the graphs of $y = \sin(x)$ and $y = \cos(x)$ suggest as formulas for their respective derivatives?
+\item Once we know the derivatives of $\sin(x)$ and $\cos(x)$, how do previous derivative rules work when these functions are involved?
+\end{goals}} \hspace*{3 pt}}
+
+\subsection*{Introduction}
+
+Throughout Chapter~\ref{C:2}, we will be working to develop shortcut derivative rules that will help us to bypass the limit definition of the derivative in order to quickly determine the formula for $f'(x)$ when we are given a formula for $f(x)$.  In Section~\ref{S:2.1.ElemRules}, we learned the rule for power functions, that if $f(x) = x^n$, then $f'(x) = nx^{n-1}$, and justified this in part due to results from different $n$-values when applying the limit definition of the derivative.  We also stated the rule for exponential functions, that if $a$ is a positive real number annd $f(x) = a^x$, then $f'(x) = a^x \ln(a)$.  Later in this present section, we are going to work to conjecture formulas for the sine and cosine functions, primarily through a graphical argument.  To help set the stage for doing so, the following preview activity asks you to think about exponential functions and why it is reasonable to think that the derivative of an exponential function is a constant times the exponential function itself.
+
+\input{previews/2.2.PA1}
+
+\subsection*{The sine and cosine functions}
+
+The sine and cosine functions are among the most important functions in all of mathematics.  Sometimes called the \emph{circular} functions due to their genesis in the unit circle%\footnote{See Appendix * for a brief review of important trigonometry.}
+, these periodic functions play a key role in modeling repeating phenomena such as the location of a point on a bicycle tire, the behavior of an oscillating mass attached to a spring, tidal elevations, and more.  Like polynomial and exponential functions, the sine and cosine functions are considered basic functions, ones that are often used in the building of more complicated functions.  As such, we would like to know formulas for $\frac{d}{dx} [\sin(x)]$ and $\frac{d}{dx} [\cos(x)]$, and the next two activities lead us to that end.
+
+\input{activities/2.2.Act1}
+
+\input{activities/2.2.Act2}
+
+The results of the two preceding activities suggest that the sine and cosine functions not only have the beautiful interrelationships that are learned in a course in trigonometry -- connections such as the identities $\sin^2(x) + \cos^2(x) = 1$ and $\cos(x - \frac{\pi}{2}) = \sin(x)$ -- but that they are even further linked through calculus, as the derivative of each involves the other.  The following rules summarize the results of the activities\footnote{These two rules may be formally proved using the limit definition of the derivative and the expansion identities for $\sin(x+h)$ and $\cos(x+h)$.}.
+
+\vspace*{5pt}
+\nin \framebox{\hspace*{3 pt}
+\parbox{\boxwidth}{
+{\bf Sine and Cosine Functions:} \index{derivative!sine} \index{derivative!cosine} For all real numbers $x$,  $$\frac{d}{dx} [\sin(x)] = \cos(x) \ \ \mbox{and} \ \ \frac{d}{dx} [\cos(x)] = -\sin(x)$$
+} \hspace*{3 pt}}
+\vspace*{1pt}
+
+We have now added two additional functions to our library of basic functions whose derivatives we know: power functions, exponential functions, and the sine and cosine functions.  The constant multiple and sum rules still hold, of course, and all of the inherent meaning of the derivative persists, regardless of the functions that are used to constitute a given choice of $f(x)$.  The following activity puts our new knowledge of the derivatives of $\sin(x)$ and $\cos(x)$ to work.
+
+
+\input{activities/2.2.Act3}
+
+\begin{authornote}
+This is an author note.
+\end{authornote}
+
+
+%\nin \framebox{\hspace*{3 pt}
+%\parbox{6.25 in}{
+\begin{summary}
+\item If we consider the graph of an exponential function $f(x) = a^x$ (where $a > 1$), the graph of $f'(x)$ behaves similarly, appearing exponential and as a possibly scaled version of the original function $a^x$.  For $f(x) = 2^x$, careful analysis of the graph and its slopes suggests that $\frac{d}{dx}[2^x] = 2^x \ln(2)$, which is a special case of the rule we stated in Section~\ref{S:2.1.ElemRules}.
+\item By carefully analyzing the graphs of $y = \sin(x)$ and $y = \cos(x)$, plus using the limit definition of the derivative at select points, we found that $\frac{d}{dx} [\sin(x)] = \cos(x)$ and $\frac{d}{dx} [\cos(x)] = -\sin(x)$.
+\item We note that all previously encountered derivative rules still hold, but now may also be applied to functions involving the sine and cosine, plus all of the established meaning of the derivative applies to these trigonometric functions as well.
+\end{summary}
+%} \hspace*{3 pt}}
+
+\nin \hrulefill
+
+\input{exercises/2.2.SinCos(Ex)} 
+
+\clearpage

@@ -1,0 +1,88 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:12-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">3.5.2.2</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-1531">Letting \(\theta\) be the camera's elevation angle, \(h\) the rocket's height, and \(z\) the distance from the camera to the rocket, we have the following situation at a given point in time:
+	<img width="100%" src="images/3_5_Act2Soln.png">
+</li>
+<li id="li-1532">To relate \(\theta\) and \(h\), observe that the tangent function is a good choice, since \(\tan(\theta) = \frac{h}{4000}\), so that
+	
+<span class="displaymath" id="me-364">\[
+h = 4000 \tan(\theta).
+\]</span>
+ 
+	Differentiating implicitly with respect to \(t\), we find that
+	
+<span class="displaymath" id="me-365">\[
+\frac{dh}{dt} = 4000 \sec^2 (\theta) \frac{d\theta}{dt}.
+\]</span>
+</li>
+<li id="li-1533">To relate \(z\) and \(h\), the Pythagorean Theorem is natural to consider.  By this famous result, 
+	
+<span class="displaymath" id="me-366">\[
+h^2 + 4000^2 = z^2.
+\]</span>
+ 
+	Differentiating both sides implicitly with respect to \(t\), it follows
+	
+<span class="displaymath" id="me-367">\[
+2h \frac{dh}{dt} = 2z \frac{dz}{dt},
+\]</span>
+ 
+	and thus \(h \frac{dh}{dt} = z \frac{dz}{dt}.\)</li>
+<li id="li-1534">Using the given fact that the rocket's speed is 600 ft/sec at the instant it has risen 3000 feet, we know that \(\left. \frac{dh}{dt} \right|_{h=3000} = 600\).  Note further in the triangle that when \(h = 3000\), it follows \(z = 5000\), since the base leg of the triangle is constant at 4000, by using the Pythagorean Theorem.  Substituting this information from the instant \(h = 3000\) into the equation that relates the rates of change of \(z\) and \(h\) found in (c), we find that 
+	
+<span class="displaymath" id="me-368">\[
+2 \cdot 3000 \cdot 600 = 2 \cdot 5000 \cdot \left. \frac{dz}{dt} \right|_{h=3000}.
+\]</span>
+ 
+	Solving for \(\left. \frac{dz}{dt} \right|_{h=3000}\) we have 
+	
+<span class="displaymath" id="me-369">\[
+\left. \frac{dz}{dt} \right|_{h=3000} = \frac{1800}{5} = 360 \ \mbox{feet/sec} .
+\]</span>
+ 
+	
+	To answer the question about how fast the camera angle is changing, we use the same information but now in the equation we found in (b) that relates the rates of change of \(\theta\) and \(h\):
+	
+<span class="displaymath" id="me-370">\[
+\frac{dh}{dt} = 4000 \sec^2 (\theta) \frac{d\theta}{dt}.
+\]</span>
+ 
+	Observe that when \(h = 3000\), in the 3000-4000-5000 right triangle, it follows that \(\cos(\theta) = \frac{4}{5}\), so \(\sec(\theta) = \frac{5}{4}\).  Thus, using the instantaneous information,
+	
+<span class="displaymath" id="me-371">\[
+600 = 4000 \cdot \frac{25}{16} \left. \frac{d\theta}{dt} \right|_{h=3000},
+\]</span>
+ 
+	and thus
+	
+<span class="displaymath" id="me-372">\[
+ \left. \frac{d\theta}{dt} \right|_{h=3000} = \frac{6 \cdot 16}{40 \cdot 25} = \frac{12}{125},
+\]</span>
+ 
+	which is measured in radians per second.</li>
+<li id="li-1535">Recalling that \(2h \frac{dh}{dt} = 2z \frac{dz}{dt}\), it follows that 
+	
+<span class="displaymath" id="me-373">\[
+\frac{dz}{dt} = \frac{h}{z} \frac{dh}{dt}.
+\]</span>
+ 
+	Using this equation when \(h = 3000\) and \(\frac{dh}{dt} = 600\) led us to conclude that \(\left. \frac{dz}{dt} \right|_{h=3000} = \frac{3}{5} \cdot 600 = 360 \ \mbox{feet/sec} \).  If we instead use \(h = 4000\), it follows that \(z = 4000\sqrt{2}\), so that
+	
+<span class="displaymath" id="me-374">\[
+\left. \frac{dz}{dt} \right|_{h=4000} = \frac{4}{4\sqrt{2}} \cdot 600 \approx 424.26 \ \mbox{feet/sec} .
+\]</span>
+ 
+	Indeed, \(\frac{dz}{dt}\) is an increasing function of \(h\), provided that \(\frac{dh}{dt}\) is constant, because we can write \(h^2 + 4000^2 = z^2\), so \(z = \sqrt{h^2 + 4000^2}\), making
+	
+<span class="displaymath" id="me-375">\[
+\frac{dz}{dt} = \frac{h}{\sqrt{h^2 + 4000^2}} \frac{dh}{dt} = \frac{h}{\sqrt{h^2 + 4000^2}} 600.
+\]</span>
+ 
+	It is straightforward to verify that \(\frac{h}{\sqrt{h^2 + 4000^2}}\) is an increasing function of \(h\).</li>
+</ol></span><span class="incontext"><a href="S_3.5.RelatedRates.html#solution-60">in-context</a></span>

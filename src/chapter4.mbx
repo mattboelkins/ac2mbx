@@ -1,0 +1,8 @@
+
+<chapter xmlns:xi="http://www.w3.org/2001/XInclude"  xml:id="C_3">
+<title>Using Derivatives</title> <xi:include  href="section4-1.mbx" />
+ <xi:include  href="section4-2.mbx" />
+ <xi:include  href="section4-3.mbx" />
+ <xi:include  href="section4-4.mbx" />
+ <xi:include  href="section4-5.mbx" />
+ </chapter>

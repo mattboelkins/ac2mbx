@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:49-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Density, Mass, and Center of Mass</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_6.1.Volume.html">Previous</a><a class="up-button button toolbar-item" href="C_6.html">Up</a><a class="next-button button toolbar-item" href="S_6.4.Physics.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_6.1.Volume.html">Previous</a><a class="up-button button toolbar-item" href="C_6.html">Up</a><a class="next-button button toolbar-item" href="S_6.4.Physics.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link active"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html" class="active">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_6.3.Mass"><header><h1 class="heading" alt="Section 6.3 Density, Mass, and Center of Mass" title="Section 6.3 Density, Mass, and Center of Mass">
+<span class="type">Section</span><span class="codenumber">6.3</span><span class="title">Density, Mass, and Center of Mass</span><a href="S_6.3.Mass.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-34"><h5 class="heading"></h5>
+<p id="p-1556">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2297">How are mass, density, and volume related?</li>
+<li id="li-2298">How is the mass of an object with varying density computed?</li>
+<li id="li-2299">What is the center of mass of an object, and how are definite integrals used to compute it?</li>
+</ul>
+<p id="p-1557">
+} 
+</p></article><section class="subsection" id="subsection-114"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.3.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-1558">
+We have seen in several different circumstances how studying the units on the integrand and variable of integration enables us to better understand the meaning of a definite integral. For instance, if \(v(t)\) is the velocity of an object moving along an axis, measured in feet per second, while \(t\) measures time in seconds, then both the definite integral and its Riemann sum approximation,
+</p>
+<span class="displaymath" id="me-621">\[
+\int_a^b v(t) \, dt \approx \sum_{i=1}^n v(t_i) \triangle t,
+\]</span><p id="p-1559">
+have their overall units given by the product of the units of \(v(t)\) and \(t\):
+</p>\(\cdot\)<p id="p-1560">
+Thus, \(\int_a^b v(t) \, dt\) measures the total change in position (in feet) of the moving object.
+</p>
+<p id="p-1561">
+This type of unit analysis will be particularly helpful to us in what follows. To begin, in the following preview activity we consider two different definite integrals where the integrand is a function that measures how a particular quantity is distributed over a region and think about how the units on the integrand and the variable of integration indicate the meaning of the integral.
+</p>
+<article class="paragraphs" id="PA_6.3"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1562">
+In each of the following scenarios, we consider the distribution of a quantity along an axis.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2300">Suppose that the function \(c(x) = 200 + 100 e^{-0.1x}\) models the density of traffic on a straight road, measured in cars per mile, where \(x\) is number of miles east of a major interchange, and consider the definite integral \(\int_0^2 (200 + 100 e^{-0.1x}) \, dx\).
+	<ul style="list-style-type: disc;">
+<li id="li-2301">What are the units on the product \(c(x) \cdot \triangle x\)?</li>
+<li id="li-2302">What are the units on the definite integral and its Riemann sum approximation given by
+		
+<span class="displaymath" id="me-622">\[
+\int_0^2 c(x) \, dx \approx \sum_{i=1}^n c(x_i) \triangle x?
+\]</span>
+</li>
+<li id="li-2303">Evaluate the definite integral \(\int_0^2 c(x) \, dx = \int_0^2 (200 + 100 e^{-0.1x}) \, dx\) and write one sentence to explain the meaning of the value you find.</li>
+</ul>
+</li>
+<li id="li-2304">On a 6 foot long shelf filled with books, the function \(B\) models the distribution of the weight of the books, measured in pounds per inch, where \(x\) is the number of inches from the left end of the bookshelf.  Let \(B(x)\) be given by the rule \(B(x) = 0.5 + \frac{1}{(x+1)^2}\).
+	<ul style="list-style-type: disc;">
+<li id="li-2305">What are the units on the product \(B(x) \cdot \triangle x\)?</li>
+<li id="li-2306">What are the units on the definite integral and its Riemann sum approximation given by
+		
+<span class="displaymath" id="me-623">\[
+\int_{12}^{36} B(x) \, dx \approx \sum_{i=1}^n B(x_i) \triangle x?
+\]</span>
+</li>
+<li id="li-2307">Evaluate the definite integral \(\int_{0}^{72} B(x) \, dx = \int_0^{72} (0.5 + \frac{1}{(x+1)^2}) \, dx\) and write one sentence to explain the meaning of the value you find.</li>
+</ul>
+</li>
+</ol></article></section><section class="subsection" id="subsection-115"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.3.2</span><span class="title">Density</span>
+</h1></header><p id="p-1563">
+\knownindex{\lt main&gt;density\lt /main&gt;}
+</p>
+<p id="p-1564">
+The <!--Style me with CSS--><em>mass</em> \knownindex{\lt main&gt;mass\lt /main&gt;} of a quantity, typically measured in metric units such as grams or kilograms, is a measure of the amount of a quantity. In a corresponding way, the <!--Style me with CSS--><em>density</em> of an object measures the distribution of mass per unit volume. For instance, if a brick has mass 3 kg and volume 0.002 m\(^3\), then the density of the brick is
+</p>
+<span class="displaymath" id="me-624">\[
+\frac{3 \mbox{kg} }{0.002 \mbox{m} ^3} = 1500 \frac{\mbox{kg} }{\mbox{m} ^3}.
+\]</span><p id="p-1565">
+As another example, the mass density of water is 1000 kg/m\(^3\). Each of these relationships demonstrate the following general principle.
+</p>
+<p id="p-1566">
+
+{
+For an object of constant density \(d\), with mass \(m\) and volume \(V\),
+</p>
+<span class="displaymath" id="me-625">\[
+d = \frac{m}{V}, \ \mbox{or}  \ m = d \cdot V.
+\]</span><p id="p-1567">
+} 
+
+</p>
+<p id="p-1568">
+But what happens when the density is not constant?
+</p>
+<p id="p-1569">
+If we consider the formula \(m = d \cdot V\), it is reminiscent of two other equations that we have used frequently in recent work: for a body moving in a fixed direction, distance = rate \(\cdot\) time, and, for a rectangle, its area is given by \(A = l \cdot w\). These formulas hold when the principal quantities involved, such as the rate the body moves and the height of the rectangle, are <!--Style me with CSS--><em>constant</em>. When these quantities are not constant, we have turned to the definite integral for assistance. The main idea in each situation is that by working with small slices of the quantity that is varying, we can use a definite integral to add up the values of small pieces on which the quantity of interest (such as the velocity of a moving object) are approximately constant.
+</p>
+<p id="p-1570">
+For example, in the setting where we have a nonnegative velocity function that is not constant, over a short time interval \(\triangle t\) we know that the distance traveled is approximately \(v(t) \triangle t\), since \(v(t)\) is almost constant on a small interval, and for a constant rate, distance = rate \(\cdot\) time. Similarly, if we are thinking about the area under a nonnegative function \(f\) whose value is changing, on a short interval \(\triangle x\) the area under the curve is approximately the area of the rectangle whose height is \(f(x)\) and whose width is \(\triangle x\): \(f(x) \triangle x\). Both of these principles are represented visually in <a knowl="./knowl/F_6.3.VelArea.html" knowl-id="xref-F_6.3.VelArea" alt="Figure 6.3.1 " title="Figure 6.3.1 ">Figure 6.3.1</a>.
+</p>
+<figure class="figure-like" id="F_6.3.VelArea"><img width="100%" src="images/6_3_VelArea.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.3.1</span>At left, estimating a small amount of distance traveled, \(v(t) \triangle t\), and at right, a small amount of area under the curve, \(f(x) \triangle x\).</figcaption></figure><p id="p-1571">
+In a similar way, if we consider the setting where the density of some quantity is not constant, the definite integral enables us to still compute the overall mass of the quantity. Throughout, we will focus on problems where the density varies in only one dimension, say along a single axis, and think about how mass is distributed relative to location along the axis.
+</p>
+<p id="p-1572">
+Let's consider a thin bar of length \(b\) that is situated so its left end is at the origin, where \(x = 0\), and assume that the bar has constant cross-sectional area of 1 cm\(^2\). We let the function \(\rho(x)\) represent the mass density function of the bar, measured in grams per cubic centimeter. That is, given a location \(x\), \(\rho(x)\) tells us approximately how much mass will be found in a one-centimeter wide slice of the bar at \(x\).
+</p>
+<figure class="figure-like" id="F_6.3.Bar"><img width="100%" src="images/6_3_Bar.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.3.2</span>A thin bar of constant cross-sectional area 1 cm\(^2\) with density function \(\rho(x)\) g/cm\(^3\).</figcaption></figure><p id="p-1573">
+If we now consider a thin slice of the bar of width \(\triangle x\), as pictured in <a knowl="./knowl/F_6.3.Bar.html" knowl-id="xref-F_6.3.Bar" alt="Figure 6.3.2 " title="Figure 6.3.2 ">Figure 6.3.2</a>, the volume of such a slice is the cross-sectional area times \(\triangle x\). Since the cross-sections each have constant area 1 cm\(^2\), it follows that the volume of the slice is \(1 \triangle x\) cm\(^3\). Moreover, since mass is the product of density and volume (when density is constant), we see that the mass of this given slice is approximately
+</p>
+<span class="displaymath" id="me-626">\[
+\mbox{mass} _{\mbox{slice} } \approx \rho(x) \ \frac{\mbox{g} }{\mbox{cm} ^3} \cdot 1 \triangle x \ \mbox{cm} ^3 = \rho(x) \cdot \triangle x \ \mbox{g} .
+\]</span><p id="p-1574">
+Hence, for the corresponding Riemann sum (and thus for the integral that it approximates),
+</p>
+<span class="displaymath" id="me-627">\[
+\sum_{i=1}^n \rho(x_i) \triangle x \approx \int_0^b \rho(x) \, dx,
+\]</span><p id="p-1575">
+we see that these quantities measure the mass of the bar between \(0\) and \(b\). (The Riemann sum is an approximation, while the integral will be the exact mass.)
+</p>
+<p id="p-1576">
+At this point, we note that we will be focused primarily on situations where mass is distributed relative to horizontal location, \(x\), for objects whose cross-sectional area is constant. In that setting, it makes sense to think of the density function \(\rho(x)\) with units “mass per unit length,” such as g/cm. Thus, when we compute \(\rho(x) \cdot \triangle x\) on a small slice \(\triangle x\), the resulting units are g/cm \(\cdot\) cm = g, which thus measures the mass of the slice. The general principle follows.
+</p>
+<p id="p-1577">
+
+{
+For an object of constant cross-sectional area whose mass is distributed along a single axis according to the function \(\rho(x)\) (whose units are units of mass per unit of length), the total mass, \(M\) of the object between \(x = a\) and \(x = b\) is given by
+</p>
+<span class="displaymath" id="me-628">\[
+M = \int_a^b \rho(x) \, dx.
+\]</span><p id="p-1578">
+} 
+
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.3.1" id="A_6.3.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.3.3</span>
+</h5></a></div>
+<div id="hk-A_6.3.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1579">
+Consider the following situations in which mass is distributed in a non-constant manner.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2308">Suppose that a thin rod with constant cross-sectional area of 1 cm\(^2\) has its mass distributed according to the density function \(\rho(x) = 2e^{-0.2x}\), where \(x\) is the distance in cm from the left end of the rod, and the units on \(\rho(x)\) are g/cm.  If the rod is 10 cm long, determine the exact mass of the rod.</li>
+<li id="li-2309">Consider the cone that has a base of radius 4 m and a height of 5 m.  Picture the cone lying horizontally with the center of its base at the origin and think of the cone as a solid of revolution.  
+	<ul style="list-style-type: disc;">
+<li id="li-2310">Write and evaluate a definite integral whose value is the volume of the cone.</li>
+<li id="li-2311">Next, suppose that the cone has uniform density of 800 kg/m\(^3\).  What is the mass of the solid cone?</li>
+<li id="li-2312">Now suppose that the cone's density is not uniform, but rather that the cone is most dense at its base.  In particular, assume that the density of the cone is uniform across cross sections parallel to its base, but that in each such cross section that is a distance \(x\) units from the origin, the density of the cross section is given by the function \(\rho(x) = 400 + \frac{200}{1+x^2}\), measured in kg/m\(^3\).  Determine and evaluate a definite integral whose value is the mass of this cone of non-uniform density.  Do so by first thinking about the mass of a given slice of the cone \(x\) units away from the base; remember that in such a slice, the density will be <!--Style me with CSS--><em>essentially constant</em>.</li>
+</ul>
+</li>
+<li id="li-2313">Let a thin rod of constant cross-sectional area 1 cm\(^2\) and length 12 cm have its mass be distributed according to the density function \(\rho(x) = \frac{1}{25}(x-15)^2\), measured in g/cm.  Find the exact location \(z\) at which to cut the bar so that the two pieces will each have identical mass.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-197" id="hint-197"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-197" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2314">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-198" id="hint-198"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-198" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2315">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-97" id="solution-97"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-97" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2316">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-116"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.3.3</span><span class="title">Weighted Averages</span>
+</h1></header><figure class="figure-like" id="T_6.3.grades"><figure class="figure-like" id="table-29"> 
+   class \amp  grade \amp  grade points \amp  credits  
+   chemistry \amp  B+ \amp  3.3 \amp  5 
+   calculus \amp  A- \amp  3.7 \amp  4 
+   history \amp  B- \amp  2.7 \amp  3 
+   psychology \amp  B- \amp  2.7 \amp  3 </figure><figcaption><span class="heading">Figure</span><span class="codenumber">6.3.4</span>A college student's semester grades.</figcaption></figure><p id="p-1580">
+The concept of an average is a natural one, and one that we have used repeatedly as part of our understanding of the meaning of the definite integral. If we have \(n\) values \(a_1\), \(a_2\), \(\ldots\), \(a_n\), we know that their average is given by
+</p>
+<span class="displaymath" id="me-629">\[
+\frac{a_1 + a_2 + \cdots + a_n}{n},
+\]</span><p id="p-1581">
+and for a quantity being measured by a function \(f\) on an interval \([a,b]\), the average value of the quantity on \([a,b]\) is
+</p>
+<span class="displaymath" id="me-630">\[
+\frac{1}{b-a} \int_a^b f(x) \, dx.
+\]</span><p id="p-1582">
+As we continue to think about problems involving the distribution of mass, it is natural to consider the idea of a <!--Style me with CSS--><em>weighted</em> average, \knownindex{\lt main&gt;weighted average\lt /main&gt;} where certain quantities involved are counted more in the average.
+</p>
+<p id="p-1583">
+A common use of weighted averages is in the computation of a student's GPA, where grades are weighted according to credit hours. Let's consider the scenario in <a knowl="./knowl/T_6.3.grades.html" knowl-id="xref-T_6.3.grades" alt="Figure 6.3.4 " title="Figure 6.3.4 ">Table 6.3.4</a>.
+</p>
+<p id="p-1584">
+If all of the classes were of the same weight (i.e., the same number of credits), the student's GPA would simply be calculated by taking the average
+</p>
+<span class="displaymath" id="me-631">\[
+\frac{3.3 + 3.7 + 2.7 + 2.7}{4} = 3.1.
+\]</span><p id="p-1585">
+But since the chemistry and calculus courses have higher weights (of 5 and 4 credits respectively), we actually compute the GPA according to the weighted average
+</p>
+<span class="displaymath" id="me-632">\[
+\frac{3.3 \cdot 5 + 3.7 \cdot 4 + 2.7 \cdot 3 + 2.7 \cdot 3}{5 + 4 + 3 + 3} = 3.1\overline{6}.
+\]</span><p id="p-1586">
+The weighted average reflects the fact that chemistry and calculus, as courses with higher credits, have a greater impact on the students' grade point average. Note particularly that in the weighted average, each grade gets multiplied by its weight, and we divide by the sum of the weights.
+</p>
+<p id="p-1587">
+In the following activity, we explore further how weighted averages can be used to find the balancing point of a physical system.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.3.2" id="A_6.3.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.3.5</span>
+</h5></a></div>
+<div id="hk-A_6.3.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1588">
+For quantities of equal weight, such as two children on a teeter-totter, the balancing point is found by taking the average of their locations. When the weights of the quantities differ, we use a weighted average of their respective locations to find the balancing point.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2317">Suppose that a shelf is 6 feet long, with its left end situated at \(x = 0\).  If one book of weight 1 lb is placed at \(x_1 = 0\), and another book of weight 1 lb is placed at \(x_2 = 6\), what is the location of \(\overline{x}\), the point at which the shelf would (theoretically) balance on a fulcrum?</li>
+<li id="li-2318">Now, say that we place four books on the shelf, each weighing 1 lb:  at \(x_1 = 0\), at \(x_2 = 2\), at \(x_3 = 4\), and at \(x_4 = 6\).  Find \(\overline{x}\), the balancing point of the shelf.</li>
+<li id="li-2319">How does \(\overline{x}\) change if we change the location of the third book?  Say the locations of the 1-lb books are  \(x_1 = 0\), \(x_2 = 2\), \(x_3 = 3\), and \(x_4 = 6\).</li>
+<li id="li-2320">Next, suppose that we place four books on the shelf, but of varying weights:  at \(x_1 = 0\) a 2-lb book, at \(x_2 = 2\) a 3-lb book, and \(x_3 = 4\) a 1-lb book, and at \(x_4 = 6\) a 1-lb book.  Use a weighted average of the locations to find \(\overline{x}\), the balancing point of the shelf.  How does the balancing point in this scenario compare to that found in (b)?</li>
+<li id="li-2321">What happens if we change the location of one of the books?  Say that we keep everything the same in (d), except that \(x_3 = 5\).  How does \(\overline{x}\) change?</li>
+<li id="li-2322">What happens if we change the weight of one of the books?  Say that we keep everything the same in (d), except that the book at \(x_3 = 4\) now weighs 2 lbs.  How does \(\overline{x}\) change?</li>
+<li id="li-2323">Experiment with a couple of different scenarios of your choosing where you move the location of one of the books to the left, or you decrease the weight of one of the books.</li>
+<li id="li-2324">Write a couple of sentences to explain how adjusting the location of one of the books or the weight of one of the books affects the location of the balancing point of the shelf.  Think carefully here about how your changes should be considered relative to the location of the balancing point \(\overline{x}\) of the current scenario.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-199" id="hint-199"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-199" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2325">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-200" id="hint-200"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-200" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2326">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-98" id="solution-98"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-98" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2327">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-117"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.3.4</span><span class="title">Center of Mass</span>
+</h1></header><p id="p-1589">
+In <a knowl="./knowl/A_6.3.2.html" knowl-id="xref-A_6.3.2" alt="Exercise 6.3.5 " title="Exercise 6.3.5 ">Activity 6.3.5</a>, we saw that the balancing point of a system of point-masses<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-42" id="fn-42"><sup> 1 </sup></a></span><span id="hk-fn-42" style="display: none;" class="tex2jax_ignore"><span class="footnote">In the activity, we actually used <!--Style me with CSS--><em>weight</em> rather than <!--Style me with CSS--><em>mass</em>.  Since weight is computed by the gravitational constant times mass, the computations for the balancing point result in the same location regardless of whether we use weight or mass, since the gravitational constant is present in both the numerator and denominator of the weighted average.</span></span> (such as books on a shelf) is found by taking a weighted average of their respective locations. In the activity, we were computing the <!--Style me with CSS--><em>center of mass</em> of a system of masses distributed along an axis, which is the balancing point of the axis on which the masses rest.
+</p>
+<p id="p-1590">
+
+{
+For a collection of \(n\) masses \(m_1\), \(\ldots\), \(m_n\) that are distributed along a single axis at the locations \(x_1\), \(\ldots\), \(x_n\), the <!--Style me with CSS--><em>center of mass</em> is given by
+</p>
+<span class="displaymath" id="me-633">\[
+\overline{x} = \frac{x_1 m_1  + x_2 m_2 + \cdots x_n m_n}{m_1 + m_2 + \cdots + m_n}.
+\]</span><p id="p-1591">
+}
+
+</p>
+<p id="p-1592">
+What if we instead consider a thin bar over which density is distributed continuously? If the density is constant, it is obvious that the balancing point of the bar is its midpoint. But if density is not constant, we must compute a weighted average. Let's say that the function \(\rho(x)\) tells us the density distribution along the bar, measured in g/cm. If we slice the bar into small sections, this enables us to think of the bar as holding a collection of adjacent point-masses. For a slice of thickness \(\triangle x\) at location \(x_i\), note that the mass of the slice, \(m_i\), satisfies \(m_i \approx \rho(x_i) \triangle x\).
+</p>
+<p id="p-1593">
+Taking \(n\) slices of the bar, we can approximate its center of mass by
+</p>
+<span class="displaymath" id="me-634">\[
+\overline{x} \approx \frac{x_1 \cdot \rho(x_1) \triangle x + x_2 \cdot \rho(x_2) \triangle x  + \cdots + x_n \cdot \rho(x_n) \triangle x }{\rho(x_1) \triangle x + \rho(x_2) \triangle x + \cdots + \rho(x_n) \triangle x}.
+\]</span><p id="p-1594">
+Rewriting the sums in sigma notation, it follows that
+</p>
+<span class="displaymath" id="E_CtrOfM">\begin{equation}
+ \overline{x} \approx \frac{\sum_{i = 1}^{n} x_i \cdot \rho(x_i) \triangle x}{\sum_{i = 1}^{n} \rho(x_i) \triangle x}.
+\label{E_CtrOfM}\tag{6.3.1}\end{equation}</span><p id="p-1595">
+Moreover, it is apparent that the greater the number of slices, the more accurate our estimate of the balancing point will be, and that the sums in Equation <a knowl="./knowl/E_CtrOfM.html" knowl-id="xref-E_CtrOfM" alt="Equation 6.3.1 " title="Equation 6.3.1 ">(6.3.1)</a> can be viewed as Riemann sums. Hence, in the limit as \(n \to \infty\), we find that the center of mass is given by the quotient of two integrals.
+</p>
+<p id="p-1596">
+
+{
+For a thin rod of density \(\rho(x)\) distributed along an axis from \(x = a\) to \(x = b\), the center of mass of the rod is given by
+</p>
+<span class="displaymath" id="me-635">\[
+\overline{x} = \frac{\int_a^b x \rho(x) \, dx}{\int_a^b \rho(x) \, dx}.
+\]</span><p id="p-1597">
+}
+
+</p>
+<p id="p-1598">
+Note particularly that the denominator of \(\overline{x}\) is the mass of the bar, and that this quotient of integrals is simply the continuous version of the weighted average of locations, \(x\), along the bar.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.3.3" id="A_6.3.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.3.6</span>
+</h5></a></div>
+<div id="hk-A_6.3.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1599">
+Consider a thin bar of length 20 cm whose density is distributed according to the function \(\rho(x) = 4 + 0.1x\), where \(x = 0\) represents the left end of the bar. Assume that \(\rho\) is measured in g/cm and \(x\) is measured in cm.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2328">Find the total mass, \(M\), of the bar.</li>
+<li id="li-2329">Without doing any calculations, do you expect the center of mass of the bar to be equal to 10, less than 10, or greater than 10?  Why?</li>
+<li id="li-2330">Compute \(\overline{x}\), the exact center of mass of the bar.</li>
+<li id="li-2331">What is the average density of the bar?</li>
+<li id="li-2332">Now consider a different density function, given by \(p(x) = 4e^{0.020732x}\), also for a bar of length 20 cm whose left end is at \(x = 0\).  Plot both \(\rho(x)\) and \(p(x)\) on the same axes.  Without doing any calculations, which bar do you expect to have the greater center of mass?  Why?</li>
+<li id="li-2333">Compute the exact center of mass of the bar described in (e) whose density function is \(p(x) = 4e^{0.020732x}\).  Check the result against the prediction you made in (e).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-201" id="hint-201"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-201" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2334">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-202" id="hint-202"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-202" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2335">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-99" id="solution-99"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-99" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2336">Solutions for each of the prompts above.</li></ol></span></span><p id="p-1600">
+\item For an object of constant density \(D\), with volume \(V\) and mass \(m\), we know that \(m = D \cdot V.\)
+\item If an object with constant cross-sectional area (such as a thin bar) has its density distributed along an axis according to the function \(\rho(x)\), then we can find the mass of the object between \(x = a\) and \(x = b\) by
+</p>
+<span class="displaymath" id="me-636">\[
+m = \int_a^b \rho(x) \, dx.
+\]</span><p id="p-1601">
+\item For a system of point-masses distributed along an axis, say \(m_1, \ldots, m_n\) at locations \(x_1, \ldots, x_n\), the center of mass, \(\overline{x}\), is given by the weighted average
+</p>
+<span class="displaymath" id="me-637">\[
+\overline{x} = \frac{\sum_{i=1}^n x_i m_i}{\sum_{i=1}^n m_i}.
+\]</span><p id="p-1602">
+If instead we have mass continuously distributed along an axis, such as by a density function \(\rho(x)\) for a thin bar of constant cross-sectional area, the center of mass of the portion of the bar between \(x = a\) and \(x = b\) is given by
+</p>
+<span class="displaymath" id="me-638">\[
+\overline{x} = \frac{\int_a^b x \rho(x) \, dx}{\int_a^b \rho(x) \, dx}.
+\]</span><p id="p-1603">
+In each situation, \(\overline{x}\) represents the balancing point of the system of masses or of the portion of the bar.
+</p>
+<p id="p-1604">
+\hrulefill
+</p>
+<p id="p-1605">
+\begin{exercises}
+\item Let a thin rod of length \(a\) have density distribution function \(\rho(x) = 10e^{-0.1x}\), where \(x\) is measured in cm and \(\rho\) in grams per centimeter.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2337">If the mass of the rod is 30 g, what is the value of \(a\)?</li>
+<li id="li-2338">For the 30g rod, will the center of mass lie at its midpoint, to the left of the midpoint, or to the right of the midpoint?  Why?</li>
+<li id="li-2339">For the 30g rod, find the center of mass, and compare your prediction in (b).</li>
+<li id="li-2340">At what value of \(x\) should the 30g rod be cut in order to form two pieces of equal mass?</li>
+</ol>
+<p id="p-1606">
+\item Consider two thin bars of constant cross-sectional area, each of length 10 cm, with respective mass density functions \(\rho(x) = \frac{1}{1+x^2}\) and \(p(x) = e^{-0.1x}\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2341">Find the mass of each bar.</li>
+<li id="li-2342">Find the center of mass of each bar.</li>
+<li id="li-2343">Now consider a new 10 cm bar whose mass density function is \(f(x) = \rho(x) + p(x)\).  
+	<ol style="list-style-type: lower-alpha;">
+<li id="li-2344">Explain how you can easily find the mass of this new bar with little to no additional work.</li>
+<li id="li-2345">Similarly, compute \(\int_0^{10} xf(x) \, dx\) as simply as possible, in light of earlier computations.</li>
+<li id="li-2346">True or false:  the center of mass of this new bar is the average of the centers of mass of the two earlier bars.  Write at least one sentence to say why your conclusion makes sense.</li>
+</ol>
+</li>
+</ol>
+<p id="p-1607">
+\item Consider the curve given by \(y = f(x) = 2xe^{-1.25x} + (30-x) e^{-0.25(30-x)}\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2347">Plot this curve in the window \(x = 0 \ldots 30\), \(y = 0 \ldots 3\) (with constrained scaling so the units on the \(x\) and \(y\) axis are equal), and use it to generate a solid of revolution about the \(x\)-axis.  Explain why this curve could generate a reasonable model of a baseball bat.</li>
+<li id="li-2348">Let \(x\) and \(y\) be measured in inches.  Find the total volume of the baseball bat generated by revolving the given curve about the \(x\)-axis.  Include units on your answer</li>
+<li id="li-2349">Suppose that the baseball bat has constant weight density, and that the weight density is 0.6 ounces per cubic inch.  Find the total weight of the bat whose volume you found in (b).</li>
+<li id="li-2350">Because the baseball bat does not have constant cross-sectional area, we see that the amount of weight concentrated at a location \(x\) along the bat is determined by the volume of a slice at location \(x\).  Explain why we can think about the function \(\rho(x) = 0.6 \pi f(x)^2\) (where \(f\) is the function given at the start of the problem) as being the weight density function for how the weight of the baseball bat is distributed from \(x = 0\) to \(x = 30\).</li>
+<li id="li-2351">Compute the center of mass of the baseball bat.</li>
+</ol>
+<p id="p-1608">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1609">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

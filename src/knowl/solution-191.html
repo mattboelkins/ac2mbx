@@ -1,0 +1,39 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:49-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">8.5.4.1</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-3133">Using the Ratio Test with the \(k\)th term \(\frac{|x|^{2k}}{(2k)!}\) we get
+
+<span class="displaymath" id="md-138">\begin{align*}
+\lim_{k \to \infty} \frac{ \frac{|x|^{2(k+1)}}{(2(k+1))!} }{ \frac{|x|^{2k}}{(2k)!} } \amp = \lim_{k \to \infty} \frac{|x|^{2(k+1)}(2k)!}{|x|^{2k}(2(k+1))!}\\
+\amp = \lim_{k \to \infty} \frac{|x|^{2}}{(2k+2)(2k+1)}\\
+\amp = 0.
+\end{align*}</span>
+ 
+So the interval of convergence of the Taylor series for \(f(x) = \cos(x)\) centered at \(x=0\) is \((-\infty, \infty)\).</li>
+<li id="li-3134">Using the Ratio Test with the \(k\)th term \(\frac{|x|^{2k+1}}{(2k+1)!}\) we get
+
+<span class="displaymath" id="md-139">\begin{align*}
+\lim_{k \to \infty} \frac{ \frac{|x|^{2(k+1)+1}}{(2(k+1)+1)!} }{ \frac{|x|^{2k+1}}{(2k+1)!} } \amp = \lim_{k \to \infty} \frac{|x|^{2(k+1)+1}(2k+1)!}{|x|^{2k+1}(2(k+1)+1)!}\\
+\amp = \lim_{k \to \infty} \frac{|x|^{2}}{(2k+3)(2k+2)}\\
+\amp = 0.
+\end{align*}</span>
+ 
+So the interval of convergence of the Taylor series for \(f(x) = \sin(x)\) centered at \(x=0\) is \((-\infty, \infty)\).</li>
+<li id="li-3135">Using the Ratio Test with the \(k\)th term \(|x|^{k}\) we get
+
+<span class="displaymath" id="me-1040">\[
+\lim_{k \to \infty} \frac{ |x|^{k+1} }{ |x|^{k} } = \lim_{k \to \infty} |x| = |x|,
+\]</span>
+ 
+So the series \(\ds \sum_{k=0}^{\infty} x^k\) converges absolutely when \(|x| \lt  1\) or for \(-1 \lt  x \lt  1\) and diverges when \(|x| &gt; 1\). Since the Ratio Test doesn't tell us what happens when \(x=1\), we need to check the endpoints separately.
+<ul style="list-style-type: disc;">
+<li id="li-3136">When \(x=1\) we have the series \(\sum_{k=0}^{\infty} 1\) which diverges since \(\lim_{k \to \infty} 1 \neq 0\).</li>
+<li id="li-3137">When \(x=-1\) we have the series \(\sum_{k=0}^{\infty} (-1)^k\) which diverges since \(\lim_{k \to \infty} (-1)^k\) does not exist.</li>
+</ul>  
+Therefore, the interval of convergence of the Taylor series for \(f(x) = \frac{1}{1-x}\) centered at \(x=0\) is \((-1,1)\).</li>
+</ol></span><span class="incontext"><a href="S_8.5.Taylor.html#solution-191">in-context</a></span>

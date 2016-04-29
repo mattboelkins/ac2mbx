@@ -1,0 +1,21 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:41-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">8.3.4.1</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-2913">When \(k\) is very large, the constant 1 in the numerator is negligible compared to \(k\) and the constant 2 in the denominator is negligible compared to \(k^3\). So the numerator looks like \(k\) and the denominator \(k^3\) when \(k\) is large. It follows that \( \frac{k+1}{k^3+2}\) looks like \( \frac{k}{k^3}\) when \(k\) is large.</li>
+<li id="li-2914">Note that 
+    
+<span class="displaymath" id="md-105">\begin{align*}
+\lim_{k \to \infty} \frac{a_k}{b_k} \amp = \lim_{k \to \infty} \frac{ \frac{k+1}{k^3+2} }{ \frac{k}{k^3} }\\
+\amp = \lim_{k \to \infty} \frac{(k+1)k^3}{k(k^3+2)}\\
+\amp = \lim_{k \to \infty} \frac{1+\frac{1}{k}}{1+\frac{2}{k}}\\
+\amp = 1.
+\end{align*}</span>
+ 
+    This tells us that \(a_k \approx b_k\) for large values of \(k\), which is what we suggested in part (a).</li>
+<li id="li-2915">Since \(\frac{k}{k^3} = \frac{1}{k^2}\), the series \( \sum \frac{k}{k^3}\) is a \(p\)-series with \(p=2\) and so converges. Since \(a_k \approx b_k\) for large values of \(k\), it seems reasonable to expect that \(\sum a_k \approx \sum b_k\) for large \(k\)s. Since \(\sum a_k\) is finite, we should then conclude that \(\sum b_k\) is also finite. So \( \sum \frac{k+1}{k^3+2}\) should be a convergent series.</li>
+</ol></span><span class="incontext"><a href="S_8.3.Series.html#solution-152">in-context</a></span>

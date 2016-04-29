@@ -1,0 +1,66 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:47-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">2</span>
+</h5>Since \(f(x) = e^x\) is not linear, the linear approximation eventually is not a very good one. To obtain better approximations, we want to develop a different approximation that “bends” to make it more closely fit the graph of \(f\) near \(x=0\). To do so, we  add a quadratic term to \(P_1(x)\). In other words, we let
+
+<span class="displaymath" id="me-987">\[
+P_2(x) = P_1(x) + c_2x^2
+\]</span>
+ 
+for some real number \(c_2\). We need to determine the value  of \(c_2\) that makes the graph of \(P_2(x)\) best fit the graph of \(f(x)\) near \(x=0\).
+
+Remember that \(P_1(x)\) was a good linear approximation to \(f(x)\) near \(0\); this is because \(P_1(0) = f(0)\) and \(P'_1(0) = f'(0)\). It is therefore reasonable to seek a value of \(c_2\) so that
+
+<span class="displaymath" id="md-125">\begin{align*}
+P_2(0) \amp = f(0),\\
+P'_2(0) \amp = f'(0), \ \mbox{and}\\
+P''_2(0) \amp = f''(0).
+\end{align*}</span>
+ 
+Remember, we are letting \(P_2(x) = P_1(x) + c_2x^2\).
+    <ul xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: disc;">
+<li id="li-3079">Calculate \(P_2(0)\) to show that \(P_2(0) = f(0)\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-184" id="solution-184"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-184" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2343">
+Since
+</p>
+<span class="displaymath" id="me-988">\[
+P_2(x) = P_1(x) + c_2(x)^2 = f(0) + f'(0)x + c_2x^2
+\]</span><p id="p-2344">
+we have that
+</p>
+<span class="displaymath" id="me-989">\[
+P_2(0) = 1 = f(0)
+\]</span><p id="p-2345">
+as desired.
+</p></span></span>
+</li>
+<li id="li-3080">Calculate \(P'_2(0)\) to show that \(P'_2(0) = f'(0)\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-185" id="solution-185"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-185" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2346">
+A simple calculation shows \(P'_2(x) = P'1(x) + 2c_2x\). So \(P'_2(0) = P'_1(0) = 1 = f'(0)\) as desired.
+</p></span></span>
+</li>
+<li id="li-3081">Calculate \(P''_2(x)\). Then find a value for \(c_2\) so that \(P''_2(0) = f''(0)\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-186" id="solution-186"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-186" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2347">
+A simple calculation shows \(P''_2(x) = 2c_2\). So \(P''_2(0) = 2c_2\). To have \(P''_2(0) = f''(0)\) we must have \(2c_2 = f''(0)\) or \(c_2 = \frac{f''(0)}{2} = \frac{1}{2}\).
+</p></span></span>
+</li>
+<li id="li-3082">Explain why the condition \(P''_2(0) = f''(0)\) will put an appropriate ``bend" in the graph of \(P_2\) to make \(P_2\) fit the graph of \(f\) around \(x=0\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-187" id="solution-187"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-187" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2348">
+The second derivative of a function tells us the concavity of the function. Concavity measures how the slopes of the tangent lines to the graph of the function are changing. This tells us how much bend there is in the graph. So if \(P''_2(0) = f''(0)\), then \(P_2\) will have the same bend in it at \(x=0\) as \(f\) does. This will make the graph of \(P_2\) mold to the graph of \(f\) around \(x=0\).
+</p></span></span>
+</li>
+</ul></article><span class="incontext"><a href="S_8.5.Taylor.html#li-3078">in-context</a></span>

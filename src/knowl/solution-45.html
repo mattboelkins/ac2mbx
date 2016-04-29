@@ -1,0 +1,64 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:08-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">2.8.3.1</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-1179">As both numerator and denominator tend to \(\infty\) as \(x \to \infty\), by L'Hopital's Rule followed by some elementary algebra,
+  
+<span class="displaymath" id="me-294">\[
+ \lim_{x \to \infty} \frac{x}{\ln(x)} = \lim_{x \to \infty} \frac{1}{\frac{1}{x}} = \lim_{x \to \infty} x = \infty.
+\]</span>
+</li>
+<li id="li-1180">Because this limit has indeterminate form \(\frac{\infty}{\infty}\), L'Hopital's Rule tells us that
+  
+<span class="displaymath" id="me-295">\[
+ \lim_{x \to \infty} \frac{e^{x} + x}{2e^{x} + x^2} = \lim_{x \to \infty} \frac{e^{x} + 1}{2e^{x} + 2x}.
+\]</span>
+ 
+  The latest limit is indeterminate for the same reason, and a second application of the rule shows
+  
+<span class="displaymath" id="me-296">\[
+ \lim_{x \to \infty} \frac{e^{x} + x}{2e^{x} + x^2} = \lim_{x \to \infty} \frac{e^{x}}{2e^{x} + 2}.
+\]</span>
+ 
+  Note how each application of the rule produces a simpler numerator and denominator.  With one more use of L'Hopital's Rule, followed by a simple algebraic simplification, we have
+  
+<span class="displaymath" id="me-297">\[
+ \lim_{x \to \infty} \frac{e^{x} + x}{2e^{x} + x^2} = \lim_{x \to \infty} \frac{e^{x}}{2e^{x}} = \lim_{x \to \infty} \frac{1}{2} = \frac{1}{2}.
+\]</span>
+</li>
+<li id="li-1181">As \(x \to 0^+\), \(\ln(x) \to -\infty\) and \(\frac{1}{x} \to +\infty\), thus by L'Hopital's Rule,
+  
+<span class="displaymath" id="me-298">\[
+ \lim_{x \to 0^+} \frac{\ln(x)}{\frac{1}{x}} = \lim_{x \to 0^+} \frac{\frac{1}{x}}{-\frac{1}{x^2}}.
+\]</span>
+ 
+  Reciprocating, multiplying, and simplifying, it follows that  
+    
+<span class="displaymath" id="me-299">\[
+ \lim_{x \to 0^+} \frac{\ln(x)}{\frac{1}{x}} = \lim_{x \to 0^+} \frac{1}{x}\cdot \frac{x^2}{-1} = \lim_{x \to 0^+} -x = 0.
+\]</span>
+</li>
+<li id="li-1182">Here, the numerator tends to \(\infty\) while the denominator tends to \(0^-\).  Note well that this limit is not indeterminate, but rather produces a collection of fractions with large positive numerators and small negative denominators.  Hence
+  
+<span class="displaymath" id="me-300">\[
+\ds \lim_{x \to \frac{\pi}{2}^-} \frac{\tan(x)}{x-\frac{\pi}{2}} = -\infty.
+\]</span>
+ 
+  In particular, we observe that L'Hopital's Rule is not applicable here.</li>
+<li id="li-1183">In its original form, \(\ds \lim_{x \to \infty} xe^{-x}\), is indeterminate of form \(\infty \cdot 0\).  Rewriting \(e^{-x}\) as \(\frac{1}{e^x}\), a straightforward application of L'Hopital's Rule tells us that
+  
+<span class="displaymath" id="me-301">\[
+ \lim_{x \to \infty} xe^{-x} = \lim_{x \to \infty} \frac{x}{e^x} = \lim_{x \to \infty} \frac{1}{e^x}.
+\]</span>
+ 
+  Since \(e^x \to \infty\) as \(x \to \infty\), we find that
+  
+<span class="displaymath" id="me-302">\[
+\lim_{x \to \infty} xe^{-x} = 0.
+\]</span>
+</li>
+</ol></span><span class="incontext"><a href="S_2.8.LHR.html#solution-45">in-context</a></span>

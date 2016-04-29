@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:38-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The Tangent Line Approximation</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_1.7.LimContDiff.html">Previous</a><a class="up-button button toolbar-item" href="C_1.html">Up</a><a class="next-button button toolbar-item" href="C_2.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_1.7.LimContDiff.html">Previous</a><a class="up-button button toolbar-item" href="C_1.html">Up</a><a class="next-button button toolbar-item" href="C_2.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link active"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html" class="active">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_1.8.TanLineApprox"><header><h1 class="heading" alt="Section 1.8 The Tangent Line Approximation" title="Section 1.8 The Tangent Line Approximation">
+<span class="type">Section</span><span class="codenumber">1.8</span><span class="title">The Tangent Line Approximation</span><a href="S_1.8.TanLineApprox.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-8"><h5 class="heading"></h5>
+<p id="p-273">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-506">What is the formula for the general tangent line approximation to a differentiable function \(y = f(x)\) at the point \((a,f(a))\)?</li>
+<li id="li-507">What is the principle of local linearity and what is the local linearization of a differentiable function \(f\) at a point \((a,f(a))\)?</li>
+<li id="li-508">How does knowing just the tangent line approximation tell us information about the behavior of the original function itself near the point of approximation?  How does knowing the second derivative's value at this point provide us additional knowledge of the original function's behavior?</li>
+</ul>
+<p id="p-274">
+} 
+</p></article><section class="subsection" id="subsection-22"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.8.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-275">
+Among all functions, linear functions are simplest. One of the powerful consequences of a function \(y = f(x)\) being differentiable at a point \((a,f(a))\) is that, up close, the function \(y = f(x)\) is locally linear and looks like its tangent line at that point. In certain circumstances, this allows us to approximate the original function \(f\) with a simpler function \(L\) that is linear: this can be advantageous when we have limited information about \(f\) or when \(f\) is computationally or algebraically complicated. We will explore all of these situations in what follows.
+</p>
+<p id="p-276">
+It is essential to recall that when \(f\) is differentiable at \(x = a\), the value of \(f'(a)\) provides the slope of the tangent line to \(y = f(x)\) at the point \((a,f(a))\). By knowing both a point on the line and the slope of the line we are thus able to find the equation of the tangent line. Preview <a href="S_1.8.TanLineApprox.html#PA_1.8" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> will refresh these concepts through a key example and set the stage for further study.
+</p>
+<article class="paragraphs" id="PA_1.8"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-277">
+Consider the function \(y = g(x) = -x^2+3x+2\).
+</p>
+<figure class="figure-like" id="F_1.8.PA1"><img width="100%" src="images/1_8_PA1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.8.1</span>Axes for plotting \(y = g(x)\) and its tangent line to the point \((2,g(2))\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-509">Use the limit definition of the derivative to compute a formula for \(y = g'(x)\).</li>
+<li id="li-510">Determine the slope of the tangent line to \(y = g(x)\) at the value \(x = 2\).</li>
+<li id="li-511">Compute \(g(2)\).</li>
+<li id="li-512">Find an equation for the tangent line to \(y = g(x)\) at the point \((2,g(2))\).  Write your result in point-slope form<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-8" id="fn-8"><sup> 1 </sup></a></span><span id="hk-fn-8" style="display: none;" class="tex2jax_ignore"><span class="footnote">Recall that a line with slope \(m\) that passes through \((x_0,y_0)\) has equation \(y - y_0 = m(x - x_0)\), and this is the <!--Style me with CSS--><em>point-slope form</em> of the equation.</span></span>.</li>
+<li id="li-513">On the axes provided in <a knowl="./knowl/F_1.8.PA1.html" knowl-id="xref-F_1.8.PA1" alt="Figure 1.8.1 " title="Figure 1.8.1 ">Figure 1.8.1</a>, sketch an accurate, labeled graph of \(y = g(x)\) along with its tangent line at the point \((2,g(2))\).</li>
+</ol></article></section><section class="subsection" id="subsection-23"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.8.2</span><span class="title">The tangent line</span>
+</h1></header><p id="p-278">
+\knownindex{\lt main&gt;tangent line\lt /main&gt;\lt sub&gt;equation\lt /sub&gt;}
+</p>
+<p id="p-279">
+Given a function \(f\) that is differentiable at \(x = a\), we know that we can determine the slope of the tangent line to \(y = f(x)\) at \((a,f(a))\) by computing \(f'(a)\). The resulting tangent line through \((a,f(a))\) with slope \(m = f'(a)\) has its equation in point-slope form given by
+</p>
+<span class="displaymath" id="me-65">\[
+y - f(a) = f'(a)(x-a),
+\]</span><p id="p-280">
+which we can also express as \(y = f'(a)(x-a) + f(a)\). Note well: there is a major difference between \(f(a)\) and \(f(x)\) in this context. The former is a constant that results from using the given fixed value of \(a\), while the latter is the general expression for the rule that defines the function. The same is true for \(f'(a)\) and \(f'(x)\): we must carefully distinguish between these expressions. Each time we find the tangent line, we need to evaluate the function and its derivative at a fixed \(a\)-value.
+</p>
+<figure class="figure-like" id="F_1.8.TanLine"><img width="100%" src="images/1_8_TanLine.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.8.2</span>A function \(y = f(x)\) and its tangent line at the point \((a,f(a))\): at left, from a distance, and at right, up close.  At right, we label the tangent line function by \(y = L(x)\) and observe that for \(x \) near \(a\), \(f(x) \approx L(x)\).</figcaption></figure><p id="p-281">
+In <a knowl="./knowl/F_1.8.TanLine.html" knowl-id="xref-F_1.8.TanLine" alt="Figure 1.8.2 " title="Figure 1.8.2 ">Figure 1.8.2</a>, we see a labeled plot of the graph of a function \(f\) and its tangent line at the point \((a,f(a))\). Notice how when we zoom in we see the local linearity of \(f\) more clearly highlighted as the function and its tangent line are nearly indistinguishable up close. This can also be seen dynamically in the java applet at \href{http://gvsu.edu/s/6J}{<tt class="code-inline">http://gvsu.edu/s/6J</tt>}.
+</p></section><section class="subsection" id="subsection-24"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">1.8.3</span><span class="title">The local linearization</span>
+</h1></header><p id="p-282">
+\knownindex{\lt main&gt;local linearization\lt /main&gt;}
+</p>
+<p id="p-283">
+A slight change in perspective and notation will enable us to be more precise in discussing how the tangent line to \(y = f(x)\) at \((a,f(a))\) approximates \(f\) near \(x = a\). Taking the equation for the tangent line and solving for \(y\), we observe that the tangent line is given by
+</p>
+<span class="displaymath" id="me-66">\[
+y = f'(a)(x-a) + f(a)
+\]</span><p id="p-284">
+and moreover that this line is itself a function of \(x\). Replacing the variable \(y\) with the expression \(L(x)\), we call
+</p>
+<span class="displaymath" id="me-67">\[
+L(x) = f'(a)(x-a) + f(a)
+\]</span><p id="p-285">
+the <!--Style me with CSS--><em>local linearization of \(f\)</em> at the point \((a,f(a))\). In this notation, it is particularly important to observe that \(L(x)\) is nothing more than a new name for the tangent line, and that for \(x\) close to \(a\), we have that \(f(x) \approx L(x)\).
+</p>
+<p id="p-286">
+Say, for example, that we know that a function \(y = f(x)\) has its tangent line approximation given by \(L(x) = 3 - 2(x-1)\) at the point \((1,3)\), but we do not know anything else about the function \(f\). If we are interested in estimating a value of \(f(x)\) for \(x\) near 1, such as \(f(1.2)\), we can use the fact that \(f(1.2) \approx L(1.2)\) and hence
+</p>
+<span class="displaymath" id="me-68">\[
+f(1.2) \approx L(1.2) = 3 - 2(1.2-1) = 3 - 2(0.2) = 2.6.
+\]</span><p id="p-287">
+Again, much of the new perspective here is only in notation since \(y = L(x)\) is simply a new name for the tangent line function. In light of this new notation and our observations above, we note that since \(L(x) = f(a) + f'(a)(x-a)\) and \(L(x) \approx f(x)\) for \(x\) near \(a\), it also follows that we can write
+</p>
+<span class="displaymath" id="me-69">\[
+f(x) \approx f(a) + f'(a)(x-a) \ \mbox{for}  \  x \ \mbox{near}  \ a.
+\]</span><p id="p-288">
+The next activity explores some additional important properties of the local linearization \(y = L(x)\) to a function \(f\) at given \(a\)-value.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.8.1" id="A_1.8.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.8.3</span>
+</h5></a></div>
+<div id="hk-A_1.8.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-289">
+Suppose it is known that for a given differentiable function \(y = g(x)\), its local linearization at the point where \(a = -1\) is given by \(L(x) = -2 + 3(x+1)\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-514">Compute the values of \(L(-1)\) and \(L'(-1)\).</li>
+<li id="li-515">What must be the values of \(g(-1)\) and \(g'(-1)\)?  Why?</li>
+<li id="li-516">Do you expect the value of \(g(-1.03)\) to be greater than or less than the value of \(g(-1)\)?  Why?</li>
+<li id="li-517">Use the local linearization to estimate the value of \(g(-1.03)\).</li>
+<li id="li-518">Suppose that you also know that \(g''(-1) = 2.\)  What does this tell you about the graph of \(y = g(x)\) at \(a = -1\)?</li>
+<li id="li-519">For \(x\) near \(-1\), sketch the graph of the local linearization \(y = L(x)\) as well as a possible graph of \(y = g(x)\) on the axes provided in <a knowl="./knowl/F_1.8.Act1.html" knowl-id="xref-F_1.8.Act1" alt="Figure 1.8.4 " title="Figure 1.8.4 ">Figure 1.8.4</a>.</li>
+</ol>
+<figure class="figure-like" id="F_1.8.Act1"><img width="100%" src="images/1_8_Act1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.8.4</span>Axes for plotting \(y = L(x)\) and \(y = g(x)\).</figcaption></figure></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-41" id="hint-41"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-41" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-520">Follow the rule for \(L\).</li>
+<li id="li-521">Recall that the form of the local linearization is \(L(x) = g(a) + g'(a)(x-a)\).</li>
+<li id="li-522">Is the function \(g\) increasing or decreasing at \(a = -1\)?</li>
+<li id="li-523">Remember that \(g(-1.03) \approx L(-1.03)\).</li>
+<li id="li-524">What does the second derivative tell you about the shape of a curve?</li>
+<li id="li-525">Use your work above.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-42" id="hint-42"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-42" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-526">Follow the rule for \(L\) and note that you can easily compute \(L'(x)\).</li>
+<li id="li-527">Recall that the form of the local linearization is \(L(x) = g(a) + g'(a)(x-a)\).  What is the value of \(a\) for the given function \(L\)?</li>
+<li id="li-528">Observe that the value of \(g'(-1)\) tells you whether the function \(g\) increasing or decreasing at \(a = -1\).</li>
+<li id="li-529">Remember that \(g(-1.03) \approx L(-1.03)\) and you know a rule for \(L(x)\).</li>
+<li id="li-530">What does a positive second derivative tell you about the shape of a curve at a point?</li>
+<li id="li-531">Use your work above, and think about the value, slope, and concavity of \(y = g(x)\) at \(a = -1\).</li>
+</ol></span></span><p id="p-290">
+As we saw in the example provided by <a knowl="./knowl/A_1.8.1.html" knowl-id="xref-A_1.8.1" alt="Exercise 1.8.3 " title="Exercise 1.8.3 ">Activity 1.8.3</a>, the local linearization \(y = L(x)\) is a linear function that shares two important values with the function \(y = f(x)\) that it is derived from. In particular, observe that since \(L(x) = f(a) + f'(a)(x-a)\), it follows that \(L(a) = f(a)\). In addition, since \(L\) is a linear function, its derivative is its slope. Hence, \(L'(x) = f'(a)\) for every value of \(x\), and specifically \(L'(a) = f'(a)\). Therefore, we see that \(L\) is a linear function that has both the same value and the same slope as the function \(f\) at the point \((a,f(a))\).
+</p>
+<p id="p-291">
+In situations where we know the linear approximation \(y = L(x)\), we therefore know the original function's value and slope at the point of tangency. What remains unknown, however, is the shape of the function \(f\) at the point of tangency. There are essentially four possibilities, as enumerated in <a knowl="./knowl/F_1.8.Options.html" knowl-id="xref-F_1.8.Options" alt="Figure 1.8.5 " title="Figure 1.8.5 ">Figure 1.8.5</a>.
+</p>
+<figure class="figure-like" id="F_1.8.Options"><img width="100%" src="images/1_8_Options.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.8.5</span>Four possible graphs for a nonlinear differentiable function and how it can be situated relative to its tangent line at a point.</figcaption></figure><p id="p-292">
+These stem from the fact that there are three options for the value of the second derivative: either \(f''(a) \lt 0\), \(f''(a) = 0\), or \(f''(a) &gt; 0\). If \(f''(a) &gt; 0\), then we know the graph of \(f\) is concave up, and we see the first possibility on the left, where the tangent line lies entirely below the curve. If \(f''(a) \lt  0\), then we find ourselves in the second situation (from left) where \(f\) is concave down and the tangent line lies above the curve. In the situation where \(f''(a) = 0\) and \(f''\) changes sign at \(x = a\), the concavity of the graph will change, and we will see either the third or fourth option<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-9" id="fn-9"><sup> 2 </sup></a></span><span id="hk-fn-9" style="display: none;" class="tex2jax_ignore"><span class="footnote">It is possible to have \(f''(a) = 0\) and have \(f''\) not change sign at \(x = a\), in which case the graph will look like one of the first two options.</span></span>. A fifth option (that is not very interesting) can occur, which is where the function \(f\) is linear, and so \(f(x) = L(x)\) for all values of \(x\).
+</p>
+<p id="p-293">
+The plots in <a knowl="./knowl/F_1.8.Options.html" knowl-id="xref-F_1.8.Options" alt="Figure 1.8.5 " title="Figure 1.8.5 ">Figure 1.8.5</a> highlight yet another important thing that we can learn from the concavity of the graph near the point of tangency: whether the tangent line lies above or below the curve itself. This is key because it tells us whether or not the tangent line approximation's values will be too large or too small in comparison to the true value of \(f\). For instance, in the first situation in the leftmost plot in <a knowl="./knowl/F_1.8.Options.html" knowl-id="xref-F_1.8.Options" alt="Figure 1.8.5 " title="Figure 1.8.5 ">Figure 1.8.5</a> where \(f''(a) &gt; 0\), since the tangent line falls below the curve, we know that \(L(x) \le f(x)\) for all values of \(x\) near \(a\).
+</p>
+<p id="p-294">
+We explore these ideas further in the following activity.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_1.8.2" id="A_1.8.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">1.8.6</span>
+</h5></a></div>
+<div id="hk-A_1.8.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-295">
+This activity concerns a function \(f(x)\) about which the following information is known:
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-532">\(f\) is a differentiable function defined at every real number \(x\)</li>
+<li id="li-533">\(f(2) = -1\)</li>
+<li id="li-534">\(y = f'(x)\) has its graph given in <a knowl="./knowl/F_1.8.Act2.html" knowl-id="xref-F_1.8.Act2" alt="Figure 1.8.7 " title="Figure 1.8.7 ">Figure 1.8.7</a>
+</li>
+</ul>
+<figure class="figure-like" id="F_1.8.Act2"><img width="100%" src="images/1_8_Act2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">1.8.7</span>At center, a graph of \(y = f'(x)\); at left, axes for plotting \(y = f(x)\); at right, axes for plotting \(y = f''(x)\).</figcaption></figure><p id="p-296">
+Your task is to determine as much information as possible about \(f\) (especially near the value \(a = 2\)) by responding to the questions below.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-535">Find a formula for the tangent line approximation, \(L(x)\), to \(f\) at the point \((2,-1)\).</li>
+<li id="li-536">Use the tangent line approximation to estimate the value of \(f(2.07)\).  Show your work carefully and clearly.</li>
+<li id="li-537">Sketch a graph of \(y = f''(x)\) on the righthand grid in <a knowl="./knowl/F_1.8.Act2.html" knowl-id="xref-F_1.8.Act2" alt="Figure 1.8.7 " title="Figure 1.8.7 ">Figure 1.8.7</a>; label it appropriately.</li>
+<li id="li-538">Is the slope of the tangent line to \(y = f(x)\) increasing, decreasing, or neither when \(x = 2\)?  Explain.</li>
+<li id="li-539">Sketch a possible graph of \(y = f(x)\) near \(x = 2\) on the lefthand grid in <a knowl="./knowl/F_1.8.Act2.html" knowl-id="xref-F_1.8.Act2" alt="Figure 1.8.7 " title="Figure 1.8.7 ">Figure 1.8.7</a>.  Include a sketch of \(y=L(x)\) (found in part (a)).  Explain how you know the graph of \(y = f(x)\) looks like you have drawn it.</li>
+<li id="li-540">Does your estimate in (b) over- or under-estimate the true value of \(f(2)\)?  Why?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-43" id="hint-43"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-43" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-541">Find the value of \(f'(2)\) from the given graph of \(f\).</li>
+<li id="li-542">Remember that \(f(2.07) \approx L(2.07)\).</li>
+<li id="li-543">The graph of \(y = f''(x)\) is the derivative of the graph of \(y = f'(x)\).</li>
+<li id="li-544">Is \(f'\) increasing, decreasing, or neither when \(x = 2\)?</li>
+<li id="li-545">Draw \(y = L(x)\) first.  Then think about options for \(f\) relative to the graph of \(L\).</li>
+<li id="li-546">Does the tangent line lie above or below the graph of \(y = f(x)\) at \((2,3)\)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-44" id="hint-44"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-44" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-547">Find the value of \(f'(2)\) from the given graph of \(f\), and note that you are given that \(f(2) = -1\).</li>
+<li id="li-548">Remember that \(f(2.07) \approx L(2.07)\).</li>
+<li id="li-549">The graph of \(y = f''(x)\) is the derivative of the graph of \(y = f'(x)\).  Where must \(f''(x) = 0\)?  Where is \(f''(x)\) positive?</li>
+<li id="li-550">Is \(f'\) increasing, decreasing, or neither when \(x = 2\)?  Use the given graph of \(y = f'(x)\) to help you decide.</li>
+<li id="li-551">Draw \(y = L(x)\) first.  Then think about options for \(f\) relative to the graph of \(L\).  Is \(f\) concave up or concave down before \(x = 2\)?  after \(x = 2\)?</li>
+<li id="li-552">Does the tangent line lie above or below the graph of \(y = f(x)\) at \((2,3)\)?  You may have to consider values less than \(x = 2\) and values greater than \(x = 2\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-21" id="solution-21"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-21" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-553">Since \(f(2) = -1\) and \(f'(2) = 2\), we have \(L(x) = -1 + 2(x-2)\).</li>
+<li id="li-554">Using our work in (a), \(f(2.07) \approx L(2.07) = -1 + 2(2.07-2) = -1 + 2\cdot 0.07 = -0.86\).</li>
+<li id="li-555">See the plot below.</li>
+<li id="li-556">Is the slope of the tangent line to \(y = f(x)\) is increasing for \(x \lt  2\) because \(y = f'(x)\) is an increasing function on this interval.  Similarly, for \(x &gt; 2\), the slope of the tangent line to \(y = f(x)\) is decreasing.  Right at \(x = 2\), the slope of the tangent line to \(y = f(x)\) is neither increasing nor decreasing.</li>
+<li id="li-557">See the plot below.  Note that \(y = f(x)\) is concave up for \(x \lt  2\) since \(f'\) is increasing on that interval, and \(y = f(x)\) is concave down for \(x &gt; 2\) since \(f'\) is decreasing there.  Hence \(y = f(x)\) changes from concave up to concave down right at \(x = 2\), which is also the point near 2 where the graph of \(y = f(x)\) is steepest.</li>
+<li id="li-558">Because the tangent line to \(y = f(x)\) lies above the graph  of \(f\) to the right of \(x = 2\), our estimate of \(f(2.07)\) is too large – the local linearization overshoots the true value of \(f\) at this point.</li>
+</ol>
+<img width="100%" src="images/1_8_Act2.png"></span></span><p id="p-297">
+The idea that a differentiable function looks linear and can be well-approximated by a linear function is an important one that finds wide application in calculus. For example, by approximating a function with its local linearization, it is possible to develop an effective algorithm to estimate the zeroes of a function. Local linearity also helps us to make further sense of certain challenging limits. For instance, we have seen that a limit such as
+</p>
+<span class="displaymath" id="me-70">\[
+\lim_{x \to 0} \frac{\sin(x)}{x}
+\]</span><p id="p-298">
+is indeterminate because both its numerator and denominator tend to 0. While there is no algebra that we can do to simplify \(\frac{\sin(x)}{x}\), it is straightforward to show that the linearization of \(f(x) = \sin(x)\) at the point \((0,0)\) is given by \(L(x) = x\). Hence, for values of \(x\) near 0, \(\sin(x) \approx x\). As such, for values of \(x\) near 0,
+</p>
+<span class="displaymath" id="me-71">\[
+\frac{\sin(x)}{x} \approx \frac{x}{x} = 1,
+\]</span><p id="p-299">
+which makes plausible the fact that
+</p>
+<span class="displaymath" id="me-72">\[
+\lim_{x \to 0} \frac{\sin(x)}{x} = 1.
+\]</span><p id="p-300">
+These ideas and other applications of local linearity will be explored later on in our work.
+</p>
+<p id="p-301">
+\begin{authornote}
+This is an author note.
+\end{authornote}
+</p>
+<p id="p-302">
+\item The tangent line to a differentiable function \(y = f(x)\) at the point \((a,f(a))\) is given in point-slope form by the equation
+</p>
+<span class="displaymath" id="me-73">\[
+y - f(a) = f'(a)(x-a).
+\]</span><p id="p-303">
+\item The principle of local linearity tells us that if we zoom in on a point where a function \(y = f(x)\) is differentiable, the function should become indistinguishable from its tangent line. That is, a differentiable function looks linear when viewed up close. We rename the tangent line to be the function \(y = L(x)\) where \(L(x) = f(a) + f'(a)(x-a)\) and note that \(f(x) \approx L(x)\) for all \(x\) near \(x = a\).
+\item If we know the tangent line approximation \(L(x) = f(a) + f'(a)(x-a)\), then because \(L(a) = f(a)\) and \(L'(a) = f'(a)\), we also know both the value and the derivative of the function \(y = f(x)\) at the point where \(x = a\). In other words, the linear approximation tells us the height and slope of the original function. If, in addition, we know the value of \(f''(a)\), we then know whether the tangent line lies above or below the graph of \(y = f(x)\) depending on the concavity of \(f\).
+</p>
+<p id="p-304">
+\hrulefill
+</p>
+<p id="p-305">
+\begin{exercises}
+</p>
+<p id="p-306">
+\item A certain function \(y=p(x)\) has its local linearization at \(a = 3\) given by \(L(x) = -2x + 5\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-559">What are the values of \(p(3)\) and \(p'(3)\)?  Why?</li>
+<li id="li-560">Estimate the value of \(p(2.79)\).</li>
+<li id="li-561">Suppose that \(p''(3) = 0\) and you know that \(p''(x) \lt  0\) for \(x \lt  3\).  Is your estimate in (b) too large or too small?</li>
+<li id="li-562">Suppose that \(p''(x) &gt; 0\) for \(x &gt; 3\).  Use this fact and the additional information above to sketch an accurate graph of \(y = p(x)\) near \(x = 3\).  Include a sketch of \(y = L(x)\) in your work.</li>
+</ol>
+<p id="p-307">
+\item A potato is placed in an oven, and the potato's temperature \(F\) (in degrees Fahrenheit) at various points in time is taken and recorded in the following table. Time \(t\) is measured in minutes.
+</p>
+<figure class="figure-like" id="table-13">
+\(t\) \amp  \(F(t)\) 
+0 \amp  70
+15 \amp  180.5 
+30 \amp  251 
+45 \amp  296 
+60 \amp  324.5 
+75 \amp  342.8 
+90 \amp  354.5  </figure><ol style="list-style-type: decimal;">
+<li id="li-563">Use a central difference to estimate \(F'(60)\).  Use this estimate as needed in subsequent questions.</li>
+<li id="li-564">Find the local linearization \(y = L(t)\) to the function \(y = F(t)\) at the point where \(a = 60\).</li>
+<li id="li-565">Determine an estimate for \(F(63)\) by employing the local linearization.</li>
+<li id="li-566">Do you think your estimate in (c) is too large or too small?  Why?</li>
+</ol>
+<p id="p-308">
+\item An object moving along a straight line path has a differentiable position function \(y = s(t)\). It is known that at time \(t = 9\) seconds, the object's position is \(s = 4\) feet (measured from its starting point at \(t = 0\)). Furthermore, the object's instantaneous velocity at \(t = 9\) is \(-1.2\) feet per second, and its acceleration at the same instant is \(0.08\) feet per second per second.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-567">Use local linearity to estimate the position of the object at \(t = 9.34\).</li>
+<li id="li-568">Is your estimate likely too large or too small?  Why?</li>
+<li id="li-569">In everyday language, describe the behavior of the moving object at \(t = 9\).  Is it moving toward its starting point or away from it? Is its velocity increasing or decreasing?</li>
+</ol>
+<p id="p-309">
+\item For a certain function \(f\), its derivative is known to be \(f'(x) = (x-1)e^{-x^2}\). Note that you do not know a formula for \(y = f(x)\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-570">At what \(x\)-value(s) is \(f'(x) = 0\)?  Justify your answer algebraically, but include a graph of \(f'\) to support your conclusion.</li>
+<li id="li-571">Reasoning graphically, for what intervals of \(x\)-values is \(f''(x) &gt; 0\)?  What does this tell you about the  behavior of the original function \(f\)?  Explain.</li>
+<li id="li-572">Assuming that \(f(2) = -3\), estimate the value of \(f(1.88)\) by finding and using the tangent line approximation to \(f\) at \(x=2\).  Is your estimate larger or smaller than the true value of \(f(1.88)\)?  Justify your answer.</li>
+</ol>
+<p id="p-310">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-311">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

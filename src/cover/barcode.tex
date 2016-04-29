@@ -1,0 +1,14 @@
+\documentclass{article}
+\usepackage[margin=0in,noheadfoot,paperwidth=2in,paperheight=1.2in]{geometry}
+\pagestyle{empty}
+\setlength{\parindent}{0in}
+\usepackage{pst-barcode}
+\usepackage[osf,scale=1.05]{baskervaldx}
+\usepackage{auto-pst-pdf}
+\begin{document}
+\centering
+\textsc{isbn} 978-0-9898975-3-2 \\[2pt]
+ \begin{pspicture}(2in,1.5in)
+ \psbarcode[scaley=.9]{9780989897532}{includetext font=ocrb10 textfont=ocrb10 guardwhitespace}{ean13}
+ \end{pspicture}
+\end{document}

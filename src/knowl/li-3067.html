@@ -1,0 +1,63 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:47-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<article class="list"><h5 xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading">
+<span class="type">Item</span> <span class="codenumber">2</span>
+</h5>Recall addition of real numbers is commutative; that is
+
+<span class="displaymath" id="me-976">\[
+a + b = b + a
+\]</span>
+ 
+for any real numbers \(a\) and \(b\). This property is valid for any sum of finitely many terms, but does this property extend when we add infinitely many terms together?
+
+ The answer is no, and something even more odd happens. Riemann's Theorem (after the nineteenth-century mathematician Georg Friedrich Bernhard Riemann) states that a conditionally convergent series can be rearranged to converge to <!--Style me with CSS--><em xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">any</em> prescribed sum. More specifically, this means that if we choose any real number \(S\), we can rearrange the terms of the alternating harmonic series \(\ds \sum_{k=1}^{\infty} \frac{(-1)^{k+1}}{k}\) so that the sum is \(S\). To understand how Riemann's Theorem works, let's assume for the moment that the number \(S\) we want our rearrangement to converge to is positive. Our job is to find a way to order the sum of terms of the alternating harmonic series to converge to \(S\).
+    <ul xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: disc;">
+<li id="li-3068">Explain how we know that, regardless of the value of \(S\), we can find a partial sum \(P_1\)<span class="displaymath" id="me-977">\[
+P_1 = \sum_{k=1}^{n_1} \frac{1}{2k+1} = 1 + \frac{1}{3} + \frac{1}{5} + \cdots + \frac{1}{2n_1+1}
+\]</span>
+ 
+    of the positive terms of the alternating harmonic series that equals or exceeds \(S\). Let
+    
+<span class="displaymath" id="me-978">\[
+S_1 = P_1.
+\]</span>
+</li>
+<li id="li-3069">Explain how we know that, regardless of the value of \(S_1\), we can find a partial sum \(N_1\)<span class="displaymath" id="me-979">\[
+N_1 = -\sum_{k=1}^{m_1} \frac{1}{2k} = -\frac{1}{2} - \frac{1}{4} - \frac{1}{6} - \cdots - \frac{1}{2m_1}
+\]</span>
+ 
+    so that
+    
+<span class="displaymath" id="me-980">\[
+S_2 = S_1 + N_1 \leq S.
+\]</span>
+</li>
+<li id="li-3070">Explain how we know that, regardless of the value of \(S_2\), we can find a partial sum \(P_2\)<span class="displaymath" id="me-981">\[
+P_2 = \sum_{k=n_1+1}^{n_2} \frac{1}{2k+1} = \frac{1}{2(n_1+1)+1} + \frac{1}{2(n_1+2)+1} + \cdots + \frac{1}{2n_2+1}
+\]</span>
+ 
+    of the remaining positive terms of the alternating harmonic series so that
+    
+<span class="displaymath" id="me-982">\[
+S_3 = S_2 + P_2 \geq S.
+\]</span>
+</li>
+<li id="li-3071">Explain how we know that, regardless of the value of \(S_3\), we can find a partial sum
+    
+<span class="displaymath" id="me-983">\[
+N_2 = -\sum_{k=m_1+1}^{m_2} \frac{1}{2k} = -\frac{1}{2(m_1+1)} - \frac{1}{2(m_1+2)} - \cdots - \frac{1}{2m_2}
+\]</span>
+ 
+     of the remaining negative terms of the alternating harmonic series so that
+    
+<span class="displaymath" id="me-984">\[
+S_4 = S_3 + N_2 \leq S.
+\]</span>
+</li>
+<li id="li-3072">Explain why we can continue this process indefinitely and find a sequence \(\{S_n\}\) whose terms are partial sums of a rearrangement of the terms in the alternating harmonic series so that \(\ds \lim_{n \to \infty} S_n = S\).</li>
+</ul></article><span class="incontext"><a href="S_8.4.Alternating.html#li-3067">in-context</a></span>

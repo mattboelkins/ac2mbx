@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:51-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Qualitative behavior of solutions to DEs</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_7.1.DEIntro.html">Previous</a><a class="up-button button toolbar-item" href="C_7.html">Up</a><a class="next-button button toolbar-item" href="S_7.3.Euler.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_7.1.DEIntro.html">Previous</a><a class="up-button button toolbar-item" href="C_7.html">Up</a><a class="next-button button toolbar-item" href="S_7.3.Euler.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link active"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html" class="active">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_7.2.Qualitative"><header><h1 class="heading" alt="Section 7.2 Qualitative behavior of solutions to DEs" title="Section 7.2 Qualitative behavior of solutions to DEs">
+<span class="type">Section</span><span class="codenumber">7.2</span><span class="title">Qualitative behavior of solutions to DEs</span><a href="S_7.2.Qualitative.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-38"><h5 class="heading"></h5>
+<p id="p-1760">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2493">What is a slope field?</li>
+<li id="li-2494">How can we use a slope field to obtain qualitative information
+  about the solutions of a differential equation?</li>
+<li id="li-2495">What are stable and unstable equilibrium solutions of an
+  autonomous differential equation?</li>
+</ul>
+<p id="p-1761">
+} 
+</p></article><section class="subsection" id="subsection-130"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.2.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-1762">
+In earlier work, we have used the tangent line to the graph of a
+function \(f\) at a point \(a\) to approximate the values of \(f\) near \(a\).
+The usefulness of this approximation is that we need to know very
+little about the function; armed with only the value \(f(a)\) and the
+derivative \(f'(a)\), we may find the equation of the tangent line and
+the approximation
+</p>
+<span class="displaymath" id="me-694">\[
+
+f(x) \approx f(a) + f'(a)(x-a).
+
+\]</span><p id="p-1763">
+Remember that a first-order differential equation gives us information
+about the derivative of an unknown function.
+Since the derivative at a point tells us the slope of the
+tangent line at this point, a differential equation
+gives us crucial information about the tangent lines to the graph of
+a solution. We will use this information about the tangent lines to
+create a <!--Style me with CSS--><em>slope field</em> for the differential equation, which enables
+us to sketch solutions to initial value problems. Our aim will be to
+understand the solutions qualitatively. That is, we would like to
+understand the basic nature of solutions, such as their long-range
+behavior, without precisely determining the value of a solution at a
+particular point.
+</p>
+<article class="paragraphs" id="PA_7.2"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1764">
+Let's consider the initial value problem
+</p>
+<span class="displaymath" id="me-695">\[
+
+\frac{dy}{dt} = t - 2, \ \ y(0) = 1.
+
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-2496">Use the differential equation to find the slope of the tangent
+  line to the solution \(y(t)\) at \(t=0\).  Then use the initial value to
+  find the equation of the tangent line at \(t=0\).  Sketch this tangent
+  line over the interval \(-0.25\leq t\leq0.25\) on the axes provided.
+
+  <img width="100%" src="images/7_2_PA_tangents.png">
+</li>
+<li id="li-2497">Also shown in the given figure are the tangent lines to the solution \(y(t)\) at
+  the points \(t=1, 2,\) and \(3\) (we will see how to find these later).
+  Use the graph to measure the slope of each tangent line  
+  and verify that each agrees with the value specified by the differential
+  equation.</li>
+<li id="li-2498">Using these tangent lines as a guide, sketch a graph of the
+  solution \(y(t)\) over the interval \(0\leq t\leq 3\) so that the lines
+  are tangent to the graph of \(y(t)\).</li>
+<li id="li-2499">Use the Fundamental Theorem of Calculus to find \(y(t)\), the
+  solution to this initial value problem.</li>
+<li id="li-2500">Graph the solution you found in (d) on the axes provided, and compare it to the sketch
+  you made using the tangent lines.</li>
+</ol></article></section><section class="subsection" id="subsection-131"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.2.2</span><span class="title">Slope fields</span>
+</h1></header><p id="p-1765">
+\knownindex{\lt main&gt;slope field\lt /main&gt;}
+</p>
+<p id="p-1766">
+Preview <a href="S_7.2.Qualitative.html#PA_7.2" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> shows that we may sketch the solution to an initial
+value problem if we know an appropriate collection of tangent lines. Because we may use a given differential equation to determine the slope of the tangent
+line at any point of interest, by plotting a useful collection of these, we can get an accurate sense of how certain solution curves must behave.
+</p>
+<p id="p-1767">
+Let's continue looking at the differential equation \(
+\ds \frac{dy}{dt} = t-2.
+\)
+If \(t=0\), this equation says that \(dy/dt = 0-2=-2\). Note that this value holds regardless of the value of \(y\). We will therefore
+sketch tangent lines for several values of \(y\) and \(t=0\) with a slope
+of \(-2\).
+</p>
+<img width="100%" src="images/7_2_field_0.png"><p id="p-1768">
+Let's continue in the same way: if \(t=1\), the differential equation
+tells us that \(dy/dt = 1-2=-1\), and this holds regardless of the value of \(y\). We now sketch tangent lines for
+several values of \(y\) and \(t=1\) with a slope of \(-1\).
+</p>
+<img width="100%" src="images/7_2_field_1.png"><p id="p-1769">
+Similarly, we see that when \(t=2\), \(dy/dt = 0\) and when \(t=3\),
+\(dy/dt=1\). We may therefore add to our growing collection of tangent line plots to achieve the next figure.
+</p>
+<img width="100%" src="images/7_2_field_3.png"><p id="p-1770">
+In this figure, you may see the solutions to the differential
+equation emerge. However, for the sake of clarity, we will
+add more tangent lines to provide the more complete picture shown below.
+</p>
+<img width="100%" src="images/7_2_field_23a.png"><p id="p-1771">
+This most recent figure, which is called a <!--Style me with CSS--><em>slope field</em>\knownindex{\lt main&gt;slope field\lt /main&gt;} for the differential
+equation, allows us to sketch
+solutions just as we did in the preview activity. Here, we will begin with the
+initial value \(y(0) = 1\) and start sketching the solution by following
+the tangent line, as shown in the next figure.
+</p>
+<img width="100%" src="images/7_2_field_30.png"><p id="p-1772">
+We then continue using this principle: whenever the solution passes
+through a point at which a tangent line is drawn, that line is tangent
+to the solution. Doing so leads us to the following sequence of images.
+</p>
+<img width="100%" src="images/7_2_field_31.png"><img width="100%" src="images/7_2_field_32.png"><img width="100%" src="images/7_2_field_33.png"><p id="p-1773">
+In fact, we may draw solutions for any possible initial value, and doing this for several different initial values for \(y(0)\) results in the graphs shown next.
+</p>
+<img width="100%" src="images/7_2_field_4.png"><p id="p-1774">
+Just as we have done for the most recent example with \(\frac{dy}{dt} = t-2\), we can construct a slope field for any differential equation of interest. The slope field provides us with visual information about how we expect solutions to the differential equation to behave.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_7.2.1" id="A_7.2.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">7.2.1</span>
+</h5></a></div>
+<div id="hk-A_7.2.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1775">
+Consider the autonomous differential equation
+</p>
+<span class="displaymath" id="me-696">\[
+
+\frac{dy}{dt} = -\frac 12( y - 4).
+
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-2501">Make a plot of \(\frac{dy}{dt}\) versus \(y\) on the axes provided.  Looking at the
+  graph, for what values of \(y\) does \(y\) increase and for what values of \(y\)
+  does \(y\) decrease?
+
+  <img width="100%" src="images/7_2_Act1_1.png">
+</li>
+<li id="li-2502">Next, sketch the slope field for this differential equation on the axes provided.
+
+  <img width="100%" src="images/7_2_Act1_2.png">
+</li>
+<li id="li-2503">Use your work in (b) to sketch the solutions that satisfy \(y(0) = 0\), \(y(0) = 2\), \(y(0) = 4\) 
+  and \(y(0) = 6.\)</li>
+<li id="li-2504">Verify that \(y(t) = 4 + 2e^{-t/2}\) is a solution to the given
+  differential equation with the initial value \(y(0) = 6.\)  Compare
+  its graph to the one you sketched in (c).</li>
+<li id="li-2505">What is special about the solution where \(y(0) = 4\)?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-221" id="hint-221"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-221" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2506">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-222" id="hint-222"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-222" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2507">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-109" id="solution-109"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-109" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2508">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-132"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">7.2.3</span><span class="title">Equilibrium solutions and stability</span>
+</h1></header><p id="p-1776">
+As our work in <a knowl="./knowl/A_7.2.1.html" knowl-id="xref-A_7.2.1" alt="Exercise 7.2.1 " title="Exercise 7.2.1 ">Activity 7.2.1</a> demonstrates, first-order autonomous
+solutions may have solutions that are constant. In fact, these are
+quite easy to detect by inspecting the differential equation \(dy/dt =
+f(y)\): constant solutions necessarily have a zero derivative so
+\(dy/dt = 0 = f(y)\).
+</p>
+<p id="p-1777">
+For example, in <a knowl="./knowl/A_7.2.1.html" knowl-id="xref-A_7.2.1" alt="Exercise 7.2.1 " title="Exercise 7.2.1 ">Activity 7.2.1</a>, we considered the
+equation
+</p>
+<span class="displaymath" id="me-697">\[
+
+\frac{dy}{dt} = f(y)=-\frac12(y-4).
+
+\]</span><p id="p-1778">
+Constant solutions are found by setting \(f(y) = -\frac12(y-4) = 0\),
+which we immediately see implies that \(y = 4\).
+</p>
+<p id="p-1779">
+Values of \(y\) for which \(f(y) = 0\) in an autonomous differential equation \(\frac{dy}{dt} = f(y)\) are usually called or <!--Style me with CSS--><em>equilibrium solutions</em> \knownindex{\lt main&gt;equilibrium solution\lt /main&gt;} of the differential
+equation.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_7.2.2" id="A_7.2.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">7.2.2</span>
+</h5></a></div>
+<div id="hk-A_7.2.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1780">
+Consider the autonomous differential equation
+</p>
+<span class="displaymath" id="me-698">\[
+
+\frac{dy}{dt} = -\frac 12 y(y-4).
+
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-2509">Make a plot of \(\frac{dy}{dt}\) versus \(y\).  Looking at the
+  graph, for what values of \(y\) does \(y\) increase and for what values of \(y\)
+  does \(y\) decrease?
+
+  <img width="100%" src="images/7_2_Act2_1.png">
+</li>
+<li id="li-2510">Identify any equilibrium solutions of the given differential equation.</li>
+<li id="li-2511">Now sketch the slope field for the given differential equation.
+
+  <img width="100%" src="images/7_2_Act2_2.png">
+</li>
+<li id="li-2512">Sketch the solutions to the given differential equation that correspond to initial values \(y(0)=-1, 0, 1, \ldots, 5\).</li>
+<li id="li-2513">An equilibrium solution \(\overline{y}\) is called <!--Style me with CSS--><em>stable</em> \knownindex{\lt main&gt;stable\lt /main&gt;} \knownindex{\lt main&gt;equilibrium solution\lt /main&gt;\lt sub&gt;stable\lt /sub&gt;}
+  if nearby 
+  solutions converge to \(\overline{y}\).  This means that if the inital
+  condition varies slightly from \(\overline{y}\), then
+  \(\lim_{t\to\infty}y(t) = \overline{y}\).  
+
+  Conversely, an equilibrium solution \(\overline{y}\) 
+  is called <!--Style me with CSS--><em>unstable</em> \knownindex{\lt main&gt;unstable\lt /main&gt;} \knownindex{\lt main&gt;equilibrium solution\lt /main&gt;\lt sub&gt;unstable\lt /sub&gt;} if nearby solutions are pushed away from
+  \(\overline{y}\).
+
+  Using your work above, classify the equilibrium solutions you found in (b)
+  as either stable or unstable.</li>
+<li id="li-2514">Suppose that \(y(t)\) describes the population of a species of
+  living organisms and that the initial value \(y(0)\) is positive.  What can you
+  say about the eventual fate of this population?</li>
+<li id="li-2515">Remember that an equilibrium solution \(\overline{y}\) satisfies
+  \(f(\overline{y}) = 0\).  If we graph \(dy/dt = f(y)\) as a function of
+  \(y\), for which of the following differential equations is
+  \(\overline{y}\) a stable equilibrium and for which is \(\overline{y}\) unstable?  Why?
+
+  <img width="100%" src="images/7_2_Act2_3.png">  \qquad
+    <img width="100%" src="images/7_2_Act2_4.png">
+</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-223" id="hint-223"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-223" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2516">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-224" id="hint-224"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-224" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2517">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-110" id="solution-110"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-110" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2518">Solutions for each of the prompts above.</li></ol></span></span><p id="p-1781">
+\item A slope field is a plot created by graphing the tangent lines of
+many different solutions to a differential equation.
+\item Once we have a slope field, we may sketch the graph of solutions
+by drawing a curve that is always tangent to the lines in the slope
+field.
+\item Autonomous differential equations sometimes have constant
+solutions that we call
+equilibrium solutions. These may be classified as stable or
+unstable, depending on the behavior of nearby solutions.
+</p>
+<p id="p-1782">
+\hrulefill
+</p>
+<p id="p-1783">
+\begin{exercises}
+\item Consider the differential equation
+</p>
+<span class="displaymath" id="me-699">\[
+
+    \frac{dy}{dt} = t-y.
+    
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-2519">Sketch a slope field on the plot below:
+    <img width="100%" src="images/7_2_ex_1.png">
+</li>
+<li id="li-2520">Sketch the solutions whose initial values are \(y(0)= -4, -3, \ldots, 4\).</li>
+<li id="li-2521">What do your sketches suggest is the solution whose initial
+    value is \(y(0) = -1\)?  Verify that this is indeed the solution to
+    this initial value problem.</li>
+<li id="li-2522">By considering the differential equation and the graphs you
+    have sketched, what is the relationship between \(t\) and \(y\) at a
+    point where a solution has a local minimum?</li>
+</ol>
+<p id="p-1784">
+\item Consider the situation from problem 2 of <a href="S_7.1.DEIntro.html" alt="Section 7.1 An Introduction to Differential Equations" title="Section 7.1 An Introduction to Differential Equations">Section 7.1</a>: Suppose
+that the population of a particular species is
+described by the function \(P(t)\), where \(P\) is expressed in
+millions. Suppose further that the population's rate of change is
+governed by the differential equation
+</p>
+<span class="displaymath" id="me-700">\[
+\frac{dP}{dt} = f(P)
+    
+\]</span><p id="p-1785">
+where \(f(P)\) is the function graphed below.
+</p>
+<img width="100%" src="images/7_1_threshold.png"><ol style="list-style-type: decimal;">
+<li id="li-2523">Sketch a slope field for this differential equation.  You do
+    not have enough information to determine the actual slopes, but
+    you should have enough information to determine where slopes are positive, negative, zero, large, or small, and hence determine the qualitative
+    behavior of solutions.</li>
+<li id="li-2524">Sketch some solutions to this differential equation when the
+    initial population \(P(0)&gt;0\).</li>
+<li id="li-2525">Identify any equilibrium solutions to the differential equation and classify them as stable
+    or unstable.</li>
+<li id="li-2526">If \(P(0)&gt;1\), what is the eventual fate of the species?</li>
+<li id="li-2527">if \(P(0)\lt 1\), what is the eventual fate of the species?</li>
+<li id="li-2528">Remember that we referred to this model for population growth
+    as “growth with a threshold.”  Explain why this characterization makes sense by considering
+    solutions whose inital value is close to 1.</li>
+</ol>
+<p id="p-1786">
+\item The population of a species of fish in a lake is \(P(t)\) where
+\(P\) is measured in thousands of fish and \(t\) is measured in
+months. The growth of the population is described by the
+differential equation
+</p>
+<span class="displaymath" id="me-701">\[
+
+    \frac{dP}{dt} = f(P) = P(6-P).
+    
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-2529">Sketch a graph of \(f(P) = P(6-P)\) and use it to determine the
+    equilibrium solutions and whether they are stable or unstable.
+    Write a complete sentence that describes the long-term behavior of
+    the fish population.</li>
+<li id="li-2530">Suppose now that the owners of the lake allow fishers to
+    remove 1000 fish from the lake every month (remember that \(P(t)\)
+    is measured in <!--Style me with CSS--><em>thousands</em> of fish).  Modify the differential
+    equation to take this into account.  Sketch the new graph of
+    \(dP/dt\) versus \(P\).  Determine the new equilibrium solutions and
+    decide whether they are stable or unstable.</li>
+<li id="li-2531">Given the situation in part (b), give a description of
+    the long-term behavior of the fish population.</li>
+<li id="li-2532">Suppose that fishermen remove \(h\) thousand fish per month.  
+    How is the differential equation modified?</li>
+<li id="li-2533">What is the largest
+    number of fish that can be removed per month without eliminating the fish
+    population?  If fish are removed at this maximum rate, what is the
+    eventual population of fish?</li>
+</ol>
+<p id="p-1787">
+\item Let \(y(t)\) be the number of thousands of mice that live on a
+farm; assume time \(t\) is measured in years.<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-46" id="fn-46"><sup> 1 </sup></a></span><span id="hk-fn-46" style="display: none;" class="tex2jax_ignore"><span class="footnote">This problem is based on an ecological analysis
+    presented in a research paper by C.S. Hollings:  The Components of
+    Predation as Revealed by a Study of Small Mammal Predation of the
+    European Pine Sawfly, <!--Style me with CSS--><em>Canadian Entomology</em> 91: 283-320.</span></span>
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2534">The population of the mice grows at a yearly rate that is twenty times 
+    the number of mice.  Express this as a differential equation.</li>
+<li id="li-2535">At some point, the farmer brings \(C\) cats to the farm.  The
+    number of mice that the cats can eat in a year is
+    
+<span class="displaymath" id="me-702">\[
+M(y) = C\frac{y}{2+y}
+\]</span>
+ 
+    thousand mice per year.  Explain how this modifies the
+    differential equation that you found in part a).</li>
+<li id="li-2536">Sketch a graph of the function \(M(y)\) for a single cat \(C=1\) and
+    explain its features by looking, for instance, at the behavior of
+    \(M(y)\) when \(y\) is small and when \(y\) is large.</li>
+<li id="li-2537">Suppose that \(C=1\).  Find the equilibrium solutions and
+    determine whether they are stable or unstable.  Use this to
+    explain the long-term behavior of the mice population depending on
+    the initial population of the mice.</li>
+<li id="li-2538">Suppose that \(C=20\).  Find the equilibrium solutions and
+    determine whether they are stable or unstable.  Use this to
+    explain the long-term behavior of the mice population depending on
+    the initial population of the mice.</li>
+<li id="li-2539">What is the largest number of cats for which the mice
+    population can survive?</li>
+</ol>
+<p id="p-1788">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1789">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

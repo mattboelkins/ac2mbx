@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:41-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Global Optimization</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_3.2.Families.html">Previous</a><a class="up-button button toolbar-item" href="C_3.html">Up</a><a class="next-button button toolbar-item" href="S_3.4.AppliedOpt.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_3.2.Families.html">Previous</a><a class="up-button button toolbar-item" href="C_3.html">Up</a><a class="next-button button toolbar-item" href="S_3.4.AppliedOpt.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link active"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html" class="active">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_3.3.Optimization"><header><h1 class="heading" alt="Section 3.3 Global Optimization" title="Section 3.3 Global Optimization">
+<span class="type">Section</span><span class="codenumber">3.3</span><span class="title">Global Optimization</span><a href="S_3.3.Optimization.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-19"><h5 class="heading"></h5>
+<p id="p-762">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1347">What are the differences between finding relative extreme values and global extreme values of a function?</li>
+<li id="li-1348">How is the process of finding the global maximum or minimum of a function over the function's entire domain different from determining the global maximum or minimum on a restricted domain?</li>
+<li id="li-1349">For a function that is guaranteed to have both a global maximum and global minimum on a closed, bounded interval, what are the possible points at which these extreme values occur?</li>
+</ul>
+<p id="p-763">
+} 
+</p></article><section class="subsection" id="subsection-56"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">3.3.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-764">
+We have seen that we can use the first derivative of a function to determine where the function is increasing or decreasing, and the second derivative to know where the function is concave up or concave down. Each of these approaches provides us with key information that helps us determine the overall shape and behavior of the graph, as well as whether the function has a relative minimum or relative maximum at a given critical number. Remember that the difference between a relative maximum and a global maximum is that there is a relative minimum of \(f\) at \(x = p\) if \(f(p) \ge f(x)\) for all \(x\) near \(p\), while there is a global maximum at \(p\) if \(f(p) \ge f(x)\) for all \(x\) in the domain of \(f\).
+</p>
+<figure class="figure-like" id="F_3.3.Intro"><img width="100%" src="images/3_3_Intro.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.3.1</span>A function \(f\) with a global maximum, but no global minimum.</figcaption></figure><p id="p-765">
+For instance, in <a knowl="./knowl/F_3.3.Intro.html" knowl-id="xref-F_3.3.Intro" alt="Figure 3.3.1 " title="Figure 3.3.1 ">Figure 3.3.1</a>, we see a function \(f\) that has a global maximum at \(x = c\) and a relative maximum at \(x = a\), since \(f(c)\) is greater than \(f(x)\) for every value of \(x\), while \(f(a)\) is only greater than the value of \(f(x)\) for \(x\) near \(a\). Since the function appears to decrease without bound, \(f\) has no global minimum, though clearly \(f\) has a relative minimum at \(x = b\).
+</p>
+<p id="p-766">
+Our emphasis in this section is on finding the global extreme values of a function (if they exist). In so doing, we will either be interested in the behavior of the function over its entire domain or on some restricted portion. The former situation is familiar and similar to work that we did in the two preceding sections of the text. We explore this through a particular example in the following preview activity.
+</p>
+<article class="paragraphs" id="PA_3.3"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-767">
+Let \(\ds f(x) = 2 + \frac{3}{1+(x+1)^2}\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1350">Determine all of the critical values of \(f\).</li>
+<li id="li-1351">Construct a first derivative sign chart for \(f\) and thus determine all intervals on which \(f\) is increasing or decreasing.</li>
+<li id="li-1352">Does \(f\) have a global maximum?  If so, why, and what is its value and where is the maximum attained?  If not, explain why.</li>
+<li id="li-1353">Determine \(\ds \lim_{x \to \infty} f(x)\) and \(\ds \lim_{x \to -\infty} f(x)\).</li>
+<li id="li-1354">Explain why \(f(x) &gt; 2\) for every value of \(x\).</li>
+<li id="li-1355">Does \(f\) have a global minimum?  If so, why, and what is its value and where is the minimum attained?  If not, explain why.</li>
+</ol></article></section><section class="subsection" id="subsection-57"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">3.3.2</span><span class="title">Global Optimization</span>
+</h1></header><p id="p-768">
+For the functions in <a knowl="./knowl/F_3.3.Intro.html" knowl-id="xref-F_3.3.Intro" alt="Figure 3.3.1 " title="Figure 3.3.1 ">Figure 3.3.1</a> and Preview <a href="S_3.3.Optimization.html#PA_3.3" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, we were interested in finding the global minimum and global maximum on the entire domain, which turned out to be \((-\infty, \infty)\) for each. At other times, our perspective on a function might be more focused due to some restriction on its domain. For example, rather than considering \(f(x) = 2 + \frac{3}{1+(x+1)^2}\) for every value of \(x\), perhaps instead we are only interested in those \(x\) for which \(0 \le x \le 4\), and we would like to know which values of \(x\) in the interval \([0,4]\) produce the largest possible and smallest possible values of \(f\). We are accustomed to critical numbers playing a key role in determining the location of extreme values of a function; now, by restricting the domain to an interval, it makes sense that the endpoints of the interval will also be important to consider, as we see in the following activity. When limiting ourselves to a particular interval, we will often refer to the <!--Style me with CSS--><em>absolute</em> maximum or minimum value, rather than the <!--Style me with CSS--><em>global</em> maximum or minimum.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_3.3.1" id="A_3.3.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">3.3.2</span>
+</h5></a></div>
+<div id="hk-A_3.3.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-769">
+Let \(g(x) = \frac{1}{3}x^3 - 2x + 2.\)
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1356">Find all critical numbers of \(g\) that lie in the interval \(-2 \le x \le 3\).</li>
+<li id="li-1357">Use a graphing utility to construct the graph of \(g\) on the interval \(-2 \le x \le 3\).</li>
+<li id="li-1358">From the graph, determine the \(x\)-values at which the absolute minimum and absolute maximum of \(g\) occur on the interval \([-2,3]\).</li>
+<li id="li-1359">How do your answers change if we instead consider the interval \(-2 \le x \le 2\)?</li>
+<li id="li-1360">What if we instead consider the interval \(-2 \le x \le 1\)?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-105" id="hint-105"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-105" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1361">Check that each critical number you find satisfies \(-2 \le x \le 3\).</li>
+<li id="li-1362">\href{http://wolframalpha.com}{<tt class="code-inline">http://wolframalfpha.com</tt>} is a great choice.</li>
+<li id="li-1363">On the graph, look for the lowest and highest possible values of the function.</li>
+<li id="li-1364">Ask yourself the same questions as (a)-(c), simply using the new interval.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-106" id="hint-106"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-106" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1365">Check that each critical number you find satisfies \(-2 \le x \le 3\).</li>
+<li id="li-1366">\href{http://wolframalpha.com}{<tt class="code-inline">http://wolframalfpha.com</tt>} is a great choice.</li>
+<li id="li-1367">On the graph, look for the lowest and highest possible values of the function.</li>
+<li id="li-1368">Ask yourself the same questions as (a)-(c), simply using the new interval.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-52" id="solution-52"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-52" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1369">Since \(g'(x) = x^2 - 2\), the critical numbers of \(g\) are \(x = \pm \sqrt{2} \approx \pm 1.414\), both of which lie in the interval \(-2 \le x \le 3\).</li>
+<li id="li-1370">The figure shown below shows three related plots, each with the emphases on the interval provided in (c), (d), and (e).
+	<img width="100%" src="images/3_3_Act1Soln.png">
+</li>
+<li id="li-1371">On \([-2,3]\), \(g\) has a global maximum at \(x = 3\) and a global minimum at \(x = \sqrt{2}\).</li>
+<li id="li-1372">On \([-2,2]\), \(g\) has a global maximum at \(x = -\sqrt{2}\) and a global minimum at \(x = \sqrt{2}\).</li>
+<li id="li-1373">On \([-2,3]\), \(g\) has a global maximum at \(x = -\sqrt{2}\) and a global minimum at \(x = 1\).</li>
+</ol></span></span><p id="p-770">
+In <a knowl="./knowl/A_3.3.1.html" knowl-id="xref-A_3.3.1" alt="Exercise 3.3.2 " title="Exercise 3.3.2 ">Activity 3.3.2</a>, we saw how the absolute maximum and absolute minimum of a function on a closed, bounded interval \([a,b]\), depend not only on the critical numbers of the function, but also on the selected values of \(a\) and \(b\). These observations demonstrate several important facts that hold much more generally. First, we state an important result called the Extreme Value Theorem.
+</p>
+<p id="p-771">
+
+{
+The Extreme Value Theorem: \knownindex{\lt main&gt;extreme value theorem\lt /main&gt;}
+If \(f\) is a continuous function on a closed interval \([a,b]\), then \(f\) attains both an absolute minimum and absolute maximum on \([a,b]\). That is, for some value \(x_m\) such that \(a \le x_m \le b\), it follows that \(f(x_m) \le f(x)\) for all \(x\) in \([a,b]\). Similarly, there is a value \(x_M\) in \([a,b]\) such that \(f(x_M) \ge f(x)\) for all \(x\) in \([a,b]\). Letting \(m = f(x_m)\) and \(M = f(x_M)\), it follows that \(m \le f(x) \le M\) for all \(x\) in \([a,b]\).
+} 
+
+</p>
+<p id="p-772">
+The Extreme Value Theorem tells us that provided a function is continuous, on any closed interval \([a,b]\) the function has to achieve both an absolute minimum and an absolute maximum. Note, however, that this result does not tell us where these extreme values occur, but rather only that they must exist. As seen in the examples of <a knowl="./knowl/A_3.3.1.html" knowl-id="xref-A_3.3.1" alt="Exercise 3.3.2 " title="Exercise 3.3.2 ">Activity 3.3.2</a>, it is apparent that the only possible locations for relative extremes are either the endpoints of the interval or at a critical number (the latter being where a relative minimum or maximum could occur, which is a potential location for an absolute extreme). Thus, we have the following approach to finding the absolute maximum and minimum of a continuous function \(f\) on the interval \([a,b]\):
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1374">find all critical numbers of \(f\) that lie in the interval;</li>
+<li id="li-1375">evaluate the function \(f\) at each critical number in the interval and at each endpoint of the interval;</li>
+<li id="li-1376">from among the noted function values, the smallest is the absolute minimum of \(f\) on the interval, while the largest is the absolute maximum.</li>
+</ul>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_3.3.2" id="A_3.3.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">3.3.3</span>
+</h5></a></div>
+<div id="hk-A_3.3.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-773">
+Find the <!--Style me with CSS--><em>exact</em> absolute maximum and minimum of each function on the stated interval.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1377">\(h(x) = xe^{-x}\), \([0,3]\)</li>
+<li id="li-1378">\(p(t) = \sin(t) + \cos(t)\), \([-\frac{\pi}{2}, \frac{\pi}{2}]\)</li>
+<li id="li-1379">\(q(x) = \frac{x^2}{x-2}\), \([3,7]\)</li>
+<li id="li-1380">\(f(x) = 4 - e^{-(x-2)^2}\), \((-\infty, \infty)\)</li>
+<li id="li-1381">\(h(x) =  xe^{-ax}\), \([0, \frac{2}{a}]\) (\(a &gt; 0\))</li>
+<li id="li-1382">\(f(x) = b - e^{-(x-a)^2}\), \((-\infty, \infty)\), \(a, b &gt; 0\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-107" id="hint-107"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-107" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1383">After computing \(h'(x)\), factor to write the derivative as a product.</li>
+<li id="li-1384">The sine and cosine functions have the same value at \(\frac{\pi}{4} \pm k\pi\) for any integer \(k\).</li>
+<li id="li-1385">Upon finding \(q'(x)\), factor its numerator.</li>
+<li id="li-1386">Remember that \(e^{-(x-2)^2}\) is never zero.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-108" id="hint-108"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-108" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1387">After computing \(h'(x)\), factor to write the derivative as a product.  Remember that \(e^{-x} \ne 0\) for all \(x\).</li>
+<li id="li-1388">The sine and cosine functions have the same value at \(\frac{\pi}{4} \pm k\pi\) for any integer \(k\).  Which of these occur within the given interval?</li>
+<li id="li-1389">Upon finding \(q'(x)\), factor its numerator.  Observe that even though \(q'(2)\) is not defined, \(2\) is not a critical number because \(q(2)\) is not defined; moreover, \(2\) is not in the interval under consideration.</li>
+<li id="li-1390">Remember that \(e^{-(x-2)^2}\) is never zero.  Note that the domain being considered is all real numbers.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-53" id="solution-53"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-53" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1391">For \(h(x) = xe^{-x}\), we know that \(h'(x) = xe^{-x}(-1) + e^{-x} = e^{-x}(-x+1)\).  Therefore, the only critical value of \(h\) is \(x = 1\).  Next, we compute \(h(1)\), \(h(0)\), and \(h(3)\).  Observe that 
+	<ul style="list-style-type: disc;">
+<li id="li-1392">\(h(1) = e^{-1} \approx 0.36788\)</li>
+<li id="li-1393">\(h(0) = 0\)</li>
+<li id="li-1394">\(h(3) = 3e^{-3} \approx 0.14936\)</li>
+</ul>  
+	Thus, on \([0,3]\), the absolute maximum of \(h\) is \(e^{-1}\) and the absolute minimum is \(0\).</li>
+<li id="li-1395">Given \(p(t) = \sin(t) + \cos(t)\), it follows \(p'(t) = \cos(t) - \sin(t)\), so \(p'(t) = 0\) implies that \(\cos(t) =\sin(t)\).   The sine and cosine functions have the same value at \(\frac{\pi}{4} \pm k\pi\) for any integer \(k\).  The only time this occurs in \([-\frac{\pi}{2}, \frac{\pi}{2}]\) is for \(x = \frac{\pi}{4}\), and thus this is the only critical value of \(p\) in the given interval.  Now,
+	<ul style="list-style-type: disc;">
+<li id="li-1396">\(p(\frac{\pi}{4}) = \sin(\frac{\pi}{4}) + \cos(\frac{\pi}{4}) = \frac{\sqrt{2}}{2} + \frac{\sqrt{2}}{2} = \sqrt{2} \approx 1.41421\)</li>
+<li id="li-1397">\(p(-\frac{\pi}{2}) = \sin(-\frac{\pi}{2}) + \cos(-\frac{\pi}{2}) = -1 + 0 = -1\)</li>
+<li id="li-1398">\(p(\frac{\pi}{2}) = \sin(\frac{\pi}{2}) + \cos(\frac{\pi}{2}) = 1 + 0 = 1\)</li>
+</ul>  	
+	Therefore, on \([-\frac{\pi}{2},\frac{\pi}{2}]\), the absolute maximum of \(p\) is \(\sqrt{2}\) and the absolute minimum is \(-1\).</li>
+<li id="li-1399">With \(q(x) = \frac{x^2}{x-2}\), we have 
+	
+<span class="displaymath" id="me-334">\[
+q'(x) = \frac{(x-2)(2x) - x^2(1)}{(x-2)^2} = \frac{2x^2 - 4x - x^2}{(x-2)^2} = \frac{x^2-4x}{(x-2)^2} = \frac{x(x-4)}{(x-2)^2}.
+\]</span>
+ 
+	Hence, the critical values of \(q\) are \(x = 0\) and \(x = 4\).  Only the latter critical value lies in the interval \([3,7]\), and thus we evaluate \(q\) and find
+	<ul style="list-style-type: disc;">
+<li id="li-1400">\(q(4) = \frac{16}{2} = 8\)</li>
+<li id="li-1401">\(q(3) = \frac{9}{1} = 9\)</li>
+<li id="li-1402">\(q(7) = \frac{49}{5} = 9.8\)</li>
+</ul>   
+	We now see that on \([3,7]\) the absolute maximum of \(q\) is 9.8 and the absolute minimum is 8.</li>
+<li id="li-1403">Here, we first observe that we are working on the domain of all real numbers, not a closed bounded interval.  Hence, we need to think about the overall behavior of the function.  First, since \(f(x) = 4 - e^{-(x-2)^2}\), by the chain rule we see that \(f'(x) = -e^{-(x-2)^2}(-2(x-2)) = 2(x-2)e^{-(x-2)^2}.\)  Since \(e^{-(x-2)^2}\) is always positive (in particular, never zero), it follows that the only critical value of \(f\) is \(x = 2\).  Furthermore, with \(f'(x) = 2(x-2)e^{-(x-2)^2}\), we see that for \(x \lt  2\), \(f'(x) \lt  0\), while for \(x &gt; 2\), \(f'(x) &gt; 0\).  This tells us by the first derivative test that \(f\) is decreasing for \(x \lt  2\) and increasing for \(x &gt; 2\), which tells us that \(f\) has an absolute minimum at \(x = 2\), and \(f\) does not have an absolute maximum.</li>
+</ol></span></span><p id="p-774">
+One of the big lessons in finding absolute extreme values is the realization that the interval we choose has nearly the same impact on the problem as the function under consideration. Consider, for instance, the function pictured in <a knowl="./knowl/F_3.3.Interval.html" knowl-id="xref-F_3.3.Interval" alt="Figure 3.3.4 " title="Figure 3.3.4 ">Figure 3.3.4</a>.
+</p>
+<figure class="figure-like" id="F_3.3.Interval"><img width="100%" src="images/3_3_Interval.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.3.4</span>A function \(g\) considered on three different intervals.</figcaption></figure><p id="p-775">
+In sequence, from left to right, as we see the interval under consideration change from \([-2,3]\) to \([-2,2]\) to \([-2,1]\), we move from having two critical numbers in the interval with the absolute minimum at one critical number and the absolute maximum at the right endpoint, to still having both critical numbers in the interval but then with the absolute minimum and maximum at the two critical numbers, to finally having just one critical number in the interval with the absolute maximum at one critical number and the absolute minimum at one endpoint. It is particularly essential to always remember to only consider the critical numbers that lie within the interval.
+</p></section><section class="subsection" id="subsection-58"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">3.3.3</span><span class="title">Moving towards applications</span>
+</h1></header><p id="p-776">
+In <a href="S_3.4.AppliedOpt.html" alt="Section 3.4 Applied Optimization" title="Section 3.4 Applied Optimization">Section 3.4</a>, we will focus almost exclusively on applied optimization problems: problems where we seek to find the absolute maximum or minimum value of a function that represents some physical situation. We conclude this current section with an example of one such problem because it highlights the role that a closed, bounded domain can play in finding absolute extrema. In addition, these problems often involve considerable preliminary work to develop the function which is to be optimized, and this example demonstrates that process.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_3.3.1" id="Ex_3.3.1"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">3.3.5</span>
+</h5></article></a></div>
+<div id="hk-Ex_3.3.1" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-777">
+A 20 cm piece of wire is cut into two pieces. One piece is used to form a square and the other an equilateral triangle. How should the wire be cut to maximize the total area enclosed by the square and triangle? to minimize the area?
+</p></article></div>
+<p id="p-778">
+Solution.    
+We begin by constructing a picture that exemplifies the given situation. The primary variable in the problem is where we decide to cut the wire. We thus label that point \(x\), and note that the remaining portion of the wire then has length \(20-x\)
+</p>
+<figure class="figure-like" id="F_3.3.Ex1"><img width="100%" src="images/3_3_Ex1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.3.6</span>A 20 cm piece of wire cut into two pieces, one of which forms an equilateral triangle, the other which yields a square.</figcaption></figure><p id="p-779">
+As shown in <a knowl="./knowl/F_3.3.Ex1.html" knowl-id="xref-F_3.3.Ex1" alt="Figure 3.3.6 " title="Figure 3.3.6 ">Figure 3.3.6</a>, we see that the \(x\) cm of the wire that are used to form the equilateral triangle result in a triangle with three sides of length \(\frac{x}{3}\). For the remaining \(20-x\) cm of wire, the square that results will have each side of length \(\frac{20-x}{4}\).
+</p>
+<p id="p-780">
+At this point, we note that there are obvious restrictions on \(x\): in particular, \(0 \le x \le 20\). In the extreme cases, all of the wire is being used to make just one figure. For instance, if \(x = 0\), then all 20 cm of wire are used to make a square that is \(5 \times 5\).
+</p>
+<p id="p-781">
+Now, our overall goal is to find the absolute minimum and absolute maximum areas that can be enclosed. We note that the area of the triangle is \(A_{\triangle} = \frac{1}{2} bh = \frac{1}{2} \cdot \frac{x}{3} \cdot \frac{x\sqrt{3}}{6}\), since the height of an equilateral triangle is \(\sqrt{3}\) times half the length of the base. Further, the area of the square is \(A_{\Box} = s^2 = \left( \frac{20-x}{4} \right)^2\). Therefore, the total area function is
+</p>
+<span class="displaymath" id="me-335">\[
+A(x) = \frac{\sqrt{3}x^2}{36} + \left( \frac{20-x}{4} \right)^2.
+\]</span><p id="p-782">
+Again, note that we are only considering this function on the restricted domain \([0,20]\) and we seek its absolute minimum and absolute maximum.
+</p>
+<p id="p-783">
+Differentiating \(A(x)\), we have
+</p>
+<span class="displaymath" id="me-336">\[
+A'(x) = \frac{\sqrt{3}x}{18} + 2\left( \frac{20-x}{4} \right)\left( -\frac{1}{4} \right) = \frac{\sqrt{3}}{18} x + \frac{1}{8}x - \frac{5}{2}.
+\]</span><p id="p-784">
+Setting \(A'(x) = 0\), it follows that \(x = \frac{180}{4\sqrt{3}+9} \approx 11.3007\) is the only critical number of \(A\), and we note that this lies within the interval \([0,20]\).
+</p>
+<p id="p-785">
+Evaluating \(A\) at the critical number and endpoints, we see that
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1404">\(\ds A\left(\frac{180}{4\sqrt{3}+9}\right) = \frac{\sqrt{3}(\frac{180}{4\sqrt{3}+9})^2}{4} + \left( \frac{20-\frac{180}{4\sqrt{3}+9}}{4} \right)^2 \approx 10.8741\)</li>
+<li id="li-1405">\(\ds A(0) = 25\)</li>
+<li id="li-1406">\(\ds A(20) = \frac{\sqrt{3}}{36}(400) = \frac{100}{9} \sqrt{3} \approx 19.2450\)</li>
+</ul>
+<p id="p-786">
+Thus, the absolute minimum occurs when \(x \approx 11.3007\) and results in the minimum area of approximately \(10.8741\) square centimeters, while the absolute maximum occurs when we invest all of the wire in the square (and none in the triangle), resulting in 25 square centimeters of area. These results are confirmed by a plot of \(y = A(x)\) on the interval \([0,20]\), as shown in <a knowl="./knowl/F_3.3.Ex1Plot.html" knowl-id="xref-F_3.3.Ex1Plot" alt="Figure 3.3.7 " title="Figure 3.3.7 ">Figure 3.3.7</a>.
+</p>
+<figure class="figure-like" id="F_3.3.Ex1Plot"><img width="100%" src="images/3_3_Ex1Plot.png"><figcaption><span class="heading">Figure</span><span class="codenumber">3.3.7</span>A plot of the area function from <a knowl="./knowl/Ex_3.3.1.html" knowl-id="xref-Ex_3.3.1" alt="Example 3.3.5 " title="Example 3.3.5 ">Example 3.3.5</a>.</figcaption></figure>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_3.3.3" id="A_3.3.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">3.3.8</span>
+</h5></a></div>
+<div id="hk-A_3.3.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-787">
+A piece of cardboard that is \(10 \times 15\) (each measured in inches) is being made into a box without a top. To do so,
+squares are cut from each corner of the box and the remaining sides are folded up. If the box needs to be at least 1 inch deep and no more than 3 inches deep, what is the maximum possible volume of the box? what is the minimum volume? Justify your answers using calculus.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1407">Draw a labeled diagram that shows the given information.  What variable should we introduce to represent the choice we make in creating the box?  Label the diagram appropriately with the variable, and write a sentence to state what the variable represents.</li>
+<li id="li-1408">Determine a formula for the function \(V\) (that depends on the variable in (a)) that tells us the volume of the box.</li>
+<li id="li-1409">What is the domain of the function \(V\)?  That is, what values of \(x\) make sense for input?  Are there additional restrictions provided in the problem?</li>
+<li id="li-1410">Determine all critical values of the function \(V\).</li>
+<li id="li-1411">Evaluate \(V\) at each of the endpoints of the domain and at any critical values that lie in the domain.</li>
+<li id="li-1412">What is the maximum possible volume of the box?  the minimum?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-109" id="hint-109"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-109" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1413">Consider letting the length of one side of the removed squares be represented by \(x\).</li>
+<li id="li-1414">Remember that the volume of a box is length \(\times\) width \(\times\) height.</li>
+<li id="li-1415">Read the given information carefully and think about the picture.</li>
+<li id="li-1416">Note that since \(V\) is a cubic function, \(V'\) is quadratic.</li>
+<li id="li-1417">Which critical values satisfy \(1 \le x \le 3\)?</li>
+<li id="li-1418">Evaluate the function at appropriate points.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-110" id="hint-110"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-110" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1419">Consider letting the length of one side of the removed squares be represented by \(x\).  Note, then, that one side of the box will have length \(10 - 2x\).</li>
+<li id="li-1420">Remember that the volume of a box is length \(\times\) width \(\times\) height.  Write each of length, width, and height in terms of \(x\).</li>
+<li id="li-1421">Read the given information carefully and think about the picture.</li>
+<li id="li-1422">Note that since \(V\) is a cubic function, \(V'\) is quadratic, so you can find the critical values exactly.</li>
+<li id="li-1423">Which critical values satisfy \(1 \le x \le 3\)?</li>
+<li id="li-1424">Evaluate the function at appropriate points and see which is greatest and which is least.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-54" id="solution-54"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-54" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1425">We let \(x\) represent the length of a side of the square that is cut from each corner, so that we have the following picture:
+	<img width="100%" src="images/3_3_Act3Soln.png">
+</li>
+<li id="li-1426">Because the box has dimensions \((10-2x) \times (15-2x) \times x\), the volume of the box is given by 
+	
+<span class="displaymath" id="me-337">\[
+V(x) = x (10-2x) (15-2x) = 4x^3 - 50x^2 + 150x.
+\]</span>
+</li>
+<li id="li-1427">Clearly the smallest \(x\) can be is 0 and the largest \(x\) can be is 5, since one side of the cardboard has length 10.  But we're told in the problem to restrict the value of \(x\) to \(1 \le x \le 3\), so this is the domain we use for \(V\), even though \(V\) is defined for every real number \(x\).</li>
+<li id="li-1428">Since \(V'(x) = 12x^2 - 100x + 150\), it follows that the critical values (where \(V'(x) = 0\)) are
+	
+<span class="displaymath" id="me-338">\[
+x = \frac{25 \pm 5\sqrt{7}}{6} \approx 6.371459426, 1.961873908.
+\]</span>
+</li>
+<li id="li-1429">Only the latter critical number is in the relevant domain of \(V\), and hence we consider
+	<ul style="list-style-type: disc;">
+<li id="li-1430">\(V(1.961873908) = 132.0382370\)</li>
+<li id="li-1431">\(V(1) = 104\)</li>
+<li id="li-1432">\(V(3) = 108\)</li>
+</ul>
+</li>
+<li id="li-1433">Hence the absolute maximum possible volume of the box is 132.0382370 and occurs when \(x = 1.961873908\), while the absolute minimum is 104, which occurs when \(x=1\).</li>
+</ol></span></span><p id="p-788">
+The approaches shown in <a knowl="./knowl/Ex_3.3.1.html" knowl-id="xref-Ex_3.3.1" alt="Example 3.3.5 " title="Example 3.3.5 ">Example 3.3.5</a> and experienced in <a knowl="./knowl/A_3.3.3.html" knowl-id="xref-A_3.3.3" alt="Exercise 3.3.8 " title="Exercise 3.3.8 ">Activity 3.3.8</a> include standard steps that we undertake in almost every applied optimization problem: we draw a picture to demonstrate the situation, introduce one or more variables to represent quantities that are changing, work to find a function that models the quantity to be optimized, and then decide an appropriate domain for that function. Once that work is done, we are in the familiar situation of finding the absolute minimum and maximum of a function over a particular domain, at which time we apply the calculus ideas that we have been studying to this point in <a href="C_3.html" alt="Chapter 3 Using Derivatives" title="Chapter 3 Using Derivatives">Chapter 3</a>.
+</p>
+<p id="p-789">
+\item To find relative extreme values of a function, we normally use a first derivative sign chart and classify all of the function's critical numbers. If instead we are interested in absolute extreme values, we first decide whether we are considering the entire domain of the function or a particular interval.
+\item In the case of finding global extremes over the function's entire domain, we again use a first or second derivative sign chart in an effort to make overall conclusions about whether or not the function can have a absolute maximum or minimum.
+If we are working to find absolute extremes on a restricted interval, then we first identify all critical numbers of the function that lie in the interval.
+\item For a continuous function on a closed, bounded interval, the only possible points at which absolute extreme values occur are the critical numbers and the endpoints. Thus, to find said absolute extremes, we simply evaluate the function at each endpoint and each critical number in the interval, and then we compare the results to decide which is largest (the absolute maximum) and which is smallest (the absolute minimum).
+</p>
+<p id="p-790">
+\hrulefill
+</p>
+<p id="p-791">
+\begin{exercises}
+	\item Based on the given information about each function, decide whether the function has global maximum, a global minimum, neither, both, or that it is not possible to say without more information. Assume that each function is twice differentiable and defined for all real numbers, unless noted otherwise. In each case, write one sentence to explain your conclusion.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1434">\(f\) is a function such that \(f''(x) \lt  0\) for every \(x\).</li>
+<li id="li-1435">\(g\) is a function with two critical values \(a\) and \(b\) (where \(a \lt  b\)), and \(g'(x) \lt  0\) for \(x \lt  a\), \(g'(x) \lt  0\) for \(a \lt  x \lt  b\), and \(g'(x) &gt; 0\) for \(x &gt; b\).</li>
+<li id="li-1436">\(h\) is a function with two critical values \(a\) and \(b\) (where \(a \lt  b\)), and \(h'(x) \lt  0\) for \(x \lt  a\), \(h'(x) &gt; 0\) for \(a \lt  x \lt  b\), and \(h'(x) \lt  0\) for \(x &gt; b\).  In addition, \(\lim_{x \to \infty} h(x) = 0\) and \(\lim_{x \to -\infty} h(x) = 0\).</li>
+<li id="li-1437">\(p\) is a function differentiable everywhere except at \(x = a\) and \(p''(x) &gt; 0\) for \(x \lt  a\) and \(p''(x) \lt  0\) for \(x &gt; a\).</li>
+</ol>
+<p id="p-792">
+\item For each family of functions that depends on one or more parameters, determine the function's absolute maximum and absolute minimum on the given interval.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1438">\(p(x) = x^3 - a^2x\),  \([0,a]\)</li>
+<li id="li-1439">\(r(x) = axe^{-bx}\),   \([\frac{1}{b}, b]\)</li>
+<li id="li-1440">\(w(x) = a(1-e^{-bx})\),   \([b, 3b]\)</li>
+<li id="li-1441">\(s(x) = \sin(kx)\),   \([\frac{\pi}{3k}, \frac{5\pi}{6k}]\)</li>
+</ol>
+<p id="p-793">
+\item For each of the functions described below (each continuous on \([a,b]\)), state the location of the function's absolute maximum and absolute minimum on the interval \([a,b]\), or say there is not enough information provided to make a conclusion. Assume that any critical values mentioned in the problem statement represent all of the critical numbers the function has in \([a,b]\). In each case, write one sentence to explain your answer.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1442">\(f'(x) \le 0\) for all \(x\) in \([a,b]\)</li>
+<li id="li-1443">\(g\) has a critical value at \(c\) such that \(a \lt  c\lt  b\) and \(g'(x) &gt; 0\) for \(x \lt  c\) and \(g'(x) \lt  0\) for \(x &gt; c\)</li>
+<li id="li-1444">\(h(a) = h(b)\) and \(h''(x) \lt  0\) for all \(x\) in \([a,b]\)</li>
+<li id="li-1445">\(p(a) &gt; 0\), \(p(b) \lt  0\), and for the critical value \(c\) such that \(a \lt  c \lt  b\), \(p'(x) \lt  0\) for \(x \lt  c\) and \(p'(x) &gt; 0\) for \(x &gt; c\)</li>
+</ol>
+<p id="p-794">
+\item Let \(s(t) = 3\sin(2(t-\frac{\pi}{6})) + 5.\) Find the exact absolute maximum and minimum of \(s\) on the provided intervals by testing the endpoints and finding and evaluating all relevant critical values of \(s\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1446">\([\frac{\pi}{6}, \frac{7\pi}{6}]\)</li>
+<li id="li-1447">\([0, \frac{\pi}{2}]\)</li>
+<li id="li-1448">\([0, 2\pi]\)</li>
+<li id="li-1449">\([\frac{\pi}{3}, \frac{5\pi}{6}]\)</li>
+</ol>
+<p id="p-795">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-796">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:48-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Using Definite Integrals to Find Volume</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_6.1.Area.html">Previous</a><a class="up-button button toolbar-item" href="C_6.html">Up</a><a class="next-button button toolbar-item" href="S_6.3.Mass.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_6.1.Area.html">Previous</a><a class="up-button button toolbar-item" href="C_6.html">Up</a><a class="next-button button toolbar-item" href="S_6.3.Mass.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link active"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html" class="active">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_6.1.Volume"><header><h1 class="heading" alt="Section 6.2 Using Definite Integrals to Find Volume" title="Section 6.2 Using Definite Integrals to Find Volume">
+<span class="type">Section</span><span class="codenumber">6.2</span><span class="title">Using Definite Integrals to Find Volume</span><a href="S_6.1.Volume.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-33"><h5 class="heading"></h5>
+<p id="p-1499">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2252">How can we use a definite integral to find the volume of a three-dimensional solid of revolution that results from revolving a two-dimensional region about a particular axis?</li>
+<li id="li-2253">In what circumstances do we integrate with respect to \(y\) instead of integrating with respect to \(x\)?</li>
+<li id="li-2254">What adjustments do we need to make if we revolve about a line other than the \(x\)- or \(y\)-axis?</li>
+</ul>
+<p id="p-1500">
+} 
+</p></article><section class="subsection" id="subsection-110"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.2.1</span><span class="title">Introduction</span>
+</h1></header><figure class="figure-like" id="F_6.2.Intro"><img width="100%" src="images/6_2_Intro.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.2.1</span>A right circular cylinder.</figcaption></figure><p id="p-1501">
+Just as we can use definite integrals to add the areas of rectangular slices to find the exact area that lies between two curves, we can also employ integrals to determine the volume of certain regions that have cross-sections of a particular consistent shape. As a very elementary example, consider a cylinder of radius 2 and height 3, as pictured in <a knowl="./knowl/F_6.2.Intro.html" knowl-id="xref-F_6.2.Intro" alt="Figure 6.2.1 " title="Figure 6.2.1 ">Figure 6.2.1</a>. While we know that we can compute the area of any circular cylinder by the formula \(V = \pi r^2 h\), if we think about slicing the cylinder into thin pieces, we see that each is a cylinder of radius \(r = 2\) and height (thickness) \(\triangle x\). Hence, the volume of a representative slice is
+</p>
+<span class="displaymath" id="me-607">\[
+V_{{\text{slice} }} = \pi \cdot 2^2 \cdot \triangle x.
+\]</span><p id="p-1502">
+Letting \(\triangle x \to 0\) and using a definite integral to add the volumes of the slices, we find that
+</p>
+<span class="displaymath" id="me-608">\[
+V = \int_0^3 \pi \cdot 2^2 \, dx.
+\]</span><p id="p-1503">
+Moreover, since \(\int_0^3 4\pi \, dx = 12\pi\), we have found that the volume of the cylinder is \(12\pi\). The principal problem of interest in our upcoming work will be to find the volume of certain solids whose cross-sections are all thin cylinders (or washers) and to do so by using a definite integral. To that end, we first consider another familiar shape in Preview <a href="S_6.1.Volume.html#PA_6.2" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>: a circular cone.
+</p>
+<article class="paragraphs" id="PA_6.2"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1504">
+Consider a circular cone of radius 3 and height 5, which we view horizontally as pictured in <a knowl="./knowl/F_PA.6.2.html" knowl-id="xref-F_PA.6.2" alt="Figure 6.2.2 " title="Figure 6.2.2 ">Figure 6.2.2</a>. Our goal in this activity is to use a definite integral to determine the volume of the cone.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2255">Find a formula for the linear function \(y = f(x)\) that is pictured in <a knowl="./knowl/F_PA.6.2.html" knowl-id="xref-F_PA.6.2" alt="Figure 6.2.2 " title="Figure 6.2.2 ">Figure 6.2.2</a>.</li>
+<li id="li-2256">For the representative slice of thickness \(\triangle x\) that is located horizontally at a location \(x\) (somewhere between \(x = 0\) and \(x = 5\)), what is the radius of the representative slice?  Note that the radius depends on the value of \(x\).</li>
+<li id="li-2257">What is the volume of the representative slice you found in (b)?</li>
+<li id="li-2258">What definite integral will sum the volumes of the thin slices across the full horizontal span of the cone?  What is the exact value of this definite integral?</li>
+<li id="li-2259">Compare the result of your work in (d) to the volume of the cone that comes from using the formula \(V_{\text{{cone}} } = \frac{1}{3} \pi r^2 h.\)</li>
+</ol>
+<figure class="figure-like" id="F_PA.6.2"><img width="100%" src="images/6_2_PA1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.2.2</span>The circular cone described in Preview <a href="S_6.1.Volume.html#PA_6.2" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a></figcaption></figure></article></section><section class="subsection" id="subsection-111"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.2.2</span><span class="title">The Volume of a Solid of Revolution</span>
+</h1></header><p id="p-1505">
+\knownindex{\lt main&gt;solid of revolution\lt /main&gt;}
+</p>
+<p id="p-1506">
+A solid of revolution is a three dimensional solid that can be generated by revolving one or more curves around a fixed axis. For example, we can think of a circular cylinder as a solid of revolution: in <a knowl="./knowl/F_6.2.Intro.html" knowl-id="xref-F_6.2.Intro" alt="Figure 6.2.1 " title="Figure 6.2.1 ">Figure 6.2.1</a>, this could be accomplished by revolving the line segment from \((0,2)\) to \((3,2)\) about the \(x\)-axis. Likewise, the circular cone in <a knowl="./knowl/F_PA.6.2.html" knowl-id="xref-F_PA.6.2" alt="Figure 6.2.2 " title="Figure 6.2.2 ">Figure 6.2.2</a> is the solid of revolution generated by revolving the portion of the line \(y = 3 - \frac{3}{5}x\) from \(x = 0\) to \(x = 5\) about the \(x\)-axis. It is particularly important to notice in any solid of revolution that if we slice the solid perpendicular to the axis of revolution, the resulting cross-section is circular.
+</p>
+<p id="p-1507">
+We consider two examples to highlight some of the natural issues that arise in determining the volume of a solid of revolution.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_6.2.Disks" id="Ex_6.2.Disks"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">6.2.3</span>
+</h5></article></a></div>
+<div id="hk-Ex_6.2.Disks" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-1508">
+Find the volume of the solid of revolution generated when the region \(R\) bounded by \(y = 4-x^2\) and the \(x\)-axis is revolved about the \(x\)-axis.
+</p></article></div>
+<p id="p-1509">
+Solution.    
+</p>
+<p id="p-1510">
+First, we observe that \(y = 4-x^2\) intersects the \(x\)-axis at the points \((-2,0)\) and \((2,0)\). When we take the region \(R\) that lies between the curve and the \(x\)-axis on this interval and revolve it about the \(x\)-axis, we get the three-dimensional solid pictured in <a knowl="./knowl/F_6.2.Ex1.html" knowl-id="xref-F_6.2.Ex1" alt="Figure 6.2.4 " title="Figure 6.2.4 ">Figure 6.2.4</a>.
+</p>
+<figure class="figure-like" id="F_6.2.Ex1"><img width="100%" src="images/6_2_Ex1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.2.4</span>The solid of revolution in <a knowl="./knowl/Ex_6.2.Disks.html" knowl-id="xref-Ex_6.2.Disks" alt="Example 6.2.3 " title="Example 6.2.3 ">Example 6.2.3</a>.</figcaption></figure><p id="p-1511">
+Taking a representative slice of the solid located at a value \(x\) that lies between \(x = -2\) and \(x = 2\), we see that the thickness of such a slice is \(\triangle x\) (which is also the height of the cylinder-shaped slice), and that the radius of the slice is determined by the curve \(y = 4-x^2\). Hence, we find that
+</p>
+<span class="displaymath" id="me-609">\[
+V_{\text{{slice}} } = \pi (4-x^2)^2 \triangle x,
+\]</span><p id="p-1512">
+since the volume of a cylinder of radius \(r\) and height \(h\) is \(V = \pi r^2 h\).
+</p>
+<p id="p-1513">
+Using a definite integral to sum the volumes of the representative slices, it follows that
+</p>
+<span class="displaymath" id="me-610">\[
+V = \int_{-2}^{2} \pi (4-x^2)^2 \, dx.
+\]</span><p id="p-1514">
+It is straightforward to evaluate the integral and find that the volume is \(V = \frac{512}{15}\pi\).
+</p>\hspace{5.0in}<p id="p-1515">
+For a solid such as the one in <a knowl="./knowl/Ex_6.2.Disks.html" knowl-id="xref-Ex_6.2.Disks" alt="Example 6.2.3 " title="Example 6.2.3 ">Example 6.2.3</a>, where each cross-section is a cylindrical disk, we first find the volume of a typical cross-section (noting particularly how this volume depends on \(x\)), and then we integrate over the range of \(x\)-values through which we slice the solid in order to find the exact total volume. Often, we will be content with simply finding the integral that represents the sought volume; if we desire a numeric value for the integral, we typically use a calculator or computer algebra system to find that value.
+</p>
+<p id="p-1516">
+The general principle we are using to find the volume of a solid of revolution generated by a single curve is often called the <!--Style me with CSS--><em>disk method</em>\knownindex{\lt main&gt;disk method\lt /main&gt;}.
+</p>
+<p id="p-1517">
+
+{
+If \(y = r(x)\) is a nonnegative continuous function on \([a,b]\), then the volume of the solid of revolution generated by revolving the curve about the \(x\)-axis over this interval is given by
+</p>
+<span class="displaymath" id="me-611">\[
+V = \int_a^b \pi r(x)^2 \, dx.
+\]</span><p id="p-1518">
+} 
+
+</p>
+<p id="p-1519">
+A different type of solid can emerge when two curves are involved, as we see in the following example.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_6.2.Washers" id="Ex_6.2.Washers"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">6.2.5</span>
+</h5></article></a></div>
+<div id="hk-Ex_6.2.Washers" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-1520">
+Find the volume of the solid of revolution generated when the finite region \(R\) that lies between \(y = 4-x^2\) and \(y = x+2\) is revolved about the \(x\)-axis.
+</p></article></div>
+<p id="p-1521">
+Solution.    
+</p>
+<p id="p-1522">
+First, we must determine where the curves \(y = 4-x^2\) and \(y = x+2\) intersect. Substituting the expression for \(y\) from the second equation into the first equation, we find that \(x + 2 = 4-x^2\). Rearranging, it follows that
+</p>
+<span class="displaymath" id="me-612">\[
+x^2 + x - 2 = 0,
+\]</span><p id="p-1523">
+and the solutions to this equation are \(x = -2\) and \(x = 1\). The curves therefore cross at \((-2,0)\) and \((1,1)\).
+</p>
+<p id="p-1524">
+When we take the region \(R\) that lies between the curves and revolve it about the \(x\)-axis, we get the three-dimensional solid pictured at left in <a knowl="./knowl/F_6.2.Ex2.html" knowl-id="xref-F_6.2.Ex2" alt="Figure 6.2.6 " title="Figure 6.2.6 ">Figure 6.2.6</a>.
+</p>
+<figure class="figure-like" id="F_6.2.Ex2"><img width="100%" src="images/6_2_Ex2_left.png"><img width="100%" src="images/6_2_Ex2_right.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.2.6</span>At left, the solid of revolution in <a knowl="./knowl/Ex_6.2.Washers.html" knowl-id="xref-Ex_6.2.Washers" alt="Example 6.2.5 " title="Example 6.2.5 ">Example 6.2.5</a>.  At right, a typical slice with inner radius \(r(x)\) and outer radius \(R(x)\).</figcaption></figure><p id="p-1525">
+Immediately we see a major difference between the solid in this example and the one in <a knowl="./knowl/Ex_6.2.Disks.html" knowl-id="xref-Ex_6.2.Disks" alt="Example 6.2.3 " title="Example 6.2.3 ">Example 6.2.3</a>: here, the three-dimensional solid of revolution isn't “solid” in the sense that it has open space in its center. If we slice the solid perpendicular to the axis of revolution, we observe that in this setting the resulting representative slice is not a solid disk, but rather a <!--Style me with CSS--><em>washer</em>, as pictured at right in <a knowl="./knowl/F_6.2.Ex2.html" knowl-id="xref-F_6.2.Ex2" alt="Figure 6.2.6 " title="Figure 6.2.6 ">Figure 6.2.6</a>. Moreover, at a given location \(x\) between \(x = -2\) and \(x = 1\), the small radius \(r(x)\) of the inner circle is determined by the curve \(y = x+2\), so \(r(x) = x+2\). Similarly, the big radius \(R(x)\) comes from the function \(y = 4-x^2\), and thus \(R(x) = 4-x^2\).
+</p>
+<p id="p-1526">
+Thus, to find the volume of a representative slice, we compute the volume of the outer disk and subtract the volume of the inner disk. Since
+</p>
+<span class="displaymath" id="me-613">\[
+\pi R(x)^2 \triangle x - \pi r(x)^2 \triangle x = \pi [ R(x)^2 - r(x)^2] \triangle x,
+\]</span><p id="p-1527">
+it follows that the volume of a typical slice is
+</p>
+<span class="displaymath" id="me-614">\[
+V_{\text{{slice}} } = \pi [ (4-x^2)^2 - (x+2)^2 ] \triangle x.
+\]</span><p id="p-1528">
+Hence, using a definite integral to sum the volumes of the respective slices across the integral, we find that
+</p>
+<span class="displaymath" id="me-615">\[
+V = \int_{-2}^1 \pi[ (4-x^2)^2 - (x+2)^2 ] \, dx.
+\]</span><p id="p-1529">
+Evaluating the integral, the volume of the solid of revolution is \(V = \frac{108}{5}\pi\).
+</p>\hspace{5.0in}<p id="p-1530">
+The general principle we are using to find the volume of a solid of revolution generated by a single curve is often called the <!--Style me with CSS--><em>washer method</em>\knownindex{\lt main&gt;washer method\lt /main&gt;}.
+</p>
+<p id="p-1531">
+
+{
+If \(y = R(x)\) and \(y = r(x)\) are nonnegative continuous functions on \([a,b]\) that satisfy \(R(x) \ge r(x)\) for all \(x\) in \([a,b]\), then the volume of the solid of revolution generated by revolving the region between them about the \(x\)-axis over this interval is given by
+</p>
+<span class="displaymath" id="me-616">\[
+V = \int_a^b \pi [R(x)^2 - r(x)^2] \, dx.
+\]</span><p id="p-1532">
+} 
+
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.2.1" id="A_6.2.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.2.7</span>
+</h5></a></div>
+<div id="hk-A_6.2.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1533">
+In each of the following questions, draw a careful, labeled sketch of the region described, as well as the resulting solid that results from revolving the region about the stated axis. In addition, draw a representative slice and state the volume of that slice, along with a definite integral whose value is the volume of the entire solid. It is not necessary to evaluate the integrals you find.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2260">The region \(S\) bounded by the \(x\)-axis, the curve \(y = \sqrt{x}\), and the line \(x = 4\); revolve \(S\) about the \(x\)-axis.</li>
+<li id="li-2261">The region \(S\) bounded by the \(y\)-axis, the curve \(y = \sqrt{x}\), and the line \(y = 2\); revolve \(S\) about the \(x\)-axis.</li>
+<li id="li-2262">The finite region \(S\) bounded by the curves \(y = \sqrt{x}\) and \(y = x^3\); revolve \(S\) about the \(x\)-axis.</li>
+<li id="li-2263">The finite region \(S\) bounded by the curves \(y = 2x^2 + 1\) and \(y  = x^2 + 4\); revolve \(S\) about the \(x\)-axis</li>
+<li id="li-2264">The region \(S\) bounded by the \(y\)-axis, the curve \(y = \sqrt{x}\), and the line \(y = 2\); revolve \(S\) about the \(y\)-axis.  How does the problem change considerably when we revolve about the \(y\)-axis?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-191" id="hint-191"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-191" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2265">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-192" id="hint-192"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-192" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2266">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-94" id="solution-94"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-94" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2267">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-112"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.2.3</span><span class="title">Revolving about the \(y\)-axis</span>
+</h1></header><p id="p-1534">
+As seen in <a knowl="./knowl/A_6.2.1.html" knowl-id="xref-A_6.2.1" alt="Exercise 6.2.7 " title="Exercise 6.2.7 ">Activity 6.2.7</a>, problem (e), the problem changes considerably when we revolve a given region about the \(y\)-axis. Foremost, this is due to the fact that representative slices now have thickness \(\triangle y\), which means that it becomes necessary to integrate with respect to \(y\). Let's consider a particular example to demonstrate some of the key issues.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_6.2.AboutY" id="Ex_6.2.AboutY"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">6.2.8</span>
+</h5></article></a></div>
+<div id="hk-Ex_6.2.AboutY" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-1535">
+Find the volume of the solid of revolution generated when the finite region \(R\) that lies between \(y = \sqrt{x}\) and \(y = x^4\) is revolved about the \(y\)-axis.
+</p></article></div>
+<p id="p-1536">
+Solution.    
+</p>
+<p id="p-1537">
+We observe that these two curves intersect when \(x = 1\), hence at the point \((1,1)\). When we take the region \(R\) that lies between the curves and revolve it about the \(y\)-axis, we get the three-dimensional solid pictured at left in <a knowl="./knowl/F_6.2.Ex3.html" knowl-id="xref-F_6.2.Ex3" alt="Figure 6.2.9 " title="Figure 6.2.9 ">Figure 6.2.9</a>.
+</p>
+<figure class="figure-like" id="F_6.2.Ex3"><img width="100%" src="images/6_2_Ex3_left.png"><img width="100%" src="images/6_2_Ex3_right.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.2.9</span>At left, the solid of revolution in <a knowl="./knowl/Ex_6.2.AboutY.html" knowl-id="xref-Ex_6.2.AboutY" alt="Example 6.2.8 " title="Example 6.2.8 ">Example 6.2.8</a>.  At right, a typical slice with inner radius \(r(y)\) and outer radius \(R(y)\).</figcaption></figure><p id="p-1538">
+Now, it is particularly important to note that the thickness of a representative slice is \(\triangle y\), and that the slices are only cylindrical washers in nature when taken perpendicular to the \(y\)-axis. Hence, we envision slicing the solid horizontally, starting at \(y = 0\) and proceeding up to \(y = 1\). Because the inner radius is governed by the curve \(y = \sqrt{x}\), but from the perspective that \(x\) is a function of \(y\), we solve for \(x\) and get \(x = y^2 = r(y)\). In the same way, we need to view the curve \(y = x^4\) (which governs the outer radius) in the form where \(x\) is a function of \(y\), and hence \(x = \sqrt[4]{y}\). Therefore, we see that the volume of a typical slice is
+</p>
+<span class="displaymath" id="me-617">\[
+V_{\mbox{{slice}} } = \pi [R(y)^2 - r(y)^2] = \pi[\sqrt[4]{y}^2 - (y^2)^2] \triangle y.
+\]</span><p id="p-1539">
+Using a definite integral to sum the volume of all the representative slices from \(y = 0\) to \(y = 1\), the total volume is
+</p>
+<span class="displaymath" id="me-618">\[
+V = \int_{y=0}^{y=1} \pi \left[ \sqrt[4]{y}^2 - (y^2)^2 \right] \, dy.
+\]</span><p id="p-1540">
+It is straightforward to evaluate the integral and find that \(V = \frac{7}{15} \pi\).
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.2.2" id="A_6.2.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.2.10</span>
+</h5></a></div>
+<div id="hk-A_6.2.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1541">
+In each of the following questions, draw a careful, labeled sketch of the region described, as well as the resulting solid that results from revolving the region about the stated axis. In addition, draw a representative slice and state the volume of that slice, along with a definite integral whose value is the volume of the entire solid. It is not necessary to evaluate the integrals you find.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2268">The region \(S\) bounded by the \(y\)-axis, the curve \(y = \sqrt{x}\), and the line \(y = 2\); revolve \(S\) about the \(y\)-axis.</li>
+<li id="li-2269">The region \(S\) bounded by the \(x\)-axis, the curve \(y = \sqrt{x}\), and the line \(x = 4\); revolve \(S\) about the \(y\)-axis.</li>
+<li id="li-2270">The finite region \(S\) in the first quadrant bounded by the curves \(y = 2x\) and \(y = x^3\); revolve \(S\) about the \(x\)-axis.</li>
+<li id="li-2271">The finite region \(S\) in the first quadrant bounded by the curves \(y = 2x\) and \(y = x^3\); revolve \(S\) about the \(y\)-axis.</li>
+<li id="li-2272">The finite region \(S\) bounded by the curves \(x = (y-1)^2\) and \(y  = x-1\); revolve \(S\) about the \(y\)-axis</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-193" id="hint-193"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-193" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2273">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-194" id="hint-194"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-194" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2274">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-95" id="solution-95"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-95" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2275">Solutions for each of the prompts above.</li></ol></span></span></section><section class="subsection" id="subsection-113"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">6.2.4</span><span class="title">Revolving about horizontal and vertical lines other than the coordinate axes</span>
+</h1></header><p id="p-1542">
+Just as we can revolve about one of the coordinate axes (\(y = 0\) or \(x = 0\)), it is also possible to revolve around any horizontal or vertical line. Doing so essentially adjusts the radii of cylinders or washers involved by a constant value. A careful, well-labeled plot of the solid of revolution will usually reveal how the different axis of revolution affects the definite integral we set up. Again, an example is instructive.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_6.2.AboutNotY" id="Ex_6.2.AboutNotY"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">6.2.11</span>
+</h5></article></a></div>
+<div id="hk-Ex_6.2.AboutNotY" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-1543">
+Find the volume of the solid of revolution generated when the finite region \(S\) that lies between \(y = x^2\) and \(y = x\) is revolved about the line \(y = -1\).
+</p></article></div>
+<p id="p-1544">
+Solution.    
+</p>
+<figure class="figure-like" id="F_6.2.Ex4"><img width="100%" src="images/6_2_Ex4.png"><figcaption><span class="heading">Figure</span><span class="codenumber">6.2.12</span>The solid of revolution described in <a knowl="./knowl/Ex_6.2.AboutNotY.html" knowl-id="xref-Ex_6.2.AboutNotY" alt="Example 6.2.11 " title="Example 6.2.11 ">Example 6.2.11</a>.</figcaption></figure><p id="p-1545">
+Graphing the region between the two curves in the first quadrant between their points of intersection (\((0,0)\) and \((1,1)\)) and then revolving the region about the line \(y = -1\), we see the solid shown in <a knowl="./knowl/F_6.2.Ex4.html" knowl-id="xref-F_6.2.Ex4" alt="Figure 6.2.12 " title="Figure 6.2.12 ">Figure 6.2.12</a>. Each slice of the solid perpendicular to the axis of revolution is a washer, and the radii of each washer are governed by the curves \(y = x^2\) and \(y = x\). But we also see that there is one added change: the axis of revolution adds a fixed length to each radius. In particular, the inner radius of a typical slice, \(r(x)\), is given by \(r(x) = x^2 + 1\), while the outer radius is \(R(x) = x+1\). Therefore, the volume of a typical slice is
+</p>
+<span class="displaymath" id="me-619">\[
+V_{\mbox{{slice}} } = \pi[ R(x)^2 - r(x)^2 ] \triangle x = \pi \left[ (x+1)^2 - (x^2 + 1)^2 \right] \triangle x.
+\]</span><p id="p-1546">
+Finally, we integrate to find the total volume, and
+</p>
+<span class="displaymath" id="me-620">\[
+V = \int_0^1  \pi \left[ (x+1)^2 - (x^2 + 1)^2 \right] \, dx = \frac{7}{15} \pi.
+\]</span>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_6.2.3" id="A_6.2.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">6.2.13</span>
+</h5></a></div>
+<div id="hk-A_6.2.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1547">
+In each of the following questions, draw a careful, labeled sketch of the region described, as well as the resulting solid that results from revolving the region about the stated axis. In addition, draw a representative slice and state the volume of that slice, along with a definite integral whose value is the volume of the entire solid. It is not necessary to evaluate the integrals you find. For each prompt, use the finite region \(S\) in the first quadrant bounded by the curves \(y = 2x\) and \(y = x^3\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2276">Revolve \(S\) about the line \(y = -2\).</li>
+<li id="li-2277">Revolve \(S\) about the line \(y = 4\).</li>
+<li id="li-2278">Revolve \(S\) about the line \(x=-1\).</li>
+<li id="li-2279">Revolve \(S\) about the line \(x = 5\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-195" id="hint-195"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-195" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2280">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-196" id="hint-196"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-196" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2281">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-96" id="solution-96"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-96" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2282">Solutions for each of the prompts above.</li></ol></span></span><p id="p-1548">
+\item We can use a definite integral to find the volume of a three-dimensional solid of revolution that results from revolving a two-dimensional region about a particular axis by taking slices perpendicular to the axis of revolution which will then be circular disks or washers.
+\item If we revolve about a vertical line and slice perpendicular to that line, then our slices are horizontal and of thickness \(\triangle y\). This leads us to integrate with respect to \(y\), as opposed to with respect to \(x\) when we slice a solid vertically.
+\item If we revolve about a line other than the \(x\)- or \(y\)-axis, we need to carefully account for the shift that occurs in the radius of a typical slice. Normally, this shift involves taking a sum or difference of the function along with the constant connected to the equation for the horizontal or vertical line; a well-labeled diagram is usually the best way to decide the new expression for the radius.
+</p>
+<p id="p-1549">
+\hrulefill
+</p>
+<p id="p-1550">
+\begin{exercises}
+</p>
+<p id="p-1551">
+\item Consider the curve \(f(x) = 3 \cos(\frac{x^3}{4})\) and the portion of its graph that lies in the first quadrant between the \(y\)-axis and the first positive value of \(x\) for which \(f(x) = 0\). Let \(R\) denote the region bounded by this portion of \(f\), the \(x\)-axis, and the \(y\)-axis.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2283">Set up a definite integral whose value is the exact arc length of \(f\) that lies along the upper boundary of \(R\).  Use technology appropriately to evaluate the integral you find.</li>
+<li id="li-2284">Set up a definite integral whose value is the exact area of \(R\).  Use technology appropriately to evaluate the integral you find.</li>
+<li id="li-2285">Suppose that the region \(R\) is revolved around the \(x\)-axis.  Set up a definite integral whose value is the exact volume of the solid of revolution that is generated.   Use technology appropriately to evaluate the integral you find.</li>
+<li id="li-2286">Suppose instead that \(R\) is revolved around the \(y\)-axis.  If possible, set up an integral expression whose value is the exact volume of the solid of revolution and evaluate the integral using appropriate technology.  If not possible, explain why.</li>
+</ol>
+<p id="p-1552">
+\item Consider the curves given by \(y = \sin(x)\) and \(y = \cos(x)\). For each of the following problems, you should include a sketch of the region/solid being considered, as well as a labeled representative slice.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2287">Sketch the region \(R\) bounded by the \(y\)-axis and the curves \(y = \sin(x)\) and \(y = \cos(x)\) up to the first positive value of \(x\) at which they intersect. What is the exact intersection point of the curves?</li>
+<li id="li-2288">Set up a definite integral whose value is the exact area of \(R\).</li>
+<li id="li-2289">Set up a definite integral whose value is the exact volume of the solid  of revolution generated by revolving \(R\) about the \(x\)-axis.</li>
+<li id="li-2290">Set up a definite integral whose value is the exact volume of the solid  of revolution generated by revolving \(R\) about the \(y\)-axis.</li>
+<li id="li-2291">Set up a definite integral whose value is the exact volume of the solid  of revolution generated by revolving \(R\) about the line \(y = 2\).</li>
+<li id="li-2292">Set up a definite integral whose value is the exact volume of the solid  of revolution generated by revolving \(R\) about the \(x = -1\).</li>
+</ol>
+<p id="p-1553">
+\item Consider the finite region \(R\) that is bounded by the curves \(y = 1+\frac{1}{2}(x-2)^2\), \(y=\frac{1}{2}x^2\), and \(x = 0\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2293">Determine a definite integral whose value is the area of the region enclosed by the two curves.</li>
+<li id="li-2294">Find an expression involving one or more definite integrals whose value is the volume of the solid of revolution generated by revolving the region \(R\) about the line \(y = -1\).</li>
+<li id="li-2295">Determine an expression involving one or more definite integrals whose value is the volume of the solid of revolution generated by revolving the region \(R\) about the \(y\)-axis.</li>
+<li id="li-2296">Find an expression involving one or more definite integrals whose value is the perimeter of the region \(R\).</li>
+</ol>
+<p id="p-1554">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1555">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:39-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The chain rule</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_2.4.OtherTrig.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.6.Inverse.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_2.4.OtherTrig.html">Previous</a><a class="up-button button toolbar-item" href="C_2.html">Up</a><a class="next-button button toolbar-item" href="S_2.6.Inverse.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link active"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html" class="active">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_2.5.Chain"><header><h1 class="heading" alt="Section 2.5 The chain rule" title="Section 2.5 The chain rule">
+<span class="type">Section</span><span class="codenumber">2.5</span><span class="title">The chain rule</span><a href="S_2.5.Chain.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-13"><h5 class="heading"></h5>
+<p id="p-467">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-903">What is a composite function and how do we recognize its structure algebraically?</li>
+<li id="li-904">Given a composite function \(C(x) = f(g(x))\) that is built from differentiable functions \(f\) and \(g\), how do we compute \(C'(x)\) in terms of \(f\), \(g\), \(f'\), and \(g'\)?  What is the statement of the Chain Rule?</li>
+</ul>
+<p id="p-468">
+} 
+</p></article><section class="subsection" id="subsection-37"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.5.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-469">
+In addition to learning how to differentiate a variety of basic functions, we have also been developing our ability to understand how to use rules to differentiate certain algebraic combinations of them. For example, we not only know how to take the derivative of \(f(x) = \sin(x)\) and \(g(x) = x^2\), but now we can quickly find the derivative of each of the following combinations of \(f\) and \(g\):
+</p>
+<span class="displaymath" id="me-143">\[
+s(x) = 3x^2 - 5\sin(x),
+\]</span><span class="displaymath" id="me-144">\[
+p(x) = x^2 \sin(x), \mbox{and} 
+\]</span><span class="displaymath" id="me-145">\[
+q(x) = \frac{\sin(x)}{x^2}.
+\]</span><p id="p-470">
+Finding \(s'\) uses the sum and constant multiple rules, determining \(p'\) requires the product rule, and \(q'\) can be attained with the quotient rule. Again, we note the importance of recognizing the algebraic structure of a given function in order to find its derivative: \(s(x) = 3g(x) - 5f(x)\), \(p(x) = g(x) \cdot f(x)\), and \(q(x) =\frac{f(x)}{g(x)}.\)
+</p>
+<p id="p-471">
+There is one more natural way to algebraically combine basic functions, and that is by <!--Style me with CSS--><em>composing</em> them. For instance, let's consider the function
+</p>
+<span class="displaymath" id="me-146">\[
+C(x) = \sin(x^2),
+\]</span><p id="p-472">
+and observe that any input \(x\) passes through a <!--Style me with CSS--><em>chain</em> of functions. In particular, in the process that defines the function \(C(x)\), \(x\) is first squared, and then the sine of the result is taken. Using an arrow diagram,
+</p>
+<span class="displaymath" id="me-147">\[
+x \longrightarrow x^2 \longrightarrow \sin(x^2).
+\]</span><p id="p-473">
+In terms of the elementary functions \(f\) and \(g\), we observe that \(x\) is first input in the function \(g\), and then the result is used as the input in \(f\). Said differently, we can write
+</p>
+<span class="displaymath" id="me-148">\[
+C(x) = f(g(x)) = \sin(x^2)
+\]</span><p id="p-474">
+and say that \(C\) is the <!--Style me with CSS--><em>composition</em> \knownindex{\lt main&gt;composition\lt /main&gt;} of \(f\) and \(g\). We will refer to \(g\), the function that is first applied to \(x\), as the <!--Style me with CSS--><em>inner</em> function, while \(f\), the function that is applied to the result, is the <!--Style me with CSS--><em>outer</em> function.
+</p>
+<p id="p-475">
+The main question that we answer in the present section is: given a composite function \(C(x) = f(g(x))\) that is built from differentiable functions \(f\) and \(g\), how do we compute \(C'(x)\) in terms of \(f\), \(g\), \(f'\), and \(g'\)? In the same way that the rate of change of a product of two functions, \(p(x) = f(x) \cdot g(x)\), depends on the behavior of both \(f\) and \(g\), it makes sense intuitively that the rate of change of a composite function \(C(x) = f(g(x))\) will also depend on some combination of \(f\) and \(g\) and their derivatives. The rule that describes how to compute \(C'\) in terms of \(f\) and \(g\) and their derivatives will be called the <!--Style me with CSS--><em>chain rule</em>.
+</p>
+<p id="p-476">
+But before we can learn what the chain rule says and why it works, we first need to be comfortable decomposing composite functions so that we can correctly identify the inner and outer functions, as we did in the example above with \(C(x) = \sin(x^2).\)
+</p>
+<article class="paragraphs" id="PA_2.5"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-477">
+For each function given below, identify its fundamental algebraic structure. In particular, is the given function a sum, product, quotient, or composition of basic functions? If the function is a composition of basic functions, state a formula for the inner function \(g\) and the outer function \(f\) so that the overall composite function can be written in the form \(f(g(x))\). If the function is a sum, product, or quotient of basic functions, use the appropriate rule to determine its derivative.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-905">\(h(x) = \tan(2^x)\)</li>
+<li id="li-906">\(p(x) = 2^x \tan(x)\)</li>
+<li id="li-907">\(r(x) = (\tan(x))^2\)</li>
+<li id="li-908">\(m(x) = e^{\tan(x)}\)</li>
+<li id="li-909">\(w(x) = \sqrt{x} + \tan(x)\)</li>
+<li id="li-910">\(z(x) = \sqrt{\tan(x)}\)</li>
+</ol></article></section><section class="subsection" id="subsection-38"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.5.2</span><span class="title">The chain rule</span>
+</h1></header><p id="p-478">
+One of the challenges of differentiating a composite function is that it often cannot be written in an alternate algebraic form. For instance, the function \(C(x) = \sin(x^2)\) cannot be expanded or otherwise rewritten, so it presents no alternate approaches to taking the derivative. But other composite functions can be expanded or simplified, and these present a way to begin to explore how the chain rule might have to work. To that end, we consider two examples of composite functions that present alternate means of finding the derivative.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_2.5.Linear" id="Ex_2.5.Linear"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">2.5.1</span>
+</h5></article></a></div>
+<div id="hk-Ex_2.5.Linear" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-479">
+Let \(f(x) = -4x + 7\) and \(g(x) = 3x - 5\). Determine a formula for \(C(x) = f(g(x))\) and compute \(C'(x)\). How is \(C'\) related to \(f\) and \(g\) and their derivatives?
+</p></article></div>
+<p id="p-480">
+Solution.    
+By the rules given for \(f\) and \(g\),
+</p>
+<span class="displaymath" id="md-25">\begin{align*}
+C(x) \amp  = \amp  f(g(x))\\
+\amp  = \amp  f(3x-5)\\
+\amp  = \amp  -4(3x-5) + 7\\
+\amp  = \amp  -12x + 20 + 7\\
+\amp  = \amp  -12x + 27.
+\end{align*}</span><p id="p-481">
+Thus, \(C'(x) = -12\). Noting that \(f'(x) = -4\) and \(g'(x) = 3\), we observe that \(C'\) appears to be the product of \(f'\) and \(g'\).
+</p>\hspace{5.0in}<p id="p-482">
+From one perspective, <a knowl="./knowl/Ex_2.5.Linear.html" knowl-id="xref-Ex_2.5.Linear" alt="Example 2.5.1 " title="Example 2.5.1 ">Example 2.5.1</a> may be too elementary. Linear functions are the simplest of all functions, and perhaps composing linear functions (which yields another linear function) does not exemplify the true complexity that is involved with differentiating a composition of more complicated functions. At the same time, we should remember the perspective that any differentiable function is <!--Style me with CSS--><em>locally</em> linear, so any function with a derivative behaves like a line when viewed up close. From this point of view, the fact that the derivatives of \(f\) and \(g\) are multiplied to find the derivative of their composition turns out to be a key insight.
+</p>
+<p id="p-483">
+We now consider a second example involving a nonlinear function to gain further understanding of how differentiating a composite function involves the basic functions that combine to form it.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-Ex_2.5.DoubleAngle" id="Ex_2.5.DoubleAngle"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">2.5.2</span>
+</h5></article></a></div>
+<div id="hk-Ex_2.5.DoubleAngle" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-484">
+Let \(C(x) = \sin(2x).\) Use the double angle identity to rewrite \(C\) as a product of basic functions, and use the product rule to find \(C'\). Rewrite \(C'\) in the simplest form possible.
+</p></article></div>
+<p id="p-485">
+Solution.    
+By the double angle identity for the sine function,
+</p>
+<span class="displaymath" id="me-149">\[
+C(x) = \sin(2x) = 2\sin(x)\cos(x).
+\]</span><p id="p-486">
+Applying the product rule and simplifying,
+</p>
+<span class="displaymath" id="me-150">\[
+C'(x) = 2\sin(x)(-\sin(x)) + \cos(x)(2\cos(x)) = 2(\cos^2(x) - \sin^2(x)).
+\]</span><p id="p-487">
+Next, we recall that one of the double angle identities for the cosine function tells us that
+</p>
+<span class="displaymath" id="me-151">\[
+\cos(2x) = \cos^2(x) - \sin^2(x).
+\]</span><p id="p-488">
+Substituting this result in our expression for \(C'(x)\), we now have that
+</p>
+<span class="displaymath" id="me-152">\[
+C'(x) = 2 \cos(2x).
+\]</span>\hspace{5.0in}<p id="p-489">
+So from <a knowl="./knowl/Ex_2.5.DoubleAngle.html" knowl-id="xref-Ex_2.5.DoubleAngle" alt="Example 2.5.2 " title="Example 2.5.2 ">Example 2.5.2</a>, we see that if \(C(x) = \sin(2x)\), then \(C'(x) = 2\cos(2x)\). Letting \(g(x) = 2x\) and \(f(x) = \sin(x)\), we observe that \(C(x) = f(g(x))\). Moreover, with \(g'(x) = 2\) and \(f'(x) = \cos(x)\), it follows that we can view the structure of \(C'(x)\) as
+</p>
+<span class="displaymath" id="me-153">\[
+C'(x) = 2\cos(2x) = g'(x) f'(g(x)).
+\]</span><p id="p-490">
+In this example, we see that for the composite function \(C(x) = f(g(x))\), the derivative \(C'\) is (as in the example involving linear functions) constituted by multiplying the derivatives of \(f\) and \(g\), but with the special condition that \(f'\) is evaluated at \(g(x)\), rather than at \(x\).
+</p>
+<p id="p-491">
+It makes sense intuitively that these two quantities are involved in understanding the rate of change of a composite function: if we are considering \(C(x) = f(g(x))\) and asking how fast \(C\) is changing at a given \(x\) value as \(x\) changes, it clearly matters (a) how fast \(g\) is changing at \(x\), as well as how fast \(f\) is changing at the value of \(g(x)\). It turns out that this structure holds not only for the functions in <a knowl="./knowl/Ex_2.5.Linear.html" knowl-id="xref-Ex_2.5.Linear" alt="Example 2.5.1 " title="Example 2.5.1 ">Examples 2.5.1</a> and <a knowl="./knowl/Ex_2.5.DoubleAngle.html" knowl-id="xref-Ex_2.5.DoubleAngle" alt="Example 2.5.2 " title="Example 2.5.2 ">2.5.2</a>, but indeed for all differentiable functions<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-16" id="fn-16"><sup> 1 </sup></a></span><span id="hk-fn-16" style="display: none;" class="tex2jax_ignore"><span class="footnote">Like other differentiation rules, the Chain Rule can be proved formally using the limit definition of the derivative.</span></span> as is stated in the Chain Rule.
+</p>
+<p id="p-492">
+
+{
+Chain Rule: \knownindex{\lt main&gt;chain rule\lt /main&gt;} If \(g\) is differentiable at \(x\) and \(f\) is differentiable at \(g(x)\), then the composite function \(C\) defined by \(C(x) = f(g(x))\) is differentiable at \(x\) and
+</p>
+<span class="displaymath" id="me-154">\[
+C'(x) = f'(g(x)) g'(x).
+\]</span><p id="p-493">
+} 
+
+</p>
+<p id="p-494">
+As with the product and quotient rules, it is often helpful to think verbally about what the chain rule says: “If \(C\) is a composite function defined by an outer function \(f\) and an inner function \(g\), then \(C'\) is given by the derivative of the outer function, evaluated at the inner function, times the derivative of the inner function.”
+</p>
+<p id="p-495">
+At least initially in working particular examples requiring the chain rule, it can also be helpful to clearly identify the inner function \(g\) and outer function \(f\), compute their derivatives individually, and then put all of the pieces together to generate the derivative of the overall composite function. To see what we mean by this, consider the function
+</p>
+<span class="displaymath" id="me-155">\[
+r(x) = (\tan(x))^2.
+\]</span><p id="p-496">
+The function \(r\) is composite, with inner function \(g(x) = \tan(x)\) and outer function \(f(x) = x^2\). Organizing the key information involving \(f\), \(g\), and their derivatives, we have
+</p>
+<figure class="figure-like" id="table-14">
+\(f(x) = x^2\) \amp  \hspace{0.5in} \amp  \(g(x) = \tan(x)\) 
+\(f'(x) = 2x\) \amp  \hspace{0.5in} \amp  \(g'(x) = \sec^2(x)\) 
+\(f'(g(x)) = 2\tan(x)\) \amp  \hspace{0.5in} \amp   </figure><p id="p-497">
+Applying the chain rule, which tells us that \(r'(x) = f'(g(x)) g'(x)\), we find that for \(r(x) = (\tan(x))^2\), its derivative is
+</p>
+<span class="displaymath" id="me-156">\[
+r'(x) = 2\tan(x) \sec^2(x).
+\]</span><p id="p-498">
+As a side note, we remark that another way to write \(r(x)\) is \(r(x) = \tan^2(x)\). Observe that in this format, the composite nature of the function is more implicit, but this is common notation for powers of trigonometric functions: \(\cos^4(x)\), \(\sin^5(x)\), and \(\sec^2(x)\) are all composite functions, with the outer function a power function and the inner function a trigonometric one.
+</p>
+<p id="p-499">
+The chain rule now substantially expands the library of functions we can differentiate, as the following activity demonstrates.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.5.1" id="A_2.5.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.5.3</span>
+</h5></a></div>
+<div id="hk-A_2.5.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-500">
+For each function given below, identify an inner function \(g\) and outer function \(f\) to write the function in the form \(f(g(x))\). Then, determine \(f'(x)\), \(g'(x)\), and \(f'(g(x))\), and finally apply the chain rule to determine the derivative of the given function.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-911">\(h(x) = \cos(x^4)\)</li>
+<li id="li-912">\(p(x) = \sqrt{ \tan(x) }\)</li>
+<li id="li-913">\(s(x) = 2^{\sin(x)}\)</li>
+<li id="li-914">\(z(x) = \cot^5(x)\)</li>
+<li id="li-915">\(m(x) = (\sec(x) + e^x)^9\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-69" id="hint-69"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-69" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-916">The outer function is \(f(x) = \cos(x)\).</li>
+<li id="li-917">The outer function is \(f(x) = \sqrt{x}\).</li>
+<li id="li-918">The outer function is \(f(x) = 2^x\).</li>
+<li id="li-919">The outer function is \(f(x) = x^5\).</li>
+<li id="li-920">The outer function is \(f(x) = x^9\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-70" id="hint-70"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-70" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-921">The outer function is \(f(x) = \cos(x)\), while the inner function is \(g(x) = x^4\).</li>
+<li id="li-922">The outer function is \(f(x) = \sqrt{x}\), while the inner function is \(g(x) = \tan(x)\).</li>
+<li id="li-923">The outer function is \(f(x) = 2^x\), while the inner function is \(g(x) = \sin(x)\).</li>
+<li id="li-924">The outer function is \(f(x) = x^5\), while the inner function is \(g(x) = \cot(x)\).</li>
+<li id="li-925">The outer function is \(f(x) = x^9\), while the inner function is \(g(x) = \sec(x) + e^x\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-34" id="solution-34"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-34" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-926">The outer function is \(f(x) = \cos(x)\), while the inner function is \(g(x) = x^4\), and we know that 
+	   
+<span class="displaymath" id="me-157">\[
+f'(x) = -\sin(x), g'(x) = 4x^3, \ \mbox{and}  \ f'(g(x)) = -\sin(x^4).
+\]</span>
+ 
+	   Hence, by the chain rule,
+	   
+<span class="displaymath" id="me-158">\[
+h'(x) = f'(g(x))g'(x) = -4x^3\sin(x^4).
+\]</span>
+</li>
+<li id="li-927">The outer function is \(f(x) = \sqrt{x}\), while the inner function is \(g(x) = \tan(x)\), and we know that 
+	   
+<span class="displaymath" id="me-159">\[
+f'(x) = \frac{1}{2\sqrt{x}}, g'(x) = \sec^2(x), \ \mbox{and}  \ f'(g(x)) = \frac{1}{2\sqrt{\tan(x)}}.
+\]</span>
+ 
+	   Hence, by the chain rule,
+	   
+<span class="displaymath" id="me-160">\[
+h'(x) = f'(g(x))g'(x) = \frac{\sec^2(x)}{2\sqrt{\tan(x)}}.
+\]</span>
+</li>
+<li id="li-928">The outer function is \(f(x) = 2^x\), while the inner function is \(g(x) = \sin(x)\), and we know that 
+	   
+<span class="displaymath" id="me-161">\[
+f'(x) = 2^x \ln(2), g'(x) = \cos(x), \ \mbox{and}  \ f'(g(x)) = 2^{\sin(x)}\ln(2).
+\]</span>
+ 
+	   Hence, by the chain rule,
+	   
+<span class="displaymath" id="me-162">\[
+h'(x) = f'(g(x))g'(x) = 2^{\sin(x)}\ln(2)\cos(x).
+\]</span>
+</li>
+<li id="li-929">The outer function is \(f(x) = x^5\), while the inner function is \(g(x) = \cot(x)\), and we know that 
+	   
+<span class="displaymath" id="me-163">\[
+f'(x) = 5x^4, g'(x) = -\csc^2(x), \ \mbox{and}  \ f'(g(x)) = 5\cot^4(x).
+\]</span>
+ 
+	   Hence, by the chain rule,
+	   
+<span class="displaymath" id="me-164">\[
+h'(x) = f'(g(x))g'(x) = -5\cot^4(x) \csc^2(x).
+\]</span>
+</li>
+<li id="li-930">The outer function is \(f(x) = x^9\), while the inner function is \(g(x) = \sec(x) + e^x\), and we know that 
+	   
+<span class="displaymath" id="me-165">\[
+f'(x) = 9x^8, g'(x) = \sec(x)\tan(x) + e^x, \ \mbox{and}  \ f'(g(x)) = 9(\sec(x)+e^x)^8.
+\]</span>
+ 
+	   Hence, by the chain rule,
+	   
+<span class="displaymath" id="me-166">\[
+h'(x) = f'(g(x))g'(x) = 9(\sec(x)+e^x)^8 (\sec(x)\tan(x) + e^x).
+\]</span>
+</li>
+</ol></span></span></section><section class="subsection" id="subsection-39"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.5.3</span><span class="title">Using multiple rules simultaneously</span>
+</h1></header><p id="p-501">
+The chain rule now joins the sum, constant multiple, product, and quotient rules in our collection of the different techniques for finding the derivative of a function through understanding its algebraic structure and the basic functions that constitute it. It takes substantial practice to get comfortable with navigating multiple rules in a single problem; using proper notation and taking a few extra steps can be particularly helpful as well. We demonstrate with an example and then provide further opportunity for practice in the following activity.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-example-7" id="example-7"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">2.5.4</span>
+</h5></article></a></div>
+<div id="hk-example-7" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-502">
+Find a formula for the derivative of \(h(t) = 3^{t^2 + 2t}\sec^4(t)\).
+</p></article></div>
+<p id="p-503">
+Solution.    
+We first observe that the most basic structure of \(h\) is that it is the product of two functions: \(h(t) = a(t) \cdot b(t)\) where \(a(t) = 3^{t^2 + 2t}\) and \(b(t) = \sec^4(t)\). Therefore, we see that we will need to use the product rule to differentiate \(h\). When it comes time to differentiate \(a\) and \(b\) in their roles in the product rule, we observe that since each is a composite function, the chain rule will be needed. We therefore begin by working separately to compute \(a'(t)\) and \(b'(t)\).
+</p>
+<p id="p-504">
+Writing \(a(t) = f(g(t)) = 3^{t^2 + 2t}\), and finding the derivatives of \(f\) and \(g\), we have
+</p>
+<figure class="figure-like" id="table-15">
+\(f(t) = 3^t\) \amp  \hspace{0.5in} \amp  \(g(t) = t^2 + 2t\) 
+\(f'(t) = 3^t \ln(3)\) \amp  \hspace{0.5in} \amp  \(g'(t) = 2t+1\) 
+\(f'(g(t)) = 3^{t^2 + 2t}\ln(3)\) \amp  \hspace{0.5in} \amp   </figure><p id="p-505">
+Thus, by the chain rule, it follows that \(a'(t) = f'(g(t))g'(t) = 3^{t^2 + 2t}\ln(3) (2t+1).\)
+</p>
+<p id="p-506">
+Turning next to \(b\), we write \(b(t) = r(s(t)) = \sec^4(t)\) and find the derivatives of \(r\) and \(g\). Doing so,
+</p>
+<figure class="figure-like" id="table-16">
+\(r(t) = t^4\) \amp  \hspace{0.5in} \amp  \(s(t) = \sec(t)\) 
+\(r'(t) = 4t^3\) \amp  \hspace{0.5in} \amp  \(s'(t) = \sec(t)\tan(t)\) 
+\(r'(s(t)) = 4\sec^3(t)\) \amp  \hspace{0.5in} \amp   </figure><p id="p-507">
+By the chain rule, we now know that \(b'(t) = r'(s(t))s'(t) = 4\sec^3(t)\sec(t)\tan(t) = 4 \sec^4(t) \tan(t).\)
+</p>
+<p id="p-508">
+Now we are finally ready to compute the derivative of the overall function \(h\). Recalling that \(h(t) = 3^{t^2 + 2t}\sec^4(t)\), by the product rule we have
+</p>
+<span class="displaymath" id="me-167">\[
+h'(t) = 3^{t^2 + 2t} \frac{d}{dt}[\sec^4(t)] + \sec^4(t) \frac{d}{dt}[3^{t^2 + 2t}].
+\]</span><p id="p-509">
+From our work above with \(a\) and \(b\), we know the derivatives of \(3^{t^2 + 2t}\) and \(\sec^4(t)\), and therefore
+</p>
+<span class="displaymath" id="me-168">\[
+h'(t) = 3^{t^2 + 2t} 4\sec^4(t) \tan(t) + \sec^4(t) 3^{t^2 + 2t}\ln(3) (2t+2).
+\]</span>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.5.2" id="A_2.5.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.5.5</span>
+</h5></a></div>
+<div id="hk-A_2.5.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-510">
+For each of the following functions, find the function's derivative. State the rule(s) you use, label relevant derivatives appropriately, and be sure to clearly identify your overall answer.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-931">\(p(r) = 4\sqrt{r^6 + 2e^r}\)</li>
+<li id="li-932">\(m(v) = \sin(v^2) \cos(v^3)\)</li>
+<li id="li-933">\(\ds h(y) = \frac{\cos(10y)}{e^{4y}+1}\)</li>
+<li id="li-934">\(s(z) = 2^{z^2 \sec (z)}\)</li>
+<li id="li-935">\(\ds c(x) = \sin(e^{x^2})\)</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-71" id="hint-71"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-71" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-936">Use the constant multiple rule first, followed by the chain rule.</li>
+<li id="li-937">Observe that \(m\) is fundamentally a product of composite functions.</li>
+<li id="li-938">Note that \(h\) is a quotient of composite functions.</li>
+<li id="li-939">The function \(s\) is a composite function with outer function \(2^z\).</li>
+<li id="li-940">It is possible for a function to be a composite function with more than two functions in the chain.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-72" id="hint-72"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-72" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-941">Note that \(p'(r) = 4\frac{d}{dr}[\sqrt{r^6 + 2e^r}].\)  Now use the chain rule to complete the remaining derivative.</li>
+<li id="li-942">Observe that by the product rule, \(m'(v) = \sin(v^2) \frac{d}{dv}[\cos(v^3)] + \cos(v^3) \frac{d}{dv}[\sin(v^2)].\)  What rule is needed to execute the remaining two derivatives?</li>
+<li id="li-943">Note that by the quotient rule,
+	
+<span class="displaymath" id="me-169">\[
+h'(y) = \frac{(e^{4y}+1) \frac{d}{dy}[\cos(10y)] - \cos(10y) \frac{d}{dy}[e^{4y}+1]}{(e^{4y}+1)^2}.
+\]</span>
+ 
+	What work remains to find \(h'(y)\)?</li>
+<li id="li-944">By the chain rule, \(s'(z) = 2^{z^2\sec(z)} \ln(2) \frac{d}{dz}[z^2 \sec(z)]\).  What rule should next be applied?</li>
+<li id="li-945">If we first apply the chain rule to the outer function (the sine function), note that 
+	
+<span class="displaymath" id="me-170">\[
+c'(x) = \cos(e^{x^2}) \frac{d}{dx}[e^{x^2}].
+\]</span>
+ 
+	What rule is needed to differentiate the inner function, \(e^{x^2}\)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-35" id="solution-35"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-35" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-946">By the constant multiple rule, \(p'(r) = 4\frac{d}{dr}[\sqrt{r^6 + 2e^r}].\)  Using the chain rule to complete the remaining derivative, we see that
+	
+<span class="displaymath" id="me-171">\[
+p'(r) = 4 \frac{1}{2\sqrt{r^6 + 2e^r}} \frac{d}{dr}[r^6 + 2e^r] = \frac{4(6r^5 + 2e^r)}{2\sqrt{r^6 + 2e^r}}.
+\]</span>
+</li>
+<li id="li-947">Observe that by the product rule, \(m'(v) = \sin(v^2) \frac{d}{dv}[\cos(v^3)] + \cos(v^3) \frac{d}{dv}[\sin(v^2)].\)  Applying the chain rule to differentiate \(\cos(v^3)\) and \(\sin(v^2)\), we see that 
+	
+<span class="displaymath" id="me-172">\[
+m'(v) = \sin(v^2) [-\sin(v^3) \cdot 3v^2] + \cos(v^3) [\cos(v^2) \cdot 2v] = -3v^2 \sin(v^2)\sin(v^3) + 2v \cos(v^3)\cos(v^2).
+\]</span>
+</li>
+<li id="li-948">By the quotient rule,
+	
+<span class="displaymath" id="me-173">\[
+h'(y) = \frac{(e^{4y}+1) \frac{d}{dy}[\cos(10y)] - \cos(10y) \frac{d}{dy}[e^{4y}+1]}{(e^{4y}+1)^2}.
+\]</span>
+ 
+	Applying the chain rule to differentiate \(\cos(10y)\) and \(e^{4y}\), it follows
+	
+<span class="displaymath" id="me-174">\[
+h'(y) = \frac{(e^{4y}+1) [-10\sin(10y)] - \cos(10y) [4e^{4y}]}{(e^{4y}+1)^2}.
+\]</span>
+</li>
+<li id="li-949">By the chain rule, \(s'(z) = 2^{z^2\sec(z)} \ln(2) \frac{d}{dz}[z^2 \sec(z)]\).  Then by the product rule, we find that
+	
+<span class="displaymath" id="me-175">\[
+s'(z) = 2^{z^2\sec(z)} \ln(2) [z^2 \sec(z)\tan(z) + \sec(z) \cdot 2z].
+\]</span>
+</li>
+<li id="li-950">If we first apply the chain rule to the outer function (the sine function), note that 
+	
+<span class="displaymath" id="me-176">\[
+c'(x) = \cos(e^{x^2}) \frac{d}{dx}[e^{x^2}].
+\]</span>
+ 
+	Next, we again apply the chain rule, but this time to \(e^{x^2}\), and get
+	
+<span class="displaymath" id="me-177">\[
+c'(x) = \cos(e^{x^2}) [e^{x^2}\cdot 2x].
+\]</span>
+</li>
+</ol></span></span><p id="p-511">
+The chain rule now adds substantially to our ability to do different familiar problems that involve derivatives. Whether finding the equation of the tangent line to a curve, the instantaneous velocity of a moving particle, or the instantaneous rate of change of a certain quantity, if the function under consideration involves a composition of other functions, the chain rule is indispensable.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_2.5.3" id="A_2.5.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">2.5.6</span>
+</h5></a></div>
+<div id="hk-A_2.5.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-512">
+Use known derivative rules, including the chain rule, as needed to answer each of the following questions.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-951">Find an equation for the tangent line to the curve \(y= \sqrt{e^x + 3}\) at the point where \(x=0\).</li>
+<li id="li-952">If \(\displaystyle s(t) = \frac{1}{(t^2+1)^3}\) represents the position function of a particle moving horizontally along an axis at time \(t\) (where \(s\) is measured in inches and \(t\) in seconds), find the particle's instantaneous velocity at \(t=1\).  Is the particle moving to the left or right at that instant?</li>
+<li id="li-953">At sea level, air pressure is 30 inches of mercury.  At an altitude of \(h\) feet above sea level, the air pressure, \(P\), in inches of mercury, is given by the function
+
+<span class="displaymath" id="me-178">\[
+P = 30 e^{-0.0000323 h}.
+\]</span>
+ 
+Compute \(dP/dh\) and explain what this derivative function tells you about air pressure, including a discussion of the units on \(dP/dh\).  In addition, determine how fast the air pressure is changing for a pilot of a small plane passing through an altitude of \(1000\) feet.</li>
+<li id="li-954">Suppose that \(f(x)\) and \(g(x)\) are differentiable functions and that the following information about them is known:
+	
+<figure class="figure-like" id="table-17"> 
+   \(x\) 	\amp  \(f(x)\)  	\amp  \(f'(x)\)	\amp  \(g(x)\)	\amp  \(g'(x)\) 
+
+   \(-1\) 	\amp  \(2\)	\amp  \(-5\) \amp  \(-3\) \amp   \(4\) 
+
+   \(2\) 	\amp  \(-3\)	\amp  \(4\) \amp  \(-1\) \amp   \(2\) </figure> 
+
+If \(C(x)\) is a function given by the formula \(f(g(x))\), determine \(C'(2)\).   In addition, if \(D(x)\) is the function \(f(f(x))\), find \(D'(-1)\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-73" id="hint-73"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-73" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-955">Let \(f(x) = \sqrt{e^x + 3}.\) Find \(f'(x)\) and \(f'(0)\).</li>
+<li id="li-956">Recall that \(s'(t)\) tells us the instantaneous velocity at time \(t\).</li>
+<li id="li-957">Note that the units on \(dP/dh\) are inches of mercury per foot.</li>
+<li id="li-958">Since \(C(x) = f(g(x)),\) it follows \(C'(x) = f'(g(x))g'(x).\)  What is \(C'(2)\)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-74" id="hint-74"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-74" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-959">Let \(f(x) = \sqrt{e^x + 3}.\) Find \(f'(x)\) and \(f'(0)\) and recall the point-slope form of the tangent line.</li>
+<li id="li-960">Recall that \(s'(t)\) tells us the instantaneous velocity at time \(t\).  Consider writing \(s(t) = (t^2 + 1)^{-3}\) for ease of differentiation.</li>
+<li id="li-961">Note that the units on \(dP/dh\) are inches of mercury per foot so this derivative measures the instantaneous rate of change of barometric pressure with respect to elevation.</li>
+<li id="li-962">Since \(C(x) = f(g(x)),\) it follows \(C'(x) = f'(g(x))g'(x).\)  What is \(C'(2)\)?  What does the chain rule tell us about \(\frac{d}{dx}[f(f(x))]\)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-36" id="solution-36"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-36" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-963">Let \(f(x) = \sqrt{e^x + 3}.\) By the chain rule \(f'(x) = \frac{e^x}{2\sqrt{e^x + 3}}\), and thus \(f'(0) = \frac{1}{4}\).  Note further that \(f(0) = \sqrt{1 + 3} = 2\).  The tangent line is therefore the line through \((0,2)\) with slope \(1/4\), which is
+	
+<span class="displaymath" id="me-179">\[
+y - 2 = \frac{1}{4}(x-0).
+\]</span>
+</li>
+<li id="li-964">Observe that \(s(t) = (t^2 + 1)^{-3}\), and thus by the chain rule, \(s'(t) = -3(t^2 + 1)^{-4}(2t).\)  We therefore see that \(s'(1) = -\frac{6}{16} = -\frac{3}{8}\) inches per second, so the particle is moving left at the instant \(t = 1\).</li>
+<li id="li-965">First, \(P'(h) = \frac{dP}{dh} = 30 e^{-0.0000323h} (-0.0000323).\)  Therefore, \(P'(1000) = 30 e^{-0.0323} (-0.0000323) \approx -0.000938\) inches of mercury per foot.  This tells us that the barometric pressure is dropping very slightly for each additional foot of elevation gaine.</li>
+<li id="li-966">Since \(C(x) = f(g(x)),\) it follows \(C'(x) = f'(g(x))g'(x).\)  Therefore, \(C'(2) = f'(g(2))g'(2)\).  From the given table, \(g(2) = -1\), so applying this result and using additional given information,
+	
+<span class="displaymath" id="me-180">\[
+C'(2) = f'(-1) g'(2) = (-5)(2) = -10.
+\]</span>
+   
+	For \(D(x) = f(f(x))\), the chain rule tells us that \(D'(x) = f'(f(x))f'(x)\), so \(D'(-1) = f'(f(-1))f'(-1)\).  Using the given table, it follows
+	
+<span class="displaymath" id="me-181">\[
+D'(-1) = f'(2)f'(-1) = (4)(-5) = -20.
+\]</span>
+</li>
+</ol></span></span></section><section class="subsection" id="subsection-40"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">2.5.4</span><span class="title">The composite version of basic function rules</span>
+</h1></header><p id="p-513">
+As we gain more experience with differentiating complicated functions, we will become more comfortable in the process of simply writing down the derivative without taking multiple steps. We demonstrate part of this perspective here by showing how we can find a composite rule that corresponds to two of our basic functions. For instance, we know that \(\frac{d}{dx}[\sin(x)] = \cos(x)\). If we instead want to know
+</p>
+<span class="displaymath" id="me-182">\[
+\frac{d}{dx}[\sin(u(x))],
+\]</span><p id="p-514">
+where \(u\) is a differentiable function of \(x\), then this requires the chain rule with the sine function as the outer function. Applying the chain rule,
+</p>
+<span class="displaymath" id="me-183">\[
+\frac{d}{dx}[\sin(u(x))] = \cos(u(x)) \cdot u'(x).
+\]</span><p id="p-515">
+Similarly, since \(\frac{d}{dx}[a^x] = a^x \ln(a)\), it follows by the chain rule that
+</p>
+<span class="displaymath" id="me-184">\[
+\frac{d}{dx}[a^{u(x)}] = a^{u(x)} \ln(a) \cdot u'(x).
+\]</span><p id="p-516">
+In the process of getting comfortable with derivative rules, an excellent exercise is to write down a list of all basic functions whose derivatives are known, list those derivatives, and then write the corresponding chain rule for the composite version with the inner function being an unknown function \(u(x)\) and the outer function being the known basic function. These versions of the chain rule are particularly simple when the inner function is linear, since the derivative of a linear function is a constant. For instance,
+</p>
+<span class="displaymath" id="me-185">\[
+\frac{d}{dx} \left[ (5x+7)^{10} \right] = 10(5x+7)^9 \cdot 5,
+\]</span><span class="displaymath" id="me-186">\[
+\frac{d}{dx} \left[ \tan(17x) \right] = 17\sec^2(17x), \ \mbox{and} 
+\]</span><span class="displaymath" id="me-187">\[
+\frac{d}{dx} \left[ e^{-3x} \right] = -3e^{-3x}.
+\]</span><p id="p-517">
+\item A composite function is one where the input variable \(x\) first passes through one function, and then the resulting output passes through another. For example, the function \(h(x) = 2^{\sin(x)}\) is composite since \(x \longrightarrow \sin(x) \longrightarrow 2^{\sin(x)}.\)
+\item Given a composite function \(C(x) = f(g(x))\) that is built from differentiable functions \(f\) and \(g\), the chain rule tells us that we compute \(C'(x)\) in terms of \(f\), \(g\), \(f'\), and \(g'\) according to the formula
+</p>
+<span class="displaymath" id="me-188">\[
+C'(x) = f'(g(x)) g'(x).
+\]</span>
+<p id="p-518">
+\hrulefill
+</p>
+<p id="p-519">
+\begin{exercises}
+\item Consider the basic functions \(f(x) = x^3\) and \(g(x) = \sin(x)\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-967">Let \(h(x) = f(g(x))\).  Find the exact instantaneous rate of change of \(h\) at the point where \(x = \frac{\pi}{4}.\)</li>
+<li id="li-968">Which function is changing most rapidly at \(x = 0.25\):  \(h(x) = f(g(x))\) or \(r(x) = g(f(x))\)?  Why?</li>
+<li id="li-969">Let \(h(x) = f(g(x))\) and \(r(x) = g(f(x))\).  Which of these functions has a derivative that is periodic?  Why?</li>
+</ol>
+<p id="p-520">
+\item Let \(u(x)\) be a differentiable function. For each of the following functions, determine the derivative. Each response will involve \(u\) and/or \(u'\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-970">\(p(x) = e^{u(x)}\)</li>
+<li id="li-971">\(q(x) = u(e^x)\)</li>
+<li id="li-972">\(r(x) = \cot(u(x))\)</li>
+<li id="li-973">\(s(x) = u(\cot(x))\)</li>
+<li id="li-974">\(a(x) = u(x^4)\)</li>
+<li id="li-975">\(b(x) = u^4(x)\)</li>
+</ol>
+<p id="p-521">
+\item Let functions \(p\) and \(q\) be the piecewise linear functions given by their respective graphs in <a knowl="./knowl/F_2.5.Ez3.html" knowl-id="xref-F_2.5.Ez3" alt="Figure 2.5.7 " title="Figure 2.5.7 ">Figure 2.5.7</a>. Use the graphs to answer the following questions.
+</p>
+<figure class="figure-like" id="F_2.5.Ez3"><img width="100%" src="images/2_1_Ez3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">2.5.7</span>The graphs of \(p\) (in blue) and \(q\) (in green).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-976">Let \(C(x) = p(q(x))\).  Determine \(C'(0)\) and \(C'(3)\).</li>
+<li id="li-977">Find a value of \(x\) for which \(C'(x)\) does not exist.  Explain your thinking.</li>
+<li id="li-978">Let \(Y(x) = q(q(x))\) and \(Z(x) = q(p(x))\).  Determine \(Y'(-2)\) and \(Z'(0)\).</li>
+</ol>
+<p id="p-522">
+\item If a spherical tank of radius 4 feet has \(h\) feet of water present in the tank, then the volume of water in the tank is given by the formula
+</p>
+<span class="displaymath" id="me-189">\[
+V = \frac{\pi}{3} h^2(12-h).
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-979">At what instantaneous rate is the volume of water in the tank changing with respect to the <!--Style me with CSS--><em>height</em> of the water at the instant \(h = 1\)?  What are the units on this quantity?</li>
+<li id="li-980">Now suppose that the height of water in the tank is being regulated by an inflow and outflow (e.g., a faucet and a drain) so that the height of the water at time \(t\) is given by the rule \(h(t) = \sin(\pi t) + 1\), where \(t\) is measured in hours (and \(h\) is still measured in feet).  At what rate is the height of the water changing with respect to time at the instant \(t = 2\)?</li>
+<li id="li-981">Continuing under the assumptions in (b), at what instantaneous rate is the volume of water in the tank changing with respect to <!--Style me with CSS--><em>time</em> at the instant \(t = 2\)?</li>
+<li id="li-982">What are the main differences between the rates found in (a) and (c)?  Include a discussion of the relevant units.</li>
+</ol>
+<p id="p-523">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-524">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

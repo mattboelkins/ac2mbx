@@ -1,0 +1,60 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:54-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">8.6.3.4</span></span><p id="p-2570">
+\item A more complicated differential equation is one that governs the motion of a pendulum. Mechanics tells us that the motion of a pendulum of length \(L\) with mass \(m\) is governed by the differential equation
+</p>
+<span class="displaymath" id="me-1129">\[
+mL \frac{d^2 \theta}{d t^2} = -mg \sin(\theta)
+\]</span><p id="p-2571">
+where \(t\) is time and \(\theta\) is the angle the pendulum makes with its vertical axis.
+</p>
+<p id="p-2572">
+We do not have the machinery to solve this differential equation exactly, but we can approximate a solution as closely as we like by assuming that a solution \(\theta\) has a Taylor series expansion about the origin. In other words, assume that
+</p>
+<span class="displaymath" id="me-1130">\[
+\theta = \sum_{n=0}^{\infty} a_nt_n,
+\]</span><p id="p-2573">
+where the coefficients are undetermined. Then
+</p>
+<span class="displaymath" id="md-158">\begin{align*}
+\theta \amp = \sum_{n=0}^{\infty} a_nt_n\\
+\frac{d \theta}{dt} \amp = \sum_{n=1}^{\infty} na_nt_{n-1}\\
+\frac{d^2 \theta}{dt^2} \amp = \sum_{n=2}^{\infty} (n-1)na_nt_{n-2}\\
+\frac{d^3 \theta}{dt^3} \amp = \sum_{n=3}^{\infty} (n-2)(n-1)na_nt_{n-3}\\
+\vdots \amp = \vdots
+\end{align*}</span><p id="p-2574">
+from the series expansion and
+</p>
+<span class="displaymath" id="md-159">\begin{align*}
+\frac{d^2 \theta}{dt^2} \amp = -\frac{g}{L} \sin\left(\theta\right)\\
+\frac{d^3 \theta}{dt^3} \amp = -\frac{g}{L}\left[\cos(\theta)\frac{d \theta}{dt}\right]\\
+\frac{d^4 \theta}{dt^4} \amp = -\frac{g}{L}\left[-\sin(\theta)\left(\frac{d \theta}{dt}\right)^2 + \cos(theta)\frac{d^2 \theta}{dt^2} \right]\\
+\vdots \amp = \vdots
+\end{align*}</span><p id="p-2575">
+If we seek a solution with initial conditions \(\theta(0) = \frac{\pi}{6}\) and \(\frac{d \theta}{dt}(0) = 0\), then we have
+</p>
+<span class="displaymath" id="md-160">\begin{align*}
+\theta(0) \amp = a_0 = \frac{\pi}{6}\\
+\frac{d \theta}{dt}(0) \amp = a_1 = 0\\
+\frac{d^2 \theta}{dt^2}(0) \amp = 2a_2 = -\frac{g}{L} \sin\left(\frac{\pi}{6}\right) = -\frac{g}{2L}\\
+\frac{d^3 \theta}{dt^3}(0) \amp = 6a_3 = -\frac{g}{L}\cos(\theta(0))\frac{d \theta}{dt}(0) = 0\\
+\frac{d^4 \theta}{dt^4}(0) \amp = 24a_4 = -\frac{g}{L}\left[-\sin\left(\frac{\pi}{6}\right)\left(\frac{d \theta}{dt}(0)\right)^2 + \cos\left(\frac{\pi}{6}\right)\frac{d^2 \theta}{dt^2}(0) \right] = -\frac{g}{L}\left[\frac{\sqrt{3}}{2}\left(-\frac{g}{2L}\right)\right]\\
+\vdots \amp = \vdots
+\end{align*}</span><p id="p-2576">
+This gives us
+</p>
+<span class="displaymath" id="me-1131">\[
+a_0 = \frac{\pi}{6}, \ \ a_1 = 0, \ \ a_2 = -\frac{g}{4L}, \ \ a_3 = 0, \ \ a_4 = \frac{\sqrt{3} g^2}{96L^2}
+\]</span><p id="p-2577">
+and an approximation of \(\theta\) as
+</p>
+<span class="displaymath" id="me-1132">\[
+\theta \approx \frac{\pi}{6} - \frac{g}{4L}t^2 + \frac{\sqrt{3}g^2}{96L^2} t^4.
+\]</span><p id="p-2578">
+We could keep going to determine more and more terms in this Taylor series for \(\theta\), but the point is that we can use series like this one to approximate functions. The difference between this type of problem and our use of Taylor series is that to determine the terms in a Taylor series, we need to know the function from which we derive the series. In this differential equation example, we didn't know the function \(\theta\), be we could calculate terms in a series expansion for \(\theta\) because we had enough information about \(\theta\).
+</p></span><span class="incontext"><a href="S_8.6.PowerSeries.html#solution-212">in-context</a></span>

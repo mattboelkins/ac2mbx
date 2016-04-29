@@ -1,0 +1,101 @@
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:40:48-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<span class="solution"><span xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="heading"><span class="type">Solution</span> <span class="codenumber">8.5.2.1</span></span><ol xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="list-style-type: decimal;">
+<li id="li-3094">\begin{thmlist}</li>
+<li id="li-3095">The first four derivatives of \(f(x)\) at \(x=0\) are
+    
+<span class="displaymath" id="md-131">\begin{align*}
+f(x) \amp = \cos(x) \amp  \hspace{0.5in} \amp  f(0) \amp = 1\\
+f'(x) \amp = -\sin(x) \amp  \hspace{0.5in} \amp  f'(0) \amp = 0\\
+f''(x) \amp = -\cos(x) \amp  \hspace{0.5in} \amp  f''(0) \amp = -1\\
+f^{(3)}(x) \amp = \sin(x) \amp  \hspace{0.5in} \amp  f^{(3)}(0) \amp = 0\\
+f^{(4)}(x) \amp = \cos(x) \amp  \hspace{0.5in} \amp  f^{(4)}(0) \amp = 1.
+\end{align*}</span>
+ 
+It appears that the odd derivatives of \(f(x)\) are all plus or minus \(\sin(x)\) and so have values of 0 at \(x=0\) and the even derivatives are \(\pm \cos(x)\) and have alternating values of 1 and \(-1\) at \(x-0\). Since the even numbers can be represented in the form \(2k\) where \(k\) is an integer we have
+
+<span class="displaymath" id="me-1008">\[
+f^{k}(0) = 0 \text{ if }  k \text{ is odd }  \ \ \ \text{ and }  \ \ \ f^{2k}(0) = (-1)^k.
+\]</span>
+</li>
+<li id="li-3096">Based on the previous part of this problem the \(n\)th order Taylor polynomial for \(\cos(x)\) is
+    
+<span class="displaymath" id="me-1009">\[
+1 - \frac{x^2}{2} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots + (-1)^{n/2}\frac{x^n}{n!}
+\]</span>
+ 
+    if \(n\) is even and
+    
+<span class="displaymath" id="me-1010">\[
+1 - \frac{x^2}{2} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots + (-1)^{(n-1)/2}\frac{x^(n-1)}{(n-1)!}
+\]</span>
+ 
+    if \(n\) is odd.
+
+    \end{thmlist}</li>
+<li id="li-3097">\begin{thmlist}</li>
+<li id="li-3098">The first four derivatives of \(f(x)\) at \(x=0\) are
+    
+<span class="displaymath" id="md-132">\begin{align*}
+f(x) \amp = \sin(x) \amp  \hspace{0.5in} \amp  f(0) \amp = 0\\
+f'(x) \amp = \cos(x) \amp  \hspace{0.5in} \amp  f'(0) \amp = 1\\
+f''(x) \amp = -\sin(x) \amp  \hspace{0.5in} \amp  f''(0) \amp = 0\\
+f^{(3)}(x) \amp = -\cos(x) \amp  \hspace{0.5in} \amp  f^{(3)}(0) \amp = -1\\
+f^{(4)}(x) \amp = \sin(x) \amp  \hspace{0.5in} \amp  f^{(4)}(0) \amp = 0.
+\end{align*}</span>
+ 
+It appears that the even derivatives of \(f(x)\) are all plus or minus \(\sin(x)\) and so have values of 0 at \(x=0\) and the odd derivatives are \(\pm \cos(x)\) and have alternating values of 1 and \(-1\) at \(x-0\). Since the odd numbers can be represented in the form \(2k+1\) where \(k\) is an integer we have
+
+<span class="displaymath" id="me-1011">\[
+f^{k}(0) = 0 \text{ if }  k \text{ is even }  \ \ \ \text{ and }  \ \ \ f^{2k+1}(0) = (-1)^k.
+\]</span>
+</li>
+<li id="li-3099">Based on the previous part of this problem the \(n\)th order Taylor polynomial for \(\sin(x)\) is
+    
+<span class="displaymath" id="me-1012">\[
+x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots + (-1)^{(n-1)/2}\frac{x^n}{n!}
+\]</span>
+ 
+    if \(n\) is odd and
+    
+<span class="displaymath" id="me-1013">\[
+x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots + (-1)^{n/2+1}\frac{x^{n-1}}{(n-1)!}
+\]</span>
+ 
+    if \(n\) is even.
+
+    \end{thmlist}</li>
+<li id="li-3100">\begin{thmlist}</li>
+<li id="li-3101">The first four derivatives of \(f(x)\) at \(x=0\) are
+    
+<span class="displaymath" id="md-133">\begin{align*}
+f(x) \amp = \frac{1}{1-x} \amp  \hspace{0.5in} \amp  f(0) \amp = 1\\
+f'(x) \amp = \frac{1}{(1-x)^2} \amp  \hspace{0.5in} \amp  f'(0) \amp = 1\\
+f''(x) \amp = \frac{2}{(1-x)^3} \amp  \hspace{0.5in} \amp  f''(0) \amp = 2\\
+f^{(3)}(x) \amp = \frac{3!}{(1-x)^4} \amp  \hspace{0.5in} \amp  f^{(3)}(0) \amp = 3!\\
+f^{(4)}(x) \amp = \frac{4!}{(1-x)^5} \amp  \hspace{0.5in} \amp  f^{(4)}(0) \amp = 4!.
+\end{align*}</span>
+ 
+It appears that the pattern is
+
+<span class="displaymath" id="me-1014">\[
+f^{(k)}(0) = k!.
+\]</span>
+</li>
+<li id="li-3102">Determine the \(n\) order Taylor polynomial for \(f(x) = \frac{1}{1-x}\) centered at \(x=0\).
+
+The \(n\)th order Taylor polynomial for \(f\) at \(x=0\) is
+
+<span class="displaymath" id="me-1015">\[
+\sum_{k=0}^n \frac{f^{(k)}}{k!} x^k = \sum_{k=0}^n \frac{k!}{k!} x^k = \sum_{k=0}^n  x^k.
+\]</span>
+ 
+This makes sense since \(f(x)\) is the sum of the geometric series with ratio \(x\), so the \(n\)th order Taylor polynomial should just be the \(n\)th partial sum of this geometric series.
+
+    \end{thmlist}</li>
+</ol></span><span class="incontext"><a href="S_8.5.Taylor.html#solution-188">in-context</a></span>

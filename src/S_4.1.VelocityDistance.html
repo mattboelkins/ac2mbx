@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:43-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Determining distance traveled from velocity</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="C_4.html">Previous</a><a class="up-button button toolbar-item" href="C_4.html">Up</a><a class="next-button button toolbar-item" href="S_4.2.Riemann.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="C_4.html">Previous</a><a class="up-button button toolbar-item" href="C_4.html">Up</a><a class="next-button button toolbar-item" href="S_4.2.Riemann.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link active"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html" class="active">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_4.1.VelocityDistance"><header><h1 class="heading" alt="Section 4.1 Determining distance traveled from velocity" title="Section 4.1 Determining distance traveled from velocity">
+<span class="type">Section</span><span class="codenumber">4.1</span><span class="title">Determining distance traveled from velocity</span><a href="S_4.1.VelocityDistance.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-22"><h5 class="heading"></h5>
+<p id="p-885">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1560">If we know the velocity of a moving body at every point in a given interval, can we determine the distance the object has traveled on the time interval?</li>
+<li id="li-1561">How is the problem of finding distance traveled related to finding the area under a certain curve?</li>
+<li id="li-1562">What does it mean to antidifferentiate a function and why is this process relevant to finding distance traveled?</li>
+<li id="li-1563">If velocity is negative, how does this impact the problem of finding distance traveled?</li>
+</ul>
+<p id="p-886">
+} 
+</p></article><section class="subsection" id="subsection-63"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">4.1.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-887">
+In the very first section of the text, we considered a situation where a moving object had a known position at time \(t\). In particular, we stipulated that a tennis ball tossed into the air had its height \(s\) (in feet) at time \(t\) (in seconds) given by \(s(t) = 64 - 16(t-1)^2\). From this starting point, we investigated the average velocity of the ball on a given interval \([a,b]\), computed by the difference quotient \(\frac{s(b)-s(a)}{b-a}\), and eventually found that we could determine the exact instantaneous velocity of the ball at time \(t\) by taking the derivative of the position function,
+</p>
+<span class="displaymath" id="me-387">\[
+s'(t) = \lim_{h \to 0} \frac{s(t+h)-s(t)}{h}.
+\]</span><p id="p-888">
+Thus, given a differentiable position function, we are able to know the exact velocity of the moving object at any point in time.
+</p>
+<p id="p-889">
+Moreover, from this foundational problem involving position and velocity we have learned a great deal. Given a differentiable function \(f\), we are now able to find its derivative and use this derivative to determine the function's instantaneous rate of change at any point in the domain, as well as to find where the function is increasing or decreasing, is concave up or concave down, and has relative extremes. The vast majority of the problems and applications we have considered have involved the situation where a particular function is known and we seek information that relies on knowing the function's instantaneous rate of change. That is, we have typically proceeded from a function \(f\) to its derivative, \(f'\), and then used the meaning of the derivative to help us answer important questions.
+</p>
+<p id="p-890">
+In a much smaller number of situations so far, we have encountered the reverse situation where we instead know the derivative, \(f'\), and have tried to deduce information about \(f\). It is this particular problem that will be the focus of our attention in most of <a href="C_4.html" alt="Chapter 4 The Definite Integral" title="Chapter 4 The Definite Integral">Chapter 4</a>: if we know the instantaneous rate of change of a function, are we able to determine the function itself? To begin, we start with a more focused question: if we know the instantaneous velocity of an object moving along a straight line path, can we determine its corresponding position function?
+</p>
+<article class="paragraphs" id="PA_4.1"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-891">
+Suppose that a person is taking a walk along a long straight path and walks at a constant rate of 3 miles per hour.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1564">On the left-hand axes provided in <a knowl="./knowl/F_4.1.PA1.html" knowl-id="xref-F_4.1.PA1" alt="Figure 4.1.1 " title="Figure 4.1.1 ">Figure 4.1.1</a>, sketch a labeled graph of the velocity function \(v(t) = 3\).  
+<figure class="figure-like" id="F_4.1.PA1"><img width="100%" src="images/4_1_PA1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.1.1</span>At left, axes for plotting \(y = v(t)\); at right, for plotting \(y = s(t)\).</figcaption></figure>
+ 
+Note that while the scale on the two sets of axes is the same, the units on the right-hand axes differ from those on the left.  The right-hand axes will be used in question (d).</li>
+<li id="li-1565">How far did the person travel during the two hours?  How is this distance related to the area of a certain region under the graph of \(y = v(t)\)?</li>
+<li id="li-1566">Find an algebraic formula, \(s(t)\), for the position of the person at time \(t\), assuming that \(s(0) = 0\).  Explain your thinking.</li>
+<li id="li-1567">On the right-hand axes provided in <a knowl="./knowl/F_4.1.PA1.html" knowl-id="xref-F_4.1.PA1" alt="Figure 4.1.1 " title="Figure 4.1.1 ">Figure 4.1.1</a>, sketch a labeled graph of the position function \(y = s(t)\).</li>
+<li id="li-1568">For what values of \(t\) is the position function \(s\) increasing?  Explain why this is the case using relevant information about the velocity function \(v\).</li>
+</ol></article></section><section class="subsection" id="subsection-64"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">4.1.2</span><span class="title">Area under the graph of the velocity function</span>
+</h1></header><p id="p-892">
+\knownindex{\lt main&gt;area\lt /main&gt;\lt sub&gt;under velocity function\lt /sub&gt;}
+</p>
+<p id="p-893">
+In Preview <a href="S_4.1.VelocityDistance.html#PA_4.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, we encountered a fundamental fact: when a moving object's velocity is constant (and positive), the area under the velocity curve over a given interval tells us the distance the object traveled.
+</p>
+<figure class="figure-like" id="F_4.1.VelArea"><img width="100%" src="images/4_1_VelArea.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.1.2</span>At left, a constant velocity function; at right, a non-constant velocity function.</figcaption></figure><p id="p-894">
+As seen at left in <a knowl="./knowl/F_4.1.VelArea.html" knowl-id="xref-F_4.1.VelArea" alt="Figure 4.1.2 " title="Figure 4.1.2 ">Figure 4.1.2</a>, if we consider an object moving at 2 miles per hour over the time interval \([1,1.5]\), then the area \(A_1\) of the shaded region under \(y = v(t)\) on \([1,1.5]\) is
+</p>
+<span class="displaymath" id="me-388">\[
+A _1= 2 \, \frac{\mbox{miles} }{\mbox{hour} } \cdot \frac{1}{2} \, \mbox{hours}  = 1 \, \mbox{mile} .
+\]</span><p id="p-895">
+This principle holds in general simply due to the fact that distance equals rate times time, provided the rate is constant. Thus, if \(v(t)\) is constant on the interval \([a,b]\), then the distance traveled on \([a,b]\) is the area \(A\) that is given by
+</p>
+<span class="displaymath" id="me-389">\[
+A = v(a) (b-a) = v(a) \triangle t,
+\]</span><p id="p-896">
+where \(\triangle t\) is the change in \(t\) over the interval. Note, too, that we could use any value of \(v(t)\) on the interval \([a,b]\), since the velocity is constant; we simply chose \(v(a)\), the value at the interval's left endpoint. For several examples where the velocity function is piecewise constant, see \href{http://gvsu.edu/s/9T}{<tt class="code-inline">http://gvsu.edu/s/9T</tt>}.<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-22" id="fn-22"><sup> 1 </sup></a></span><span id="hk-fn-22" style="display: none;" class="tex2jax_ignore"><span class="footnote">Marc Renault, calculus applets.</span></span>
+</p>
+<p id="p-897">
+The situation is obviously more complicated when the velocity function is not constant. At the same time, on relatively small intervals on which \(v(t)\) does not vary much, the area principle allows us to estimate the distance the moving object travels on that time interval. For instance, for the non-constant velocity function shown at right in <a knowl="./knowl/F_4.1.VelArea.html" knowl-id="xref-F_4.1.VelArea" alt="Figure 4.1.2 " title="Figure 4.1.2 ">Figure 4.1.2</a>, we see that on the interval \([1,1.5]\), velocity varies from \(v(1) = 2.5\) down to \(v(1.5) \approx 2.1\). Hence, one estimate for distance traveled is the area of the pictured rectangle,
+</p>
+<span class="displaymath" id="me-390">\[
+A_2 = v(1) \triangle t = 2.5 \, \frac{\mbox{miles} }{\mbox{hour} } \cdot \frac{1}{2} \, \mbox{hours}  = 1.25 \, \mbox{miles} .
+\]</span><p id="p-898">
+Because \(v\) is decreasing on \([1,1.5]\) and the rectangle lies above the curve, clearly \(A_2 = 1.25\) is an over-estimate of the actual distance traveled.
+</p>
+<p id="p-899">
+If we want to estimate the area under the non-constant velocity function on a wider interval, say \([0,3]\), it becomes apparent that one rectangle probably will not give a good approximation. Instead, we could use the six rectangles pictured in <a knowl="./knowl/F_4.1.VelArea2.html" knowl-id="xref-F_4.1.VelArea2" alt="Figure 4.1.3 " title="Figure 4.1.3 ">Figure 4.1.3</a>,
+</p>
+<figure class="figure-like" id="F_4.1.VelArea2"><img width="100%" src="images/4_1_VelArea2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.1.3</span>Using six rectangles to estimate the area under \(y = v(t)\) on \([0,3]\).</figcaption></figure><p id="p-900">
+find the area of each rectangle, and add up the total. Obviously there are choices to make and issues to understand: how many rectangles should we use? where should we evaluate the function to decide the rectangle's height? what happens if velocity is sometimes negative? can we attain the exact area under any non-constant curve? These questions and more are ones we will study in what follows; for now it suffices to realize that the simple idea of the area of a rectangle gives us a powerful tool for estimating both distance traveled from a velocity function as well as the area under an arbitrary curve. To explore the setting of multiple rectangles to approximate area under a non-constant velocity function, see the applet found at \href{http://gvsu.edu/s/9U}{<tt class="code-inline">http://gvsu.edu/s/9U</tt>}.<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-23" id="fn-23"><sup> 2 </sup></a></span><span id="hk-fn-23" style="display: none;" class="tex2jax_ignore"><span class="footnote">Marc Renault, calculus applets.</span></span>
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_4.1.1" id="A_4.1.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">4.1.4</span>
+</h5></a></div>
+<div id="hk-A_4.1.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-901">
+Suppose that a person is walking in such a way that her velocity varies slightly according to the information given in the table below and graph given in <a knowl="./knowl/F_4.1.Act1.html" knowl-id="xref-F_4.1.Act1" alt="Figure 4.1.5 " title="Figure 4.1.5 ">Figure 4.1.5</a>.
+</p>
+<figure class="figure-like" id="table-18">
+\(t\) \amp  0.00 \amp  \(0.25\) \amp  \(0.50\) \amp  \(0.75\) \amp  1.00 \amp  \(1.25\) \amp  \(1.50\) \amp  \(1.75\) \amp  \(2.00\)  
+\(v(t)\) \amp  \(1.500\) \amp  \(1.789\) \amp  \(1.938\) \amp  \(1.992\) \amp  \(2.000\) \amp  \(2.008\) \amp  \(2.063\) \amp  \(2.211\) \amp  \(2.500\) </figure><figure class="figure-like" id="F_4.1.Act1"><img width="100%" src="images/4_1_Act1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.1.5</span>The graph of \(y = v(t)\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1569">Using the grid, graph, and given data appropriately, estimate the distance traveled by the walker during the two hour interval from \(t = 0\) to \(t = 2\).  You should use time intervals of width \(\triangle t = 0.5\), choosing a way to use the function consistently to determine the height of each rectangle in order to approximate distance traveled.</li>
+<li id="li-1570">How could you get a better approximation of the distance traveled on \([0,2]\)?  Explain, and then find this new estimate.</li>
+<li id="li-1571">Now suppose that you know that \(v\) is given by \(v(t) = 0.5t^3-1.5t^2+1.5t+1.5\). Remember that \(v\) is the derivative of the walker's position function, \(s\).  Find a formula for \(s\) so that \(s' = v\).</li>
+<li id="li-1572">Based on your work in (c), what is the value of \(s(2) - s(0)\)?  What is the meaning of this quantity?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-127" id="hint-127"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-127" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1573">For instance, the approximate distance traveled on \([0,0.5]\) can be computed by \(v(0) \cdot 0.5 = 1.5 \cdot 0.5 = 0.75\) miles.</li>
+<li id="li-1574">Think about the possibility of using a larger number of rectangles.</li>
+<li id="li-1575">If \(v(t) = t^3\) and we seek a function \(s\) such that \(s' = v\), note that \(s\) has to involve \(t^4\).</li>
+<li id="li-1576">Observe that this quantity is measuring a change in position.</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-128" id="hint-128"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-128" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1577">For instance, the approximate distance traveled on \([0,0.5]\) can be computed by \(v(0) \cdot 0.5 = 1.5 \cdot 0.5 = 0.75\) mile, while the approximate distance on \([0.5,1]\) can be computed by \(v(0.5) \cdot 0.5 = 1.9375 \cdot 0.5 = 0.9688\).</li>
+<li id="li-1578">Think about the possibility of using a larger number of rectangles that are narrower in width.</li>
+<li id="li-1579">If \(v(t) = t^3\) and we seek a function \(s\) such that \(s' = v\), note that one possible formula for \(s\) is \(s(t) = \frac{1}{4}t^4\).</li>
+<li id="li-1580">Observe that this quantity is measuring a change in position.  How is its value connected to other earlier work you've done?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-63" id="solution-63"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-63" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1581">Using rectangles of width \(\triangle t = 0.5\) and choosing to set the heights of the rectangles from the function value at the left end of the interval, we see the following graph and find the sum of the areas of the rectangles to be
+	<img width="100%" src="images/4_1_Act1Soln.png"><span class="displaymath" id="md-36">\begin{align*}
+A \amp  = \amp  v(0.0) \cdot 0.5 + v(0.5) \cdot 0.5 + v(1.0) \cdot 0.5 + v(1.5) \cdot 0.5\\
+\amp  = \amp  1.500 \cdot 0.5 + 1.9375 \cdot 0.5 +  2.000 \cdot 0.5 + 2.0625 \cdot 0.5\\
+\amp  = \amp  3.75
+\end{align*}</span>
+ 
+	Thus, the distance traveled is approximately \(D \approx 3.75\) miles.</li>
+<li id="li-1582">It appears that a better approximation could be found using narrower rectangles.  If we move to 8 rectangles of width \(0.25\), similar computations show that \(D \approx 3.875\).</li>
+<li id="li-1583">By thinking about how the power rule for differentiation works, we can undo this rule and find a position function \(s\) whose derivative is \(v\).  For instance, since \(\frac{d}{dt}[t^4] = 4t^3\), we see that \(\frac{d}{dt}[\frac{1}{8}t^4] = \frac{1}{2}t^3\).  Thus, if we let 
+	
+<span class="displaymath" id="me-391">\[
+s(t) = \frac{1}{8}t^4 - \frac{1}{2} t^3 + \frac{3}{4} t^2 + \frac{3}{2}t,
+\]</span>
+ 
+	then it is straightforward to check that \(s'(t) = \frac{1}{2}t^3 - \frac{3}{2}t^2 + \frac{3}{2}t + \frac{3}{2}\), which is precisely the formula for \(v(t)\) that we were given.</li>
+<li id="li-1584">By the rule found in (c) for \(s\), we have that \(s(2) - s(0) = \frac{1}{8}2^4 - \frac{1}{2}2^3 + \frac{3}{4}2^2 + \frac{3}{2} 2 = 2 - 4 + 3 + 3 = 4\).  This is the change in the walker's position over the time interval \([0,2]\), and since the velocity is always positive, this is actually the exact distance traveled.  We see how both earlier estimates (\(3.75\) and \(3.785\)) are good approximations to this value.</li>
+</ol></span></span></section><section class="subsection" id="subsection-65"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">4.1.3</span><span class="title">Two approaches: area and antidifferentiation</span>
+</h1></header><p id="p-902">
+\knownindex{\lt main&gt;antidifferentiation\lt /main&gt;}\knownindex{\lt main&gt;distance traveled\lt /main&gt;}
+</p>
+<p id="p-903">
+When the velocity of a moving object is positive, the object's position is always increasing. While we will soon consider situations where velocity is negative and think about the ramifications of this condition on distance traveled, for now we continue to assume that we are working with a positive velocity function. In that setting, we have established that whenever \(v\) is actually constant, the exact distance traveled on an interval is the area under the velocity curve; furthermore, we have observed that when \(v\) is not constant, we can estimate the total distance traveled by finding the areas of rectangles that help to approximate the area under the velocity curve on the given interval. Hence, we see the importance of the problem of finding the area between a curve and the horizontal axis: besides being an interesting geometric question, in the setting of the curve being the (positive) velocity of a moving object, the area under the curve over an interval tells us the exact distance traveled on the interval. We can estimate this area any time we have a graph of the velocity function or a table of data that tells us some relevant values of the function.
+</p>
+<p id="p-904">
+In <a knowl="./knowl/A_4.1.1.html" knowl-id="xref-A_4.1.1" alt="Exercise 4.1.4 " title="Exercise 4.1.4 ">Activity 4.1.4</a>, we also encountered an alternate approach to finding the distance traveled. In particular, if we know a formula for the instantaneous velocity, \(y = v(t)\), of the moving body at time \(t\), then we realize that \(v\) must be the derivative of some corresponding position function \(s\). If we can find a formula for \(s\) from the formula for \(v\), it follows that we know the position of the object at time \(t\). In addition, under the assumption that velocity is positive, the change in position over a given interval then tells us the distance traveled on that interval.
+</p>
+<p id="p-905">
+For a simple example, consider the situation from Preview <a href="S_4.1.VelocityDistance.html#PA_4.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, where a person is walking along a straight line and has velocity function \(v(t) = 3\) mph.
+</p>
+<figure class="figure-like" id="F_4.1.PA1Soln"><img width="100%" src="images/4_1_PA1Soln.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.1.6</span>The velocity function \(v(t) = 3\) and corresponding position function \(s(t) = 3t\).</figcaption></figure><p id="p-906">
+As pictured in <a knowl="./knowl/F_4.1.PA1Soln.html" knowl-id="xref-F_4.1.PA1Soln" alt="Figure 4.1.6 " title="Figure 4.1.6 ">Figure 4.1.6</a>, we see the already noted relationship between area and distance traveled on the left-hand graph of the velocity function. In addition, because the velocity is constant at 3, we know that if<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-24" id="fn-24"><sup> 3 </sup></a></span><span id="hk-fn-24" style="display: none;" class="tex2jax_ignore"><span class="footnote">Here we are making the implicit assumption that \(s(0) = 0\); we will further discuss the different possibilities for values of \(s(0)\) in subsequent study.</span></span> \(s(t) = 3t\), then \(s'(t) = 3\), so \(s(t) = 3t\) is a function whose derivative is \(v(t)\). Furthermore, we now observe that \(s(1.5) = 4.5\) and \(s(0.25) = 0.75\), which are the respective locations of the person at times \(t = 0.25\) and \(t = 1.5\), and therefore
+</p>
+<span class="displaymath" id="me-392">\[
+s(1.5) - s(0.25) = 4.5 - 0.75 = 3.75 \ \mbox{miles} .
+\]</span><p id="p-907">
+This is not only the change in position on \([0.25,1.5]\), but also precisely the distance traveled on \([0.25,1.5]\), which can also be computed by finding the area under the velocity curve over the same interval. There are profound ideas and connections present in this example that we will spend much of the remainder of <a href="C_4.html" alt="Chapter 4 The Definite Integral" title="Chapter 4 The Definite Integral">Chapter 4</a> studying and exploring.
+</p>
+<p id="p-908">
+For now, it is most important to observe that if we are given a formula for a velocity function \(v\), it can be very helpful to find a function \(s\) that satisfies \(s' = v\). In this context, we say that \(s\) is an <!--Style me with CSS--><em>antiderivative</em> of \(v\). More generally, just as we say that \(f'\) is the derivative of \(f\) for a given function \(f\), if we are given a function \(g\) and \(G\) is a function such that \(G' = g\), we say that \(G\) is an <!--Style me with CSS--><em>antiderivative</em> \knownindex{\lt main&gt;antiderivative\lt /main&gt;} of \(g\). For example, if \(g(x) = 3x^2 + 2x\), an antiderivative of \(g\) is \(G(x) = x^3 + x^2\), since \(G'(x) = g(x)\). Note that we say “an” antiderivative of \(g\) rather than “the” antiderivative of \(g\) because \(H(x) = x^3 + x^2 + 5\) is also a function whose derivative is \(g\), and thus \(H\) is another antiderivative of \(g\).
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_4.1.2" id="A_4.1.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">4.1.7</span>
+</h5></a></div>
+<div id="hk-A_4.1.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-909">
+A ball is tossed vertically in such a way that its velocity function is given by \(v(t) = 32 - 32t\), where \(t\) is measured in seconds and \(v\) in feet per second. Assume that this function is valid for \(0 \le t \le 2\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1585">For what values of \(t\) is the velocity of the ball positive?  What does this tell you about the motion of the ball on this interval of time values?</li>
+<li id="li-1586">Find an antiderivative, \(s\), of \(v\) that satisfies \(s(0) = 0\).</li>
+<li id="li-1587">Compute the value of \(s(1) - s(\frac{1}{2})\).  What is the meaning of the value you find?</li>
+<li id="li-1588">Using the graph of \(y = v(t)\) provided in <a knowl="./knowl/F_4.1.Act2.html" knowl-id="xref-F_4.1.Act2" alt="Figure 4.1.8 " title="Figure 4.1.8 ">Figure 4.1.8</a>, find the exact area of the region under the velocity curve between \(t = \frac{1}{2}\) and \(t = 1\).  What is the meaning of the value you find?</li>
+<li id="li-1589">Answer the same questions as in (c) and (d) but instead using the interval \([0,1]\).</li>
+<li id="li-1590">What is the value of \(s(2) - s(0)\)?  What does this result tell you about the flight of the ball?  How is this value connected to the provided graph of \(y = v(t)\)?  Explain.</li>
+</ol>
+<figure class="figure-like" id="F_4.1.Act2"><img width="100%" src="images/4_1_Act2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.1.8</span>The graph of \(y = v(t)\).</figcaption></figure></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-129" id="hint-129"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-129" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1591">Where is velocity zero?</li>
+<li id="li-1592">Since \(v\) is linear, note that \(s\) must be quadratic.</li>
+<li id="li-1593">Observe that you are taking the difference between two values of the position function.</li>
+<li id="li-1594">The region whose area is sought is triangular.</li>
+<li id="li-1595">See (c) and (d) above.</li>
+<li id="li-1596">What does it mean for the change of the ball's position to be zero?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-130" id="hint-130"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-130" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1597">Where is velocity zero? Recall that positive velocity makes the position function increasing.</li>
+<li id="li-1598">Since \(v\) is linear, note that \(s\) must be quadratic.  What function has derivative \(32\)?  What function has derivative \(32t\)?</li>
+<li id="li-1599">Observe that you are taking the difference between two values of the position function.</li>
+<li id="li-1600">The region whose area is sought is triangular.  Simply use the known formula for the area of a triangle; do not use approximating rectangles.</li>
+<li id="li-1601">See (c) and (d) above.</li>
+<li id="li-1602">What does it mean for the change of the ball's position to be zero?  How should we think of the area that lies beneath the \(t\)-axis on the interval \(1 \lt  t \lt  2\)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-64" id="solution-64"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-64" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1603">Note that \(v(1) = 0\) and for \(0 \lt  t \lt  1\), \(v(t) &gt; 0\).  This means that on the interval \((0,1)\), the position function \(s\) is increasing because velocity is positive.</li>
+<li id="li-1604">We can check that the derivative of \(s(t) = 32t - 16t^2\) is \(s'(t) = v(t) = 32 - 32t\), and that \(s(0) = 0\), so this is the antiderivative of \(v\) that we desire.</li>
+<li id="li-1605">Now, \(s(1) - s(\frac{1}{2}) = (32 - 16) - (16 - 4) = 4\), which is the change in position of the ball on the interval \([\frac{1}{2},1]\).  Equivalently, since \(v\) is positive through this interval, 4 feet is the vertical distance the ball traveled during this time.</li>
+<li id="li-1606">On the interval from \(t = \frac{1}{2}\) to \(t = 1\), the corresponding area under the velocity curve is the area of the right triangular region whose width is \(\frac{1}{2}\) seconds and whose height is \(v(\frac{1}{2}) = 16\) feet/sec.  That area is therefore \(A = \frac{1}{2} bh = \frac{1}{2} \cdot \frac{1}{2} \cdot 16 = 4\) feet.  This is the total distance the ball traveled vertically on \([0,\frac{1}{2}]\).</li>
+<li id="li-1607">\(s(1) - s(0) = (32 - 16) - (0-0) = 16\), which is the vertical distance the ball traveled on the interval \([0,1]\).  The area under the velocity curve on \([0,1]\) is the area of the triangle with height 32 (ft/sec) and base 1 (second), which is \(A = \frac{1}{2} \cdot 1 \cdot 32 = 16\) feet.  These two results are identical, in part due to the fact that we are using two different perspectives to compute the same quantity, which is distance traveled.</li>
+<li id="li-1608">Observe that \(s(2) - s(0) = (32 - 32) - (0 - 0) = 0\).  This means that the ball has zero change in position on the interval \([0,2]\).  But we already established that on the interval \([0,1]\), the ball traveled 16 feet vertically; since the velocity becomes negative on the interval \(1 \lt  t \lt  2\), there we know the ball's position is decreasing, so it is falling back to earth.  The resulting zero change in position means that at \(t = 2\) the ball has returned to the location from which it was tossed.  If we view the area between the velocity function and the \(t\)-axis as being negative wherever \(v\) is negative, then we see that the areas of the two triangles involved are opposites, which in some sense results in the “total area” being zero, matching the change in position.</li>
+</ol></span></span></section><section class="subsection" id="subsection-66"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">4.1.4</span><span class="title">When velocity is negative</span>
+</h1></header><p id="p-910">
+Most of our work in this section has occurred under the assumption that velocity is positive. This hypothesis guarantees that the movement of the object under consideration is always in a single direction, and hence ensures that the moving body's change in position is the same as the distance it travels on a given interval. As we saw in <a knowl="./knowl/A_4.1.2.html" knowl-id="xref-A_4.1.2" alt="Exercise 4.1.7 " title="Exercise 4.1.7 ">Activity 4.1.7</a>, there are natural settings in which a moving object's velocity is negative; we would like to understand this scenario fully as well.
+</p>
+<p id="p-911">
+Consider a simple example where a person goes for a walk on a beach along a stretch of very straight shoreline that runs east-west. We can naturally assume that their initial position is \(s(0) = 0\), and further stipulate that their position function increases as they move east from their starting location. For instance, a position of \(s = 1\) mile represents being one mile east of the start location, while \(s = -1\) tells us the person is one mile west of where they began walking on the beach. Now suppose the person walks in the following manner. From the outset at \(t = 0\), the person walks due east at a constant rate of \(3\) mph for 1.5 hours. After 1.5 hours, the person stops abruptly and begins walking due west at the constant rate of \(4\) mph and does so for 0.5 hours. Then, after another abrupt stop and start, the person resumes walking at a constant rate of \(3\) mph to the east for one more hour. What is the total distance the person traveled on the time interval \(t = 0\) to \(t = 3\)? What is the person's total change in position over that time?
+</p>
+<p id="p-912">
+On one hand, these are elementary questions to answer because the velocity involved is constant on each interval. From \(t = 0\) to \(t = 1.5\), the person traveled
+</p>
+<span class="displaymath" id="me-393">\[
+D_{[0,1.5]} = 3 \ \mbox{miles per hour}  \cdot 1.5 \ \mbox{hours}  = 4.5 \ \mbox{miles} .
+\]</span><p id="p-913">
+Similarly, on \(t = 1.5\) to \(t = 2\), having a different rate, the distance traveled is
+</p>
+<span class="displaymath" id="me-394">\[
+D_{[1.5,2]} = 4 \ \mbox{miles per hour}  \cdot 0.5 \ \mbox{hours}  = 2 \ \mbox{miles} .
+\]</span><p id="p-914">
+Finally, similar calculations reveal that in the final hour, the person walked
+</p>
+<span class="displaymath" id="me-395">\[
+D_{[2,3]} = 3 \ \mbox{miles per hour}  \cdot 1 \ \mbox{hours}  = 3 \ \mbox{miles} ,
+\]</span><p id="p-915">
+so the total distance traveled is
+</p>
+<span class="displaymath" id="me-396">\[
+D = D_{[0,1.5]} + D_{[1.5,2]} + D_{[2,3]} = 4.5 + 2 + 3 = 9.5 \ \mbox{miles} .
+\]</span><p id="p-916">
+Since the velocity on \(1.5 \lt  t \lt  2\) is actually \(v = -4\), being negative to indication motion in the westward direction, this tells us that the person first walked 4.5 miles east, then 2 miles west, followed by 3 more miles east. Thus, the walker's total change in position is
+</p>
+<span class="displaymath" id="me-397">\[
+\mbox{change in position}  = 4.5 - 2 + 3 = 5.5 \ \mbox{miles} .
+\]</span><p id="p-917">
+While we have been able to answer these questions fairly easily, it is also important to think about this problem graphically in order that we can generalize our solution to the more complicated setting when velocity is not constant, as well as to note the particular impact that negative velocity has.
+</p>
+<figure class="figure-like" id="F_4.1.NegVel"><img width="100%" src="images/4_1_NegVel.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.1.9</span>At left, the velocity function of the person walking; at right, the corresponding position function.</figcaption></figure><p id="p-918">
+In <a knowl="./knowl/F_4.1.NegVel.html" knowl-id="xref-F_4.1.NegVel" alt="Figure 4.1.9 " title="Figure 4.1.9 ">Figure 4.1.9</a>, we see how the distances we computed above can be viewed as areas: \(A_1 = 4.5\) comes from taking rate times time (\(3 \cdot 1.5\)), as do \(A_2\) and \(A_3\) for the second and third rectangles. The big new issue is that while \(A_2\) is an area (and is therefore positive), because this area involves an interval on which the velocity function is negative, its area has a negative sign associated with it. This helps us to distinguish between distance traveled and change in position.
+</p>
+<p id="p-919">
+The distance traveled is the sum of the areas,
+</p>
+<span class="displaymath" id="me-398">\[
+D = A_1 + A_2 + A_3 = 4.5 + 2 + 3 = 9.5 \ \mbox{miles} .
+\]</span><p id="p-920">
+But the change in position has to account for the sign associated with the area, where those above the \(t\)-axis are considered positive while those below the \(t\)-axis are viewed as negative, so that
+</p>
+<span class="displaymath" id="me-399">\[
+s(3) - s(0) = (+4.5) + (-2) + (+3) = 5.5 \ \mbox{miles} ,
+\]</span><p id="p-921">
+assigning the “\(-2\)” to the area in the interval \([1.5,2]\) because there velocity is negative and the person is walking in the “negative” direction. In other words, the person walks 4.5 miles in the positive direction, followed by two miles in the negative direction, and then 3 more miles in the positive direction. This affect of velocity being negative is also seen in the graph of the function \(y=s(t)\), which has a negative slope (specifically, its slope is \(-4\)) on the interval \(1.5\lt t\lt 2\) since the velocity is \(-4\) on that interval, which shows the person's position function is decreasing due to the fact that she is walking east, rather than west. On the intervals where she is walking west, the velocity function is positive and the slope of the position function \(s\) is therefore also positive.
+</p>
+<p id="p-922">
+To summarize, we see that if velocity is sometimes negative, this makes the moving object's change in position different from its distance traveled. By viewing the intervals on which velocity is positive and negative separately, we may compute the distance traveled on each such interval, and then depending on whether we desire total distance traveled or total change in position, we may account for negative velocities that account for negative change in position, while still contributing positively to total distance traveled. We close this section with one additional activity that further explores the effects of negative velocity on the problem of finding change in position and total distance traveled.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_4.1.3" id="A_4.1.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">4.1.10</span>
+</h5></a></div>
+<div id="hk-A_4.1.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-923">
+Suppose that an object moving along a straight line path has its velocity \(v\) (in meters per second) at time \(t\) (in seconds) given by the piecewise linear function whose graph is pictured in <a knowl="./knowl/F_4.1.Act3.html" knowl-id="xref-F_4.1.Act3" alt="Figure 4.1.11 " title="Figure 4.1.11 ">Figure 4.1.11</a>. We view movement to the right as being in the positive direction (with positive velocity), while movement to the left is in the negative direction.
+</p>
+<figure class="figure-like" id="F_4.1.Act3"><img width="100%" src="images/4_1_Act3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.1.11</span>The velocity function of a moving object.</figcaption></figure><p id="p-924">
+Suppose further that the object's initial position at time \(t = 0\) is \(s(0) = 1\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1609">Determine the total distance traveled and the total change in position on the time interval \(0 \le t \le 2\).  What is the object's position at \(t = 2\)?</li>
+<li id="li-1610">On what time intervals is the moving object's position function increasing?  Why?  On what intervals is the object's position decreasing?  Why?</li>
+<li id="li-1611">What is the object's position at \(t = 8\)?  How many total meters has it traveled to get to this point (including distance in both directions)?  Is this different from the object's total change in position on \(t = 0\) to \(t = 8\)?</li>
+<li id="li-1612">Find the exact position of the object at \(t = 1, 2, 3, \ldots, 8\) and use this data to sketch an accurate graph of \(y = s(t)\) on the axes provided at right.  How can you use the provided information about \(y = v(t)\) to determine the concavity of \(s\) on each relevant interval?</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-131" id="hint-131"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-131" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1613">Find the area of each triangular region formed between \(y = v(t)\) and the \(t\)-axis.</li>
+<li id="li-1614">Recall that \(v = s'\), and here we are given complete information about \(v\).</li>
+<li id="li-1615">Be careful to address whether \(v\) is positive or negative when calculating areas and adding the results.</li>
+<li id="li-1616">Consider finding the area bounded by \(y = v(t)\) and the \(t\)-axis on each interval \([0,1]\), \([1,2]\), \(\ldots\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-132" id="hint-132"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-132" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1617">Find the area of the triangular regions formed between \(y = v(t)\) and the \(t\)-axis on \([0,1]\) and \([1,2]\).</li>
+<li id="li-1618">Recall that \(v = s'\), and here we are given complete information about \(v\).</li>
+<li id="li-1619">Be careful to address whether \(v\) is positive or negative when calculating areas and adding the results.</li>
+<li id="li-1620">Consider finding the area bounded by \(y = v(t)\) and the \(t\)-axis on each interval \([0,1]\), \([1,2]\), \(\ldots\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-65" id="solution-65"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-65" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1621">By finding the area of the triangular regions formed between \(y = v(t)\) and the \(t\)-axis on \([0,1]\) and \([1,2]\) (each of which is \(1\)), it follows that the object's total distance traveled is \(2\), while its change in position is \(0\).  The latter is true since the net signed area bounded by \(v\) on \([0,2]\) is \(1 - 1 = 0\).</li>
+<li id="li-1622">The object's position is increasing wherever its velocity is positive, hence for \(0 \le t \lt  1\) and \(4 \lt  5 \lt  8&gt;\).</li>
+<li id="li-1623">By calculating the area bounded by the curve, we find 1 unit of area on \([0,1]\), 4 units of area on \([1,4]\), and 8 units of area on \([4,8]\), thus the total distance traveled on \(0 \le t \le 8\) is \(D = 1 + 4 + 8\) meters.  As the change in position is given by the net signed area on this interval, we find that the change in position is
+	
+<span class="displaymath" id="me-400">\[
+s(8) - s(0) = 1 - 4 + 8 = 5 \ \mbox{m} .
+\]</span>
+</li>
+<li id="li-1624">In the figure below, at left we list all of the areas bounded by \(v\) on each one-unit subinterval.  Along with the given starting point that \(s(0) = 1\), we use the resulting changes in position to plot points for the function \(s\).  For instance, we know \(s(1) - s(0) = 1\), hence \(s(1) = 2\).  Similarly, \(s(2) - s(1) = -1\), thus \(s(2) = 1\).  Continuing across the interval, we generate the function \(s\) that is pictured at right.  Note that the portion of \(s\) from \(t = 2\) to \(t = 3\) is linear because \(v\) is constant there, while the other parts of \(s\) appear to be quadratic, as they correspond to intervals where \(v\) is linear.</li>
+</ol>
+<img width="100%" src="images/4_1_Act3Soln.png"></span></span><p id="p-925">
+\item If we know the velocity of a moving body at every point in a given interval and the velocity is positive throughout, we can estimate the object's distance traveled and in some circumstances determine this value exactly.
+\item In particular, when velocity is positive on an interval, we can find the total distance traveled by finding the area under the velocity curve and above the \(t\)-axis on the given time interval. We may only be able to estimate this area, depending on the shape of the velocity curve.
+\item An antiderivative of a function \(f\) is a new function \(F\) whose derivative is \(f\). That is, \(F\) is an antiderivative of \(f\) provided that \(F' = f\). In the context of velocity and position, if we know a velocity function \(v\), an antiderivative of \(v\) is a position function \(s\) that satisfies \(s' = v\). If \(v\) is positive on a given interval, say \([a,b]\), then the change in position, \(s(b) - s(a)\), measures the distance the moving object traveled on \([a,b]\).
+\item In the setting where velocity is sometimes negative, this means that the object is sometimes traveling in the opposite direction (depending on whether velocity is positive or negative), and thus involves the object backtracking. To determine distance traveled, we have to think about the problem separately on intervals where velocity is positive and negative and account for the change in position on each such interval.
+</p>
+<p id="p-926">
+\hrulefill
+</p>
+<p id="p-927">
+\begin{exercises}
+\item Along the eastern shore of Lake Michigan from Lake Macatawa (near Holland) to Grand Haven, there is a bike bath that runs almost directly north-south. For the purposes of this problem, assume the road is completely straight, and that the function \(s(t)\) tracks the position of the biker along this path in miles north of Pigeon Lake, which lies roughly halfway between the ends of the bike path.
+</p>
+<p id="p-928">
+Suppose that the biker's velocity function is given by the graph in <a knowl="./knowl/F_4.1.Ez1.html" knowl-id="xref-F_4.1.Ez1" alt="Figure 4.1.12 " title="Figure 4.1.12 ">Figure 4.1.12</a> on the time interval \(0 \le t \le 4\) (where \(t\) is measured in hours), and that \(s(0) = 1\).
+</p>
+<figure class="figure-like" id="F_4.1.Ez1"><img width="100%" src="images/4_1_Ez1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.1.12</span>The graph of the biker's velocity, \(y = v(t)\), at left.  At right, axes to plot an approximate sketch of \(y = s(t)\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1625">Approximately how far north of Pigeon Lake was the cyclist when she was the greatest distance away from Pigeon Lake?  At what time did this occur?</li>
+<li id="li-1626">What is the cyclist's total change in position on the time interval \(0 \le t \le 2\)?  At \(t = 2\), was she north or south of Pigeon Lake?</li>
+<li id="li-1627">What is the total distance the biker traveled on \(0 \le t \le 4\)?  At the end of the ride, how close was she to the point at which she started?</li>
+<li id="li-1628">Sketch an approximate graph of \(y = s(t)\), the position function of the cyclist, on the interval \(0 \le t \le 4\).  Label at least four important points on the graph of \(s\).</li>
+</ol>
+<p id="p-929">
+\item A toy rocket is launched vertically from the ground on a day with no wind. The rocket's vertical velocity at time \(t\) (in seconds) is given by \(v(t)= 500-32t\) feet/sec.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1629">At what time after the rocket is launched does the rocket's velocity equal zero?  Call this time value \(a\).  What happens to the rocket at \(t = a\)?</li>
+<li id="li-1630">Find the value of the total area enclosed by \(y = v(t)\) and the \(t\)-axis on the interval \(0 \le t \le a\).  What does this area represent in terms of the physical setting of the problem?</li>
+<li id="li-1631">Find an antiderivative \(s\) of the function \(v\).  That is, find a function \(s\) such that \(s'(t) = v(t)\).</li>
+<li id="li-1632">Compute the value of \(s(a) - s(0)\).  What does this number represent in terms of the physical setting of the problem?</li>
+<li id="li-1633">Compute \(s(5) - s(1)\).  What does this number tell you about the rocket's flight?</li>
+</ol>
+<p id="p-930">
+\item An object moving along a horizontal axis has its instantaneous velocity at time \(t\) in seconds given by the function \(v\) pictured in <a knowl="./knowl/F_4.1.Ez3.html" knowl-id="xref-F_4.1.Ez3" alt="Figure 4.1.13 " title="Figure 4.1.13 ">Figure 4.1.13</a>, where \(v\) is measured in feet/sec.
+</p>
+<figure class="figure-like" id="F_4.1.Ez3"><img width="100%" src="images/4_1_Ez3.png"><figcaption><span class="heading">Figure</span><span class="codenumber">4.1.13</span>The graph of \(y = v(t)\), the velocity function of a moving object.</figcaption></figure><p id="p-931">
+Assume that the curves that make up the parts of the graph of \(y=v(t)\) are either portions of straight lines or portions of circles.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1634">Determine the exact total distance the object traveled on \(0 \le t \le 2\).</li>
+<li id="li-1635">What is the value and meaning of \(s(5) - s(2)\), where \(y = s(t)\) is the position function of the moving object?</li>
+<li id="li-1636">On which time interval did the object travel the greatest distance: \([0,2]\), \([2,4]\), or \([5,7]\)?</li>
+<li id="li-1637">On which time interval(s) is the position function \(s\) increasing?  At which point(s) does \(s\) achieve a relative maximum?</li>
+</ol>
+<p id="p-932">
+\item Filters at a water treatment plant become dirtier over time and thus become less effective; they are replaced every 30 days. During one 30-day period, the rate at which pollution passes through the filters into a nearby lake (in units of particulate matter per day) is measured every 6 days and is given in the following table. The time \(t\) is measured in days since the filters were replaced.
+</p>
+<figure class="figure-like" id="table-19">
+Day, \(t\) \amp  0 \amp  6 \amp  12 \amp 	18 \amp  24 \amp  30 
+Rate of pollution in units per day, \(p(t)\) \amp  7 \amp  8 \amp  10 \amp 	13 \amp  18 \amp  35 </figure><ol style="list-style-type: decimal;">
+<li id="li-1638">Plot the given data on a set of axes with time on the horizontal axis and the rate of pollution on the vertical axis.</li>
+<li id="li-1639">Explain why the amount of pollution that entered the lake during this 30-day period would be given exactly by the area bounded by \(y = p(t)\) and the \(t\)-axis on the time interval \([0,30]\).</li>
+<li id="li-1640">Estimate the total amount of pollution entering the lake during this 30-day period.  Carefully explain how you determined your estimate.</li>
+</ol>
+<p id="p-933">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-934">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

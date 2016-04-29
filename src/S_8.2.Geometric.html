@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:55-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Geometric Series</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_8.1.Sequences.html">Previous</a><a class="up-button button toolbar-item" href="C_8.html">Up</a><a class="next-button button toolbar-item" href="S_8.3.Series.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_8.1.Sequences.html">Previous</a><a class="up-button button toolbar-item" href="C_8.html">Up</a><a class="next-button button toolbar-item" href="S_8.3.Series.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link active"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html" class="active">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_8.2.Geometric"><header><h1 class="heading" alt="Section 8.2 Geometric Series" title="Section 8.2 Geometric Series">
+<span class="type">Section</span><span class="codenumber">8.2</span><span class="title">Geometric Series</span><a href="S_8.2.Geometric.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-44"><h5 class="heading"></h5>
+<p id="p-2017">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2771">What is a geometric series?</li>
+<li id="li-2772">What is a partial sum of a geometric series? What is a simplified form of the \(n\)th partial sum of a geometric series?</li>
+<li id="li-2773">Under what conditions does a geometric series converge? What is the sum of a convergent geometric series?</li>
+</ul>
+<p id="p-2018">
+} 
+</p></article><section class="subsection" id="subsection-145"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">8.2.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-2019">
+Many important sequences are generated through the process of addition. In Preview <a href="S_8.2.Geometric.html#PA_8.2" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>, we see a particular example of a special type of sequence that is connected to a sum.
+</p>
+<article class="paragraphs" id="PA_8.2"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-2020">
+Warfarin is an anticoagulant that prevents blood clotting; often it is prescribed to stroke victims in order to help ensure blood flow. The level of warfarin has to reach a certain concentration in the blood in order to be effective.
+</p>
+<p id="p-2021">
+Suppose warfarin is taken by a particular patient in a 5 mg dose each day. The drug is absorbed by the body and some is excreted from the system between doses. Assume that at the end of a 24 hour period, 8% of the drug remains in the body. Let \(Q(n)\) be the amount (in mg) of warfarin in the body before the \((n+1)\)st dose of the drug is administered.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2774">Explain why \(Q(1) = 5 \times 0.08\) mg.</li>
+<li id="li-2775">Explain why \(Q(2) = (5+Q(1)) \times 0.08\) mg. Then show that 
+
+<span class="displaymath" id="me-794">\[
+Q(2) = (5 \times 0.08)\left(1+0.08\right) \text{ mg} .
+\]</span>
+</li>
+<li id="li-2776">Explain why \(Q(3) = (5+Q(2)) \times 0.08\) mg. Then show that
+
+<span class="displaymath" id="me-795">\[
+Q(3) = (5 \times 0.08)\left(1+0.08+0.08^2\right) \text{ mg} .
+\]</span>
+</li>
+<li id="li-2777">Explain why \(Q(4) = (5+Q(3)) \times 0.08\) mg. Then show that
+
+<span class="displaymath" id="me-796">\[
+Q(4) = (5 \times 0.08)\left(1+0.08+0.08^2+0.08^3\right) \text{ mg} .
+\]</span>
+</li>
+<li id="li-2778">There is a pattern that you should see emerging. Use this pattern to find a formula for \(Q(n)\), where \(n\) is an arbitrary positive integer.</li>
+<li id="li-2779">Complete <a knowl="./knowl/T_8.2_Warfarin.html" knowl-id="xref-T_8.2_Warfarin" alt="Figure 8.2.1 " title="Figure 8.2.1 ">Table 8.2.1</a> with values of \(Q(n)\) for the provided \(n\)-values (reporting \(Q(n)\) to 10 decimal places). What appears to be happening to the sequence \(Q(n)\) as \(n \) increases?
+<figure class="figure-like" id="T_8.2_Warfarin"><figure class="figure-like" id="table-41">
+\(Q(1)\)   \amp  \(0.40\) 
+\(Q(2)\)   \amp  
+\(Q(3)\)   \amp   
+\(Q(4)\)   \amp   
+\(Q(5)\)   \amp   
+\(Q(6)\)   \amp   
+\(Q(7)\)   \amp   
+\(Q(8)\)   \amp   
+\(Q(9)\)   \amp   
+\(Q(10)\)  \amp   </figure><figcaption><span class="heading">Figure</span><span class="codenumber">8.2.1</span>Values of \(Q(n)\) for selected values of \(n\)</figcaption></figure>
+</li>
+</ol></article></section><section class="subsection" id="subsection-146"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">8.2.2</span><span class="title">Geometric Sums</span>
+</h1></header><p id="p-2022">
+In Preview <a href="S_8.2.Geometric.html#PA_8.2" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> we encountered the sum
+</p>
+<span class="displaymath" id="me-797">\[
+(5 \times 0.08)\left(1+0.08+0.08^2+0.08^3+ \cdots + 0.08^{n-1}\right).
+\]</span><p id="p-2023">
+In order to evaluate the long-term level of Warfarin in the patient's system, we will want to fully understand the sum in this expression. This sum has the form
+</p>
+<span class="displaymath" id="eq_8.2_part_sum_geometric_1">\begin{equation}
+ a+ar+ar^2+ \cdots + ar^{n-1}
+\label{eq_8.2_part_sum_geometric_1}\tag{8.2.1}\end{equation}</span><p id="p-2024">
+where \(a=5 \times 0.08\) and \(r=0.08\). Such a sum is called a <!--Style me with CSS--><em>geometric sum</em>\knownindex{\lt main&gt;geometric sum\lt /main&gt;} with ratio \(r\). We will analyze this sum in more detail in the next activity.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.2.Act1" id="x8.2.Act1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.2.2</span>
+</h5></a></div>
+<div id="hk-x8.2.Act1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-2025">
+Let \(a\) and \(r\) be real numbers (with \(r \ne 1\)) and let
+</p>
+<span class="displaymath" id="me-798">\[
+S_n = a+ar+ar^2 + \cdots + ar^{n-1}.
+\]</span><p id="p-2026">
+In this activity we will find a shortcut formula for \(S_n\) that does not involve a sum of \(n\) terms.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2780">Multiply \(S_n\) by \(r\). What does the resulting sum look like?</li>
+<li id="li-2781">Subtract \(rS_n\) from \(S_n\) and explain why
+
+<span class="displaymath" id="eq_8.2.1_partial_geometric_sum">\begin{equation}
+ S_n - rS_n = a - ar^n.
+\label{eq_8.2.1_partial_geometric_sum}\tag{8.2.2}\end{equation}</span>
+</li>
+<li id="li-2782">Solve equation <a knowl="./knowl/eq_8.2.1_partial_geometric_sum.html" knowl-id="xref-eq_8.2.1_partial_geometric_sum" alt="Equation 8.2.2 " title="Equation 8.2.2 ">(8.2.2)</a> for \(S_n\) to find a simple formula for \(S_n\) that does not involve adding \(n\) terms.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-249" id="hint-249"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-249" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2783">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-250" id="hint-250"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-250" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2784">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-123" id="solution-123"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-123" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-2785">Note that
+
+<span class="displaymath" id="me-799">\[
+rS_n = ar+ar^2+ar^3 + \cdots + ar^n.
+\]</span>
+</li>
+<li id="li-2786">When we subtract \(rS_n\) from \(S_n\) the middle terms all cancel and we are left with
+
+<span class="displaymath" id="md-82">\begin{align*}
+S_n - rS_n \amp = \left(a+ar+ar^2 + \cdots + ar^{n-1}\right) - \left(ar+ar^2+ar^3 + \cdots + ar^n\right)\\
+\amp =a + (ar-ar) + \left(ar^2-ar^2\right) + \cdots + \left(ar^{n-1}-ar^{n-1}\right) - ar^n\\
+\amp = a - ar^n.
+\end{align*}</span>
+</li>
+<li id="li-2787">Factoring \(S_n\) from left hand side and dividing gives us a formula for \(S_n\):
+
+<span class="displaymath" id="md-83">\begin{align*}
+S_n(1-r) \amp = a - ar^n\\
+S_n \amp = a\frac{1-r^n}{1-r}.
+\end{align*}</span>
+</li>
+</ol></span></span><p id="p-2027">
+We can summarize the result of <a knowl="./knowl/x8.2.Act1.html" knowl-id="xref-x8.2.Act1" alt="Exercise 8.2.2 " title="Exercise 8.2.2 ">Activity 8.2.2</a> in the following way.
+</p>
+<p id="p-2028">
+
+{
+A geometric sum \(S_n\) is a sum of the form
+</p>
+<span class="displaymath" id="eq_8.2_geometric_sum">\begin{equation}
+ S_n = a + ar + ar^2 + \cdots + ar^{n-1},
+\label{eq_8.2_geometric_sum}\tag{8.2.3}\end{equation}</span><p id="p-2029">
+where \(a\) and \(r\) are real numbers such that \(r \ne 1\). The geometric sum \(S_n\) can be written more simply as
+</p>
+<span class="displaymath" id="eq_8.2_part_sum_geometric">\begin{equation}
+ S_n = a+ar+ar^2+ \cdots + ar^{n-1} = \frac{a(1-r^n)}{1-r}.
+\label{eq_8.2_part_sum_geometric}\tag{8.2.4}\end{equation}</span><p id="p-2030">
+} 
+
+</p>
+<p id="p-2031">
+We now apply equation <a knowl="./knowl/eq_8.2_part_sum_geometric.html" knowl-id="xref-eq_8.2_part_sum_geometric" alt="Equation 8.2.4 " title="Equation 8.2.4 ">(8.2.4)</a> to the example involving warfarin from Preview <a href="S_8.2.Geometric.html#PA_8.2" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a>. Recall that
+</p>
+<span class="displaymath" id="me-800">\[
+Q(n)=(5 \times 0.08)\left(1+0.08+0.08^2+0.08^3+ \cdots + 0.08^{n-1}\right) \text{ mg} ,
+\]</span><p id="p-2032">
+so \(Q(n)\) is a geometric sum with \(a=5 \times 0.08 = 0.4\) and \(r = 0.08\). Thus,
+</p>
+<span class="displaymath" id="me-801">\[
+Q(n) = 0.4\left(\frac{1-0.08^n}{1-0.08}\right) = \frac{1}{2.3} \left(1-0.08^n\right).
+\]</span><p id="p-2033">
+Notice that as \(n\) goes to infinity, the value of \(0.08^n\) goes to 0. So,
+</p>
+<span class="displaymath" id="me-802">\[
+\lim_{n \to \infty} Q(n) = \lim_{n \to \infty}  \frac{1}{2.3} \left(1-0.08^n\right) = \frac{1}{2.3} \approx 0.435.
+\]</span><p id="p-2034">
+Therefore, the long-term level of Warfarin in the blood under these conditions is \(\frac{1}{2.3}\), which is approximately 0.435 mg.
+</p>
+<p id="p-2035">
+To determine the long-term effect of Warfarin, we considered a geometric sum of \(n\) terms, and then considered what happened as \(n\) was allowed to grow without bound. In this sense, we were actually interested in an infinite geometric sum (the result of letting \(n\) go to infinity in the finite sum). We call such an infinite geometric sum a <!--Style me with CSS--><em>geometric series</em>. \knownindex{\lt main&gt;geometric series\lt /main&gt;} \knownindex{\lt main&gt;series\lt /main&gt;\lt sub&gt;geometric\lt /sub&gt;}
+</p>
+<article class="definition-like" id="definition-10"><h5 class="heading">
+<span class="type">Definition</span><span class="codenumber">8.2.3</span>
+</h5>
+<p id="p-2036">
+A geometric series is an infinite sum of the form
+</p>
+<span class="displaymath" id="eq_8.2_geometric_series">\begin{equation}
+ a + ar + ar^2 + \cdots = \sum_{n=0}^{\infty} ar^n.
+\label{eq_8.2_geometric_series}\tag{8.2.5}\end{equation}</span></article><p id="p-2037">
+The value of \(r\) in the geometric series <a knowl="./knowl/eq_8.2_geometric_series.html" knowl-id="xref-eq_8.2_geometric_series" alt="Equation 8.2.5 " title="Equation 8.2.5 ">(8.2.5)</a> is called the <!--Style me with CSS--><em>common ratio</em> \knownindex{\lt main&gt;geometric series\lt /main&gt;\lt sub&gt;common ratio\lt /sub&gt;} of the series because the ratio of the (\(n+1\))st term \(ar^n\) to the \(n\)th term \(ar^{n-1}\) is always \(r\).
+</p>
+<p id="p-2038">
+Geometric series are very common in mathematics and arise naturally in many different situations. As a familiar example, suppose we want to write the number with repeating decimal expansion
+</p>
+<span class="displaymath" id="me-803">\[
+N=0.1212\overline{12}
+\]</span><p id="p-2039">
+as a rational number.
+Observe that
+</p>
+<span class="displaymath" id="md-84">\begin{align*}
+N \amp =  0.12 + 0.0012 + 0.000012 + \cdots\\
+\amp = \left(\frac{12}{100}\right) + \left(\frac{12}{100}\right)\left(\frac{1}{100}\right) + \left(\frac{12}{100}\right)\left(\frac{1}{100}\right)^2 + \cdots,
+\end{align*}</span><p id="p-2040">
+which is an infinite geometric series with \(a=\frac{12}{100}\) and \(r = \frac{1}{100}\). In the same way that we were able to find a shortcut formula for the value of a (finite) geometric sum, we would like to develop a formula for the value of a (infinite) geometric series. We explore this idea in the following activity.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.2.Act2" id="x8.2.Act2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.2.4</span>
+</h5></a></div>
+<div id="hk-x8.2.Act2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-2041">
+Let \(r \ne 1\) and \(a\) be real numbers and let
+</p>
+<span class="displaymath" id="me-804">\[
+S = a+ar+ar^2 + \cdots ar^{n-1} + \cdots 
+\]</span><p id="p-2042">
+be an infinite geometric series. For each positive integer \(n\), let
+</p>
+<span class="displaymath" id="me-805">\[
+S_n = a+ar+ar^2 + \cdots + ar^{n-1}.
+\]</span><p id="p-2043">
+Recall that
+</p>
+<span class="displaymath" id="me-806">\[
+S_n = a\frac{1-r^n}{1-r}.
+\]</span><ol style="list-style-type: decimal;">
+<li id="li-2788">What should we allow \(n\) to approach in order to have \(S_n\) approach \(S\)?</li>
+<li id="li-2789">What is the value of  \(\ds \lim_{n \to \infty} r^n\) for
+<ul style="list-style-type: disc;">
+<li id="li-2790">\(|r| &gt; 1\)?</li>
+<li id="li-2791">\(|r| \lt  1\)?</li>
+</ul>  
+Explain.</li>
+<li id="li-2792">If \(|r| \lt  1\), use the formula for \(S_n\) and your observations in (a) and (b) to explain why \(S\) is finite and find a resulting formula for \(S\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-251" id="hint-251"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-251" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2793">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-252" id="hint-252"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-252" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2794">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-124" id="solution-124"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-124" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-2795">It is the case that
+
+<span class="displaymath" id="me-807">\[
+S = \lim_{n \to \infty} S_n.
+\]</span>
+</li>
+<li id="li-2796"><ul style="list-style-type: disc;">
+<li id="li-2797">If \(r &gt; 1\), then \(\ds \lim_{n \to \infty} r^n = \infty\).</li>
+<li id="li-2798">If \(0 \lt  r \lt  1\), then \(\ds \lim_{n \to \infty} r^n = 0\).</li>
+</ul></li>
+<li id="li-2799">Since
+
+<span class="displaymath" id="me-808">\[
+S = \lim_{n \to \infty} S_n = \lim_{n \to \infty} a\frac{1-r^n}{1-r}
+\]</span>
+ 
+and
+
+<span class="displaymath" id="me-809">\[
+\lim_{n \to \infty} r^n = 0
+\]</span>
+ 
+for \(0 \lt  r \lt  1\), we conclude that
+
+<span class="displaymath" id="me-810">\[
+S = \lim_{n \to \infty} a\frac{1-r^n}{1-r} = \frac{a}{1-r}
+\]</span>
+ 
+when \(0 \lt  r \lt  1\).</li>
+</ol></span></span><p id="p-2044">
+From our work in <a knowl="./knowl/x8.2.Act2.html" knowl-id="xref-x8.2.Act2" alt="Exercise 8.2.4 " title="Exercise 8.2.4 ">Activity 8.2.4</a>, we can now find the value of the geometric series \(N = \left(\frac{12}{100}\right) + \left(\frac{12}{100}\right)\left(\frac{1}{100}\right) + \left(\frac{12}{100}\right)\left(\frac{1}{100}\right)^2 + \cdots.\) In particular, using \(a = \frac{12}{100}\) and \(r = \frac{1}{100}\), we see that
+</p>
+<span class="displaymath" id="me-811">\[
+N = \frac{12}{100} \left(\frac{1}{1-\frac{1}{100}}\right) = \frac{12}{100} \left(\frac{100}{99}\right) = \frac{4}{33}.
+\]</span><p id="p-2045">
+It is important to notice that a geometric sum is simply the sum of a finite number of terms of a geometric series. In other words, the geometric sum \(S_n\) for the geometric series
+</p>
+<span class="displaymath" id="me-812">\[
+\sum_{k=0}^{\infty} ar^k
+\]</span><p id="p-2046">
+is
+</p>
+<span class="displaymath" id="me-813">\[
+S_n = a+ar+ar^2 + \cdots + ar^{n-1} = \sum_{k=0}^{n-1} ar^k.
+\]</span><p id="p-2047">
+We also call this sum \(S_n\) the \(n\)th <!--Style me with CSS--><em>partial sum</em>\knownindex{\lt main&gt;partial sum\lt /main&gt;} of the geometric series. We summarize our recent work with geometric series as follows.
+</p>
+<p id="p-2048">
+
+{
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2800">A geometric series is an infinite sum of the form
+
+<span class="displaymath" id="eq_8.2_geometric_series_2">\begin{equation}
+ a + ar + ar^2 + \cdots = \sum_{n=0}^{\infty} ar^n,
+\label{eq_8.2_geometric_series_2}\tag{8.2.6}\end{equation}</span>
+ 
+where \(a\) and \(r\) are real numbers such that \(r \ne 0\).</li>
+<li id="li-2801">The \(n\)th partial sum \(S_n\) of the geometric series is
+
+<span class="displaymath" id="me-814">\[
+S_n = a+ar+ar^2+ \cdots + ar^{n-1}.
+\]</span>
+</li>
+<li id="li-2802">If \(|r| \lt  1\), then using the fact that \(S_n = a\frac{1-r^n}{1-r}\), it follows that the sum \(S\) of the geometric series <a knowl="./knowl/eq_8.2_geometric_series_2.html" knowl-id="xref-eq_8.2_geometric_series_2" alt="Equation 8.2.6 " title="Equation 8.2.6 ">(8.2.6)</a> is
+
+<span class="displaymath" id="me-815">\[
+S = \lim_{n \to \infty} S_n = \lim_{n \to \infty} a\frac{1-r^n}{1-r} = \frac{a}{1-r}
+\]</span>
+</li>
+</ul>
+<p id="p-2049">
+} 
+
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-x8.2.Act3" id="x8.2.Act3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">8.2.5</span>
+</h5></a></div>
+<div id="hk-x8.2.Act3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-2050">
+The formulas we have derived for the geometric series and its partial sum so far have assumed we begin indexing our sums at \(n=0\). If instead we have a sum that does not begin at \(n=0\), we can factor out common terms and use our established formulas. This process is illustrated in the examples in this activity.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2803">Consider the sum
+
+<span class="displaymath" id="me-816">\[
+ \sum_{k=1}^{\infty} (2)\left(\frac{1}{3}\right)^k = (2)\left(\frac{1}{3}\right) + (2)\left(\frac{1}{3}\right)^2 + (2)\left(\frac{1}{3}\right)^3 + \cdots .
+\]</span>
+ 
+Remove the common factor of \((2)\left(\frac{1}{3}\right)\) from each term and hence find the sum of the series.</li>
+<li id="li-2804">Next let \(a\) and \(r\) be real numbers with \(-1\lt r\lt 1\). Consider the sum  
+
+<span class="displaymath" id="me-817">\[
+\sum_{k=3}^{\infty} ar^k = ar^3+ar^4+ar^5 + \cdots.
+\]</span>
+ 
+Remove the common factor of \(ar^3\) from each term and find the sum of the series.</li>
+<li id="li-2805">Finally, we consider the most general case. Let \(a\) and \(r\) be real numbers with \(-1\lt r\lt 1\), let \(n\) be a positive integer, and consider the sum
+
+<span class="displaymath" id="me-818">\[
+ \sum_{k=n}^{\infty} ar^k = ar^n+ar^{n+1}+ar^{n+2} + \cdots .
+\]</span>
+ 
+Remove the common factor of \(ar^n\) from each term to find the sum of the series.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-253" id="hint-253"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-253" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2806">Small hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-254" id="hint-254"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-254" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2807">Big hints for each of the prompts above.</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-125" id="solution-125"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-125" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-2808">Factoring out \((2)\left(\frac{1}{3}\right)\) gives us
+
+<span class="displaymath" id="md-85">\begin{align*}
+(2)\left(\frac{1}{3}\right) \left[1 + \left(\frac{1}{3}\right) + \left(\frac{1}{3}\right)^2 + \cdots \right] \amp = (2)\left(\frac{1}{3}\right)\sum_{k=0}^{\infty} \left(\frac{1}{3}\right)^k\\
+\amp = (2)\left(\frac{1}{3}\right) \left(\frac{1}{1-\frac{1}{3}}\right)\\
+\amp = (2)\left(\frac{1}{3}\right) \left(\frac{3}{2}\right)\\
+\amp =  4.
+\end{align*}</span>
+</li>
+<li id="li-2809">Factoring out \(ar^3\) gives us
+
+<span class="displaymath" id="md-86">\begin{align*}
+ar^3+ar^4+ar^5 + \cdots \amp = ar^3\left(1+r+r^2+ \cdots \right)\\
+\amp = ar^3\sum_{k=0}^{\infty} r^k\\
+\amp = ar^3 \left(\frac{1}{1-r}\right)\\
+\amp = \frac{ar^3}{1-r}.
+\end{align*}</span>
+</li>
+<li id="li-2810">Factoring out \(ar^n\) gives us
+
+<span class="displaymath" id="md-87">\begin{align*}
+ar^n+ar^{n+1}+ar^{n+2} + \cdots \amp = ar^n\left(1+r+r^2+ \cdots \right)\\
+\amp = ar^n\sum_{k=0}^{\infty} r^k\\
+\amp = ar^n \left(\frac{1}{1-r}\right)\\
+\amp = \frac{ar^n}{1-r}.
+\end{align*}</span>
+</li>
+</ol></span></span><p id="p-2051">
+\item A geometric series is an infinite sum of the form
+</p>
+<span class="displaymath" id="me-819">\[
+\sum_{k=0}^{\infty} ar^k
+\]</span><p id="p-2052">
+where \(a\) and \(r\) are real numbers and \(r \neq 0\).
+\item For the geometric series \(\ds \sum_{k=0}^{\infty} ar^k\), its \(n\)th partial sum is
+</p>
+<span class="displaymath" id="me-820">\[
+S_n = \sum_{k=0}^{n-1} ar^k.
+\]</span><p id="p-2053">
+An alternate formula for the \(n\)th partial sum is
+</p>
+<span class="displaymath" id="me-821">\[
+S_n = a \frac{1-r^n}{1-r}.
+\]</span><p id="p-2054">
+Whenever \(|r| \lt  1\), the infinite geometric series \(\sum_{k=0}^{\infty} ar^k\) has the finite sum \(\frac{a}{1-r}\).
+</p>
+<p id="p-2055">
+\hrulefill
+</p>
+<p id="p-2056">
+\begin{exercises}
+\item There is an old question that is often used to introduce the power of geometric growth. Here is one version. Suppose you are hired for a one month (30 days, working every day) job and are given two options to be paid.
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-2811">You can be paid $500 per day or</li>
+<li id="li-2812">You can be paid 1 cent the first day, 2 cents the second day, 4 cents the third day, 8 cents the fourth day, and so on, doubling the amount you are paid each day.</li>
+</ul>
+<ol style="list-style-type: decimal;">
+<li id="li-2813">How much will you be paid for the job in total under Option 1?</li>
+<li id="li-2814">Complete <a knowl="./knowl/PA8.2_geometric.html" knowl-id="xref-PA8.2_geometric" alt="Figure 8.2.6 " title="Figure 8.2.6 ">Table 8.2.6</a> to determine the pay you will receive under Option 2 for the first 10 days.
+    <figure class="figure-like" id="PA8.2_geometric"><figure class="figure-like" id="table-42">
+    Day     \amp Pay on this day    \amp Total amount paid to date 
+    \(1\)     \amp \(\dollar0.01\)           \amp \(\dollar0.01\)       
+    \(2\)     \amp \(\dollar0.02\)           \amp \(\dollar0.03\)       
+    \(3\)     \amp                    \amp        
+    \(4\)     \amp                    \amp        
+    \(5\)     \amp                    \amp        
+    \(6\)     \amp                    \amp        
+    \(7\)     \amp                    \amp        
+    \(8\)     \amp                    \amp        
+    \(9\)     \amp                    \amp        
+    \(10\)    \amp                    \amp        </figure><figcaption><span class="heading">Figure</span><span class="codenumber">8.2.6</span>Option 2 payments</figcaption></figure>
+</li>
+<li id="li-2815">Find a formula for the amount paid on day \(n\), as well as for the total amount paid by day \(n\). Use this formula to determine which option (1 or 2) you should take.
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-126" id="solution-126"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-126" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2057">
+On day \(n\) you are paid \(0.01\left(2^{n-1}\right)\) dollars and the total amount paid is \(\dollar0.01\left(2^n-1\right)\). So on day 30 under Option 2 the total payment will be
+</p>
+<span class="displaymath" id="me-822">\[
+\dollar0.01\left(2^{30}-1\right) = \dollar10,737,418.23,
+\]</span><p id="p-2058">
+so Option 2 is definitely the better deal.
+</p></span></span>
+</li>
+</ol>
+<p id="p-2059">
+\item Suppose you drop a golf ball onto a hard surface from a height \(h\). The collision with the ground causes the ball to lose energy and so it will not bounce back to its original height. The ball will then fall again to the ground, bounce back up, and continue. Assume that at each bounce the ball rises back to a height \(\frac{3}{4}\) of the height from which it dropped. Let \(h_n\) be the height of the ball on the \(n\)th bounce, with \(h_0 = h\). In this exercise we will determine the distance traveled by the ball and the time it takes to travel that distance.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2816">Determine a formula for \(h_1\) in terms of \(h\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-127" id="solution-127"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-127" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2060">
+Since the ball bounces back 3/4 of the original height, we have
+</p>
+<span class="displaymath" id="me-823">\[
+h_1 = \left(\frac{3}{4}\right)h.
+\]</span></span></span>
+</li>
+<li id="li-2817">Determine a formula for \(h_2\) in terms of \(h\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-128" id="solution-128"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-128" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2061">
+Since the ball bounces back 3/4 of the original height, we have
+</p>
+<span class="displaymath" id="me-824">\[
+h_2 = \left(\frac{3}{4}\right)h_1 = \left(\frac{3}{4}\right)^2h.
+\]</span></span></span>
+</li>
+<li id="li-2818">Determine a formula for \(h_3\) in terms of \(h\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-129" id="solution-129"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-129" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2062">
+Since the ball bounces back 3/4 of the original height, we have
+</p>
+<span class="displaymath" id="me-825">\[
+h_3 = \left(\frac{3}{4}\right)h_2 = \left(\frac{3}{4}\right)^3h.
+\]</span></span></span>
+</li>
+<li id="li-2819">Determine a formula for \(h_n\) in terms of \(h\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-130" id="solution-130"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-130" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2063">
+Since the ball bounces back 3/4 of the original height, we have
+</p>
+<span class="displaymath" id="me-826">\[
+h_n = \left(\frac{3}{4}\right)h_{n-1} = \left(\frac{3}{4}\right)^nh.
+\]</span></span></span>
+</li>
+<li id="li-2820">Write an infinite series that represents the total distance traveled by the ball. Then determine the sum of this series.
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-131" id="solution-131"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-131" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2064">
+The distance traveled by the ball is
+</p>
+<span class="displaymath" id="md-88">\begin{align*}
+h+2[h_1+h_2+ \cdots ] \amp = h + 2 \left[ \left(\frac{3}{4}\right)^2h + \left(\frac{3}{4}\right)^2h + \left(\frac{3}{4}\right)^2h + \cdots \right]\\
+\amp = h + 2\left(\frac{3}{4}\right)h \left[1 + \left(\frac{3}{4}\right) + \left(\frac{3}{4}\right)^2 + \cdots \right]
+    \amp = h + \left(\frac{3}{2}\right)h \sum_{n = 0}^{\infty} \left(\frac{3}{4}\right)^n\\
+\amp = h + \left(\frac{3}{2}\right)h \left(\frac{1}{1-3/4}\right)\\
+\amp = h + \left(\frac{3}{2}\right)h (4)\\
+\amp = h + 6h\\
+\amp = 7h.
+\end{align*}</span><p id="p-2065">
+So no matter what the initial height of the ball, the ball will bounce infinitely many times but only travel a finite distance.
+</p></span></span>
+</li>
+<li id="li-2821">Next, let's determine the total amount of time the ball is in the air.
+    <ul style="list-style-type: disc;">
+<li id="li-2822">When the ball is dropped from a height \(H\), if we assume the only force acting on it is the acceleration due to gravity, then the height of the ball at time \(t\) is given by
+
+<span class="displaymath" id="me-827">\[
+H - \frac{1}{2}gt^2.
+\]</span>
+ 
+Use this formula to determine the time it takes for the ball to hit the ground after being dropped from height \(H\).</li>
+<li id="li-2823">Use your work in the preceding item, along with that in (a)-(e) above to determine the total amount of time the ball is in the air.</li>
+</ul>
+</li>
+</ol>
+<p id="p-2066">
+\item Suppose you play a game with a friend that involves rolling a standard six-sided die. Before a player can participate in the game, he or she must roll a six with the die. Assume that you roll first and that you and your friend take alternate rolls. In this exercise we will determine the probability that you roll the first six.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2824">Explain why the probability of rolling a six on any single roll (including your first turn) is \(\frac{1}{6}\).</li>
+<li id="li-2825">If you don't roll a six on your first turn, then in order for you to roll the first six on your second turn, both you and your friend had to fail to roll a six on your first turns, and then you had to succeed in rolling a six on your second turn. Explain why the probability of this event is 
+        
+<span class="displaymath" id="me-828">\[
+\left(\frac{5}{6}\right)\left(\frac{5}{6}\right)\left(\frac{1}{6}\right) = \left(\frac{5}{6}\right)^2\left(\frac{1}{6}\right).
+\]</span>
+</li>
+<li id="li-2826">Now suppose you fail to roll the first six on your second turn. Explain why the probability is 
+        
+<span class="displaymath" id="me-829">\[
+\left(\frac{5}{6}\right)\left(\frac{5}{6}\right)\left(\frac{5}{6}\right)\left(\frac{5}{6}\right)\left(\frac{1}{6}\right) = \left(\frac{5}{6}\right)^4\left(\frac{1}{6}\right)
+\]</span>
+ 
+        that you to roll the first six on your third turn.</li>
+<li id="li-2827">The probability of you rolling the first six is the probability that you roll the first six on your first turn plus the probability that you roll the first six on your second turn plus the probability that your roll the first six on your third turn, and so on. Explain why this probability is 
+        
+<span class="displaymath" id="me-830">\[
+\frac{1}{6} + \left(\frac{5}{6}\right)^2\left(\frac{1}{6}\right) +  \left(\frac{5}{6}\right)^4\left(\frac{1}{6}\right) + \cdots.
+\]</span>
+ 
+        Find the sum of this series and determine the probability that you roll the first six.</li>
+</ol>
+<p id="p-2067">
+\item The goal of a federal government stimulus package is to positively affect the economy. Economists and politicians quote numbers like “\(k\) million jobs and a net stimulus to the economy of \(n\) billion of dollars.” Where do they get these numbers? Let's consider one aspect of a stimulus package: tax cuts. Economists understand that tax cuts or rebates can result in long-term spending that is many times the amount of the rebate. For example, assume that for a typical person, 75% of her entire income is spent (that is, put back into the economy). Further, assume the government provides a tax cut or rebate that totals \(P\) dollars for each person.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2828">The tax cut of \(P\) dollars is income for its recipient. How much of this tax cut will be spent?
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-132" id="solution-132"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-132" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2068">
+Given that 75% of income is spent, this tax cut/rebate will result in \(0.75P\) dollars spent.
+</p></span></span>
+</li>
+<li id="li-2829">In this simple model, we will say that the spent portion of the tax cut/rebate from part (a) then becomes income for another person who, in turn, spends 75% of this income. After this ``second round" of spent income, how many total dollars have been added to the economy as a result of the original tax cut/rebate?
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-133" id="solution-133"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-133" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2069">
+The amount of money introduced into the economy is the amount \(0.75P\) after the original cut plus 75% of that income from spending. So the total amount of money added to the economy is
+</p>
+<span class="displaymath" id="me-831">\[
+0.75P + 0.75(0.75P) = 0.75P(1+0.75)
+\]</span><p id="p-2070">
+dollars.
+</p></span></span>
+</li>
+<li id="li-2830">This second round of spending becomes income for another group who spend 75% of this income, and so on. In economics this is called the <!--Style me with CSS--><em>multiplier effect</em>. Explain why an original tax cut/rebate of \(P\) dollars will result in multiplied spending of
+
+<span class="displaymath" id="me-832">\[
+0.75P(1+0.75+0.75^2+ \cdots ).
+\]</span>
+ 
+dollars.
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-134" id="solution-134"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-134" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2071">
+The \(n-1\)st round of spending will result in income of \(0.75^nP\) dollars, of which \(75\%\) or \(0.75^{n+1}P\) will be spent. So each round of spending adds a factor to the total amount, giving us a total amount of spending in the economy of
+</p>
+<span class="displaymath" id="me-833">\[
+0.75P + 0.75^2P + 0.75^2P + \cdots = 0.75P(1+0.75+0.75^2+ \cdots )
+\]</span><p id="p-2072">
+dollars.
+</p></span></span>
+</li>
+<li id="li-2831">Based on these assumptions, how much stimulus will a 200 billion dollar tax cut/rebate to consumers add to the economy, assuming consumer spending remains consistent forever.
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-135" id="solution-135"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-135" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2073">
+Using the sum of a geometric series with ratio \(0.75\) shows that
+</p>
+<span class="displaymath" id="md-89">\begin{align*}
+0.75P(1+0.75+0.75^2+ \cdots ) \amp = 0.75P\left( \frac{1}{1-0.75} \right)\\
+\amp = 0.75P(4)\\
+\amp = 3P.
+\end{align*}</span><p id="p-2074">
+So a stimulus of 200 billion dollars adds 600 billion dollars to the economy.
+</p></span></span>
+</li>
+</ol>
+<p id="p-2075">
+\item Like stimulus packages, home mortgages and foreclosures also impact the economy. A problem for many borrowers is the adjustable rate mortgage, in which the interest rate can change (and usually increases) over the duration of the loan, causing the monthly payments to increase beyond the ability of the borrower to pay. Most financial analysts recommend fixed rate loans, ones for which the monthly payments remain constant throughout the term of the loan. In this exercise we will analyze fixed rate loans.
+</p>
+<p id="p-2076">
+When most people buy a large ticket item like car or a house, they have to take out a loan to make the purchase. The loan is paid back in monthly installments until the entire amount of the loan, plus interest, is paid. With a loan, we borrow money, say \(P\) dollars (called the principal), and pay off the loan at an interest rate of \(r\)%. To pay back the loan we make regular monthly payments, some of which goes to pay off the principal and some of which is charged as interest. In most cases, the interest is computed based on the amount of principal that remains at the beginning of the month. We assume a fixed rate loan, that is one in which we make a constant monthly payment \(M\) on our loan, beginning in the original month of the loan.
+</p>
+<p id="p-2077">
+Suppose you want to buy a house. You have a certain amount of money saved to make a down payment, and you will borrow the rest to pay for the house. Of course, for the privilege of loaning you the money, the bank will charge you interest on this loan, so the amount you pay back to the bank is more than the amount you borrow. In fact, the amount you ultimately pay depends on three things: the amount you borrow (called the <!--Style me with CSS--><em>principal</em>), the interest rate, and the length of time you have to pay off the loan plus interest (called the <!--Style me with CSS--><em>duration</em> of the loan). For this example, we assume that the interest rate is fixed at \(r\)%.
+</p>
+<p id="p-2078">
+To pay off the loan, each month you make a payment of the same amount (called <!--Style me with CSS--><em>installments</em>). Suppose we borrow \(P\) dollars (our principal) and pay off the loan at an interest rate of \(r\)% with regular monthly installment payments of \(M\) dollars. So in month 1 of the loan, before we make any payments, our principal is \(P\) dollars. Our goal in this exercise is to find a formula that relates these three parameters to the time duration of the loan.
+</p>
+<p id="p-2079">
+We are charged interest every month at an annual rate of \(r\)%, so each month we pay \(\frac{r}{12}\)% interest on the principal that remains. Given that the original principal is \(P\) dollars, we will pay \(\left(\frac{0.0r}{12}\right)P\) dollars in interest on our first payment. Since we paid \(M\) dollars in total for our first payment, the remainder of the payment (\(M-\left(\frac{r}{12}\right)P\)) goes to pay down the principal. So the principal remaining after the first payment (let's call it \(P_1\)) is the original principal minus what we paid on the principal, or
+</p>
+<span class="displaymath" id="me-834">\[
+P_1 = P - \left( M - \left(\frac{r}{12}\right)P\right) = \left(1 + \frac{r}{12}\right)P - M.
+\]</span><p id="p-2080">
+As long as \(P_1\) is positive, we still have to keep making payments to pay off the loan.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2832">Recall that the amount of interest we pay each time depends on the principal that remains. How much interest, in terms of \(P_1\) and \(r\), do we pay in the second installment?
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-136" id="solution-136"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-136" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2081">
+\vs
+</p>
+<p id="p-2082">
+In the second installment, we are charged \(\left(\frac{r}{12}\right)P_1\) dollars in interest.
+</p>
+<p id="p-2083">
+\vs
+</p></span></span>
+</li>
+<li id="li-2833">How much of our second monthly installment goes to pay off the principal? What is the principal \(P_2\), or the balance of the loan, that we still have to pay off after making the second installment of the loan? Write your response in the form \(P_2 = ( \ )P_1 - ( \ )M\), where you fill in the parentheses.
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-137" id="solution-137"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-137" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2084">
+\vs
+The amount of our payment \(M\) that doesn't go toward interest is applied toward the principal. So we reduce our principal by \(M-\left(\frac{r}{12}\right)P_1\) dollars. Therefore, the balance of our loan after the second installment is
+</p>
+<span class="displaymath" id="me-835">\[
+P_2 = P_1 - \left( M - \left(\frac{r}{12}\right)P_1 \right) = \left(1 + \frac{r}{12}\right)P_1 - M.
+\]</span><p id="p-2085">
+\vs
+</p></span></span>
+</li>
+<li id="li-2834">Show that \(P_2 = \left(1 + \frac{r}{12}\right)^2P - \left[1 + \left(1+\frac{r}{12}\right)\right] M\).
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-138" id="solution-138"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-138" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2086">
+\vs
+</p>
+<p id="p-2087">
+We know \(P_2 = \left(1 + \frac{r}{12}\right)P_1 - M\), so we substitute for \(P_1\) and simplify:
+</p>
+<span class="displaymath" id="md-90">\begin{align*}
+P_2 \amp = \left(1 + \frac{r}{12}\right)P_1 - M\\
+\amp = \left(1 + \frac{r}{12}\right)\left[\left(1+\frac{r}{12}\right)P - M\right] - M\\
+\amp = \left(1 + \frac{r}{12}\right)^2P - \left[1 + \left(1+\frac{r}{12}\right)\right] M.
+\end{align*}</span><p id="p-2088">
+\vs
+</p></span></span>
+</li>
+<li id="li-2835">Let \(P_3\) be the amount of principal that remains after the third installment. Show that
+
+<span class="displaymath" id="me-836">\[
+P_3 = \left(1 + \frac{r}{12}\right)^3P - \left[1 + \left(1+\frac{r}{12}\right) + \left(1+\frac{r}{12}\right)^2 \right] M.
+\]</span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-139" id="solution-139"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-139" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2089">
+\vs
+</p>
+<p id="p-2090">
+For the third payment we are charged \(\left(\frac{r}{12}\right)P_2\) dollars in interest. So \(M-\left(\frac{r}{12}\right)P_2\) dollars goes toward paying down the principal. Then
+</p>
+<span class="displaymath" id="me-837">\[
+P_3 = P_2 - \left( M - \left(\frac{r}{12}\right)P_2 \right) = \left(1 + \frac{r}{12}\right)P_2 - M.
+\]</span><p id="p-2091">
+So \(P_3 = \left(1 + \frac{r}{12}\right)P_2 - M\), so we substitute for \(P_2\) and simplify:
+</p>
+<span class="displaymath" id="md-91">\begin{align*}
+P_3 \amp = \left(1 + \frac{r}{12}\right)P_2 - M\\
+\amp =  \left(1 + \frac{r}{12}\right)\left[\left(1 + \frac{r}{12}\right)^2P - \left[1 + \left(1+\frac{r}{12}\right)\right] M\right] - M\\
+\amp = \left(1 + \frac{r}{12}\right)^3P - \left[1 + \left(1+\frac{r}{12}\right) + \left(1+\frac{r}{12}\right)^2 \right] M.
+\end{align*}</span><p id="p-2092">
+\vs
+</p></span></span>
+</li>
+<li id="li-2836">If we continue in the manner described in the problems above, then the remaining principal of our loan after \(n\) installments is
+
+<span class="displaymath" id="eq_loan_1">\begin{equation}
+ P_n = \left(1 + \frac{r}{12}\right)^nP - \left[\displaystyle \sum_{k=0}^{n-1} \left(1+\frac{r}{12}\right)^k \right] M.
+\label{eq_loan_1}\tag{8.2.7}\end{equation}</span>
+ 
+
+This is a rather complicated formula and one that is difficult to use. However, we can simplify the sum if we recognize part of  it as a partial sum of a geometric series. Find a formula for the sum
+
+<span class="displaymath" id="eq_part_sum">\begin{equation}
+ \displaystyle \sum_{k=0}^{n-1} \left(1+\frac{r}{12}\right)^k.
+\label{eq_part_sum}\tag{8.2.8}\end{equation}</span>
+ 
+and then a general formula for \(P_n\) that does not involve a sum.
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-140" id="solution-140"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-140" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2093">
+The sum in <a knowl="./knowl/eq_part_sum.html" knowl-id="xref-eq_part_sum" alt="Equation 8.2.8 " title="Equation 8.2.8 ">(8.2.8)</a> is a partial sum of the geometric series with ratio \(1+\frac{r}{12}\). So formula <a knowl="./knowl/eq_8.2_part_sum_geometric.html" knowl-id="xref-eq_8.2_part_sum_geometric" alt="Equation 8.2.4 " title="Equation 8.2.4 ">(8.2.4)</a> shows that the partial sum \(\displaystyle \sum_{k=0}^{n-1} \left(1+\frac{r}{12}\right)^k\) is equal to
+</p>
+<span class="displaymath" id="md-92">\begin{align*}
+\displaystyle \sum_{k=0}^{n-1} \left(1+\frac{r}{12}\right)^k \amp = \frac{1-\left(1+\frac{r}{12}\right)^n}{1-\left(1+\frac{r}{12}\right)}\\
+\amp = \left(\frac{12}{r}\right) \left(\left(1+\frac{r}{12}\right)^n - 1\right).
+\end{align*}</span><p id="p-2094">
+Now we can determine that the remaining principal after \(n\) installments is
+</p>
+<span class="displaymath" id="md-93">\begin{align*}
+P_n \amp = \left(1 + \frac{r}{12}\right)^nP - \left[\left(\frac{12}{r}\right) \left(\left(1+\frac{r}{12}\right)^n - 1\right) \right] M\\
+\amp = P \left(1+\frac{r}{12}\right)^n - \left(\frac{12M}{r}\right) \left( \left(1+\frac{r}{12}\right)^n - 1\right).
+\end{align*}</span></span></span>
+</li>
+<li id="li-2837">It is usually more convenient to write our formula for \(P_n\) in terms of years rather than months. Show that \(P(t)\), the principal remaining after \(t\) years, can be written as
+
+<span class="displaymath" id="eq_loan2">\begin{equation}
+ P(t) = \left(P - \frac{12M}{r}\right)\left(1+\frac{r}{12}\right)^{12t} + \frac{12M}{r}.
+\label{eq_loan2}\tag{8.2.9}\end{equation}</span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-141" id="solution-141"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-141" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2095">
+To put our payments into a yearly context which is more convenient, we know that there are \(12t\) months in \(t\) years. So we can say that the principal \(P(t)\) remaining at the end of \(t\) years is
+</p>
+<span class="displaymath" id="eq_loan1">\begin{equation}
+ P(t) = P \left(1+\frac{r}{12}\right)^{12t} - \left(\frac{12M}{r}\right) \left( \left(1+\frac{r}{12}\right)^{12t} - 1\right)
+\label{eq_loan1}\tag{8.2.10}\end{equation}</span><p id="p-2096">
+which reduces to <a knowl="./knowl/eq_loan2.html" knowl-id="xref-eq_loan2" alt="Equation 8.2.9 " title="Equation 8.2.9 ">(8.2.9)</a>.
+</p></span></span>
+</li>
+<li id="li-2838">Now that we have analyzed the general loan situation, we apply formula <a knowl="./knowl/eq_loan2.html" knowl-id="xref-eq_loan2" alt="Equation 8.2.9 " title="Equation 8.2.9 ">(8.2.9)</a> to an actual loan. Suppose we charge $1,000 on a credit card for holiday expenses. If our credit card charges 20% interest and we pay only the minimum payment of $25 each month, how long will it take us to pay off the $1,000 charge? How much in total will we have paid on this $1,000 charge? How much total interest will we pay on this loan? 
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-142" id="solution-142"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-142" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2097">
+\vs
+</p>
+<p id="p-2098">
+Under these conditions, the principal in the account at the end of \(t\) years will be
+</p>
+<span class="displaymath" id="me-838">\[
+A(t) = \left(1000 - \frac{12(25)}{0.2}\right)\left(1+\frac{0.2}{12}\right)^{12t} + \frac{12(25)}{0.2}.
+\]</span><p id="p-2099">
+To determine how long it will take us to pay off the card, we need to find the time so that \(A(t) = 0\). When \(A(t) = 0\) we have
+</p>
+<span class="displaymath" id="md-94">\begin{align*}
+0 \amp = \left(1000 - \frac{12(25)}{0.2}\right)\left(1+\frac{0.2}{12}\right)^{12t} + \frac{12(25)}{0.2}\\
+0	\amp = (-500)(1.0167)^{12t} + 1500\\
+500(1.0167)^{12t} \amp = 1500\\
+(1.0167)^{12t} \amp = 3\\
+12t \ln(1.0167) \amp = \ln(3)\\
+t \amp = \frac{\ln(3)}{12 \ln(1.0167)}\\
+t \amp \approx 5.53.
+\end{align*}</span><p id="p-2100">
+So it would take over 5.5 years to pay off the debt. At $25 per month, we will have paid approximately \(12 \times 5.5 \times 25 = 1,659\) dollars on our original $1,000 charge. In other words, we pay $659 dollars in interest on our $1000 loan. Pretty steep. This is why it is important to pay off credit cards.
+</p>
+<p id="p-2101">
+\vs
+</p></span></span>
+</li>
+<li id="li-2839">Now we consider larger loans, e.g. automobile loans or mortgages, in which we borrow a specified amount of money over a specified period of time. In this situation, we need to determine the amount of the monthly payment we need to make to pay off the loan in the specified amount of time.  In this situation, we need to find the monthly payment \(M\) that will take our outstanding principal to \(0\) in the specified amount of time.  To do so, we want to know the value of \(M\) that makes \(P(t) = 0\) in formula <a knowl="./knowl/eq_loan2.html" knowl-id="xref-eq_loan2" alt="Equation 8.2.9 " title="Equation 8.2.9 ">(8.2.9)</a>.  If we set \(P(t) = 0\) and solve for \(M\), it follows that
+
+<span class="displaymath" id="me-839">\[
+
+M = \frac{rP \left(1+\frac{r}{12}\right)^{12t}}{12\left(\left(1+\frac{r}{12}\right)^{12t} - 1 \right)}.
+
+\]</span><ul style="list-style-type: disc;">
+<li id="li-2840">Suppose we want to borrow $15,000 to buy a car. We take out a 5 year loan at 6.25%. What will our monthly payments be? How much in total will we have paid for this $15,000 car? How much total interest will we pay on this loan?
+
+
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-143" id="solution-143"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-143" style="display: none;" class="tex2jax_ignore"><span class="solution"><p id="p-2102">
+\vs
+</p>
+<p id="p-2103">
+We need to find the value of \(M\) in our formula:
+</p>
+<span class="displaymath" id="me-840">\[
+M = \frac{rP \left(1+\frac{r}{12}\right)^{12t}}{12\left(\left(1+\frac{r}{12}\right)^{12t} - 1 \right)} = \frac{(0.0625)(15000)\left(1+\frac{0.0625}{12}\right)^{60}}{12\left(\left(1+\frac{0.0625}{12}\right)^{60} - 1 \right)} \approx 291.74.
+\]</span><p id="p-2104">
+So we need to pay $291.74 each month to complete the loan in 5 years. During that time we spend a total of \(12 \times 5 \times 291.74 = 17,504.40\) dollars on the loan or $2,504.40 in interest.
+</p>
+<p id="p-2105">
+\vs
+</p></span></span>
+</li>
+<li id="li-2841">Suppose you charge your books for winter semester on your credit card. The total charge comes to $525. If your credit card has an interest rate of 18% and you pay $20 per month on the card, how long will it take before you pay off this debt? How much total interest will you pay?</li>
+<li id="li-2842">Say you need to borrow $100,000 to buy a house. You have several options on the loan:
+	   <ul style="list-style-type: circle;">
+<li id="li-2843">30 years at 6.5%</li>
+<li id="li-2844">25 years at 7.5%</li>
+<li id="li-2845">15 years at 8.25%.</li>
+</ul>
+<ol style="list-style-type: lower-alpha;">
+<li id="li-2846">What are the monthly payments for each loan?</li>
+<li id="li-2847">Which mortgage is ultimately the best deal (assuming you can afford the monthly payments)? In other words, for which loan do you pay the least amount of total interest?</li>
+</ol>
+</li>
+</ul>
+</li>
+</ol>
+<p id="p-2106">
+\end{exercises}
+</p>
+<p id="p-2107">
+\afterexercises
+</p>
+<p id="p-2108">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>

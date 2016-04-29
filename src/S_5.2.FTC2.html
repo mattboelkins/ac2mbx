@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<!--**************************************-->
+<!--* Generated from MathBook XML source *-->
+<!--*    on 2016-04-29T09:39:45-07:00    *-->
+<!--*                                    *-->
+<!--*   http://mathbook.pugetsound.edu   *-->
+<!--*                                    *-->
+<!--**************************************-->
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The Second Fundamental Theorem of Calculus</title>
+<meta name="Keywords" content="Authored in MathBook XML">
+<meta name="viewport" content="width=device-width,  initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [['\\(','\\)']],
+    },
+    TeX: {
+        extensions: ["AMSmath.js", "AMSsymbols.js", "extpfeil.js", "autobold.js", "https://aimath.org/mathbook/mathjaxknowl.js", ],
+        equationNumbers: { autoNumber: "none",
+                           useLabelIds: true,
+                           // JS comment, XML CDATA protect XHTML quality of file
+                           // if removed in XSL, use entities
+                           //<![CDATA[
+                           formatID: function (n) {return String(n).replace(/[:'"<>&]/g,"")},
+                           //]]>
+                         },
+        TagSide: "right",
+        TagIndent: ".8em",
+    },
+    "HTML-CSS": {
+        scale: 88,
+    },
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML-full"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/static/jquery.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://sagecell.sagemath.org/embedded_sagecell.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64">
+$(function () {
+    // Make *any* div with class 'sage-compute' an executable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-compute',
+                           linked: true,
+                           evalButtonText: 'Evaluate'});
+});
+$(function () {
+    // Make *any* div with class 'sage-display' a visible, uneditable Sage cell
+    sagecell.makeSagecell({inputLocation: 'div.sage-display',
+                           editor: 'codemirror-readonly',
+                           hide: ['evalButton', 'editorToggle', 'language']});
+});
+    </script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://code.jquery.com/jquery-latest.min.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/knowlstyle.css" rel="stylesheet" type="text/css">
+<script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" type="text/javascript" src="https://aimath.org/knowl.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.sticky.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/lib/jquery.espy.min.js"></script><script xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" src="https://aimath.org/mathbook/js/Mathbook.js"></script><link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic%7CSource+Code+Pro:400" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/stylesheets/mathbook-3.css" rel="stylesheet" type="text/css">
+<link xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" href="https://aimath.org/mathbook/mathbook-add-on.css" rel="stylesheet" type="text/css">
+</head>
+<body class="mathbook-book has-toc has-sidebar-left">
+<div xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" style="display:none;">\(\renewcommand{\theacti}{\thechapter.\arabic{acti}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\saveCount}{\setcounter{lastenum}{\value{enumi}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\restoreCount}{\setcounter{enumi}{\value{lastenum}}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\be}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ee}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bei}{\begin{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eei}{\end{numlist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ba}{\begin{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\ea}{\end{enumerate}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bal}{\begin{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\eal}{\end{alphalist2}}
+\renewcommand{\arraystretch}{1.5}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+\newcommand{\btl}{\begin{thmlist}}
+\newcommand{\etl}{\end{thmlist}}
+\newcommand{\bex}{\begin{center}\underline{\hspace{5.0in}}\end{center} \begin{example}}
+\newcommand{\eex}{\end{example} \textbf{Solution.}~~}
+\newcommand{\afterex}{\begin{center}\underline{\hspace{5.0in}}\end{center}}
+\newcommand{\afterexercises}{\nin \hrulefill \vfill \ }
+\newcommand{\boxwidth}{5.25in}
+\newcommand{\ds}{\displaystyle}
+\newcommand{\nin}{}
+\newcommand{\tr}{\vspace{0.5in}}
+\newcommand{\lr}{\vspace{1.0in}}
+\newcommand{\mr}{\vspace{2.0in}}
+\newcommand{\br}{\vspace{3.0in}}
+\newcommand{\afterpa}{\hfill $\bowtie$}
+\newcommand{\aftera}{\hfill $\lhd$}
+\newcommand{\T}{}
+\newcommand{\B}{\rule[-1.2ex]{0pt}{0pt}}
+\newcommand{\vs}{\vspace{0.1in}}
+\newcommand{\solution}{\textbf{Solution.}}
+\newcommand{\lt}{ &lt; }
+\newcommand{\gt}{ &gt; }
+\newcommand{\amp}{ &amp; }
+\)</div>
+<header id="masthead"><div class="banner"><div class="container">
+<a id="logo-link" href=""></a><div class="title-container">
+<h1 class="heading"><span class="title">Active Calculus </span></h1>
+<p class="byline">Matthew Boelkins, Lead Author and Editor</p>
+</div>
+</div></div>
+<nav xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="primary-navbar"><div class="container">
+<div class="navbar-top-buttons">
+<button class="sidebar-left-toggle-button button active">Contents</button><div class="tree-nav toolbar toolbar-divisor-3">
+<a class="previous-button toolbar-item button" href="S_5.1.AntiDGraphs.html">Previous</a><a class="up-button button toolbar-item" href="C_5.html">Up</a><a class="next-button button toolbar-item" href="S_5.3.Substitution.html">Next</a>
+</div>
+<button class="sidebar-right-toggle-button button active">Annotations</button>
+</div>
+<div class="navbar-bottom-buttons toolbar toolbar-divisor-4">
+<button class="sidebar-left-toggle-button button toolbar-item active">Contents</button><a class="previous-button toolbar-item button" href="S_5.1.AntiDGraphs.html">Previous</a><a class="up-button button toolbar-item" href="C_5.html">Up</a><a class="next-button button toolbar-item" href="S_5.3.Substitution.html">Next</a>
+</div>
+</div></nav></header><div class="page">
+<aside xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" id="sidebar-left" class="sidebar"><div class="sidebar-content">
+<nav id="toc"><h2 class="link"><a href="frontmatter-1.html"><span class="title">Front Matter</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="C_1.html"><span class="codenumber">1</span><span class="title">Understanding the Derivative</span></a></h2>
+<ul>
+<li><a href="S_1.1.Velocity.html">How do we measure velocity?</a></li>
+<li><a href="S_1.2.Limits.html">The notion of limit</a></li>
+<li><a href="S_1.3.DerivativePt.html">The derivative of a function at a point</a></li>
+<li><a href="S_1.4.DerivativeFxn.html">The derivative function</a></li>
+<li><a href="S_1.5.Units.html">Interpreting, estimating, and using the derivative</a></li>
+<li><a href="S_1.6.SecondD.html">The second derivative</a></li>
+<li><a href="S_1.7.LimContDiff.html">Limits, Continuity, and Differentiability</a></li>
+<li><a href="S_1.8.TanLineApprox.html">The Tangent Line Approximation</a></li>
+</ul>
+<h2 class="link"><a href="C_2.html"><span class="codenumber">2</span><span class="title">Computing Derivatives</span></a></h2>
+<ul>
+<li><a href="S_2.1.ElemRules.html">Elementary derivative rules</a></li>
+<li><a href="S_2.2.SinCos.html">The sine and cosine functions</a></li>
+<li><a href="S_2.3.ProdQuot.html">The product and quotient rules</a></li>
+<li><a href="S_2.4.OtherTrig.html">Derivatives of other trigonometric functions</a></li>
+<li><a href="S_2.5.Chain.html">The chain rule</a></li>
+<li><a href="S_2.6.Inverse.html">Derivatives of Inverse Functions</a></li>
+<li><a href="S_2.7.Implicit.html">Derivatives of Functions Given Implicitly</a></li>
+<li><a href="S_2.8.LHR.html">Using Derivatives to Evaluate Limits</a></li>
+</ul>
+<h2 class="link"><a href="C_3.html"><span class="codenumber">3</span><span class="title">Using Derivatives</span></a></h2>
+<ul>
+<li><a href="S_3.1.Tests.html">Using derivatives to identify extreme values</a></li>
+<li><a href="S_3.2.Families.html">Using derivatives to describe families of functions</a></li>
+<li><a href="S_3.3.Optimization.html">Global Optimization</a></li>
+<li><a href="S_3.4.AppliedOpt.html">Applied Optimization</a></li>
+<li><a href="S_3.5.RelatedRates.html">Related Rates</a></li>
+</ul>
+<h2 class="link"><a href="C_4.html"><span class="codenumber">4</span><span class="title">The Definite Integral</span></a></h2>
+<ul>
+<li><a href="S_4.1.VelocityDistance.html">Determining distance traveled from velocity</a></li>
+<li><a href="S_4.2.Riemann.html">Riemann Sums</a></li>
+<li><a href="S_4.3.DefiniteIntegral.html">The Definite Integral</a></li>
+<li><a href="S_4.4.FTC.html">The Fundamental Theorem of Calculus</a></li>
+</ul>
+<h2 class="link active"><a href="C_5.html"><span class="codenumber">5</span><span class="title">Finding Antiderivatives and Evaluating Integrals</span></a></h2>
+<ul>
+<li><a href="S_5.1.AntiDGraphs.html">Constructing Accurate Graphs of Antiderivatives</a></li>
+<li><a href="S_5.2.FTC2.html" class="active">The Second Fundamental Theorem of Calculus</a></li>
+<li><a href="S_5.3.Substitution.html">Integration by Substitution</a></li>
+<li><a href="S_5.4.Parts.html">Integration by Parts</a></li>
+<li><a href="S_5.5.OtherOpt.html">Other Options for Finding Algebraic Antiderivatives</a></li>
+<li><a href="S_5.6.NumInt.html">Numerical Integration</a></li>
+</ul>
+<h2 class="link"><a href="C_6.html"><span class="codenumber">6</span><span class="title">Using Definite Integrals</span></a></h2>
+<ul>
+<li><a href="S_6.1.Area.html">Using Definite Integrals to Find Area and Length</a></li>
+<li><a href="S_6.1.Volume.html">Using Definite Integrals to Find Volume</a></li>
+<li><a href="S_6.3.Mass.html">Density, Mass, and Center of Mass</a></li>
+<li><a href="S_6.4.Physics.html">Physics Applications:  Work, Force, and Pressure</a></li>
+<li><a href="S_6.5.Improper.html">Improper Integrals</a></li>
+</ul>
+<h2 class="link"><a href="C_7.html"><span class="codenumber">7</span><span class="title">Differential Equations</span></a></h2>
+<ul>
+<li><a href="S_7.1.DEIntro.html">An Introduction to Differential Equations</a></li>
+<li><a href="S_7.2.Qualitative.html">Qualitative behavior of solutions to DEs</a></li>
+<li><a href="S_7.3.Euler.html">Euler's method</a></li>
+<li><a href="S_7.4.Separable.html">Separable differential equations</a></li>
+<li><a href="S_7.5.Modeling.html">Modeling with differential equations</a></li>
+<li><a href="S_7.6.Logistic.html">Population Growth and the Logistic Equation</a></li>
+</ul>
+<h2 class="link"><a href="C_8.html"><span class="codenumber">8</span><span class="title">Sequences and Series</span></a></h2>
+<ul>
+<li><a href="S_8.1.Sequences.html">Sequences</a></li>
+<li><a href="S_8.2.Geometric.html">Geometric Series</a></li>
+<li><a href="S_8.3.Series.html">Series of Real Numbers</a></li>
+<li><a href="S_8.4.Alternating.html">Alternating Series</a></li>
+<li><a href="S_8.5.Taylor.html">Taylor Polynomials and Taylor Series</a></li>
+<li><a href="S_8.6.PowerSeries.html">Power Series</a></li>
+</ul>
+<h2 class="link"><a href="C_9.IntegralTable.html"><span class="codenumber">9</span><span class="title">A Short Table of Integrals</span></a></h2>
+<ul></ul>
+<h2 class="link"><a href="backmatter-1.html"><span class="title">Back Matter</span></a></h2>
+<ul><li><a href="index-part-1.html">Index</a></li></ul></nav><div class="extras"><nav><a class="mathbook-link" href="https://mathbook.pugetsound.edu">Authored in MathBook XML</a><a href="https://www.mathjax.org"><img title="Powered by MathJax" src="https://cdn.mathjax.org/mathjax/badge/badge.gif" border="0" alt="Powered by MathJax"></a></nav></div>
+</div></aside><main class="main"><div id="content" class="mathbook-content"><section xmlns:b64="https://github.com/ilyakharlamov/xslt_base64" class="section" id="S_5.2.FTC2"><header><h1 class="heading" alt="Section 5.2 The Second Fundamental Theorem of Calculus" title="Section 5.2 The Second Fundamental Theorem of Calculus">
+<span class="type">Section</span><span class="codenumber">5.2</span><span class="title">The Second Fundamental Theorem of Calculus</span><a href="S_5.2.FTC2.html" class="permalink">¶ permalink</a>
+</h1></header><article class="introduction" id="introduction-27"><h5 class="heading"></h5>
+<p id="p-1169">
+
+{<!--Style me with CSS--><em>In this section, we strive to understand the ideas generated by the following important questions:</em>
+</p>
+<ul style="list-style-type: disc;">
+<li id="li-1944">How does the integral function \(A(x) = \int_1^x f(t) \, dt\) define an antiderivative of \(f\)?</li>
+<li id="li-1945">What is the statement of the Second Fundamental Theorem of Calculus?</li>
+<li id="li-1946">How do the First and Second Fundamental Theorems of Calculus enable us to formally see how differentiation and integration are almost inverse processes?</li>
+</ul>
+<p id="p-1170">
+} 
+</p></article><section class="subsection" id="subsection-83"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">5.2.1</span><span class="title">Introduction</span>
+</h1></header><p id="p-1171">
+In <a href="S_4.4.FTC.html" alt="Section 4.4 The Fundamental Theorem of Calculus" title="Section 4.4 The Fundamental Theorem of Calculus">Section 4.4</a>, we learned the Fundamental Theorem of Calculus (FTC), which from here forward will be referred to as the <!--Style me with CSS--><em>First</em> Fundamental Theorem of Calculus\knownindex{\lt main&gt;Fundamental Theorem of Calculus\lt /main&gt;\lt sub&gt;First\lt /sub&gt;}, as in this section we develop a corresponding result that follows it. In particular, recall that the First FTC tells us that if \(f\) is a continuous function on \([a,b]\) and \(F\) is any antiderivative of \(f\) (that is, \(F' = f\)), then
+</p>
+<span class="displaymath" id="me-494">\[
+\int_a^b f(x) \, dx = F(b) - F(a).
+\]</span><p id="p-1172">
+We have typically used this result in two settings: (1) where \(f\) is a function whose graph we know and for which we can compute the exact area bounded by \(f\) on a certain interval \([a,b]\), we can compute the change in an antiderivative \(F\) over the interval; and (2) where \(f\) is a function for which it is easy to determine an algebraic formula for an antiderivative, we may evaluate the integral exactly and hence determine the net-signed area bounded by the function on the interval. For the former, see Preview <a href="S_5.1.AntiDGraphs.html#PA_5.1" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> or <a knowl="./knowl/A_5.1.1.html" knowl-id="xref-A_5.1.1" alt="Exercise 5.1.2 " title="Exercise 5.1.2 ">Activity 5.1.2</a>. For the latter, we can easily evaluate exactly integrals such as
+</p>
+<span class="displaymath" id="me-495">\[
+\int_1^4 x^2 \, dx,
+\]</span><p id="p-1173">
+since we know that the function \(F(x) = \frac{1}{3}x^3\) is an antiderivative of \(f(x) = x^2\). Thus,
+</p>
+<span class="displaymath" id="md-56">\begin{align*}
+\int_1^4 x^2 \, dx \amp  = \amp  \frac{1}{3}x^3 \bigg\vert_1^4\\
+\amp  = \amp  \frac{1}{3}(4)^3 - \frac{1}{3}(1)^3\\
+\amp  = \amp  21.
+\end{align*}</span><p id="p-1174">
+Here we see that the First FTC can be viewed from at least two perspectives: first, as a tool to find the difference \(F(b) - F(a)\) for an antiderivative \(F\) of the integrand \(f\). In this situation, we need to be able to determine the value of the integral \(\int_a^b f(x) \, dx\) exactly, perhaps through known geometric formulas for area. It is possible that we may not have a formula for \(F\) itself. From a second perspective, the First FTC provides a way to find the exact value of a definite integral, and hence a certain net-signed area exactly, by finding an antiderivative of the integrand and evaluating its total change over the interval. In this latter case, we need to know a formula for the antiderivative \(F\), as this enables us to compute net-signed areas exactly through definite integrals, as demonstrated in <a knowl="./knowl/F_5.2.Intro.html" knowl-id="xref-F_5.2.Intro" alt="Figure 5.2.1 " title="Figure 5.2.1 ">Figure 5.2.1</a>.
+</p>
+<figure class="figure-like" id="F_5.2.Intro"><img width="100%" src="images/5_2_Intro.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.2.1</span>At left, the graph of \(f(x) = x^2\) on the interval \([1,4]\) and the area it bounds.  At right, the antiderivative function \(F(x) = \frac{1}{3}x^3\), whose total change on \([1,4]\) is the value of the definite integral at left.</figcaption></figure><p id="p-1175">
+We recall further that the value of a definite integral may have additional meaning depending on context: change in position when the integrand is a velocity function, total pollutant leaked from a tank when the integrand is the rate at which pollution is leaking, or other total changes that correspond to a given rate function that is the integrand. In addition, the value of the definite integral is always connected to the average value of a continuous function on a given interval: \(f_{\mbox{\tiny{AVG}} [a,b]} = \frac{1}{b-a} \int_a^b f(x) \, dx\).
+</p>
+<p id="p-1176">
+Next, remember that in the last part of <a href="S_5.1.AntiDGraphs.html" alt="Section 5.1 Constructing Accurate Graphs of Antiderivatives" title="Section 5.1 Constructing Accurate Graphs of Antiderivatives">Section 5.1</a>, we studied integral functions of the form \(A(x) = \int_c^x f(t) \, dt\). <a knowl="./knowl/F_5.1.IntFxn.html" knowl-id="xref-F_5.1.IntFxn" alt="Figure 5.1.6 " title="Figure 5.1.6 ">Figure 5.1.6</a> is a particularly important image to keep in mind as we work with integral functions, and the corresponding java applet at \href{http://gvsu.edu/s/cz}{<tt class="code-inline">http://gvsu.edu/s/cz</tt>} is likewise foundational to our understanding of the function \(A\). In what follows, we use the First FTC to gain additional understanding of the function \(A(x) = \int_c^x f(t) \, dt\), where the integrand \(f\) is given (either through a graph or a formula), and \(c\) is a constant. In particular, we investigate further the special nature of the relationship between the functions \(A\) and \(f\).
+</p>
+<article class="paragraphs" id="PA_5.2"><h5 class="heading"><span class="title">Preview Activity</span></h5>
+<p id="p-1177">
+Consider the function \(A\) defined by the rule
+</p>
+<span class="displaymath" id="me-496">\[
+A(x) = \int_1^x f(t) \, dt,
+\]</span><p id="p-1178">
+where \(f(t) = 4-2t\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1947">Compute \(A(1)\) and \(A(2)\) exactly.</li>
+<li id="li-1948">Use the First Fundamental Theorem of Calculus to find an equivalent formula for \(A(x)\) that does not involve integrals.  That is, use the first FTC to evaluate \(\int_1^x (4-2t) \, dt\).</li>
+<li id="li-1949">Observe that \(f\) is a linear function; what kind of function is \(A\)?</li>
+<li id="li-1950">Using the formula you found in (b) that does not involve integrals, compute \(A'(x)\).</li>
+<li id="li-1951">While we have defined \(f\) by the rule \(f(t) = 4-2t\), it is equivalent to say that \(f\) is given by the rule \(f(x) = 4 - 2x\).  What do you observe about the relationship between \(A\) and \(f\)?</li>
+</ol></article></section><section class="subsection" id="subsection-84"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">5.2.2</span><span class="title">The Second Fundamental Theorem of Calculus</span>
+</h1></header><p id="p-1179">
+\knownindex{\lt main&gt;Fundamental Theorem of Calculus\lt /main&gt;\lt sub&gt;Second\lt /sub&gt;}
+</p>
+<p id="p-1180">
+The result of Preview <a href="S_5.2.FTC2.html#PA_5.2" alt="Paragraphs  Preview Activity" title="Paragraphs  Preview Activity">Activity </a> is not particular to the function \(f(t) = 4-2t\), nor to the choice of “\(1\)” as the lower bound in the integral that defines the function \(A\). For instance, if we let \(f(t) = \cos(t) - t\) and set \(A(x) = \int_2^x f(t) \, dt\), then we can determine a formula for \(A\) without integrals by the First FTC. Specifically,
+</p>
+<span class="displaymath" id="md-57">\begin{align*}
+A(x) \amp  = \amp  \int_2^x (\cos(t) - t) \, dt\\
+\amp  = \amp  \sin(t) - \frac{1}{2}t^2 \bigg\vert_2^x\\
+\amp  = \amp  \sin(x) -  \frac{1}{2}x^2 - \left(\sin(2) - 2 \right).
+\end{align*}</span><p id="p-1181">
+Differentiating \(A(x)\), since \((\sin(2) - 2)\) is constant, it follows that
+</p>
+<span class="displaymath" id="me-497">\[
+A'(x) = \cos(x) - x,
+\]</span><p id="p-1182">
+and thus we see that \(A'(x) = f(x)\). This tells us that for this particular choice of \(f\), \(A\) is an antiderivative of \(f\). More specifically, since \(A(2) = \int_2^2 f(t) \, dt = 0\), \(A\) is the only antiderivative of \(f\) for which \(A(2) = 0\).
+</p>
+<p id="p-1183">
+In general, if \(f\) is any continuous function, and we define the function \(A\) by the rule
+</p>
+<span class="displaymath" id="me-498">\[
+A(x) = \int_c^x f(t) \, dt,
+\]</span><p id="p-1184">
+where \(c\) is an arbitrary constant, then we can show that \(A\) is an antiderivative of \(f\). To see why, let's demonstrate that \(A'(x) = f(x)\) by using the limit definition of the derivative. Doing so, we observe that
+</p>
+<span class="displaymath" id="md-58">\begin{align*}
+A'(x) \amp = \lim_{h \to 0} \frac{A(x+h) - A(x)}{h} \notag\\
+\amp = \lim_{h \to 0} \frac{\int_c^{x+h} f(t) \, dt - \int_c^x f(t) \, dt}{h} \notag\\
+\amp = \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h}, 
+\end{align*}</span><p id="p-1185">
+where Equation <a knowl="./knowl/md-58.html" knowl-id="xref-E_FTC2limdef" alt="Equation 5.2.0 " title="Equation 5.2.0 ">(5.2.0)</a> in the preceding chain follows from the fact that \(\int_c^x f(t) \,dt + \int_x^{x+h} f(t) \, dt = \int_c^{x+h} f(t) \, dt\). Now, observe that for small values of \(h\),
+</p>
+<span class="displaymath" id="me-499">\[
+\int_x^{x+h} f(t) \, dt \approx f(x) \cdot h,
+\]</span><p id="p-1186">
+by a simple left-hand approximation of the integral. Thus, as we take the limit in Equation <a knowl="./knowl/md-58.html" knowl-id="xref-E_FTC2limdef" alt="Equation 5.2.0 " title="Equation 5.2.0 ">(5.2.0)</a>, it follows that
+</p>
+<span class="displaymath" id="me-500">\[
+A'(x) =  \lim_{h \to 0} \frac{\int_x^{x+h} f(t) \, dt}{h} = \lim_{h \to 0} \frac{f(x) \cdot h}{h} = f(x).
+\]</span><p id="p-1187">
+Hence, \(A\) is indeed an antiderivative of \(f\). In addition, \(A(c) = \int_c^c f(t) \, dt = 0.\) The preceding argument demonstrates the truth of the Second Fundamental Theorem of Calculus, which we state as follows.
+</p>
+<p id="p-1188">
+
+{
+Theorem. (Second FTC) If \(f\) is a continuous function and \(c\) is any constant, then \(f\) has a unique antiderivative \(A\) that satisfies \(A(c) = 0\), and that antiderivative is given by the rule \(A(x) = \int_c^x f(t) \, dt\).
+} 
+
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_5.2.1" id="A_5.2.1"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">5.2.2</span>
+</h5></a></div>
+<div id="hk-A_5.2.1" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1189">
+Suppose that \(f\) is the function given in <a knowl="./knowl/F_5.2.Act1.html" knowl-id="xref-F_5.2.Act1" alt="Figure 5.2.3 " title="Figure 5.2.3 ">Figure 5.2.3</a> and that \(f\) is a piecewise function whose parts are either portions of lines or portions of circles, as pictured.
+</p>
+<figure class="figure-like" id="F_5.2.Act1"><img width="100%" src="images/5_2_Act1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.2.3</span>At left, the graph of \(y = f(x)\).  At right, axes for sketching \(y = A(x)\).</figcaption></figure><p id="p-1190">
+In addition, let \(A\) be the function defined by the rule \(A(x) = \int_2^x f(t) \, dt\).
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1952">What does the Second FTC tell us about the relationship between \(A\) and \(f\)?</li>
+<li id="li-1953">Compute \(A(1)\) and \(A(3)\) exactly.</li>
+<li id="li-1954">Sketch a precise graph of \(y = A(x)\) on the axes at right that accurately reflects where \(A\) is increasing and decreasing, where \(A\) is concave up and concave down, and the exact values of \(A\) at \(x = 0, 1, \ldots, 7\).</li>
+<li id="li-1955">How is \(A\) similar to, but different from, the function \(F\) that you found in <a knowl="./knowl/A_5.1.1.html" knowl-id="xref-A_5.1.1" alt="Exercise 5.1.2 " title="Exercise 5.1.2 ">Activity 5.1.2</a>?</li>
+<li id="li-1956">With as little additional work as possible, sketch precise graphs of the functions \(B(x) = \int_3^x f(t) \, dt\) and \(C(x) = \int_1^x f(t) \, dt\).  Justify your results with at least one sentence of explanation.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-157" id="hint-157"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-157" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1957">If you don't recall it, review the statement of the Second FTC above.</li>
+<li id="li-1958">Note that \(A(1)= \int_2^1 f(t) \, dt\).</li>
+<li id="li-1959">Don't miss our key conclusion from (a).</li>
+<li id="li-1960">Compare the values of \(A(1)\) and \(F(1)\).</li>
+<li id="li-1961">What does the Second FTC tell us about the relationship between \(B\) and \(f\)?</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-158" id="hint-158"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-158" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1962">Review the statement of the Second FTC above; what does that theorem tell you about \(A'\)?</li>
+<li id="li-1963">Note that \(A(1)= \int_2^1 f(t) \, dt\); don't forget that \(\int_2^1 f(t) \, dt = -\int_1^2 f(t) \, dt\).</li>
+<li id="li-1964">Don't miss our key conclusion from (a), which enables us to gain information from the derivative of \(A\) about where \(A\) is increasing, decreasing, concave up, and concave down.</li>
+<li id="li-1965">Compare the values of \(A(1)\) and \(F(1)\); note that \(F\) could be equivalently defined by the rule \(F(x) = \int_0^x f(t) \, dt - 1\).</li>
+<li id="li-1966">What does the Second FTC tell us about the relationship between \(B\) and \(f\)?  Between \(C\) and \(f\)?  Note, too, that we can write \(B(x) = F(x) - F(3)\), where \(F\) is any antiderivative of \(f\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-77" id="solution-77"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-77" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1967">By the Second FTC, \(A'(x) = f(x)\).</li>
+<li id="li-1968">Since \(A(1)= \int_2^1 f(t) \, dt = -\int_1^2 f(t) \, dt\), it follows \(A(1) = -\frac{\pi}{4}\).</li>
+<li id="li-1969">Note that \(A\) is increasing wherever \(f\) is positive, and \(A\) is CCU wherever \(f\) is increasing.  Similar conclusions follow for \(A\) being decreasing and/or concave down.  Moreover, \(A(2) = 0\), \(A(3) = -0.5\), \(A(4) = -1.5\), \(A(5) = -2\), \(A(6) = -2 + \frac{\pi}{4}\), and \(A(7) = -2 + \frac{\pi}{2}\).</li>
+<li id="li-1970">In our current example, \(A\) is an antiderivative of \(f\) that satisfies \(A(0) = -\frac{1}{2} - \frac{\pi}{4}\).  Our earlier work with \(F\) showed that \(F\) is an antiderivative of \(F\) that satisfied \(F(0) = -1\).  Since \(F\) and \(A\) are both antiderivatives of \(f\), they differ by a constant, and that constant is \(-1 - (-\frac{1}{2} - \frac{\pi}{4}) = \frac{\pi}{4} - \frac{1}{2}\).</li>
+<li id="li-1971">The Second FTC tells us that \(B' = f\) and \(C' = f\).  Thus, \(B\) and \(C\) are each antiderivatives of \(f\), have the same shape as \(A\) and \(F\), and each differ from \(A\) by just a constant.  Observing that \(B(3) = 0\) and \(C(1) = 0\) enables us to easily sketch these shifted versions of \(A\).</li>
+</ol></span></span></section><section class="subsection" id="subsection-85"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">5.2.3</span><span class="title">Understanding Integral Functions</span>
+</h1></header><p id="p-1191">
+The Second FTC provides us with a means to construct an antiderivative of any continuous function. In particular, if we are given a continuous function \(g\) and wish to find an antiderivative of \(G\), we can now say that
+</p>
+<span class="displaymath" id="me-501">\[
+G(x) = \int_c^x g(t) \, dt
+\]</span><p id="p-1192">
+provides the rule for such an antiderivative, and moreover that \(G(c) = 0\). Note especially that we know that \(G'(x) = g(x)\). We sometimes want to write this relationship between \(G\) and \(g\) from a different notational perspective. In particular, observe that
+</p>
+<span class="displaymath" id="E_diffint">\begin{equation}
+ \frac{d}{dx} \left[ \int_c^x g(t) \, dt \right] = g(x).
+\label{E_diffint}\tag{5.2.1}\end{equation}</span><p id="p-1193">
+This result can be particularly useful when we're given an integral function such as \(G\) and wish to understand properties of its graph by recognizing that \(G'(x) = g(x)\), while not necessarily being able to exactly evaluate the definite integral \(\int_c^x g(t) \, dt\). To see how this is the case, we consider the following example.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-example-14" id="example-14"><article class="example-like"><h5 class="heading">
+<span class="type">Example</span><span class="codenumber">5.2.4</span>
+</h5></article></a></div>
+<div id="hk-example-14" style="display: none;" class="tex2jax_ignore"><article class="example-like"><p id="p-1194">
+Investigate the behavior of the integral function
+</p>
+<span class="displaymath" id="me-502">\[
+E(x) = \int_0^x e^{-t^2} \, dt.
+\]</span></article></div>
+<p id="p-1195">
+Solution.    
+\(E\) is closely related to the well known <!--Style me with CSS--><em>error function</em>\knownindex{\lt main&gt;error functin\lt /main&gt;}<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-fn-32" id="fn-32"><sup> 1 </sup></a></span><span id="hk-fn-32" style="display: none;" class="tex2jax_ignore"><span class="footnote">The error function is defined by the rule \(\mbox{erf} (x) = \frac{2}{\sqrt{\pi}} \int_0^x e^{-t^2} \,dt\) and has the key property that \(0 \le \mbox{erf} (x) \lt  1\) for all \(x \ge 0\) and moreover that \(\ds \lim_{x \to \infty} \mbox{erf} (x) = 1\).</span></span>, a function that is particularly important in probability and statistics. It turns out that the function \(e^{-t^2}\) does not have an elementary antiderivative that we can express without integrals. That is, whereas a function such as \(f(t) = 4-2t\) has elementary antiderivative \(F(t) = 4t - t^2\), we are unable to find a simple formula for an antiderivative of \(e^{-t^2}\) that does not involve a definite integral. We will learn more about finding (complicated) algebraic formulas for antiderivatives without definite integrals in the chapter on infinite series.
+</p>
+<p id="p-1196">
+Returning our attention to the function \(E\), while we cannot evaluate \(E\) exactly for any value other than \(x = 0\),
+we still can gain a tremendous amount of information about the function \(E\). To begin, applying the rule in Equation <a knowl="./knowl/E_diffint.html" knowl-id="xref-E_diffint" alt="Equation 5.2.1 " title="Equation 5.2.1 ">(5.2.1)</a> to \(E\), it follows that
+</p>
+<span class="displaymath" id="me-503">\[
+E'(x) = \frac{d}{dx} \left[ \int_0^x e^{-t^2} \, dt \right] = e^{-x^2},
+\]</span><p id="p-1197">
+so we know a formula for the derivative of \(E\). Moreover, we know that \(E(0) = 0\). This information is precisely the type we were given in problems such as the one in <a knowl="./knowl/A_3.1.1.html" knowl-id="xref-A_3.1.1" alt="Exercise 3.1.6 " title="Exercise 3.1.6 ">Activity 3.1.6</a> and others in <a href="S_3.1.Tests.html" alt="Section 3.1 Using derivatives to identify extreme values" title="Section 3.1 Using derivatives to identify extreme values">Section 3.1</a>, where we were given information about the derivative of a function, but lacked a formula for the function itself.
+</p>
+<p id="p-1198">
+Here, using the first and second derivatives of \(E\), along with the fact that \(E(0) = 0\), we can determine more information about the behavior of \(E\). First, with \(E'(x) = e^{-x^2}\), we note that for all real numbers \(x\), \(e^{-x^2} &gt; 0\), and thus \(E'(x) &gt; 0\) for all \(x\). Thus \(E\) is an always increasing function. Further, we note that as \(x \to \infty\), \(E'(x) = e^{-x^2} \to 0\), hence the slope of the function \(E\) tends to zero as \(x \to \infty\) (and similarly as \(x \to -\infty\)). Indeed, it turns out (due to some more sophisticated analysis) that \(E\) has horizontal asymptotes as \(x\) increases or decreases without bound.
+</p>
+<p id="p-1199">
+In addition, we can observe that \(E''(x) = -2xe^{-x^2}\), and that \(E''(0) = 0\), while \(E''(x) \lt  0\) for \(x &gt; 0\) and \(E''(x) &gt; 0\) for \(x \lt  0\). This information tells us that \(E\) is concave up for \(x\lt 0\) and concave down for \(x &gt; 0\) with a point of inflection at \(x = 0\).
+</p>
+<p id="p-1200">
+The only thing we lack at this point is a sense of how big \(E\) can get as \(x\) increases. If we use a midpoint Riemann sum with 10 subintervals to estimate \(E(2)\), we see that \(E(2) \approx 0.8822\); a similar calculation to estimate \(E(3)\) shows little change (\(E(3) \approx 0.8862\)), so it appears that as \(x\) increases without bound, \(E\) approaches a value just larger than \(0.886\), which aligns with the fact that \(E\) has horizontal asymptotes. Putting all of this information together (and using the symmetry of \(f(t) = e^{-t^2}\)), we see the results shown in <a knowl="./knowl/F_5.2.erf.html" knowl-id="xref-F_5.2.erf" alt="Figure 5.2.5 " title="Figure 5.2.5 ">Figure 5.2.5</a>.
+</p>
+<figure class="figure-like" id="F_5.2.erf"><img width="100%" src="images/5_2_erf.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.2.5</span>At left, the graph of \(f(t) = e^{-t^2}\).  At right, the integral function \(E(x) = \int_0^x e^{-t^2}  dt\), which is the unique antiderivative of \(f\) that satisfies \(E(0) = 0\).</figcaption></figure><p id="p-1201">
+Again, \(E\) is the antiderivative of \(f(t) = e^{-t^2}\) that satisfies \(E(0) = 0\). Moreover, the values on the graph of \(y = E(x)\) represent the net-signed area of the region bounded by \(f(t) = e^{-t^2}\) from 0 up to \(x\). We see that the value of \(E\) increases rapidly near zero but then levels off as \(x\) increases since there is less and less additional accumulated area bounded by \(f(t) = e^{-t^2}\) as \(x\) increases.
+</p>\hspace{5.0in}<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_5.2.2" id="A_5.2.2"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">5.2.6</span>
+</h5></a></div>
+<div id="hk-A_5.2.2" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1202">
+Suppose that \(f(t) = \frac{t}{1+t^2}\) and \(F(x) = \int_0^x f(t) \, dt\).
+</p>
+<figure class="figure-like" id="F_5.2.Act2"><img width="100%" src="images/5_2_Act2.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.2.7</span>Axes for plotting \(f\) and \(F\).</figcaption></figure><ol style="list-style-type: decimal;">
+<li id="li-1972">On the axes at left in <a knowl="./knowl/F_5.2.Act2.html" knowl-id="xref-F_5.2.Act2" alt="Figure 5.2.7 " title="Figure 5.2.7 ">Figure 5.2.7</a>, plot a graph of \(f(t) = \frac{t}{1+t^2}\) on the interval \(-10 \le t \le 10\).  Clearly label the vertical axes with appropriate scale.</li>
+<li id="li-1973">What is the key relationship between \(F\) and \(f\), according to the Second FTC?</li>
+<li id="li-1974">Use the first derivative test to determine the intervals on which \(F\) is increasing and decreasing.</li>
+<li id="li-1975">Use the second derivative test to determine the intervals on which \(F\) is concave up and concave down.  Note that \(f'(t)\) can be simplified to be written in the form \(f'(t) = \frac{1-t^2}{(1+t^2)^2}.\)</li>
+<li id="li-1976">Using technology appropriately, estimate the values of \(F(5)\) and \(F(10)\) through appropriate Riemann sums.</li>
+<li id="li-1977">Sketch an accurate graph of \(y = F(x)\) on the righthand axes provided, and clearly label the vertical axes with appropriate scale.</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-159" id="hint-159"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-159" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1978">Use computing technology appropriately to generate the desired graph.</li>
+<li id="li-1979">Again, recall the statement of the Second FTC.</li>
+<li id="li-1980">Where is \(F'\) positive?  \(F'\) negative?</li>
+<li id="li-1981">Note that \(F'' = f'\).</li>
+<li id="li-1982">Remember that \(F(5) = \int_0^5 \frac{t}{1+t^2} \, dt\).</li>
+<li id="li-1983">Don't forget that \(F(0) = 0\).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-160" id="hint-160"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-160" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1984">Use computing technology appropriately to generate the desired graph.</li>
+<li id="li-1985">Again, recall the statement of the Second FTC.</li>
+<li id="li-1986">Where is \(F'\) positive?  \(F'\) negative?  Remember that \(F\) is increasing wherever \(F'\) is positive.</li>
+<li id="li-1987">Note that \(F'' = f'\), which tells us that \(F''(t) = \frac{1-t^2}{(1+t^2)^2}\).  Where is \(F''\) positive? negative?</li>
+<li id="li-1988">Remember that \(F(5) = \int_0^5 \frac{t}{1+t^2} \, dt\).  Try a midpoint sum with at least 10 subintervals.</li>
+<li id="li-1989">Don't forget that \(F(0) = 0\).  Use the values and information you've found in (b)-(e).</li>
+</ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-78" id="solution-78"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-78" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;">
+<li id="li-1990">See the plot at below left.</li>
+<li id="li-1991">\(F' = f\), by the Second FTC.</li>
+<li id="li-1992">\(F\) is increasing wherever \(F'=f\) is positive, so for all \(x &gt; 0\).  Similarly, \(F\) is decreasing for \(x \lt  0\)</li>
+<li id="li-1993">\(F\) is CCU wherever \(F' = f\) is increasing or wherever \(F'' = f'\) is positive.  It is straightforward to show that \(f''\) is positive for \(-1 \lt  x \lt  1\) and negative otherwise, thus \(F\) is CCU on \(-1 \lt  x \lt  1\) and CCD for \(x \lt  -1\) and \(x &gt; 1\).</li>
+<li id="li-1994">\(F(5) = \int_0^5 \frac{t}{1+t^2} \, dt \approx 2.35973\), using a midpoint Riemann sum with 10 subintervals.  Similarly, \(F(10) = \int_0^{10} \frac{t}{1+t^2} \, dt \approx 2.35973\).</li>
+<li id="li-1995">Recalling that \(F(0) = 0\) and using the values and information we've found in (b)-(e), we arrive at the graph at below right.</li>
+</ol>
+<img width="100%" src="images/5_2_Act2_soln.png"></span></span></section><section class="subsection" id="subsection-86"><header><h1 class="heading hide-type">
+<span class="type">Subsection</span><span class="codenumber">5.2.4</span><span class="title">Differentiating an Integral Function</span>
+</h1></header><p id="p-1203">
+We have seen that the Second FTC enables us to construct an antiderivative \(F\) of any continuous function \(f\) by defining \(F\) by the corresponding integral function \(F(x) = \int_c^x f(t) \, dt\). Said differently, if we have a function of the form \(F(x) = \int_c^x f(t) \, dt\), then we know that \(F'(x) = \frac{d}{dx} \left[\int_c^x f(t) \, dt \right] = f(x)\). This shows that integral functions, while perhaps having the most complicated formulas of any functions we have encountered, are nonetheless particularly simple to differentiate. For instance, if
+</p>
+<span class="displaymath" id="me-504">\[
+F(x) = \int_{\pi}^x \sin(t^2) \, dt,
+\]</span><p id="p-1204">
+then by the Second FTC, we know immediately that
+</p>
+<span class="displaymath" id="me-505">\[
+F'(x) = \sin(x^2).
+\]</span><p id="p-1205">
+Stating this result more generally for an arbitrary function \(f\), we know by the Second FTC that
+</p>
+<span class="displaymath" id="me-506">\[
+\frac{d}{dx} \left[ \int_a^x f(t) \, dt \right] = f(x).
+\]</span><p id="p-1206">
+In words, the last equation essentially says that “the derivative of the integral function whose integrand is \(f\), is \(f\).” In this sense, we see that if we first integrate the function \(f\) from \(t = a\) to \(t = x\), and then differentiate with respect to \(x\), these two processes “undo” one another.
+</p>
+<p id="p-1207">
+Taking a different approach, say we begin with a function \(f(t)\) and differentiate with respect to \(t\). What happens if we follow this by integrating the result from \(t = a\) to \(t = x\)? That is, what can we say about the quantity
+</p>
+<span class="displaymath" id="me-507">\[
+\int_a^x \frac{d}{dt} \left[ f(t) \right] \, dt?
+\]</span><p id="p-1208">
+Here, we use the First FTC and note that \(f(t)\) is an antiderivative of \(\frac{d}{dt} \left[ f(t) \right].\) Applying this result and evaluating the antiderivative function, we see that
+</p>
+<span class="displaymath" id="md-59">\begin{align*}
+\int_a^x \frac{d}{dt} \left[ f(t) \right] \, dt \amp  = \amp  f(t) \bigg\vert_a^x\\
+\amp  = \amp  f(x) - f(a).
+\end{align*}</span><p id="p-1209">
+Thus, we see that if we apply the processes of first differentiating \(f\) and then integrating the result from \(a\) to \(x\), we return to the function \(f\), minus the constant value \(f(a)\). So in this situation, the two processes almost undo one another, up to the constant \(f(a)\).
+</p>
+<p id="p-1210">
+The observations made in the preceding two paragraphs demonstrate that differentiating and integrating (where we integrate from a constant up to a variable) are almost inverse processes. In one sense, this should not be surprising: integrating involves antidifferentiating, which reverses the process of differentiating. On the other hand, we see that there is some subtlety involved, as integrating the derivative of a function does not quite produce the function itself. This is connected to a key fact we observed in <a href="S_5.1.AntiDGraphs.html" alt="Section 5.1 Constructing Accurate Graphs of Antiderivatives" title="Section 5.1 Constructing Accurate Graphs of Antiderivatives">Section 5.1</a>, which is that any function has an entire family of antiderivatives, and any two of those antiderivatives differ only by a constant.
+</p>
+<div class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-A_5.2.3" id="A_5.2.3"><h5 class="heading">
+<span class="type">Exercise</span> <span class="codenumber">5.2.8</span>
+</h5></a></div>
+<div id="hk-A_5.2.3" style="display: none;" class="tex2jax_ignore">
+<article class="exercise-like"><p id="p-1211">
+Evaluate each of the following derivatives and definite integrals. Clearly cite whether you use the First or Second FTC in so doing.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-1996">\(\ds \frac{d}{dx} \left[ \int_4^x e^{t^2} \, dt \right]\)</li>
+<li id="li-1997">\(\ds \int_{-2}^x \frac{d}{dt} \left[ \frac{t^4}{1+t^4} \right] \, dt\)</li>
+<li id="li-1998">\(\ds \frac{d}{dx} \left[ \int_{x}^1 \cos(t^3) \, dt \right]\)</li>
+<li id="li-1999">\(\ds \int_{3}^x \frac{d}{dt} \left[ \ln(1+t^2) \right] \, dt\)</li>
+<li id="li-2000">\(\ds \frac{d}{dx} \left[ \int_4^{x^3} \sin(t^2) \, dt \right]\)<br> (Hint: Let \(F(x) = \int_4^x \sin(t^2) \, dt\) and observe that this problem is asking you to evaluate \(\frac{d}{dx} \left[F(x^3)] \right]\).</li>
+</ol></article><div class="hidden-knowl-wrapper"></div>
+</div>
+<span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-161" id="hint-161"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-161" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2001">For</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-hint-162" id="hint-162"><span class="heading"><span class="type">Hint</span></span></a></span><span id="hk-hint-162" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2002">For</li></ol></span></span><span class="hidden-knowl-wrapper"><a knowl="" class="id-ref" refid="hk-solution-79" id="solution-79"><span class="heading"><span class="type">Solution</span></span></a></span><span id="hk-solution-79" style="display: none;" class="tex2jax_ignore"><span class="solution"><ol style="list-style-type: decimal;"><li id="li-2003">Using</li></ol></span></span><p id="p-1212">
+\item For a continuous function \(f\), the integral function \(A(x) = \int_1^x f(t) \, dt\) defines an antiderivative of \(f\).
+\item The Second Fundamental Theorem of Calculus is the formal, more general statement of the preceding fact: if \(f\) is a continuous function and \(c\) is any constant, then \(A(x) = \int_c^x f(t) \, dt\) is the unique antiderivative of \(f\) that satisfies \(A(c) = 0\).
+\item Together, the First and Second FTC enable us to formally see how differentiation and integration are almost inverse processes through the observations that
+</p>
+<span class="displaymath" id="me-508">\[
+\int_c^x \frac{d}{dt} \left[ f(t) \right] \, dt = f(x) - f(c)
+\]</span><p id="p-1213">
+and
+</p>
+<span class="displaymath" id="me-509">\[
+\frac{d}{dx} \left[ \int_c^x f(t) \, dt \right] = f(x).
+\]</span>
+<p id="p-1214">
+\hrulefill
+</p>
+<p id="p-1215">
+\begin{exercises}
+	\item Let \(g\) be the function pictured below at left, and let \(F\) be defined by \(F(x) = \int_{2}^x g(t) \, dt.\) Assume that the shaded areas have values \(A_1 = 4.3\), \(A_2 = 12.7\), \(A_3 = 0.4\), and \(A_4 = 1.8\). Assume further that the portion of \(A_2\) that lies between \(x = 0.5\) and \(x = 2\) is \(5.4\).
+</p>
+<p id="p-1216">
+Sketch a carefully labeled graph of \(F\) on the axes provided, and include a written analysis of how you know where \(F\) is zero, increasing, decreasing, CCU, and CCD.
+</p>
+<figure class="figure-like" id="F_5.2.Ez1"><img width="100%" src="images/5_2_Ez1.png"><figcaption><span class="heading">Figure</span><span class="codenumber">5.2.9</span>At left, the graph of \(g\).  At right, axes for plotting \(F\).</figcaption></figure><p id="p-1217">
+\item The tide removes sand from the beach at a small ocean park at a rate modeled by the function
+</p>
+<span class="displaymath" id="me-510">\[
+R(t) = 2 + 5\sin \left( \frac{4\pi t}{25} \right)
+\]</span><p id="p-1218">
+A pumping station adds sand to the beach at rate modeled by the function
+</p>
+<span class="displaymath" id="me-511">\[
+S(t) = \frac{15t}{1+3t}
+\]</span><p id="p-1219">
+Both \(R(t)\) and \(S(t)\) are measured in cubic yards of sand per hour, \(t\) is measured in hours, and the valid times are \(0 \le t \le 6\). At time \(t = 0\), the beach holds 2500 cubic yards of sand.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2004">What definite integral measures how much sand the tide will remove during the time period \(0 \le t \le 6\)?  Why?</li>
+<li id="li-2005">Write an expression for \(Y(x)\), the total number of cubic yards of sand on the beach at time \(x\).  Carefully explain your thinking and reasoning.</li>
+<li id="li-2006">At what instantaneous rate is the total number of cubic yards of sand on the beach at time \(t = 4\) changing?</li>
+<li id="li-2007">Over the time interval \(0 \le t \le 6\), at what time \(t\) is the amount of sand on the beach least?  What is this minimum value?  Explain and justify your answers fully.</li>
+</ol>
+<p id="p-1220">
+\item When an aircraft attempts to climb as rapidly as
+possible, its climb rate (in feet per minute) decreases as altitude
+increases, because the air is less dense at higher altitudes.
+Given below is a table showing performance data for a certain
+single engine aircraft, giving its climb rate at various altitudes, where \(c(h)\) denotes the climb rate of the airplane at an altitude \(h\).
+\begingroup
+\footnotesize
+</p>
+<figure class="figure-like" id="table-24">
+    \(h\) (feet)\amp 0\amp 1000\amp 2000\amp 3000\amp 4000\amp 5000\amp 6000\amp 7000\amp 8000\amp 9000\amp 10,000
+    \(c\) (ft/min)\amp 925\amp 875\amp 830\amp 780\amp 730\amp 685\amp 635\amp 585\amp 535\amp 490\amp 440</figure><p id="p-1221">
+\endgroup
+</p>
+<p id="p-1222">
+Let a new function \(m\), that also depends on \(h\), (say \(y = m(h)\)) measure
+the number of minutes required for a plane at altitude \(h\) to climb the
+next foot of altitude.
+</p>
+<ol style="list-style-type: decimal;">
+<li id="li-2008">Determine a similar table of values for \(m(h)\) and explain how it is related to the table above.  Be sure to discuss the units on \(m\).</li>
+<li id="li-2009">Give a careful interpretation of a function whose derivative
+is \(m(h)\).  Describe what the input is and what the output is.  Also,
+explain in plain English what the function tells us.</li>
+<li id="li-2010">Determine a definite integral whose value tells us exactly the number of minutes required for the airplane to ascend to
+10,000 feet of altitude.  Clearly explain why the value of this integral has the required meaning.</li>
+<li id="li-2011">Determine a formula for a function \(M(h)\) whose value tells us the exact number of minutes required for the airplane to ascend to \(h\) feet of altitude.</li>
+<li id="li-2012">Estimate the values of \(M(6000)\) and \(M(10000)\) as accurately as you can.  Include units on your results.</li>
+</ol>
+<p id="p-1223">
+\end{exercises}
+\afterexercises
+</p>
+<p id="p-1224">
+\clearpage
+</p></section></section></div></main>
+</div>
+</body>
+</html>
